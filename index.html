@@ -7,18 +7,87 @@
     <style>
         body {
             text-align: center;
-            padding-top: 75px;
+            padding-top: 50px;
+            font-family: Arial, sans-serif;
         }
         img {
             width: 300px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .button:active {
+            background-color: #0056b3;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+            transform: translateY(3px);
+        }
+
+        .container {
+            display: inline-block;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Welcome to Petitek</h1>
-   <!--
+  <!--
     <p>Smarter Training for Your Pet</p>
     -->
     <img src="logo.png" alt="Petitek Logo">
+    
+    <div class="container">
+        <button class="button">Learn More</button>
+    </div>
+
+    <script>
+        const button = document.querySelector('.button');
+
+        button.addEventListener('mousedown', () => {
+            button.style.transform = 'scale(0.95)';
+            button.style.boxShadow = '0 2px 4px rgba(0,0,0,0.3)';
+        });
+
+        button.addEventListener('mouseup', () => {
+            button.style.transform = 'scale(1)';
+            button.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
+        });
+</script>
+
+    <div class="container">
+        <button class="button" id="button">Click Me</button>
+    </div>
+
+    <script>
+        const button = document.getElementById("button");
+
+        button.addEventListener('mousedown', () => {
+            button.style.transform = 'scale(0.95)';
+            button.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+        });
+
+        button.addEventListener('mouseup', () => {
+            button.style.transform = 'scale(1)';
+            button.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
+        });
+
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'scale(1)';
+            button.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
+        });
+
+        button.addEventListener('click', () => {
+            alert('Button clicked!'); // You can modify this action
+        });
+    </script>
 </body>
 </html>
