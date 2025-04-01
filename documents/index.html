@@ -3,77 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Petitek</title>
+  <title>Important Information | Petitek</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
+    body {
       font-family: Arial, sans-serif;
       background-color: #ffffff;
       color: #222;
+      margin: 0;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 30px;
       text-align: center;
-      padding: 40px 20px 20px;
     }
-    img {
-      width: 80%;
-      max-width: 300px;
-      margin-bottom: 20px;
+
+    ul {
+      list-style: none;
+      padding: 0;
     }
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
-      background-color: #25A8C6;
-      color: #ffffff;
+
+    li {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    a {
       text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-    .button:active {
-      transform: scale(0.95);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    .footer-link {
-      font-size: 12px;
-      color: #555;
-      margin-top: 40px;
-    }
-    .footer-link a {
       color: #0066cc;
-      text-decoration: none;
+      font-weight: bold;
     }
-    .footer-link a:hover {
+
+    a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div>
-    <h1>Welcome to Petitek</h1>
+  <h1>Important information from Petitek about your ownership and use of ChatrBox</h1>
 
-    <img src="https://petitekllc.github.io/petitek-landing/logo.png" alt="Petitek Logo" />
-
-    <br />
-    <a
-      href="https://player.vimeo.com/progressive_redirect/playback/1064040661/rendition/1080p/file.mp4?loc=external&signature=1d8b51bebcf0781d8526bc6cb844dde85b7fe94396a0e33d5b2e42a00ed3cf41&user_id=141512754"
-      target="_blank"
-      class="button"
-    >Learn More</a>
-  </div>
-
-  <div class="footer-link">
-    <p><a href="/documents">Legal Information</a></p>
-  </div>
+  <ul>
+    <li><a href="/warranty">Warranty</a></li>
+    <li><a href="/tos">Terms of Service</a></li>
+    <li><a href="/eula">End User License Agreement</a></li>
+  </ul>
 </body>
 </html>
 
