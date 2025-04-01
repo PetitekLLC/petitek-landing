@@ -17,6 +17,11 @@
     h1, h2 {
       color: #004aad;
     }
+    h1 {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
     a {
       color: #004aad;
       text-decoration: none;
@@ -27,28 +32,41 @@
     ul {
       margin-top: 0;
     }
+    .footer-nav {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .footer-nav a {
+      margin: 0 10px;
+      font-size: 14px;
+    }
+    .footer-copy {
+      text-align: center;
+      font-size: 10px;
+      color: #888;
+      margin-top: 20px;
+    }
+    .logo {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      width: 50px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
- <body>
-  <div style="text-align: center; margin-bottom: 20px;">
+
+  <div class="logo">
     <a href="/">
-      <img src="https://petitekllc.github.io/petitek-landing/logo.png" alt="Petitek Logo" style="width: 50px; height: auto;" />
+      <img src="https://petitekllc.github.io/petitek-landing/logo.png" alt="Petitek Logo" />
     </a>
   </div>
-  .logo {
-  width: 100%;
-  text-align: left;
-  margin-bottom: 20px;
-}
 
-.logo img {
-  width: 50px;
-  height: auto;
-}
- 
-</div>
-<h1 style="text-align: center;">Warranty Information</h1>
+  <h1>Warranty Information</h1>
+
   <p>Thank you for choosing <strong>ChatrBox</strong>! We stand behind the quality of our products and offer a 90-day limited warranty from the date of purchase.</p>
 
   <h2>What's Covered</h2>
@@ -76,14 +94,16 @@
   <p>If you have any questions, don’t hesitate to contact our support team at <a href="mailto:support@petitek.com">support@petitek.com</a>.</p>
 
   <p><em>This warranty gives you specific legal rights, and you may also have other rights that vary by state or country.</em></p>
-<div class="footer-nav">
+
+  <div class="footer-nav">
     <a href="/tos">Terms of Service</a>
     <a href="/eula">EULA</a>
   </div>
-  <!-- Your content above -->
-  
-  <div style="text-align: center; font-size: 10px; color: #888; margin-top: 40px;">
+
+  <div class="footer-copy">
     &copy; Petitek, LLC. All rights reserved.
   </div>
+
 </body>
 </html>
+
