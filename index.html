@@ -15,26 +15,20 @@
       font-family: Arial, sans-serif;
       background-color: #ffffff;
       color: #222;
-      min-height: 85vh;
-      display: flex;
-      flex-direction: column;
+      width: 100vw;
+      overflow-x: hidden;
     }
 
     .content {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* shift content to the top */
+      justify-content: flex-start;
       align-items: center;
       padding: 30px 20px 20px;
       text-align: center;
     }
 
-    h1 {
-      margin-bottom: 50px;
-    }
-
-    img {
+    .content img {
       width: 80%;
       max-width: 300px;
       margin-bottom: 20px;
@@ -82,32 +76,24 @@
       margin-bottom: 10px;
     }
 
-.scroll-gallery {
-  margin-top: 40px;
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 1rem;
-  padding: 1rem;
-}
+    .stacked-gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
 
-.scroll-gallery img {
-  flex-shrink: 0;
-  width: 100vw;
-  max-width: none;
-  height: auto;
-  scroll-snap-align: start;
-  display: block;
-}
-
+    .stacked-gallery img {
+      width: 100vw;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
 
   <div class="content">
-    <!-- <h1>Welcome to Petitek</h1> -->
-
     <img src="https://petitekllc.github.io/petitek-landing/logo.png" alt="Petitek Logo" />
 
     <a
@@ -133,24 +119,23 @@
     &copy; Petitek, LLC. All rights reserved.
   </div>
 
-<div class="scroll-gallery">
-  <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
-  <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
-  <img src="images/smart-features.jpg" alt="Smart Features" />
-  <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
-  <img src="images/advantage-cards.jpg" alt="Training Benefits" />
-  <img src="images/wireless-boundaries.jpg" alt="Wireless Boundaries" />
-  <img src="images/voice-commands.jpg" alt="Voice Commands" />
-  <img src="images/safe-zones.jpg" alt="Safe Zones" />
-  <img src="images/happier-pets.jpg" alt="Happy Pets" />
-  <img src="images/smart-training.jpg" alt="Smart Training Summary" />
-  <img src="images/instant-correction.jpg" alt="Instant Correction" />
-  <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
-  <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
-  <img src="images/testimonials.jpg" alt="Testimonials" />
-  <img src="images/call-to-action.jpg" alt="Call to Action" />
-</div>
-
+  <div class="stacked-gallery">
+    <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
+    <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
+    <img src="images/smart-features.jpg" alt="Smart Features" />
+    <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
+    <img src="images/advantage-cards.jpg" alt="Training Benefits" />
+    <img src="images/wireless-boundaries.jpg" alt="Wireless Boundaries" />
+    <img src="images/voice-commands.jpg" alt="Voice Commands" />
+    <img src="images/safe-zones.jpg" alt="Safe Zones" />
+    <img src="images/happier-pets.jpg" alt="Happy Pets" />
+    <img src="images/smart-training.jpg" alt="Smart Training Summary" />
+    <img src="images/instant-correction.jpg" alt="Instant Correction" />
+    <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
+    <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
+    <img src="images/testimonials.jpg" alt="Testimonials" />
+    <img src="images/call-to-action.jpg" alt="Call to Action" />
+  </div>
 
 </body>
 </html>
