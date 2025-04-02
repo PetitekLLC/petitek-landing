@@ -81,6 +81,25 @@
       color: #888;
       margin-bottom: 10px;
     }
+    .scroll-gallery {
+  margin-top: 40px;
+  padding: 20px 0;
+  overflow-y: auto;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px; /* Adjustable image spacing */
+}
+
+.scroll-gallery img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
   </style>
 </head>
 <body>
@@ -111,6 +130,14 @@
 
   <div class="footer-copy">
     &copy; Petitek, LLC. All rights reserved.
+  </div>
+  <div class="scroll-gallery">
+    <img src="images/Amazon A+ content Upgrade1.jpg" alt="Image 1" />
+    <img src="images/Amazon A+ content Upgrade2.jpg" alt="Image 2" />
+    <img src="images/Amazon A+ content Upgrade3.jpg" alt="Image 3" />
+    <img src="images/Amazon A+ content Upgrade4.jpg" alt="Image 4" />
+    <img src="images/Amazon A+ content Upgrade5.jpg" alt="Image 5" />
+    <!-- Repeat for all 15 images -->
   </div>
 
 </body>
