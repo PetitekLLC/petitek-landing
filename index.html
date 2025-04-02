@@ -81,27 +81,21 @@
       color: #888;
       margin-bottom: 10px;
     }
-    .scroll-gallery {
-  margin-top: 40px;
-  padding: px 10;
-  overflow-y: auto;
-  max-height: 95vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px; /* Adjustable image spacing */
+
 .scroll-gallery {
+  margin-top: 40px;
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   gap: 1rem;
   padding: 1rem;
 }
 
 .scroll-gallery img {
   flex-shrink: 0;
-  width: 100vw;           /* Full viewport width */
-  max-width: none;        /* Allow it to go beyond container limits */
+  width: 100vw;
+  max-width: none;
   height: auto;
   scroll-snap-align: start;
   display: block;
