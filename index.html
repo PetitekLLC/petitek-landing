@@ -90,15 +90,23 @@
   flex-direction: column;
   align-items: center;
   gap: 30px; /* Adjustable image spacing */
+.scroll-gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .scroll-gallery img {
+  flex-shrink: 0;
   width: 100%;
   max-width: 600px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  /* border-radius removed */
 }
+
 
   </style>
 </head>
@@ -133,22 +141,23 @@
   </div>
 
 <div class="scroll-gallery">
-  <img src="https://petitekllc.github.io/petitek-landing/images/image01.jpg" alt="Product Image 01" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image02.jpg" alt="Product Image 02" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image03.jpg" alt="Product Image 03" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image04.jpg" alt="Product Image 04" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image05.jpg" alt="Product Image 05" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image06.jpg" alt="Product Image 06" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image07.jpg" alt="Product Image 07" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image08.jpg" alt="Product Image 08" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image09.jpg" alt="Product Image 09" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image10.jpg" alt="Product Image 10" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image11.jpg" alt="Product Image 11" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image12.jpg" alt="Product Image 12" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image13.jpg" alt="Product Image 13" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image14.jpg" alt="Product Image 14" />
-  <img src="https://petitekllc.github.io/petitek-landing/images/image15.jpg" alt="Product Image 15" />
+  <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
+  <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
+  <img src="images/smart-features.jpg" alt="Smart Features" />
+  <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
+  <img src="images/advantage-cards.jpg" alt="Training Benefits" />
+  <img src="images/wireless-boundaries.jpg" alt="Wireless Boundaries" />
+  <img src="images/voice-commands.jpg" alt="Voice Commands" />
+  <img src="images/safe-zones.jpg" alt="Safe Zones" />
+  <img src="images/happier-pets.jpg" alt="Happy Pets" />
+  <img src="images/smart-training.jpg" alt="Smart Training Summary" />
+  <img src="images/instant-correction.jpg" alt="Instant Correction" />
+  <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
+  <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
+  <img src="images/testimonials.jpg" alt="Testimonials" />
+  <img src="images/call-to-action.jpg" alt="Call to Action" />
 </div>
+
 
 </body>
 </html>
