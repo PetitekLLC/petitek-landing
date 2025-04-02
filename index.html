@@ -100,13 +100,12 @@
 
 .scroll-gallery img {
   flex-shrink: 0;
-  width: 100%;
-  max-width: 600px;
+  width: 100vw;           /* Full viewport width */
+  max-width: none;        /* Allow it to go beyond container limits */
   height: auto;
   scroll-snap-align: start;
-  /* border-radius removed */
+  display: block;
 }
-
 
   </style>
 </head>
