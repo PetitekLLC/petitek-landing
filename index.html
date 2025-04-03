@@ -24,7 +24,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding: 50px 20px 110px;
+      padding: 50px 20px 40px;
       text-align: center;
     }
 
@@ -53,11 +53,30 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
+    .stacked-gallery {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .stacked-gallery img {
+      width: 100vw;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      box-sizing: border-box;
+    }
+
     .footer-link {
       font-size: 12px;
       color: #555;
       text-align: center;
-      margin-bottom: 10px;
+      margin: 40px 0 5px;
     }
 
     .footer-link a {
@@ -73,25 +92,8 @@
       text-align: center;
       font-size: 10px;
       color: #888;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
-
-    .stacked-gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-
-  .stacked-gallery img {
-  width: 100vw;              /* Always match viewport width */
-  max-width: 100%;           /* Don't exceed container */
-  height: auto;              /* Keep image aspect ratio */
-  display: block;
-  object-fit: cover;         /* Crop edges if needed for layout (optional) */
-  box-sizing: border-box;    /* Prevent scrollbars from padding/margin */
-}
-
   </style>
 </head>
 <body>
@@ -110,18 +112,18 @@
       href="https://www.amazon.com/dp/B0D6Q7SRSQ"
       target="_blank"
       class="button"
-      style="margin-top: 15px; margin-bottom: 40px;"
+      style="margin-top: 15px; margin-bottom: 20px;"
     >Buy Now</a>
+
+    <!-- Chevron Arrow Indicator -->
+    <div style="margin-top: 30px; text-align: center;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
   </div>
 
-  <div class="footer-link">
-    <p><a href="/documents">Legal Beagle</a></p>
-  </div>
-
-  <div class="footer-copy">
-    &copy; Petitek, LLC. All rights reserved.
-  </div>
-
+  <!-- Image Stack -->
   <div class="stacked-gallery">
     <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
     <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
@@ -139,6 +141,8 @@
     <img src="images/testimonials.jpg" alt="Testimonials" />
     <img src="images/call-to-action.jpg" alt="Call to Action" />
   </div>
+
+  <!-- Footer at the very bottom -->
   <div class="footer-link">
     <p><a href="/documents">Legal Beagle</a></p>
   </div>
@@ -146,6 +150,7 @@
   <div class="footer-copy">
     &copy; Petitek, LLC. All rights reserved.
   </div>
+
 </body>
 </html>
 
