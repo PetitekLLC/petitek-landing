@@ -209,12 +209,12 @@
 
   window.addEventListener('scroll', () => {
     const galleryTop = gallery.getBoundingClientRect().top;
+ if (galleryTop <= -200) {
+  floatBtn.classList.add('show');
+} else {
+  floatBtn.classList.remove('show');
+}
 
-    if (galleryTop <= 0) {
-      floatBtn.classList.add('show');
-    } else {
-      floatBtn.classList.remove('show');
-    }
   });
 </script>
 
