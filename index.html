@@ -56,29 +56,10 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .amazon-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .amazon-image-button {
       width: 200px;
-      padding: 12px 0;
-      background-color: #ff9900;
-      color: #000;
-      font-weight: bold;
-      font-size: 14px;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      gap: 8px;
-    }
-
-    .amazon-button:hover {
-      background-color: #e88b00;
-    }
-
-    .amazon-logo {
-      height: 18px;
+      margin-top: 15px;
+      margin-bottom: 20px;
     }
 
     .stacked-gallery {
@@ -100,13 +81,13 @@
     }
 
     .text-block {
-      font-size: 20pt;
+      font-size: 10pt;
       font-weight: normal;
       color: #444;
       max-width: 800px;
       padding: 25px 20px 35px;
       text-align: center;
-      line-height: 1.8;
+      line-height: 1.4;
     }
 
     .footer-link {
@@ -155,6 +136,11 @@
     .floating-buy-button.show {
       display: inline-block;
     }
+
+    .floating-buy-button img {
+      width: 200px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -169,14 +155,9 @@
       style="margin-bottom: 10px;"
     >Learn More</a>
 
-    <!--
-    <a
-      href="https://www.amazon.com/dp/B0D6Q7SRSQ"
-      target="_blank"
-      class="button"
-      style="margin-top: 15px; margin-bottom: 20px;"
-    >Buy Now</a>
-    -->
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="https://www.citypng.com/public/uploads/preview/black-buy-now-at-amazon-button-701751695133511c4xdnwmcgt.png" alt="Buy Now on Amazon" class="amazon-image-button">
+    </a>
   </div>
 
   <!-- Chevron Indicator -->
@@ -199,49 +180,49 @@
   <!-- Image Stack with Text Between -->
   <div class="stacked-gallery" id="galleryStart">
     <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
-    <div class="text-block">CHATRBOX is the future of pet training — portable, powerful, and patent-pending. No shocks, no sprays, no drama.</div>
+    <div class="text-block">Personalized Voice Commands: Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.</div>
 
     <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
-    <div class="text-block">Just place it where you need it. When your pet approaches, it gently guides them away using your voice.</div>
+    <div class="text-block">Wireless Boundaries & Training: No tags or collars — just safe, smart training wherever you place it.</div>
 
     <img src="images/smart-features.jpg" alt="Smart Features" />
-    <div class="text-block">Smart Indoor Pet Trainer uses Motion Detection, Sound alerts, and Your own Recorded Voice to Instantly Guide Pets Away from unwanted Behavior.</div>
+    <div class="text-block">Smart Indoor Pet Trainer: Combines motion detection, sound alerts, and voice playback to correct behavior instantly.</div>
 
     <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
-    <div class="text-block">ChatrBox stops mischief before it starts with proactive, motion-triggered cues — all in your own voice.</div>
+    <div class="text-block">Proactive Motion Detection: Stop bad behavior before it starts with intelligent real-time alerts.</div>
 
     <img src="images/advantage-cards.jpg" alt="Training Benefits" />
-    <div class="text-block">Your voice, your rules — personalized voice commands help shape habits that stick.</div>
+    <div class="text-block">Instant Behavior Correction: Deliver consistent feedback exactly when it matters most — in the moment.</div>
 
     <img src="images/wireless-boundaries.jpg" alt="Wireless Boundaries" />
-    <div class="text-block">No collars or tags needed — ChatrBox uses safe, wireless motion detection for boundary training.</div>
+    <div class="text-block">Ditch the gates and crates: Train pets with invisible boundaries that feel natural and open.</div>
 
     <img src="images/voice-commands.jpg" alt="Voice Commands" />
-    <div class="text-block">Record custom phrases like “Off the couch!” or “Stay out!” to reinforce commands with your presence.</div>
+    <div class="text-block">Voice-Driven Results: Your familiar tone makes a lasting impression — gentle, clear, and stress-free.</div>
 
     <img src="images/safe-zones.jpg" alt="Safe Zones" />
-    <div class="text-block">Establish safe zones in your home, training pets to avoid off-limit areas with gentle reminders.</div>
+    <div class="text-block">Establish Pet-Friendly Zones: Keep them off sofas or away from the trash using audio cues alone.</div>
 
     <img src="images/happier-pets.jpg" alt="Happy Pets" />
-    <div class="text-block">ChatrBox helps build a consistent routine — which pets love and thrive under.</div>
+    <div class="text-block">Happy Pets, Peaceful Homes: Less stress and more harmony thanks to consistent training reinforcement.</div>
 
     <img src="images/smart-training.jpg" alt="Smart Training Summary" />
-    <div class="text-block">24/7 smart training assistant — always watching, always coaching — even when you're away.</div>
+    <div class="text-block">24/7 Assistant: Chatrbox never sleeps — always ready to guide pets with patience and precision.</div>
 
     <img src="images/instant-correction.jpg" alt="Instant Correction" />
-    <div class="text-block">ChatrBox corrects instantly when behavior occurs, creating teachable moments that matter.</div>
+    <div class="text-block">Teachable Moments Matter: Catch behavior in the act to teach better habits that stick.</div>
 
     <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
-    <div class="text-block">From cats to dogs, hyper to lazy — ChatrBox adapts to every personality type.</div>
+    <div class="text-block">Universally Effective: Great for dogs, cats, and multi-pet households with flexible configurations.</div>
 
     <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
-    <div class="text-block">Great behavior takes repetition — ChatrBox delivers it consistently without frustration.</div>
+    <div class="text-block">Consistent Messaging: Repetition strengthens positive behavior — no yelling required.</div>
 
     <img src="images/testimonials.jpg" alt="Testimonials" />
-    <div class="text-block">Real reviews from pet owners prove it works. Safe. Gentle. Effective.</div>
+    <div class="text-block">What Pet Owners Say: “Finally, something that actually works — and works gently.”</div>
 
     <img src="images/call-to-action.jpg" alt="Call to Action" />
-    <div class="text-block">Ready to train smarter, not harder? ChatrBox is your pet’s new best friend.</div>
+    <div class="text-block">Start Smart Training Today: Make Chatrbox your new secret weapon for calm, well-trained pets.</div>
   </div>
 
   <!-- Footer -->
@@ -254,9 +235,8 @@
   </div>
 
   <div class="floating-buy-button">
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="amazon-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-logo">
-      Buy Now on Amazon
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="https://www.citypng.com/public/uploads/preview/black-buy-now-at-amazon-button-701751695133511c4xdnwmcgt.png" alt="Buy Now on Amazon">
     </a>
   </div>
 
@@ -276,5 +256,4 @@
 
 </body>
 </html>
-
 
