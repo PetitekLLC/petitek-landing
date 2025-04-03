@@ -56,30 +56,12 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .amazon-button {
-      display: inline-flex;
-      align-items: center;
-      background-color: #ff9900;
-      color: #000;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-      transition: background-color 0.2s ease;
+    .amazon-main-button {
+      width: 200px;
       margin-top: 15px;
       margin-bottom: 20px;
-    }
-
-    .amazon-button:hover {
-      background-color: #e88f00;
-    }
-
-    .amazon-button img {
-      height: 20px;
-      margin-right: 10px;
+      display: block;
+      border-radius: 8px;
     }
 
     .stacked-gallery {
@@ -156,12 +138,18 @@
     .floating-buy-button.show {
       display: inline-block;
     }
+
+    .floating-buy-button img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    }
   </style>
 </head>
 <body>
-
   <div class="content">
-    <img src="https://petitekllc.github.io/petitek-landing/logo.png" alt="Petitek Logo" />
+    <img src="logo.png" alt="Petitek Logo" />
 
     <a
       href="https://player.vimeo.com/progressive_redirect/playback/1064040661/rendition/1080p/file.mp4?loc=external&signature=1d8b51bebcf0781d8526bc6cb844dde85b7fe94396a0e33d5b2e42a00ed3cf41&user_id=141512754"
@@ -170,13 +158,11 @@
       style="margin-bottom: 10px;"
     >Learn More</a>
 
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="amazon-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
-      Buy Now on Amazon
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="amazon_buy_button.png" alt="Buy Now on Amazon" class="amazon-main-button">
     </a>
   </div>
 
-  <!-- Chevron Indicator -->
   <div style="margin-top: 60px; text-align: center;">
     <svg
       width="32"
@@ -193,12 +179,53 @@
     </svg>
   </div>
 
-  <!-- Image Stack with Text Between -->
   <div class="stacked-gallery" id="galleryStart">
-    <!-- image and text blocks go here -->
+    <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
+    <div class="text-block">Personalized Voice Commands: Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.</div>
+
+    <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
+    <div class="text-block">Wireless Boundaries & Training: No tags or collars — just safe, smart training wherever you place it.</div>
+
+    <img src="images/smart-features.jpg" alt="Smart Features" />
+    <div class="text-block">Smart Indoor Pet Trainer: Combines motion detection, sound alerts, and voice playback to correct behavior instantly.</div>
+
+    <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
+    <div class="text-block">Proactive Motion Detection: Stop bad behavior before it starts with intelligent real-time alerts.</div>
+
+    <img src="images/advantage-cards.jpg" alt="Training Benefits" />
+    <div class="text-block">Instant Behavior Correction: Deliver consistent feedback exactly when it matters most — in the moment.</div>
+
+    <img src="images/wireless-boundaries.jpg" alt="Wireless Boundaries" />
+    <div class="text-block">Ditch the gates and crates: Train pets with invisible boundaries that feel natural and open.</div>
+
+    <img src="images/voice-commands.jpg" alt="Voice Commands" />
+    <div class="text-block">Voice-Driven Results: Your familiar tone makes a lasting impression — gentle, clear, and stress-free.</div>
+
+    <img src="images/safe-zones.jpg" alt="Safe Zones" />
+    <div class="text-block">Establish Pet-Friendly Zones: Keep them off sofas or away from the trash using audio cues alone.</div>
+
+    <img src="images/happier-pets.jpg" alt="Happy Pets" />
+    <div class="text-block">Happy Pets, Peaceful Homes: Less stress and more harmony thanks to consistent training reinforcement.</div>
+
+    <img src="images/smart-training.jpg" alt="Smart Training Summary" />
+    <div class="text-block">24/7 Assistant: Chatrbox never sleeps — always ready to guide pets with patience and precision.</div>
+
+    <img src="images/instant-correction.jpg" alt="Instant Correction" />
+    <div class="text-block">Teachable Moments Matter: Catch behavior in the act to teach better habits that stick.</div>
+
+    <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
+    <div class="text-block">Universally Effective: Great for dogs, cats, and multi-pet households with flexible configurations.</div>
+
+    <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
+    <div class="text-block">Consistent Messaging: Repetition strengthens positive behavior — no yelling required.</div>
+
+    <img src="images/testimonials.jpg" alt="Testimonials" />
+    <div class="text-block">What Pet Owners Say: “Finally, something that actually works — and works gently.”</div>
+
+    <img src="images/call-to-action.jpg" alt="Call to Action" />
+    <div class="text-block">Start Smart Training Today: Make Chatrbox your new secret weapon for calm, well-trained pets.</div>
   </div>
 
-  <!-- Footer -->
   <div class="footer-link">
     <p><a href="/documents">Legal Beagle</a></p>
   </div>
@@ -208,9 +235,8 @@
   </div>
 
   <div class="floating-buy-button">
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="amazon-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
-      Buy Now on Amazon
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="amazon_float_button.png" alt="Buy Now">
     </a>
   </div>
 
@@ -227,8 +253,5 @@
       }
     });
   </script>
-
 </body>
 </html>
-
-
