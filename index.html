@@ -105,7 +105,27 @@
     transform: translateY(5px);
   }
 }
- 
+ .floating-buy-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25A8C6;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.floating-buy-button:hover {
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 <body>
@@ -173,6 +193,9 @@
   <div class="footer-copy">
     &copy; Petitek, LLC. All rights reserved.
   </div>
+<a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="floating-buy-button">
+  Buy Now
+</a>
 
 </body>
 </html>
