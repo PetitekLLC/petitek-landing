@@ -125,6 +125,13 @@
 .floating-buy-button:hover {
   transform: scale(1.05);
 }
+.floating-buy-button {
+  display: none; /* hidden by default */
+}
+
+.floating-buy-button.show {
+  display: inline-block;
+}
 
   </style>
 </head>
@@ -167,7 +174,7 @@
 
 
   <!-- Image Stack -->
-  <div class="stacked-gallery">
+ <div class="stacked-gallery" id="galleryStart">
     <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
     <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
     <img src="images/smart-features.jpg" alt="Smart Features" />
@@ -196,6 +203,20 @@
 <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="floating-buy-button">
   Buy Now
 </a>
+<script>
+  const floatBtn = document.querySelector('.floating-buy-button');
+  const gallery = document.getElementById('galleryStart');
+
+  window.addEventListener('scroll', () => {
+    const galleryTop = gallery.getBoundingClientRect().top;
+
+    if (galleryTop <= 0) {
+      floatBtn.classList.add('show');
+    } else {
+      floatBtn.classList.remove('show');
+    }
+  });
+</script>
 
 </body>
 </html>
