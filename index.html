@@ -56,6 +56,31 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
+    .amazon-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 200px;
+      padding: 12px 0;
+      background-color: #ff9900;
+      color: #000;
+      font-weight: bold;
+      font-size: 14px;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      gap: 8px;
+    }
+
+    .amazon-button:hover {
+      background-color: #e88b00;
+    }
+
+    .amazon-logo {
+      height: 18px;
+    }
+
     .stacked-gallery {
       margin-top: 55px;
       display: flex;
@@ -75,13 +100,13 @@
     }
 
     .text-block {
-      font-size: 10pt;
+      font-size: 20pt;
       font-weight: normal;
       color: #444;
       max-width: 800px;
       padding: 25px 20px 35px;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.8;
     }
 
     .footer-link {
@@ -123,17 +148,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #25A8C6;
-      color: white;
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
       z-index: 1000;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease;
       display: none;
     }
 
@@ -154,12 +169,14 @@
       style="margin-bottom: 10px;"
     >Learn More</a>
 
+    <!--
     <a
       href="https://www.amazon.com/dp/B0D6Q7SRSQ"
       target="_blank"
       class="button"
       style="margin-top: 15px; margin-bottom: 20px;"
     >Buy Now</a>
+    -->
   </div>
 
   <!-- Chevron Indicator -->
@@ -236,9 +253,12 @@
     &copy; Petitek, LLC. All rights reserved.
   </div>
 
-  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="floating-buy-button">
-    Buy Now
-  </a>
+  <div class="floating-buy-button">
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="amazon-button">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amazon-logo">
+      Buy Now on Amazon
+    </a>
+  </div>
 
   <script>
     const floatBtn = document.querySelector('.floating-buy-button');
@@ -256,3 +276,5 @@
 
 </body>
 </html>
+
+
