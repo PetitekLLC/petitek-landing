@@ -94,6 +94,18 @@
       color: #888;
       margin-bottom: 20px;
     }
+   @keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+ 
   </style>
 </head>
 <body>
@@ -116,12 +128,23 @@
     >Buy Now</a>
   </div>
 
-  <!-- Chevron Indicator -->
-  <div style="margin-top: 60px; text-align: center;">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="6 9 12 15 18 9"/>
-    </svg>
-  </div>
+<!-- Chevron Indicator -->
+<div style="margin-top: 60px; text-align: center;">
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#333"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    style="animation: bounce 2s infinite;"
+  >
+    <polyline points="6 9 12 15 18 9"/>
+  </svg>
+</div>
+
 
   <!-- Image Stack -->
   <div class="stacked-gallery">
