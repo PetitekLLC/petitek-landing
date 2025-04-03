@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dog Animation Test</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f0f0f0;
+      overflow: hidden;
+    }
+
+    .animated-dog {
+      position: absolute;
+      bottom: 0;
+      left: -300px;
+      width: 150px;
+      animation: walkIn 6s ease-in-out forwards;
+    }
+
+    @keyframes walkIn {
+      0% {
+        left: -300px;
+        transform: scale(0.6);
+        opacity: 0.3;
+      }
+      60% {
+        left: 30%;
+        transform: scale(1);
+        opacity: 1;
+      }
+      80% {
+        left: 40%;
+        transform: scale(1);
+      }
+      100% {
+        left: -300px;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="dog-walk.png" alt="Animated Dog" class="animated-dog" />
+</body>
+</html>
 
