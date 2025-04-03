@@ -83,12 +83,15 @@
       gap: 2px;
     }
 
-    .stacked-gallery img {
-      width: 100vw;
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+  .stacked-gallery img {
+  width: 100vw;              /* Always match viewport width */
+  max-width: 100%;           /* Don't exceed container */
+  height: auto;              /* Keep image aspect ratio */
+  display: block;
+  object-fit: cover;         /* Crop edges if needed for layout (optional) */
+  box-sizing: border-box;    /* Prevent scrollbars from padding/margin */
+}
+
   </style>
 </head>
 <body>
