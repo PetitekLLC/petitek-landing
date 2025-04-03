@@ -62,6 +62,8 @@
       margin-bottom: 20px;
       display: block;
       border-radius: 8px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .stacked-gallery {
@@ -148,7 +150,8 @@
 </head>
 <body>
   <div class="content">
-    <img src="logo.png" alt="Petitek Logo" />
+    <img src="chatrbox_paw_logo.png" alt="Chatrbox Paw Logo" style="width: 100px; margin-bottom: -20px;" />
+    <img src="chatrbox_name_logo.png" alt="Chatrbox Name Logo" style="width: 250px; margin-top: 0;" />
 
     <a
       href="https://player.vimeo.com/progressive_redirect/playback/1064040661/rendition/1080p/file.mp4?loc=external&signature=1d8b51bebcf0781d8526bc6cb844dde85b7fe94396a0e33d5b2e42a00ed3cf41&user_id=141512754"
@@ -223,7 +226,9 @@
     <img src="images/testimonials.jpg" alt="Testimonials" />
     <div class="text-block">What Pet Owners Say: “Finally, something that actually works — and works gently.”</div>
 
-    <img src="images/call-to-action.jpg" alt="Call to Action" />
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="images/call-to-action.jpg" alt="Call to Action" />
+    </a>
     <div class="text-block">Start Smart Training Today: Make Chatrbox your new secret weapon for calm, well-trained pets.</div>
   </div>
 
@@ -247,7 +252,7 @@
 
     window.addEventListener('scroll', () => {
       const galleryTop = gallery.getBoundingClientRect().top;
-      if (galleryTop <= -400) {
+      if (galleryTop <= -100) {
         floatBtn.classList.add('show');
       } else {
         floatBtn.classList.remove('show');
