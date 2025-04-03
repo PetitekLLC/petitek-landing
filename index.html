@@ -72,6 +72,14 @@
       box-sizing: border-box;
     }
 
+    .image-caption {
+      font-size: 16px;
+      color: #444;
+      padding: 10px;
+      max-width: 800px;
+      text-align: center;
+    }
+
     .footer-link {
       font-size: 12px;
       color: #555;
@@ -94,45 +102,40 @@
       color: #888;
       margin-bottom: 20px;
     }
-   @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(10px);
-  }
-  60% {
-    transform: translateY(5px);
-  }
-}
- .floating-buy-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25A8C6;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-  z-index: 1000;
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
 
-.floating-buy-button:hover {
-  transform: scale(1.05);
-}
-.floating-buy-button {
-  display: none; /* hidden by default */
-}
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(10px);
+      }
+      60% {
+        transform: translateY(5px);
+      }
+    }
 
-.floating-buy-button.show {
-  display: inline-block;
-}
+    .floating-buy-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25A8C6;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+      z-index: 1000;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+      display: none;
+    }
 
+    .floating-buy-button.show {
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -155,41 +158,69 @@
     >Buy Now</a>
   </div>
 
-<!-- Chevron Indicator -->
-<div style="margin-top: 60px; text-align: center;">
-  <svg
-    width="32"
-    height="32"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#333"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    style="animation: bounce 2s infinite;"
-  >
-    <polyline points="6 9 12 15 18 9"/>
-  </svg>
-</div>
+  <!-- Chevron Indicator -->
+  <div style="margin-top: 60px; text-align: center;">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#333"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      style="animation: bounce 2s infinite;"
+    >
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
 
-
-  <!-- Image Stack -->
- <div class="stacked-gallery" id="galleryStart">
+  <!-- Image Stack with Text Between -->
+  <div class="stacked-gallery" id="galleryStart">
     <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
+    <div class="image-caption">Your pet’s personal training coach — meet Chatrbox.</div>
+
     <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
+    <div class="image-caption">Training that works for every pet, every time.</div>
+
     <img src="images/smart-features.jpg" alt="Smart Features" />
+    <div class="image-caption">Packed with smart features for proactive training.</div>
+
     <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
+    <div class="image-caption">Stop bad behavior before it even starts.</div>
+
     <img src="images/advantage-cards.jpg" alt="Training Benefits" />
+    <div class="image-caption">Reinforces good habits, tailored to your pet’s needs.</div>
+
     <img src="images/wireless-boundaries.jpg" alt="Wireless Boundaries" />
+    <div class="image-caption">No collars, no gates — just smart wireless boundaries.</div>
+
     <img src="images/voice-commands.jpg" alt="Voice Commands" />
+    <div class="image-caption">Record custom commands to keep your voice present at home.</div>
+
     <img src="images/safe-zones.jpg" alt="Safe Zones" />
+    <div class="image-caption">Establish safe zones where your pet can relax and thrive.</div>
+
     <img src="images/happier-pets.jpg" alt="Happy Pets" />
+    <div class="image-caption">A well-trained pet is a happy pet — and a happy home.</div>
+
     <img src="images/smart-training.jpg" alt="Smart Training Summary" />
+    <div class="image-caption">Consistent, smart corrections that actually stick.</div>
+
     <img src="images/instant-correction.jpg" alt="Instant Correction" />
+    <div class="image-caption">Instant feedback makes every moment a teachable one.</div>
+
     <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
+    <div class="image-caption">Great for dogs, cats, and every personality in between.</div>
+
     <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
+    <div class="image-caption">Behavior change takes repetition — Chatrbox makes it easy.</div>
+
     <img src="images/testimonials.jpg" alt="Testimonials" />
+    <div class="image-caption">See what real pet owners are saying.</div>
+
     <img src="images/call-to-action.jpg" alt="Call to Action" />
+    <div class="image-caption">Start transforming your pet’s behavior today.</div>
   </div>
 
   <!-- Footer -->
@@ -200,27 +231,24 @@
   <div class="footer-copy">
     &copy; Petitek, LLC. All rights reserved.
   </div>
-<a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="floating-buy-button">
-  Buy Now
-</a>
-<script>
-  const floatBtn = document.querySelector('.floating-buy-button');
-  const gallery = document.getElementById('galleryStart');
 
-  window.addEventListener('scroll', () => {
-    const galleryTop = gallery.getBoundingClientRect().top;
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank" class="floating-buy-button">
+    Buy Now
+  </a>
 
-    // Adjust this number to fine-tune when the button appears
-    if (galleryTop <= -400) {
-      floatBtn.classList.add('show');
-    } else {
-      floatBtn.classList.remove('show');
-    }
-  });
-</script>
+  <script>
+    const floatBtn = document.querySelector('.floating-buy-button');
+    const gallery = document.getElementById('galleryStart');
 
+    window.addEventListener('scroll', () => {
+      const galleryTop = gallery.getBoundingClientRect().top;
+      if (galleryTop <= -400) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
+    });
+  </script>
 
 </body>
 </html>
-
-
