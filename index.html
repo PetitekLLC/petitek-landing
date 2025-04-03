@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Petitek</title>
   <style>
     * {
@@ -24,7 +24,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding: 50px 20px 80px;
+      padding: 50px 20px 110px;
       text-align: center;
     }
 
@@ -53,26 +53,11 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-   .stacked-gallery {
-  margin-top: 80px; /* adjust this value */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-    .stacked-gallery img {
-      width: 100vw;
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
     .footer-link {
       font-size: 12px;
       color: #555;
       text-align: center;
-      margin: 40px 0 5px;
+      margin-bottom: 10px;
     }
 
     .footer-link a {
@@ -88,7 +73,27 @@
       text-align: center;
       font-size: 10px;
       color: #888;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+    }
+
+    .stacked-gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .stacked-gallery img {
+      width: 100vw;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Fix iPad scaling issue specifically for first image */
+    .stacked-gallery img:first-of-type {
+      width: 100% !important;
+      max-width: 100% !important;
     }
   </style>
 </head>
@@ -111,12 +116,14 @@
       style="margin-top: 15px; margin-bottom: 40px;"
     >Buy Now</a>
   </div>
-  
-<div style="margin-top: 30px; text-align: center;">
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="6 9 12 15 18 9"/>
-  </svg>
-</div>
+
+  <div class="footer-link">
+    <p><a href="/documents">Legal Beagle</a></p>
+  </div>
+
+  <div class="footer-copy">
+    &copy; Petitek, LLC. All rights reserved.
+  </div>
 
   <div class="stacked-gallery">
     <img src="images/hero-chatrbox.jpg" alt="Chatrbox Hero" />
@@ -136,14 +143,7 @@
     <img src="images/call-to-action.jpg" alt="Call to Action" />
   </div>
 
-  <div class="footer-link">
-    <p><a href="/documents">Legal Beagle</a></p>
-  </div>
-
-  <div class="footer-copy">
-    &copy; Petitek, LLC. All rights reserved.
-  </div>
-
 </body>
 </html>
+
 
