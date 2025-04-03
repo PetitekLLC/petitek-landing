@@ -11,13 +11,14 @@
       overflow: hidden;
     }
 
-    .animated-dog {
-      position: absolute;
-      bottom: 0;
-      left: -300px;
-      width: 150px;
-      animation: walkIn 6s ease-in-out forwards;
-    }
+   .animated-dog {
+  position: absolute;
+  bottom: 40px; /* 👈 raise the starting position */
+  left: -300px;
+  width: 150px;
+  animation: walkIn 6s ease-in-out forwards;
+  z-index: 2;
+}
 
     @keyframes walkIn {
       0% {
