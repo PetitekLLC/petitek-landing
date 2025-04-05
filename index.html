@@ -161,19 +161,7 @@
   cursor: pointer;
   backdrop-filter: blur(2px);
 }    
-</div>
-}
 
-.video-controls button {
-  background: rgba(0,0,0,0.6);
-  border: none;
-  color: white;
-  font-size: 16px;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  backdrop-filter: blur(2px);
-}
 
   </style>
   
@@ -207,7 +195,6 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
 
 <div class="text-block fade-in">
   <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
@@ -306,13 +293,14 @@
 </div>
 
 <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-  <img class="fade-in" src="images/call-to
+  <img class="fade-in" src="images/call-to-action.jpg" alt="Call to Action" loading="lazy" />
+
 
     <div class="text-block"><div style="font-weight: bold; text-align: center;">Start Smart Training Today</div>Make Chatrbox your new secret weapon for calm, well-trained pets.</div>
 
     <!-- Moved video to the bottom of the page -->
     <div class="video-container">
-      <video id="chatrboxVideo" autoplay muted playsinline width="100%" poster="images/video-poster.jpg">
+      <video id="chatrboxVideo" autoplay muted playsinline width="100%" poster="images/video-poster.jpg" loading=lazy>
         <source src="videos/End%20V10.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -328,53 +316,28 @@
       <img src="amazon_float_button.png" alt="Buy Now">
     </a>
   </div>
-
   <script>
     const floatBtn = document.querySelector('.floating-buy-button');
     const gallery = document.getElementById('galleryStart');
     const video = document.getElementById('chatrboxVideo');
     const overlay = document.getElementById('unmuteOverlay');
-
+  
     window.addEventListener('scroll', () => {
       const galleryTop = gallery.getBoundingClientRect().top;
-      if (galleryTop <= -100) {
-        floatBtn.classList.add('show');
-      } else {
-        floatBtn.classList.remove('show');
-      }
+      floatBtn.classList.toggle('show', galleryTop <= -100);
     });
-
+  
     overlay.addEventListener('click', () => {
       video.muted = false;
       overlay.style.display = 'none';
       video.play();
-      const muteToggle = document.getElementById('muteToggle');
-const replayBtn = document.getElementById('replayBtn');
-
-overlay.addEventListener('click', () => {
-  video.muted = false;
-  overlay.style.display = 'none';
-  muteToggle.textContent = '🔊';
-  video.play();
-});
-
-muteToggle.addEventListener('click', () => {
-  video.muted = !video.muted;
-  muteToggle.textContent = video.muted ? '🔇' : '🔊';
-});
-
-video.addEventListener('ended', () => {
-  replayBtn.style.display = 'inline-block';
-});
-
-replayBtn.addEventListener('click', () => {
-  video.currentTime = 0;
-  video.play();
-  replayBtn.style.display = 'none';
-});
-
+    });
+  
+    video.addEventListener('ended', () => {
+      overlay.style.display = 'block';
+      video.muted = true;
     });
   </script>
+  
 </body>
 </html>
-
