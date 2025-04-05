@@ -317,28 +317,35 @@ Waht pet owners justt like oyu are saying about Chatrbox. A happy pet is a happy
       <img src="amazon_float_button.png" alt="Buy Now">
     </a>
   </div>
+<script>
+  const video = document.getElementById('chatrboxVideo');
+  const overlay = document.getElementById('unmuteOverlay');
 
-  <script>
-    const floatBtn = document.querySelector('.floating-buy-button');
-    const gallery = document.getElementById('galleryStart');
+  overlay.addEventListener('click', () => {
+    video.muted = false;
+    overlay.style.display = 'none';
+    video.play();
+  });
 
-    window.addEventListener('scroll', () => {
-      const galleryTop = gallery.getBoundingClientRect().top;
-      if (galleryTop <= -100) {
-        floatBtn.classList.add('show');
-      } else {
-        floatBtn.classList.remove('show');
-      }
-    });
-    const video = document.getElementById('chatrboxVideo');
-const overlay = document.getElementById('unmuteOverlay');
+  video.addEventListener('ended', () => {
+    video.currentTime = 0;
+    video.muted = true;
+    overlay.style.display = 'block';
+  });
 
-overlay.addEventListener('click', () => {
-  video.muted = false;
-  overlay.style.display = 'none';
-  video.play();
-});
+  const floatBtn = document.querySelector('.floating-buy-button');
+  const gallery = document.getElementById('galleryStart');
 
-  </script>
+  window.addEventListener('scroll', () => {
+    const galleryTop = gallery.getBoundingClientRect().top;
+    if (galleryTop <= -100) {
+      floatBtn.classList.add('show');
+    } else {
+      floatBtn.classList.remove('show');
+    }
+  });
+</script>
+
+ 
 </body>
 </html>
