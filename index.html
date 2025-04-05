@@ -143,6 +143,37 @@
   opacity: 1;
   transform: translateY(0);
 }
+.video-controls {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.video-controls button {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+}    
+</div>
+}
+
+.video-controls button {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+}
 
   </style>
   
@@ -317,6 +348,31 @@
       video.muted = false;
       overlay.style.display = 'none';
       video.play();
+      const muteToggle = document.getElementById('muteToggle');
+const replayBtn = document.getElementById('replayBtn');
+
+overlay.addEventListener('click', () => {
+  video.muted = false;
+  overlay.style.display = 'none';
+  muteToggle.textContent = '🔊';
+  video.play();
+});
+
+muteToggle.addEventListener('click', () => {
+  video.muted = !video.muted;
+  muteToggle.textContent = video.muted ? '🔇' : '🔊';
+});
+
+video.addEventListener('ended', () => {
+  replayBtn.style.display = 'inline-block';
+});
+
+replayBtn.addEventListener('click', () => {
+  video.currentTime = 0;
+  video.play();
+  replayBtn.style.display = 'none';
+});
+
     });
   </script>
 </body>
