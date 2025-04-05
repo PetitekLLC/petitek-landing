@@ -9,6 +9,7 @@
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
     * { box-sizing: border-box; }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -18,6 +19,7 @@
       width: 100vw;
       overflow-x: hidden;
     }
+
     .content {
       display: flex;
       flex-direction: column;
@@ -26,11 +28,13 @@
       padding: 50px 20px 60px;
       text-align: center;
     }
+
     .content img {
       width: 80%;
       max-width: 300px;
       margin-bottom: 15px;
     }
+
     .amazon-main-button {
       width: 150px;
       margin-top: 30px;
@@ -40,6 +44,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .stacked-gallery {
       margin-top: 55px;
       display: flex;
@@ -48,6 +53,7 @@
       width: 100vw;
       overflow-x: hidden;
     }
+
     .stacked-gallery img {
       width: 100vw;
       max-width: 100%;
@@ -55,6 +61,7 @@
       display: block;
       object-fit: cover;
     }
+
     .text-block {
       font-size: 20px;
       color: #444;
@@ -63,33 +70,39 @@
       line-height: 1.8;
       max-width: 800px;
     }
+
     .text-block div[style*="font-weight: bold"] {
       font-size: 26px;
       font-weight: bold;
       padding: 10px 0;
       margin: 10px 0;
     }
+
     .footer-link {
       font-size: 12px;
       color: #555;
       text-align: center;
       margin: 40px 0 5px;
     }
+
     .footer-link a {
       color: #0066cc;
       text-decoration: none;
     }
+
     .footer-copy {
       text-align: center;
       font-size: 10px;
       color: #888;
       margin-bottom: 20px;
     }
+
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
       40% { transform: translateY(10px); }
       60% { transform: translateY(5px); }
     }
+
     .floating-buy-button {
       position: fixed;
       bottom: 20px;
@@ -97,41 +110,16 @@
       z-index: 1000;
       display: none;
     }
+
     .floating-buy-button.show {
       display: inline-block;
     }
+
     .floating-buy-button img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    }
-    .video-container {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto 40px;
-      width: 100%;
-    }
-    .unmute-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(37, 168, 198, 0.9);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      z-index: 10;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.05); }
-      100% { transform: translate(-50%, -50%) scale(1); }
     }
   </style>
 </head>
@@ -143,67 +131,151 @@
       <img src="amazon_buy_button.png" alt="Buy Now on Amazon" class="amazon-main-button">
     </a>
   </div>
+
   <div style="margin-top: 25px; text-align: center;">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   </div>
+
   <div class="stacked-gallery" id="galleryStart">
     <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 40px auto 20px;" />
-    <img src="images/feature_1.jpg" alt="Feature Image 1" />
-    <img src="images/feature_2.jpg" alt="Feature Image 2" />
-    <img src="images/feature_3.jpg" alt="Feature Image 3" />
-    <img src="images/feature_4.jpg" alt="Feature Image 4" />
+    
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">WOOF! WOOF!<br>MEOW! MEOW!</div>
+      Chatrbox is the first smart device for training dogs or cats away from unwanted or bad behavior.
+    </div>
+
+    <div style="padding:56.25% 0 0 0;position:relative;width:100%;">
+      <iframe src="https://player.vimeo.com/video/1072388469?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="ChatrBOX Overview Video"></iframe>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
+      Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress.
+    </div>
+
+    <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Custom Voice Commands</div>
+      Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.
+    </div>
+
+    <img src="images/smart-features.jpg" alt="Smart Features" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Virtual Boundary Training</div>
+      No tags or collars — just safe, smart training wherever you place it.
+    </div>
+
+    <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Smart Indoor Pet Trainer</div>
+      Combines motion detection, sound alerts, and voice playback to correct behavior instantly.
+    </div>
+
+    <img src="images/advantage-cards.jpg" alt="Training Benefits" />
     <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Proactive Motion Detection</div>
       Stop bad behavior before it starts with intelligent real-time alerts.
     </div>
-    <div class="video-container">
-      <video id="chatrboxVideo" muted playsinline width="100%" poster="images/video-poster.jpg">
-        <source src="videos/End%20V10.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="unmute-overlay" id="unmuteOverlay">🔊 Tap for Sound</div>
-    </div>
+
+    <!-- Video inserted properly here after an image -->
     <div class="text-block">
       <div style="font-weight: bold; text-align: center;">See Chatrbox in Action</div>
       Watch this short demo to see how Chatrbox corrects behavior instantly.
     </div>
-    <img src="images/wireless-boundaries.jpg" alt="Virtual Boundaries" />
+
+    <video controls width="100%" style="max-width: 800px; display: block; margin: 0 auto 40px;">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Image filename note -->
+    <img src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" />
+    <!-- If this fails to load, check casing or replace filename -->
+
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Instant Behavior Correction</div>
+      Deliver consistent feedback exactly when it matters most — in the moment.
+    </div>
+
+    <!-- Rest continues unchanged -->
+    <img src="images/voice-commands.jpg" alt="Voice Commands" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Virtual Boundaries</div>
+      Ditch the gates and crates — train pets with virtual boundaries that feel natural and open.
+    </div>
+
+    <img src="images/safe-zones.jpg" alt="Safe Zones" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Voice-Driven Results</div>
+      Your familiar tone makes a lasting impression — gentle, clear, and stress-free.
+    </div>
+
+    <img src="images/happier-pets.jpg" alt="Happy Pets" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Establish Pet-Friendly Zones</div>
+      Keep them off sofas or away from the trash using audio cues alone.
+    </div>
+
+    <img src="images/smart-training.jpg" alt="Smart Training Summary" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Happy Pets, Peaceful Homes</div>
+      Less stress and more harmony thanks to consistent training reinforcement.
+    </div>
+
+    <img src="images/instant-correction.jpg" alt="Instant Correction" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">24/7 Assistant</div>
+      Chatrbox never sleeps — always ready to guide pets with patience and precision.
+    </div>
+
+    <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Teachable Moments Matter</div>
+      Catch behavior in the act to teach better habits that stick.
+    </div>
+
+    <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Universally Effective</div>
+      Great for dogs, cats, and multi-pet households with flexible configurations.
+    </div>
+
+    <img src="images/testimonials.jpg" alt="Testimonials" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Consistent Messaging</div>
+      Repetition strengthens positive behavior — no yelling required.
+    </div>
+
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="images/call-to-action.jpg" alt="Call to Action" />
+    </a>
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">Start Smart Training Today</div>
+      Make Chatrbox your new secret weapon for calm, well-trained pets.
+    </div>
   </div>
+
   <div class="footer-link">
     <p><a href="/documents">Legal Beagle</a></p>
   </div>
+
   <div class="footer-copy">
     &copy; Petitek, LLC. All rights reserved.
   </div>
+
   <div class="floating-buy-button">
     <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
       <img src="amazon_float_button.png" alt="Buy Now">
     </a>
   </div>
+
   <script>
-    const video = document.getElementById('chatrboxVideo');
-    const overlay = document.getElementById('unmuteOverlay');
     const floatBtn = document.querySelector('.floating-buy-button');
     const gallery = document.getElementById('galleryStart');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.5 });
-    observer.observe(video);
-
-    overlay.addEventListener('click', () => {
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
-    });
 
     window.addEventListener('scroll', () => {
       const galleryTop = gallery.getBoundingClientRect().top;
