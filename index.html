@@ -8,7 +8,10 @@
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -18,6 +21,7 @@
       width: 100vw;
       overflow-x: hidden;
     }
+
     .content {
       display: flex;
       flex-direction: column;
@@ -26,11 +30,32 @@
       padding: 50px 20px 60px;
       text-align: center;
     }
+
     .content img {
       width: 80%;
       max-width: 300px;
       margin-bottom: 15px;
     }
+
+    .button {
+      display: inline-block;
+      width: 200px;
+      margin-top: 20px;
+      padding: 12px 0;
+      background-color: #25A8C6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .button:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
     .amazon-main-button {
       width: 150px;
       margin-top: 30px;
@@ -40,6 +65,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .stacked-gallery {
       margin-top: 55px;
       display: flex;
@@ -48,13 +74,16 @@
       width: 100vw;
       overflow-x: hidden;
     }
+
     .stacked-gallery img {
       width: 100vw;
       max-width: 100%;
       height: auto;
       display: block;
       object-fit: cover;
+      box-sizing: border-box;
     }
+
     .text-block {
       font-size: 20px;
       color: #444;
@@ -63,33 +92,49 @@
       line-height: 1.8;
       max-width: 800px;
     }
+
     .text-block div[style*="font-weight: bold"] {
       font-size: 26px;
       font-weight: bold;
       padding: 10px 0;
       margin: 10px 0;
     }
+
     .footer-link {
       font-size: 12px;
       color: #555;
       text-align: center;
       margin: 40px 0 5px;
     }
+
     .footer-link a {
       color: #0066cc;
       text-decoration: none;
     }
+
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+
     .footer-copy {
       text-align: center;
       font-size: 10px;
       color: #888;
       margin-bottom: 20px;
     }
+
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(10px); }
-      60% { transform: translateY(5px); }
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(10px);
+      }
+      60% {
+        transform: translateY(5px);
+      }
     }
+
     .floating-buy-button {
       position: fixed;
       bottom: 20px;
@@ -97,214 +142,169 @@
       z-index: 1000;
       display: none;
     }
+
     .floating-buy-button.show {
       display: inline-block;
     }
+
     .floating-buy-button img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
     }
-    .video-container {
-      position: relative;
-      max-width: 800px;
-      margin: 40px auto;
-      width: 100%;
-    }
-    .unmute-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(37, 168, 198, 0.9);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      z-index: 10;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.05); }
-      100% { transform: translate(-50%, -50%) scale(1); }
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .video-controls {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      display: flex;
-      gap: 10px;
-      z-index: 10;
-    }
-    .video-controls button {
-      background: rgba(0,0,0,0.6);
-      border: none;
-      color: white;
-      font-size: 16px;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      backdrop-filter: blur(2px);
-    }    
   </style>
 </head>
 <body>
   <div class="content">
     <img src="chatrbox_paw_logo.png" alt="Chatrbox Paw Logo" style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
-    <img src="chatrbox_name_logo.png" alt="Chatrbox Name Logo" style="width: 300px;" />
+    <img src="chatrbox_name_logo.png" alt="Chatrbox Name Logo" style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
+    
     <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-      <img class="fade-in" src="images/call-to-action.jpg" alt="Call to Action" loading="lazy" />
+      <img src="amazon_buy_button.png" alt="Buy Now on Amazon" class="amazon-main-button">
     </a>
   </div>
 
   <div style="margin-top: 25px; text-align: center;">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#333"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      style="animation: bounce 2s infinite;"
+    >
       <polyline points="6 9 12 15 18 9"/>
     </svg>
   </div>
 
   <div class="stacked-gallery" id="galleryStart">
     <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 40px auto 20px;" />
-
     <div class="text-block">
-      <div style="font-weight: bold; text-align: center;">WOOF! WOOF!<br>MEOW! MEOW!</div>
+      <div style="font-weight: bold; text-align: center;">
+        WOOF! WOOF!<br>MEOW! MEOW!
+      </div>
       Chatrbox is the first smart device for training dogs or cats away from unwanted or bad behavior.
     </div>
 
     <div style="padding:56.25% 0 0 0;position:relative;width:100%;">
-      <iframe src="https://player.vimeo.com/video/1072388469?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="ChatrBOX Overview Video"></iframe>
+      <iframe src="https://player.vimeo.com/video/1072388469?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="ChatrBOX Overview Video"></iframe>
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
-
-    <div class="text-block fade-in">
+    
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
-      Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress.
+      Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress. It uses your voice, training tones, and smart detection to train in real-time.
     </div>
 
-    <img class="fade-in" src="images/advantage-icons.jpg" alt="Chatrbox Advantage" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Custom Voice Commands</div>
       Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.
     </div>
 
-    <img class="fade-in" src="images/smart-features.jpg" alt="Smart Features" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/smart-features.jpg" alt="Smart Features" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Virtual Boundary Training</div>
       No tags or collars — just safe, smart training wherever you place it.
     </div>
 
-    <img class="fade-in" src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Smart Indoor Pet Trainer</div>
       Combines motion detection, sound alerts, and voice playback to correct behavior instantly.
     </div>
 
-    <img class="fade-in" src="images/advantage-cards.jpg" alt="Training Benefits" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/advantage-cards.jpg" alt="Training Benefits" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Proactive Motion Detection</div>
       Stop bad behavior before it starts with intelligent real-time alerts.
     </div>
 
-    <img class="fade-in" src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" loading="lazy" />
+    <div class="text-block">
+      <div style="font-weight: bold; text-align: center;">See Chatrbox in Action</div>
+      Watch this short demo to see how Chatrbox corrects behavior instantly.
+    </div>
 
-    <div class="text-block fade-in">
+    <video controls width="100%" style="max-width: 800px; display: block; margin: 0 auto 40px;">
+      <source src="videos/End%20v10.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <img src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Instant Behavior Correction</div>
       Deliver consistent feedback exactly when it matters most — in the moment.
     </div>
 
-    <img class="fade-in" src="images/voice-commands.jpg" alt="Voice Commands" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/voice-commands.jpg" alt="Voice Commands" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Virtual Boundaries</div>
       Ditch the gates and crates — train pets with virtual boundaries that feel natural and open.
     </div>
 
-    <img class="fade-in" src="images/safe-zones.jpg" alt="Safe Zones" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/safe-zones.jpg" alt="Safe Zones" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Voice-Driven Results</div>
       Your familiar tone makes a lasting impression — gentle, clear, and stress-free.
     </div>
 
-    <img class="fade-in" src="images/happier-pets.jpg" alt="Happy Pets" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/happier-pets.jpg" alt="Happy Pets" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Establish Pet-Friendly Zones</div>
       Keep them off sofas or away from the trash using audio cues alone.
     </div>
 
-    <img class="fade-in" src="images/smart-training.jpg" alt="Smart Training Summary" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/smart-training.jpg" alt="Smart Training Summary" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Happy Pets, Peaceful Homes</div>
       Less stress and more harmony thanks to consistent training reinforcement.
     </div>
 
-    <img class="fade-in" src="images/instant-correction.jpg" alt="Instant Correction" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/instant-correction.jpg" alt="Instant Correction" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">24/7 Assistant</div>
       Chatrbox never sleeps — always ready to guide pets with patience and precision.
     </div>
 
-    <img class="fade-in" src="images/cats-to-dogs.jpg" alt="Cats and Dogs" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Teachable Moments Matter</div>
       Catch behavior in the act to teach better habits that stick.
     </div>
 
-    <img class="fade-in" src="images/repetition-benefits.jpg" alt="Repetition in Training" loading="lazy" />
-
-    <div class="text-block fade-in">
+    <img src="images/repetition-benefits.jpg" alt="Repetition in Training" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Universally Effective</div>
       Great for dogs, cats, and multi-pet households with flexible configurations.
     </div>
 
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-      <img class="fade-in" src="images/testimonials.jpg" alt="Testimonials - Click to Buy" loading="lazy" />
-    </a>
-
-    <div class="text-block fade-in">
+    <img src="images/testimonials.jpg" alt="Testimonials" />
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Consistent Messaging</div>
       Repetition strengthens positive behavior — no yelling required.
     </div>
 
-    <div class="text-block fade-in">
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="images/call-to-action.jpg" alt="Call to Action" />
+    </a>
+    <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Start Smart Training Today</div>
       Make Chatrbox your new secret weapon for calm, well-trained pets.
     </div>
   </div>
 
-  <div class="video-container">
-    <video id="chatrboxVideo" autoplay muted playsinline width="100%" poster="images/video-poster.jpg" loading="lazy">
-      <source src="videos/End%20V10.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="unmute-overlay" id="unmuteOverlay">🔊 Tap for Sound</div>
+  <div class="footer-link">
+    <p><a href="/documents">Legal Beagle</a></p>
   </div>
 
-  <div class="footer-link"><p><a href="/documents">Legal Beagle</a></p></div>
-  <div class="footer-copy">&copy; Petitek, LLC. All rights reserved.</div>
+  <div class="footer-copy">
+    &copy; Petitek, LLC. All rights reserved.
+  </div>
 
   <div class="floating-buy-button">
     <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
@@ -315,23 +315,14 @@
   <script>
     const floatBtn = document.querySelector('.floating-buy-button');
     const gallery = document.getElementById('galleryStart');
-    const video = document.getElementById('chatrboxVideo');
-    const overlay = document.getElementById('unmuteOverlay');
 
     window.addEventListener('scroll', () => {
       const galleryTop = gallery.getBoundingClientRect().top;
-      floatBtn.classList.toggle('show', galleryTop <= -100);
-    });
-
-    overlay.addEventListener('click', () => {
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
-    });
-
-    video.addEventListener('ended', () => {
-      overlay.style.display = 'block';
-      video.muted = true;
+      if (galleryTop <= -100) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
     });
   </script>
 </body>
