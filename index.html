@@ -274,10 +274,16 @@
   See how Chatrbox will help you have anew harmony iwth your pes.
 </div>
 
-<video controls width="100%" style="max-width: 800px; display: block; margin: 0 auto 40px;">
-  <source src="videos/End%20v10.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 40px;">
+  <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
+    <source src="videos/End%20V10.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
 
 <!-- Inserted Section -->
 <div class="text-block">
@@ -327,6 +333,15 @@
         floatBtn.classList.remove('show');
       }
     });
+    const video = document.getElementById('chatrboxVideo');
+const overlay = document.getElementById('unmuteOverlay');
+
+overlay.addEventListener('click', () => {
+  video.muted = false;
+  overlay.style.display = 'none';
+  video.play();
+});
+
   </script>
 </body>
 </html>
