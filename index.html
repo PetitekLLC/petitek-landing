@@ -303,28 +303,15 @@ Real stories from real pet parents. Happy pets, happier homes — thanks to Chat
       Make Chatrbox your new secret weapon for calm, well-trained pets.
     </div>
   </div>
-
-  <div class="footer-link">
-    <p><a href="/documents">Legal Beagle</a></p>
-  </div>
-
-  <div class="footer-copy">
-    &copy; Petitek, LLC. All rights reserved.
-  </div>
-
-  <div class="floating-buy-button">
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-      <img src="amazon_float_button.png" alt="Buy Now">
-    </a>
-  </div>
 <script>
   const video = document.getElementById('chatrboxVideo');
   const overlay = document.getElementById('unmuteOverlay');
 
   overlay.addEventListener('click', () => {
-    video.muted = false;
+    video.currentTime = 0;     // Restart from beginning
+    video.muted = false;       // Unmute
     overlay.style.display = 'none';
-    video.play();
+    video.play();              // Play again from start
   });
 
   video.addEventListener('ended', () => {
@@ -345,6 +332,20 @@ Real stories from real pet parents. Happy pets, happier homes — thanks to Chat
     }
   });
 </script>
+
+  <div class="footer-link">
+    <p><a href="/documents">Legal Beagle</a></p>
+  </div>
+
+  <div class="footer-copy">
+    &copy; Petitek, LLC. All rights reserved.
+  </div>
+
+  <div class="floating-buy-button">
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="amazon_float_button.png" alt="Buy Now">
+    </a>
+  </div>
 
  
 </body>
