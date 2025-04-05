@@ -181,11 +181,26 @@
   Stop bad behavior before it starts with intelligent real-time alerts.
 </div>
 
-<!-- ✅ VIDEO BLOCK MOVED UP TO MAINTAIN COPY → MEDIA FLOW -->
-<video controls width="100%" style="max-width: 800px; display: block; margin: 0 auto 40px;">
+<video id="chatrboxVideo" muted playsinline width="100%" style="max-width: 800px; display: block; margin: 0 auto 40px;" poster="images/video-poster.jpg">
   <source src="videos/End%20V10.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+<script>
+  const video = document.getElementById('chatrboxVideo');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(video);
+</script>
+
 
 <div class="text-block">
   <div style="font-weight: bold; text-align: center;">See Chatrbox in Action</div>
