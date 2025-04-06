@@ -346,6 +346,19 @@ window.addEventListener('scroll', () => {
   </a>
 </div>
 
- 
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const floatBtn = document.querySelector('.floating-buy-button');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
