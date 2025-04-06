@@ -8,6 +8,37 @@
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
+  /* ... your other styles ... */
+
+  #navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 2000;
+    transition: top 0.3s;
+  }
+
+  .nav-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #25A8C6;
+  }
+
+  .hamburger {
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
+  }
+</style>
+
     .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -166,35 +197,7 @@
       border-radius: 50%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
     }
-  </style>
-  #navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  z-index: 2000;
-  transition: top 0.3s;
-}
-
-.nav-title {
-  font-weight: bold;
-  font-size: 18px;
-  color: #25A8C6;
-}
-
-.hamburger {
-  font-size: 26px;
-  cursor: pointer;
-  user-select: none;
-}
-
+ 
 </head>
 <body>
  <header id="navbar">
@@ -367,8 +370,6 @@
     video.muted = true;
     overlay.style.display = 'block';
   });
-
-  const floatBtn = document.querySelector('.floating-buy-button');
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 300) {
