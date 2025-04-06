@@ -8,6 +8,17 @@
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
+    .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     * {
       box-sizing: border-box;
     }
@@ -23,13 +34,15 @@
     }
 
     .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 50px 20px 60px;
-      text-align: center;
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 50px 20px 60px;
+  text-align: center;
+  padding-top: 70px; /* prevent overlap */
+}
+
 
     .content img {
       width: 80%;
@@ -154,8 +167,40 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
     }
   </style>
+  #navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 2000;
+  transition: top 0.3s;
+}
+
+.nav-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #25A8C6;
+}
+
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  user-select: none;
+}
+
 </head>
 <body>
+ <header id="navbar">
+  <div class="nav-title">Chatrbox</div>
+  <div class="hamburger">&#9776;</div>
+</header> 
   <div class="content">
     <img src="chatrbox_paw_logo.png" alt="Chatrbox Paw Logo" style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
     <img src="chatrbox_name_logo.png" alt="Chatrbox Name Logo" style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
@@ -182,7 +227,7 @@
   </div>
 
   <div class="stacked-gallery" id="galleryStart">
-    <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 40px auto 20px;" />
+    <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
     <div class="text-block">
       <div style="font-weight: bold; text-align: center;">
         WOOF! WOOF!<br>MEOW! MEOW!
@@ -195,9 +240,109 @@
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
+    
+    <div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
+  Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress. It uses your voice, training tones, and smart detection to train in real-time.
+</div>
 
-    <!-- Add remaining sections and gallery blocks here -->
+ <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" class="fade-in" />
+    
+   <div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Custom Voice Commands</div>
+  Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.
+</div>
+ 
+<img src="images/smart-features.jpg" alt="Smart Features" class="fade-in" />
 
+ <div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Virtual Boundary Training</div>
+  No tags or collars — just safe, smart training wherever you place it.
+</div>
+
+<img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Smart Indoor Pet Trainer</div>
+  Combines motion detection, sound alerts, and voice playback to correct behavior instantly.
+</div>
+
+<img src="images/advantage-cards.jpg" alt="Training Benefits" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Proactive Motion Detection</div>
+  Stop bad behavior before it starts with intelligent real-time alerts.
+</div>
+
+<img src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Instant Behavior Correction</div>
+  Deliver consistent feedback exactly when it matters most — in the moment.
+</div>
+
+<img src="images/voice-commands.jpg" alt="Voice Commands" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Virtual Boundaries</div>
+  Ditch the gates and crates — train pets with virtual boundaries that feel natural and open.
+</div>
+
+<img src="images/safe-zones.jpg" alt="Safe Zones" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Voice-Driven Results</div>
+  Your familiar tone makes a lasting impression — gentle, clear, and stress-free.
+</div>
+
+<img src="images/happier-pets.jpg" alt="Happy Pets" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Pet-Friendly Zones</div>
+  Keep them off sofas or away from the trash using audio cues alone.
+</div>
+
+<img src="images/smart-training.jpg" alt="Smart Training Summary" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Happy Pets <br> Peaceful Homes</div>
+  Less stress and more harmony thanks to consistent training reinforcement.
+</div>
+
+<img src="images/instant-correction.jpg" alt="Instant Correction" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">24/7 Assistant</div>
+  Chatrbox never sleeps — always ready to guide pets with patience and precision.
+</div>
+
+<img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Teachable Moments Matter</div>
+  Catch behavior in the act to teach better habits that stick.
+</div>
+
+<img src="images/repetition-benefits.jpg" alt="Repetition in Training" class="fade-in" />
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">No Fear Soluton</div>
+  Chatrbox uses gentle voice cues and smart detection to correct behavior - a NO FEAR solution.
+</div>
+
+<div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
+  <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
+    <source src="videos/End%20V10.mp4" type="video/mp4">
+  </video>
+  <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
+<!-- Inserted Section -->
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">ChatrBox Chatter</div>
+  Real stories from real pet parents. Happy pets, happier homes — thanks to Chatrbox.
+</div>    
+
+<img src="images/testimonials.jpg" alt="Testimonials" class="fade-in" />
+
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Consistent Messaging</div>
+  Repetition strengthens positive behavior — no yelling required.
+</div>
+
+  
     <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
       <img src="images/call-to-action.jpg" alt="Call to Action" />
     </a>
@@ -206,18 +351,34 @@
       Make Chatrbox your new secret weapon for calm, well-trained pets.
     </div>
   </div>
+<script>
+  const video = document.getElementById('chatrboxVideo');
+  const overlay = document.getElementById('unmuteOverlay');
 
-  <script>
-    const floatBtn = document.querySelector('.floating-buy-button');
+  overlay.addEventListener('click', () => {
+    video.currentTime = 0;     // Restart from beginning
+    video.muted = false;       // Unmute
+    overlay.style.display = 'none';
+    video.play();              // Play again from start
+  });
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        floatBtn.classList.add('show');
-      } else {
-        floatBtn.classList.remove('show');
-      }
-    });
-  </script>
+  video.addEventListener('ended', () => {
+    video.currentTime = 0;
+    video.muted = true;
+    overlay.style.display = 'block';
+  });
+
+  const floatBtn = document.querySelector('.floating-buy-button');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    floatBtn.classList.add('show');
+  } else {
+    floatBtn.classList.remove('show');
+  }
+});
+
+</script>
 
   <div class="footer-link">
     <p><a href="/documents">Legal Beagle</a></p>
@@ -227,10 +388,61 @@
     &copy; Petitek, LLC. All rights reserved.
   </div>
 
-  <div class="floating-buy-button">
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-      <img src="amazon_float_button.png" alt="Buy Now">
-    </a>
-  </div>
+<div class="floating-buy-button">
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img src="amazon_float_button.png" alt="Buy Now">
+  </a>
+</div>
+
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const floatBtn = document.querySelector('.floating-buy-button');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
+    });
+  });
+</script>
+<script>
+  const fadeEls = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+<script>
+  let lastScrollTop = 0;
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // scrolling down
+      navbar.style.top = "-70px";
+    } else {
+      // scrolling up
+      navbar.style.top = "0";
+    }
+
+    lastScrollTop = scrollTop;
+  });
+</script>
+
+
 </body>
 </html>
