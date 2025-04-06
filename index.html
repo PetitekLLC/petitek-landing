@@ -321,16 +321,15 @@ Real stories from real pet parents. Happy pets, happier homes — thanks to Chat
   });
 
   const floatBtn = document.querySelector('.floating-buy-button');
-  const gallery = document.getElementById('galleryStart');
 
-  window.addEventListener('scroll', () => {
-    const galleryTop = gallery.getBoundingClientRect().top;
-    if (galleryTop <= -100) {
-      floatBtn.classList.add('show');
-    } else {
-      floatBtn.classList.remove('show');
-    }
-  });
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    floatBtn.classList.add('show');
+  } else {
+    floatBtn.classList.remove('show');
+  }
+});
+
 </script>
 
   <div class="footer-link">
@@ -341,13 +340,11 @@ Real stories from real pet parents. Happy pets, happier homes — thanks to Chat
     &copy; Petitek, LLC. All rights reserved.
   </div>
 
- <!-- Floating Button with .show added for testing -->
-<div class="floating-buy-button show">
+<div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
-
 
  
 </body>
