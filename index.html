@@ -379,7 +379,8 @@ window.addEventListener('scroll', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Animate once
+      } else {
+        entry.target.classList.remove('visible');
       }
     });
   }, {
@@ -388,6 +389,7 @@ window.addEventListener('scroll', () => {
 
   fadeEls.forEach(el => observer.observe(el));
 </script>
+
 
 </body>
 </html>
