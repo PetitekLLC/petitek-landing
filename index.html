@@ -8,6 +8,17 @@
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
+    .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
     * {
       box-sizing: border-box;
     }
@@ -196,18 +207,20 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     
-    <div class="text-block">
-      <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
-      Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress. It uses your voice, training tones, and smart detection to train in real-time.
-    </div>
+    <div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
+  Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress. It uses your voice, training tones, and smart detection to train in real-time.
+</div>
 
-    <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" />
-    <div class="text-block">
-      <div style="font-weight: bold; text-align: center;">Custom Voice Commands</div>
-      Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.
-    </div>
+ <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" class="fade-in" />
+    
+   <div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Custom Voice Commands</div>
+  Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.
+</div>
+ 
+<img src="images/smart-features.jpg" alt="Smart Features" class="fade-in" />
 
-    <img src="images/smart-features.jpg" alt="Smart Features" />
     <div class="text-block">
       <div style="font-weight: bold; text-align: center;">Virtual Boundary Training</div>
       No tags or collars — just safe, smart training wherever you place it.
@@ -358,6 +371,22 @@ window.addEventListener('scroll', () => {
       }
     });
   });
+</script>
+<script>
+  const fadeEls = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Animate once
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeEls.forEach(el => observer.observe(el));
 </script>
 
 </body>
