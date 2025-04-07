@@ -552,7 +552,7 @@
   const input = document.getElementById('emailInput');
   const message = document.getElementById('thankYouMessage');
   if (input.checkValidity()) {
-    fetch("https://script.google.com/macros/s/AKfycbxfJx-Z3XpnZlTJ7PPj_sLP3C9M_Vy8k9JfHxgdf-cNDNoGqObV10wCFbXkhVf9NZj_", {
+    fetch("https://script.google.com/macros/s/AKfycbxfJx-Z3XpnZlTJ7PPj_sLP3C9M_Vy8k9JfHxgdf-cNDNoGqObV10wCFbXkhVf9NZj_/exec", {
       method: "POST",
       body: JSON.stringify({ email: input.value }),
       headers: { "Content-Type": "application/json" }
@@ -564,24 +564,7 @@
       console.error('Error sending to Google Sheets:', error);
     });
   }
-})
-    .then(() => {
-      message.style.display = 'block';
-    })
-    .catch((error) => {
-      console.error('Error sending to Google Sheets:', error);
-    });
-  }
-})
-    .then(() => {
-      message.style.display = 'block';
-    })
-    .catch((error) => {
-      console.error('Error sending to Google Sheets:', error);
-    });
-  }
 }
-  }
 </script>
 
   <div class="floating-buy-button">
