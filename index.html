@@ -517,7 +517,7 @@
 </section>
 
 <footer style="background-color: #25A8C6; color: white; padding: 40px 20px; text-align: center;">
-  <div style="font-size: 26px; margin-bottom: 10px; font-family: 'Sanchez', serif; font-weight: 600; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; color: black;">Petitek</div>
+  <div style="font-size: 26px; margin-bottom: 20px; font-family: 'Sanchez', serif; font-weight: 600; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; color: black;">Petitek</div>
   <div style="font-size: 18px; margin-bottom: 10px;">We’d love to stay in touch!</div>
   <form onsubmit="event.preventDefault(); showThankYou();" style="margin-bottom: 20px;">
     <div style="max-width: 400px; margin: 0 auto; position: relative;">
@@ -557,6 +557,14 @@
       body: JSON.stringify({ email: input.value }),
       headers: { "Content-Type": "application/json" }
     })
+    .then(() => {
+      message.style.display = 'block';
+    })
+    .catch((error) => {
+      console.error('Error sending to Google Sheets:', error);
+    });
+  }
+})
     .then(() => {
       message.style.display = 'block';
     })
