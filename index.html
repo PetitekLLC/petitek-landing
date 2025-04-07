@@ -550,28 +550,34 @@
   <div style="font-size: 12px; margin-top: 30px; margin-bottom: 3px; color: black;">© Petitek LLC All rights reserved.</div>
 </footer>
 
- <script>
+<script>
   function showThankYou() {
     const input = document.getElementById('emailInput');
     const message = document.getElementById('thankYouMessage');
+    const loader = document.getElementById('emailLoader');
 
     if (input.checkValidity()) {
       const formData = new FormData();
       formData.append('email', input.value);
+
+      loader.style.display = 'block'; // show the loader
 
       fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
         method: "POST",
         body: formData
       })
       .then(() => {
+        loader.style.display = 'none'; // hide loader
         message.style.display = 'block';
       })
       .catch((error) => {
+        loader.style.display = 'none'; // hide loader
         console.error('Error sending to Google Sheets:', error);
       });
     }
   }
 </script>
+
 
   <div class="floating-buy-button">
     <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
