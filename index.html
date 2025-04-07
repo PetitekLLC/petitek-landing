@@ -8,6 +8,10 @@
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
+    @keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
@@ -515,19 +519,38 @@
   <div style="font-size: 12px; margin-top: 5px; color: #333;">Top</div>
 </div>
 </section>
+<form onsubmit="event.preventDefault(); showThankYou();" style="margin-bottom: 20px;">
+  <div style="max-width: 400px; margin: 0 auto; position: relative;">
+    
+    <!-- ✅ Email input -->
+    <input id="emailInput" type="email" placeholder="Enter email" required
+      style="width: 100%; padding: 12px 50px 12px 15px; border: 1px solid white; border-radius: 4px; font-size: 16px; background-color: white; color: black;">
+    
+    <!-- ✅ Submit button -->
+    <button type="submit"
+      style="position: absolute; right: 5px; top: 5px; bottom: 5px; background: white; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: black;">
+      ▶
+    </button>
 
-<footer class="fade-in" style="background-color: #25A8C6; color: white; padding: 20px 10px; text-align: center;">
-  <div style="font-size: 26px; margin-bottom: 20px; font-family: 'Sanchez', serif; font-weight: 600; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; color: black;">Petitek</div>
-  <div style="font-size: 18px; margin-bottom: 10px;">We’d love to stay in touch!</div>
-  <form onsubmit="event.preventDefault(); showThankYou();" style="margin-bottom: 20px;">
-    <div style="max-width: 400px; margin: 0 auto; position: relative;">
-      <input id="emailInput" type="email" placeholder="Enter email" required style="width: 100%; padding: 12px 50px 12px 15px; border: 1px solid white; border-radius: 4px; font-size: 16px; background-color: white; color: black;">
-      <button type="submit" style="position: absolute; right: 5px; top: 5px; bottom: 5px; background: white; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: black;">▶</button>
+    <!-- ✅ Spinner loader (goes here!) -->
+    <div id="emailLoader"
+      style="display: none; position: absolute; right: 50px; top: 12px;">
+      <div
+        style="width: 14px; height: 14px; border: 2px solid #25A8C6; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;">
+      </div>
     </div>
-<div style="max-width: 400px; margin: 0 auto;">
-  <div id="thankYouMessage" style="display: none; margin-top: 10px; background: #d8f5e4; color: #333; padding: 10px; border-radius: 4px; font-size: 14px;">Thank you. You’ve been added to our list.</div>
-</div>
-  </form>
+    
+  </div>
+
+  <!-- ✅ Thank-you message -->
+  <div id="thankYouMessage"
+    style="display: none; margin-top: 10px; background: #d8f5e4; color: #333; padding: 10px; border-radius: 4px; font-size: 14px; max-width: 400px; margin-left: auto; margin-right: auto;">
+    Thank you. You’ve been added to our list.
+  </div>
+</form>
+
+
+  
   <div style="display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; margin-bottom: 20px;">
     <div>
       <div style="font-weight: bold; margin-bottom: 8px;">Pet Owners</div>
@@ -556,11 +579,6 @@
     const message = document.getElementById('thankYouMessage');
     const loader = document.getElementById('emailLoader');
 
-    if (!input || !message || !loader) {
-      console.error('Missing form elements.');
-      return;
-    }
-
     if (input.checkValidity()) {
       const formData = new FormData();
       formData.append('email', input.value);
@@ -572,28 +590,18 @@
         method: "POST",
         body: formData
       })
-      .then(response => response.text())
-      .then(result => {
+      .then(() => {
         loader.style.display = 'none';
-        console.log("Server said:", result); // ✅ log what came back
-
-        if (result && result.toLowerCase().includes("success")) {
-          message.style.display = 'block';
-          input.value = '';
-        } else {
-          alert("Something went wrong. Please try again.");
-          console.warn("Unexpected response:", result);
-        }
+        message.style.display = 'block';
+        input.value = ''; // optional: clear field
       })
       .catch((error) => {
         loader.style.display = 'none';
         console.error('Error sending to Google Sheets:', error);
-        alert("There was a problem submitting your email.");
       });
     }
   }
 </script>
-
 
   <div class="floating-buy-button">
     <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
