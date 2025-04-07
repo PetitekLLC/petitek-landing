@@ -556,10 +556,18 @@
     const formData = new FormData();
     formData.append('email', input.value);
 
-    fetch("https://script.google.com/macros/s/AKfycbxU7qRqNyWVSFbtuZij6xBMbKTVtlC6dzouCYkEoQ-mJ19sY760HHIayPAUD57uKgd0dg/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
       method: "POST",
       body: formData
     })
+    .then(() => {
+      message.style.display = 'block';
+    })
+    .catch((error) => {
+      console.error('Error sending to Google Sheets:', error);
+    });
+  }
+})
     .then(() => {
       message.style.display = 'block';
     })
