@@ -549,23 +549,29 @@
 </footer>
 <script>
   function showThankYou() {
-  const input = document.getElementById('emailInput');
-  const message = document.getElementById('thankYouMessage');
+  <script>
+  function showThankYou() {
+    const input = document.getElementById('emailInput');
+    const message = document.getElementById('thankYouMessage');
 
-  if (input.checkValidity()) {
-    const formData = new FormData();
-    formData.append('email', input.value);
+    if (input.checkValidity()) {
+      const formData = new FormData();
+      formData.append('email', input.value);
 
-    fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
-      method: "POST",
-      body: formData
-    })
-    .then(() => {
-      message.style.display = 'block';
-    })
-    .catch((error) => {
-      console.error('Error sending to Google Sheets:', error);
-    });
+      fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(() => {
+        message.style.display = 'block';
+      })
+      .catch((error) => {
+        console.error('Error sending to Google Sheets:', error);
+      });
+    }
+  }
+</script>
+
   }
 })
     .then(() => {
