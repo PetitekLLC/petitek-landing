@@ -556,23 +556,38 @@
     const message = document.getElementById('thankYouMessage');
     const loader = document.getElementById('emailLoader');
 
+    if (!input || !message || !loader) {
+      console.error('Missing form elements.');
+      return;
+    }
+
     if (input.checkValidity()) {
       const formData = new FormData();
       formData.append('email', input.value);
 
-      loader.style.display = 'block'; // show the loader
+      loader.style.display = 'block';
+      message.style.display = 'none';
 
       fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
         method: "POST",
         body: formData
       })
-      .then(() => {
-        loader.style.display = 'none'; // hide loader
-        message.style.display = 'block';
+      .then(response => response.text())
+      .then(result => {
+        loader.style.display = 'none';
+
+        if (result.trim().toLowerCase() === "success") {
+          message.style.display = 'block';
+          input.value = ''; // optional: clear input field
+        } else {
+          alert("Something went wrong. Please try again.");
+          console.warn("Unexpected response:", result);
+        }
       })
       .catch((error) => {
-        loader.style.display = 'none'; // hide loader
+        loader.style.display = 'none';
         console.error('Error sending to Google Sheets:', error);
+        alert("There was a problem submitting your email.");
       });
     }
   }
