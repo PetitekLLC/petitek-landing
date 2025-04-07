@@ -552,7 +552,7 @@
   const input = document.getElementById('emailInput');
   const message = document.getElementById('thankYouMessage');
   if (input.checkValidity()) {
-    fetch("https://script.google.com/macros/s/AKfycbxfJx-Z3XpnZlTJ7PPj_sLP3C9M_Vy8k9JfHxgdf-cNDNoGqObV10wCFbXkhVf9NZj_/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyoYNIIICK8kHuJzpHlFu7rippAtzTEVqwFhre8wvn0tWEQvgiSFvjN3MMw59FOHgk/exec", {
       method: "POST",
       body: JSON.stringify({ email: input.value }),
       headers: { "Content-Type": "application/json" }
