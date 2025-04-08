@@ -1,1 +1,50 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ChatrBox Comparison Matrix</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fff;
+    }
+    .matrix-section {
+      padding: 60px 20px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+    .matrix-section h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #111;
+    }
+    .matrix-wrapper {
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    .matrix-scale {
+      transform-origin: top center;
+      width: fit-content;
+      transition: transform 0.3s ease;
+    }
+    @media (max-width: 1200px) { .matrix-scale { transform: scale(0.9); } }
+    @media (max-width: 1000px) { .matrix-scale { transform: scale(0.75); } }
+    @media (max-width: 800px)  { .matrix-scale { transform: scale(0.6); } }
+    @media (max-width: 600px)  { .matrix-scale { transform: scale(0.45); } }
+    @media (max-width: 400px)  { .matrix-scale { transform: scale(0.35); } }
+    table {
+      border-collapse: collapse;
+      background-color: white;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 12px 10px;
+      text-align: center;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    th {
