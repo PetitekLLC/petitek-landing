@@ -8,6 +8,36 @@
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 3000;
+  width: 160px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #25A8C6;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f4f4;
+}
+
     .spinner {
   border: 2px solid transparent;
   border-top-color: black;
@@ -167,10 +197,17 @@
   </style>
 </head>
 <body>
-  <header id="navbar">
-    <div class="nav-title">Petitek</div>
-    <div class="hamburger">&#9776;</div>
-  </header>
+  
+<header id="navbar">
+  <div class="nav-title">Petitek</div>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="#video">Video</a>
+    <a href="https://petitek.com/support">Support</a>
+    <a href="https://petitek.com/learn">Learn</a>
+    <a href="#about">About</a>
+  </div>
+</header>
 
   <div class="content">
     <img src="chatrbox_paw_logo.png" alt="Chatrbox Paw Logo" style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
@@ -651,9 +688,25 @@ function showThankYou() {
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.muted = true;
-      overlay.style.display = 'block';
-    });
-  </script>
+       overlay.style.display = 'block';
+  });
+</script>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+
+  // Optional: close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('dropdownMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
+
 </body>
 </html>
-
