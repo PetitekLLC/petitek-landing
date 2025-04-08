@@ -592,18 +592,18 @@ function showThankYou() {
       method: "POST",
       body: formData
     })
-    .then(() => {
-      spinner.style.display = 'none';
-      submitButton.disabled = false;
-      buttonText.style.display = 'block';
-      message.style.display = 'block';
-      input.value = '';
-    })
-    .catch((error) => {
-      console.error('Error sending to Google Sheets:', error);
-      spinner.style.display = 'none';
-      submitButton.disabled = false;
-      buttonText.style.display = 'block';
+       .then(() => {
+        // Hide spinner, show thank-you message, reset input
+        spinner.style.display = 'none';
+        submitButton.disabled = false;
+        buttonText.style.display = 'block';
+        message.style.display = 'block';
+        input.value = '';
+
+        // ⏳ Hide thank-you message after 3 seconds
+        setTimeout(() => {
+          message.style.display = 'none';
+        }, 3000);
     });
   }
 }
