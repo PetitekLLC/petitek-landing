@@ -178,28 +178,36 @@
     }
     .floating-buy-button.show {
       display: inline-block;
-    }
-    .floating-buy-button img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+<section class="matrix-section fade-in">
+  <div class="text-block">
+    <div style="font-weight: bold; font-size: 26px; text-align: center;">
+      Smarter and Better Than the Rest
+    </div>
+  </div>
 
-.matrix-wrapper {
-  width: 100%;
-  padding: 0 8px;
-  box-sizing: border-box;
-}
+  <div class="matrix-wrapper">
+    <div class="matrix-content matrix-responsive">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature<br>Tool</th>
+            <th>ChatrBox</th>
+            <th>Shock<br>Devices</th>
+            <th>Ultrasonic<br>Devices</th>
+            <th>Pet<br>Cameras</th>
+            <th>Interactive<br>Toys</th>
+            <th>Furniture Tape<br>Covers</th>
+            <th>Gates<br>Crates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows stay as they are -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 
 .matrix-content {
   width: 100%;
@@ -219,7 +227,8 @@
   border: 1px solid #333;
   padding: 10px 6px;
   text-align: center;
-  word-break: break-word;
+ word-wrap: break-word;
+white-space: normal;
   font-size: 12px;
 }
 
@@ -247,14 +256,43 @@
   }
 }
 
-/* Responsive scaling for matrix */
-@media (max-width: 1100px) { .matrix-content { transform: scale(0.95); } }
-@media (max-width: 900px)  { .matrix-content { transform: scale(0.85); } }
-@media (max-width: 768px)  { .matrix-content { transform: scale(0.75); } }
-@media (max-width: 600px)  { .matrix-content { transform: scale(0.65); } }
-@media (max-width: 480px)  { .matrix-content { transform: scale(0.55); } }
-@media (max-width: 400px)  { .matrix-content { transform: scale(0.47); } }
-@media (max-width: 375px)  { .matrix-content { transform: scale(0.43); } }
+@media (max-width: 600px) {
+  .comparison-table, 
+  .comparison-table thead, 
+  .comparison-table tbody, 
+  .comparison-table th, 
+  .comparison-table td, 
+  .comparison-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .comparison-table thead {
+    display: none; /* Hide headers for mobile */
+  }
+
+  .comparison-table tr {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  .comparison-table td {
+    text-align: left;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+
+
+  .comparison-table td:last-child {
+    border-bottom: none;
+  }
+}
 
 </style>
 </head>
@@ -393,16 +431,16 @@
   <div class="matrix-wrapper">
     <div class="matrix-content">
       <table>
-        <tr>
-          <th>Feature<br>Tool</th>
-          <th>ChatrBox</th>
-          <th>Shock<br>Devices</th>
-          <th>Ultrasonic<br>Devices</th>
-          <th>Pet<br>Cameras</th>
-          <th>Interactive<br>Toys</th>
-          <th>Furniture Tape<br>Covers</th>
-          <th>Gates<br>Crates</th>
-        </tr>
+       <tr>
+  <td data-label="Feature Tool">Stress-Free</td>
+  <td data-label="ChatrBox">✔</td>
+  <td data-label="Shock Devices">✘</td>
+  <td data-label="Ultrasonic Devices">⚠️<small>inconsistent</small></td>
+  <td data-label="Pet Cameras">✔</td>
+  <td data-label="Interactive Toys">✔</td>
+  <td data-label="Furniture Tape Covers">⚠️<small>mild aversion</small></td>
+  <td data-label="Gates Crates">⚠️<small>restrictive</small></td>
+</tr>
         <tr><td>Stress-Free</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️<small>inconsistent</small></td><td class="check">✔</td><td class="check">✔</td><td class="warn">⚠️<small>mild aversion</small></td><td class="warn">⚠️<small>restrictive</small></td></tr>
         <tr><td>Behavior Based Training</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td></tr>
         <tr><td>Long-Term Learning</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="warn">⚠️</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td></tr>
