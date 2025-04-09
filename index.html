@@ -174,7 +174,10 @@
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  display: block; /* force it to show */
+  display: none; /* hidden by default */
+}
+.floating-buy-button.show {
+  display: block; /* only when scrollY > 300 */
 }
 
 .floating-buy-button img {
