@@ -176,9 +176,17 @@
       z-index: 1000;
       display: none;
     }
-    .floating-buy-button.show {
-      display: inline-block;
-<section class="matrix-section fade-in">
+.floating-buy-button img {
+  width: 64px;
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  .floating-buy-button img {
+    width: 48px;
+  }
+}
+
   <div class="text-block">
     <div style="font-weight: bold; font-size: 26px; text-align: center;">
       Smarter and Better Than the Rest
@@ -798,7 +806,7 @@ function showThankYou() {
   </div>
 
   <script>
-    const floatBtn = document.querySelector('.floating-buy-button');
+    const floatBtn = document.querySelector('.-buy-button');
     const fadeEls = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
