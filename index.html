@@ -197,7 +197,7 @@
 .matrix-wrapper {
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
+  overflow-x: auto; /* enables horizontal scroll on small screens */
   width: 100%;
 }
 
@@ -205,6 +205,7 @@
   transform-origin: top center;
   transition: transform 0.3s ease;
 }
+
 /* Responsive scaling for matrix */
 @media (max-width: 1200px) { .matrix-scale { transform: scale(0.9); } }
 @media (max-width: 1000px) { .matrix-scale { transform: scale(0.75); } }
@@ -212,26 +213,44 @@
 @media (max-width: 600px)  { .matrix-scale { transform: scale(0.45); } }
 @media (max-width: 400px)  { .matrix-scale { transform: scale(0.35); } }
 
-th {
-  background-color: #d4f1f9;
-  font-weight: bold;
-}
-
-td:nth-child(2),
-th:nth-child(2) {
-  background-color: #d4f1f9;
-  font-weight: bold;
-}
-    .matrix-content {
+.matrix-content {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  overflow-x: auto;
 }
 
-  </style>
+.matrix-content table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.matrix-content th,
+.matrix-content td {
+  border: 1px solid #333;
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.matrix-content th {
+  background-color: #d4f1f9;
+  font-weight: bold;
+}
+
+.matrix-content td:nth-child(2),
+.matrix-content th:nth-child(2) {
+  background-color: #d4f1f9;
+  font-weight: bold;
+}
+</style>
 </head>
 <body>
+
   
 <header id="navbar">
   <div class="nav-title">Petitek</div>
