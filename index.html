@@ -173,7 +173,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 9999;
   display: none; /* hidden by default */
 }
 .floating-buy-button.show {
@@ -809,22 +809,49 @@ function showThankYou() {
     </a>
   </div>
 
-  <script>
-    const floatBtn = document.querySelector('.-buy-button');
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        entry.isIntersecting ? entry.target.classList.add('visible') : entry.target.classList.remove('visible');
-      });
-    }, { threshold: 0.1 });
-    fadeEls.forEach(el => observer.observe(el));
+<script>
+  function showThankYou() {
+    const input = document.getElementById('emailInput');
+    const message = document.getElementById('thankYouMessage');
+    const submitButton = document.getElementById('submitButton');
+    const buttonText = document.getElementById('buttonText');
+    const spinner = document.getElementById('spinner');
 
-    document.addEventListener('DOMContentLoaded', () => {
-      window.addEventListener('scroll', () => {
-        window.scrollY > 300 ? floatBtn.classList.add('show') : floatBtn.classList.remove('show');
+    if (input.checkValidity()) {
+      buttonText.style.display = 'none';
+      spinner.style.display = 'block';
+      submitButton.disabled = true;
+
+      const formData = new FormData();
+      formData.append('email', input.value);
+
+      fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(() => {
+        spinner.style.display = 'none';
+        submitButton.disabled = false;
+        buttonText.style.display = 'block';
+        message.style.display = 'block';
+        input.value = '';
+        setTimeout(() => {
+          message.style.display = 'none';
+        }, 3000);
       });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Floating button scroll behavior
+    const floatBtn = document.querySelector('.floating-buy-button');
+    window.addEventListener('scroll', () => {
+      window.scrollY > 300
+        ? floatBtn.classList.add('show')
+        : floatBtn.classList.remove('show');
     });
 
+    // Navbar hide/show on scroll
     const navbar = document.getElementById('navbar');
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
@@ -833,6 +860,18 @@ function showThankYou() {
       lastScrollTop = scrollTop;
     });
 
+    // Fade-in animations
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.isIntersecting
+          ? entry.target.classList.add('visible')
+          : entry.target.classList.remove('visible');
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Unmute video on overlay click
     const video = document.getElementById('chatrboxVideo');
     const overlay = document.getElementById('unmuteOverlay');
     overlay.addEventListener('click', () => {
@@ -844,17 +883,15 @@ function showThankYou() {
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.muted = true;
-       overlay.style.display = 'block';
+      overlay.style.display = 'block';
+    });
   });
-</script>
 
-<script>
   function toggleMenu() {
     const menu = document.getElementById('dropdownMenu');
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   }
 
-  // Optional: close menu when clicking outside
   document.addEventListener('click', function(event) {
     const menu = document.getElementById('dropdownMenu');
     const hamburger = document.querySelector('.hamburger');
@@ -864,5 +901,3 @@ function showThankYou() {
   });
 </script>
 
-</body>
-</html>
