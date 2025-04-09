@@ -197,17 +197,54 @@
 
 .matrix-wrapper {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  padding: 0 8px;
   box-sizing: border-box;
-  padding: 0;
 }
 
 .matrix-content {
   width: 100%;
-  max-width: 1200px;
-  transform-origin: top center;
-  transition: transform 0.3s ease;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.matrix-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.matrix-content th,
+.matrix-content td {
+  border: 1px solid #333;
+  padding: 10px 6px;
+  text-align: center;
+  word-break: break-word;
+  font-size: 12px;
+}
+
+.matrix-content th {
+  background-color: #d4f1f9;
+  font-weight: bold;
+}
+
+.matrix-content td:nth-child(2),
+.matrix-content th:nth-child(2) {
+  background-color: #d4f1f9;
+  font-weight: bold;
+}
+
+/* Responsive tweak: Reduce font and padding at smaller sizes */
+@media (max-width: 480px) {
+  .matrix-content table {
+    font-size: 11px;
+  }
+
+  .matrix-content th,
+  .matrix-content td {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
 }
 
 /* Responsive scaling for matrix */
