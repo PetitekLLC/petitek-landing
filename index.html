@@ -198,19 +198,18 @@
 .matrix-wrapper {
   width: 100vw;
   overflow-x: auto;
-  padding: 0;
+  padding: 0 0px; /* Remove side padding for edge-to-edge layout */
   margin: 0;
   box-sizing: border-box;
 }
 
 .matrix-content {
-  min-width: 600px;
+  width: max-content; /* Prevent table from squishing */
   margin: 0 auto;
   text-align: center;
 }
 
 .matrix-content table {
-  width: 100%;
   border-collapse: collapse;
   background-color: white;
 }
@@ -222,9 +221,16 @@
   text-align: center;
   font-size: 14px;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 .matrix-content th {
+  background-color: #d4f1f9;
+  font-weight: bold;
+}
+
+.matrix-content td:nth-child(2),
+.matrix-content th:nth-child(2) {
   background-color: #d4f1f9;
   font-weight: bold;
 }
