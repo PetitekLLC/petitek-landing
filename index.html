@@ -196,15 +196,15 @@
     }
 
 .matrix-wrapper {
-  width: 100vw;
+  width: 100%;
   overflow-x: auto;
-  padding: 0 0px; /* Remove side padding for edge-to-edge layout */
-  margin: 0;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
 .matrix-content {
-  width: max-content; /* Prevent table from squishing */
+  width: max-content;
   margin: 0 auto;
   text-align: center;
 }
@@ -221,13 +221,20 @@
   text-align: center;
   font-size: 14px;
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: nowrap; /* Prevent table cells from wrapping */
 }
 
 .matrix-content th {
   background-color: #d4f1f9;
   font-weight: bold;
 }
+
+.matrix-content td:nth-child(2),
+.matrix-content th:nth-child(2) {
+  background-color: #d4f1f9;
+  font-weight: bold;
+}
+
 
 .matrix-content td:nth-child(2),
 .matrix-content th:nth-child(2) {
