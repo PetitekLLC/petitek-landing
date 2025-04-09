@@ -195,10 +195,9 @@
       transform: translateY(0);
     }
 .matrix-wrapper {
-  display: flex;
-  justify-content: center;
-  overflow-x: auto; /* enables horizontal scroll on small screens */
   width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling if needed */
+  padding: 0 12px;   /* Optional: adds slight breathing room on small screens */
 }
 
 .matrix-scale {
@@ -215,10 +214,9 @@
 
 .matrix-content {
   width: 100%;
-  max-width: 1200px;
+  min-width: 800px;  /* Prevents table from squashing too much */
   margin: 0 auto;
   text-align: center;
-  overflow-x: auto;
 }
 
 .matrix-content table {
