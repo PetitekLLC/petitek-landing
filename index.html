@@ -288,10 +288,17 @@ white-space: normal;
     position: relative;
   }
 
-
   .comparison-table td:last-child {
     border-bottom: none;
   }
+.comparison-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #25A8C6;
+}
+
 }
 
 </style>
