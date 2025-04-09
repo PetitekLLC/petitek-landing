@@ -194,6 +194,24 @@
       opacity: 1;
       transform: translateY(0);
     }
+.matrix-wrapper {
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.matrix-scale {
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+/* Responsive scaling for matrix */
+@media (max-width: 1200px) { .matrix-scale { transform: scale(0.9); } }
+@media (max-width: 1000px) { .matrix-scale { transform: scale(0.75); } }
+@media (max-width: 800px)  { .matrix-scale { transform: scale(0.6); } }
+@media (max-width: 600px)  { .matrix-scale { transform: scale(0.45); } }
+@media (max-width: 400px)  { .matrix-scale { transform: scale(0.35); } }
+
   </style>
 </head>
 <body>
