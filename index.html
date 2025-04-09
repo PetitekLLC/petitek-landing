@@ -169,154 +169,34 @@
         transform: translateY(5px);
       }
     }
-.floating-buy-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  display: none; /* hidden by default */
-}
-.floating-buy-button.show {
-  display: block; /* only when scrollY > 300 */
-}
-
-.floating-buy-button img {
-  width: 64px;
-  height: auto;
-}
-
-@media (max-width: 480px) {
-  .floating-buy-button img {
-    width: 48px;
-  }
-}
-
-  <div class="text-block">
-    <div style="font-weight: bold; font-size: 26px; text-align: center;">
-      Smarter and Better Than the Rest
-    </div>
-  </div>
-
-  <div class="matrix-wrapper">
-    <div class="matrix-content matrix-responsive">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Feature<br>Tool</th>
-            <th>ChatrBox</th>
-            <th>Shock<br>Devices</th>
-            <th>Ultrasonic<br>Devices</th>
-            <th>Pet<br>Cameras</th>
-            <th>Interactive<br>Toys</th>
-            <th>Furniture Tape<br>Covers</th>
-            <th>Gates<br>Crates</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- rows stay as they are -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-
-.matrix-content {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.matrix-content table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  table-layout: fixed;
-}
-
-.matrix-content th,
-.matrix-content td {
-  border: 1px solid #333;
-  padding: 10px 6px;
-  text-align: center;
- word-wrap: break-word;
-white-space: normal;
-  font-size: 12px;
-}
-
-.matrix-content th {
-  background-color: #d4f1f9;
-  font-weight: bold;
-}
-
-.matrix-content td:nth-child(2),
-.matrix-content th:nth-child(2) {
-  background-color: #d4f1f9;
-  font-weight: bold;
-}
-
-/* Responsive tweak: Reduce font and padding at smaller sizes */
-@media (max-width: 480px) {
-  .matrix-content table {
-    font-size: 11px;
-  }
-
-  .matrix-content th,
-  .matrix-content td {
-    padding: 8px 4px;
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 600px) {
-  .comparison-table, 
-  .comparison-table thead, 
-  .comparison-table tbody, 
-  .comparison-table th, 
-  .comparison-table td, 
-  .comparison-table tr {
-    display: block;
-    width: 100%;
-  }
-
-  .comparison-table thead {
-    display: none; /* Hide headers for mobile */
-  }
-
-  .comparison-table tr {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  }
-
-  .comparison-table td {
-    text-align: left;
-    padding: 10px 15px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    position: relative;
-  }
-
-  .comparison-table td:last-child {
-    border-bottom: none;
-  }
-.comparison-table td::before {
-  content: attr(data-label);
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-  color: #25A8C6;
-}
-
-}
-
-</style>
+    .floating-buy-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: none;
+    }
+    .floating-buy-button.show {
+      display: inline-block;
+    }
+    .floating-buy-button img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-
   
 <header id="navbar">
   <div class="nav-title">Petitek</div>
@@ -439,42 +319,6 @@ white-space: normal;
       <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
         🔊 Tap to Unmute
       </div>
-    </div> <!-- ✅ This is the CLOSE you were missing -->
-  
-  <section class="matrix-section fade-in">
-  <div class="text-block">
-    <div style="font-weight: bold; font-size: 26px; text-align: center;">
-      Smarter and Better Than the Rest
-    </div>
-  </div>
-  <div class="matrix-wrapper">
-    <div class="matrix-content">
-      <table>
-       <tr>
-  <td data-label="Feature Tool">Stress-Free</td>
-  <td data-label="ChatrBox">✔</td>
-  <td data-label="Shock Devices">✘</td>
-  <td data-label="Ultrasonic Devices">⚠️<small>inconsistent</small></td>
-  <td data-label="Pet Cameras">✔</td>
-  <td data-label="Interactive Toys">✔</td>
-  <td data-label="Furniture Tape Covers">⚠️<small>mild aversion</small></td>
-  <td data-label="Gates Crates">⚠️<small>restrictive</small></td>
-</tr>
-        <tr><td>Stress-Free</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️<small>inconsistent</small></td><td class="check">✔</td><td class="check">✔</td><td class="warn">⚠️<small>mild aversion</small></td><td class="warn">⚠️<small>restrictive</small></td></tr>
-        <tr><td>Behavior Based Training</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td></tr>
-        <tr><td>Long-Term Learning</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="warn">⚠️</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td></tr>
-        <tr><td>Automatic Operation</td><td class="check">✔</td><td class="warn">⚠️<small>timers only</small></td><td class="warn">⚠️<small>in some pets</small></td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td><td class="cross">✘</td></tr>
-        <tr><td>Humane</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td><td class="warn">⚠️</td><td class="check">✔</td></tr>
-        <tr><td>Collar-Free Tag-Free</td><td class="check">✔</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td></tr>
-        <tr><td>Customized Use</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️<small>limited</small></td><td class="check">✔</td><td class="check">✔</td><td class="warn">⚠️</td><td class="cross">✘</td></tr>
-        <tr><td>Safe for All Pets</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️<small>scary for some</small></td><td class="check">✔</td><td class="check">✔</td><td class="warn">⚠️</td><td class="warn">⚠️</td></tr>
-        <tr><td>Multi Purpose</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="warn">⚠️</td></tr>
-      </table>
-    </div>
-  </div>
-</section>
-   
-
     </div>
 
     <div class="text-block fade-in">
@@ -809,49 +653,22 @@ function showThankYou() {
     </a>
   </div>
 
-<script>
-  function showThankYou() {
-    const input = document.getElementById('emailInput');
-    const message = document.getElementById('thankYouMessage');
-    const submitButton = document.getElementById('submitButton');
-    const buttonText = document.getElementById('buttonText');
-    const spinner = document.getElementById('spinner');
-
-    if (input.checkValidity()) {
-      buttonText.style.display = 'none';
-      spinner.style.display = 'block';
-      submitButton.disabled = true;
-
-      const formData = new FormData();
-      formData.append('email', input.value);
-
-      fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(() => {
-        spinner.style.display = 'none';
-        submitButton.disabled = false;
-        buttonText.style.display = 'block';
-        message.style.display = 'block';
-        input.value = '';
-        setTimeout(() => {
-          message.style.display = 'none';
-        }, 3000);
-      });
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Floating button scroll behavior
+  <script>
     const floatBtn = document.querySelector('.floating-buy-button');
-    window.addEventListener('scroll', () => {
-      window.scrollY > 300
-        ? floatBtn.classList.add('show')
-        : floatBtn.classList.remove('show');
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.isIntersecting ? entry.target.classList.add('visible') : entry.target.classList.remove('visible');
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.addEventListener('scroll', () => {
+        window.scrollY > 300 ? floatBtn.classList.add('show') : floatBtn.classList.remove('show');
+      });
     });
 
-    // Navbar hide/show on scroll
     const navbar = document.getElementById('navbar');
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
@@ -860,18 +677,6 @@ function showThankYou() {
       lastScrollTop = scrollTop;
     });
 
-    // Fade-in animations
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        entry.isIntersecting
-          ? entry.target.classList.add('visible')
-          : entry.target.classList.remove('visible');
-      });
-    }, { threshold: 0.1 });
-    fadeEls.forEach(el => observer.observe(el));
-
-    // Unmute video on overlay click
     const video = document.getElementById('chatrboxVideo');
     const overlay = document.getElementById('unmuteOverlay');
     overlay.addEventListener('click', () => {
@@ -883,15 +688,17 @@ function showThankYou() {
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.muted = true;
-      overlay.style.display = 'block';
-    });
+       overlay.style.display = 'block';
   });
+</script>
 
+<script>
   function toggleMenu() {
     const menu = document.getElementById('dropdownMenu');
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   }
 
+  // Optional: close menu when clicking outside
   document.addEventListener('click', function(event) {
     const menu = document.getElementById('dropdownMenu');
     const hamburger = document.querySelector('.hamburger');
@@ -901,3 +708,5 @@ function showThankYou() {
   });
 </script>
 
+</body>
+</html>
