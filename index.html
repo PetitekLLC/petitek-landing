@@ -224,12 +224,24 @@
   font-weight: bold;
   width: 25%;
 }
-.comparison-matrix th {
+.comparison-matrix th:not(:first-child) {
   background-color: #d4f1f9;
   font-weight: bold;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  writing-mode: sideways-lr;
   white-space: nowrap;
+  transform: none;
+  text-align: center;
+  vertical-align: bottom;
+  padding: 10px;
+}
+
+.comparison-matrix th:first-child {
+  writing-mode: horizontal-tb;
+  background-color: #d4f1f9;
+  white-space: normal;
+  text-align: left;
+}
+
 }
 .comparison-matrix th:first-child {
   writing-mode: horizontal-tb;
