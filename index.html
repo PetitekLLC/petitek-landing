@@ -231,17 +231,25 @@
   background-color: #d4f1f9;
 }
 
-/* Top row titles (rotated except first) */
 .comparison-matrix th:not(:first-child) {
   background-color: #d4f1f9;
   font-weight: bold;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
   white-space: nowrap;
   text-align: center;
   vertical-align: bottom;
-  padding: 10px;
+  padding: 10px 4px;
+  height: 140px;
 }
+
+.comparison-matrix th:not(:first-child) > div {
+  display: inline-block;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 1;
+}
+
 
 /* Highlight Chatrbox column */
 .comparison-matrix td:nth-child(2),
@@ -405,14 +413,15 @@
     <div class="matrix-content">
       <h2>How ChatrBox Compares to Other Pet Tools</h2>
       <table>
-        <tr>
-          <th>Feature<br>Tool</th>
-          <th>ChatrBox</th>
-          <th>Shock<br>Devices</th>
-          <th>Ultra-sonic<br>Devices</th>
-          <th>Pet<br>Cameras</th>
-          <th>Inter-active<br>Toys</th>
-        </tr>
+       <tr>
+  <th>Feature<br>Tool</th>
+  <th><div>ChatrBox</div></th>
+  <th><div>Shock Devices</div></th>
+  <th><div>Ultra-sonic Devices</div></th>
+  <th><div>Pet Cameras</div></th>
+  <th><div>Inter-active Toys</div></th>
+</tr>
+
         <tr><td>Stress-Free</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td></tr>
         <tr><td>Behavior Based Training</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td></tr>
         <tr><td>Long-Term Learning</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="warn">⚠️</td><td class="check">✔</td></tr>
