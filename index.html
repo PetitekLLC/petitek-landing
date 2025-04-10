@@ -194,7 +194,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-    .comparison-matrix {
+.comparison-matrix {
   padding: 60px 20px;
   background: #f9f9f9;
   font-size: 14px;
@@ -219,41 +219,38 @@
   vertical-align: middle;
   word-wrap: break-word;
 }
+
+/* First column */
 .comparison-matrix th:first-child,
 .comparison-matrix td:first-child {
   font-weight: bold;
   width: 25%;
+  text-align: left;
+  writing-mode: horizontal-tb;
+  white-space: normal;
+  background-color: #d4f1f9;
 }
+
+/* Top row titles (rotated except first) */
 .comparison-matrix th:not(:first-child) {
   background-color: #d4f1f9;
   font-weight: bold;
-  writing-mode: sideways-lr;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   white-space: nowrap;
-  transform: none;
   text-align: center;
   vertical-align: bottom;
   padding: 10px;
 }
 
-.comparison-matrix th:first-child {
-  writing-mode: horizontal-tb;
-  background-color: #d4f1f9;
-  white-space: normal;
-  text-align: left;
-}
-
-}
-.comparison-matrix th:first-child {
-  writing-mode: horizontal-tb;
-  transform: none;
-  white-space: normal;
-  background-color: #d4f1f9;
-}
+/* Highlight Chatrbox column */
 .comparison-matrix td:nth-child(2),
 .comparison-matrix th:nth-child(2) {
   background-color: #d4f1f9;
   font-weight: bold;
 }
+
+/* Emojis */
 .comparison-matrix .check {
   color: green;
   font-size: 1.4em;
@@ -265,6 +262,8 @@
 .comparison-matrix .warn {
   font-size: 1.4em;
 }
+
+/* Mobile scaling */
 @media (max-width: 480px) {
   .comparison-matrix th,
   .comparison-matrix td {
