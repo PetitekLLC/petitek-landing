@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -194,92 +194,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-.comparison-matrix {
-  padding: 60px 20px;
-  background: #f9f9f9;
-  font-size: 14px;
-}
-.comparison-matrix h2 {
-  text-align: center;
-  font-size: clamp(1.5rem, 2.5vw + 1rem, 2.5rem);
-  margin-bottom: 30px;
-  color: #111;
-}
-.comparison-matrix table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  table-layout: fixed;
-}
-.comparison-matrix th,
-.comparison-matrix td {
-  border: 1px solid #333;
-  padding: 12px 10px;
-  text-align: center;
-  vertical-align: middle;
-  word-wrap: break-word;
-}
-
-/* First column */
-.comparison-matrix th:first-child,
-.comparison-matrix td:first-child {
-  font-weight: bold;
-  width: 25%;
-  text-align: left;
-  writing-mode: horizontal-tb;
-  white-space: normal;
-  background-color: #d4f1f9;
-}
-
-.comparison-matrix th:not(:first-child) {
-  background-color: #d4f1f9;
-  font-weight: bold;
-  white-space: nowrap;
-  text-align: center;
-  vertical-align: bottom;
-  padding: 10px 4px;
-  height: 140px;
-}
-
-.comparison-matrix th:not(:first-child) > div {
-  display: inline-block;
-  transform: rotate(-90deg);
-  transform-origin: left bottom;
-  white-space: nowrap;
-  font-size: 12px;
-  line-height: 1;
-}
-
-
-/* Highlight Chatrbox column */
-.comparison-matrix td:nth-child(2),
-.comparison-matrix th:nth-child(2) {
-  background-color: #d4f1f9;
-  font-weight: bold;
-}
-
-/* Emojis */
-.comparison-matrix .check {
-  color: green;
-  font-size: 1.4em;
-}
-.comparison-matrix .cross {
-  color: red;
-  font-size: 1.4em;
-}
-.comparison-matrix .warn {
-  font-size: 1.4em;
-}
-
-/* Mobile scaling */
-@media (max-width: 480px) {
-  .comparison-matrix th,
-  .comparison-matrix td {
-    font-size: 11px;
-    padding: 8px 4px;
-  }
-}
-
   </style>
 </head>
 <body>
@@ -407,37 +321,6 @@
       </div>
     </div>
 
-
-<section class="comparison-matrix">
-  <div class="matrix-wrapper">
-    <div class="matrix-content">
-      <h2>How ChatrBox Compares to Other Pet Tools</h2>
-      <table>
-       <tr>
-  <th>Feature<br>Tool</th>
-  <th><div>ChatrBox</div></th>
-  <th><div>Shock Devices</div></th>
-  <th><div>Ultra-sonic Devices</div></th>
-  <th><div>Pet Cameras</div></th>
-  <th><div>Inter-active Toys</div></th>
-</tr>
-
-        <tr><td>Stress-Free</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td></tr>
-        <tr><td>Behavior Based Training</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td></tr>
-        <tr><td>Long-Term Learning</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="warn">⚠️</td><td class="check">✔</td></tr>
-        <tr><td>Auto Operation</td><td class="check">✔</td><td class="warn">⚠️</td><td class="warn">⚠️</td><td class="cross">✘</td><td class="cross">✘</td></tr>
-        <tr><td>Humane</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td></tr>
-        <tr><td>Collar / Tag Free</td><td class="check">✔</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td><td class="check">✔</td></tr>
-        <tr><td>Customized Use</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td></tr>
-        <tr><td>Safe for All Pets</td><td class="check">✔</td><td class="cross">✘</td><td class="warn">⚠️</td><td class="check">✔</td><td class="check">✔</td></tr>
-        <tr><td>Multi Purpose</td><td class="check">✔</td><td class="cross">✘</td><td class="cross">✘</td><td class="check">✔</td><td class="cross">✘</td></tr>
-      </table>
-    </div>
-  </div>
-</section>
-
-
-  
     <div class="text-block fade-in">
       <div style="font-weight: bold; text-align: center;">ChatrBox Chatter</div>
       Real stories from real pet parents. Happy pets, happier homes — thanks to Chatrbox.
