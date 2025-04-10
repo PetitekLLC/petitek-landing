@@ -1,110 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  ... (unchanged head content)
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
+  <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
+  <meta name="author" content="Petitek LLC" />
+  <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <style>
-    ... (existing styles)
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 3000;
+  width: 160px;
+}
 
-    /* ---- MATRIX STYLES ---- */
-    .matrix-section {
-      padding: 60px 20px;
-      background: #f9f9f9;
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #25A8C6;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f4f4;
+}
+
+    .spinner {
+  border: 2px solid transparent;
+  border-top-color: black;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #222;
+      width: 100vw;
+      overflow-x: hidden;
     }
-    .matrix-wrapper {
-      width: 100%;
-      overflow-x: auto;
-    }
-    .matrix-content {
-      width: 100%;
-      max-width: 100%;
-      overflow-x: auto;
-    }
-    .matrix-content h2 {
-      font-size: clamp(1.5rem, 2.5vw + 1rem, 2.8rem);
-      margin-bottom: 40px;
-      line-height: 1.3;
-      color: #111;
-      text-align: center;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
       background-color: white;
-      table-layout: fixed;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 2000;
+      transition: top 0.3s;
     }
-    th, td {
-      border: 1px solid #333;
-      padding: 12px 10px;
-      text-align: center;
-      font-size: 14px;
-      vertical-align: middle;
-      word-wrap: break-word;
-    }
-    th:first-child, td:first-child {
-      padding-left: 12px;
-      padding-right: 12px;
+    .nav-title {
       font-weight: bold;
-      width: 25%;
-      white-space: normal;
-    }
-    th {
-      background-color: #d4f1f9;
-      font-weight: bold;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      white-space: nowrap;
-    }
-    th:first-child {
-      writing-mode: horizontal-tb;
-      transform: none;
-      white-space: normal;
-      background-color: #d4f1f9;
-    }
-    td:nth-child(2), th:nth-child(2) {
-      background-color: #d4f1f9;
-      font-weight: bold;
-    }
-    .check {
-      color: green;
-      font-size: 1.4em;
-    }
-    .cross {
-      color: red;
-      font-size: 1.4em;
-    }
-    .warn {
-      text-align: center;
       font-size: 18px;
-      line-height: 1.3;
+      color: #25A8C6;
     }
-    @media (max-width: 480px) {
-      th, td {
-        font-size: 11px;
-        padding: 8px 4px;
+    .hamburger {
+      font-size: 26px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 70px 20px 60px;
+      text-align: center;
+    }
+    .content img {
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 15px;
+    }
+    .amazon-main-button {
+      width: 150px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      display: block;
+      border-radius: 8px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stacked-gallery {
+      margin-top: 55px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+    .stacked-gallery img {
+      width: 100vw;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      box-sizing: border-box;
+    }
+    .text-block {
+      font-size: 20px;
+      color: #444;
+      padding: 25px 20px 35px;
+      text-align: center;
+      line-height: 1.8;
+      max-width: 800px;
+    }
+    .text-block div[style*="font-weight: bold"] {
+      font-size: 26px;
+      font-weight: bold;
+      padding: 10px 0;
+      margin: 10px 0;
+    }
+    .footer-link {
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+      margin: 40px 0 5px;
+    }
+    .footer-link a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+    .footer-copy {
+      text-align: center;
+      font-size: 10px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
       }
-      .warn {
-        font-size: 16px;
+      40% {
+        transform: translateY(10px);
       }
+      60% {
+        transform: translateY(5px);
+      }
+    }
+    .floating-buy-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: none;
+    }
+    .floating-buy-button.show {
+      display: inline-block;
+    }
+    .floating-buy-button img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
-  ... (keep all existing HTML up to the matrix insertion point)
-
-  <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
-    <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
-      <source src="videos/End%20V10.mp4" type="video/mp4">
-    </video>
-    <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
-      🔊 Tap to Unmute
-    </div>
+  
+<header id="navbar">
+  <div class="nav-title">Petitek</div>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>  
+</header>
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="#video">Video</a>
+    <a href="https://petitek.com/support">Support</a>
+    <a href="https://petitek.com/learn">Learn</a>
+    <a href="#about">About</a>
   </div>
 
-  ... (keep all remaining HTML as-is below the matrix)
-</body>
-</html>
+  <div class="content">
+    <img src="chatrbox_paw_logo.png" alt="Chatrbox Paw Logo" style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
+    <img src="chatrbox_name_logo.png" alt="Chatrbox Name Logo" style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
+    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+      <img src="amazon_buy_button.png" alt="Buy Now on Amazon" class="amazon-main-button">
+    </a>
+  </div>
 
-  </section>
+  <div style="margin-top: 25px; text-align: center;">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
+<div class="stacked-gallery" id="galleryStart">
+    <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
+    <div class="text-block fade-in">
+       <div style="font-weight: bold; text-align: center;">WOOF! WOOF!<br>MEOW! MEOW!</div>
+      Chatrbox is the first smart device for training dogs or cats away from unwanted or bad behavior.
+    </div>
+      
+   <div style="padding:56.25% 0 0 0;position:relative;width:100%;">
+      <iframe src="https://player.vimeo.com/video/1073251548?badge=0&amp;autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="ChatrBOX Overview Video"></iframe>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+      
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Why Chatrbox?</div>
+      Chatrbox is your secret weapon to shape great pet behavior indoors — without yelling, collars, gates, crates, fear or stress.
+    </div>
+
+    <img src="images/advantage-icons.jpg" alt="Chatrbox Advantage" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Custom Voice Commands</div>
+      Record commands like “Off the couch!” so your pet hears your voice — even when you’re not around.
+    </div>
+
+    <img src="images/chair_image@2x.png" alt="How_it_works" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Virtual Boundary Training</div>
+      No tags or collars — just safe, smart training wherever you place it.
+    </div>
+
+    <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Smart Indoor Pet Trainer</div>
+      Combines motion detection, sound alerts, and voice playback to correct behavior instantly.
+    </div>
+
+    <img src="images/advantage-cards.jpg" alt="Training Benefits" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Proactive Motion Detection</div>
+      Stop bad behavior before it starts with intelligent real-time alerts.
+    </div>
+
+    <img src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Instant Behavior Correction</div>
+      Deliver consistent feedback exactly when it matters most — in the moment.
+    </div>
+
+    <img src="images/voice-commands.jpg" alt="Voice Commands" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Virtual Boundaries</div>
+      Ditch the gates and crates — train pets with virtual boundaries that feel natural and open.
+    </div>
+
+    <img src="images/safe-zones.jpg" alt="Safe Zones" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Voice-Driven Results</div>
+      Your familiar tone makes a lasting impression — gentle, clear, and stress-free.
+    </div>
+
+    <img src="images/happier-pets.jpg" alt="Happy Pets" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Pet-Friendly Zones</div>
+      Keep them off sofas or away from the trash using audio cues alone.
+    </div>
+
+    <img src="images/smart-training.jpg" alt="Smart Training Summary" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Happy Pets <br> Peaceful Homes</div>
+      Less stress and more harmony thanks to consistent training reinforcement.
+    </div>
+
+    <img src="images/instant-correction.jpg" alt="Instant Correction" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">24/7 Assistant</div>
+      Chatrbox never sleeps — always ready to guide pets with patience and precision.
+    </div>
+
+    <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">Teachable Moments Matter</div>
+      Catch behavior in the act to teach better habits that stick.
+    </div>
+
+    <img src="images/repetition-benefits.jpg" alt="Repetition in Training" class="fade-in" />
+    <div class="text-block fade-in">
+      <div style="font-weight: bold; text-align: center;">No Fear Solution</div>
+      Chatrbox uses gentle voice cues and smart detection to correct behavior - a NO FEAR solution.
+    </div>
+
+    <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
+      <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
+        <source src="videos/End%20V10.mp4" type="video/mp4">
+      </video>
+      <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+        🔊 Tap to Unmute
+      </div>
+    </div>
 
     <div class="text-block fade-in">
       <div style="font-weight: bold; text-align: center;">ChatrBox Chatter</div>
