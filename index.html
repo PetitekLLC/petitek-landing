@@ -251,7 +251,7 @@
  </div>
     <img src="images/chair_image@2x.png" alt="How_It_works" class="fade-in" />
     <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">ChatrBox Breaks Bad Habits     And Teaches Great Behavior.</div>
+      <div style="font-weight: bold; text-align: center;">Breaks Bad Habits <br>Teaches Great Behavior.</div>
        <div style="text-align: left;">
   ChatrBox uses motion detection and a custom audio responses to gently remind your pet, “Uh-uh, not there. when something is about to happen.”  
   <br><br>
@@ -260,7 +260,7 @@
  </div>
     <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" class="fade-in" />
     <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">It Stops Bad Behavior Before It Starts.</div>
+      <div style="font-weight: bold; text-align: center;">Your Voice Is The Diffrenetiator.</div>
        <div style="text-align: left;">
      It speaks with one voice: Yours. Record a custom message like “No, Delilah!” or “Leave it!” and ChatrBox will repeat it - loud and clear, as often as needed - even when you’re not around. It’s training that sounds familiar… because it is.
     </div> 
@@ -274,18 +274,34 @@
   <br><br>
 
   <div style="padding-left: 1em;">
-    1️⃣ <strong>Your Voice</strong> – Your message. Your command.
+    <span style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px;">1</span>
+    <strong>Your Voice</strong> – Your message. Your command.
   </div>
-  <div style="padding-left: 1em;">
-    2️⃣ <strong>Your Voice + Alert</strong> – Adds an attention sound plus your command.
+  <div style="padding-left: 1em; margin-top: 8px;">
+    <span style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px;">2</span>
+    <strong>Your Voice + Alert</strong> – Adds an attention sound plus your command.
   </div>
-  <div style="padding-left: 1em;">
-    3️⃣ <strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong> – “Okay, this is serious now.”
+  <div style="padding-left: 1em; margin-top: 8px;">
+    <span style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px;">3</span>
+    <strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong> – “Okay, this is serious now.”
   </div>
 
-  <br><br>
+  <!-- 🔊 Inserted Playback Button Block Here -->
+  <button onclick="document.getElementById('featureAudio').play();" 
+    style="margin: 25px auto 10px auto; padding: 14px 30px; font-size: 18px; display: block; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
+    🔊 Play Sample Command
+  </button>
+  <div style="font-size: 14px; font-style: italic; color: #333; text-align: center; max-width: 320px; margin: 0 auto 20px auto;">
+    Played up to 90dB Loud — repeated until pet learns the behavior
+  </div>
+  <audio id="featureAudio" src="audio/sample-command.mp3"></audio>
+  <!-- 🔊 End Playback Block -->
 
-  ChatrBox gets more assertive each time—but it’s still you doing the talking. And with flashing LED lights on every Alert, even the most stubborn pets know: this...is off-limits.
+  <div style="margin-top: 10px;">
+    ChatrBox gets more assertive each time—but it’s still you doing the talking.
+    And with flashing LED lights on every Alert, even the most stubborn pets know:
+    this...is off-limits.
+  </div>
 </div>
 
 </div>
