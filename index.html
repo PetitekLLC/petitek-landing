@@ -634,6 +634,19 @@
   <img src="images/testimonials.jpg" alt="Testimonials" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
 </div>
 
+<!-- Video -->
+<div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
+  <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
+    <video id="chatrboxVideo4" autoplay muted playsinline controls width="100%" style="display: block;">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
+    </video>
+    <div id="unmuteOverlay4" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+      🔊 Tap to Unmute
+    </div>
+  </div>
+</div>
+
+
 <!-- Cats to Dogs Section -->
 <div style="padding-left: 10px; padding-right: 10px;">
   <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
@@ -674,17 +687,6 @@
   </div>
 </div>
 
-<!-- Video -->
-<div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
-  <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
-    <video id="chatrboxVideo3" autoplay muted playsinline controls width="100%" style="display: block;">
-      <source src="videos/End%20V10.mp4" type="video/mp4">
-    </video>
-    <div id="unmuteOverlay3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
-      🔊 Tap to Unmute
-    </div>
-  </div>
-</div>
 
 <!-- Trigger Sequence -->
 <div style="padding-left: 10px; padding-right: 10px;">
@@ -1106,6 +1108,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+ // 🟩 Forth Video (plays from 10s to 20s)
+  const video3 = document.getElementById('chatrboxVideo3');
+  const overlay3 = document.getElementById('unmuteOverlay3');
+
+  if (overlay4 && video3) {
+    overlay4.addEventListener('click', () => {
+      video4.currentTime = 10;
+      video4.muted = false;
+      overlay4.style.display = 'none';
+      video3.play();
+    });
+
+    video3.addEventListener('timeupdate', () => {
+      if (video3.currentTime >= 20) {
+        video4.pause();
+        video4.currentTime = 10;
+        video4.muted = true;
+        overlay4.style.display = 'block';
+      }
+    });
+  }
+
+  
   // Hamburger Menu Dropdown Toggle
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
