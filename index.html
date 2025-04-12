@@ -172,15 +172,16 @@
         transform: translateY(5px);
       }
     }
-
+    
 .floating-buy-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  display: none;
-  background: none; /* make sure no background is set */
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* soft, subtle shadow */
+  display: none; /* hidden by default */
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .floating-buy-button.show {
@@ -188,12 +189,16 @@
 }
 
 .floating-buy-button img {
-  width: 90px;
+  width: 90px;             /* adjust as needed */
   height: auto;
-  background: none;        /* clear any white background */
-  border: none;            /* remove any default border */
-  box-shadow: none;        /* remove drop shadow for clean edge */
+  background: transparent; /* no background */
+  border: none;            /* no border */
+  padding: 0;
+  margin: 0;
+  display: block;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* optional shadow */
 }
+
 
     .fade-in {
       opacity: 0;
@@ -705,7 +710,7 @@ You Decide.</div>
   
 <!-- FEATURE HIGHLIGHTS HEADER -->
 <div class="fade-in" style="
-  background-color: #25A8C6;
+  background-color: #0055566;
   color: white;
   padding: 30px 20px;
   text-align: center;
