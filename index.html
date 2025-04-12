@@ -178,7 +178,8 @@
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  display: none; /* hidden by default */
+  display: none;
+  background: none; /* make sure no background is set */
 }
 
 .floating-buy-button.show {
@@ -187,9 +188,10 @@
 
 .floating-buy-button img {
   width: 60px;
-  height: auto;                /* maintains the natural aspect ratio */
-  background: transparent;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);  /* optional shadow */
+  height: auto;
+  background: none;        /* clear any white background */
+  border: none;            /* remove any default border */
+  box-shadow: none;        /* remove drop shadow for clean edge */
 }
 
     .fade-in {
