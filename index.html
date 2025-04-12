@@ -1042,14 +1042,18 @@ function showThankYou() {
     });
   }
 }
-</script>
 
 <script>
+  const floatBtn = document.querySelector('.floating-buy-button');
+
   document.addEventListener('DOMContentLoaded', () => {
-    // Floating Buy Button
-    const floatBtn = document.querySelector('.floating-buy-button');
+    // Show/hide floating button based on scroll position
     window.addEventListener('scroll', () => {
-      window.scrollY > 300 ? floatBtn.classList.add('show') : floatBtn.classList.remove('show');
+      if (window.scrollY > 300) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
     });
 
     // Fade-in Observer
@@ -1090,8 +1094,6 @@ function showThankYou() {
     }
   });
 </script>
-
-
 
 </body>
 </html>
