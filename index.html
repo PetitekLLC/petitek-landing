@@ -173,21 +173,28 @@
       }
     }
     .floating-buy-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: none;
-    }
-    .floating-buy-button.show {
-      display: inline-block;
-    }
-    .floating-buy-button img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    }
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.floating-buy-button.show {
+  display: block;
+  opacity: 1;
+}
+
+.floating-buy-button img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -1037,22 +1044,26 @@ function showThankYou() {
 }
 </script>
 
-  <script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Floating Buy Button
     const floatBtn = document.querySelector('.floating-buy-button');
+    window.addEventListener('scroll', () => {
+      window.scrollY > 300 ? floatBtn.classList.add('show') : floatBtn.classList.remove('show');
+    });
+
+    // Fade-in Observer
     const fadeEls = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        entry.isIntersecting ? entry.target.classList.add('visible') : entry.target.classList.remove('visible');
+        entry.isIntersecting
+          ? entry.target.classList.add('visible')
+          : entry.target.classList.remove('visible');
       });
     }, { threshold: 0.1 });
     fadeEls.forEach(el => observer.observe(el));
 
-    document.addEventListener('DOMContentLoaded', () => {
-      window.addEventListener('scroll', () => {
-        window.scrollY > 300 ? floatBtn.classList.add('show') : floatBtn.classList.remove('show');
-      });
-    });
-
+    // Navbar Hide on Scroll
     const navbar = document.getElementById('navbar');
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
@@ -1061,36 +1072,25 @@ function showThankYou() {
       lastScrollTop = scrollTop;
     });
 
+    // Video Unmute
     const video = document.getElementById('chatrboxVideo');
     const overlay = document.getElementById('unmuteOverlay');
-    overlay.addEventListener('click', () => {
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
-    });
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      video.muted = true;
-       overlay.style.display = 'block';
-  });
-</script>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('dropdownMenu');
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-  }
-
-  // Optional: close menu when clicking outside
-  document.addEventListener('click', function(event) {
-    const menu = document.getElementById('dropdownMenu');
-    const hamburger = document.querySelector('.hamburger');
-    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-      menu.style.display = 'none';
+    if (overlay && video) {
+      overlay.addEventListener('click', () => {
+        video.currentTime = 0;
+        video.muted = false;
+        overlay.style.display = 'none';
+        video.play();
+      });
+      video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.muted = true;
+        overlay.style.display = 'block';
+      });
     }
   });
 </script>
+
 
 
 </body>
