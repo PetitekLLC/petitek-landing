@@ -179,12 +179,11 @@
   right: 20px;
   z-index: 1000;
   display: none;
-  background: transparent;
-  border: none;
+  background: none !important;  /* ✅ Remove background from the container */
+  border: none !important;
   padding: 0;
   margin: 0;
-  width: fit-content;    /* key fix */
-  height: fit-content;   /* key fix */
+  box-shadow: none !important;  /* ✅ Prevent outer shadow from wrapping div */
 }
 
 .floating-buy-button.show {
@@ -192,15 +191,16 @@
 }
 
 .floating-buy-button img {
-  width: 90px;             /* adjust as needed */
+  width: 90px;
   height: auto;
-  background: transparent; /* no background */
-  border: none;            /* no border */
+  display: block;
+  background: none !important;  /* ✅ Remove any image background */
+  border: none !important;
   padding: 0;
   margin: 0;
-  display: block;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* optional shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Optional: subtle soft shadow */
 }
+
 
 
     .fade-in {
