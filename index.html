@@ -1109,19 +1109,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
  // 🟩 Forth Video (plays from 10s to 20s)
-  const video3 = document.getElementById('chatrboxVideo3');
-  const overlay3 = document.getElementById('unmuteOverlay3');
+  const video4 = document.getElementById('chatrboxVideo3');
+  const overlay4 = document.getElementById('unmuteOverlay3');
 
   if (overlay4 && video3) {
     overlay4.addEventListener('click', () => {
       video4.currentTime = 10;
       video4.muted = false;
       overlay4.style.display = 'none';
-      video3.play();
+      video4.play();
     });
 
     video3.addEventListener('timeupdate', () => {
-      if (video3.currentTime >= 20) {
+      if (video4.currentTime >= 20) {
         video4.pause();
         video4.currentTime = 10;
         video4.muted = true;
