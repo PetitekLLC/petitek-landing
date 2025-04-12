@@ -172,12 +172,13 @@
         transform: translateY(5px);
       }
     }
+
 .floating-buy-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  display: none; /* show on scroll */
+  display: none; /* hidden by default */
 }
 
 .floating-buy-button.show {
@@ -186,11 +187,10 @@
 
 .floating-buy-button img {
   width: 60px;
-  height: 60px;
-  aspect-ratio: 1 / 1;         /* ensures perfect square */
+  height: auto;
+  display: block;
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-  object-fit: cover;           /* crop to fill, no distortion */
   background: transparent;
 }
 
@@ -906,11 +906,6 @@ You Decide.</div>
   </div>
 
 </section>
-
-
-  
-
-
 <section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
   <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
   <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
@@ -997,13 +992,7 @@ You Decide.</div>
   © Petitek LLC All rights reserved.
 </div>
 </footer>
-  
- <div class="floating-buy-button">
-  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-    <img src="amazon_float_button.png" alt="Buy Now">
-  </a>
-</div>
-  
+    
  <script>
 function showThankYou() {
   const input = document.getElementById('emailInput');
@@ -1039,15 +1028,15 @@ function showThankYou() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Floating Buy Button
-  const floatBtn = document.querySelector('.floating-buy-button');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      floatBtn.classList.add('show');
-    } else {
-      floatBtn.classList.remove('show');
-    }
-  });
+    const floatBtn = document.querySelector('.floating-buy-button');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        floatBtn.classList.add('show');
+      } else {
+        floatBtn.classList.remove('show');
+      }
+    });
 
   // Fade-in Observer
   const fadeEls = document.querySelectorAll('.fade-in');
@@ -1100,8 +1089,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-
-
+<div class="floating-buy-button">
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img src="amazon_float_button.png" alt="Buy Now">
+  </a>
+</div>
 
 </body>
 </html>
