@@ -1074,29 +1074,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
    
   // 🟩 Third Video (plays from 10s to 20s)
-  const video2 = document.getElementById('chatrboxVideo3');
-  const overlay2 = document.getElementById('unmuteOverlay3');
+  const video3 = document.getElementById('chatrboxVideo3');
+  const overlay3 = document.getElementById('unmuteOverlay3');
 
-  if (overlay2 && video2) {
-    overlay2.addEventListener('click', () => {
-      video2.currentTime = 10;
-      video2.muted = false;
-      overlay2.style.display = 'none';
-      video2.play();
+  if (overlay3 && video3) {
+    overlay3.addEventListener('click', () => {
+      video3.currentTime = 10;
+      video3.muted = false;
+      overlay3.style.display = 'none';
+      video3.play();
     });
 
-    video2.addEventListener('timeupdate', () => {
-      if (video2.currentTime >= 20) {
-        video2.pause();
-        video2.currentTime = 10;
-        video2.muted = true;
-        overlay2.style.display = 'block';
+    video3.addEventListener('timeupdate', () => {
+      if (video3.currentTime >= 20) {
+        video3.pause();
+        video3.currentTime = 10;
+        video3.muted = true;
+        overlay3.style.display = 'block';
       }
     });
   }
-</script>
 
-  
   // Hamburger Menu Dropdown Toggle
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
@@ -1104,22 +1102,21 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   });
 
-  
   document.addEventListener('click', function(event) {
     if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
       menu.style.display = 'none';
     }
   });
 });
-</script>
-<div class="floating-buy-button">
+  </script>
+ <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
 
 </body>
-</html>
+</html> 
 
 
 
