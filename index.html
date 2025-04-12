@@ -1003,10 +1003,8 @@ You Decide.</div>
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
- 
-
-  <script>
-
+  
+ <script>
 function showThankYou() {
   const input = document.getElementById('emailInput');
   const message = document.getElementById('thankYouMessage');
@@ -1015,7 +1013,6 @@ function showThankYou() {
   const spinner = document.getElementById('spinner');
 
   if (input.checkValidity()) {
-    // Show spinner and disable submit button
     buttonText.style.display = 'none';
     spinner.style.display = 'block';
     submitButton.disabled = true;
@@ -1027,73 +1024,84 @@ function showThankYou() {
       method: "POST",
       body: formData
     })
-       .then(() => {
-        // Hide spinner, show thank-you message, reset input
-        spinner.style.display = 'none';
-        submitButton.disabled = false;
-        buttonText.style.display = 'block';
-        message.style.display = 'block';
-        input.value = '';
+    .then(() => {
+      spinner.style.display = 'none';
+      submitButton.disabled = false;
+      buttonText.style.display = 'block';
+      message.style.display = 'block';
+      input.value = '';
 
-        // ⏳ Hide thank-you message after 3 seconds
-        setTimeout(() => {
-          message.style.display = 'none';
-        }, 3000);
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 3000);
     });
   }
 }
 
-<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Show/hide floating button based on scroll position
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        floatBtn.classList.add('show');
-      } else {
-        floatBtn.classList.remove('show');
-      }
-    });
-
-    // Fade-in Observer
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        entry.isIntersecting
-          ? entry.target.classList.add('visible')
-          : entry.target.classList.remove('visible');
-      });
-    }, { threshold: 0.1 });
-    fadeEls.forEach(el => observer.observe(el));
-
-    // Navbar Hide on Scroll
-    const navbar = document.getElementById('navbar');
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
-      lastScrollTop = scrollTop;
-    });
-
-    // Video Unmute
-    const video = document.getElementById('chatrboxVideo');
-    const overlay = document.getElementById('unmuteOverlay');
-    if (overlay && video) {
-      overlay.addEventListener('click', () => {
-        video.currentTime = 0;
-        video.muted = false;
-        overlay.style.display = 'none';
-        video.play();
-      });
-      video.addEventListener('ended', () => {
-        video.currentTime = 0;
-        video.muted = true;
-        overlay.style.display = 'block';
-      });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      floatBtn.classList.add('show');
+    } else {
+      floatBtn.classList.remove('show');
     }
   });
+
+  // Fade-in Observer
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.isIntersecting
+        ? entry.target.classList.add('visible')
+        : entry.target.classList.remove('visible');
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Navbar Hide on Scroll
+  const navbar = document.getElementById('navbar');
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
+    lastScrollTop = scrollTop;
+  });
+
+  // Video Overlay Click to Unmute
+  const video = document.getElementById('chatrboxVideo');
+  const overlay = document.getElementById('unmuteOverlay');
+  if (overlay && video) {
+    overlay.addEventListener('click', () => {
+      video.currentTime = 0;
+      video.muted = false;
+      overlay.style.display = 'none';
+      video.play();
+    });
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      video.muted = true;
+      overlay.style.display = 'block';
+    });
+  }
+
+  // Hamburger Menu Dropdown Toggle
+  const menu = document.getElementById('dropdownMenu');
+  const hamburger = document.querySelector('.hamburger');
+  hamburger?.addEventListener('click', () => {
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+});
 </script>
+
+
 
 </body>
 </html>
