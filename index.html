@@ -172,28 +172,28 @@
         transform: translateY(5px);
       }
     }
-    .floating-buy-button {
+.floating-buy-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  display: none; /* show on scroll */
 }
 
 .floating-buy-button.show {
   display: block;
-  opacity: 1;
 }
 
 .floating-buy-button img {
   width: 60px;
   height: 60px;
+  aspect-ratio: 1 / 1;         /* ensures perfect square */
   border-radius: 50%;
-  background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  object-fit: cover;           /* crop to fill, no distortion */
+  background: transparent;
 }
+
 
     .fade-in {
       opacity: 0;
