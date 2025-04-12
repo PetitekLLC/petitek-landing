@@ -117,14 +117,17 @@
       width: 100vw;
       overflow-x: hidden;
     }
-    .stacked-gallery img {
-      width: 100vw;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      box-sizing: border-box;
-    }
+  .stacked-gallery img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
     .text-block {
       font-size: 20px;
       color: #444;
@@ -402,6 +405,13 @@
   background: red;
   clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
 }
+@media (max-width: 480px) {
+  .text-block {
+    padding: 20px 14px 30px;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+}
 
   </style>
 </head>
@@ -439,9 +449,10 @@
       Chatrbox is your secret weapon for shaping better behavior at home - no yelling, shock devices, gates, crates, or stress. Just calm, consistent guidance.
     </div>
  </div>
-   <div style="padding:56.25% 0 0 0;position:relative;width:100%;">
-      <iframe src="https://player.vimeo.com/video/1073251548?badge=0&amp;autopause=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="ChatrBOX Overview Video"></iframe>
-    </div>
+ 
+<div style="padding:56.25% 0 0 0;position:relative;width:100%;">
+  <iframe src="https://player.vimeo.com/video/..." style="position:absolute;top:0;left:0;width:100%;height:100%;" ...></iframe>
+</div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
   
@@ -451,47 +462,67 @@
     The best training tool is your voice - but you can’t be everywhere at once. That’s where ChatrBox steps in. It’s always on, guiding Fido or Felix away from bad behavior.
        </div>
  </div>
-    <img src="images/advantage-icons.jpg" alt="Unleash Great Behavior One Command At A Time." class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Unleash Your Pet's Great Behavior</div>
-       <div style="text-align: left;">
-      ChatrBox combines attention grabbing alerts, flashing lights along  with your voice, triggered at exactly the right time and place - when training matters most.
-       </div>
- </div>
-    <img src="images/chair_image@2x.png" alt="How_It_works" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Breaks Bad Habits. <br>Teaches Great Behavior.</div>
-       <div style="text-align: left;">
-  ChatrBox uses motion detection and a custom audio responses to gently remind your pet, “Uh-uh, not there. when something is about to happen.”  
+   <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/advantage-icons.jpg" alt="Unleash Great Behavior One Command At A Time." class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Unleash Your Pet's Great Behavior</div>
+    <div style="text-align: left;">
+      ChatrBox combines attention grabbing alerts, flashing lights along with your voice, triggered at exactly the right time and place — when training matters most.
+    </div>
+  </div>
+</div>
+
+   <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/chair_image@2x.png" alt="How_It_works" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Breaks Bad Habits. <br>Teaches Great Behavior.</div>
+    <div style="text-align: left;">
+      ChatrBox uses motion detection and custom audio responses to gently remind your pet, “Uh-uh, not there,” when something is about to happen.
+    </div>
+  </div>
+</div>
+
   <br><br>
                No yelling, no chasing, no more hairy chairy, sneak leaks or midnight counter surfing.  Just press a button and let ChatrBox do the coaching.
     </div>
  </div>
-    <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Your Voice Is The Differentiator.</div>
-       <div style="text-align: left;">
-     It speaks with one voice: Yours. Record a custom message like “No, Delilah!” or “Leave it!” and ChatrBox will repeat it - loud and clear, as often as needed - even when you’re not around. 
-    </div> 
- </div>
-
-    <img src="images/advantage-cards.jpg" alt="Training Benefits" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Auto Escalates When Needed </div>
-<div style="text-align: left;">
-  Some pets are more stubborn than others and need a little more "encouragement".
-  <br>
- <div style="font-weight: bold; text-align: center; margin: 20px 0 10px;">Trigger Sequence</div>
-
-  <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
-    <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</div>
-    <div><strong>Your Voice</strong> – Your message. Your command.</div>
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/stop-a-disaster.jpg" alt="Stop Disaster Before It Happens" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Your Voice Is The Differentiator.</div>
+    <div style="text-align: left;">
+      It speaks with one voice: Yours. Record a custom message like “No, Delilah!” or “Leave it!” and ChatrBox will repeat it — loud and clear, as often as needed — even when you’re not around.
+    </div>
   </div>
+</div>
 
-  <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
-    <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</div>
-    <div><strong>Your Voice + Alert</strong> – Adds an attention sound plus your command.</div>
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/advantage-cards.jpg" alt="Training Benefits" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Auto Escalates When Needed</div>
+    <div style="text-align: left;">
+      Some pets are more stubborn than others and need a little more "encouragement".
+    </div>
+
+    <div style="font-weight: bold; text-align: center; margin: 20px 0 10px;">Trigger Sequence</div>
+
+    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</div>
+      <div><strong>Your Voice</strong> – Your message. Your command.</div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</div>
+      <div><strong>Your Voice + Alert</strong> – Adds an attention sound plus your command.</div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</div>
+      <div><strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong> – “Okay, this is serious now.”</div>
+    </div>
   </div>
+</div>
+
 
   <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
     <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</div>
@@ -516,27 +547,32 @@
 
 </div>
 
-    <img src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Designed for Home Life.</div>
-       <div style="text-align: left;">
- ChatrBox is designed to train in real-world spaces - big or small or in-between. 
-         <br><br> 
-         Whether it’s keeping paws out of a room, off the couch, counter, away from a doorway, or even if your missing sock, ChatrBox adapts to your spaces and your house  rules.
+ <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/virtual-boundaries.jpg" alt="Virtual Boundaries" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Designed for Home Life.</div>
+    <div style="text-align: left;">
+      ChatrBox is designed to train in real-world spaces - big or small or in-between. 
+      <br><br> 
+      Whether it’s keeping paws out of a room, off the couch, counter, away from a doorway, or even off your missing sock, ChatrBox adapts to your spaces and your house rules.
     </div>
-    </div/>
+  </div>
+</div>
 
-    <img src="images/voice-commands.jpg" alt="Voice Commands" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Because Life’s Messy Enough Without a Four-Legged Tornado.</div>
-       <div style="text-align: left;">
-    Whatever mischief your pet gets into, ChatrBox is ready.
-         <br><br> 
-         With voice-guided reminders and smart escalation, it helps your pet make better choices—so you don’t have to play pet detective every 10 minutes.  
-       </div>
-    </div/>
 
-    <img src="images/safe-zones.jpg" alt="Safe Zones" class="fade-in" />
+   <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/voice-commands.jpg" alt="Voice Commands" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Because Life’s Messy Enough Without a Four-Legged Tornado.</div>
+    <div style="text-align: left;">
+      Whatever mischief your pet gets into, ChatrBox is ready.
+      <br><br> 
+      With voice-guided reminders and smart escalation, it helps your pet make better choices—so you don’t have to play pet detective every 10 minutes.  
+    </div>
+  </div>
+</div>
+
+ <img src="images/safe-zones.jpg" alt="Safe Zones" class="fade-in" />
     <div class="text-block fade-in">
       <div style="font-weight: bold; text-align: center;">ChatrBox A Gamechanger? <br>
 You Decide.</div>
@@ -547,91 +583,123 @@ You Decide.</div>
          When those don’t work, you’re left fencing off rooms or crating your pet—when all they really want is to be near you. Not any more.
     </div>
     </div/>
-
-    <img src="images/happier-pets.jpg" alt="Happy Pets" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Reimagining Pet Training.</div>
-       <div style="text-align: left;">
-     Not all training tools are created equal. See how ChatrBox delivers smarter, safer results—without the shocks, sprays, cages or stress.
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/happier-pets.jpg" alt="Happy Pets" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Reimagining Pet Training.</div>
+    <div style="text-align: left;">
+      Not all training tools are created equal. See how ChatrBox delivers smarter, safer results—without the shocks, sprays, cages or stress.
     </div>
-    </div/>
-
-    <img src="images/smart-training.jpg" alt="Smart Training Summary" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Because Love And Fear Don’t Mix.</div>
-       <div style="text-align: left;">
-     Most pet training products rely on shock or ultrasonic squeals, or weird-smelling sprays. 
-         <br>
-         <br>
-         When those don’t work, you’re left fencing off rooms or crating your pet—when all they really want is to be near you. Not any more.
+  </div>
+</div>
+  
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/happier-pets.jpg" alt="Happy Pets" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Reimagining Pet Training.</div>
+    <div style="text-align: left;">
+      Not all training tools are created equal. See how ChatrBox delivers smarter, safer results—without the shocks, sprays, cages or stress.
     </div>
- </div> 
+  </div>
+</div>
 
-    <img src="images/instant-correction.jpg" alt="Instant Correction" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Happy Pets. <br> Happier Humans.</div>
-       <div style="text-align: left;">
-     Good pets aren't born—they're nutured. ChatrBox helps your pet succeed by giving them the structure and directions they crave and the voice they already trust: yours. 
-         <br>
-         <br>
-         It’s training that nurtures good habits, not fear.
+   
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/smart-training.jpg" alt="Smart Training Summary" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Because Love And Fear Don’t Mix.</div>
+    <div style="text-align: left;">
+      Most pet training products rely on shock or ultrasonic squeals, or weird-smelling sprays. 
+      <br><br>
+      When those don’t work, you’re left fencing off rooms or crating your pet—when all they really want is to be near you. Not any more.
     </div>
-    </div/>
+  </div>
+</div>
 
-    <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Teachable Moments Matter</div>
-       <div style="text-align: left;">
+  <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/instant-correction.jpg" alt="Instant Correction" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Happy Pets. <br> Happier Humans.</div>
+    <div style="text-align: left;">
+      Good pets aren't born—they're nurtured. ChatrBox helps your pet succeed by giving them the structure and directions they crave and the voice they already trust: yours. 
+      <br><br>
+      It’s training that nurtures good habits, not fear.
+    </div>
+  </div>
+</div>
+
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Teachable Moments Matter</div>
+    <div style="text-align: left;">
       Catch behavior in the act to teach better habits that stick.
     </div>
- </div>
+  </div>
+</div>
 
-    <img src="images/repetition-benefits.jpg" alt="Repetition in Training" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Start Unleashing Great Behavior Today</div>
-       <div style="text-align: left;">
-       Tap the Amazon button to get your ChatrBox delivered right away. The sooner you start, the sooner you'll get big fat kisses from your pet - just ask thousands of happy pet parents.
-    </div/>
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/repetition-benefits.jpg" alt="Repetition in Training" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Start Unleashing Great Behavior Today</div>
+    <div style="text-align: left;">
+      Tap the Amazon button to get your ChatrBox delivered right away. The sooner you start, the sooner you'll get big fat kisses from your pet - just ask thousands of happy pet parents.
+    </div>
+  </div>
+</div>
 
-    <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
-      <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
-        <source src="videos/End%20V10.mp4" type="video/mp4">
-      </video>
-      <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
-        🔊 Tap to Unmute
-      </div>
-    </div/>
+<div style="padding-left: 10px; padding-right: 10px;">
+  <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
+    <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
+    </video>
+    <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+      🔊 Tap to Unmute
+    </div>
+  </div>
+</div>
 
     <div class="text-block fade-in">
       <div style="font-weight: bold; text-align: center;">ChatrBox Chatter</div>
        <div style="text-align: left;">
       Real stories from real pet parents. Happy pets, happier homes — thanks to Chatrbox.
     </div>    
-    </div/>
+    </div>
 
-    <img src="images/testimonials.jpg" alt="Testimonials" class="fade-in" />
-    <div class="text-block fade-in">
-      <div style="font-weight: bold; text-align: center;">Consistent Messaging</div>
-       <div style="text-align: left;">
+   <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/testimonials.jpg" alt="Testimonials" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Consistent Messaging</div>
+    <div style="text-align: left;">
       Repetition strengthens positive behavior — no yelling required.
     </div>
-    </div/> 
+  </div>
+</div>
 
-    <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-      <img src="images/call-to-action.jpg" alt="Call to Action" />
-    </a>
-    <div class="text-block">
-      <div style="font-weight: bold; text-align: center;">Start Smart Training Today</div>
-       <div style="text-align: left;">
-      Make Chatrbox your new secret weapon for calm, well-trained pets.
+<div style="padding-left: 10px; padding-right: 10px;">
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img src="images/call-to-action.jpg" alt="Call to Action" />
+  </a>
+</div>
+    
+   <div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/smart-training.jpg" alt="Smart Training Summary" class="fade-in" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center;">Because Love And Fear Don’t Mix.</div>
+    <div style="text-align: left;">
+      Most pet training products rely on shock or ultrasonic squeals, or weird-smelling sprays. 
+      <br><br>
+      When those don’t work, you’re left fencing off rooms or crating your pet—when all they really want is to be near you. Not any more.
     </div>
-    </div/>
+  </div>
+</div>
 
   <section class="master-features" style="padding: 40px 20px; background-color: #f7f7f7;"><p style="max-width: 700px; margin: 0 auto; font-size: 18px; line-height: 1.6;">Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.</p>
     <button onclick="document.getElementById('featureAudio').play();" style="margin-top: 15px; padding: 14px 30px; font-size: 18px; display: block; margin-left: auto; margin-right: auto; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">🔊 Play Sample Command</button>
     <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 10px; text-align: center; max-width: 320px; margin-left: auto; margin-right: auto;">Played up to 90dB Loud — repeated until pet learns the behavior</div>
     <audio id="featureAudio" src="audio/sample-command.mp3"></audio> 
   </div>
+  
 <!-- FEATURE HIGHLIGHTS HEADER -->
 <div class="fade-in" style="
   background-color: #25A8C6;
