@@ -1043,118 +1043,110 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-const video = document.getElementById('chatrboxVideo');
-const overlay = document.getElementById('unmuteOverlay');
+document.addEventListener('DOMContentLoaded', () => {
 
-if (video && overlay) {
-  video.addEventListener('loadedmetadata', () => {
-    setTimeout(() => {
-      video.currentTime = 88;
-      video.play();
-    }, 100);
-  });
+  // VIDEO 1
+  const video1 = document.getElementById('chatrboxVideo');
+  const overlay1 = document.getElementById('unmuteOverlay');
+  if (video1 && overlay1) {
+    video1.preload = "none";
+    video1.muted = true;
+    video1.addEventListener('loadedmetadata', () => {
+      video1.currentTime = 88;
+    });
+    video1.addEventListener('timeupdate', () => {
+      if (video1.currentTime >= 153) {
+        video1.pause();
+        overlay1.style.display = 'block';
+        video1.currentTime = 88;
+        video1.muted = true;
+      }
+    });
+    overlay1.addEventListener('click', () => {
+      video1.currentTime = 88;
+      video1.muted = false;
+      overlay1.style.display = 'none';
+      video1.play();
+    });
+  }
 
-  video.addEventListener('timeupdate', () => {
-    if (video.currentTime >= 153) {
-      video.pause();
-      video.currentTime = 88;
-      video.muted = true;
-      overlay.style.display = 'block';
-    }
-  });
-
-  overlay.addEventListener('click', () => {
-    video.currentTime = 88;
-    video.muted = false;
-    overlay.style.display = 'none';
-    video.play();
-  });
-}
-
-
-const video2 = document.getElementById('chatrboxVideo2');
-const overlay2 = document.getElementById('unmuteOverlay2');
-
-if (video2 && overlay2) {
-  video2.addEventListener('loadedmetadata', () => {
-    setTimeout(() => {
+  // VIDEO 2
+  const video2 = document.getElementById('chatrboxVideo2');
+  const overlay2 = document.getElementById('unmuteOverlay2');
+  if (video2 && overlay2) {
+    video2.preload = "none";
+    video2.muted = true;
+    video2.addEventListener('loadedmetadata', () => {
       video2.currentTime = 154;
+    });
+    video2.addEventListener('timeupdate', () => {
+      if (video2.currentTime >= 167) {
+        video2.pause();
+        overlay2.style.display = 'block';
+        video2.currentTime = 154;
+        video2.muted = true;
+      }
+    });
+    overlay2.addEventListener('click', () => {
+      video2.currentTime = 154;
+      video2.muted = false;
+      overlay2.style.display = 'none';
       video2.play();
-    }, 100);
-  });
+    });
+  }
 
-  video2.addEventListener('timeupdate', () => {
-    if (video2.currentTime >= 167) {
-      video2.pause();
-      video2.currentTime = 154;
-      video2.muted = true;
-      overlay2.style.display = 'block';
-    }
-  });
-
-  overlay2.addEventListener('click', () => {
-    video2.currentTime = 154;
-    video2.muted = false;
-    overlay2.style.display = 'none';
-    video2.play();
-  });
-}
-
-const video3 = document.getElementById('chatrboxVideo3');
-const overlay3 = document.getElementById('unmuteOverlay3');
-
-if (video3 && overlay3) {
-  video3.addEventListener('loadedmetadata', () => {
-    setTimeout(() => {
+  // VIDEO 3
+  const video3 = document.getElementById('chatrboxVideo3');
+  const overlay3 = document.getElementById('unmuteOverlay3');
+  if (video3 && overlay3) {
+    video3.preload = "none";
+    video3.muted = true;
+    video3.addEventListener('loadedmetadata', () => {
       video3.currentTime = 168;
+    });
+    video3.addEventListener('timeupdate', () => {
+      if (video3.currentTime >= 188) {
+        video3.pause();
+        overlay3.style.display = 'block';
+        video3.currentTime = 168;
+        video3.muted = true;
+      }
+    });
+    overlay3.addEventListener('click', () => {
+      video3.currentTime = 168;
+      video3.muted = false;
+      overlay3.style.display = 'none';
       video3.play();
-    }, 100);
-  });
+    });
+  }
 
-  video3.addEventListener('timeupdate', () => {
-    if (video3.currentTime >= 188) {
-      video3.pause();
-      video3.currentTime = 168;
-      video3.muted = true;
-      overlay3.style.display = 'block';
-    }
-  });
-
-  overlay3.addEventListener('click', () => {
-    video3.currentTime = 168;
-    video3.muted = false;
-    overlay3.style.display = 'none';
-    video3.play();
-  });
-}
-
-const video4 = document.getElementById('chatrboxVideo4');
-const overlay4 = document.getElementById('unmuteOverlay4');
-
-if (video4 && overlay4) {
-  video4.addEventListener('loadedmetadata', () => {
-    setTimeout(() => {
+  // VIDEO 4
+  const video4 = document.getElementById('chatrboxVideo4');
+  const overlay4 = document.getElementById('unmuteOverlay4');
+  if (video4 && overlay4) {
+    video4.preload = "none";
+    video4.muted = true;
+    video4.addEventListener('loadedmetadata', () => {
       video4.currentTime = 189;
+    });
+    video4.addEventListener('timeupdate', () => {
+      if (video4.currentTime >= 225) {
+        video4.pause();
+        overlay4.style.display = 'block';
+        video4.currentTime = 189;
+        video4.muted = true;
+      }
+    });
+    overlay4.addEventListener('click', () => {
+      video4.currentTime = 189;
+      video4.muted = false;
+      overlay4.style.display = 'none';
       video4.play();
-    }, 100);
-  });
+    });
+  }
 
-  video4.addEventListener('timeupdate', () => {
-    if (video4.currentTime >= 225) {
-      video4.pause();
-      video4.currentTime = 189;
-      video4.muted = true;
-      overlay4.style.display = 'block';
-    }
-  });
+});
 
-  overlay4.addEventListener('click', () => {
-    video4.currentTime = 189;
-    video4.muted = false;
-    overlay4.style.display = 'none';
-    video4.play();
-  });
-}
 
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
