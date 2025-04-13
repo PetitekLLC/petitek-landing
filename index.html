@@ -1060,13 +1060,11 @@ function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
     video.play();
   });
 
-  // Loop logic — stop at endTime
+  // Loop logic — stop at endTime and restart silently
   video.addEventListener('timeupdate', () => {
     if (video.currentTime >= endTime) {
-      video.pause();
       video.currentTime = startTime;
-      video.muted = true;
-      overlay.style.display = 'block'; // show unmute button again
+      video.play(); // 🔁 Resume playback from startTime
     }
   });
 
@@ -1077,7 +1075,12 @@ function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
     overlay.style.display = 'none';
     video.play();
   });
+
+  // Mute + autoplay on page load
+  video.muted = true;
+  video.play();
 }
+
 setupVideoPlayer('chatrboxVideo', 'unmuteOverlay', 88, 153);    // 1:28–2:33
 setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34–2:47
 setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188); // 2:48–3:08
