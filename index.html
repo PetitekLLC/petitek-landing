@@ -1048,90 +1048,41 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-  // 🟦 First Video (plays full video)
-  const video = document.getElementById('chatrboxVideo');
-  const overlay = document.getElementById('unmuteOverlay');
+function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
+  const video = document.getElementById(videoId);
+  const overlay = document.getElementById(overlayId);
 
-  if (overlay && video) {
+  if (video && overlay) {
     overlay.addEventListener('click', () => {
-      video.currentTime = 0;
+      video.currentTime = startTime;
       video.muted = false;
       overlay.style.display = 'none';
       video.play();
     });
 
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime >= endTime) {
+        video.pause();
+        video.muted = true;
+        overlay.style.display = 'block';
+      }
+    });
+
+    // Optional: Reset video on end
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.muted = true;
       overlay.style.display = 'block';
     });
   }
+}
 
-  // 🟩 Second Video (plays from 10s to 20s)
-  const video2 = document.getElementById('chatrboxVideo2');
-  const overlay2 = document.getElementById('unmuteOverlay2');
+// Example usage:
+setupVideoPlayer('chatrboxVideo', 'unmuteOverlay', 88, 153);    // 1:28 to 2:33
+setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34 to 2:47
+setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188); // 2:48 to 3:08
+setupVideoPlayer('chatrboxVideo4', 'unmuteOverlay4', 189, 225); // 3:09 to 3:45
 
-  if (overlay2 && video2) {
-    overlay2.addEventListener('click', () => {
-      video2.currentTime = 10;
-      video2.muted = false;
-      overlay2.style.display = 'none';
-      video2.play();
-    });
-
-    video2.addEventListener('timeupdate', () => {
-      if (video2.currentTime >= 20) {
-        video2.pause();
-        video2.currentTime = 10;
-        video2.muted = true;
-        overlay2.style.display = 'block';
-      }
-    });
-  }
-   
-  // 🟩 Third Video (plays from 10s to 20s)
-  const video3 = document.getElementById('chatrboxVideo3');
-  const overlay3 = document.getElementById('unmuteOverlay3');
-
-  if (overlay3 && video3) {
-    overlay3.addEventListener('click', () => {
-      video3.currentTime = 10;
-      video3.muted = false;
-      overlay3.style.display = 'none';
-      video3.play();
-    });
-
-    video3.addEventListener('timeupdate', () => {
-      if (video3.currentTime >= 20) {
-        video3.pause();
-        video3.currentTime = 10;
-        video3.muted = true;
-        overlay3.style.display = 'block';
-      }
-    });
-  }
-
- // 🟩 Forth Video (plays from 10s to 20s)
-  const video4 = document.getElementById('chatrboxVideo3');
-  const overlay4 = document.getElementById('unmuteOverlay3');
-
-  if (overlay4 && video3) {
-    overlay4.addEventListener('click', () => {
-      video4.currentTime = 10;
-      video4.muted = false;
-      overlay4.style.display = 'none';
-      video4.play();
-    });
-
-    video3.addEventListener('timeupdate', () => {
-      if (video4.currentTime >= 20) {
-        video4.pause();
-        video4.currentTime = 10;
-        video4.muted = true;
-        overlay4.style.display = 'block';
-      }
-    });
-  }
 
   // Hamburger Menu Dropdown Toggle
   const menu = document.getElementById('dropdownMenu');
