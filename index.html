@@ -679,22 +679,24 @@
    when you’re not in the room. Real results, real fast.
   </div>
 </div>
+
   <!-- Play Sample Command -->
 <button onclick="document.getElementById('featureAudio').play();" 
   style="margin: 25px auto 20px auto; padding: 20px 40px; font-size: 18px; display: block; border: none; border-radius: 8px; background-color: #25A8C6; color: white; cursor: pointer;">
   🔊 Play Sample Command
 </button>
 <div style="font-size: 14px; font-style: italic; color: #333; text-align: center; max-width: 320px; margin: 0 auto 20px auto;">
-  Played up to 90dB Loud — repeated until pet learns the behavior
+  Played at ~ 60dB Loud
 </div>
 <audio id="featureAudio" src="audio/sample-command.mp3"></audio>
+
   <!-- Play Sample Command (Second) -->
 <button onclick="document.getElementById('featureAudio2').play();" 
-  style="margin-top: 15px; padding: 14px 30px; font-size: 18px; display: block; margin-left: auto; margin-right: auto; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
+    style="margin: 25px auto 20px auto; padding: 20px 40px; font-size: 18px; display: block; border: none; border-radius: 8px; background-color: #25A8C6; color: white; cursor: pointer;">
   🔊 Play Sample Command
 </button>
   <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 10px; text-align: center; max-width: 320px; margin-left: auto; margin-right: auto;">
-  Played up to 90dB Loud — repeated until pet learns the behavior
+  Played at ~85 Loud
 </div>
 <audio id="featureAudio2" src="audio/sample-command.mp3"></audio>
 <!-- See It In Action -->
@@ -713,15 +715,15 @@
     <div style="font-weight: bold; text-align: center; margin: 20px 0 10px;">Trigger Sequence</div>
     <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
       <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</div>
-      <div><strong>Your Voice</strong> – Your message. Your command.</div>
+      <div><strong>Your Voice</strong> <br> Your Message. Your Vmmand.</div>
     </div>
     <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
       <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</div>
-      <div><strong>Your Voice + Alert</strong> – Adds an attention sound plus your command.</div>
+      <div><strong>Your Voice + Alert</strong> <br> Escalates the Command  </div>
     </div>
  <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
       <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</div>
-      <div><strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong> – “Okay, this is serious now.”</div>
+      <div><strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong></div>
     </div>
   </div>
 </div>
@@ -1119,7 +1121,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  
   // Hamburger Menu Dropdown Toggle
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
