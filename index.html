@@ -1055,25 +1055,23 @@ function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
 
   if (!video || !overlay) return;
 
-  // Ensure the video starts at the correct time after metadata is loaded
   video.addEventListener('loadedmetadata', () => {
+    // Safely delay setting currentTime to ensure it's available
     setTimeout(() => {
       video.currentTime = startTime;
       video.play();
-    }, 50); // Small delay ensures currentTime is applied
+    }, 100);
   });
 
-  // Loop control: stop and rewind to startTime
   video.addEventListener('timeupdate', () => {
     if (video.currentTime >= endTime) {
       video.pause();
       video.currentTime = startTime;
       video.muted = true;
-      overlay.style.display = 'block'; // Show Tap to Unmute again
+      overlay.style.display = 'block';
     }
   });
 
-  // Tap overlay to unmute and restart from startTime
   overlay.addEventListener('click', () => {
     video.currentTime = startTime;
     video.muted = false;
@@ -1082,12 +1080,13 @@ function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
   });
 }
 
-// Initialize each video with its unique time range
-setupVideoPlayer('chatrboxVideo',  'unmuteOverlay',  88, 153);  // 1:28–2:33
-setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34–2:47
-setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188); // 2:48–3:08
-setupVideoPlayer('chatrboxVideo4', 'unmuteOverlay4', 189, 225); // 3:09–3:45
+// Each video segment
+setupVideoPlayer('chatrboxVideo',  'unmuteOverlay',  88, 153);
+setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167);
+setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188);
+setupVideoPlayer('chatrboxVideo4', 'unmuteOverlay4', 189, 225);
 </script>
+
 
 
 
