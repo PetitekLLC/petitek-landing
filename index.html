@@ -1048,30 +1048,32 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
+<script>
 function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
   const video = document.getElementById(videoId);
   const overlay = document.getElementById(overlayId);
 
   if (!video || !overlay) return;
 
-  // Set the initial position once metadata is loaded
+  // Ensure the video starts at the correct time after metadata is loaded
   video.addEventListener('loadedmetadata', () => {
-    video.currentTime = startTime;
-    video.play();
+    setTimeout(() => {
+      video.currentTime = startTime;
+      video.play();
+    }, 50); // Small delay ensures currentTime is applied
   });
 
-  // Loop control
+  // Loop control: stop and rewind to startTime
   video.addEventListener('timeupdate', () => {
     if (video.currentTime >= endTime) {
       video.pause();
       video.currentTime = startTime;
-      video.play();  // 🔁 THIS resumes the loop
       video.muted = true;
-      overlay.style.display = 'block';
+      overlay.style.display = 'block'; // Show Tap to Unmute again
     }
   });
 
-  // Unmute & restart from start time
+  // Tap overlay to unmute and restart from startTime
   overlay.addEventListener('click', () => {
     video.currentTime = startTime;
     video.muted = false;
@@ -1080,17 +1082,13 @@ function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
   });
 }
 
-// Setup each video player independently
-setupVideoPlayer('chatrboxVideo', 'unmuteOverlay', 88, 153);    // 1:28–2:33
+// Initialize each video with its unique time range
+setupVideoPlayer('chatrboxVideo',  'unmuteOverlay',  88, 153);  // 1:28–2:33
 setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34–2:47
 setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188); // 2:48–3:08
 setupVideoPlayer('chatrboxVideo4', 'unmuteOverlay4', 189, 225); // 3:09–3:45
+</script>
 
-
-setupVideoPlayer('chatrboxVideo', 'unmuteOverlay', 88, 153);    // 1:28–2:33
-setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34–2:47
-setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188); // 2:48–3:08
-setupVideoPlayer('chatrboxVideo4', 'unmuteOverlay4', 189, 225); // 3:09–3:45
 
 
   // Hamburger Menu Dropdown Toggle
