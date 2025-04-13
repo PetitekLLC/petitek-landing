@@ -1048,26 +1048,34 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-<script>
-const video1 = document.getElementById('chatrboxVideo');
-const overlay1 = document.getElementById('unmuteOverlay');
+const video = document.getElementById('chatrboxVideo');
+const overlay = document.getElementById('unmuteOverlay');
 
-if (video1 && overlay1) {
-  video1.addEventListener('loadedmetadata', () => {
+if (video && overlay) {
+  video.addEventListener('loadedmetadata', () => {
     setTimeout(() => {
-      video1.currentTime = 88;
-      video1.play();
+      video.currentTime = 88;
+      video.play();
     }, 100);
   });
 
-  video1.addEventListener('timeupdate', () => {
-    if (video1.currentTime >= 153) {
-      video1.pause();
-      video1.currentTime = 88;
-      video1.muted = true;
-      overlay1.style.display = 'block';
+  video.addEventListener('timeupdate', () => {
+    if (video.currentTime >= 153) {
+      video.pause();
+      video.currentTime = 88;
+      video.muted = true;
+      overlay.style.display = 'block';
     }
   });
+
+  overlay.addEventListener('click', () => {
+    video.currentTime = 88;
+    video.muted = false;
+    overlay.style.display = 'none';
+    video.play();
+  });
+}
+
 
   overlay1.addEventListener('click', () => {
     video1.currentTime = 88;
