@@ -1054,32 +1054,38 @@ function setupVideoPlayer(videoId, overlayId, startTime, endTime) {
 
   if (!video || !overlay) return;
 
-  // Seek to startTime when metadata is loaded
+  // Set the initial position once metadata is loaded
   video.addEventListener('loadedmetadata', () => {
     video.currentTime = startTime;
     video.play();
   });
 
-  // Loop logic — stop at endTime and restart silently
+  // Loop control
   video.addEventListener('timeupdate', () => {
     if (video.currentTime >= endTime) {
+      video.pause();
       video.currentTime = startTime;
-      video.play(); // 🔁 Resume playback from startTime
+      video.play();  // 🔁 THIS resumes the loop
+      video.muted = true;
+      overlay.style.display = 'block';
     }
   });
 
-  // Tap overlay to restart from startTime with sound
+  // Unmute & restart from start time
   overlay.addEventListener('click', () => {
     video.currentTime = startTime;
     video.muted = false;
     overlay.style.display = 'none';
     video.play();
   });
-
-  // Mute + autoplay on page load
-  video.muted = true;
-  video.play();
 }
+
+// Setup each video player independently
+setupVideoPlayer('chatrboxVideo', 'unmuteOverlay', 88, 153);    // 1:28–2:33
+setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34–2:47
+setupVideoPlayer('chatrboxVideo3', 'unmuteOverlay3', 168, 188); // 2:48–3:08
+setupVideoPlayer('chatrboxVideo4', 'unmuteOverlay4', 189, 225); // 3:09–3:45
+
 
 setupVideoPlayer('chatrboxVideo', 'unmuteOverlay', 88, 153);    // 1:28–2:33
 setupVideoPlayer('chatrboxVideo2', 'unmuteOverlay2', 154, 167); // 2:34–2:47
