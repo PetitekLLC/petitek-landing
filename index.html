@@ -595,29 +595,30 @@
   </div>
 </div>
 
-<!-- 🔊 Audio Trigger Buttons -->
-<div style="max-width: 400px; margin: 30px auto 0;">
-
-  <!-- Moderate Alert Button -->
-  <button onclick="document.getElementById('triggerAudio1').play();" 
-    style="width: 100%; padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
+<!-- 🔊 Play Alert Button -->
+<div style="width: 100%; max-width: 320px; margin: 20px auto; text-align: center;">
+  <button onclick="document.getElementById('triggerAudio1').play();"
+    style="width: 100%; padding: 14px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
     🔊 Play Alert
   </button>
-  <div style="font-size: 13px; font-style: italic; color: #333; margin-top: 6px; text-align: left;">
+  <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px;">
     Your custom voice command.
   </div>
   <audio id="triggerAudio1" src="/audio/sample-command.mp3"></audio>
+</div>
 
-  <!-- Escalated Alert Button -->
-  <button onclick="document.getElementById('triggerAudio2').play();" 
-    style="width: 100%; padding: 10px 20px; font-size: 16px; border: none; border-radius: 5px; background-color: #006699; color: white; cursor: pointer; margin-top: 20px;">
+<!-- 🔊 Play Escalated Alert Button -->
+<div style="width: 100%; max-width: 320px; margin: 20px auto; text-align: center;">
+  <button onclick="document.getElementById('triggerAudio2').play();"
+    style="width: 100%; padding: 14px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
     🔊 Play Escalated Alert
   </button>
-  <div style="font-size: 13px; font-style: italic; color: #333; margin-top: 6px; text-align: left;">
-   Your custom voice command.
+  <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px;">
+    Your custom voice command.
   </div>
-<audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
+  <audio id="triggerAudio2" src="/audio/sample-command-escalated.mp3"></audio>
 </div>
+
 
 <div class="text-block fade-in visible" style="padding-left: 10px; padding-right: 10px;">
   <div style="font-weight: bold; text-align: center;">Designed for Home Life.</div>
