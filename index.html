@@ -597,7 +597,7 @@
 
 <!-- 🔊 Play Alert Button -->
 <div style="width: 100%; max-width: 320px; margin: 20px auto; text-align: center;">
-  <button onclick="document.getElementById('triggerAudio1').play();"
+ <button onclick="const audio = document.getElementById('triggerAudio1'); audio.pause(); audio.currentTime = 0; audio.play();">
     style="width: 100%; padding: 14px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
     🔊 Play Alert
   </button>
@@ -609,7 +609,8 @@
 
 <!-- 🔊 Play Escalated Alert Button -->
 <div style="width: 100%; max-width: 320px; margin: 20px auto; text-align: center;">
-  <button onclick="document.getElementById('triggerAudio2').play();"
+ <button onclick="const audio = document.getElementById('triggerAudio2'); audio.pause(); audio.currentTime = 0; audio.play();">
+  🔊 Play Escalated Alert
     style="width: 100%; padding: 14px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
     🔊 Play Escalated Alert
   </button>
