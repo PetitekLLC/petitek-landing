@@ -488,7 +488,7 @@
 <div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
   <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
     <video id="chatrboxVideo" autoplay muted playsinline controls width="100%" style="display: block;">
-      <source src="videos/video1.mp4" type="video1/mp4">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
     </video>
     <div id="unmuteOverlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
       🔊 Tap to Unmute
@@ -538,7 +538,7 @@
 <div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
   <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
     <video id="chatrboxVideo2" autoplay muted playsinline controls width="100%" style="display: block;">
-      <source src="videos/video2" type="video2/mp4">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
     </video>
     <div id="unmuteOverlay2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
       🔊 Tap to Unmute
@@ -651,6 +651,8 @@
 </div>
 
 
+
+
 <div style="padding-left: 10px; padding-right: 10px;">
   <img src="images/instant-correction.jpg" alt="Instant Correction" class="fade-in" />
   <div class="text-block fade-in">
@@ -676,7 +678,7 @@
 <div style="padding-left: 10px; padding-right: 10px;">
   <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
     <video id="chatrboxVideo3" autoplay muted playsinline controls width="100%" style="display: block;">
-      <source src="videos/video3.mp4" type="video3/mp4">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
     </video>
     <div id="unmuteOverlay3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
       🔊 Tap to Unmute
@@ -708,7 +710,7 @@
 <div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
   <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
     <video id="chatrboxVideo4" autoplay muted playsinline controls width="100%" style="display: block;">
-      <source src="videos/video4.mp4" type="video4/mp4">
+      <source src="videos/End%20V10.mp4" type="video/mp4">
     </video>
     <div id="unmuteOverlay4" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(37, 168, 198, 0.9); color: white; padding: 12px 18px; border-radius: 8px; font-size: 16px; cursor: pointer; z-index: 10; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
       🔊 Tap to Unmute
@@ -735,6 +737,8 @@
   </div>
 </div>
 
+
+  
 
 <div class="fade-in" style="
   background-color: #005556;
@@ -1039,130 +1043,125 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-<script>
-function showThankYou() {
-  const input = document.getElementById('emailInput');
-  const message = document.getElementById('thankYouMessage');
-  const submitButton = document.getElementById('submitButton');
-  const buttonText = document.getElementById('buttonText');
-  const spinner = document.getElementById('spinner');
+document.addEventListener('DOMContentLoaded', () => {
 
-  if (input.checkValidity()) {
-    buttonText.style.display = 'none';
-    spinner.style.display = 'block';
-    submitButton.disabled = true;
-
-    const formData = new FormData();
-    formData.append('email', input.value);
-
-    fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
-      method: "POST",
-      body: formData
-    }).then(() => {
-      spinner.style.display = 'none';
-      submitButton.disabled = false;
-      buttonText.style.display = 'block';
-      message.style.display = 'block';
-      input.value = '';
-
-      setTimeout(() => {
-        message.style.display = 'none';
-      }, 3000);
+  // VIDEO 1
+  const video1 = document.getElementById('chatrboxVideo');
+  const overlay1 = document.getElementById('unmuteOverlay');
+  if (video1 && overlay1) {
+    video1.preload = "none";
+    video1.muted = true;
+    video1.addEventListener('loadedmetadata', () => {
+      video1.currentTime = 88;
+    });
+    video1.addEventListener('timeupdate', () => {
+      if (video1.currentTime >= 153) {
+        video1.pause();
+        overlay1.style.display = 'block';
+        video1.currentTime = 88;
+        video1.muted = true;
+      }
+    });
+    overlay1.addEventListener('click', () => {
+      video1.currentTime = 88;
+      video1.muted = false;
+      overlay1.style.display = 'none';
+      video1.play();
     });
   }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Floating button scroll logic
-  const floatBtn = document.querySelector('.floating-buy-button');
-  window.addEventListener('scroll', () => {
-    floatBtn.classList.toggle('show', window.scrollY > 300);
-  });
-
-  // Fade-in animation observer
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
+  // VIDEO 2
+  const video2 = document.getElementById('chatrboxVideo2');
+  const overlay2 = document.getElementById('unmuteOverlay2');
+  if (video2 && overlay2) {
+    video2.preload = "none";
+    video2.muted = true;
+    video2.addEventListener('loadedmetadata', () => {
+      video2.currentTime = 154;
     });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => fadeObserver.observe(el));
+    video2.addEventListener('timeupdate', () => {
+      if (video2.currentTime >= 167) {
+        video2.pause();
+        overlay2.style.display = 'block';
+        video2.currentTime = 154;
+        video2.muted = true;
+      }
+    });
+    overlay2.addEventListener('click', () => {
+      video2.currentTime = 154;
+      video2.muted = false;
+      overlay2.style.display = 'none';
+      video2.play();
+    });
+  }
 
-  // Navbar auto-hide on scroll
-  const navbar = document.getElementById('navbar');
-  let lastScrollTop = 0;
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
-    lastScrollTop = scrollTop;
-  });
+  // VIDEO 3
+  const video3 = document.getElementById('chatrboxVideo3');
+  const overlay3 = document.getElementById('unmuteOverlay3');
+  if (video3 && overlay3) {
+    video3.preload = "none";
+    video3.muted = true;
+    video3.addEventListener('loadedmetadata', () => {
+      video3.currentTime = 168;
+    });
+    video3.addEventListener('timeupdate', () => {
+      if (video3.currentTime >= 188) {
+        video3.pause();
+        overlay3.style.display = 'block';
+        video3.currentTime = 168;
+        video3.muted = true;
+      }
+    });
+    overlay3.addEventListener('click', () => {
+      video3.currentTime = 168;
+      video3.muted = false;
+      overlay3.style.display = 'none';
+      video3.play();
+    });
+  }
 
-  // Hamburger menu toggle
+  // VIDEO 4
+  const video4 = document.getElementById('chatrboxVideo4');
+  const overlay4 = document.getElementById('unmuteOverlay4');
+  if (video4 && overlay4) {
+    video4.preload = "none";
+    video4.muted = true;
+    video4.addEventListener('loadedmetadata', () => {
+      video4.currentTime = 189;
+    });
+    video4.addEventListener('timeupdate', () => {
+      if (video4.currentTime >= 225) {
+        video4.pause();
+        overlay4.style.display = 'block';
+        video4.currentTime = 189;
+        video4.muted = true;
+      }
+    });
+    overlay4.addEventListener('click', () => {
+      video4.currentTime = 189;
+      video4.muted = false;
+      overlay4.style.display = 'none';
+      video4.play();
+    });
+  }
+
+});
+
+
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
+
   hamburger?.addEventListener('click', () => {
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   });
+
   document.addEventListener('click', function(event) {
     if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
       menu.style.display = 'none';
     }
   });
-
-  // Unified Video Control Logic
-  const videos = [
-    { id: 'chatrboxVideo', overlayId: 'unmuteOverlay' },
-    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
-    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
-    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
-  ];
-
-  let currentlyPlaying = null;
-
-  function initVideo({ id, overlayId }) {
-    const video = document.getElementById(id);
-    const overlay = document.getElementById(overlayId);
-    if (!video || !overlay) return;
-
-    video.preload = 'none';
-    video.muted = true;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          videos.forEach(({ id: vid }) => {
-            const v = document.getElementById(vid);
-            if (v && v !== video) v.pause();
-          });
-          currentlyPlaying = video;
-          video.play();
-        } else {
-          if (video === currentlyPlaying) video.pause();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(video);
-
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      overlay.style.display = 'block';
-      video.muted = true;
-    });
-
-    overlay.addEventListener('click', () => {
-      video.pause();
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
-    });
-  }
-
-  videos.forEach(initVideo);
-});
+  });
 </script>
-
 
  <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
@@ -1172,6 +1171,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html> 
-
-
-
