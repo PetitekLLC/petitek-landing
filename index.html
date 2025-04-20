@@ -586,72 +586,6 @@
     Real stories from real pet parents. Happy pets, happier homes — thanks to Chatrbox.
   </div>    
 </div>
-<!-- Trigger Sequence -->
-<div style="padding-left: 10px; padding-right: 10px;">
-  <img src="images/safe-zones.jpg" alt="Safe Zones" style="width: 100%; height: auto; display: block;" loading="lazy" />
-  
-  <div class="text-block fade-in">
-    <div style="font-weight: bold; text-align: center; margin: 20px 0 10px;">Trigger Sequence</div>
-
-    <!-- Step 1 -->
-    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
-      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</div>
-      <div>
-        <strong>Your Voice</strong><br>
-        Your message. Your command.
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
-      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</div>
-      <div>
-        <strong>Your Voice + Alert</strong><br>
-        Escalates the command.
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
-      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</div>
-      <div>
-        <strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong><br>
-        “Okay, this is serious now.”
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="text-block fade-in">
-  <div style="font-weight: bold; text-align: center;">See It In Action</div>
-  <div style="text-align: left;">
-  Listen to a ChatrBox as your pet will hear it. Of course it would be your own voice.
-  </div>
-</div>
-
-<!-- Audio Element (only one!) -->
-<audio id="featureAudio" src="audio/sample-command.mp3"></audio>
-
-<!-- Play Sample Command (First) -->
-<button onclick="document.getElementById('featureAudio').play();" 
-  style="margin: 10px auto 20px auto; padding: 20px 40px; font-size: 18px; display: block; border: none; border-radius: 8px; background-color: #25A8C6; color: white; cursor: pointer;">
-  🔊 Play Sample Command
-</button>
-<div style="font-size: 14px; font-style: italic; color: #333; margin-top: 10px; text-align: center; max-width: 320px; margin-left: auto; margin-right: auto;">
-  Played at ~55dB loud
-</div>
-
-<!-- Play Sample Command (Second) -->
-<button onclick="document.getElementById('featureAudio').play();" 
-  style="margin: 25px auto 5px auto; padding: 20px 40px; font-size: 18px; display: block; border: none; border-radius: 8px; background-color:#006699; color: white; cursor: pointer;">
-  🔊 Play Sample Command
-</button>
-<div style="font-size: 14px; font-style: italic; color: #333; margin-top: 10px; text-align: center; max-width: 320px; margin-left: auto; margin-right: auto;">
-  Played at ~85dB loud
-</div>
-
-
-
 
 <div style="padding-left: 10px; padding-right: 10px;">
   <img src="images/instant-correction.jpg" alt="Instant Correction" class="fade-in" />
@@ -674,6 +608,7 @@
     </div>
   </div>
 </div>
+  
   
 <div style="padding-left: 10px; padding-right: 10px;">
   <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
@@ -699,13 +634,6 @@
   <img src="images/testimonials.jpg" alt="Testimonials" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
 </div>
 
-<!-- See It In Action -->
-<div class="text-block fade-in">
-  <div style="font-weight: bold; text-align: center;">See It In Action</div>
-  <div style="text-align: left;">
-    Watching is believing. This short demo shows how ChatrBox helps your pet make better choices — even when you’re not in the room. Real results, real fast.
-  </div>
-</div>
 <!-- Video -->
 <div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
   <div class="video-wrapper" style="position: relative; max-width: 800px; margin: 0 auto 20px;">
@@ -717,15 +645,7 @@
     </div>
   </div>
 </div>
-  
-<!-- See It In Action II -->
-<div class="text-block fade-in">
-  <div style="font-weight: bold; text-align: center;">See It In Action</div>
-  <div style="text-align: left;">
- Real results, real fast.
-  </div>
-</div>
-  
+
 <!-- Cats to Dogs Section -->
 <div style="padding-left: 10px; padding-right: 10px;">
   <img src="images/cats-to-dogs.jpg" alt="Cats and Dogs" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
@@ -738,8 +658,68 @@
 </div>
 
 
-  
+<!-- Play Sample Command -->
+<button onclick="document.getElementById('featureAudio').play();" 
+  style="margin: 25px auto 20px auto; padding: 20px 40px; font-size: 18px; display: block; border: none; border-radius: 8px; background-color: #25A8C6; color: white; cursor: pointer;">
+  🔊 Play Sample Command
+</button>
+<div style="font-size: 14px; font-style: italic; color: #333; text-align: center; max-width: 320px; margin: 0 auto 20px auto;">
+  Played up to 90dB Loud — repeated until pet learns the behavior
+</div>
+<audio id="featureAudio" src="audio/sample-command.mp3"></audio>
 
+<!-- See It In Action -->
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">See It In Action</div>
+  <div style="text-align: left;">
+    Watching is believing. This short demo shows how ChatrBox helps your pet make better choices — even when you’re not in the room. Real results, real fast.
+  </div>
+</div>
+
+
+<!-- Trigger Sequence -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/safe-zones.jpg" alt="Safe Zones" style="width: 100%; height: auto; display: block;" loading="lazy" />
+  <div class="text-block fade-in">
+    <div style="font-weight: bold; text-align: center; margin: 20px 0 10px;">Trigger Sequence</div>
+    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</div>
+      <div><strong>Your Voice</strong> – Your message. Your command.</div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</div>
+      <div><strong>Your Voice + Alert</strong> – Adds an attention sound plus your command.</div>
+    </div>
+ <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;">
+      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</div>
+      <div><strong>Your Voice + LOUD Double Alert + Flashing LEDs</strong> – “Okay, this is serious now.”</div>
+    </div>
+  </div>
+</div>
+
+<!-- Call to Action -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img src="images/call-to-action.jpg" alt="Call to Action" style="width: 100%; height: auto; display: block;" loading="lazy" />
+  </a>
+</div>
+
+
+<!-- Play Sample Command (Second) -->
+<button onclick="document.getElementById('featureAudio2').play();" 
+  style="margin-top: 15px; padding: 14px 30px; font-size: 18px; display: block; margin-left: auto; margin-right: auto; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
+  🔊 Play Sample Command
+</button>
+<div style="font-size: 14px; font-style: italic; color: #333; margin-top: 10px; text-align: center; max-width: 320px; margin-left: auto; margin-right: auto;">
+  Played up to 90dB Loud — repeated until pet learns the behavior
+</div>
+<audio id="featureAudio2" src="audio/sample-command.mp3"></audio>
+
+</section>
+
+
+  
+<!-- FEATURE HIGHLIGHTS HEADER -->
 <div class="fade-in" style="
   background-color: #005556;
   color: white;
@@ -1043,114 +1023,95 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-document.addEventListener('DOMContentLoaded', () => {
+  // 🟦 First Video (plays full video)
+  const video = document.getElementById('chatrboxVideo');
+  const overlay = document.getElementById('unmuteOverlay');
 
-  // VIDEO 1
-  const video1 = document.getElementById('chatrboxVideo');
-  const overlay1 = document.getElementById('unmuteOverlay');
-  if (video1 && overlay1) {
-    video1.preload = "none";
-    video1.muted = true;
-    video1.addEventListener('loadedmetadata', () => {
-      video1.currentTime = 88;
+  if (overlay && video) {
+    overlay.addEventListener('click', () => {
+      video.currentTime = 0;
+      video.muted = false;
+      overlay.style.display = 'none';
+      video.play();
     });
-    video1.addEventListener('timeupdate', () => {
-      if (video1.currentTime >= 153) {
-        video1.pause();
-        overlay1.style.display = 'block';
-        video1.currentTime = 88;
-        video1.muted = true;
-      }
-    });
-    overlay1.addEventListener('click', () => {
-      video1.currentTime = 88;
-      video1.muted = false;
-      overlay1.style.display = 'none';
-      video1.play();
+
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      video.muted = true;
+      overlay.style.display = 'block';
     });
   }
 
-  // VIDEO 2
+  // 🟩 Second Video (plays from 10s to 20s)
   const video2 = document.getElementById('chatrboxVideo2');
   const overlay2 = document.getElementById('unmuteOverlay2');
-  if (video2 && overlay2) {
-    video2.preload = "none";
-    video2.muted = true;
-    video2.addEventListener('loadedmetadata', () => {
-      video2.currentTime = 154;
-    });
-    video2.addEventListener('timeupdate', () => {
-      if (video2.currentTime >= 167) {
-        video2.pause();
-        overlay2.style.display = 'block';
-        video2.currentTime = 154;
-        video2.muted = true;
-      }
-    });
+
+  if (overlay2 && video2) {
     overlay2.addEventListener('click', () => {
-      video2.currentTime = 154;
+      video2.currentTime = 10;
       video2.muted = false;
       overlay2.style.display = 'none';
       video2.play();
     });
-  }
 
-  // VIDEO 3
-  const video3 = document.getElementById('chatrboxVideo3');
-  const overlay3 = document.getElementById('unmuteOverlay3');
-  if (video3 && overlay3) {
-    video3.preload = "none";
-    video3.muted = true;
-    video3.addEventListener('loadedmetadata', () => {
-      video3.currentTime = 168;
-    });
-    video3.addEventListener('timeupdate', () => {
-      if (video3.currentTime >= 188) {
-        video3.pause();
-        overlay3.style.display = 'block';
-        video3.currentTime = 168;
-        video3.muted = true;
+    video2.addEventListener('timeupdate', () => {
+      if (video2.currentTime >= 20) {
+        video2.pause();
+        video2.currentTime = 10;
+        video2.muted = true;
+        overlay2.style.display = 'block';
       }
     });
+  }
+   
+  // 🟩 Third Video (plays from 10s to 20s)
+  const video3 = document.getElementById('chatrboxVideo3');
+  const overlay3 = document.getElementById('unmuteOverlay3');
+
+  if (overlay3 && video3) {
     overlay3.addEventListener('click', () => {
-      video3.currentTime = 168;
+      video3.currentTime = 10;
       video3.muted = false;
       overlay3.style.display = 'none';
       video3.play();
     });
-  }
 
-  // VIDEO 4
-  const video4 = document.getElementById('chatrboxVideo4');
-  const overlay4 = document.getElementById('unmuteOverlay4');
-  if (video4 && overlay4) {
-    video4.preload = "none";
-    video4.muted = true;
-    video4.addEventListener('loadedmetadata', () => {
-      video4.currentTime = 189;
-    });
-    video4.addEventListener('timeupdate', () => {
-      if (video4.currentTime >= 225) {
-        video4.pause();
-        overlay4.style.display = 'block';
-        video4.currentTime = 189;
-        video4.muted = true;
+    video3.addEventListener('timeupdate', () => {
+      if (video3.currentTime >= 20) {
+        video3.pause();
+        video3.currentTime = 10;
+        video3.muted = true;
+        overlay3.style.display = 'block';
       }
     });
+  }
+
+ // 🟩 Forth Video (plays from 10s to 20s)
+  const video4 = document.getElementById('chatrboxVideo3');
+  const overlay4 = document.getElementById('unmuteOverlay3');
+
+  if (overlay4 && video3) {
     overlay4.addEventListener('click', () => {
-      video4.currentTime = 189;
+      video4.currentTime = 10;
       video4.muted = false;
       overlay4.style.display = 'none';
       video4.play();
     });
+
+    video3.addEventListener('timeupdate', () => {
+      if (video4.currentTime >= 20) {
+        video4.pause();
+        video4.currentTime = 10;
+        video4.muted = true;
+        overlay4.style.display = 'block';
+      }
+    });
   }
 
-});
-
-
+  
+  // Hamburger Menu Dropdown Toggle
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
-
   hamburger?.addEventListener('click', () => {
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   });
@@ -1160,9 +1121,8 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.style.display = 'none';
     }
   });
-  });
-</script>
-
+});
+  </script>
  <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
