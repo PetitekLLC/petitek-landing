@@ -595,30 +595,30 @@
   </div>
 </div>
 
-<!-- 🔊 Play Alert Button -->
-<div style="width: 100%; max-width: 320px; margin: 20px auto; text-align: center;">
- <button onclick="const audio = document.getElementById('triggerAudio1'); audio.pause(); audio.currentTime = 0; audio.play();">
+<!-- Play Alert -->
+<div style="max-width: 320px; margin: 20px auto; text-align: center;">
+  <button onclick="const a=document.getElementById('triggerAudio1'); a.pause(); a.currentTime=0; a.play();"
     style="width: 100%; padding: 14px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
     🔊 Play Alert
   </button>
-  <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px;">
+  <div style="font-size: 14px; font-style: italic; margin-top: 8px; color: #333;">
     Your custom voice command.
   </div>
-  <audio id="triggerAudio1" src="/audio/sample-command.mp3"></audio>
+  <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
 </div>
 
-<!-- 🔊 Play Escalated Alert Button -->
-<div style="width: 100%; max-width: 320px; margin: 20px auto; text-align: center;">
- <button onclick="const audio = document.getElementById('triggerAudio2'); audio.pause(); audio.currentTime = 0; audio.play();">
-  🔊 Play Escalated Alert
+<!-- Play Escalated Alert -->
+<div style="max-width: 320px; margin: 20px auto; text-align: center;">
+  <button onclick="const a=document.getElementById('triggerAudio2'); a.pause(); a.currentTime=0; a.play();"
     style="width: 100%; padding: 14px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
     🔊 Play Escalated Alert
   </button>
-  <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px;">
+  <div style="font-size: 14px; font-style: italic; margin-top: 8px; color: #333;">
     Your custom voice command.
   </div>
-  <audio id="triggerAudio2" src="/audio/sample-command-escalated.mp3"></audio>
+  <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
 </div>
+
 
 
 <div class="text-block fade-in visible" style="padding-left: 10px; padding-right: 10px;">
