@@ -1050,7 +1050,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           videos.forEach(({ id: vid }) => {
             const v = document.getElementById(vid);
-            if (v && v !== video) v.pause();
+          if (v && v !== video && !v.paused) v.pause();
           });
           currentlyPlaying = video;
           video.play();
