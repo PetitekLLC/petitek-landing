@@ -595,34 +595,29 @@
   </div>
 </div>
 
+<!-- 🔊 Audio Trigger Buttons -->
+<div style="max-width: 320px; margin: 30px auto 0;">
 
-  <!-- 🔊 Play Trigger 1 -->
-  <div style="max-width: 320px; margin: 0 auto 20px;">
-    <button onclick="document.getElementById('triggerAudio1').play();" 
-      style="width: 100%; padding: 14px 20px; font-size: 18px; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
-      🔊 Play 2nd Alert
-    </button>
-    <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px; text-align: left;">
-      Would include YOUR custom command
-    </div>
-    <audio id="triggerAudio1" src="audio/sample-command-moderate.mp3"></audio>
+  <!-- Moderate Alert Button -->
+  <button onclick="document.getElementById('triggerAudio1').play();" 
+    style="width: 100%; padding: 14px 20px; font-size: 16px; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
+    🔊 Play Alert
+  </button>
+  <div style="font-size: 13px; font-style: italic; color: #333; margin-top: 6px; text-align: left;">
+    Includes YOUR custom command — ~50dB
   </div>
+  <audio id="triggerAudio1" src="/audio/sample-command.mp3"></audio>
 
-  <!-- 🔊 Play Trigger 2 -->
-  <div style="max-width: 320px; margin: 0 auto;">
-    <button onclick="document.getElementById('triggerAudio2').play();" 
-      style="width: 100%; padding: 14px 20px; font-size: 18px; border: none; border-radius: 5px; background-color: #006699; color: white; cursor: pointer;">
-      🔊 Play Escalated Alert
-    </button>
-    <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px; text-align: left;">
-      Would include YOUR custom command
-    </div>
-    <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
+  <!-- Escalated Alert Button -->
+  <button onclick="document.getElementById('triggerAudio2').play();" 
+    style="width: 100%; padding: 14px 20px; font-size: 16px; border: none; border-radius: 5px; background-color: #006699; color: white; cursor: pointer; margin-top: 20px;">
+    🔊 Play Escalated Alert
+  </button>
+  <div style="font-size: 13px; font-style: italic; color: #333; margin-top: 6px; text-align: left;">
+    Escalated Alert + Voice — ~90dB
   </div>
-</div>
+  <audio id="trigger
 
-
-  
 
 <div class="text-block fade-in" style="padding-left: 10px; padding-right: 10px;">
   <div style="font-weight: bold; text-align: center;">Designed for Home Life.</div>
@@ -719,7 +714,7 @@
     </div>
   </div> 
 
-<!-- Video 1 -->
+<!-- Video 4 -->
 <div class="fade-in" style="padding-left: 5px; padding-right: 5px;">
   <div class="video-wrapper" style="position: relative; max-width: 600px; margin: 0 auto 20px;">
     <video id="chatrboxVideo4" autoplay muted playsinline controls width="100%" style="display: block;">
