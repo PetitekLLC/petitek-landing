@@ -556,43 +556,52 @@
 <!-- 🔁 Trigger Sequence Interactive Section -->
 <div style="background-color: #f5f5f5; padding: 30px 20px; border-radius: 8px; margin: 30px 0;">
   <img src="images/safe-zones.jpg" alt="Safe Zones" style="width: 100%; height: auto; display: block; margin-bottom: 20px;" loading="lazy" />
-  
+
   <div class="text-block fade-in" style="max-width: 600px; margin: 0 auto;">
     <div style="font-weight: bold; text-align: center; font-size: 24px; margin-bottom: 20px;">Trigger Sequence</div>
 
-    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
-      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">1</div>
-      <div><strong>Your Voice Only <br> Flasshing LEDs</strong> </div>
+    <!-- Sequence Line 1 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;">
+      <div style="min-width: 24px; background-color: #1DA1F2; color: white; padding: 2px 10px; border-radius: 4px; font-weight: bold; text-align: center;">1</div>
+      <div style="line-height: 1.4;"><strong>Your Voice +<br>Flashing LEDs</strong></div>
     </div>
-    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
-      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">2</div>
-      <div><strong>Your Voice <br>Loud Alert<br>Flashing LEDs</Alert></strong> </div>
+
+    <!-- Sequence Line 2 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;">
+      <div style="min-width: 24px; background-color: #1DA1F2; color: white; padding: 2px 10px; border-radius: 4px; font-weight: bold; text-align: center;">2</div>
+      <div style="line-height: 1.4;"><strong>Alert +<br>Your Voice +<br>Flashing LEDs</strong></div>
     </div>
-    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
-      <div style="background-color: #1DA1F2; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold;">3</div>
-      <div><strong>Your Voice<br>2X Louder Alet<br>Flahing LEDs</strong> </div>
+
+    <!-- Sequence Line 3 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px;">
+      <div style="min-width: 24px; background-color: #1DA1F2; color: white; padding: 2px 10px; border-radius: 4px; font-weight: bold; text-align: center;">3</div>
+      <div style="line-height: 1.4;"><strong>Escalated Alert +<br>Your Voice +<br>Flashing LEDs</strong></div>
     </div>
   </div>
 
   <!-- 🔊 Play Trigger 1 -->
-  <button onclick="document.getElementById('triggerAudio1').play();" 
-    style="margin: 15px auto 10px; padding: 14px 30px; font-size: 18px; display: block; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
-    🔊 Play 2nd Alert
-  </button>
-  <div style="font-size: 14px; font-style: italic; color: #333; text-align: center; max-width: 320px; margin: 0 auto 20px;">
-    Would include YOUR custom command
+  <div style="max-width: 320px; margin: 0 auto 20px;">
+    <button onclick="document.getElementById('triggerAudio1').play();" 
+      style="width: 100%; padding: 14px 20px; font-size: 18px; border: none; border-radius: 5px; background-color: #25A8C6; color: white; cursor: pointer;">
+      🔊 Play 2nd Alert
+    </button>
+    <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px; text-align: left;">
+      Would include YOUR custom command
+    </div>
+    <audio id="triggerAudio1" src="audio/sample-command-moderate.mp3"></audio>
   </div>
-  <audio id="triggerAudio1" src="audio/sample-command-moderate.mp3"></audio>
 
   <!-- 🔊 Play Trigger 2 -->
-  <button onclick="document.getElementById('triggerAudio2').play();" 
-    style="margin: 10px auto 10px; padding: 14px 30px; font-size: 18px; display: block; border: none; border-radius: 5px; background-color: #006699; color: white; cursor: pointer;">
-    🔊 Play Escalated Alert
-  </button>
-  <div style="font-size: 14px; font-style: italic; color: #333; text-align: center; max-width: 320px; margin: 0 auto;">
-Would include YOUR custom command
+  <div style="max-width: 320px; margin: 0 auto;">
+    <button onclick="document.getElementById('triggerAudio2').play();" 
+      style="width: 100%; padding: 14px 20px; font-size: 18px; border: none; border-radius: 5px; background-color: #006699; color: white; cursor: pointer;">
+      🔊 Play Escalated Alert
+    </button>
+    <div style="font-size: 14px; font-style: italic; color: #333; margin-top: 8px; text-align: left;">
+      Would include YOUR custom command
+    </div>
+    <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
   </div>
-  <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
 </div>
 
 
