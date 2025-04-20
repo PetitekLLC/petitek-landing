@@ -1023,24 +1023,25 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-  // 🟦 First Video (plays full video1)
-  const video1 = document.getElementById('chatrboxVideo');
-  const overlay1 = document.getElementById('unmuteOverlay');
+// 🟩 First Video 
+const video1 = document.getElementById('chatrboxVideo1');
+const overlay1 = document.getElementById('unmuteOverlay1');
 
-  if (overlay1 && video1) {
-    overlay.addEventListener('click', () => {
-      video1.currentTime = 0;
-      video1.muted = false;
-      overlay1.style.display = 'none';
-      video1.play();
-    });
+if (video1 && overlay1) {
+  overlay1.addEventListener('click', () => {
+    video1.currentTime = 0;
+    video1.muted = false;
+    overlay1.style.display = 'none';
+    video1.play();
+  });
 
-    video1.addEventListener('ended', () => {
-      video1.currentTime = 0;
-      video1.muted = true;
-      overlay1.style.display = 'block';
-    });
-  }
+  video1.addEventListener('ended', () => {
+    video1.currentTime = 0;
+    video1.muted = true;
+    overlay1.style.display = 'block';
+  });
+}
+
 
   // 🟩 Second Video (plays from 10s to 20s)
   const video2 = document.getElementById('chatrboxVideo2');
