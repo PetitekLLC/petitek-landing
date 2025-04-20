@@ -957,7 +957,6 @@
   </div>
 </footer>
 
-
 <script>
 function showThankYou() {
   const input = document.getElementById('emailInput');
@@ -993,28 +992,22 @@ function showThankYou() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const floatBtn = document.querySelector('.floating-buy-button');
+  // Floating button scroll logic
+  const floatBtn = document.querySelector('.floating-buy-button');
+  window.addEventListener('scroll', () => {
+    floatBtn.classList.toggle('show', window.scrollY > 300);
+  });
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        floatBtn.classList.add('show');
-      } else {
-        floatBtn.classList.remove('show');
-      }
-    });
-
-  // Fade-in Observer
+  // Fade-in animation observer
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      entry.isIntersecting
-        ? entry.target.classList.add('visible')
-        : entry.target.classList.remove('visible');
+      entry.target.classList.toggle('visible', entry.isIntersecting);
     });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
-  // Navbar Hide on Scroll
+  // Navbar auto-hide on scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1023,107 +1016,71 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-// 🟩 First Video 
-const video1 = document.getElementById('chatrboxVideo1');
-const overlay1 = document.getElementById('unmuteOverlay1');
-
-if (video1 && overlay1) {
-  overlay1.addEventListener('click', () => {
-    video1.currentTime = 0;
-    video1.muted = false;
-    overlay1.style.display = 'none';
-    video1.play();
-  });
-
-  video1.addEventListener('ended', () => {
-    video1.currentTime = 0;
-    video1.muted = true;
-    overlay1.style.display = 'block';
-  });
-}
-
-
-  // 🟩 Second Video (plays from 10s to 20s)
-  const video2 = document.getElementById('chatrboxVideo2');
-  const overlay2 = document.getElementById('unmuteOverlay2');
-
-  if (overlay2 && video2) {
-    overlay2.addEventListener('click', () => {
-      video2.currentTime = 10;
-      video2.muted = false;
-      overlay2.style.display = 'none';
-      video2.play();
-    });
-
-    video2.addEventListener('timeupdate', () => {
-      if (video2.currentTime >= 20) {
-        video2.pause();
-        video2.currentTime = 10;
-        video2.muted = true;
-        overlay2.style.display = 'block';
-      }
-    });
-  }
-   
-  // 🟩 Third Video (plays from 10s to 20s)
-  const video3 = document.getElementById('chatrboxVideo3');
-  const overlay3 = document.getElementById('unmuteOverlay3');
-
-  if (overlay3 && video3) {
-    overlay3.addEventListener('click', () => {
-      video3.currentTime = 10;
-      video3.muted = false;
-      overlay3.style.display = 'none';
-      video3.play();
-    });
-
-    video3.addEventListener('timeupdate', () => {
-      if (video3.currentTime >= 20) {
-        video3.pause();
-        video3.currentTime = 10;
-        video3.muted = true;
-        overlay3.style.display = 'block';
-      }
-    });
-  }
-
- // 🟩 Forth Video (plays from 10s to 20s)
-  const video4 = document.getElementById('chatrboxVideo3');
-  const overlay4 = document.getElementById('unmuteOverlay3');
-
-  if (overlay4 && video4) {
-    overlay4.addEventListener('click', () => {
-      video4.currentTime = 10;
-      video4.muted = false;
-      overlay4.style.display = 'none';
-      video4.play();
-    });
-
-    video3.addEventListener('timeupdate', () => {
-      if (video4.currentTime >= 20) {
-        video4.pause();
-        video4.currentTime = 10;
-        video4.muted = true;
-        overlay4.style.display = 'block';
-      }
-    });
-  }
-
-  
-  // Hamburger Menu Dropdown Toggle
+  // Hamburger menu toggle
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
   hamburger?.addEventListener('click', () => {
     menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   });
-
   document.addEventListener('click', function(event) {
     if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
       menu.style.display = 'none';
     }
   });
+
+  // Video autoplay & control logic
+  const videos = [
+    { id: 'chatrboxVideo', overlayId: 'unmuteOverlay' },
+    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
+    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
+    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
+  ];
+  let currentlyPlaying = null;
+
+  function initVideo({ id, overlayId }) {
+    const video = document.getElementById(id);
+    const overlay = document.getElementById(overlayId);
+    if (!video || !overlay) return;
+
+    video.preload = 'none';
+    video.muted = true;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          videos.forEach(({ id: vid }) => {
+            const v = document.getElementById(vid);
+            if (v && v !== video) v.pause();
+          });
+          currentlyPlaying = video;
+          video.play();
+        } else {
+          if (video === currentlyPlaying) video.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(video);
+
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      overlay.style.display = 'block';
+      video.muted = true;
+    });
+
+    overlay.addEventListener('click', () => {
+      video.pause();
+      video.currentTime = 0;
+      video.muted = false;
+      overlay.style.display = 'none';
+      video.play();
+    });
+  }
+
+  videos.forEach(initVideo);
 });
-  </script>
+</script>
+
  <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
