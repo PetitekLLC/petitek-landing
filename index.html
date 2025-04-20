@@ -1058,8 +1058,7 @@ function showThankYou() {
     fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
       method: "POST",
       body: formData
-    })
-    .then(() => {
+    }).then(() => {
       spinner.style.display = 'none';
       submitButton.disabled = false;
       buttonText.style.display = 'block';
@@ -1082,12 +1081,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fade-in animation observer
   const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
+  const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       entry.target.classList.toggle('visible', entry.isIntersecting);
     });
   }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
+  fadeEls.forEach(el => fadeObserver.observe(el));
 
   // Navbar auto-hide on scroll
   const navbar = document.getElementById('navbar');
@@ -1110,13 +1109,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Video autoplay & control logic
+  // Unified Video Control Logic
   const videos = [
     { id: 'chatrboxVideo', overlayId: 'unmuteOverlay' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
     { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
     { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
   ];
+
   let currentlyPlaying = null;
 
   function initVideo({ id, overlayId }) {
