@@ -535,12 +535,12 @@ Y
   </div>
 </div>
 
- <div class="text-block fade-in">
-    <div style="font-weight: bold; text-align: center;">Speical Alert Tones To Get Thier Attention.</div>
-    <div style="text-align: left;">
- In addition to your voice, Chatrbox plays alert tones designed to instantly grab your pet’s attention, making them more likely to focus and listen to your command. With a combination of familiar voice cues and distinct sound signals, Chatrbox helps reinforce positive behavior faster and more effectively.
-    </div>
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Special Alert Tones To Get Their Attention.</div>
+  <div style="text-align: left;">
+    In addition to your voice, Chatrbox plays alert tones designed to instantly grab your pet’s attention, making them more likely to focus and listen to your command. With a combination of familiar voice cues and distinct sound signals, Chatrbox helps reinforce positive behavior faster and more effectively.
   </div>
+</div>
   
 <!-- 🔁 Trigger Sequence Responsive Section -->
 
@@ -610,21 +610,79 @@ Y
 </div>
 
 
-<div class="text-block fade-in visible" style="padding-left: 10px; padding-right: 10px;">
-  <div style="font-weight: bold; text-align: center;">Designed for Home Life.</div>
+
+<div class="text-block fade-in">
+  <div style="font-weight: bold; text-align: center;">Special Alert Tones To Get Their Attention.</div>
   <div style="text-align: left;">
-    ChatrBox is designed to train in real-world spaces — big or small or in-between.
+    In addition to your voice, Chatrbox plays alert tones designed to instantly grab your pet’s attention, making them more likely to focus and listen to your command. With a combination of familiar voice cues and distinct sound signals, Chatrbox helps reinforce positive behavior faster and more effectively.
+  </div>
+</div>
+  
+<!-- 🔁 Trigger Sequence Responsive Section -->
+
+  <div style="max-width: 600px; margin: 0 auto;">
+<div style="background-color: #f5f5f5; padding: 30px 20px 30px 28px; border-radius: 8px; margin: 30px 0;">
+
+    <!-- Header -->
+    <div style="text-align: center; font-size: 20px; font-weight: 600; margin-bottom: 24px; line-height: 1.4;">
+      ChatrBox automatically escalates each response to assure pet obedience.
+    </div>
+
+    <!-- Step 1 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
+      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+        1
+      </div>
+      <div style="font-size: 15px; line-height: 1.5;">
+        Your Voice Command + Flashing LEDs
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
+      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+        2
+      </div>
+      <div style="font-size: 15px; line-height: 1.5;">
+        Alert – Your Voice Command + Flashing LEDs
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px;">
+      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+        3
+      </div>
+      <div style="font-size: 15px; line-height: 1.5;">
+        Escalated Alert + Your Voice Command + Flashing LEDs
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div style="padding-left: 10px; padding-right: 10px;">
-  <img 
-    src="images/smart-training.jpg" 
-    alt="Smart Training Summary" 
-    class="fade-in" 
-    style="width: 100%; max-width: 600px; display: block; margin: 0 auto 20px;" 
-    loading="lazy" 
-  />
+<!-- Play Alert -->
+<div style="max-width: 600px; width: 90%; margin: 20px auto; text-align: center;">
+  <button onclick="const a=document.getElementById('triggerAudio1'); a.pause(); a.currentTime=0; a.play();"
+    style="width: 100%; padding: 20px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
+    🔊 Play Alert
+  </button>
+  <div style="font-size: 14px; font-style: italic; margin-top: 8px; color: #333;">
+    Your custom voice command.
+  </div>
+  <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
+</div>
+
+<!-- Play Escalated Alert -->
+<div style="max-width: 600px; width: 90%; margin: 20px auto; text-align: center;">
+  <button onclick="const a=document.getElementById('triggerAudio2'); a.pause(); a.currentTime=0; a.play();"
+    style="width: 100%; padding: 20px 0; font-size: 18px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
+    🔊 Play Escalated Alert
+  </button>
+  <div style="font-size: 14px; font-style: italic; margin-top: 8px; color: #333;">
+    Your custom voice command.
+  </div>
+  <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
 </div>
 
 <div class="text-block fade-in" style="padding-left: 10px; padding-right: 10px;">
