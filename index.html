@@ -51,25 +51,7 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-/* ✅ Add media query directly here */
-@media (max-width: 480px) {
-  .footer-brand {
-    text-align: center !important;
-    padding-left: 0 !important;
-  }
-}
 
-* {
-  box-sizing: border-box;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-    
-</style>
-    
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
@@ -926,10 +908,9 @@ html, body {
 </section>
 
 <footer class="fade-in" style="background-color: #25A8C6; color: white; padding: 15px 10px; text-align: center; width: 100%;">
-  <div class="footer-brand" style="font-size: 32px; margin: 15px 0 20px 0; font-family: 'Sanchez', serif; font-weight: 600; color: black; text-align: left; padding-left: 10px;">
-    Petitek
-  </div>
-
+  <div style="font-size: 32px; margin-bottom: 20px; font-family: 'Sanchez', serif; font-weight: 600; color: black; text-align: left; max-width: 1200px; margin: 15 auto 15px auto; padding-left: 10px;">
+  Petitek
+</div>
 
   <div style="font-size: 18px; margin-bottom: 10px;">We’d love to stay in touch!</div>
 
