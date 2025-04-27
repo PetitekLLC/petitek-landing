@@ -51,6 +51,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+/* ✅ Add media query directly here */
+@media (max-width: 480px) {
+  .footer-brand {
+    text-align: center !important;
+    padding-left: 0 !important;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -73,7 +80,6 @@ html, body {
       width: 100vw;
       overflow-x: hidden;
     }
-  
     #navbar {
       position: fixed;
       top: 0;
@@ -162,23 +168,19 @@ html, body {
       text-align: center;
       margin: 40px 0 5px;
     }
-  
     .footer-link a {
       color: #0066cc;
       text-decoration: none;
     }
-  
     .footer-link a:hover {
       text-decoration: underline;
     }
-  
     .footer-copy {
       text-align: center;
       font-size: 10px;
       color: #888;
       margin-bottom: 20px;
     }
-  
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -224,12 +226,10 @@ html, body {
       transform: translateY(20px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-  
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-  
     .feature-group {
   max-width: 800px;
   margin: 50px auto;
@@ -328,7 +328,6 @@ html, body {
   border: 3px dotted #25A8C6;
   animation: spin 3s linear infinite;
 }
-  
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
