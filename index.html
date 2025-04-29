@@ -590,29 +590,36 @@
       </div>
     </div>
 
-    <!-- 🔊 Play Alert Button -->
-    <div style="text-align: center; margin-bottom: 12px;">
-      <button onclick="const a=document.getElementById('triggerAudio1'); a.pause(); a.currentTime=0; a.play();"
-        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
-        🔊 Play Standard Alert
-      </button>
-      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
-        Sample playback volume may vary. Actual volume is controlled by the device.
-      </div>
-      <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
-    </div>
+<!-- 🔊 Play Standard Alert Button -->
+<div style="text-align: center; margin-bottom: 12px;">
+  <button onclick="playStandardAlert()"
+    style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
+    🔊 Play Standard Alert
+  </button>
+  <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
+    Sample playback volume may vary. Actual volume is controlled by the device.
+  </div>
+  <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
+</div>
 
-    <!-- 🔊 Play Escalated Alert Button -->
-    <div style="text-align: center;">
-      <button onclick="const a=document.getElementById('triggerAudio2'); a.pause(); a.currentTime=0; a.play();"
-        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
-        🔊 Play Escalated Alert
-      </button>
-      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
-        Sample playback volume may vary. Actual volume is controlled by the device.
-      </div>
-      <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
-    </div>
+<!-- 🔊 Play Escalated Alert Button -->
+<div style="text-align: center; margin-bottom: 30px;">
+  <button onclick="playEscalatedAlert()"
+    style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
+    🔊 Play Escalated Alert
+  </button>
+  <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
+    Sample playback volume may vary. Actual volume is controlled by the device.
+  </div>
+  <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
+</div>
+    
+<!-- 💡 LED Flash Icons -->
+<div id="led-flash" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+  <div id="led-yellow" style="width: 20px; height: 20px; border-radius: 50%; background-color: yellow; opacity: 0.3;"></div>
+  <div id="led-blue" style="width: 20px; height: 20px; border-radius: 50%; background-color: blue; opacity: 0.3;"></div>
+</div>
+
 
   </div>
 </div>
@@ -1144,8 +1151,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videos.forEach(initVideo);
 });
+
+  
 </script>
 
+<script>
+function flashLEDs(duration = 3000) {
+  const yellow = document.getElementById('led-yellow');
+  const blue = document.getElementById('led-blue');
+  let flashing = true;
+  let on = false;
+
+  const interval = setInterval(() => {
+    on = !on;
+    yellow.style.opacity = on ? 1 : 0.3;
+    blue.style.opacity = on ? 0.3 : 1;
+  }, 300);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    yellow.style.opacity = 0.3;
+    blue.style.opacity = 0.3;
+  }, duration);
+}
+
+function playStandardAlert() {
+  const audio = document.getElementById('triggerAudio1');
+  audio.pause();
+  audio.currentTime = 0;
+  audio.play();
+  flashLEDs(audio.duration * 1000 || 3000); // fallback to 3s
+}
+
+function playEscalatedAlert() {
+  const audio = document.getElementById('triggerAudio2');
+  audio.pause();
+  audio.currentTime = 0;
+  audio.play();
+  flashLEDs(audio.duration * 1000 || 3000); // fallback to 3s
+}
+</script>
 
 </body>
 </html>
