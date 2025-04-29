@@ -427,7 +427,17 @@
     line-height: 1.7;
   }
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
 
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+    
   </style>
 </head>
 <body>
@@ -474,7 +484,7 @@
     <div style="text-align: left;">ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.</div>
   </div>
 
-  <img src="images/2_ChatrboxTrain.webp" alt="Off the Chair" class="fade-in" style="margin-bottom: 0px;" />
+  <img src="images/2_ChatrboxTrain.webp" alt="ChatrBox Train" class="fade-in" style="margin-bottom: 0px;" />
   <div class="text-block fade-in">
     <div style="font-weight: bold; text-align: center;">Where Do I Use ChatrBox?</div>
     <div style="text-align: left;">It’s really simple. Place <strong>ChatrBox</strong> anywhere you need training support. Using built-in motion detection, <strong>ChatrBox</strong> senses when your pet approaches a protected area or object and instantly triggers your recorded command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.</div>
@@ -1102,13 +1112,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videos.forEach(initVideo);
 });
-</script>
 
  <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faders = document.querySelectorAll('.fade-in');
+  
+  const appearOptions = {
+    threshold: 0.1
+  };
+  
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(function(fader) {
+    appearOnScroll.observe(fader);
+  });
+});
+</script>
 
 </body>
 </html>
