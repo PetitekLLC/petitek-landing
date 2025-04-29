@@ -106,15 +106,15 @@
       max-width: 300px;
       margin-bottom: 15px;
     }
-    .amazon-main-button {
-      width: 150px;
-      margin-top: 60px;
-      margin-bottom: 10px;
-      display: block;
-      border-radius: 8px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+ .amazon-main-button {
+  width: 150px;
+  margin-top: 80px;  /* ← Now works! */
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
     .stacked-gallery {
       margin-top: 55px;
       display: flex;
@@ -464,10 +464,9 @@
   <img src="chatrbox_name_logo.png" alt="Chatrbox Name Logo" style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_buy_button.webp"
-         alt="Buy Now on Amazon"
-         width="300"
-         height="100"
-         style="max-width: 100%; height: auto; display: block; margin: 0 auto 20px;">
+     alt="Buy Now on Amazon"
+     class="amazon-main-button" />
+
   </a>
 </div>
 
