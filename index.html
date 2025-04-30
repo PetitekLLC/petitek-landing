@@ -106,15 +106,17 @@
       max-width: 300px;
       margin-bottom: 15px;
     }
- .amazon-main-button {
-  width: 150px;
-  margin-top: 80px;  /* ← Now works! */
+.amazon-main-button {
+  width: 300px;
+  height: auto; /* or set a fixed height like 80px */
+  margin-top: 60px;
   margin-bottom: 10px;
   display: block;
   border-radius: 8px;
   margin-left: auto;
   margin-right: auto;
 }
+
     .stacked-gallery {
       margin-top: 55px;
       display: flex;
@@ -464,7 +466,7 @@
     src="chatrbox_paw_logo.png"
     alt="Chatrbox Paw Logo"
     width="100"
-    height="100"
+    height="80"
     style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
 
   <img
@@ -475,14 +477,12 @@
     style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
 </div>
 
-  
+  <div>
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img
       src="amazon_buy_button.webp"
       alt="Buy Now on Amazon"
-      class="amazon-main-button"
-      width="450"
-      height="150" />
+      class="amazon-main-button" />
   </a>
 </div>
 
