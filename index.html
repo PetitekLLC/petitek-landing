@@ -445,7 +445,7 @@
   opacity: 1;
   transform: translateY(0);
 }
-<style>
+
 /* Responsive Enhancements for iPad-size Screens */
 @media (min-width: 600px) and (max-width: 1024px) {
   .text-block {
@@ -453,11 +453,20 @@
     font-size: 20px;
     line-height: 1.8;
     margin: 0 auto;
-    text-align: left; /* changed to left-align for better iPad readability */
   }
 
-  .text-block div[style*="font-weight: bold"] {
-    text-align: center !important; /* keep titles centered */
+  .title-block {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .body-block {
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.7;
+    padding-bottom: 24px;
   }
 
   .stacked-gallery img,
@@ -474,10 +483,9 @@
 
   .video-wrapper {
     max-width: 800px !important;
+    margin: 0 auto !important;
   }
 }
-</style>
-
   </style>
 </head>
 <body>
