@@ -445,18 +445,19 @@
   opacity: 1;
   transform: translateY(0);
 }
-    /* Responsive Enhancements for iPad-size Screens */
+<style>
+/* Responsive Enhancements for iPad-size Screens */
 @media (min-width: 600px) and (max-width: 1024px) {
   .text-block {
     padding: 20px 40px;
     font-size: 20px;
     line-height: 1.8;
-    text-align: center;
     margin: 0 auto;
+    text-align: left; /* changed to left-align for better iPad readability */
   }
 
-  .text-block div {
-    text-align: center !important;
+  .text-block div[style*="font-weight: bold"] {
+    text-align: center !important; /* keep titles centered */
   }
 
   .stacked-gallery img,
@@ -475,6 +476,8 @@
     max-width: 800px !important;
   }
 }
+</style>
+
   </style>
 </head>
 <body>
