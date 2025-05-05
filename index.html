@@ -441,7 +441,6 @@
   opacity: 1;
   transform: translateY(0);
 }
-<style>
 /* Responsive Enhancements for iPad-size Screens (Portrait and Landscape) */
 @media screen and (min-width: 600px) and (max-width: 1366px) {
   .text-block {
@@ -456,17 +455,17 @@
     font-size: 32px;
     line-height: 1.3;
     margin-bottom: 16px;
+    font-family: inherit;
   }
 
   .body-block {
     text-align: left;
     font-size: 20px;
     line-height: 1.7;
-    padding-bottom: 24px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px 24px;
     max-width: 800px;
     margin: 0 auto;
+    font-family: inherit;
   }
 
   .stacked-gallery img,
@@ -483,8 +482,7 @@
   .video-wrapper {
     max-width: 800px !important;
     margin: 0 auto !important;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
   }
 
   .floating-buy-button img {
@@ -493,8 +491,6 @@
     max-width: 90px !important;
   }
 }
-</style>
-
   </style>
 </head>
 <body>
