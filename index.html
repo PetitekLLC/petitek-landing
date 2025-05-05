@@ -203,13 +203,9 @@
 .floating-buy-button img {
   width: 90px;
   height: auto;
-  display: block;
-  background: none !important;  /* ✅ Remove any image background */
-  border: none !important;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Optional: subtle soft shadow */
+  max-width: 90px;
 }
+
 
     .fade-in {
       opacity: 0;
@@ -473,7 +469,6 @@
 
   .stacked-gallery img,
   .fade-in img,
-  .video-wrapper,
   video {
     width: 100% !important;
     height: auto !important;
@@ -486,6 +481,12 @@
   .video-wrapper {
     max-width: 800px !important;
     margin: 0 auto !important;
+  }
+
+  .floating-buy-button img {
+    width: 90px !important;
+    height: auto !important;
+    max-width: 90px !important;
   }
 }
   </style>
