@@ -1024,9 +1024,6 @@ body, html {
 </footer>
   
 
-
-
-
 <!-- Floating Amazon Buy Button (OUTSIDE any <script>) -->
 <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
@@ -1051,8 +1048,7 @@ function showThankYou() {
     const formData = new FormData();
     formData.append('email', input.value);
 
-fetch("https://script.google.com/macros/s/AKfycby1S7vqa6QfzVMn5OLGXz1W1i7p5aIXFP5ZQ-WmFmjt6Fa6Z0mhFaEE7bW1TrACx5iLEw/exec", {
-
+    fetch("https://script.google.com/macros/s/AKfycby1S7vqa6QfzVMn5OLGXz1W1i7p5aIXFP5ZQ-WmFmjt6Fa6Z0mhFaEE7bW1TrACx5iLEw/exec", {
       method: "POST",
       body: formData
     })
@@ -1066,18 +1062,23 @@ fetch("https://script.google.com/macros/s/AKfycby1S7vqa6QfzVMn5OLGXz1W1i7p5aIXFP
       setTimeout(() => {
         message.style.display = 'none';
       }, 3000);
+    })
+    .catch(error => {
+      console.error("❌ Error submitting form:", error);
+      spinner.style.display = 'none';
+      submitButton.disabled = false;
+      buttonText.style.display = '▶';
+      alert("Something went wrong. Please try again.");
     });
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Floating button show/hide on scroll
   const floatBtn = document.querySelector('.floating-buy-button');
   window.addEventListener('scroll', () => {
     floatBtn.classList.toggle('show', window.scrollY > 300);
   });
 
-  // Fade-in animation observer
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1086,7 +1087,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
-  // Navbar hide/reveal on scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1095,7 +1095,6 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-  // Hamburger menu toggle
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
   hamburger?.addEventListener('click', () => {
@@ -1107,7 +1106,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Video autoplay & control logic
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1159,44 +1157,6 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 
-<script>
-  function showThankYou() {
-    const email = document.getElementById("emailInput").value.trim();
-    const thankYouMessage = document.getElementById("thankYouMessage");
-    const submitButton = document.getElementById("submitButton");
-    const buttonText = document.getElementById("buttonText");
-
-    if (!email || !email.includes("@")) {
-      alert("Please enter a valid email.");
-      return;
-    }
-
-    // Show loading state
-    buttonText.textContent = "⏳";
-    submitButton.disabled = true;
-
-    fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
-      method: "POST",
-      body: new URLSearchParams({ email })
-    })
-    .then(res => res.text())
-    .then(() => {
-      thankYouMessage.style.display = "block";
-      document.getElementById("emailInput").value = "";
-    })
-    .catch(error => {
-      alert("Something went wrong. Try again.");
-      console.error("Error submitting form:", error);
-    })
-    .finally(() => {
-      submitButton.disabled = false;
-      buttonText.textContent = "▶";
-    });
-  }
-
-  
-
-<script>
 function flashLEDs(duration = 3000) {
   const yellow = document.getElementById('led-yellow');
   const blue = document.getElementById('led-blue');
@@ -1221,7 +1181,7 @@ function playStandardAlert() {
   audio.pause();
   audio.currentTime = 0;
   audio.play();
-  flashLEDs(audio.duration * 1000 || 3000); // fallback to 3s
+  flashLEDs(audio.duration * 1000 || 3000);
 }
 
 function playEscalatedAlert() {
@@ -1229,9 +1189,10 @@ function playEscalatedAlert() {
   audio.pause();
   audio.currentTime = 0;
   audio.play();
-  flashLEDs(audio.duration * 1000 || 3000); // fallback to 3s
+  flashLEDs(audio.duration * 1000 || 3000);
 }
 </script>
+
 
 </body>
 </html>
