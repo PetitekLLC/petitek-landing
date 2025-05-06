@@ -141,20 +141,21 @@
         `;
       }
     }
+partnerForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const formData = new FormData(partnerForm);
 
-    partnerForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const formData = new FormData(partnerForm);
-     https://script.google.com/macros/s/AKfycbxn0PecETrbm6fZdx4NpDFFdTt8FKJU9KZEvua7y6mtBS1NcllFgKGOWLqBjl9JSgBp7Q/exec
-        method: "POST",
-        body: formData
-      })
-      .then(() => {
-        alert('Thank you for submitting your information!');
-        partnerForm.reset();
-        customFields.innerHTML = "";
-      });
-    });
+  fetch("https://script.google.com/macros/s/AKfycbxn0PecETrbm6fZdx4NpDFFdTt8FKJU9KZEvua7y6mtBS1NcllFgKGOWLqBjl9JSgBp7Q/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(() => {
+    alert('Thank you for submitting your information!');
+    partnerForm.reset();
+    customFields.innerHTML = "";
+  });
+});
+ 
   </script>
 </body>
 </html>
