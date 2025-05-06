@@ -1051,7 +1051,7 @@ function showThankYou() {
     const formData = new FormData();
     formData.append('email', input.value);
 
-    fetch("https://script.google.com/macros/s/AKfycbz9i5NcjdjirmQiw6qKFTpUNaPWZAdDLbfEfg8nCKGtayvY6UWszH0NdmpaSOs0oPhIcg/exec", {
+https://script.google.com/macros/s/AKfycby1S7vqa6QfzVMn50LGXz1W1i7p5alXFP5ZQ-WmFmjt6Fa6Z0mhFaEE7bW1TrACx5iLEw/exec
       method: "POST",
       body: formData
     })
@@ -1158,8 +1158,42 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 
+<script>
+  function showThankYou() {
+    const email = document.getElementById("emailInput").value.trim();
+    const thankYouMessage = document.getElementById("thankYouMessage");
+    const submitButton = document.getElementById("submitButton");
+    const buttonText = document.getElementById("buttonText");
+
+    if (!email || !email.includes("@")) {
+      alert("Please enter a valid email.");
+      return;
+    }
+
+    // Show loading state
+    buttonText.textContent = "⏳";
+    submitButton.disabled = true;
+
+    fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+      method: "POST",
+      body: new URLSearchParams({ email })
+    })
+    .then(res => res.text())
+    .then(() => {
+      thankYouMessage.style.display = "block";
+      document.getElementById("emailInput").value = "";
+    })
+    .catch(error => {
+      alert("Something went wrong. Try again.");
+      console.error("Error submitting form:", error);
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      buttonText.textContent = "▶";
+    });
+  }
+
   
-</script>
 
 <script>
 function flashLEDs(duration = 3000) {
