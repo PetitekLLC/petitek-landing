@@ -17,9 +17,26 @@
         return false;
       }
 
-      // If all fields are filled, show success message
-      alert("Form submitted successfully!");
-      return true;
+      // Prepare the data to send to Google Sheets via POST request
+      var data = {
+        name: name,
+        phone: phone,
+        email: email,
+        url: url,
+        comments: comments
+      };
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxO-wc2_oqvKM4vPl_p5uW2ZAj__6frkgnkACa9WXiUG-HtjDYLLmJCzAZLOb3G-iki3A/exec", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          alert("Form submitted successfully!");
+        }
+      };
+      xhr.send(JSON.stringify(data));
+
+      return false; // Prevent default form submission
     }
   </script>
 </head>
@@ -27,21 +44,22 @@
   <h2>Partner Form - Step 1: Contact Info</h2>
   <form onsubmit="return validateForm()">
     <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br><br>
+    <input type="text" id="name" name="name" required><br><br>
 
     <label for="phone">Phone:</label><br>
-    <input type="text" id="phone" name="phone"><br><br>
+    <input type="text" id="phone" name="phone" required><br><br>
 
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br><br>
+    <input type="email" id="email" name="email" required><br><br>
 
     <label for="url">Website URL:</label><br>
-    <input type="text" id="url" name="url"><br><br>
+    <input type="text" id="url" name="url" required><br><br>
 
     <label for="comments">Comments:</label><br>
-    <textarea id="comments" name="comments"></textarea><br><br>
+    <textarea id="comments" name="comments" required></textarea><br><br>
 
     <input type="submit" value="Submit">
   </form>
 </body>
 </html>
+
