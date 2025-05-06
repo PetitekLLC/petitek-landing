@@ -13,11 +13,13 @@
       let url = document.getElementById("url").value;
       let comments = document.getElementById("comments").value;
 
+      // Check if all fields are filled out
       if (partnerType == "" || name == "" || phone == "" || email == "" || url == "" || comments == "") {
         alert("All fields are required. Please fill them out and try again.");
         return false;
       }
 
+      // Prepare the data to send to Google Sheets via POST request
       var data = {
         name: name,
         phone: phone,
@@ -26,28 +28,25 @@
         comments: comments,
         partnerType: partnerType
       };
-      
+
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxSjSYqxpY6LIiPV0NkhM-7n_ZifEK9OcYVT0GIVAYaLJ9dn83_OE9H9jMoY0lffcgSGw/exec", true);
+      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxSjSYqxpY6LIiPV0NkhM-7n_ZifEK9OcYVT0GIVAYaLJ9dn83_OE9H9jMoY0lffcgSGw/exec", true);  // Replace this URL with your Google Apps Script Web App URL
       xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            alert("Form submitted successfully!");
-            document.querySelector("form").reset();
-          } else {
-            alert("There was an error submitting the form. Please try again.");
-          }
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          alert("Form submitted successfully!");
         }
       };
       xhr.send(JSON.stringify(data));
-      return false;
+
+      return false; // Prevent default form submission
     }
   </script>
 </head>
 <body>
   <h2>Partner Form - Step 1: Contact Info</h2>
   <form onsubmit="return validateForm()">
+    <!-- Partner Type Dropdown -->
     <label for="partnerType">I'm interested in partnering as a:</label>
     <select id="partnerType" name="partnerType" required>
       <option value="" disabled selected>Select one...</option>
