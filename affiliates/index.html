@@ -1,52 +1,47 @@
-<form id="step1Form">
-  <label for="name">Your Name</label>
-  <input type="text" id="name" name="name" required />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner Form - Step 1</title>
+  <script>
+    function validateForm() {
+      let name = document.getElementById("name").value;
+      let phone = document.getElementById("phone").value;
+      let email = document.getElementById("email").value;
+      let url = document.getElementById("url").value;
+      let comments = document.getElementById("comments").value;
 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required />
+      if (name == "" || phone == "" || email == "" || url == "" || comments == "") {
+        alert("All fields are required. Please fill them out and try again.");
+        return false;
+      }
 
-  <label for="partnerType">I'm interested in partnering as a:</label>
-  <select id="partnerType" name="partnerType" required>
-    <option value="" disabled selected>Select one...</option>
-    <option value="Affiliate">Affiliate</option>
-    <option value="Influencer">Influencer</option>
-    <option value="Retailer">Retailer / Store</option>
-    <option value="Distributor">Distributor</option>
-    <option value="Other">Other</option>
-  </select>
+      // If all fields are filled, show success message
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Partner Form - Step 1: Contact Info</h2>
+  <form onsubmit="return validateForm()">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br><br>
 
-  <button type="submit">Next</button>
-</form>
+    <label for="phone">Phone:</label><br>
+    <input type="text" id="phone" name="phone"><br><br>
 
-<div id="step2Section" style="display:none; margin-top: 30px;">
-  <!-- We'll populate this with Step 2 later -->
-  <p>✅ Thanks! Please tell us more below.</p>
-</div>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br><br>
 
-<script>
-  const step1Form = document.getElementById('step1Form');
-  const step2Section = document.getElementById('step2Section');
+    <label for="url">Website URL:</label><br>
+    <input type="text" id="url" name="url"><br><br>
 
-  step1Form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new URLSearchParams(new FormData(step1Form));
+    <label for="comments">Comments:</label><br>
+    <textarea id="comments" name="comments"></textarea><br><br>
 
-    fetch("https://script.google.com/macros/s/AKfycbxO-wc2_oqvKM4vPl_p5uW2ZAj__6frkgnkACa9WXiUG-HtjDYLLmJCzAZLOb3G-iki3A/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: formData
-    })
-    .then(() => {
-      step1Form.style.display = "none";
-      step2Section.style.display = "block";
-    })
-    .catch(error => {
-      alert("❌ Something went wrong. Please try again.");
-      console.error(error);
-    });
-  });
-</script>
-
-
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
