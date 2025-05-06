@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Petitek Affiliates</title>
+  <title>Partner with Petitek</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -28,26 +28,143 @@
       font-size: 18px;
       line-height: 1.6;
     }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .form-section {
+      display: none;
+      text-align: left;
+    }
+    .form-section.active {
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #25A8C6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .logo {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .logo a {
+      font-size: 16px;
+      font-weight: bold;
+      color: #3399CC;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Become a Petitek Affiliate</h1>
+    <h1>Partner with Chatrbox</h1>
     <p>
-      Thank you for your interest in promoting Chatrbox! <br>
-      We’re building an exciting affiliate program to reward partners like you.
+      Whether you're an affiliate, influencer, or sales partner — we’d love to hear how you can help bring Chatrbox to more homes.
     </p>
-    <p>
-      This page is under construction — but we're working hard behind the scenes. <br>
-      Please check back soon or reach out directly at <a href="mailto:affiliates@petitek.com">affiliates@petitek.com</a>.
-    </p>
-  </div>
-<div class="logo" style="text-align: center; margin-top: 20px;">
-  <a href="https://petitek.com" style="font-size: 16px; font-weight: bold; color: #3399CC; text-decoration: none;">
-    <strong>Petitek Home</strong>
-  </a>
-</div>
 
-  
+    <label for="partnerType">I'm interested in partnering as a:</label>
+    <select id="partnerType" onchange="showFormSection()">
+      <option value="" disabled selected>Select one...</option>
+      <option value="affiliate">Affiliate</option>
+      <option value="influencer">Influencer</option>
+      <option value="retailer">Retailer / Store</option>
+      <option value="distributor">Distributor</option>
+      <option value="other">Other</option>
+    </select>
+
+    <div id="affiliate" class="form-section">
+      <div class="form-group">
+        <label for="affiliatePlatform">Which platforms do you use?</label>
+        <input type="text" id="affiliatePlatform" name="affiliatePlatform" placeholder="Instagram, blog, email, etc." />
+      </div>
+    </div>
+
+    <div id="influencer" class="form-section">
+      <div class="form-group">
+        <label for="socialHandle">Your social handle(s)</label>
+        <input type="text" id="socialHandle" name="socialHandle" placeholder="@yourhandle" />
+      </div>
+    </div>
+
+    <div id="retailer" class="form-section">
+      <div class="form-group">
+        <label for="storeName">Store name</label>
+        <input type="text" id="storeName" name="storeName" />
+      </div>
+      <div class="form-group">
+        <label for="storeLocation">Location</label>
+        <input type="text" id="storeLocation" name="storeLocation" />
+      </div>
+    </div>
+
+    <div id="distributor" class="form-section">
+      <div class="form-group">
+        <label for="territory">Sales territory</label>
+        <input type="text" id="territory" name="territory" placeholder="Region or territory" />
+      </div>
+    </div>
+
+    <div id="other" class="form-section">
+      <div class="form-group">
+        <label for="otherDetails">How would you like to help?</label>
+        <textarea id="otherDetails" name="otherDetails" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone" />
+    </div>
+
+    <button type="submit">Submit</button>
+  </div>
+
+  <div class="logo">
+    <a href="https://petitek.com"><strong>← Petitek Home</strong></a>
+  </div>
+
+  <script>
+    function showFormSection() {
+      const selected = document.getElementById('partnerType').value;
+      const sections = document.querySelectorAll('.form-section');
+      sections.forEach(section => section.classList.remove('active'));
+      if (selected) {
+        const visible = document.getElementById(selected);
+        if (visible) visible.classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
