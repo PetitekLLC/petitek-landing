@@ -70,10 +70,10 @@
     <h1>Partner with Chatrbox</h1>
     <p>Whether you're an affiliate, influencer, or sales partner — we’d love to hear how you can help bring Chatrbox to more homes.</p>
 
-    <!-- Part 1: Initial Capture -->
-    <form id="part1Form">
+    <!-- Unified Form (Part 1 and Part 2 together) -->
+    <form id="partnerForm">
       <label for="partnerType">I'm interested in partnering as a:</label>
-      <select id="partnerType" name="partnerType" required>
+      <select id="partnerType" name="partnerType" required onchange="showExtraFields()">
         <option value="" disabled selected>Select one...</option>
         <option value="Affiliate">Affiliate</option>
         <option value="Influencer">Influencer</option>
@@ -91,11 +91,6 @@
       <label for="phone">Phone (optional)</label>
       <input type="tel" id="phone" name="phone" />
 
-      <button type="submit">Next</button>
-    </form>
-
-    <!-- Part 2: Optional Details -->
-    <form id="part2Form" style="display:none;">
       <div id="customFields"></div>
 
       <label for="additionalComments">Additional Comments</label>
@@ -110,19 +105,10 @@
   </div>
 
   <script>
-    const part1Form = document.getElementById('part1Form');
-    const part2Form = document.getElementById('part2Form');
+    const partnerForm = document.getElementById('partnerForm');
     const customFields = document.getElementById('customFields');
 
-    part1Form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const formData = new FormData(part1Form);
-     fetch("https://script.google.com/macros/s/AKfycbyOrnvg16GnHSVUWDdovdRwacBrJ9LfxoZ6l28gnm4DQrwRrQYqXrTaTkdJmjnWhG2U/exec", {
-  method: "POST",
-        body: formData
-      });
-
-      // Dynamically show additional fields based on type
+    function showExtraFields() {
       const type = document.getElementById('partnerType').value;
       customFields.innerHTML = "";
 
@@ -154,23 +140,19 @@
           <textarea id="contribution" name="contribution"></textarea>
         `;
       }
+    }
 
-      part1Form.style.display = 'none';
-      part2Form.style.display = 'block';
-    });
-
-    part2Form.addEventListener('submit', function(event) {
+    partnerForm.addEventListener('submit', function(event) {
       event.preventDefault();
-      const formData = new FormData(part2Form);
-    fetch("https://script.google.com/macros/s/AKfycbyOrnvg16GnHSVUWDdovdRwacBrJ9LfxoZ6l28gnm4DQrwRrQYqXrTaTkdJmjnWhG2U/exec", {
-
+      const formData = new FormData(partnerForm);
+      fetch("https://script.google.com/macros/s/AKfycbyOrnvg16GnHSVUWDdovdRwacBrJ9LfxoZ6l28gnm4DQrwRrQYqXrTaTkdJmjnWhG2U/exec", {
         method: "POST",
         body: formData
       })
       .then(() => {
-        alert('Thank you for completing your profile!');
-        part2Form.reset();
-        part2Form.style.display = 'none';
+        alert('Thank you for submitting your information!');
+        partnerForm.reset();
+        customFields.innerHTML = "";
       });
     });
   </script>
