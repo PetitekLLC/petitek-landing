@@ -104,59 +104,64 @@
     <a href="https://petitek.com"><strong>← Petitek Home</strong></a>
   </div>
 
-  <script>
-    const partnerForm = document.getElementById('partnerForm');
-    const customFields = document.getElementById('customFields');
+<script>
+  const partnerForm = document.getElementById('partnerForm');
+  const customFields = document.getElementById('customFields');
 
-    function showExtraFields() {
-      const type = document.getElementById('partnerType').value;
-      customFields.innerHTML = "";
-
-      if (type === 'Affiliate') {
-        customFields.innerHTML += `
-          <label for="affiliatePlatforms">Which platforms do you use?</label>
-          <input type="text" id="affiliatePlatforms" name="affiliatePlatforms" placeholder="Instagram, blog, email, etc." />
-        `;
-      } else if (type === 'Influencer') {
-        customFields.innerHTML += `
-          <label for="followers">Approx. number of followers</label>
-          <input type="number" id="followers" name="followers" />
-        `;
-      } else if (type === 'Retailer') {
-        customFields.innerHTML += `
-          <label for="storeName">Store name</label>
-          <input type="text" id="storeName" name="storeName" />
-          <label for="storeLocation">Store location</label>
-          <input type="text" id="storeLocation" name="storeLocation" />
-        `;
-      } else if (type === 'Distributor') {
-        customFields.innerHTML += `
-          <label for="territory">Sales territory</label>
-          <input type="text" id="territory" name="territory" />
-        `;
-      } else if (type === 'Other') {
-        customFields.innerHTML += `
-          <label for="contribution">How would you like to help?</label>
-          <textarea id="contribution" name="contribution"></textarea>
-        `;
-      }
-    }
-partnerForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const formData = new FormData(partnerForm);
-
-  fetch("https://script.google.com/macros/s/AKfycbxn0PecETrbm6fZdx4NpDFFdTt8FKJU9KZEvua7y6mtBS1NcllFgKGOWLqBjl9JSgBp7Q/exec", {
-    method: "POST",
-    body: formData
-  })
-  .then(() => {
-    alert('Thank you for submitting your information!');
-    partnerForm.reset();
+  function showExtraFields() {
+    const type = document.getElementById('partnerType').value;
     customFields.innerHTML = "";
+
+    if (type === 'Affiliate') {
+      customFields.innerHTML += `
+        <label for="affiliatePlatforms">Which platforms do you use?</label>
+        <input type="text" id="affiliatePlatforms" name="affiliatePlatforms" placeholder="Instagram, blog, email, etc." />
+      `;
+    } else if (type === 'Influencer') {
+      customFields.innerHTML += `
+        <label for="followers">Approx. number of followers</label>
+        <input type="number" id="followers" name="followers" />
+      `;
+    } else if (type === 'Retailer') {
+      customFields.innerHTML += `
+        <label for="storeName">Store name</label>
+        <input type="text" id="storeName" name="storeName" />
+        <label for="storeLocation">Store location</label>
+        <input type="text" id="storeLocation" name="storeLocation" />
+      `;
+    } else if (type === 'Distributor') {
+      customFields.innerHTML += `
+        <label for="website">Company Website</label>
+        <input type="url" id="website" name="website" />
+      `;
+    } else if (type === 'Other') {
+      customFields.innerHTML += `
+        <label for="contribution">How would you like to help?</label>
+        <textarea id="contribution" name="contribution"></textarea>
+      `;
+    }
+  }
+
+  partnerForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(partnerForm);
+
+    fetch("https://script.google.com/macros/s/AKfycbxn0PecETrbm6fZdx4NpDFFdTt8FKJU9KZEvua7y6mtBS1NcllFgKGOWLqBjl9JSgBp7Q/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(() => {
+      alert('Thank you for submitting your information!');
+      partnerForm.reset();
+      customFields.innerHTML = "";
+    })
+    .catch(error => {
+      alert('There was a problem submitting your form.');
+      console.error(error);
+    });
   });
-});
- 
-  </script>
+</script>
+
 </body>
 </html>
 
