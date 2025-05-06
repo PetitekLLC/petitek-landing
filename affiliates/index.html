@@ -144,24 +144,29 @@
 
   partnerForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    const formData = new FormData(partnerForm);
-fetch("https://script.google.com/macros/s/AKfycbxn0PecETrbm6fZdx4NpDFFdTt8FKJU9KZEvua7y6mtBS1NcllFgKGOWLqBjl9JSgBp7Q/exec", {
-  method: "POST",
-  mode: "no-cors",  // ← this avoids CORS errors from Google
-  body: formData
-})
-.then(() => {
-  alert('✅ Thank you for submitting your information!');
-  partnerForm.reset();
-  customFields.innerHTML = "";
-})
-.catch(error => {
-  alert('❌ There was a problem submitting your form.');
-  console.error(error);
-});
 
+    // convert FormData to URLSearchParams so Google can read it
+    const formData = new URLSearchParams(new FormData(partnerForm));
+
+    fetch("https://script.google.com/macros/s/AKfycbxn0PecETrbm6fZdx4NpDFFdTt8FKJU9KZEvua7y6mtBS1NcllFgKGOWLqBjl9JSgBp7Q/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
+    })
+    .then(() => {
+      alert('✅ Thank you for submitting your information!');
+      partnerForm.reset();
+      customFields.innerHTML = "";
+    })
+    .catch(error => {
+      alert('❌ There was a problem submitting your form.');
+      console.error(error);
+    });
   });
 </script>
+
 
 </body>
 </html>
