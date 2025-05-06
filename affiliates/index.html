@@ -28,12 +28,19 @@
       font-size: 18px;
       line-height: 1.6;
     }
-    select {
+    select, input, textarea, button {
+      width: 100%;
       padding: 10px;
       font-size: 16px;
-      width: 100%;
-      margin-top: 20px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    label {
+      text-align: left;
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
     }
     .form-section {
       display: none;
@@ -45,27 +52,6 @@
     .form-group {
       margin-bottom: 15px;
       text-align: left;
-    }
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      padding: 12px 24px;
-      font-size: 16px;
-      background-color: #25A8C6;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
     }
     .logo {
       text-align: center;
@@ -82,73 +68,41 @@
 <body>
   <div class="container">
     <h1>Partner with Chatrbox</h1>
-    <p>
-      Whether you're an affiliate, influencer, or sales partner — we’d love to hear how you can help bring Chatrbox to more homes.
-    </p>
+    <p>Whether you're an affiliate, influencer, or sales partner — we’d love to hear how you can help bring Chatrbox to more homes.</p>
 
-    <label for="partnerType">I'm interested in partnering as a:</label>
-    <select id="partnerType" onchange="showFormSection()">
-      <option value="" disabled selected>Select one...</option>
-      <option value="affiliate">Affiliate</option>
-      <option value="influencer">Influencer</option>
-      <option value="retailer">Retailer / Store</option>
-      <option value="distributor">Distributor</option>
-      <option value="other">Other</option>
-    </select>
+    <!-- Part 1: Initial Capture -->
+    <form id="part1Form">
+      <label for="partnerType">I'm interested in partnering as a:</label>
+      <select id="partnerType" name="partnerType" required>
+        <option value="" disabled selected>Select one...</option>
+        <option value="Affiliate">Affiliate</option>
+        <option value="Influencer">Influencer</option>
+        <option value="Retailer">Retailer / Store</option>
+        <option value="Distributor">Distributor</option>
+        <option value="Other">Other</option>
+      </select>
 
-    <div id="affiliate" class="form-section">
-      <div class="form-group">
-        <label for="affiliatePlatform">Which platforms do you use?</label>
-        <input type="text" id="affiliatePlatform" name="affiliatePlatform" placeholder="Instagram, blog, email, etc." />
-      </div>
-    </div>
-
-    <div id="influencer" class="form-section">
-      <div class="form-group">
-        <label for="socialHandle">Your social handle(s)</label>
-        <input type="text" id="socialHandle" name="socialHandle" placeholder="@yourhandle" />
-      </div>
-    </div>
-
-    <div id="retailer" class="form-section">
-      <div class="form-group">
-        <label for="storeName">Store name</label>
-        <input type="text" id="storeName" name="storeName" />
-      </div>
-      <div class="form-group">
-        <label for="storeLocation">Location</label>
-        <input type="text" id="storeLocation" name="storeLocation" />
-      </div>
-    </div>
-
-    <div id="distributor" class="form-section">
-      <div class="form-group">
-        <label for="territory">Sales territory</label>
-        <input type="text" id="territory" name="territory" placeholder="Region or territory" />
-      </div>
-    </div>
-
-    <div id="other" class="form-section">
-      <div class="form-group">
-        <label for="otherDetails">How would you like to help?</label>
-        <textarea id="otherDetails" name="otherDetails" rows="4"></textarea>
-      </div>
-    </div>
-
-    <div class="form-group">
       <label for="name">Your Name</label>
       <input type="text" id="name" name="name" required />
-    </div>
-    <div class="form-group">
+
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required />
-    </div>
-    <div class="form-group">
+
       <label for="phone">Phone (optional)</label>
       <input type="tel" id="phone" name="phone" />
-    </div>
 
-    <button type="submit">Submit</button>
+      <button type="submit">Next</button>
+    </form>
+
+    <!-- Part 2: Optional Details -->
+    <form id="part2Form" style="display:none;">
+      <div id="customFields"></div>
+
+      <label for="additionalComments">Additional Comments</label>
+      <textarea id="additionalComments" name="additionalComments" rows="4"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
   </div>
 
   <div class="logo">
@@ -156,15 +110,69 @@
   </div>
 
   <script>
-    function showFormSection() {
-      const selected = document.getElementById('partnerType').value;
-      const sections = document.querySelectorAll('.form-section');
-      sections.forEach(section => section.classList.remove('active'));
-      if (selected) {
-        const visible = document.getElementById(selected);
-        if (visible) visible.classList.add('active');
+    const part1Form = document.getElementById('part1Form');
+    const part2Form = document.getElementById('part2Form');
+    const customFields = document.getElementById('customFields');
+
+    part1Form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(part1Form);
+      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+        method: "POST",
+        body: formData
+      });
+
+      // Dynamically show additional fields based on type
+      const type = document.getElementById('partnerType').value;
+      customFields.innerHTML = "";
+
+      if (type === 'Affiliate') {
+        customFields.innerHTML += `
+          <label for="affiliatePlatforms">Which platforms do you use?</label>
+          <input type="text" id="affiliatePlatforms" name="affiliatePlatforms" placeholder="Instagram, blog, email, etc." />
+        `;
+      } else if (type === 'Influencer') {
+        customFields.innerHTML += `
+          <label for="followers">Approx. number of followers</label>
+          <input type="number" id="followers" name="followers" />
+        `;
+      } else if (type === 'Retailer') {
+        customFields.innerHTML += `
+          <label for="storeName">Store name</label>
+          <input type="text" id="storeName" name="storeName" />
+          <label for="storeLocation">Store location</label>
+          <input type="text" id="storeLocation" name="storeLocation" />
+        `;
+      } else if (type === 'Distributor') {
+        customFields.innerHTML += `
+          <label for="territory">Sales territory</label>
+          <input type="text" id="territory" name="territory" />
+        `;
+      } else if (type === 'Other') {
+        customFields.innerHTML += `
+          <label for="contribution">How would you like to help?</label>
+          <textarea id="contribution" name="contribution"></textarea>
+        `;
       }
-    }
+
+      part1Form.style.display = 'none';
+      part2Form.style.display = 'block';
+    });
+
+    part2Form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(part2Form);
+      fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(() => {
+        alert('Thank you for completing your profile!');
+        part2Form.reset();
+        part2Form.style.display = 'none';
+      });
+    });
   </script>
 </body>
 </html>
+
