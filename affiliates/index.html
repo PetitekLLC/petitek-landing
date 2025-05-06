@@ -6,14 +6,15 @@
   <title>Partner Form - Step 1</title>
   <script>
     function validateForm() {
+      let partnerType = document.getElementById("partnerType").value;
       let name = document.getElementById("name").value;
       let phone = document.getElementById("phone").value;
       let email = document.getElementById("email").value;
       let url = document.getElementById("url").value;
       let comments = document.getElementById("comments").value;
-      let partnerType = document.getElementById("partnerType").value;
 
-      if (name == "" || phone == "" || email == "" || url == "" || comments == "" || partnerType == "") {
+      // Corrected the if statement
+      if (partnerType == "" || name == "" || phone == "" || email == "" || url == "" || comments == "") {
         alert("All fields are required. Please fill them out and try again.");
         return false;
       }
