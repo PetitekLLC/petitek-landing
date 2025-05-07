@@ -1,32 +1,39 @@
-<form action="https://script.google.com/macros/s/AKfycbx_AbDxHc2QmxUjibhN6KSSaDhFnE0_b4LW6Ix7-OdhPm2XjoJGBrEYg1fwCPrnc7gnxA/exec" method="POST" onsubmit="showThankYou()">
-  <select name="partnerType" required>
-    <option value="" disabled selected>Select one...</option>
-    <option value="Affiliate">Affiliate</option>
-    <option value="Influencer">Influencer</option>
-    <option value="Retailer">Retailer</option>
-    <option value="Distributor">Distributor</option>
-    <option value="Other">Other</option>
-  </select><br><br>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Petitek Partner Form</title>
+</head>
+<body>
+  <h2>Partner Submission Form</h2>
+  <form action="https://script.google.com/macros/s/AKfycbxLVNt7PCHBb8o_gRWQHv_So5h1OnXRLLhPWvURkKMbWncfMXOTzltBvtccuRMapcxf/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+    
+    <label>Profile Type:
+      <select name="profileType" required>
+        <option value="">Select One</option>
+        <option>Influencer</option>
+        <option>Retailer</option>
+        <option>Affiliate</option>
+        <option>Distributor</option>
+        <option>Technology Partner</option>
+        <option>Other</option>
+      </select>
+    </label><br><br>
 
-  <input type="text" name="name" placeholder="Name" required><br><br>
-  <input type="text" name="phone" placeholder="Phone" required><br><br>
-  <input type="email" name="email" placeholder="Email" required><br><br>
-  <input type="text" name="url" placeholder="Website URL" required><br><br>
-  <textarea name="comments" placeholder="Comments" required></textarea><br><br>
+    <label>Name: <input type="text" name="name" required></label><br><br>
+    <label>Email: <input type="email" name="email" required></label><br><br>
+    <label>Phone Number: <input type="text" name="phone" required></label><br><br>
+    <label>Location: <input type="text" name="location" required></label><br><br>
+    <label>Website or Social Handle: <input type="text" name="url" required></label><br><br>
+    <label>Comments: <textarea name="comments" required></textarea></label><br><br>
 
-  <input type="submit" value="Submit">
-</form>
+    <input type="submit" value="Submit">
+  </form>
 
-<div id="thankYou" style="display:none; margin-top: 20px; font-weight: bold; color: green;">
-  Thank you for submitting your info. We’ve received it!
-</div>
+  <!-- Hidden iframe for form response -->
+  <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){alert('Thanks! Your info has been received.');}"></iframe>
 
-<script>
-  function showThankYou() {
-    document.getElementById("thankYou").style.display = "block";
-  }
-</script>
-
-
+  <script>var submitted = false;</script>
+</body>
+</html>
 
 
