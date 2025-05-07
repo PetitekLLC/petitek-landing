@@ -5,44 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Partner Form - Step 1</title>
   <script>
-    function validateForm() {
-      let partnerType = document.getElementById("partnerType").value;
-      let name = document.getElementById("name").value;
-      let phone = document.getElementById("phone").value;
-      let email = document.getElementById("email").value;
-      let url = document.getElementById("url").value;
-      let comments = document.getElementById("comments").value;
+  function validateForm() {
+    let partnerType = document.getElementById("partnerType").value;
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let email = document.getElementById("email").value;
+    let url = document.getElementById("url").value;
+    let comments = document.getElementById("comments").value;
 
-      // Check if all fields are filled out
-      if (partnerType == "" || name == "" || phone == "" || email == "" || url == "" || comments == "") {
-        alert("All fields are required. Please fill them out and try again.");
-        return false;
-      }
-
-    
-      // Prepare the data to send to Google Sheets via POST request
-      var data = {
-        name: name,
-        phone: phone,
-        email: email,
-        url: url,
-        comments: comments,
-        partnerType: partnerType
-      };
-
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://script.google.com/macros/s/AKfycbx6X5RFNzRKDPslgvt-5avZW0oW6euywehWxEnWsXKQIhYtO2hwb1mx5aHMgDmxukTEcw/exec", true);  // Replace this URL with your Google Apps Script Web App URL
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          alert("Form submitted successfully!");
-        }
-      };
-      xhr.send(JSON.stringify(data));
-
-      return false; // Prevent default form submission
+    if (!partnerType || !name || !phone || !email || !url || !comments) {
+      alert("All fields are required. Please fill them out and try again.");
+      return false;
     }
-  </script>
+
+    const data = {
+      name,
+      phone,
+      email,
+      url,
+      comments,
+      partnerType
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycby0cqC3nOesG6wu6m-pPwd4qNmXQfFf8cNXEz-GqPqdbm8vofcFNBgzyscauOBahakJAw/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not OK");
+      return response.json();
+    })
+    .then(result => {
+      if (result.status === "Success") {
+        alert("Form submitted successfully!");
+      } else {
+        alert("Error: " + (result.message || "Unknown error"));
+      }
+    })
+    .catch(error => {
+      console.error("Request failed", error);
+      alert("Submission failed. Check the console for details.");
+    });
+
+    return false;
+  }
+</script>
+
 </head>
 <body>
   <h2>Partner Form - Step 1: Contact Info</h2>
