@@ -1,3 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Form</title>
+  <script>
+    function validateForm() {
+      const data = {
+        partnerType: document.getElementById("partnerType").value,
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        url: document.getElementById("url").value,
+        comments: document.getElementById("comments").value
+      };
+
+      if (Object.values(data).some(field => !field)) {
+        alert("All fields are required.");
+        return false;
+      }
+
+      fetch("https://script.google.com/macros/s/AKfycbxgAh0y9P3NB5khYqkxINMzzaP-jNLT4ktTCVhT8nmzAVpptEbqgdli-5BFwJ-BbShp/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then(response => {
+        if (response.status === "Success") {
+          alert("Form submitted successfully!");
+        } else {
+          alert("Submission failed: " + (response.message || "Unknown error"));
+        }
+      })
+      .catch(err => {
+        console.error("Fetch error:", err);
+        alert("Submission failed. Check the browser console.");
+      });
+
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <h2>Partner Form</h2>
+  <form onsubmit="return validateForm()">
+    <label for="partnerType">Partner Type:</label><br>
+    <select id="partnerType" required>
+      <option value="" disabled selected>Select one...</option>
+      <option value="Affiliate">Affiliate</option>
+      <option value="Influencer">Influencer</option>
+      <option value="Retailer">Retailer</option>
+      <option value="Distributor">Distributor</option>
+      <option value="Other">Other</option>
+    </select><br><br>
+
+    <input type="text" id="name" placeholder="Name" required><br><br>
+    <input type="text" id="phone" placeholder="Phone" required><br><br>
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <input type="text" id="url" placeholder="Website URL" required><br><br>
+    <textarea id="comments" placeholder="Comments" required></textarea><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
 
 
 
