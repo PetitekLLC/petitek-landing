@@ -1,3 +1,6 @@
+# Re-execute after code environment reset to regenerate the HTML form with the "company" field
+
+html_form = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,4 +162,12 @@
 
 </body>
 </html>
+"""
+
+# Save file
+html_file_path = "/mnt/data/index_with_company_field.html"
+with open(html_file_path, "w") as f:
+    f.write(html_form)
+
+html_file_path
 
