@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +109,7 @@
   </div>
 
   <div class="copy-box">
-    Thank you for your interest in partnering with Petitek and we'd love to hear from you. Kindly complete the contact form below and we'll be in touch with you as soon as we can. Woof! Meow!
+    Thank you for your interest in partnering with Petitek and we'd love to hear from you. Kindly complete the form below and we'll be in touch with you as soon as we can. Woof! Meow!
   </div>
 
   <div class="form-card">
@@ -146,13 +144,22 @@
       <input type="text" name="url" required>
 
       <label for="comments">Comments:</label>
-      <textarea name="comments" rows="4" ></textarea>
-
+      <textarea name="comments" rows="4"></textarea> <!-- Not required -->
+      
       <button type="submit">Submit</button>
     </form>
 
-    <iframe name="hidden_iframe" style="display:none;" onload="if(submitted){alert('Thanks! Your info has been received. Look for out Confirmation Email.');}"></iframe>
-    <script>var submitted = false;</script>
+    <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
+    <script>
+      var submitted = false;
+      function handleSubmission() {
+        if (submitted) {
+          alert('Thanks! Your info has been received. Look for our Confirmation Email.');
+          document.querySelector("form").reset();
+          submitted = false;
+        }
+      }
+    </script>
   </div>
 
   <div class="return-link">
@@ -161,3 +168,4 @@
 
 </body>
 </html>
+
