@@ -149,17 +149,21 @@
       <button type="submit">Submit</button>
     </form>
 
-    <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
-    <script>
-      var submitted = false;
-      function handleSubmission() {
-        if (submitted) {
-          alert('Thanks! Your info has been received. Look for our Confirmation Email.');
-          document.querySelector("form").reset();
-          submitted = false;
-        }
-      }
-    </script>
+  <script>
+  var submitted = false;
+  window.handleSubmission = function () {
+    if (submitted) {
+      alert('Thanks! Your info has been received. Look for our Confirmation Email.');
+      document.querySelector("form").reset();
+      submitted = false;
+    }
+  };
+</script>
+
+  
+    
+  <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
+    
   </div>
 
   <div class="return-link">
