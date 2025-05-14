@@ -1,1 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  background: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #333;
+}
+
+.chat-log {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 400px;
+}
+
+.chat-log .user,
+.chat-log .bot {
+  margin-bottom: 10px;
+}
+
+.chat-log .bot {
+  color: #1a73e8;
+}
+
+.chat-log .error {
+  color: red;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.chat-input button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
