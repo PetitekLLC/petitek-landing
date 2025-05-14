@@ -3,118 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Petitek Support</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #222;
-    }
-    header {
-      background-color: #25A8C6;
-      padding: 20px;
-      text-align: center;
-    }
-    header img {
-      height: 50px;
-      display: block;
-      margin: 0 auto 10px;
-    }
-    header h1 {
-      color: white;
-      margin: 0;
-    }
-    .contact-blocks {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin: 30px 10px;
-    }
-    .contact-block {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      font-size: 18px;
-    }
-    .faq {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .faq h2 {
-      color: #25A8C6;
-      margin-top: 40px;
-    }
-    .faq dt {
-      font-weight: bold;
-      margin-top: 20px;
-    }
-    .faq dd {
-      margin-left: 20px;
-      margin-bottom: 10px;
-    }
-  </style>
+  <title>ChatrBox Support</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <img src="/chatrbox_paw_logo.png" alt="Petitek Logo">
-    <h1>Petitek Support</h1>
-    <div style="color: white; margin-top: 8px;">25 Tabby Shell Rd., Bluffton, SC 29910</div>
-  </header>
+  <div class="container">
+    <h1>ChatrBox Support</h1>
+    <p>Need help? Ask ChatrBot below or scroll down for FAQs.</p>
 
-  <div class="contact-blocks">
-    <div class="contact-block">
-      <strong>Email:</strong> <a href="mailto:support@petitek.com">support@petitek.com</a>
-    </div>
-    <div class="contact-block">
-      <strong>Phone:</strong> <a href="tel:+18889709003">(888) 970-9003</a>
+    <div id="chatLog" class="chat-log"></div>
+
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Ask ChatrBot a question…" />
+      <button onclick="sendMessage()">Send</button>
     </div>
   </div>
 
-  <div class="faq">
-    <h2>General Questions</h2>
-    <dl>
-      <dt>What is ChatrBox, and how does it work?</dt>
-      <dd>ChatrBox is a smart pet training device that detects motion and plays alerts or voice messages to correct behavior.</dd>
-      <dt>What are the main features of ChatrBox?</dt>
-      <dd>Motion-activated playback, LED lights, Wi-Fi support, and custom voice recordings.</dd>
-      <dt>How can ChatrBox help with pet training?</dt>
-      <dd>It reinforces good behavior by triggering responses when your pet acts appropriately or inappropriately.</dd>
-      <dt>What is included in the ChatrBox package?</dt>
-      <dd>Device, 5 focus shields, 4 AAA batteries, USB cable, and guide.</dd>
-      <dt>What types of pets can use ChatrBox?</dt>
-      <dd>Dogs, cats, and other trainable pets.</dd>
-      <dt>Does it require internet?</dt>
-      <dd>No, unless using the Wi-Fi training mode.</dd>
-      <dt>Can I use it outdoors?</dt>
-      <dd>Indoors recommended; outdoor use must be dry and shaded.</dd>
-      <dt>Does it work for both dogs and cats?</dt>
-      <dd>Yes, with customizable messaging for either species.</dd>
-    </dl>
-
-    <h2>Setup & Installation</h2>
-    <dl>
-      <dt>How do I set up ChatrBox?</dt>
-      <dd>Install batteries, power on, record a message, place in desired location.</dd>
-      <dt>What is the Wi-Fi for?</dt>
-      <dd>Wi-Fi allows manual triggering during observed training via smartphone.</dd>
-      <dt>How do I enter Wi-Fi mode?</dt>
-      <dd>Hold the volume button for 3 seconds, then connect your phone to the device Wi-Fi.</dd>
-      <dt>How do I disconnect Wi-Fi?</dt>
-      <dd>Click END on the training page. Your phone will revert to its normal network.</dd>
-      <dt>Can it work without Wi-Fi?</dt>
-      <dd>Yes, automatic motion detection and alerts work without internet.</dd>
-    </dl>
-
-    <h2>More Sections...</h2>
-    <p>(You can copy and paste or expand the rest of your FAQ content here under corresponding <code><dl><dt><dd></dd></dt></dl></code> tags.)</p>
-  </div>
+  <script src="chat.js"></script>
 </body>
 </html>
