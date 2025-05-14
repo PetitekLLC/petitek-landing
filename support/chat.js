@@ -8,9 +8,9 @@ async function sendMessage() {
   // Show user message
   chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${message}</div>`;
   input.value = "";
-
   try {
-    const response = await fetch("https://YOUR_BACKEND_URL/chat", {
+  const response = await fetch("https://website-backend-ag99.onrender.com/chat", {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message })
