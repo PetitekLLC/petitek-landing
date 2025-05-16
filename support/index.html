@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ChatrBox Assistant</title>
+  <title>ChatrBox Support</title>
   <meta charset="UTF-8" />
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f2f5f9;
       margin: 40px;
-      background: #f3f6f9;
-    }
-
-    h2 {
-      margin-bottom: 10px;
     }
 
     #chatContainer {
@@ -19,42 +15,32 @@
       margin: auto;
     }
 
-    input[type="text"] {
+    #chatInput {
       width: 100%;
       padding: 12px;
-      margin-top: 10px;
       font-size: 16px;
-      border-radius: 6px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
+      border-radius: 6px;
     }
 
-    button {
+    #sendButton {
       margin-top: 10px;
       padding: 10px 16px;
       font-size: 16px;
-      background: #0088cc;
+      background-color: #0077b6;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #006fa3;
-    }
-
-    .response-box {
+    #chatOutput {
       margin-top: 20px;
       padding: 12px;
-      background: #ffffff;
+      background: #fff;
       border-radius: 8px;
       border: 1px solid #ccc;
-      display: inline-block;
-      max-width: 100%;
       white-space: pre-wrap;
-      overflow-wrap: break-word;
-      transition: all 0.3s ease;
       font-size: 15px;
     }
   </style>
@@ -62,38 +48,36 @@
 <body>
   <div id="chatContainer">
     <h2>Ask ChatrBox a Question</h2>
-    <input type="text" id="userInput" placeholder="Type your question..." />
-    <button onclick="sendMessage()">Send</button>
-    <div id="responseBox" class="response-box" style="display:none;"></div>
+    <input type="text" id="chatInput" placeholder="Ask your question..." />
+    <button id="sendButton" onclick="sendMessage()">Send</button>
+    <div id="chatOutput"></div>
   </div>
 
   <script>
     async function sendMessage() {
-      const input = document.getElementById('userInput');
-      const responseBox = document.getElementById('responseBox');
+      const input = document.getElementById("chatInput");
+      const output = document.getElementById("chatOutput");
       const message = input.value.trim();
 
       if (!message) return;
 
-      responseBox.style.display = 'block';
-      responseBox.textContent = '🟡 Thinking...';
+      output.textContent = "⏳ Waiting for ChatrBot...";
 
       try {
-        const res = await fetch("https://your-backend-url.onrender.com/chat", {
+        const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message })
         });
 
         const data = await res.json();
-        responseBox.textContent = data.reply || "No reply received.";
+        output.textContent = data.reply || "No response received.";
       } catch (err) {
-        console.error(err);
-        responseBox.textContent = "⚠️ Error contacting assistant.";
+        console.error("Fetch error:", err);
+        output.textContent = "⚠️ Error contacting assistant.";
       }
     }
   </script>
 </body>
 </html>
+
