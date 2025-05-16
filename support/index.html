@@ -76,15 +76,16 @@ async function sendMessage() {
     });
 
     const data = await res.json();
+
+    // ✅ Set response first
     output.textContent = data.reply || "No response received.";
 
-    // ✅ Clear input only after response is shown
-    setTimeout(() => {
-      input.value = "";
-    }, 100); // Small delay ensures message displays first
+    // ✅ Only then clear input
+    input.value = "";
 
   } catch (err) {
     console.error("Fetch error:", err);
     output.textContent = "⚠️ Error contacting assistant.";
   }
 }
+
