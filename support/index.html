@@ -15,7 +15,6 @@
       margin: auto;
     }
 
-    
     #chatInput {
       width: 100%;
       padding: 12px;
@@ -50,7 +49,7 @@
 <body>
   <div id="chatContainer">
     <h2>Ask ChatrBox a Question</h2>
-    <form onsubmit="sendMessage(); return false;">
+    <form id="chatForm">
       <input type="text" id="chatInput" placeholder="Ask your question..." />
       <button id="sendButton" type="submit">Send</button>
     </form>
@@ -58,37 +57,44 @@
   </div>
 
   <script>
+    async function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const output = document.getElementById("chatOutput");
+      const message = input.value.trim();
 
-async function sendMessage() {
-  const input = document.getElementById("chatInput");
-  const output = document.getElementById("chatOutput");
-  const message = input.value.trim();
+      if (!message) return;
 
-  if (!message) return;
+      output.style.display = "block";
+      output.textContent = "⏳ Waiting for ChatrBot...";
 
-  output.style.display = "block";
-  output.textContent = "⏳ Waiting for ChatrBot...";
+      try {
+        const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message })
+        });
 
-  try {
-    const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message })
+        const data = await res.json();
+
+        // Show assistant's response
+        output.textContent = data.reply || "No response received.";
+
+        // Clear input AFTER rendering
+        setTimeout(() => {
+          input.value = "";
+        }, 0);
+      } catch (err) {
+        console.error("Fetch error:", err);
+        output.textContent = "⚠️ Error contacting assistant.";
+      }
+    }
+
+    // ✅ Attach event listener after DOM is loaded
+    document.getElementById("chatForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      sendMessage();
     });
-
-    const data = await res.json();
-
-    // Set the response content
-    output.textContent = data.reply || "No response received.";
-
-    // Wait until after the DOM has rendered the response, then clear input
-    setTimeout(() => {
-      input.value = "";
-    }, 0);  // Let browser repaint before clearing
-
-  } catch (err) {
-    console.error("Fetch error:", err);
-    output.textContent = "⚠️ Error contacting assistant.";
-  }
-}
+  </script>
+</body>
+</html>
 
