@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ChatrBox Support</title>
+  <title>Petitek Support</title>
   <meta charset="UTF-8" />
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f5f9;
-      margin: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      background-color: #0077b6;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero img {
+      max-width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #e0f2f9;
     }
 
     #chatContainer {
       max-width: 600px;
-      margin: auto;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     #chatInput {
@@ -34,10 +63,14 @@
       cursor: pointer;
     }
 
+    #sendButton:hover {
+      background-color: #005a8d;
+    }
+
     #chatOutput {
       margin-top: 20px;
       padding: 12px;
-      background: #fff;
+      background: #f8f9fa;
       border-radius: 8px;
       border: 1px solid #ccc;
       white-space: pre-wrap;
@@ -47,8 +80,16 @@
   </style>
 </head>
 <body>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <img src="https://petitek.com/assets/logo.png" alt="Petitek Logo" />
+    <h1>Petitek Support</h1>
+    <p>Need help with your ChatrBox? Ask a question below and our assistant will guide you.</p>
+  </div>
+
+  <!-- Chat Interface -->
   <div id="chatContainer">
-    <h2>Ask ChatrBox a Question</h2>
     <form id="chatForm">
       <input type="text" id="chatInput" placeholder="Ask your question..." />
       <button id="sendButton" type="submit">Send</button>
@@ -76,10 +117,8 @@
 
         const data = await res.json();
 
-        // Show assistant's response
         output.textContent = data.reply || "No response received.";
 
-        // Clear input AFTER rendering
         setTimeout(() => {
           input.value = "";
         }, 0);
@@ -89,12 +128,11 @@
       }
     }
 
-    // ✅ Attach event listener after DOM is loaded
     document.getElementById("chatForm").addEventListener("submit", function (e) {
       e.preventDefault();
       sendMessage();
     });
   </script>
+
 </body>
 </html>
-
