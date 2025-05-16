@@ -42,14 +42,17 @@
       border: 1px solid #ccc;
       white-space: pre-wrap;
       font-size: 15px;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div id="chatContainer">
     <h2>Ask ChatrBox a Question</h2>
-    <input type="text" id="chatInput" placeholder="Ask your question..." />
-    <button id="sendButton" onclick="sendMessage()">Send</button>
+    <form onsubmit="sendMessage(); return false;">
+      <input type="text" id="chatInput" placeholder="Ask your question..." />
+      <button id="sendButton" type="submit">Send</button>
+    </form>
     <div id="chatOutput"></div>
   </div>
 
@@ -61,6 +64,7 @@
 
       if (!message) return;
 
+      output.style.display = "block";
       output.textContent = "⏳ Waiting for ChatrBot...";
 
       try {
