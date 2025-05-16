@@ -58,6 +58,7 @@
   </div>
 
   <script>
+
 async function sendMessage() {
   const input = document.getElementById("chatInput");
   const output = document.getElementById("chatOutput");
@@ -77,15 +78,13 @@ async function sendMessage() {
 
     const data = await res.json();
 
-    // ✅ FIRST: render the assistant response
-    requestAnimationFrame(() => {
-      output.textContent = data.reply || "No response received.";
+    // Set the response content
+    output.textContent = data.reply || "No response received.";
 
-      // ✅ THEN: clear the input AFTER rendering
-      requestAnimationFrame(() => {
-        input.value = "";
-      });
-    });
+    // Wait until after the DOM has rendered the response, then clear input
+    setTimeout(() => {
+      input.value = "";
+    }, 0);  // Let browser repaint before clearing
 
   } catch (err) {
     console.error("Fetch error:", err);
