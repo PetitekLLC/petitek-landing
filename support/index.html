@@ -58,30 +58,33 @@
   </div>
 
   <script>
-    async function sendMessage() {
-      const input = document.getElementById("chatInput");
-      const output = document.getElementById("chatOutput");
-      const message = input.value.trim();
+async function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const output = document.getElementById("chatOutput");
+  const message = input.value.trim();
 
-      if (!message) return;
+  if (!message) return;
 
-      output.style.display = "block";
-      output.textContent = "⏳ Waiting for ChatrBot...";
+  output.style.display = "block";
+  output.textContent = "⏳ Waiting for ChatrBot...";
 
-      try {
-        const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message })
-        });
+  try {
+    const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message })
+    });
 
-        const data = await res.json();
-        output.textContent = data.reply || "No response received.";
-      } catch (err) {
-        console.error("Fetch error:", err);
-        output.textContent = "⚠️ Error contacting assistant.";
-      }
-    }
-  </script>
-</body>
-</html>
+    const data = await res.json();
+    output.textContent = data.reply || "No response received.";
+
+    // ✅ Clear input only after response is shown
+    setTimeout(() => {
+      input.value = "";
+    }, 100); // Small delay ensures message displays first
+
+  } catch (err) {
+    console.error("Fetch error:", err);
+    output.textContent = "⚠️ Error contacting assistant.";
+  }
+}
