@@ -1,99 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>ChatrBox Assistant</title>
-  <meta charset="UTF-8" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f3f6f9;
-    }
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import traceback
+from openai import OpenAI
+import os
+import re
+from dotenv import load_dotenv
 
-    h2 {
-      margin-bottom: 10px;
-    }
+# Load environment variables
+load_dotenv()
 
-    #chatContainer {
-      max-width: 600px;
-      margin: auto;
-    }
+# Set these in Render's environment settings
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_PROJECT_ID = os.getenv("OPENAI_PROJECT_ID")
 
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
+# Initialize OpenAI client (project mode)
+client = OpenAI(
+    api_key=OPENAI_API_KEY,
+    project=OPENAI_PROJECT_ID
+)
 
-    button {
-      margin-top: 10px;
-      padding: 10px 16px;
-      font-size: 16px;
-      background: #0088cc;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+# Your Assistant ID
+ASSISTANT_ID = "asst_pEJ28b9SuNeeOGfLtRDGppR0"
 
-    button:hover {
-      background-color: #006fa3;
-    }
+# Flask app setup
+app = Flask(__name__)
+CORS(app)
 
-    .response-box {
-      margin-top: 20px;
-      padding: 12px;
-      background: #ffffff;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      display: inline-block;
-      max-width: 100%;
-      white-space: pre-wrap;
-      overflow-wrap: break-word;
-      transition: all 0.3s ease;
-      font-size: 15px;
-    }
-  </style>
-</head>
-<body>
-  <div id="chatContainer">
-    <h2>Ask ChatrBox a Question</h2>
-    <input type="text" id="userInput" placeholder="Type your question..." />
-    <button onclick="sendMessage()">Send</button>
-    <div id="responseBox" class="response-box" style="display:none;"></div>
-  </div>
+# Clean up citations and source tags
+def clean_response(text):
+    text = re.sub(r'\[\d+:\d+(?:\^.*?)?\]', '', text)  # Removes [4:0^source], [4:0^filename], etc.
+    text = re.sub(r'\[\d+:\d+\]', '', text)            # Removes leftover [4:0] style
+    return text.strip()
 
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById('userInput');
-      const responseBox = document.getElementById('responseBox');
-      const message = input.value.trim();
+@app.route("/", methods=["GET"])
+def home():
+    return "✅ ChatrBox Assistant Backend is running."
 
-      if (!message) return;
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+    user_message = data.get("message", "")
+    print("📨 Received message:", user_message)
 
-      responseBox.style.display = 'block';
-      responseBox.textContent = '🟡 Thinking...';
+    try:
+        thread = client.beta.threads.create()
 
-      try {
-        const res = await fetch("https://your-backend-url.onrender.com/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ message })
-        });
+        client.beta.threads.messages.create(
+            thread_id=thread.id,
+            role="user",
+            content=user_message
+        )
 
-        const data = await res.json();
-        responseBox.textContent = data.reply || "No reply received.";
-      } catch (err) {
-        console.error(err);
-        responseBox.textContent = "⚠️ Error contacting assistant.";
-      }
-    }
-  </script>
-</body>
-</html>
+        run = client.beta.threads.runs.create_and_poll(
+            thread_id=thread.id,
+            assistant_id=ASSISTANT_ID
+        )
+
+        messages = client.beta.threads.messages.list(thread_id=thread.id)
+        raw_reply = messages.data[0].content[0].text.value
+        final_reply = clean_response(raw_reply)
+
+        print("✅ Assistant reply (cleaned):", final_reply)
+        return jsonify({"reply": final_reply})
+
+    except Exception as e:
+        print("🔥 ERROR:")
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
