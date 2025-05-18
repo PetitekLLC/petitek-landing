@@ -204,39 +204,63 @@
   </div>
 </footer>
 
+<script>
+  // Generate a UUID
+  function generateUUID() {
+    return ([1e7]+-1e3+-4e3+-8e3+-1e11)
+      .replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+  }
 
-  <!-- Script -->
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById("chatInput");
-      const output = document.getElementById("chatOutput");
-      const message = input.value.trim();
+  // Get or set the user's session ID
+  let userId = localStorage.getItem("chatrboxUUID");
+  if (!userId) {
+    userId = generateUUID();
+    localStorage.setItem("chatrboxUUID", userId);
+  }
 
-      if (!message) return;
+  async function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const output = document.getElementById("chatOutput");
+    const message = input.value.trim();
 
-      output.style.display = "block";
-      output.textContent = "⏳ Fetching your answer.. please hold on...";
+    if (!message) return;
 
-      try {
-        const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message })
-        });
+    output.style.display = "block";
+    output.textContent = "⏳ Fetching your answer.. please hold on...";
 
-        const data = await res.json();
-        output.textContent = data.reply || "No response received.";
-        input.value = "";
-      } catch (err) {
-        console.error("Fetch error:", err);
-        output.textContent = "⚠️ Error contacting assistant.";
-      }
+    try {
+      // Send question to OpenAI backend
+      const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await res.json();
+      output.textContent = data.reply || "No response received.";
+      input.value = "";
+
+      // Also log the question to Google Sheets
+      await fetch("https://script.google.com/macros/s/AKfycbzeeWz60Do1qaH8qykwTzSt_-rmELXKKV9oVIOPJkkJE3pho8EsjA4Mkql5zA_nk7M/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: userId, message })
+      });
+
+    } catch (err) {
+      console.error("Fetch error:", err);
+      output.textContent = "⚠️ Error contacting assistant.";
     }
+  }
 
-    document.getElementById("chatForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      sendMessage();
-    });
-  </script>
+  document.getElementById("chatForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    sendMessage();
+  });
+</script>
+
+
 </body>
 </html>
