@@ -1,36 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Petitek Support</title>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f5f9;
       margin: 0;
       padding: 0;
     }
+
     .hero {
-      background-color: #0077b6;
+      background-color: #00a8a8;
       color: white;
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
+
     .hero img {
-      max-width: 120px;
+      max-width: 150px;
       margin-bottom: 20px;
     }
 
-    
     .hero h1 {
       margin: 0;
-      font-size: 32px;
+      font-size: 36px;
       color: #fff;
     }
 
     .hero p {
-      margin-top: 10px;
-      font-size: 18px;
+      font-size: 22px;
+      margin-top: 20px;
       color: #e0f2f9;
     }
 
@@ -43,7 +49,12 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
-  
+    #chatForm {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     #chatInput {
       width: 100%;
       padding: 12px;
@@ -53,10 +64,9 @@
     }
 
     #sendButton {
-      margin-top: 10px;
-      padding: 10px 16px;
+      padding: 12px;
       font-size: 16px;
-      background-color: #0077b6;
+      background-color:#00a8a8 ;
       color: white;
       border: none;
       border-radius: 6px;
@@ -77,99 +87,41 @@
       font-size: 15px;
       display: none;
     }
-    @media screen and (max-width: 400px) {
-  .hero h1 {
-    font-size: 26px;
-  }
 
-  .hero p {
-    font-size: 20px;
-  }
-
-  #chatContainer {
-    margin: 20px 10px;
-    padding: 15px;
-  }
-
-  input[type="text"] {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  button {
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-  }
-}
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    /* Your existing styles here... */
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #008080;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    /* 👇 Add this at the bottom of your <style> block */
     @media screen and (max-width: 400px) {
       .hero h1 {
-        font-size: 24px;
+        font-size: 26px;
       }
 
       .hero p {
-        font-size: 16px;
+        font-size: 18px;
       }
 
       #chatContainer {
         margin: 20px 10px;
-        padding: 20px;
+        padding: 15px;
       }
 
-      input[type="text"] {
-        font-size: 18px;
-        padding: 14px;
+      #chatInput {
+        font-size: 16px;
+        padding: 10px;
       }
 
-      button {
-        width: 100%;
-        font-size: 18px;
-        padding: 14px;
+      #sendButton {
+        font-size: 16px;
+        padding: 10px;
       }
     }
   </style>
 </head>
-
-  </style>
-</head>
 <body>
-  
-<!-- Hero Section with Logo -->
-<div class="hero" style="background-color: #0077b6; text-align: center; padding: 60px 20px; color: white;">
-  <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" style="max-width: 150px; margin-bottom: 20px;" />
-  
-  <h1 style="margin: 0; font-size: 36px;">Petitek Support</h1>
-  <p style="font-size: 22px; margin-top: 20px;">
-    Need help with your ChatrBox? Ask a question below and our assistant will guide you.
-  </p>
-</div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+    <h1>Petitek Support</h1>
+    <p>Need help with your ChatrBox? Ask a question below and our assistant will guide you.</p>
+  </div>
 
   <!-- Chat Interface -->
   <div id="chatContainer">
@@ -199,12 +151,8 @@
         });
 
         const data = await res.json();
-
         output.textContent = data.reply || "No response received.";
-
-        setTimeout(() => {
-          input.value = "";
-        }, 0);
+        input.value = "";
       } catch (err) {
         console.error("Fetch error:", err);
         output.textContent = "⚠️ Error contacting assistant.";
