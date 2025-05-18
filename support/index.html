@@ -220,36 +220,43 @@
     localStorage.setItem("chatrboxUUID", userId);
   }
 
-  async function sendMessage() {
-    const input = document.getElementById("chatInput");
-    const output = document.getElementById("chatOutput");
-    const message = input.value.trim();
+async function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const output = document.getElementById("chatOutput");
+  const message = input.value.trim();
 
-    if (!message) return;
+  if (!message) return;
 
-    output.style.display = "block";
-    output.textContent = "⏳ Fetching your answer.. please hold on...";
+  output.style.display = "block";
 
-    try {
-      // Send question to OpenAI backend
-      const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({ id: userId, message })
+  // ✅ Start typing animation
+  let dots = 0;
+  output.textContent = "ChatrBot is typing";
+  const typingAnimation = setInterval(() => {
+    dots = (dots + 1) % 4;
+    output.textContent = "ChatrBot is typing" + ".".repeat(dots);
+  }, 500);
 
-      });
+  try {
+    // ✅ Send message to backend
+    const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: userId, message })  // include UUID
+    });
 
-      const data = await res.json();
-      output.textContent = data.reply || "No response received.";
-      input.value = "";
+    const data = await res.json();
 
-   
+    clearInterval(typingAnimation);  // ✅ Stop animation
+    output.textContent = data.reply || "No response received.";
+    input.value = "";
 
-    } catch (err) {
-      console.error("Fetch error:", err);
-      output.textContent = "⚠️ Error contacting assistant.";
-    }
+  } catch (err) {
+    clearInterval(typingAnimation);  // ✅ Stop animation on error
+    console.error("Fetch error:", err);
+    output.textContent = "⚠️ Error contacting assistant.";
   }
+}
 
   document.getElementById("chatForm").addEventListener("submit", function (e) {
     e.preventDefault();
