@@ -113,16 +113,17 @@ footer h4 {
 footer .footer-columns {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 20px;
   align-items: flex-start;
   margin-top: 8px;
+  flex-wrap: nowrap; /* 👈 Prevent wrapping */
 }
 
 footer .footer-columns > div {
-  flex: 1;
-  min-width: 140px;
+  width: 50%;
   text-align: left;
 }
+
 
 footer p {
   margin: 2px 0;
@@ -150,17 +151,15 @@ footer .copyright {
 
 @media screen and (max-width: 600px) {
   footer .footer-columns {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    margin-top: 6px;
+    gap: 12px;
   }
 
   footer .footer-columns > div {
-    min-width: auto;
+    width: 50%;
+    text-align: center;
   }
 }
+
 
       #chatContainer {
         margin: 20px 10px;
