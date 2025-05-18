@@ -219,24 +219,28 @@
   }
   
 function linkifyText(text) {
-  // Unwrap double-rendered anchor tags (already-formatted HTML from the assistant)
-  text = text.replace(/&lt;a href=&quot;(.*?)&quot;.*?&gt;(.*?)&lt;\/a&gt;/gi, (match, href, label) => {
+  // Decode HTML entities if assistant returns escaped <a> tags
+  const txt = document.createElement("textarea");
+  txt.innerHTML = text;
+  text = txt.value;
+
+  // Fix malformed HTML anchor tags (if assistant tried to inject full <a> elements incorrectly)
+  text = text.replace(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/gi, (match, href, label) => {
     return `<a href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   });
 
-  // Handle Markdown-style [text](url)
+  // Handle Markdown-style links [label](https://...)
   text = text.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   });
 
-  // Handle plain URLs
-  text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, (url) => {
+  // Handle raw plaintext URLs
+  text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, url => {
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
   });
 
   return text;
 }
-
 
 
   async function sendMessage() {
