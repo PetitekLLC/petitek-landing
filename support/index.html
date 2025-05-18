@@ -118,17 +118,21 @@ footer h4 {
   margin: 6px 0 4px;
 }
 
-footer .footer-columns {
+.footer-columns-wrapper {
   display: flex;
-  justify-content: center; /* center the group */
-  gap: 20px;               /* tighter gap between columns */
-  align-items: flex-start;
-  margin-top: 8px;
+  justify-content: center;
 }
 
-footer .footer-columns > div {
+.footer-columns {
+  display: flex;
+  gap: 32px;
+  max-width: 400px; /* ✅ controls total width of both columns */
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-columns > div {
   text-align: left;
-  width: auto; /* size to content */
 }
 
 footer p {
@@ -170,7 +174,6 @@ footer .copyright {
 }
 
 
-
       #chatContainer {
         margin: 20px 10px;
         padding: 15px;
@@ -207,21 +210,24 @@ footer .copyright {
 </div>
 
 <footer>
-  <h2>Petitek</h2>
+  <h2 style="color: black;">Petitek</h2>
 
+ <div class="footer-columns-wrapper">
   <div class="footer-columns">
-    <div style="text-align: left;">
+    <div>
       <h4>Pet Owners</h4>
-      <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
-      <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
-      <p>- <a href="https://petitek.com/support" target="_blank">Support</a></p>
+      <p>- <a href="#">Warranty</a></p>
+      <p>- <a href="#">Learn</a></p>
+      <p>- <a href="#">Support</a></p>
     </div>
-    <div style="text-align: left;">
+    <div>
       <h4>Work With Us</h4>
-      <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
-      <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
+      <p>- <a href="#">Affiliates</a></p>
+      <p>- <a href="#">Influencers</a></p>
     </div>
   </div>
+</div>
+
 
   <hr />
 
@@ -230,7 +236,7 @@ footer .copyright {
     <a href="https://petitek.com/privacy" target="_blank">Privacy</a>
     <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
     <br /><br />
-<p style="margin: 4px 0 0; font-size: 8pt; color: #fff;">
+<p style="margin: 4px 0 0; font-size: 8pt; color: black;">
   © Petitek LLC All rights reserved.
 </p>
 
