@@ -9,7 +9,6 @@
       box-sizing: border-box;
     }
 
-    
     body {
       font-family: Arial, sans-serif;
       background-color: #f2f5f9;
@@ -17,22 +16,21 @@
       padding: 0;
     }
 
-    
     .hero {
-      background-color:#25A8C6;
+      background-color: #25A8C6;
       color: white;
       padding: 40px 20px;
       text-align: center;
     }
 
-  .hero img {
-  width: 100%;
-  max-width: 80px; /* ← Change this to any size you want */
-  height: auto;
-  margin: 0 auto 20px auto;
-  display: block;
-}
-    
+    .hero img {
+      width: 100%;
+      max-width: 80px;
+      height: auto;
+      margin: 0 auto 20px auto;
+      display: block;
+    }
+
     .hero h1 {
       margin: 0;
       font-size: 36px;
@@ -44,7 +42,7 @@
       margin-top: 20px;
       color: #e0f2f9;
     }
-    
+
     #chatContainer {
       max-width: 600px;
       margin: 40px auto;
@@ -71,7 +69,7 @@
     #sendButton {
       padding: 12px;
       font-size: 16px;
-      background-color:#25A8C6;
+      background-color: #25A8C6;
       color: white;
       border: none;
       border-radius: 6px;
@@ -91,6 +89,47 @@
       white-space: pre-wrap;
       font-size: 15px;
       display: none;
+    }
+
+    footer {
+      background-color: #25A8C6;
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    footer h4 {
+      margin: 10px 0 5px;
+    }
+
+    footer .footer-columns {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    footer p {
+      margin: 2px 0;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+
+    footer hr {
+      margin: 15px 0;
+      border: none;
+      border-top: 1px solid #ffffff44;
     }
 
     @media screen and (max-width: 400px) {
@@ -120,35 +159,6 @@
   </style>
 </head>
 
-    <hr style="margin: 30px 0; border: none; border-top: 1px solid #ffffff44;" />
-
-    <div style="font-size: 14px;">
-      <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Terms of Service</a>
-      <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Privacy</a>
-      <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Cookies</a>
-      <br /><br />
-      © Petitek LLC All rights reserved.
-    </div>
-  </div>
-</footer>
-
-<body>
- <!-- Hero Section -->
-  <div class="hero">
-    <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
-    <h1>Petitek Support</h1>
-    <p>Need help with ChatrBox? Please type or speak any question.</p>
-  </div>
-
-
-  <!-- Chat Interface -->
-  <div id="chatContainer">
-    <form id="chatForm">
-      <input type="text" id="chatInput" placeholder="What would you like to know..." />
-      <button id="sendButton" type="submit">Send</button>
-    </form>
-    <div id="chatOutput"></div>
-  </div>
 <body>
   <!-- Hero Section -->
   <div class="hero">
@@ -166,34 +176,32 @@
     <div id="chatOutput"></div>
   </div>
 
-  <!-- ✅ Footer (keep this one only) -->
-  <footer style="background-color: #25A8C6; color: white; padding: 20px 20px; text-align: center;">
-    <div style="max-width: 600px; margin: 0 auto;">
-      <h2 style="font-family: Georgia, serif; font-weight: bold; font-size: 28px;">Petitek</h2>
+  <!-- Footer -->
+  <footer>
+    <h2>Petitek</h2>
 
-      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 10px;">
-        <div style="text-align: left;">
-          <h4>Pet Owners</h4>
-          <p>- <a href="#" style="color: white; text-decoration: none;">Warranty</a></p>
-          <p>- <a href="#" style="color: white; text-decoration: none;">Learn</a></p>
-          <p>- <a href="#" style="color: white; text-decoration: none;">Support</a></p>
-        </div>
-        <div style="text-align: left;">
-          <h4>Work With Us</h4>
-          <p>- <a href="#" style="color: white; text-decoration: none;">Affiliates</a></p>
-          <p>- <a href="#" style="color: white; text-decoration: none;">Influencers</a></p>
-        </div>
+    <div class="footer-columns">
+      <div style="text-align: left;">
+        <h4>Pet Owners</h4>
+        <p>- <a href="#">Warranty</a></p>
+        <p>- <a href="#">Learn</a></p>
+        <p>- <a href="#">Support</a></p>
       </div>
-
-      <hr style="margin: 10px 0; border: none; border-top: 1px solid #ffffff44;" />
-
-      <div style="font-size: 14px;">
-        <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Terms of Service</a>
-        <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Privacy</a>
-        <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Cookies</a>
-        <br /><br />
-        © Petitek LLC All rights reserved.
+      <div style="text-align: left;">
+        <h4>Work With Us</h4>
+        <p>- <a href="#">Affiliates</a></p>
+        <p>- <a href="#">Influencers</a></p>
       </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy</a>
+      <a href="#">Cookies</a>
+      <br /><br />
+      © Petitek LLC All rights reserved.
     </div>
   </footer>
 
@@ -229,44 +237,6 @@
       e.preventDefault();
       sendMessage();
     });
-    
   </script>
-</body>
-
-
-  
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById("chatInput");
-      const output = document.getElementById("chatOutput");
-      const message = input.value.trim();
-
-      if (!message) return;
-
-      output.style.display = "block";
-      output.textContent = "⏳ Fetching your answer.. please hold on...";
-
-      try {
-        const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message })
-        });
-
-        const data = await res.json();
-        output.textContent = data.reply || "No response received.";
-        input.value = "";
-      } catch (err) {
-        console.error("Fetch error:", err);
-        output.textContent = "⚠️ Error contacting assistant.";
-      }
-    }
-
-    document.getElementById("chatForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      sendMessage();
-    });
-  </script>
-
 </body>
 </html>
