@@ -112,17 +112,18 @@ footer h4 {
 
 footer .footer-columns {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;       /* center columns */
+  gap: 40px;                     /* reduce spacing between them */
   align-items: flex-start;
   margin-top: 8px;
-  flex-wrap: nowrap; /* 👈 Prevent wrapping */
+  flex-wrap: nowrap;
 }
 
 footer .footer-columns > div {
-  width: 50%;
+  width: auto;                   /* let them size to content */
   text-align: left;
 }
+
 
 
 footer p {
