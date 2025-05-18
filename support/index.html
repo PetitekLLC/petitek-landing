@@ -75,15 +75,17 @@
 #sendButton {
   padding: 12px;
   font-size: 16px;
-  background-color: #25A8C6;
+  background-color: #4a4a4a;  /* Light charcoal (inactive) */
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-#sendButton:hover {
-  background-color: #005a8d;
+#sendButton:hover,
+#sendButton:active {
+  background-color: #2f2f2f;  /* Dark charcoal on click/hover */
 }
 
 #chatOutput {
@@ -178,14 +180,15 @@ footer .copyright {
   </style>
 </head>
 
-<body>
-  <!-- Hero Section -->
-  <div class="hero">
-    <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
-    <h1>Petitek Support</h1>
-    <p>Need help with ChatrBox?
-ChatrBot is an AI assistant and can answer any ChatrBox setup, support, or troubleshooting questions.
-</p>
+<div class="hero">
+  <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+  <h1>Petitek Support</h1>
+  <p>
+    <strong style="color: black; display: block;">Need help with ChatrBox?</strong>
+    ChatrBot is an AI assistant and can answer any ChatrBox setup, support, or troubleshooting questions.
+  </p>
+</div>
+  
 <div class="chat-wrapper">
   <div id="chatContainer">
     <form id="chatForm">
