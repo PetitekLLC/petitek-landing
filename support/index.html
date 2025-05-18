@@ -235,7 +235,8 @@
       const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
+       body: JSON.stringify({ id: userId, message })
+
       });
 
       const data = await res.json();
