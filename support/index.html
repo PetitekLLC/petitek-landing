@@ -120,13 +120,13 @@
   <div class="hero">
     <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
     <h1>Petitek Support</h1>
-    <p>Need help with your ChatrBox? Ask a question below and our assistant will guide you.</p>
+    <p>Need help with your ChatrBox? Type or speak any question</p>
   </div>
 
   <!-- Chat Interface -->
   <div id="chatContainer">
     <form id="chatForm">
-      <input type="text" id="chatInput" placeholder="Ask your question..." />
+      <input type="text" id="chatInput" placeholder="What would you like to know..." />
       <button id="sendButton" type="submit">Send</button>
     </form>
     <div id="chatOutput"></div>
@@ -141,7 +141,7 @@
       if (!message) return;
 
       output.style.display = "block";
-      output.textContent = "⏳ Waiting for ChatrBot...";
+      output.textContent = "⏳ Fetching your answer.. please hold on...";
 
       try {
         const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
