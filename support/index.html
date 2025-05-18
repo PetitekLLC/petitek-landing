@@ -219,21 +219,27 @@
     userId = generateUUID();
     localStorage.setItem("chatrboxUUID", userId);
   }
+  
+function linkifyText(text) {
+  // Unwrap double-rendered anchor tags (already-formatted HTML from the assistant)
+  text = text.replace(/&lt;a href=&quot;(.*?)&quot;.*?&gt;(.*?)&lt;\/a&gt;/gi, (match, href, label) => {
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+  });
 
-  // ✅ Add this before sendMessage()
-  function linkifyText(text) {
-    // Convert Markdown-style links: [label](url)
-    text = text.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-    });
+  // Handle Markdown-style [text](url)
+  text = text.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+  });
 
-    // Convert plain URLs
-    text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, (url) => {
-      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
-    });
+  // Handle plain URLs
+  text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, (url) => {
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
 
-    return text;
-  }
+  return text;
+}
+
+
 
   async function sendMessage() {
     const input = document.getElementById("chatInput");
