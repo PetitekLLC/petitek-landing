@@ -97,7 +97,6 @@
   display: none;
 }
 
-
 footer {
   background-color: #25A8C6;
   color: white;
@@ -122,19 +121,14 @@ footer h4 {
 footer .footer-columns {
   display: flex;
   justify-content: center; /* center the group */
-  gap: 40px;               /* reduce space between columns */
+  gap: 20px;               /* tighter gap between columns */
   align-items: flex-start;
   margin-top: 8px;
 }
 
 footer .footer-columns > div {
   text-align: left;
-}
-
-
-footer .footer-columns > div {
-  width: auto;                   /* let them size to content */
-  text-align: left;
+  width: auto; /* size to content */
 }
 
 footer p {
@@ -161,16 +155,20 @@ footer .copyright {
   margin-top: 6px;
 }
 
+/* Optional: keep it 2 columns even on mobile */
 @media screen and (max-width: 600px) {
   footer .footer-columns {
-    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
   }
 
   footer .footer-columns > div {
-    width: 50%;
-    text-align: center;
+    width: auto;
   }
 }
+
 
 
       #chatContainer {
