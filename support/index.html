@@ -217,30 +217,32 @@
     userId = generateUUID();
     localStorage.setItem("chatrboxUUID", userId);
   }
-  
-function linkifyText(text) {
-  // Decode HTML entities if assistant returns escaped <a> tags
-  const txt = document.createElement("textarea");
-  txt.innerHTML = text;
-  text = txt.value;
-
-  // Fix malformed HTML anchor tags (if assistant tried to inject full <a> elements incorrectly)
-  text = text.replace(/<a\s+href="([^"]+)"[^>]*>(.*?)<\/a>/gi, (match, href, label) => {
-    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`;
-  });
-
-  // Handle Markdown-style links [label](https://...)
+  function linkifyText(text) {
+  // Step 1: Convert Markdown-style links: [label](url)
   text = text.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   });
 
-  // Handle raw plaintext URLs
-  text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, url => {
+  // Step 2: Skip anything already inside <a> tags
+  const alreadyLinked = [];
+  text = text.replace(/<a[^>]*>.*?<\/a>/gi, (match) => {
+    alreadyLinked.push(match);
+    return `__LINK_PLACEHOLDER__${alreadyLinked.length - 1}__`;
+  });
+
+  // Step 3: Linkify remaining plain URLs
+  text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, (url) => {
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
+
+  // Step 4: Restore the original <a> tags
+  text = text.replace(/__LINK_PLACEHOLDER__(\d+)__/g, (match, index) => {
+    return alreadyLinked[parseInt(index)];
   });
 
   return text;
 }
+
 
 
   async function sendMessage() {
