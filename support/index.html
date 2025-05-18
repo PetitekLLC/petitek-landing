@@ -219,58 +219,59 @@
     localStorage.setItem("chatrboxUUID", userId);
   }
 
-function linkifyText(text) {
-  const urlRegex = /(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi;
-  return text.replace(urlRegex, url => {
-    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
-  });
-}
-
- 
-async function sendMessage() {
-  const input = document.getElementById("chatInput");
-  const output = document.getElementById("chatOutput");
-  const message = input.value.trim();
-
-  if (!message) return;
-
-  output.style.display = "block";
-
-  // ✅ Start typing animation
-  let dots = 0;
-  output.textContent = "ChatrBot is typing";
-  const typingAnimation = setInterval(() => {
-    dots = (dots + 1) % 4;
-    output.textContent = "ChatrBot is typing" + ".".repeat(dots);
-  }, 500);
-
-  try {
-    // ✅ Send message to backend
-    const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: userId, message })  // include UUID
+  // ✅ Add this before sendMessage()
+  function linkifyText(text) {
+    // Convert Markdown-style links: [label](url)
+    text = text.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
     });
 
-    const data = await res.json();
+    // Convert plain URLs
+    text = text.replace(/(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi, (url) => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+    });
 
-    clearInterval(typingAnimation);  // ✅ Stop animation
-   output.innerHTML = linkifyText(data.reply || "No response received.");
-    input.value = "";
-
-  } catch (err) {
-    clearInterval(typingAnimation);  // ✅ Stop animation on error
-    console.error("Fetch error:", err);
-    output.textContent = "⚠️ Error contacting assistant.";
+    return text;
   }
-}
+
+  async function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const output = document.getElementById("chatOutput");
+    const message = input.value.trim();
+    if (!message) return;
+
+    output.style.display = "block";
+    let dots = 0;
+    output.textContent = "ChatrBot is typing";
+    const typingAnimation = setInterval(() => {
+      dots = (dots + 1) % 4;
+      output.textContent = "ChatrBot is typing" + ".".repeat(dots);
+    }, 500);
+
+    try {
+      const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: userId, message })
+      });
+
+      const data = await res.json();
+      clearInterval(typingAnimation);
+      output.innerHTML = linkifyText(data.reply || "No response received.");
+      input.value = "";
+
+    } catch (err) {
+      clearInterval(typingAnimation);
+      console.error("Fetch error:", err);
+      output.textContent = "⚠️ Error contacting assistant.";
+    }
+  }
 
   document.getElementById("chatForm").addEventListener("submit", function (e) {
     e.preventDefault();
     sendMessage();
   });
 </script>
-
 
 </body>
 </html>
