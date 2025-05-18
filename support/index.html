@@ -219,6 +219,14 @@
     localStorage.setItem("chatrboxUUID", userId);
   }
 
+function linkifyText(text) {
+  const urlRegex = /(\bhttps?:\/\/[^\s<>"]+[^\s<>.,;:")\]\s])/gi;
+  return text.replace(urlRegex, url => {
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
+}
+
+ 
 async function sendMessage() {
   const input = document.getElementById("chatInput");
   const output = document.getElementById("chatOutput");
@@ -247,7 +255,7 @@ async function sendMessage() {
     const data = await res.json();
 
     clearInterval(typingAnimation);  // ✅ Stop animation
-    output.textContent = data.reply || "No response received.";
+   output.innerHTML = linkifyText(data.reply || "No response received.");
     input.value = "";
 
   } catch (err) {
