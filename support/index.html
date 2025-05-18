@@ -101,11 +101,11 @@
 footer {
   background-color: #25A8C6;
   color: white;
-  padding: 8px 10px;
-  margin-top: 30px;
+  padding: 8px 5px;
+  margin-top: 10px;
   text-align: center;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 footer h2 {
@@ -121,12 +121,16 @@ footer h4 {
 
 footer .footer-columns {
   display: flex;
-  justify-content: center;       /* center columns */
-  gap: 40px;                     /* reduce spacing between them */
+  justify-content: center; /* center the group */
+  gap: 40px;               /* reduce space between columns */
   align-items: flex-start;
   margin-top: 8px;
-  flex-wrap: nowrap;
 }
+
+footer .footer-columns > div {
+  text-align: left;
+}
+
 
 footer .footer-columns > div {
   width: auto;                   /* let them size to content */
