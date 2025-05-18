@@ -36,58 +36,65 @@
     }
 
     .hero p {
-      font-size: 22px;
+      font-size: 16px;
       margin-top: 20px;
       color: #e0f2f9;
     }
 
-    #chatContainer {
-      max-width: 600px;
-      margin: 80px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
+ .chat-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0; /* vertical spacing above and below */
+}
 
-    #chatForm {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+#chatContainer {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
 
-    #chatInput {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
+#chatForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-    #sendButton {
-      padding: 12px;
-      font-size: 16px;
-      background-color: #25A8C6;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+#chatInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
 
-    #sendButton:hover {
-      background-color: #005a8d;
-    }
+#sendButton {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #25A8C6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-    #chatOutput {
-      margin-top: 15px;
-      padding: 12px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      white-space: pre-wrap;
-      font-size: 15px;
-      display: none;
-    }
+#sendButton:hover {
+  background-color: #005a8d;
+}
+
+#chatOutput {
+  margin-top: 15px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  white-space: pre-wrap;
+  font-size: 15px;
+  display: none;
+}
+
 
 footer {
   background-color: #25A8C6;
@@ -123,8 +130,6 @@ footer .footer-columns > div {
   width: auto;                   /* let them size to content */
   text-align: left;
 }
-
-
 
 footer p {
   margin: 2px 0;
@@ -187,8 +192,7 @@ footer .copyright {
     <h1>Petitek Support</h1>
     <p>Need help with ChatrBox? Please type or speak any question.</p>
   </div>
-
-  <!-- Chat Interface -->
+<div class="chat-wrapper">
   <div id="chatContainer">
     <form id="chatForm">
       <input type="text" id="chatInput" placeholder="What would you like to know..." />
@@ -196,6 +200,7 @@ footer .copyright {
     </form>
     <div id="chatOutput"></div>
   </div>
+</div>
 
 <footer>
   <h2>Petitek</h2>
@@ -223,8 +228,6 @@ footer .copyright {
     <br /><br />
 <p style="margin: 4px 0 0; font-size: 8pt; color: #fff;">
   © Petitek LLC All rights reserved.
-</p>
-
 </p>
 
 </footer>
