@@ -11,19 +11,20 @@
       padding: 0;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #25A8C6;
-      display: flex;
-      flex-direction: column;
-    }
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #25A8C6;
+  min-height: 100vh;
+}
 
-    .main-wrapper {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      flex-grow: 1;
-    }
+ .main-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex-grow: 1;
+}
+
 
     footer {
       margin-top: auto;
@@ -83,13 +84,13 @@
       line-height: 1.2;
     }
 
-    .chat-wrapper {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+  .chat-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 20px; /* ✅ Adjust this value if you want tighter or looser fit */
+}
 
     #chatContainer {
       width: 100%;
@@ -222,7 +223,6 @@
       </div>
     </div>
 
-    <footer>
       <footer>
   <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 5px;" />
 <h2 style="color: black; margin-bottom: 6px;">Petitek</h2>
