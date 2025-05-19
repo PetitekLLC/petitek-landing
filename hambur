@@ -41,23 +41,20 @@ body, html {
 }
 
 .nav-title {
-  font-size: 20px;
   font-weight: bold;
-  font-family: 'Arial Black', Arial, sans-serif;
-  color: #25A8C6;
-  letter-spacing: 0.5px;
+  font-size: 22px;
+  color: #25A8C6; /* Petitek brand teal */
+  font-family: Georgia, serif;
 }
 
 .hamburger {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
   color: #25A8C6;
   cursor: pointer;
   user-select: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
 }
+
 
 .hamburger:hover {
   background-color: rgba(37, 168, 198, 0.1);
