@@ -116,20 +116,33 @@ body {
     }
 
     #sendButton {
-      padding: 12px;
-      font-size: 16px;
-      background-color:;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
+  background-color: #4a4a4a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
 
-    #sendButton:hover,
-    #sendButton:active {
-      background-color: #D3D3D3;
-    }
+/* Desktop hover */
+#sendButton:hover {
+  background-color: #2f2f2f;
+}
+
+/* Touch/Click active state */
+#sendButton:active {
+  background-color: #3a3a3a;
+}
+
+/* Disabled state */
+#sendButton:disabled {
+  background-color: #C0C0C0;
+  color: #777;
+  cursor: not-allowed;
+}
+
 
     #chatOutput {
       margin-top: 15px;
