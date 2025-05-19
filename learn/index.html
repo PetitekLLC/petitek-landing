@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petitek Learning</title>
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <style>
     body {
       margin: 0;
@@ -57,15 +58,19 @@
       font-size: 14px;
     }
 
-    .chapters a {
-      display: inline-block;
-      margin-right: 12px;
-      color: #0077b6;
-      text-decoration: none;
+    .chapters button {
+      margin-right: 10px;
+      padding: 6px 10px;
+      font-size: 13px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0077b6;
+      color: #fff;
+      cursor: pointer;
     }
 
-    .chapters a:hover {
-      text-decoration: underline;
+    .chapters button:hover {
+      background-color: #005f8a;
     }
 
     iframe {
@@ -96,33 +101,33 @@
 
   <div class="video-grid">
     <div class="video-card">
-      <iframe src="https://vimeo.com/placeholder1" allowfullscreen></iframe>
+      <iframe id="video1" src="https://player.vimeo.com/video/placeholder1" allowfullscreen></iframe>
       <h3>Getting Started</h3>
       <div class="chapters">
         <strong>Chapters:</strong>
-        <a href="https://vimeo.com/placeholder1#t=30s">Install Batteries</a>
-        <a href="https://vimeo.com/placeholder1#t=90s">Power On</a>
-        <a href="https://vimeo.com/placeholder1#t=150s">Pause & Unpause</a>
+        <button onclick="seekTo('video1', 30)">Install Batteries</button>
+        <button onclick="seekTo('video1', 90)">Power On</button>
+        <button onclick="seekTo('video1', 150)">Pause & Unpause</button>
       </div>
     </div>
     <div class="video-card">
-      <iframe src="https://vimeo.com/placeholder2" allowfullscreen></iframe>
+      <iframe id="video2" src="https://player.vimeo.com/video/placeholder2" allowfullscreen></iframe>
       <h3>Operating ChatrBox</h3>
       <div class="chapters">
         <strong>Chapters:</strong>
-        <a href="https://vimeo.com/placeholder2#t=20s">Recording a Message</a>
-        <a href="https://vimeo.com/placeholder2#t=70s">Training Modes</a>
-        <a href="https://vimeo.com/placeholder2#t=120s">Volume Control</a>
+        <button onclick="seekTo('video2', 20)">Recording a Message</button>
+        <button onclick="seekTo('video2', 70)">Training Modes</button>
+        <button onclick="seekTo('video2', 120)">Volume Control</button>
       </div>
     </div>
     <div class="video-card">
-      <iframe src="https://vimeo.com/placeholder3" allowfullscreen></iframe>
+      <iframe id="video3" src="https://player.vimeo.com/video/placeholder3" allowfullscreen></iframe>
       <h3>Training with ChatrBox</h3>
       <div class="chapters">
         <strong>Chapters:</strong>
-        <a href="https://vimeo.com/placeholder3#t=10s">Motion Detection Tips</a>
-        <a href="https://vimeo.com/placeholder3#t=60s">Using Escalation Mode</a>
-        <a href="https://vimeo.com/placeholder3#t=110s">Best Practices</a>
+        <button onclick="seekTo('video3', 10)">Motion Detection Tips</button>
+        <button onclick="seekTo('video3', 60)">Using Escalation Mode</button>
+        <button onclick="seekTo('video3', 110)">Best Practices</button>
       </div>
     </div>
   </div>
@@ -130,6 +135,19 @@
   <div class="footer">
     Didn’t find what you need? Visit our <a href="https://petitek.com/support">Support Page</a> to chat with the assistant.
   </div>
+
+  <script>
+    const players = {};
+    function seekTo(id, seconds) {
+      if (!players[id]) {
+        const iframe = document.getElementById(id);
+        players[id] = new Vimeo.Player(iframe);
+      }
+      players[id].setCurrentTime(seconds).then(() => {
+        players[id].play();
+      });
+    }
+  </script>
 </body>
 </html>
 
