@@ -25,7 +25,6 @@ body, html {
   box-sizing: border-box;
 }
 
-/* Navigation */
 #navbar {
   position: fixed;
   top: 0;
@@ -39,25 +38,11 @@ body, html {
   align-items: center;
   padding: 0 20px;
   z-index: 2000;
-  transition: top 0.3s;
-}
-
-.nav-title {
-  font-weight: bold;
-  font-size: 18px;
-  color: #25A8C6;
-}
-
-.hamburger {
-  font-size: 26px;
-  cursor: pointer;
-  user-select: none;
 }
 
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 60px;
+  position: fixed; /* ✅ stays relative to viewport */
+  top: 60px;       /* ✅ appears just below navbar */
   right: 20px;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -65,6 +50,7 @@ body, html {
   overflow: hidden;
   z-index: 3000;
   width: 160px;
+  display: none;
 }
 
 .dropdown-menu a {
@@ -83,6 +69,7 @@ body, html {
 .dropdown-menu a:hover {
   background-color: #f4f4f4;
 }
+
 
 /* Content */
 .content {
