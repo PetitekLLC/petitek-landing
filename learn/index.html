@@ -13,10 +13,11 @@
       color: #fff;
     }
 
-  .hero {
-  text-align: center;
-  padding: 60px 20px 20px; /* Top, sides, bottom */
-}
+    .hero {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
     .hero h1 {
       margin: 0;
       font-size: 36px;
@@ -40,7 +41,7 @@
 
     .video-card {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 0 0 12px 12px;
       overflow: hidden;
       color: #000;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -53,16 +54,14 @@
     }
 
     .chapters {
-  margin: 0 16px;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
+      margin: 0 16px;
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
     .chapters button {
-      margin-right: 10px;
       padding: 6px 10px;
       font-size: 13px;
       border: none;
@@ -104,7 +103,7 @@
 
   <div class="video-grid">
     <div class="video-card">
-     <iframe id="video1" src="https://player.vimeo.com/video/1085023310?loop=1&autopause=0&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+      <iframe id="video1" src="https://player.vimeo.com/video/1085023310?loop=1&autopause=0&title=0&byline=0&portrait=0" allowfullscreen></iframe>
       <h3>Getting Started</h3>
       <div class="chapters">
         <strong>Chapters:</strong>
@@ -114,7 +113,7 @@
       </div>
     </div>
     <div class="video-card">
-      <iframe id="video2" src="https://player.vimeo.com/video/placeholder2" allowfullscreen></iframe>
+      <iframe id="video2" src="https://player.vimeo.com/video/placeholder2?loop=1&autopause=0&title=0&byline=0&portrait=0" allowfullscreen></iframe>
       <h3>Operating ChatrBox</h3>
       <div class="chapters">
         <strong>Chapters:</strong>
@@ -124,7 +123,7 @@
       </div>
     </div>
     <div class="video-card">
-      <iframe id="video3" src="https://player.vimeo.com/video/placeholder3" allowfullscreen></iframe>
+      <iframe id="video3" src="https://player.vimeo.com/video/placeholder3?loop=1&autopause=0&title=0&byline=0&portrait=0" allowfullscreen></iframe>
       <h3>Training with ChatrBox</h3>
       <div class="chapters">
         <strong>Chapters:</strong>
@@ -136,7 +135,7 @@
   </div>
 
   <div class="footer">
-    Didn’t find what you need? Visit our <a href="https://petitek.com/support">Support Page</a> to chat with the assistant.
+    Didn’t find what you need? Visit our <a href="https://petitek.com/support">Support Page</a> to chat with the our expert assistant, ChatrBot! 
   </div>
 
   <script>
