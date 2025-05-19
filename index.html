@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
+  <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
+  <meta name="author" content="Petitek LLC" />
+  <title>Petitek | Chatrbox Smart Pet Trainer</title>
+ 
+<style>
+/* General page setup */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 2000;
+}
+
+.nav-title {
+  font-weight: bold;
+  font-size: 22px;
+  color: #25A8C6; /* Petitek brand teal */
+  font-family: Georgia, serif;
+}
+
+.hamburger {
+  font-size: 26px;
+  font-weight: bold;
+  color: #25A8C6;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+.hamburger:hover {
+  background-color: rgba(37, 168, 198, 0.1);
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 3000;
+  width: 160px;
+  display: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #25A8C6;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f4f4;
+}
+
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 70px 20px 60px;
+  text-align: center;
+}
+
+.content img {
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 15px;
+}
+
+/* Title and Body Blocks */
+.title-block {
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 1.3;
+  margin: 40px auto 16px;
+  font-family: inherit;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.body-block {
+  text-align: left;
+  font-size: 20px;
+  line-height: 1.7;
+  padding: 0 20px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: inherit;
+}
+
+.text-block {
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+/* Image and Video Scaling */
+.stacked-gallery img,
+.fade-in img,
+.video-wrapper {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+/* Feature Group */
+.feature-group {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin: 30px 0 20px;
+  padding-left: 30px;
+}
+
+.feature-icon-box {
+  flex: 0 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-text-box {
+  flex: 1;
+  padding-left: 15px;
+  font-size: 20px;
+  line-height: 1.7;
+  text-align: left;
+  color: #222;
+}
+
+.feature-header {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 12px 10px;
+  border-radius: 6px;
+  margin: 14px 0;
+  text-align: center;
+}
+
+/* Fade-In Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+.footer-link,
+.footer-copy {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.footer-link a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.footer-link a:hover {
+  text-decoration: underline;
+}
+
+/* Amazon Button */
+.amazon-main-button {
+  width: 300px;
+  margin: 60px auto 10px;
+  display: block;
+  border-radius: 8px;
+}
+
+.floating-buy-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.floating-buy-button.show {
+  display: block;
+}
+
+.floating-buy-button img {
+  width: 90px !important;
+  height: auto !important;
+  max-width: 90px !important;
+}
+
+.video-wrapper {
+  max-width: 800px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 0 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.unmute-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(37, 168, 198, 0.9);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+
+  
+ /* Feature Icons */  
+ /* SMART DETECTION ICONS */
+.radar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #25A8C6;
+  box-shadow: 0 0 0 0 rgba(37, 168, 198, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 168, 198, 0.4); }
+  70%  { box-shadow: 0 0 0 15px rgba(37, 168, 198, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 168, 198, 0); }
+}
+
+.focus-shield {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #25A8C6;
+}
+
+.pause-icon {
+  width: 16px;
+  height: 20px;
+  background: linear-gradient(to right, #25A8C6 6px, transparent 6px, transparent 10px, #25A8C6 10px);
+}
+
+.escalate-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #25A8C6 30%, transparent 31%, #25A8C6 60%, transparent 61%);
+}
+
+.clock-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #25A8C6;
+  position: relative;
+}
+.clock-icon::before, .clock-icon::after {
+  content: "";
+  position: absolute;
+  background-color: #25A8C6;
+}
+.clock-icon::before {
+  width: 2px;
+  height: 8px;
+  top: 4px;
+  left: 11px;
+}
+.clock-icon::after {
+  width: 2px;
+  height: 5px;
+  top: 9px;
+  left: 11px;
+  transform: rotate(90deg);
+}
+
+.gear-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #25A8C6;
+  position: relative;
+}
+.gear-icon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px dotted #25A8C6;
+  animation: spin 3s linear infinite;
+}
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* SMART ALERT ICONS */
+.mic-icon {
+  width: 14px;
+  height: 28px;
+  background-color: #25A8C6;
+  border-radius: 6px;
+  position: relative;
+}
+.mic-icon::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #25A8C6;
+  border-radius: 50%;
+  bottom: -10px;
+  left: 4px;
+}
+
+.speaker-icon {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #25A8C6;
+  position: relative;
+}
+.speaker-icon::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #25A8C6;
+  border-radius: 50%;
+}
+
+.led-icon {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, yellow 50%, #25A8C6 80%);
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px rgba(37, 168, 198, 0.6);
+}
+
+.volume-bars {
+  display: flex;
+  gap: 2px;
+}
+.volume-bars::before,
+.volume-bars::after,
+.volume-bars div {
+  content: '';
+  display: block;
+  width: 4px;
+  background-color: #25A8C6;
+}
+.volume-bars::before { height: 6px; }
+.volume-bars div     { height: 12px; }
+.volume-bars::after  { height: 18px; }
+
+.toggle-switch {
+  width: 28px;
+  height: 14px;
+  background-color: #ccc;
+  border-radius: 14px;
+  position: relative;
+}
+.toggle-switch::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #25A8C6;
+  border-radius: 50%;
+  top: 1px;
+  left: 2px;
+}
+
+/* REMOTE TRAINING ICON */
+.wifi-icon {
+  width: 20px;
+  height: 20px;
+  background: conic-gradient(from 90deg at 50% 50%, #25A8C6 90deg, transparent 0);
+  border-radius: 50%;
+}
+
+/* POWER & HARDWARE ICONS */
+.battery-icon {
+  width: 18px;
+  height: 30px;
+  background-color: #25A8C6;
+  border-radius: 3px;
+}
+
+.usb-icon {
+  width: 28px;
+  height: 14px;
+  background-color: #25A8C6;
+  border-radius: 2px;
+}
+
+.moon-icon {
+  width: 18px;
+  height: 18px;
+  background-color: #25A8C6;
+  border-radius: 50%;
+  box-shadow: inset -4px 0 0 white;
+}
+
+.memory-icon {
+  width: 24px;
+  height: 24px;
+  border: 2px dashed #25A8C6;
+  border-radius: 50%;
+}
+
+/* FLEXIBILITY & USABILITY ICONS */
+.box-icon {
+  width: 20px;
+  height: 24px;
+  background-color: #25A8C6;
+  border-radius: 6px;
+}
+
+.infinity-icon {
+  width: 24px;
+  height: 14px;
+  border: 2px solid #25A8C6;
+  border-radius: 50%;
+}
+
+.heart-icon {
+  width: 18px;
+  height: 18px;
+  background: red;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
+}
+
+</style>
+</head>
+<body>
+  
+<header id="navbar">
+  <div class="nav-title">Petitek</div>
+<div class="hamburger">&#9776;</div>
+</header>
+  <div id="dropdownMenu" class="dropdown-menu">
+    <a href="#video">Video</a>
+    <a href="https://petitek.com/support">Support</a>
+    <a href="https://petitek.com/learn">Learn</a>
+    <a href="#about">About</a>
+  </div>
+
+<div class="content">
+  <img
+    src="chatrbox_paw_logo.png"
+    alt="Chatrbox Paw Logo"
+    width="100"
+    height="80"
+    style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
+
+  <img
+    src="chatrbox_name_logo.png"
+    alt="Chatrbox Name Logo"
+    width="300"
+    height="90"
+    style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
+</div>
+
+  <div>
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img
+      src="amazon_buy_button.webp"
+      alt="Buy Now on Amazon"
+      class="amazon-main-button" />
+  </a>
+</div>
+
+
+  <div style="margin-top: 25px; text-align: center;">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
+  
+<div class="stacked-gallery" id="galleryStart">
+  <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
+   
+<!-- Unlock SuperPowers -->
+
+<div style="padding: 0 10px;">
+  <div class="text-block title-block fade-in">
+    ChatrBox Unlocks Your Pet Training Superpowers
+  </div>
+  <div class="text-block body-block fade-in">
+    ChatrBox is the first pet training tool that helps you guide your pet to do the right thing every time, even when you're not around.
+  </div>
+</div>
+
+
+<!-- Smart Features -->
+ <img src="images/1_SmartFeatures.webp" alt="Smart Features" class="fade-in" style="margin-bottom: 0px;" />
+
+<div class="text-block title-block fade-in">
+  It's Like You Being Right There, But Not
+</div>
+<div class="text-block body-block fade-in">
+  ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
+</div>
+
+<!-- ChatrBox Train -->
+<img src="images/2_ChatrboxTrain.webp" alt="ChatrBox Train" class="fade-in" style="margin-bottom: 0px;" />
+
+<div class="text-block title-block fade-in">
+  Your Voice, Their Guide - Powered by Chatrbox
+</div>
+<div class="text-block body-block fade-in">
+  Place <strong>ChatrBox</strong> anywhere you need training support. Using built-in motion detection, <strong>ChatrBox</strong> senses when your pet approaches a protected area or object and instantly triggers your recorded command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
+</div>
+
+
+<!-- Video1 -->
+<div class="video-wrapper fade-in">
+  <video id="chatrboxVideo1" autoplay muted playsinline controls preload="none">
+    <source src="videos/video1.mp4" type="video/mp4">
+  </video>
+  <div id="unmuteOverlay1" class="unmute-overlay">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
+
+<div style="padding: 0 10px;">
+  <div class="text-block title-block fade-in">
+    ChatrBox Breaks Old Bad Habits and Prevents New Ones From Starting
+  </div>
+  <div class="text-block body-block fade-in">
+    Old habits don’t stand a chance. <strong>ChatrBox</strong> steps in with your familiar voice, sound alerts, and flashing lights at just the right moment to let your pet know — not now. It interrupts bad behavior and reinforces the right choices before hard-to-correct habits even have a chance to take hold.
+  </div>
+</div>
+
+<!-- Stop Bad Habits -->
+<img src="images/3_StopBadHabits.webp" alt="Stop Bad Habits" class="fade-in" />
+<div class="text-block title-block fade-in">
+  Real-World Training for Real-World Homes
+</div>
+<div class="text-block body-block fade-in">
+  Some bad habits are harder to train away than others — but <strong>ChatrBox</strong> makes it possible by being in the right place at the right time, constantly monitoring and correcting until the habit is broken.
+</div>
+
+<!-- UhOhMoment -->
+<img src="images/5_UhOhMoment.webp" alt="Uh Oh Moments" class="fade-in" />
+<div class="text-block title-block fade-in">
+  Works Like an Invisible Virtual Fence — But For Inside Your Home
+</div>
+<div class="text-block body-block fade-in">
+  Anywhere your pet needs boundaries, <strong>ChatrBox</strong> is ready. Designed to train in real-world spaces — big, small, or anywhere in between — <strong>ChatrBox</strong> adapts to your home and your house rules. Whether it’s keeping paws out of a room, off the couch, off the counters, away from doorways, or even away from your new pair of shoes, <strong>ChatrBox</strong> steps in exactly where you need it most.
+</div>
+
+<img src="images/4_PetFreeZone.webp" alt="Pet Free Zone" class="fade-in" />
+<div class="text-block title-block fade-in">
+  ChatrBox is a Smart Training Device That Never Sleeps
+</div>
+<div class="text-block body-block fade-in">
+  <strong>ChatrBox</strong> doesn’t just detect motion — it knows if your pet follows the rules. If not, it ramps up the volume and frequency until your pet finally says, "Okay, okay, okay, I get it!"
+</div>
+
+<!-- Video2 -->
+<div class="video-wrapper fade-in">
+  <video id="chatrboxVideo2" autoplay muted playsinline controls preload="none">
+    <source src="videos/video2.mp4" type="video/mp4">
+  </video>
+  <div id="unmuteOverlay2" class="unmute-overlay">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
+
+<!-- Attention Grabbing Tones -->
+<div class="text-block title-block fade-in">
+  Attention Grabbing Tones And Flashing Lights To Get Their Focus
+</div>
+<div class="text-block body-block fade-in">
+  Proven alert tones and flashing blue-yellow lights <em>(colors dogs and cats can see)</em> instantly grab their attention — stopping them in their tracks before bad behavior even starts, and locking their focus onto your voice command when it matters most.
+</div>
+
+ 
+<!-- 🔁 Trigger Sequence Responsive Section -->
+<div class="fade-in" style="padding: 0 10px;">
+  <div style="background-color: #f5f5f5; padding: 30px 20px; border-radius: 0; margin: 20px auto; max-width: 800px;">
+
+    <!-- Header -->
+    <div class="text-block title-block" style="margin-top: 0;">
+      Alerts Escalate When Necessary to Ensure Pet Obedience
+    </div>
+
+    <!-- Step 1 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
+      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+        1
+      </div>
+      <div style="font-size: 15px; line-height: 1.5;">
+        Your Voice Command + Flashing LEDs
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
+      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+        2
+      </div>
+      <div style="font-size: 15px; line-height: 1.5;">
+        Alert – Your Voice Command + Flashing LEDs
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 30px;">
+      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+        3
+      </div>
+      <div style="font-size: 15px; line-height: 1.5;">
+        Escalated Alert + Your Voice Command + Flashing LEDs
+      </div>
+    </div>
+
+    <!-- 🔊 Play Standard Alert Button -->
+    <div style="text-align: center; margin-bottom: 12px;">
+      <button onclick="playStandardAlert()"
+        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
+        🔊 Play Standard Alert
+      </button>
+      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
+        Sample playback volume may vary. Actual volume is controlled by the device.
+      </div>
+      <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
+    </div>
+
+    <!-- 🔊 Play Escalated Alert Button -->
+    <div style="text-align: center; margin-bottom: 30px;">
+      <button onclick="playEscalatedAlert()"
+        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
+        🔊 Play Escalated Alert
+      </button>
+      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
+        Sample playback volume may vary. Actual volume is controlled by the device.
+      </div>
+      <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
+    </div>
+
+    <!-- 💡 LED Flash Icons -->
+    <div id="led-flash" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+      <div id="led-yellow" style="width: 30px; height: 30px; border-radius: 50%; background-color: yellow; opacity: 0.3;"></div>
+      <div id="led-blue" style="width: 30px; height: 30px; border-radius: 50%; background-color: blue; opacity: 0.3;"></div>
+    </div>
+
+  </div>
+</div>
+<!-- Even The Most Stubborn Pets -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <div class="text-block title-block fade-in">
+    Even The Most <em>Stubborn</em> Pets "Get It"
+  </div>
+  <div class="text-block body-block fade-in">
+    Whether it's the couch, the counter, the trash can or anywhere off-limits, <strong>ChatrBox</strong> keeps reinforcing your message until the behavior changes — no yelling, no chasing, no frustration.
+  </div>
+</div>
+
+<!-- Escalation -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/6_Escalation.webp" alt="Bucky Escalation" class="fade-in" />
+
+  <div class="text-block title-block fade-in">
+    They Learn Through Repetition
+  </div>
+  <div class="text-block body-block fade-in">
+    Repetition turns reminders into good habits. <strong>ChatrBox</strong> helps your pet <em>remember</em> the right choice — even when you're not around.
+  </div>
+</div>
+
+<!-- OffTheChair -->
+<div style="padding: 0 10px;">
+  <img src="images/7_OffTheChair.webp" alt="Delilah Sleeping" class="fade-in" style="width: 100%; aspect-ratio: 3 / 2;" loading="lazy" />
+
+ <!-- NoFear Copy -->
+<div class="text-block title-block fade-in">
+  ChatrBox is a <em>No Fear</em> Behavior Training Solution
+</div>
+<div class="text-block body-block fade-in">
+  Train with kindness, not fear. <em>ChatrBox</em> uses your voice — the one your pet trusts most — combined with cues to guide better behavior. No harsh methods. No anxiety. Just smart, effective training that strengthens the bond between you and your pet.
+</div>
+ 
+<!-- NoFear Copy_Image -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/8_NoFear.webp" alt="No Fear" class="fade-in" />
+
+  <div class="text-block title-block fade-in">
+    Helps Reduce the Need of More Restrictive, Less Friendly Training Tools
+  </div>
+  <div class="text-block body-block fade-in">
+    By reinforcing good behavior early and consistently, <strong>ChatrBox</strong> reduces the need for harsh methods like shock collars, spray deterrents, or confinement tools. Training becomes a calmer, more trusting experience for both you and your pet.
+  </div>
+</div>
+  
+<!-- Video 3 -->
+<div class="video-wrapper fade-in">
+  <video id="chatrboxVideo3" autoplay muted playsinline controls preload="none">
+    <source src="videos/video3.mp4" type="video/mp4">
+  </video>
+  <div id="unmuteOverlay3" class="unmute-overlay">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
+<!-- Competitive Products -->
+<div class="text-block title-block fade-in">
+  Not All Training Tools Are Created Equal
+</div>
+<div class="text-block body-block fade-in">
+  See why <strong>ChatrBox</strong> stands apart as the humane, effective choice for better behavior that lasts.
+</div>
+
+<!-- Comparative Matrix -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/10_CompetitiveMatrix.webp" alt="Testimonials" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
+</div>
+
+<!-- No Collars No Tags Copy -->
+<div class="text-block title-block fade-in">
+  No Collars. No Tags. Just Smarter Training
+</div>
+<div class="text-block body-block fade-in">
+  Because trust, not electronics, should be the trusted bond between you and your pet.
+</div>
+
+<!-- Video 4 -->
+<div class="video-wrapper fade-in">
+  <video id="chatrboxVideo4" autoplay muted playsinline controls preload="none">
+    <source src="videos/video4.mp4" type="video/mp4">
+  </video>
+  <div id="unmuteOverlay4" class="unmute-overlay">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
+<!-- All Breeds & Ages text -->
+<div class="text-block title-block fade-in">
+  All Breeds & Ages
+</div>
+<div class="text-block body-block fade-in">
+  From the smallest kitten to the biggest dog, <strong>ChatrBox</strong> helps every furry friend learn with love, not limits.
+</div>
+
+<!-- AllBreeds Image -->
+<div style="padding-left: 10px; padding-right: 10px;">
+  <img src="images/11_AllBreeds.webp" alt="Cats and Dogs" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
+</div>
+
+<!-- Make Training Fun Text -->
+<div class="text-block title-block fade-in">
+  Make Training Fun
+</div>
+<div class="text-block body-block fade-in">
+  Order your <strong>ChatrBox</strong> today and experience the smarter, better way to train.
+</div>
+
+<!-- OrderNow - Amazon linked -->
+<div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img src="images/12_OrderNow.webp" alt="Call to Action"
+         style="width: 100%; height: auto; display: block;"
+         loading="lazy" />
+  </a>
+</div>
+ 
+<section class="master-features" style="padding: 40px 10px; background-color: #f7f7f7;">
+  <div style="padding-left: 10px; padding-right: 10px;">
+
+    <!-- Section Title -->
+    <div class="fade-in" style="
+      background-color: #005556;
+      color: white;
+      padding: 30px 0;
+      margin-top: 60px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: 100%;">
+      Feature Highlights
+    </div>
+
+    <!-- Feature Summary -->
+    <p style="max-width: 800px; margin: 30px auto; font-size: 20px; line-height: 1.6; padding: 20px;">
+      Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
+    </p>
+
+    <!-- SMART DETECTION -->
+    <div class="feature-header" style="background-color: #d9efff; color: #000;">SMART DETECTION</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="pause-icon"></div></div><div class="feature-text-box"><strong>Pause Mode</strong><br>Temporarily disables motion detection to reposition or test placement without triggering.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="escalate-icon"></div></div><div class="feature-text-box"><strong>Escalation Mode</strong><br>Repeats or intensifies alerts if the pet doesn’t respond to the initial cue.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="clock-icon"></div></div><div class="feature-text-box"><strong>24/7 Day & Night Operation</strong><br>Functions in all lighting conditions — works reliably around the clock.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="gear-icon"></div></div><div class="feature-text-box"><strong>Fully Automatic Operation</strong><br>Runs hands-free with no scheduling or manual activation needed.</div></div>
+
+    <!-- SMART ALERTS -->
+    <div class="feature-header" style="background-color: #d4edda; color: #000;">SMART ALERTS</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="mic-icon"></div></div><div class="feature-text-box"><strong>Custom Voice Recording</strong><br>Allows the user to record their own voice commands or messages.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="speaker-icon"></div></div><div class="feature-text-box"><strong>Built-In Speaker</strong><br>Delivers clear, recognizable audio directly from the device.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="led-icon"></div></div><div class="feature-text-box"><strong>LED Visual Alerts</strong><br>Flashes in colors visible to pets — especially dogs — for visual reinforcement.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="volume-bars"></div></div><div class="feature-text-box"><strong>Volume Control</strong><br>Adjustable sound levels, from soft to loud (up to 90dB), to suit different environments.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="toggle-switch"></div></div><div class="feature-text-box"><strong>Selectable Alert Modes</strong><br>Choose between tone only, message only, or a combination of both.</div></div>
+
+    <!-- REMOTE CONTROL TRAINING -->
+    <div class="feature-header" style="background-color: #e0d4f7; color: #000;">REMOTE CONTROL TRAINING</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="wifi-icon"></div></div><div class="feature-text-box"><strong>Wi-Fi Manual Trigger Mode</strong><br>Activate a message remotely for early-stage training or reinforcement.</div></div>
+
+    <!-- POWER & HARDWARE -->
+    <div class="feature-header" style="background-color: #fff3cd; color: #000;">POWER & HARDWARE</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="battery-icon"></div></div><div class="feature-text-box"><strong>AAA Battery Operation</strong><br>Uses standard batteries — easy to replace and widely available.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="usb-icon"></div></div><div class="feature-text-box"><strong>USB-C Power Option</strong><br>Optional wall power via USB-C for continuous operation.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="moon-icon"></div></div><div class="feature-text-box"><strong>Smart Sleep Mode</strong><br>Conserves battery by entering low-power standby without affecting performance.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="memory-icon"></div></div><div class="feature-text-box"><strong>Memory Retention</strong><br>Saves recorded messages and settings even after powering off.</div></div>
+
+    <!-- FLEXIBILITY & USABILITY -->
+    <div class="feature-header" style="background-color: #d9f3e6; color: #000;">FLEXIBILITY & USABILITY</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="box-icon"></div></div><div class="feature-text-box"><strong>Portable Design</strong><br>Compact, lightweight, and usable anywhere — no app or phone required.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adaptable to countless routines, behaviors, and environments.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
+
+  </div>
+</section>
+  
+<section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
+  <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
+  <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
+    <tbody>
+      <tr><td style="padding: 8px; font-weight: bold; width: 50%;">Brand Name</td><td style="padding: 8px;">CHATRBOX</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Manufacturer</td><td style="padding: 8px;">PETITEK LLC USA</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Item model number</td><td style="padding: 8px;">CHATR1</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">ASIN</td><td style="padding: 8px;">B0D6Q7SRSQ</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">FNSKU</td><td style="padding: 8px;">X004G9DCVV</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Item Weight</td><td style="padding: 8px;">4.3 ounces (without batteries installed)</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Batteries</td><td style="padding: 8px;">4 AAA batteries included</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Useful Battery Life</td><td style="padding: 8px;">30 days if always on 24/7.</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">5V DC Adapter Power</td><td style="padding: 8px;">USB C Port (adapter not included)</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Cable(s)</td><td style="padding: 8px;">USB power cable included</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Item Dimensions LxWxH</td><td style="padding: 8px;">2.56 x 2.05 x 2.56 inches</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Package Dimensions L x W x H</td><td style="padding: 8px;">4.13 x 4.13 x 2.36 inches</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Packaged Item Weight</td><td style="padding: 8px;">10.1 ounces (ship weight)</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Detection range</td><td style="padding: 8px;">0'-15'</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Max Detection Field of View</td><td style="padding: 8px;">60° Adjustable with focus shields</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Loudness (triggered)</td><td style="padding: 8px;">40db to 90db</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Volume Settings</td><td style="padding: 8px;">5 Levels</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Message record length</td><td style="padding: 8px;">10 seconds</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Warranty Description</td><td style="padding: 8px;">90 Day limited</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Color</td><td style="padding: 8px;">GREY</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Size</td><td style="padding: 8px;">2.5 IN. X 2.5 IN. X 2 IN.</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Age Range Description</td><td style="padding: 8px;">Adult Dogs, Cats to Puppies & Kittens. All breeds.</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Included Components</td><td style="padding: 8px;">4 AAA Batteries, Stand, USB C Cable, 4 Focus Shields</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">FCC Certifications</td><td style="padding: 8px;">Part 15</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">WiFi Supported</td><td style="padding: 8px;">2.4 GHz 802.11b, 80211g, 802.11n</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Bluetooth Supported</td><td style="padding: 8px;">Classic BR/EDR, BLE</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Specific Uses for Product</td><td style="padding: 8px;">Dog/Cat Behavior Training - Indoor use</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Patents Pending</td><td style="padding: 8px;">All rights reserved</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Support</td><td style="padding: 8px;"><a href="mailto:support@petitek.com">support@petitek.com</a></td></tr>
+
+  </table>
+<div style="text-align: center; margin-top: 10px;">
+  <svg onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite; cursor: pointer;">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+  <div style="font-size: 12px; margin-top: 5px; color: #333;">Top</div>
+</div>
+ </div> 
+</div>
+  
+<footer class="fade-in" style="background-color: #25A8C6; color: white; padding: 40px 0 20px; width: 100%; box-sizing: border-box;">
+  
+  <div style="padding-left: 30px; padding-right: 30px;">  <!-- ONLY optional padding here -->
+
+    <div style="font-size: 32px; margin-bottom: 20px; font-family: 'Sanchez', serif; font-weight: 600; color: black; text-align: left; margin-left: 20px;">
+      Petitek
+    </div>
+
+    <!-- We’d Love to Stay in Touch -->
+    <div style="font-size: 18px; margin-bottom: 20px; text-align: center;">
+      We’d love to stay in touch!
+    </div>
+
+    <!-- Email Form -->
+    <form onsubmit="event.preventDefault(); showThankYou();" style="margin-bottom: 40px;">
+      <div style="max-width: 300px; margin: 0 auto; position: relative;">
+        <input id="emailInput" type="email" placeholder="Enter email" required
+          style="width: 100%; padding: 12px 50px 12px 15px; border: 1px solid white; border-radius: 4px; font-size: 16px; background-color: white; color: black;">
+        <button id="submitButton" type="submit"
+          style="position: absolute; right: 5px; top: 5px; bottom: 5px; background: white; border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: black;">
+          <span id="buttonText">▶</span>
+          <div id="spinner" class="spinner" style="display: none;"></div>
+        </button>
+      </div>
+      <div style="max-width: 400px; margin: 0 auto;">
+        <div id="thankYouMessage"
+          style="display: none; margin-top: 10px; background: #d8f5e4; color: #333; padding: 10px; border-radius: 4px; font-size: 14px;">
+          Thank you. You’ve been added to our list.
+        </div>
+      </div>
+    </form>
+
+    <!-- Footer Columns -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 20px; text-align: left;">
+      
+      <!-- Pet Owners Column -->
+      <div style="min-width: 120px;">
+        <div style="font-weight: bold; margin-bottom: 8px;">Pet Owners</div>
+        <div>
+          <div style="margin-bottom: 8px;">
+            <a href="https://petitek.com/warranty" style="color: white; text-decoration: none;">- Warranty</a>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <a href="https://petitek.com/learn" style="color: white; text-decoration: none;">- Learn</a>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <a href="https://petitek.com/support" style="color: white; text-decoration: none;">- Support</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Work with Us Column -->
+      <div style="min-width: 120px;">
+        <div style="font-weight: bold; margin-bottom: 8px;">Work With Us</div>
+        <div>
+          <div style="margin-bottom: 8px;">
+            <a href="https://petitek.com/affiliates" style="color: white; text-decoration: none;">- Affiliates</a>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <a href="https://petitek.com/affiliates" style="color: white; text-decoration: none;">- Influencers</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider Line -->
+    <hr style="border: none; border-top: 1px solid white; max-width: 400px; margin: 20px auto;">
+
+    <!-- Legal Links -->
+    <div style="font-size: 12px; text-align: center; margin-bottom: 10px;">
+      <a href="https://petitek.com/tos" style="color: white; margin: 0 10px; text-decoration: none;">Terms of Service</a>
+      <a href="https://petitek.com/privacy" style="color: white; margin: 0 10px; text-decoration: none;">Privacy</a>
+      <a href="https://petitek.com/cookies" style="color: white; margin: 0 10px; text-decoration: none;">Cookies</a>
+    </div>
+
+    <!-- Copyright -->
+    <div style="font-size: 12px; margin-top: 20px; text-align: center;">
+      © Petitek LLC All rights reserved.
+    </div>
+
+  </div> <!-- end inner wrapper -->
+</footer>
+  
+
+<!-- Floating Amazon Buy Button (OUTSIDE any <script>) -->
+<div class="floating-buy-button">
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img src="amazon_float_button.png" alt="Buy Now">
+  </a>
+</div>
+
+<!-- THEN Your Single <script> -->
+<script>
+function showThankYou() {
+  const input = document.getElementById('emailInput');
+  const message = document.getElementById('thankYouMessage');
+  const submitButton = document.getElementById('submitButton');
+  const buttonText = document.getElementById('buttonText');
+  const spinner = document.getElementById('spinner');
+
+  if (input.checkValidity()) {
+    buttonText.style.display = 'none';
+    spinner.style.display = 'block';
+    submitButton.disabled = true;
+
+    const formData = new FormData();
+    formData.append('email', input.value);
+
+    fetch("https://script.google.com/macros/s/AKfycby1S7vqa6QfzVMn5OLGXz1W1i7p5aIXFP5ZQ-WmFmjt6Fa6Z0mhFaEE7bW1TrACx5iLEw/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(() => {
+      spinner.style.display = 'none';
+      submitButton.disabled = false;
+      buttonText.style.display = 'block';
+      message.style.display = 'block';
+      input.value = '';
+
+      setTimeout(() => {
+        message.style.display = 'none';
+      }, 3000);
+    })
+    .catch(error => {
+      console.error("❌ Error submitting form:", error);
+      spinner.style.display = 'none';
+      submitButton.disabled = false;
+      buttonText.style.display = '▶';
+      alert("Something went wrong. Please try again.");
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const floatBtn = document.querySelector('.floating-buy-button');
+  window.addEventListener('scroll', () => {
+    floatBtn.classList.toggle('show', window.scrollY > 300);
+  });
+
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  const navbar = document.getElementById('navbar');
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
+    lastScrollTop = scrollTop;
+  });
+
+  const menu = document.getElementById('dropdownMenu');
+  const hamburger = document.querySelector('.hamburger');
+  hamburger?.addEventListener('click', () => {
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  });
+  document.addEventListener('click', function(event) {
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+
+  const videos = [
+    { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
+    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
+    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
+    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
+  ];
+  let currentlyPlaying = null;
+
+  function initVideo({ id, overlayId }) {
+    const video = document.getElementById(id);
+    const overlay = document.getElementById(overlayId);
+    if (!video || !overlay) return;
+
+    video.preload = 'auto';
+    video.muted = true;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          videos.forEach(({ id: vid }) => {
+            const v = document.getElementById(vid);
+            if (v && v !== video && !v.paused) v.pause();
+          });
+          currentlyPlaying = video;
+          video.play();
+        } else {
+          if (video === currentlyPlaying) video.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(video);
+
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      overlay.style.display = 'block';
+      video.muted = true;
+    });
+
+    overlay.addEventListener('click', () => {
+      video.pause();
+      video.currentTime = 0;
+      video.muted = false;
+      overlay.style.display = 'none';
+      video.play();
+    });
+  }
+
+  videos.forEach(initVideo);
+});
+
+function flashLEDs(duration = 3000) {
+  const yellow = document.getElementById('led-yellow');
+  const blue = document.getElementById('led-blue');
+  let flashing = true;
+  let on = false;
+
+  const interval = setInterval(() => {
+    on = !on;
+    yellow.style.opacity = on ? 1 : 0.3;
+    blue.style.opacity = on ? 0.3 : 1;
+  }, 300);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    yellow.style.opacity = 0.3;
+    blue.style.opacity = 0.3;
+  }, duration);
+}
+
+function playStandardAlert() {
+  const audio = document.getElementById('triggerAudio1');
+  audio.pause();
+  audio.currentTime = 0;
+  audio.play();
+  flashLEDs(audio.duration * 1000 || 3000);
+}
+
+function playEscalatedAlert() {
+  const audio = document.getElementById('triggerAudio2');
+  audio.pause();
+  audio.currentTime = 0;
+  audio.play();
+  flashLEDs(audio.duration * 1000 || 3000);
+}
+</script>
+
+
+</body>
+</html>
