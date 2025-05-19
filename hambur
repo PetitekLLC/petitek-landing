@@ -32,7 +32,7 @@ body, html {
   right: 0;
   height: 60px;
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,12 +40,35 @@ body, html {
   z-index: 2000;
 }
 
+.nav-title {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Arial Black', Arial, sans-serif;
+  color: #25A8C6;
+  letter-spacing: 0.5px;
+}
+
+.hamburger {
+  font-size: 28px;
+  font-weight: bold;
+  color: #25A8C6;
+  cursor: pointer;
+  user-select: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.hamburger:hover {
+  background-color: rgba(37, 168, 198, 0.1);
+}
+
 .dropdown-menu {
-  position: fixed; /* ✅ stays relative to viewport */
-  top: 60px;       /* ✅ appears just below navbar */
+  position: fixed;
+  top: 60px;
   right: 20px;
   background-color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   overflow: hidden;
   z-index: 3000;
