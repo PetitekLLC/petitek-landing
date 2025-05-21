@@ -7,7 +7,7 @@
   <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
   <meta name="author" content="Petitek LLC" />
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
-
+ 
 <style>
 /* General page setup */
 body, html {
@@ -55,6 +55,7 @@ body, html {
   user-select: none;
 }
 
+
 .hamburger:hover {
   background-color: rgba(37, 168, 198, 0.1);
 }
@@ -89,20 +90,22 @@ body, html {
   background-color: #f4f4f4;
 }
 
-content {
+
+/* Content */
+.content {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  padding: 20px 20px 20px;
+  padding: 70px 20px 60px;
   text-align: center;
 }
 
-.logo-img {
-  width: 300px;
-  display: block;
-  margin: 0 auto 10px; /* Tight spacing below */
+.content img {
+  width: 80%;
+  max-width: 300px;
+  margin-bottom: 15px;
 }
-
 
 /* Title and Body Blocks */
 .title-block {
@@ -214,12 +217,12 @@ content {
   text-decoration: underline;
 }
 
-.ChatrBOX {
+/* Amazon Button */
+.amazon-main-button {
+  width: 300px;
+  margin: 60px auto 10px;
   display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  padding: 10px 20; /* Adjust top and bottom padding as needed */
+  border-radius: 8px;
 }
 
 .floating-buy-button {
@@ -274,6 +277,7 @@ content {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   z-index: 10;
 }
+
 
   
  /* Feature Icons */  
@@ -500,20 +504,6 @@ content {
   background: red;
   clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
 }
-  }
-
-.logo-img {
-  width: 300px;
-  display: block;
-  margin: 0 auto 10px; /* Tight spacing below */
-}
-
-.device-img {
-  width: 80%;
-  max-width: 300px;
-  display: block;
-  margin: 0 auto;
-}
 
 </style>
 </head>
@@ -529,14 +519,32 @@ content {
     <a href="#about">About</a>
   </div>
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 20px 20px;
-  text-align: center;
+<div class="content">
+  <img
+    src="chatrbox_paw_logo.png"
+    alt="Chatrbox Paw Logo"
+    width="100"
+    height="80"
+    style="width: 100px; margin-top: 30px; margin-bottom: 15px;" />
 
-</style>
+  <img
+    src="chatrbox_name_logo.png"
+    alt="Chatrbox Name Logo"
+    width="300"
+    height="90"
+    style="width: 300px; margin-top: 0; margin-bottom: 20px;" />
+</div>
+
+  <div>
+  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+    <img
+      src="amazon_buy_button.webp"
+      alt="Buy Now on Amazon"
+      class="amazon-main-button" />
+  </a>
+</div>
+
+
   <div style="margin-top: 25px; text-align: center;">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
       <polyline points="6 9 12 15 18 9"/>
@@ -578,6 +586,7 @@ content {
   Place <strong>ChatrBox</strong> anywhere you need training support. Using built-in motion detection, <strong>ChatrBox</strong> senses when your pet approaches a protected area or object and instantly triggers your recorded command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
 </div>
 
+
 <!-- Video1 -->
 <div class="video-wrapper fade-in">
   <video id="chatrboxVideo1" autoplay muted playsinline controls preload="none">
@@ -587,6 +596,7 @@ content {
     🔊 Tap to Unmute
   </div>
 </div>
+
 
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
@@ -1192,4 +1202,5 @@ function playEscalatedAlert() {
 
 </body>
 </html>
+
 
