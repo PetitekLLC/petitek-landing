@@ -116,10 +116,7 @@
   </div>
 
   <div class="form-card">
-   <form action="https://script.google.com/macros/s/AKfycbxICimJD-yN_Z1p1R67LfJLkef741J9Fz08BSWWJwPxPunBl44WmwMqhM3CrEGPdS2h/exec"
-      method="POST"
-      onsubmit="submitted=true;">
-
+    <form action="https://script.google.com/macros/s/AKfycbxICimJD-yN_Z1p1R67LfJLkef741J9Fz08BSWWJwPxPunBl44WmwMqhM3CrEGPdS2h/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
       <label for="profileType">Profile Type:</label>
       <select name="profileType" required>
         <option value="">Select One</option>
@@ -152,8 +149,8 @@
       <label for="comments">Comments:</label>
       <textarea name="comments" rows="4"></textarea> <!-- Not required -->
 
-  <!-- <input type="hidden" name="secret" value="chatrbox-partner-2121" /> -->
-    
+      <input type="hidden" name="secret" value="chatrbox-partner-2121" />
+      
       <button type="submit">Submit</button>
     </form>
 
@@ -182,4 +179,3 @@
 
 </body>
 </html>
-
