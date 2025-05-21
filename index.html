@@ -89,21 +89,18 @@ body, html {
   background-color: #f4f4f4;
 }
 
-/* Content */
-.content {
+content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  padding: 70px 20px 60px;
+  padding: 20px 20px 20px;
   text-align: center;
 }
 
-.content img {
-  width: 80%;
-  max-width: 300px;
-  margin: 0 auto 10px;
+.logo-img {
+  width: 300px;
   display: block;
+  margin: 0 auto 10px; /* Tight spacing below */
 }
 
 
@@ -518,21 +515,26 @@ body, html {
     <a href="#about">About</a>
   </div>
 
-<div class="content">
-  <img
-    src="chatrbox_name_logo.png"
-    alt="Chatrbox Name Logo"
-    width="250"
-    height="175"
-    style="width: 300px; margin-top: 40px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />
-</div>
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 20px;
+  text-align: center;
+}
 
-<div>
-  <img
-    src="images/Asset 42.webp"
-    alt="ChatrBox"
-    class="ChatrBOX" />
-</div>
+.logo-img {
+  width: 300px;
+  display: block;
+  margin: 0 auto 10px; /* Tight spacing below */
+}
+
+.device-img {
+  width: 80%;
+  max-width: 300px;
+  display: block;
+  margin: 0 auto;
+}
 
 
   <div style="margin-top: 25px; text-align: center;">
