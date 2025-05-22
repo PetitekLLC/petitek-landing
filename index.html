@@ -91,7 +91,9 @@ body, html {
   max-width: 340px;
   width: 75%;
   margin: 0 auto;
-  margin-bottom: 60px; /* 👈 Adjust this value as needed */
+  margin-bottom: 40px; /* 👈 Adjust this value as needed */
+  line-height: 0;              /* 👈 Prevents inline spacing gaps */
+  display: block;              /* 👈 Ensures consistent block flow */
 }
 
 
@@ -99,6 +101,7 @@ body, html {
   width: 100%;
   height: auto;
   display: block;
+  vertical-align: bottom;      /* 👈 Aligns image flush to container bottom */
 }
 
 .dropdown-menu {
