@@ -1301,6 +1301,11 @@ function playEscalatedAlert() {
   audio.play();
   flashLEDs(audio.duration * 1000 || 3000);
 }
+  document.addEventListener('DOMContentLoaded', () => {
+  const floatBtn = document.querySelector('.floating-buy-button');
+  window.addEventListener('scroll', () => {
+    floatBtn.classList.toggle('show', window.scrollY > 300);
+  });
 </script>
 
 </body>
