@@ -942,7 +942,9 @@ body, html {
     />
   </a>
 </div>
+
  <section class="master-features" style="padding: 40px 10px; background-color: #f7f7f7;">
+
   <!-- Section Header -->
   <div class="content-block" style="max-width: 800px; margin: 0 auto;">
     <div style="
@@ -968,7 +970,7 @@ body, html {
     </p>
   </div>
 
-  <!-- Wrapped Feature Items -->
+  <!-- BEGIN: All feature content in a max-width wrapper -->
   <div class="content-block" style="max-width: 800px; margin: 0 auto;">
 
     <!-- SMART DETECTION -->
@@ -1005,9 +1007,10 @@ body, html {
     <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adaptable to countless routines, behaviors, and environments.</div></div>
     <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
 
-  </div> <!-- ✅ END .content-block wrapper -->
+  </div> <!-- END of content-block -->
 
 </section>
+
 
 
  
