@@ -86,17 +86,18 @@ body, html {
 }
 
 .asset-wrapper {
-  max-width: 362px;
+  max-width: 380px;
   width: 100%;
   margin: 0 auto 60px auto;
 }
 
 .asset-wrapper img {
   width: 100%;
-  height: auto;
+  height: 320px;  /* 👈 Fixed height instead of auto */
+  object-fit: contain; /* or "cover" depending on intent */
   display: block;
-  aspect-ratio: 362 / 300;
 }
+
 
 .dropdown-menu {
   position: fixed;
