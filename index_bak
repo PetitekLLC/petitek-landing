@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
   <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
   <meta name="author" content="Petitek LLC" />
 
@@ -22,6 +22,9 @@ body, html {
   overflow-x: hidden;
   box-sizing: border-box;
 }
+ html {
+  -webkit-text-size-adjust: 100%;
+} 
 
 * {
   box-sizing: border-box;
@@ -57,7 +60,6 @@ body, html {
   user-select: none;
 }
 
-
 .hamburger:hover {
   background-color: rgba(37, 168, 198, 0.1);
 }
@@ -84,17 +86,18 @@ body, html {
 }
 
 .asset-wrapper {
-  aspect-ratio: 362 / 300;
-  max-width: 340px;
-  width: 75%;
-  margin: 0 auto;
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto 60px auto;
 }
 
 .asset-wrapper img {
   width: 100%;
-  height: auto;
+  height: 320px;  /* 👈 Fixed height instead of auto */
+  object-fit: contain; /* or "cover" depending on intent */
   display: block;
 }
+
 
 .dropdown-menu {
   position: fixed;
@@ -539,22 +542,17 @@ body, html {
   loading="lazy"
 />
 
+  
 <div class="asset-wrapper">
-  <img 
-    src="images/Asset 42.webp" 
-    alt="Chatrbox device" 
-    width="362" 
-    height="300"
-  />
+  <img src="images/Asset 42.webp" width="362" height="300" alt="Chatrbox device" />
 </div>
 
+<div style="margin-top: 15px; text-align: center;">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
+    <polyline points="6 9 12 15 18 9"/>
+  </svg>
+</div>
 
-
-  <div style="margin-top: 25px; text-align: center;">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
-      <polyline points="6 9 12 15 18 9"/>
-    </svg>
-  </div>
   
 <div class="stacked-gallery" id="galleryStart">
   <hr style="width: 80%; max-width: 800px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
