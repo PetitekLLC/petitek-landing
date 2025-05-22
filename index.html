@@ -183,19 +183,39 @@ body, html {
   padding: 0 5px;
   box-sizing: border-box;
 }
+.feature-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  padding: 40px 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
 
-/* Feature Group */
 .feature-group {
   max-width: 800px;
-  margin: 50px auto;
+  width: 100%;
+  margin: 0 auto;
   padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.feature-header {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 18px 0 10px; /* tightened spacing above/below */
+  text-align: center;
+  background-color: transparent;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
-  margin: 30px 0 20px;
-  padding-left: 30px;
+  margin: 18px 0; /* reduced from 30px for tighter spacing */
+  padding-left: 20px;
 }
 
 .feature-icon-box {
@@ -208,21 +228,12 @@ body, html {
 .feature-text-box {
   flex: 1;
   padding-left: 15px;
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.6;
   text-align: left;
   color: #222;
 }
 
-.feature-header {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 12px 10px;
-  border-radius: 6px;
-  margin: 14px 0;
-  text-align: center;
-}
 
 /* Fade-In Animation */
 .fade-in {
