@@ -952,31 +952,25 @@ body, html {
 </div>
 
 <section class="master-features">
-  <div class="feature-wrapper"> <!-- new container does all the work -->
-  </div>
-
- <section class="master-features">
-  <div class="feature-wrapper"> <!-- ✅ now contains everything -->
+  <div class="feature-wrapper">
 
     <!-- Section Header -->
-    <div class="feature-group">
-      <div class="feature-header feature-title">FEATURE HIGHLIGHTS</div>
+    <div class="feature-header feature-title" style="background-color: #00575B; color: white;">
+      FEATURE HIGHLIGHTS
     </div>
 
     <!-- Feature Summary -->
-    <div class="feature-group">
-      <p style="
-        margin: 30px auto;
-        font-size: 20px;
-        line-height: 1.6;
-        padding: 20px;
-        text-align: center;">
-        Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
-      </p>
+    <div style="margin: 30px auto; font-size: 20px; line-height: 1.6; padding: 0 20px; text-align: center; max-width: 800px;">
+      Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
     </div>
 
-    <!-- All features -->
+    <!-- All features (same as you already have) -->
     <div class="feature-group">
+      <!-- existing feature items... -->
+    </div>
+
+  </div>
+</section>
 
       <!-- SMART DETECTION -->
       <div class="feature-header bg-blue">SMART DETECTION</div>
