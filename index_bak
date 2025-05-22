@@ -942,9 +942,8 @@ body, html {
     />
   </a>
 </div>
- 
-<section class="master-features" style="padding: 40px 10px; background-color: #f7f7f7;">
-  <!-- Section Header (kept) -->
+ <section class="master-features" style="padding: 40px 10px; background-color: #f7f7f7;">
+  <!-- Section Header -->
   <div class="content-block" style="max-width: 800px; margin: 0 auto;">
     <div style="
       background-color: #00575B;
@@ -968,37 +967,50 @@ body, html {
       Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
     </p>
   </div>
-<!-- Begin Wrapping All Feature Items -->
-<div class="content-block" style="max-width: 800px; margin: 0 auto;">
-  
-  <!-- SMART DETECTION -->
-  <div class="feature-header" style="background-color: #d9efff; color: #000;">SMART DETECTION</div>
-  <div class="feature-item">...</div>
-  <div class="feature-item">...</div>
-  <!-- etc... -->
 
-  <!-- SMART ALERTS -->
-  <div class="feature-header" style="background-color: #d4edda; color: #000;">SMART ALERTS</div>
-  <div class="feature-item">...</div>
-  <!-- etc... -->
+  <!-- Wrapped Feature Items -->
+  <div class="content-block" style="max-width: 800px; margin: 0 auto;">
 
-  <!-- REMOTE CONTROL TRAINING -->
-  <div class="feature-header" style="background-color: #e0d4f7; color: #000;">REMOTE CONTROL TRAINING</div>
-  <div class="feature-item">...</div>
+    <!-- SMART DETECTION -->
+    <div class="feature-header" style="background-color: #d9efff; color: #000;">SMART DETECTION</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="pause-icon"></div></div><div class="feature-text-box"><strong>Pause Mode</strong><br>Temporarily disables motion detection to reposition or test placement without triggering.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="escalate-icon"></div></div><div class="feature-text-box"><strong>Escalation Mode</strong><br>Repeats or intensifies alerts if the pet doesn’t respond to the initial cue.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="clock-icon"></div></div><div class="feature-text-box"><strong>24/7 Day & Night Operation</strong><br>Functions in all lighting conditions — works reliably around the clock.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="gear-icon"></div></div><div class="feature-text-box"><strong>Fully Automatic Operation</strong><br>Runs hands-free with no scheduling or manual activation needed.</div></div>
 
-  <!-- POWER & HARDWARE -->
-  <div class="feature-header" style="background-color: #fff3cd; color: #000;">POWER & HARDWARE</div>
-  <div class="feature-item">...</div>
+    <!-- SMART ALERTS -->
+    <div class="feature-header" style="background-color: #d4edda; color: #000;">SMART ALERTS</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="mic-icon"></div></div><div class="feature-text-box"><strong>Custom Voice Recording</strong><br>Allows the user to record their own voice commands or messages.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="speaker-icon"></div></div><div class="feature-text-box"><strong>Built-In Speaker</strong><br>Delivers clear, recognizable audio directly from the device.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="led-icon"></div></div><div class="feature-text-box"><strong>LED Visual Alerts</strong><br>Flashes in colors visible to pets — especially dogs — for visual reinforcement.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="volume-bars"></div></div><div class="feature-text-box"><strong>Volume Control</strong><br>Adjustable sound levels, from soft to loud (up to 90dB), to suit different environments.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="toggle-switch"></div></div><div class="feature-text-box"><strong>Selectable Alert Modes</strong><br>Choose between tone only, message only, or a combination of both.</div></div>
 
-  <!-- FLEXIBILITY & USABILITY -->
-  <div class="feature-header" style="background-color: #d9f3e6; color: #000;">FLEXIBILITY & USABILITY</div>
-  <div class="feature-item">...</div>
+    <!-- REMOTE CONTROL TRAINING -->
+    <div class="feature-header" style="background-color: #e0d4f7; color: #000;">REMOTE CONTROL TRAINING</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="wifi-icon"></div></div><div class="feature-text-box"><strong>Wi-Fi Manual Trigger Mode</strong><br>Activate a message remotely for early-stage training or reinforcement.</div></div>
 
-</div> <!-- ✅ Close new wrapper -->
+    <!-- POWER & HARDWARE -->
+    <div class="feature-header" style="background-color: #fff3cd; color: #000;">POWER & HARDWARE</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="battery-icon"></div></div><div class="feature-text-box"><strong>AAA Battery Operation</strong><br>Uses standard batteries — easy to replace and widely available.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="usb-icon"></div></div><div class="feature-text-box"><strong>USB-C Power Option</strong><br>Optional wall power via USB-C for continuous operation.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="moon-icon"></div></div><div class="feature-text-box"><strong>Smart Sleep Mode</strong><br>Conserves battery by entering low-power standby without affecting performance.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="memory-icon"></div></div><div class="feature-text-box"><strong>Memory Retention</strong><br>Saves recorded messages and settings even after powering off.</div></div>
+
+    <!-- FLEXIBILITY & USABILITY -->
+    <div class="feature-header" style="background-color: #d9f3e6; color: #000;">FLEXIBILITY & USABILITY</div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="box-icon"></div></div><div class="feature-text-box"><strong>Portable Design</strong><br>Compact, lightweight, and usable anywhere — no app or phone required.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adaptable to countless routines, behaviors, and environments.</div></div>
+    <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
+
+  </div> <!-- ✅ END .content-block wrapper -->
+
+</section>
+
 
  
-
-  
 <section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
   <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
   <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
