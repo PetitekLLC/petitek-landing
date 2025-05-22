@@ -61,7 +61,8 @@ body, html {
 .hamburger:hover {
   background-color: rgba(37, 168, 198, 0.1);
 }
-floating-buy-button {
+  
+.floating-buy-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -82,12 +83,17 @@ floating-buy-button {
   max-width: 90px !important;
 }
 
+.asset-wrapper {
+  aspect-ratio: 362 / 300;
+  max-width: 340px;
+  width: 75%;
+  margin: 0 auto;
+}
 
-  
-.content img.amazon-main-button {
-  width: 300px !important;
+.asset-wrapper img {
+  width: 100%;
+  height: auto;
   display: block;
-  margin: 4px auto 10px !important;
 }
 
 .dropdown-menu {
@@ -126,7 +132,7 @@ floating-buy-button {
   text-align: center;
   font-weight: bold;
   line-height: 1.3;
-  margin: 40px auto 16px;
+  margin: 30px auto 8px;
   font-family: inherit;
   max-width: 800px;
   padding: 0 20px;
@@ -141,8 +147,7 @@ floating-buy-button {
   margin: 0 auto;
   font-family: inherit;
 }
-
-  
+ 
 .content-block {
   max-width: 800px;
   margin: 0 auto;
@@ -158,9 +163,10 @@ floating-buy-button {
 }
  
 .text-block {
-  padding-top: 25px;
-  padding-bottom: 35px;
+  padding-top: 10px;
+  padding-bottom: 25px;
 }
+  
 /* Image and Video Scaling */
 .stacked-gallery img,
 .fade-in img,
@@ -533,19 +539,15 @@ floating-buy-button {
   loading="lazy"
 />
 
+<div class="asset-wrapper">
   <img 
     src="images/Asset 42.webp" 
     alt="Chatrbox device" 
     width="362" 
     height="300"
-    style="
-      width: 75%;         /* Also slightly reduced */
-      max-width: 340px;
-      height: auto;
-      display: block;
-      margin: 0 auto;"
   />
 </div>
+
 
 
   <div style="margin-top: 25px; text-align: center;">
@@ -555,7 +557,7 @@ floating-buy-button {
   </div>
   
 <div class="stacked-gallery" id="galleryStart">
-  <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
+  <hr style="width: 80%; max-width: 800px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
    
 <!-- Unlock SuperPowers -->
 <div style="padding: 0 10px;">
@@ -1117,7 +1119,7 @@ floating-buy-button {
     </div>
 
     <!-- Divider Line -->
-    <hr style="border: none; border-top: 1px solid white; max-width: 400px; margin: 20px auto;">
+    <hr style="border: none; border-top: 1px solid white; max-width: 800px; margin: 20px auto;">
 
     <!-- Legal Links -->
     <div style="font-size: 12px; text-align: center; margin-bottom: 10px;">
@@ -1301,6 +1303,7 @@ function playEscalatedAlert() {
   audio.play();
   flashLEDs(audio.duration * 1000 || 3000);
 }
+
 </script>
 
 </body>
