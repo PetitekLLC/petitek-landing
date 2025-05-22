@@ -67,9 +67,13 @@ body, html {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  display: block;
+  display: none; /* ✅ start hidden */
   background: none;
   border: none;
+}
+
+.floating-buy-button.show {
+  display: block; /* ✅ show after scrolling */
 }
 
 .floating-buy-button img {
