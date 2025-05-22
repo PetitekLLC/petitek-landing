@@ -214,6 +214,14 @@ body, html {
     text-align: left;
     color: #222;
   }
+.feature-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  padding: 40px 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
 
   .feature-header {
     font-size: 20px;
