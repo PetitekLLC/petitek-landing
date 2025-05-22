@@ -83,12 +83,17 @@ body, html {
   max-width: 90px !important;
 }
 
+.asset-wrapper {
+  aspect-ratio: 362 / 300;
+  max-width: 340px;
+  width: 75%;
+  margin: 0 auto;
+}
 
-  
-.content img.amazon-main-button {
-  width: 300px !important;
+.asset-wrapper img {
+  width: 100%;
+  height: auto;
   display: block;
-  margin: 4px auto 10px !important;
 }
 
 .dropdown-menu {
@@ -534,19 +539,15 @@ body, html {
   loading="lazy"
 />
 
+<div class="asset-wrapper">
   <img 
     src="images/Asset 42.webp" 
     alt="Chatrbox device" 
     width="362" 
     height="300"
-    style="
-      width: 75%;         /* Also slightly reduced */
-      max-width: 340px;
-      height: auto;
-      display: block;
-      margin: 0 auto;"
   />
 </div>
+
 
 
   <div style="margin-top: 25px; text-align: center;">
