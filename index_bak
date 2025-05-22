@@ -943,7 +943,12 @@ body, html {
   </a>
 </div>
 
-<section class="master-features" style="padding: 40px 10px; background-color: #f7f7f7;">
+<section class="master-features">
+  <div class="feature-wrapper"> <!-- new container does all the work -->
+    <!-- all content here (headers, items, etc.) -->
+  </div>
+</section>
+
 
   <!-- Section Header -->
   <div class="feature-group">
@@ -1000,10 +1005,6 @@ body, html {
     <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
 
   </div> <!-- END .feature-group -->
-
-</section>
-
-
 
 </section>
 
