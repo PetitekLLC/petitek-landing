@@ -950,7 +950,6 @@ body, html {
     />
   </a>
 </div>
-
 <section class="master-features">
   <div class="feature-wrapper">
 
@@ -964,13 +963,8 @@ body, html {
       Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
     </div>
 
-    <!-- All features (same as you already have) -->
+    <!-- All features -->
     <div class="feature-group">
-      <!-- existing feature items... -->
-    </div>
-
-  </div>
-</section>
 
       <!-- SMART DETECTION -->
       <div class="feature-header bg-blue">SMART DETECTION</div>
@@ -1006,9 +1000,11 @@ body, html {
       <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adaptable to countless routines, behaviors, and environments.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
 
-    </div> <!-- END .feature-group -->
-  </div> <!-- END .feature-wrapper -->
+    </div>
+  </div>
 </section>
+
+
 
 <section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
   <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
