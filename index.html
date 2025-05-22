@@ -6,8 +6,10 @@
   <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
   <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
   <meta name="author" content="Petitek LLC" />
+
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
- 
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
 <style>
 /* General page setup */
 body, html {
@@ -59,6 +61,28 @@ body, html {
 .hamburger:hover {
   background-color: rgba(37, 168, 198, 0.1);
 }
+floating-buy-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.floating-buy-button.show {
+  display: block;
+}
+
+.floating-buy-button img {
+  width: 90px !important;
+  height: auto !important;
+  max-width: 90px !important;
+}
+
+
   
 .content img.amazon-main-button {
   width: 300px !important;
@@ -96,28 +120,11 @@ body, html {
   background-color: #f4f4f4;
 }
 
-
-/* Content */
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 70px 20px 60px;
-  text-align: center;
-}
-
-.content img {
-  width: 80%;
-  max-width: 300px;
-  margin-bottom: 15px;
-}
-
-/* Title and Body Blocks */
+/* Responsive typography for all title and body text blocks */
 .title-block {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   text-align: center;
   font-weight: bold;
-  font-size: 32px;
   line-height: 1.3;
   margin: 40px auto 16px;
   font-family: inherit;
@@ -126,8 +133,8 @@ body, html {
 }
 
 .body-block {
+  font-size: clamp(1rem, 2vw, 1.25rem);
   text-align: left;
-  font-size: 20px;
   line-height: 1.7;
   padding: 0 20px 24px;
   max-width: 800px;
@@ -135,6 +142,21 @@ body, html {
   font-family: inherit;
 }
 
+  
+.content-block {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.content-block img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+ 
 .text-block {
   padding-top: 25px;
   padding-bottom: 35px;
@@ -223,35 +245,6 @@ body, html {
   text-decoration: underline;
 }
 
-/* Amazon Button */
-.amazon-main-button {
-  width: 250px;
-  margin: 60px auto 29px;
-  display: block;
-  border-radius: 8px;
-}
-  
-.floating-buy-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: none;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.floating-buy-button.show {
-  display: block;
-}
-
-.floating-buy-button img {
-  width: 90px !important;
-  height: auto !important;
-  max-width: 90px !important;
-}
-
 .video-wrapper {
   max-width: 800px;
   width: 100%;
@@ -283,7 +276,6 @@ body, html {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   z-index: 10;
 }
-
 
   
  /* Feature Icons */  
@@ -525,17 +517,34 @@ body, html {
     <a href="#about">About</a>
   </div>
 
-<div class="content">
-<img
+<div class="content" style="padding-top: 20px;">
 <img
   src="chatrbox_name_logo.png"
   alt="Chatrbox Name Logo"
-  style="width: 250px; height: auto; margin: 0; padding: 10px 0;" />
+  width="1138"
+  height="667"
+  style="
+    width: 70%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    padding-top: 45px; /* ✅ real top spacing */
+    margin: 0 auto 10px auto;"
+  loading="lazy"
+/>
 
-  <img
-    src="images/Asset 42.webp"
-    alt="Chatrbox"
-    class="amazon-main-button" />
+  <img 
+    src="images/Asset 42.webp" 
+    alt="Chatrbox device" 
+    width="362" 
+    height="300"
+    style="
+      width: 75%;         /* Also slightly reduced */
+      max-width: 340px;
+      height: auto;
+      display: block;
+      margin: 0 auto;"
+  />
 </div>
 
 
@@ -549,7 +558,6 @@ body, html {
   <hr style="width: 80%; max-width: 600px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
    
 <!-- Unlock SuperPowers -->
-
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
     ChatrBox Unlocks Your Pet Training Superpowers
@@ -559,25 +567,44 @@ body, html {
   </div>
 </div>
 
-
-<!-- Smart Features -->
- <img src="images/1_SmartFeatures.webp" alt="Smart Features" class="fade-in" style="margin-bottom: 0px;" />
-
-<div class="text-block title-block fade-in">
-  It's Like You Being Right There, But Not
+<!-- Smart Features Block -->
+<div class="content-block">
+  <img
+    src="images/1_SmartFeatures800.webp"
+    srcset="
+      images/1_SmartFeatures800.webp 800w,
+      images/1_SmartFeatures1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Smart Features - ChatrBox"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    It's Like You Being Right There, But Not
+  </div>
+  <div class="text-block body-block fade-in">
+    ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
+  </div>
 </div>
-<div class="text-block body-block fade-in">
-  ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
-</div>
-
-<!-- ChatrBox Train -->
-<img src="images/2_ChatrboxTrain.webp" alt="ChatrBox Train" class="fade-in" style="margin-bottom: 0px;" />
-
-<div class="text-block title-block fade-in">
-  Your Voice, Their Guide - Powered by Chatrbox
-</div>
-<div class="text-block body-block fade-in">
-  Place <strong>ChatrBox</strong> anywhere you need training support. Using built-in motion detection, <strong>ChatrBox</strong> senses when your pet approaches a protected area or object and instantly triggers your recorded command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
+  
+<!-- ChatrBox Train Block -->
+<div class="content-block">
+  <img
+    src="images/2_ChatrboxTrain800.webp"
+    srcset="
+      images/2_ChatrboxTrain800.webp 800w,
+      images/2_ChatrboxTrain1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="ChatrBox Train"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    Your Voice, Their Guide - Powered by Chatrbox
+  </div>
+  <div class="text-block body-block fade-in">
+    Place <strong>ChatrBox</strong> anywhere you need training support. Using built-in motion detection, <strong>ChatrBox</strong> senses when your pet approaches a protected area or object and instantly triggers your recorded command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
+  </div>
 </div>
 
 
@@ -601,30 +628,64 @@ body, html {
   </div>
 </div>
 
-<!-- Stop Bad Habits -->
-<img src="images/3_StopBadHabits.webp" alt="Stop Bad Habits" class="fade-in" />
-<div class="text-block title-block fade-in">
-  Real-World Training for Real-World Homes
-</div>
-<div class="text-block body-block fade-in">
-  Some bad habits are harder to train away than others — but <strong>ChatrBox</strong> makes it possible by being in the right place at the right time, constantly monitoring and correcting until the habit is broken.
+<!-- Stop Bad Habits Block -->
+<div class="content-block">
+  <img
+    src="images/2_StopBadHabits800.webp"
+    srcset="
+      images/2_StopBadHabits800.webp 800w,
+      images/2_StopBadHabits1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Stop Bad Habits"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    Real-World Training for Real-World Homes
+  </div>
+  <div class="text-block body-block fade-in">
+    Some bad habits are harder to train away than others — but <strong>ChatrBox</strong> makes it possible by being in the right place at the right time, constantly monitoring and correcting until the habit is broken.
+  </div>
 </div>
 
-<!-- UhOhMoment -->
-<img src="images/5_UhOhMoment.webp" alt="Uh Oh Moments" class="fade-in" />
-<div class="text-block title-block fade-in">
-  Works Like an Invisible Virtual Fence — But For Inside Your Home
-</div>
-<div class="text-block body-block fade-in">
-  Anywhere your pet needs boundaries, <strong>ChatrBox</strong> is ready. Designed to train in real-world spaces — big, small, or anywhere in between — <strong>ChatrBox</strong> adapts to your home and your house rules. Whether it’s keeping paws out of a room, off the couch, off the counters, away from doorways, or even away from your new pair of shoes, <strong>ChatrBox</strong> steps in exactly where you need it most.
+<!-- Uh Oh Moment Block -->
+<div class="content-block">
+  <img
+    src="images/5_UhOhMoment800.webp"
+    srcset="
+      images/5_UhOhMoment800.webp 800w,
+      images/5_UhOhMoment1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Uh Oh Moment"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    Works Like an Invisible Virtual Fence — But For Inside Your Home
+  </div>
+  <div class="text-block body-block fade-in">
+    Anywhere your pet needs boundaries, <strong>ChatrBox</strong> is ready. Designed to train in real-world spaces — big, small, or anywhere in between — <strong>ChatrBox</strong> adapts to your home and your house rules. Whether it’s keeping paws out of a room, off the couch, off the counters, away from doorways, or even away from your new pair of shoes, <strong>ChatrBox</strong> steps in exactly where you need it most.
+  </div>
 </div>
 
-<img src="images/4_PetFreeZone.webp" alt="Pet Free Zone" class="fade-in" />
-<div class="text-block title-block fade-in">
-  ChatrBox is a Smart Training Device That Never Sleeps
-</div>
-<div class="text-block body-block fade-in">
-  <strong>ChatrBox</strong> doesn’t just detect motion — it knows if your pet follows the rules. If not, it ramps up the volume and frequency until your pet finally says, "Okay, okay, okay, I get it!"
+<!-- Pet Free Zone Block -->
+<div class="content-block">
+  <img
+    src="images/4_PetFreeZone800.webp"
+    srcset="
+      images/4_PetFreeZone800.webp 800w,
+      images/4_PetFreeZone1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Pet-Free Zone"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    ChatrBox is a Smart Training Device That Never Sleeps
+  </div>
+  <div class="text-block body-block fade-in">
+    <strong>ChatrBox</strong> doesn’t just detect motion — it knows if your pet follows the rules. If not, it ramps up the volume and frequency until your pet finally says, "Okay, okay, okay, I get it!"
+  </div>
 </div>
 
 <!-- Video2 -->
@@ -718,8 +779,7 @@ body, html {
 
   </div>
 </div>
-<!-- Even The Most Stubborn Pets -->
-<div style="padding-left: 10px; padding-right: 10px;">
+
   <div class="text-block title-block fade-in">
     Even The Most <em>Stubborn</em> Pets "Get It"
   </div>
@@ -728,10 +788,18 @@ body, html {
   </div>
 </div>
 
-<!-- Escalation -->
-<div style="padding-left: 10px; padding-right: 10px;">
-  <img src="images/6_Escalation.webp" alt="Bucky Escalation" class="fade-in" />
-
+<!-- Escalation Block -->
+<div class="content-block">
+  <img
+    src="images/6_Escalation800.webp"
+    srcset="
+      images/6_Escalation800.webp 800w,
+      images/6_Escalation1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Bucky Escalation - ChatrBox"
+    class="fade-in"
+  />
   <div class="text-block title-block fade-in">
     They Learn Through Repetition
   </div>
@@ -740,22 +808,39 @@ body, html {
   </div>
 </div>
 
-<!-- OffTheChair -->
-<div style="padding: 0 10px;">
-  <img src="images/7_OffTheChair.webp" alt="Delilah Sleeping" class="fade-in" style="width: 100%; aspect-ratio: 3 / 2;" loading="lazy" />
-
- <!-- NoFear Copy -->
-<div class="text-block title-block fade-in">
-  ChatrBox is a <em>No Fear</em> Behavior Training Solution
+<!-- OffTheChair Block -->
+<div class="content-block">
+  <img
+    src="images/7_OffTheChair800.webp"
+    srcset="
+      images/7_OffTheChair800.webp 800w,
+      images/7_OffTheChair1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Off The Chair"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    ChatrBox is a <em>No Fear</em> Behavior Training Solution
+  </div>
+  <div class="text-block body-block fade-in">
+    Train with kindness, not fear. <em>ChatrBox</em> uses your voice — the one your pet trusts most — combined with cues to guide better behavior. No harsh methods. No anxiety. Just smart, effective training that strengthens the bond between you and your pet.
+  </div>
 </div>
-<div class="text-block body-block fade-in">
-  Train with kindness, not fear. <em>ChatrBox</em> uses your voice — the one your pet trusts most — combined with cues to guide better behavior. No harsh methods. No anxiety. Just smart, effective training that strengthens the bond between you and your pet.
-</div>
- 
-<!-- NoFear Copy_Image -->
-<div style="padding-left: 10px; padding-right: 10px;">
-  <img src="images/8_NoFear.webp" alt="No Fear" class="fade-in" />
 
+
+<!-- NoFear Copy Image Block -->
+<div class="content-block">
+  <img
+    src="images/8_NoFear800.webp"
+    srcset="
+      images/8_NoFear800.webp 800w,
+      images/8_NoFear1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="No Fear - Your Voice"
+    class="fade-in"
+  />
   <div class="text-block title-block fade-in">
     Helps Reduce the Need of More Restrictive, Less Friendly Training Tools
   </div>
@@ -763,7 +848,7 @@ body, html {
     By reinforcing good behavior early and consistently, <strong>ChatrBox</strong> reduces the need for harsh methods like shock collars, spray deterrents, or confinement tools. Training becomes a calmer, more trusting experience for both you and your pet.
   </div>
 </div>
-  
+
 <!-- Video 3 -->
 <div class="video-wrapper fade-in">
   <video id="chatrboxVideo3" autoplay muted playsinline controls preload="none">
@@ -782,17 +867,24 @@ body, html {
   See why <strong>ChatrBox</strong> stands apart as the humane, effective choice for better behavior that lasts.
 </div>
 
-<!-- Comparative Matrix -->
-<div style="padding-left: 10px; padding-right: 10px;">
-  <img src="images/10_CompetitiveMatrix.webp" alt="Testimonials" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
-</div>
-
-<!-- No Collars No Tags Copy -->
-<div class="text-block title-block fade-in">
-  No Collars. No Tags. Just Smarter Training
-</div>
-<div class="text-block body-block fade-in">
-  Because trust, not electronics, should be the trusted bond between you and your pet.
+<!-- Comparative Matrix Block -->
+<div class="content-block">
+  <img
+    src="images/10_Competitive_Matrix800.webp"
+    srcset="
+      images/10_Competitive_Matrix800.webp 800w,
+      images/10_Competitive_Matrix1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="Competitive Matrix"
+    class="fade-in"
+  />
+  <div class="text-block title-block fade-in">
+    No Collars. No Tags. Just Smarter Training
+  </div>
+  <div class="text-block body-block fade-in">
+    Because trust, not electronics, should be the trusted bond between you and your pet.
+  </div>
 </div>
 
 <!-- Video 4 -->
@@ -813,9 +905,18 @@ body, html {
   From the smallest kitten to the biggest dog, <strong>ChatrBox</strong> helps every furry friend learn with love, not limits.
 </div>
 
-<!-- AllBreeds Image -->
-<div style="padding-left: 10px; padding-right: 10px;">
-  <img src="images/11_AllBreeds.webp" alt="Cats and Dogs" class="fade-in" style="width: 100%; height: auto; display: block;" loading="lazy" />
+<!-- AllBreeds Image Block -->
+<div class="content-block">
+  <img
+    src="images/11_AllBreeds800.webp"
+    srcset="
+      images/11_AllBreeds800.webp 800w,
+      images/11_AllBreeds1600.webp 1600w
+    "
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt="All Breeds"
+    class="fade-in"
+  />
 </div>
 
 <!-- Make Training Fun Text -->
@@ -826,82 +927,92 @@ body, html {
   Order your <strong>ChatrBox</strong> today and experience the smarter, better way to train.
 </div>
 
-<!-- OrderNow - Amazon linked -->
-<div class="fade-in" style="padding-left: 10px; padding-right: 10px;">
+<!-- Order Now Block -->
+<div class="content-block fade-in">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
-    <img src="images/12_OrderNow.webp" alt="Call to Action"
-         style="width: 100%; height: auto; display: block;"
-         loading="lazy" />
+    <img
+      src="images/12_OrderNow800.webp"
+      srcset="
+        images/12_OrderNow800.webp 800w,
+        images/12_OrderNow1600.webp 1600w
+      "
+      sizes="(max-width: 768px) 100vw, 800px"
+      alt="Order Now"
+      class="fade-in"
+    />
   </a>
 </div>
  
 <section class="master-features" style="padding: 40px 10px; background-color: #f7f7f7;">
-  <div style="padding-left: 10px; padding-right: 10px;">
-
-    <!-- Section Title -->
-    <div class="fade-in" style="
-      background-color: #005556;
-      color: white;
-      padding: 30px 0;
-      margin-top: 60px;
+  <!-- Section Header (kept) -->
+  <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+    <div style="
+      background-color: #00575B;
+      padding: 20px;
       text-align: center;
-      font-size: 22px;
+      color: white;
       font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      width: 100%;">
-      Feature Highlights
+      font-size: 20px;">
+      FEATURE HIGHLIGHTS
     </div>
+  </div>
 
-    <!-- Feature Summary -->
-    <p style="max-width: 800px; margin: 30px auto; font-size: 20px; line-height: 1.6; padding: 20px;">
+  <!-- Feature Summary -->
+  <div class="content-block" style="max-width: 800px; margin: 0 auto;">
+    <p style="
+      margin: 30px auto;
+      font-size: 20px;
+      line-height: 1.6;
+      padding: 20px;
+      text-align: center;">
       Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
     </p>
-
-    <!-- SMART DETECTION -->
-    <div class="feature-header" style="background-color: #d9efff; color: #000;">SMART DETECTION</div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="pause-icon"></div></div><div class="feature-text-box"><strong>Pause Mode</strong><br>Temporarily disables motion detection to reposition or test placement without triggering.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="escalate-icon"></div></div><div class="feature-text-box"><strong>Escalation Mode</strong><br>Repeats or intensifies alerts if the pet doesn’t respond to the initial cue.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="clock-icon"></div></div><div class="feature-text-box"><strong>24/7 Day & Night Operation</strong><br>Functions in all lighting conditions — works reliably around the clock.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="gear-icon"></div></div><div class="feature-text-box"><strong>Fully Automatic Operation</strong><br>Runs hands-free with no scheduling or manual activation needed.</div></div>
-
-    <!-- SMART ALERTS -->
-    <div class="feature-header" style="background-color: #d4edda; color: #000;">SMART ALERTS</div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="mic-icon"></div></div><div class="feature-text-box"><strong>Custom Voice Recording</strong><br>Allows the user to record their own voice commands or messages.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="speaker-icon"></div></div><div class="feature-text-box"><strong>Built-In Speaker</strong><br>Delivers clear, recognizable audio directly from the device.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="led-icon"></div></div><div class="feature-text-box"><strong>LED Visual Alerts</strong><br>Flashes in colors visible to pets — especially dogs — for visual reinforcement.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="volume-bars"></div></div><div class="feature-text-box"><strong>Volume Control</strong><br>Adjustable sound levels, from soft to loud (up to 90dB), to suit different environments.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="toggle-switch"></div></div><div class="feature-text-box"><strong>Selectable Alert Modes</strong><br>Choose between tone only, message only, or a combination of both.</div></div>
-
-    <!-- REMOTE CONTROL TRAINING -->
-    <div class="feature-header" style="background-color: #e0d4f7; color: #000;">REMOTE CONTROL TRAINING</div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="wifi-icon"></div></div><div class="feature-text-box"><strong>Wi-Fi Manual Trigger Mode</strong><br>Activate a message remotely for early-stage training or reinforcement.</div></div>
-
-    <!-- POWER & HARDWARE -->
-    <div class="feature-header" style="background-color: #fff3cd; color: #000;">POWER & HARDWARE</div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="battery-icon"></div></div><div class="feature-text-box"><strong>AAA Battery Operation</strong><br>Uses standard batteries — easy to replace and widely available.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="usb-icon"></div></div><div class="feature-text-box"><strong>USB-C Power Option</strong><br>Optional wall power via USB-C for continuous operation.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="moon-icon"></div></div><div class="feature-text-box"><strong>Smart Sleep Mode</strong><br>Conserves battery by entering low-power standby without affecting performance.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="memory-icon"></div></div><div class="feature-text-box"><strong>Memory Retention</strong><br>Saves recorded messages and settings even after powering off.</div></div>
-
-    <!-- FLEXIBILITY & USABILITY -->
-    <div class="feature-header" style="background-color: #d9f3e6; color: #000;">FLEXIBILITY & USABILITY</div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="box-icon"></div></div><div class="feature-text-box"><strong>Portable Design</strong><br>Compact, lightweight, and usable anywhere — no app or phone required.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adaptable to countless routines, behaviors, and environments.</div></div>
-    <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
-
   </div>
+
+  <!-- SMART DETECTION -->
+  <div class="feature-header" style="background-color: #d9efff; color: #000;">SMART DETECTION</div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="pause-icon"></div></div><div class="feature-text-box"><strong>Pause Mode</strong><br>Temporarily disables motion detection to reposition or test placement without triggering.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="escalate-icon"></div></div><div class="feature-text-box"><strong>Escalation Mode</strong><br>Repeats or intensifies alerts if the pet doesn’t respond to the initial cue.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="clock-icon"></div></div><div class="feature-text-box"><strong>24/7 Day & Night Operation</strong><br>Functions in all lighting conditions — works reliably around the clock.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="gear-icon"></div></div><div class="feature-text-box"><strong>Fully Automatic Operation</strong><br>Runs hands-free with no scheduling or manual activation needed.</div></div>
+
+  <!-- SMART ALERTS -->
+  <div class="feature-header" style="background-color: #d4edda; color: #000;">SMART ALERTS</div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="mic-icon"></div></div><div class="feature-text-box"><strong>Custom Voice Recording</strong><br>Allows the user to record their own voice commands or messages.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="speaker-icon"></div></div><div class="feature-text-box"><strong>Built-In Speaker</strong><br>Delivers clear, recognizable audio directly from the device.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="led-icon"></div></div><div class="feature-text-box"><strong>LED Visual Alerts</strong><br>Flashes in colors visible to pets — especially dogs — for visual reinforcement.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="volume-bars"></div></div><div class="feature-text-box"><strong>Volume Control</strong><br>Adjustable sound levels, from soft to loud (up to 90dB), to suit different environments.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="toggle-switch"></div></div><div class="feature-text-box"><strong>Selectable Alert Modes</strong><br>Choose between tone only, message only, or a combination of both.</div></div>
+
+  <!-- REMOTE CONTROL TRAINING -->
+  <div class="feature-header" style="background-color: #e0d4f7; color: #000;">REMOTE CONTROL TRAINING</div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="wifi-icon"></div></div><div class="feature-text-box"><strong>Wi-Fi Manual Trigger Mode</strong><br>Activate a message remotely for early-stage training or reinforcement.</div></div>
+
+  <!-- POWER & HARDWARE -->
+  <div class="feature-header" style="background-color: #fff3cd; color: #000;">POWER & HARDWARE</div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="battery-icon"></div></div><div class="feature-text-box"><strong>AAA Battery Operation</strong><br>Uses standard batteries — easy to replace and widely available.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="usb-icon"></div></div><div class="feature-text-box"><strong>USB-C Power Option</strong><br>Optional wall power via USB-C for continuous operation.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="moon-icon"></div></div><div class="feature-text-box"><strong>Smart Sleep Mode</strong><br>Conserves battery by entering low-power standby without affecting performance.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="memory-icon"></div></div><div class="feature-text-box"><strong>Memory Retention</strong><br>Saves recorded messages and settings even after powering off.</div></div>
+
+  <!-- FLEXIBILITY & USABILITY -->
+  <div class="feature-header" style="background-color: #d9f3e6; color: #000;">FLEXIBILITY & USABILITY</div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="box-icon"></div></div><div class="feature-text-box"><strong>Portable Design</strong><br>Compact, lightweight, and usable anywhere — no app or phone required.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adaptable to countless routines, behaviors, and environments.</div></div>
+  <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shock, no ultrasonic tones — trains through positive cues only.</div></div>
 </section>
+
   
 <section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
   <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
   <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
     <tbody>
       <tr><td style="padding: 8px; font-weight: bold; width: 50%;">Brand Name</td><td style="padding: 8px;">CHATRBOX</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">Manufacturer</td><td style="padding: 8px;">PETITEK LLC USA</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">Item model number</td><td style="padding: 8px;">CHATR1</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Manufacturer</td><td style="padding: 8px;">PETITEK LLC USA</td></tr
+       <tr><td style="padding: 8px; font-weight: bold;">Retail Price</td><td style="padding: 8px;">$69.95</td></tr>                                                                                                            
+      <tr><td style="padding: 8px; font-weight: bold;">Item Model Number</td><td style="padding: 8px;">CHATR1</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">ASIN</td><td style="padding: 8px;">B0D6Q7SRSQ</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">FNSKU</td><td style="padding: 8px;">X004G9DCVV</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Item Weight</td><td style="padding: 8px;">4.3 ounces (without batteries installed)</td></tr>
@@ -926,7 +1037,7 @@ body, html {
       <tr><td style="padding: 8px; font-weight: bold;">WiFi Supported</td><td style="padding: 8px;">2.4 GHz 802.11b, 80211g, 802.11n</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Bluetooth Supported</td><td style="padding: 8px;">Classic BR/EDR, BLE</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Specific Uses for Product</td><td style="padding: 8px;">Dog/Cat Behavior Training - Indoor use</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">Patents Pending</td><td style="padding: 8px;">All rights reserved</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Patents</td><td style="padding: 8px;">Multiple Patents Pending</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Support</td><td style="padding: 8px;"><a href="mailto:support@petitek.com">support@petitek.com</a></td></tr>
 
   </table>
@@ -1022,15 +1133,14 @@ body, html {
 
   </div> <!-- end inner wrapper -->
 </footer>
-  
 
-<!-- Floating Amazon Buy Button (OUTSIDE any <script>) -->
+  <!-- Floating Amazon Buy Button (OUTSIDE any <script>) -->
 <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
-
+  
 <!-- THEN Your Single <script> -->
 <script>
 function showThankYou() {
@@ -1192,7 +1302,6 @@ function playEscalatedAlert() {
   flashLEDs(audio.duration * 1000 || 3000);
 }
 </script>
-
 
 </body>
 </html>
