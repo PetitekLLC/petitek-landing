@@ -183,37 +183,6 @@ body, html {
   padding: 0 5px;
   box-sizing: border-box;
 }
-
-.feature-group {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
-
-  .feature-item {
-    display: flex;
-    align-items: center;
-    margin: 30px 0 20px;
-    padding-left: 30px;
-  }
-
-  .feature-icon-box {
-    flex: 0 0 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .feature-text-box {
-    flex: 1;
-    padding-left: 15px;
-    font-size: 20px;
-    line-height: 1.7;
-    text-align: left;
-    color: #222;
-  }
 .feature-wrapper {
   max-width: 800px;
   margin: 0 auto;
@@ -223,15 +192,48 @@ body, html {
   box-sizing: border-box;
 }
 
-  .feature-header {
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 12px 10px;
-    border-radius: 6px;
-    margin: 14px 0;
-    text-align: center;
-  }
+.feature-group {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.feature-header {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 18px 0 10px; /* tightened spacing above/below */
+  text-align: center;
+  background-color: transparent;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin: 18px 0; /* reduced from 30px for tighter spacing */
+  padding-left: 20px;
+}
+
+.feature-icon-box {
+  flex: 0 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-text-box {
+  flex: 1;
+  padding-left: 15px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  color: #222;
+}
+
 /* Fade-In Animation */
 .fade-in {
   opacity: 0;
@@ -293,53 +295,9 @@ body, html {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   z-index: 10;
 }
-
+ .feature-heading {
+    color: white;  
   
- /* Feature Icons */  
- /* SMART DETECTION ICONS */
-.radar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #25A8C6;
-  position: relative;
-}
-
-.radar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: #25A8C6;
-  position: relative;
-  display: inline-block;
-}
-
-.radar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(37,168,198,0.5);
-  border-radius: 50%;
-  animation: radar-pulse 2s infinite ease-out;
-  z-index: 1;
-}
-
-@keyframes radar-pulse {
-  0%   { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.8); opacity: 0; }
-}
-
-/* Ensure icon wrapper doesn't clip it */
-.feature-icon-box {
-  overflow: visible;
-}
-
-
-
-
 .focus-shield {
   width: 0;
   height: 0;
@@ -347,13 +305,39 @@ body, html {
   border-bottom: 12px solid transparent;
   border-left: 18px solid #25A8C6;
 }
+.feature-heading-blue {
+  background-color: #add8e6; /* light blue */
+}
 
+.feature-heading-purple {
+  background-color: #d8b0ff; /* light purple */
+}
+
+.feature-heading-green {
+  background-color: #90ee90; /* light green */
+}
+
+.feature-heading-orange {
+  background-color: #ffcc99; /* light orange */
+}
+
+.feature-heading-teal {
+  background-color: #a0e6e6; /* light teal */
+}
+
+   
 .pause-icon {
   width: 16px;
   height: 20px;
   background: linear-gradient(to right, #25A8C6 6px, transparent 6px, transparent 10px, #25A8C6 10px);
 }
 
+   
+/* Ensure icon wrapper doesn't clip it */
+.feature-icon-box {
+  overflow: visible;
+}
+ 
 .escalate-icon {
   width: 20px;
   height: 20px;
@@ -578,7 +562,6 @@ body, html {
   loading="lazy"
 />
 
-  
 <div class="asset-wrapper">
   <img src="images/Asset 42.webp" width="362" height="300" alt="Chatrbox device" />
 </div>
@@ -982,22 +965,21 @@ body, html {
 <section class="master-features">
   <div class="feature-wrapper">
 
-    <!-- Section Title -->
+    <!-- Feature Highlights Title -->
     <div style="background-color: #00575B; color: white; text-align: center; font-size: 28px; font-weight: bold; padding: 20px; border-radius: 8px;">
       FEATURE HIGHLIGHTS
     </div>
 
-    <!-- Section Summary -->
+    <!-- Feature Summary -->
     <p style="margin: 30px auto 40px auto; font-size: 20px; line-height: 1.6; text-align: center;">
       Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
     </p>
 
     <div class="feature-group">
 
-      <!-- SMART DETECTION -->
-      <div class="feature-header feature-heading-blue">SMART DETECTION</div>
+</div>
+    <div class="feature-header feature-heading-blue">SMART DETECTION</div>
       <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="pause-icon"></div></div><div class="feature-text-box"><strong>Pause Mode</strong><br>Temporarily disables motion detection to reposition or test placement without triggering.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="escalate-icon"></div></div><div class="feature-text-box"><strong>Escalation Mode</strong><br>Repeats or intensifies alerts if the pet doesn’t respond to the initial cue.</div></div>
@@ -1009,31 +991,31 @@ body, html {
       <div class="feature-item"><div class="feature-icon-box"><div class="mic-icon"></div></div><div class="feature-text-box"><strong>Custom Voice Recording</strong><br>Record your own voice commands or messages.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="speaker-icon"></div></div><div class="feature-text-box"><strong>Built-In Speaker</strong><br>Delivers clear, recognizable audio directly from the device.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="led-icon"></div></div><div class="feature-text-box"><strong>LED Visual Alerts</strong><br>Flashes in pet-visible colors — especially for dogs — to reinforce behavior visually.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="volume-bars"></div></div><div class="feature-text-box"><strong>Volume Control</strong><br>Adjustable sound levels from soft to loud (up to 90dB).</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="volume-bars"></div></div><div class="feature-text-box"><strong>Volume Control</strong><br>Adjust sound levels from soft to loud (up to 90dB) to suit different spaces.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="toggle-switch"></div></div><div class="feature-text-box"><strong>Selectable Alert Modes</strong><br>Choose between tone only, message only, or both.</div></div>
 
       <!-- REMOTE CONTROL TRAINING -->
       <div class="feature-header feature-heading-purple">REMOTE CONTROL TRAINING</div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="wifi-icon"></div></div><div class="feature-text-box"><strong>Wi-Fi Manual Trigger Mode</strong><br>Send an alert remotely for early-stage training.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="wifi-icon"></div></div><div class="feature-text-box"><strong>Wi-Fi Manual Trigger Mode</strong><br>Send an alert remotely during early-stage training or reinforcement.</div></div>
 
       <!-- POWER & HARDWARE -->
       <div class="feature-header feature-heading-orange">POWER & HARDWARE</div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="battery-icon"></div></div><div class="feature-text-box"><strong>AAA Battery Operation</strong><br>Standard batteries — easy to replace and widely available.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="usb-icon"></div></div><div class="feature-text-box"><strong>USB-C Power Option</strong><br>Optional continuous power via USB-C cable.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="moon-icon"></div></div><div class="feature-text-box"><strong>Smart Sleep Mode</strong><br>Conserves battery while remaining responsive.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="memory-icon"></div></div><div class="feature-text-box"><strong>Memory Retention</strong><br>Remembers settings and messages after shutdown.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="battery-icon"></div></div><div class="feature-text-box"><strong>AAA Battery Operation</strong><br>Uses standard batteries — easy to replace and widely available.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="usb-icon"></div></div><div class="feature-text-box"><strong>USB-C Power Option</strong><br>Connect to wall power for continuous use (cable included, adapter not).</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="moon-icon"></div></div><div class="feature-text-box"><strong>Smart Sleep Mode</strong><br>Conserves energy by entering low-power standby without impacting performance.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="memory-icon"></div></div><div class="feature-text-box"><strong>Memory Retention</strong><br>Remembers settings and messages even when powered off.</div></div>
 
       <!-- FLEXIBILITY & USABILITY -->
       <div class="feature-header feature-heading-teal">FLEXIBILITY & USABILITY</div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="box-icon"></div></div><div class="feature-text-box"><strong>Portable Design</strong><br>Compact, lightweight, and usable anywhere — no app required.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Adapts to routines, behaviors, and environments.</div></div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shocks or ultrasonic tones — uses positive cues only.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="box-icon"></div></div><div class="feature-text-box"><strong>Portable Design</strong><br>Compact, lightweight, and usable anywhere — no app or phone required.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="infinity-icon"></div></div><div class="feature-text-box"><strong>Unlimited Training Use Cases</strong><br>Flexible for routines, environments, and pet personalities.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="heart-icon"></div></div><div class="feature-text-box"><strong>Safe & Humane Design</strong><br>No shocks, no ultrasonic tones — uses positive cues only.</div></div>
 
-    </div>
-  </div>
+    </div> <!-- End .feature-group -->
+
+  </div> <!-- End .feature-wrapper -->
 </section>
-
-
+  
 <section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
   <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
   <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
