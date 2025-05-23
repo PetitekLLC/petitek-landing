@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner with Petitek</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #25A8C6;
+      color: #fff;
+    }
+
+    .hero {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+    }
+
+    .title-box {
+      text-align: center;
+      padding: 20px 20px 10px;
+    }
+
+    .title-box h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #fff;
+    }
+
+    .copy-box {
+      text-align: center;
+      padding: 0 20px 30px;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    .form-card {
+      background: #fff;
+      color: #000;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .form-card label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    .form-card input, .form-card select, .form-card textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-card button {
+      background: #25A8C6;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-card button:hover {
+      background: #1c8baa;
+    }
+
+    .return-link {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .return-link a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .title-box h1 {
+        font-size: 1.6em;
+      }
+
+      .copy-box {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+<div style="padding: 20px 20px 0px 20px;">
+  <img class="hero" src="/images/hero.webp" alt="Hero Image">
+</div>
+
+
+  <div class="title-box">
+    <h1>We're Interested In Working With You!</h1>
+  </div>
+
+  <div class="copy-box">
+    Thank you for your interest in partnering with Petitek and we'd love to hear from you. Please complete the contact information and we'll get back to you as soon as we can. Thank you! Woof! Meow!
+  </div>
+
+  <div class="form-card">
+    <form action="https://script.google.com/macros/s/AKfycbyS9UEN4P85quNxQRs7P9dgHCgQSKvdp2LqmvM0oD8zucFJ9-I-Zxg1bCMaFmWJkxD7/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <label for="profileType">Profile Type:</label>
+      <select name="profileType" required>
+        <option value="">Select One</option>
+        <option>Influencer</option>
+        <option>Retailer</option>
+        <option>Affiliate</option>
+        <option>Distributor</option>
+        <option>Technology Partner</option>
+        <option>Other</option>
+      </select>
+
+      <label for="name">Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="company">Company:</label>
+      <input type="text" name="company" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="phone" required>
+
+      <label for="location">Location:</label>
+      <input type="text" name="location" required>
+
+      <label for="url">Website or Social Handle:</label>
+      <input type="text" name="url" required>
+
+      <label for="comments">Comments:</label>
+      <textarea name="comments" rows="4"></textarea> <!-- Not required -->
+
+      <input type="hidden" name="secret" value="chatrbox-partner-2121" />
+      
+      <button type="submit">Submit</button>
+    </form>
+
+  <script>
+  var submitted = false;
+  window.handleSubmission = function () {
+    if (submitted) {
+      alert('Thanks! Your info has been received. Look for our Confirmation Email.');
+      document.querySelector("form").reset();
+      submitted = false;
+    }
+  };
+</script>
+  
+  <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
+    
+  </div>
+
+  <div class="return-link">
+    <a href="https://petitek.com">← Return to Petitek.com</a>
+  </div>
+  
+<div style="text-align: center; font-size: 14px; color: black; padding-bottom: 20px;">
+  &copy; 2025 Petitek LLC. All rights reserved.
+</div>
+
+</body>
+</html>
 
