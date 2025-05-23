@@ -234,7 +234,6 @@ body, html {
   color: #222;
 }
 
-
 /* Fade-In Animation */
 .fade-in {
   opacity: 0;
@@ -297,16 +296,16 @@ body, html {
   z-index: 10;
 }
  .feature-heading {
-    color: white;
-    padding: 10px 16px;
-    border-radius: 6px;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 40px 0 20px;
-    display: inline-block;
-  }
-
- .feature-heading-blue {
+    color: white;  
+  
+.focus-shield {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #25A8C6;
+}
+.feature-heading-blue {
   background-color: #add8e6; /* light blue */
 }
 
@@ -326,38 +325,19 @@ body, html {
   background-color: #a0e6e6; /* light teal */
 }
 
-.radar {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  position: relative;
-  background-color: #25A8C6;
-  box-shadow: 0 0 0 4px rgba(37, 168, 198, 0.2),
-              0 0 0 8px rgba(37, 168, 198, 0.1);
-}
-
-  
-.focus-shield {
-  width: 0;
-  height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-left: 18px solid #25A8C6;
-}
-
+   
 .pause-icon {
   width: 16px;
   height: 20px;
   background: linear-gradient(to right, #25A8C6 6px, transparent 6px, transparent 10px, #25A8C6 10px);
 }
 
-
+   
 /* Ensure icon wrapper doesn't clip it */
 .feature-icon-box {
   overflow: visible;
 }
-
-  
+ 
 .escalate-icon {
   width: 20px;
   height: 20px;
