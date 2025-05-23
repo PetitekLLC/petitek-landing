@@ -295,8 +295,15 @@ body, html {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   z-index: 10;
 }
- .feature-heading {
-    color: white;  
+.feature-heading {
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 40px 0 20px;
+  display: inline-block;
+} 
   
 .focus-shield {
   width: 0;
