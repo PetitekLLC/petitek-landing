@@ -594,15 +594,39 @@ body, html {
   font-size: 14px;
 }
 
-/* Link Columns */
 .footer-columns {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 60px;
+  margin-top: 20px;
   margin-bottom: 20px;
   flex-wrap: wrap;
   text-align: left;
 }
+
+.footer-columns > div {
+  min-width: 140px;
+}
+
+.footer-columns ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-columns li {
+  margin: 6px 0;
+}
+
+.footer-columns a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-columns a:hover {
+  text-decoration: underline;
+}
+
 
 .footer-columns ul {
   padding: 0;
@@ -1207,24 +1231,24 @@ body, html {
       <div id="thankYouMessage">Thank you. You’ve been added to our list.</div>
     </form>
 
-    <!-- Footer Columns -->
-    <div class="footer-columns">
-      <div>
-        <strong>Pet Owners</strong>
-        <ul>
-          <li><a href="https://petitek.com/warranty">Warranty</a></li>
-          <li><a href="https://petitek.com/learn">Learn</a></li>
-          <li><a href="https://petitek.com/support">Support</a></li>
-        </ul>
-      </div>
-      <div>
-        <strong>Work With Us</strong>
-        <ul>
-          <li><a href="https://petitek.com/affiliates">Affiliates</a></li>
-          <li><a href="https://petitek.com/affiliates">Influencers</a></li>
-        </ul>
-      </div>
-    </div>
+   <!-- Footer Columns -->
+<div class="footer-columns">
+  <div>
+    <strong>Pet Owners</strong>
+    <ul>
+      <li><a href="https://petitek.com/warranty">Warranty</a></li>
+      <li><a href="https://petitek.com/learn">Learn</a></li>
+      <li><a href="https://petitek.com/support">Support</a></li>
+    </ul>
+  </div>
+  <div>
+    <strong>Work With Us</strong>
+    <ul>
+      <li><a href="https://petitek.com/affiliates">Affiliates</a></li>
+      <li><a href="https://petitek.com/affiliates">Influencers</a></li>
+    </ul>
+  </div>
+</div>
 
     <!-- Legal Links -->
     <div class="footer-legal">
