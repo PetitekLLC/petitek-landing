@@ -78,6 +78,7 @@
       font-size: 1em;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
 
     .form-card button:hover {
@@ -172,7 +173,7 @@
 
         <input type="hidden" name="secret" value="chatrbox-partner-2121" />
 
-        <button type="submit" onclick="this.disabled=true;this.innerText='Sending…';">Submit</button>
+        <button type="submit">Submit</button>
       </form>
 
       <script>
@@ -181,7 +182,12 @@
         function validateForm() {
           const form = document.querySelector("form");
           const alertBox = document.getElementById("form-alert");
+          const button = form.querySelector("button[type='submit']");
           let valid = true;
+
+          alertBox.textContent = ''; // Clear previous alert
+          button.disabled = false;
+          button.innerText = 'Submit';
 
           for (const field of form.querySelectorAll("input[required], select[required]")) {
             if (!field.value.trim()) {
@@ -194,6 +200,8 @@
 
           if (valid) {
             submitted = true;
+            button.disabled = true;
+            button.innerText = 'Sending…';
             return true;
           } else {
             return false;
@@ -205,6 +213,9 @@
             alert('Thanks! Your info has been received. Look for our Confirmation Email.');
             document.querySelector("form").reset();
             submitted = false;
+            const button = document.querySelector("button[type='submit']");
+            button.innerText = 'Submit';
+            button.disabled = false;
           }
         };
       </script>
