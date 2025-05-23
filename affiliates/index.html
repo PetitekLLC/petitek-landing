@@ -138,7 +138,7 @@
     <div class="form-card">
       <form action="https://script.google.com/macros/s/AKfycbyS9UEN4P85quNxQRs7P9dgHCgQSKvdp2LqmvM0oD8zucFJ9-I-Zxg1bCMaFmWJkxD7/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
         <label for="profileType">Profile Type:</label>
-        <select name="profileType" required>
+        <select id="profileType" name="profileType" required>
           <option value="">Select One</option>
           <option>Influencer</option>
           <option>Retailer</option>
@@ -149,28 +149,28 @@
         </select>
 
         <label for="name">Name:</label>
-        <input type="text" name="name" autocomplete="name" required>
+        <input type="text" id="name" name="name" autocomplete="name" required>
 
         <label for="company">Company:</label>
-        <input type="text" name="company" autocomplete="organization" required>
+        <input type="text" id="company" name="company" autocomplete="organization" required>
 
         <label for="email">Email:</label>
-        <input type="email" name="email" autocomplete="email" required>
+        <input type="email" id="email" name="email" autocomplete="email" required>
 
         <label for="phone">Phone Number:</label>
-        <input type="text" name="phone" autocomplete="tel" required>
+        <input type="text" id="phone" name="phone" autocomplete="tel" required>
 
         <label for="location">Location:</label>
-        <input type="text" name="location" autocomplete="address-level1" required>
+        <input type="text" id="location" name="location" autocomplete="address-level1" required>
 
         <label for="url">Website or Social Handle:</label>
-        <input type="text" name="url" autocomplete="url" required>
+        <input type="text" id="url" name="url" autocomplete="url" required>
 
         <label for="comments">Comments:</label>
-        <textarea name="comments" rows="4"></textarea>
+        <textarea id="comments" name="comments" rows="4"></textarea>
 
         <input type="hidden" name="secret" value="chatrbox-partner-2121" />
-        
+
         <button type="submit">Submit</button>
       </form>
 
@@ -198,4 +198,3 @@
   </div>
 </body>
 </html>
-
