@@ -12,6 +12,12 @@
       color: #fff;
     }
 
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     .hero {
       width: 100%;
       max-height: 600px;
@@ -97,85 +103,99 @@
       .copy-box {
         font-size: 0.95em;
       }
+
+      .form-card {
+        padding: 15px;
+      }
+
+      .form-card input,
+      .form-card select,
+      .form-card textarea {
+        font-size: 0.95em;
+        padding: 8px;
+      }
+
+      .form-card button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  
-<div style="padding: 20px 20px 0px 20px;">
-  <img class="hero" src="/images/hero.webp" alt="Hero Image">
-</div>
+  <div class="container">
+    <div style="padding: 20px 0 0;">
+      <img class="hero" src="/images/hero.webp" alt="Hero Image">
+    </div>
 
+    <div class="title-box">
+      <h1>We're Interested In Working With You!</h1>
+    </div>
 
-  <div class="title-box">
-    <h1>We're Interested In Working With You!</h1>
+    <div class="copy-box">
+      Thank you for your interest in partnering with Petitek and we'd love to hear from you. Please complete the contact information and we'll get back to you as soon as we can. Thank you! Woof! Meow!
+    </div>
+
+    <div class="form-card">
+      <form action="https://script.google.com/macros/s/AKfycbyS9UEN4P85quNxQRs7P9dgHCgQSKvdp2LqmvM0oD8zucFJ9-I-Zxg1bCMaFmWJkxD7/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <label for="profileType">Profile Type:</label>
+        <select name="profileType" required>
+          <option value="">Select One</option>
+          <option>Influencer</option>
+          <option>Retailer</option>
+          <option>Affiliate</option>
+          <option>Distributor</option>
+          <option>Technology Partner</option>
+          <option>Other</option>
+        </select>
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="company">Company:</label>
+        <input type="text" name="company" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" name="phone" required>
+
+        <label for="location">Location:</label>
+        <input type="text" name="location" required>
+
+        <label for="url">Website or Social Handle:</label>
+        <input type="text" name="url" required>
+
+        <label for="comments">Comments:</label>
+        <textarea name="comments" rows="4"></textarea>
+
+        <input type="hidden" name="secret" value="chatrbox-partner-2121" />
+        
+        <button type="submit">Submit</button>
+      </form>
+
+      <script>
+        var submitted = false;
+        window.handleSubmission = function () {
+          if (submitted) {
+            alert('Thanks! Your info has been received. Look for our Confirmation Email.');
+            document.querySelector("form").reset();
+            submitted = false;
+          }
+        };
+      </script>
+
+      <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
+    </div>
+
+    <div class="return-link">
+      <a href="https://petitek.com">← Return to Petitek.com</a>
+    </div>
   </div>
 
-  <div class="copy-box">
-    Thank you for your interest in partnering with Petitek and we'd love to hear from you. Please complete the contact information and we'll get back to you as soon as we can. Thank you! Woof! Meow!
+  <div style="text-align: center; font-size: 14px; color: black; padding-bottom: 20px;">
+    &copy; 2025 Petitek LLC. All rights reserved.
   </div>
-
-  <div class="form-card">
-    <form action="https://script.google.com/macros/s/AKfycbyS9UEN4P85quNxQRs7P9dgHCgQSKvdp2LqmvM0oD8zucFJ9-I-Zxg1bCMaFmWJkxD7/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-      <label for="profileType">Profile Type:</label>
-      <select name="profileType" required>
-        <option value="">Select One</option>
-        <option>Influencer</option>
-        <option>Retailer</option>
-        <option>Affiliate</option>
-        <option>Distributor</option>
-        <option>Technology Partner</option>
-        <option>Other</option>
-      </select>
-
-      <label for="name">Name:</label>
-      <input type="text" name="name" required>
-
-      <label for="company">Company:</label>
-      <input type="text" name="company" required>
-
-      <label for="email">Email:</label>
-      <input type="email" name="email" required>
-
-      <label for="phone">Phone Number:</label>
-      <input type="text" name="phone" required>
-
-      <label for="location">Location:</label>
-      <input type="text" name="location" required>
-
-      <label for="url">Website or Social Handle:</label>
-      <input type="text" name="url" required>
-
-      <label for="comments">Comments:</label>
-      <textarea name="comments" rows="4"></textarea> <!-- Not required -->
-
-      <input type="hidden" name="secret" value="chatrbox-partner-2121" />
-      
-      <button type="submit">Submit</button>
-    </form>
-
-  <script>
-  var submitted = false;
-  window.handleSubmission = function () {
-    if (submitted) {
-      alert('Thanks! Your info has been received. Look for our Confirmation Email.');
-      document.querySelector("form").reset();
-      submitted = false;
-    }
-  };
-</script>
-  
-  <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
-    
-  </div>
-
-  <div class="return-link">
-    <a href="https://petitek.com">← Return to Petitek.com</a>
-  </div>
-  
-<div style="text-align: center; font-size: 14px; color: black; padding-bottom: 20px;">
-  &copy; 2025 Petitek LLC. All rights reserved.
-</div>
-
 </body>
 </html>
+
