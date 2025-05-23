@@ -597,7 +597,7 @@ body, html {
 .footer-columns {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   flex-wrap: wrap;
@@ -605,7 +605,8 @@ body, html {
 }
 
 .footer-columns > div {
-  min-width: 140px;
+  min-width: 120px;
+  flex: 0 0 auto;
 }
 
 .footer-columns ul {
@@ -627,25 +628,15 @@ body, html {
   text-decoration: underline;
 }
 
-
-.footer-columns ul {
-  padding: 0;
-  list-style: none;
-  margin: 0;
+/* Only stack columns on very small screens */
+@media (max-width: 360px) {
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
-.footer-columns li {
-  margin: 6px 0;
-}
-
-.footer-columns a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-columns a:hover {
-  text-decoration: underline;
-}
 
 /* Legal Links */
 .footer-legal {
