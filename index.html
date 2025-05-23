@@ -1196,10 +1196,11 @@ function showThankYou() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const floatBtn = document.querySelector('.floating-buy-button');
-  window.addEventListener('scroll', () => {
-    floatBtn.classList.toggle('show', window.scrollY > 300);
-  });
-
+  if (floatBtn) {
+    window.addEventListener('scroll', () => {
+      floatBtn.classList.toggle('show', window.scrollY > 300);
+    });
+  }
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
