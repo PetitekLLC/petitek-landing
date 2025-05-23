@@ -327,7 +327,35 @@ body, html {
 .feature-icon-box {
   overflow: visible;
 }
- 
+
+.radar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #25A8C6;
+  position: relative;
+  display: inline-block;
+}
+
+.radar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(37, 168, 198, 0.5);
+  border-radius: 50%;
+  animation: radar-pulse 2s infinite ease-out;
+  z-index: 1;
+}
+
+@keyframes radar-pulse {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+  
 .escalate-icon {
   width: 20px;
   height: 20px;
