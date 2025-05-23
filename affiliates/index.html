@@ -158,20 +158,20 @@
         <input type="email" id="email" name="email" autocomplete="email" required>
 
         <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone" autocomplete="tel" required>
+        <input type="text" id="phone" name="phone" autocomplete="tel" inputmode="tel" required>
 
         <label for="location">Location:</label>
         <input type="text" id="location" name="location" autocomplete="address-level1" required>
 
         <label for="url">Website or Social Handle:</label>
-        <input type="text" id="url" name="url" autocomplete="url" required>
+        <input type="text" id="url" name="url" autocomplete="url" inputmode="url" required>
 
         <label for="comments">Comments:</label>
         <textarea id="comments" name="comments" rows="4"></textarea>
 
         <input type="hidden" name="secret" value="chatrbox-partner-2121" />
 
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="this.disabled=true;this.innerText='Sending…';">Submit</button>
       </form>
 
       <script>
