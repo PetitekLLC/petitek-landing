@@ -13,7 +13,7 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 960px;
       margin: 40px auto;
       padding: 40px 20px;
       background: #fff;
@@ -51,7 +51,7 @@
     .form-card {
       background: transparent;
       color: #000;
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto 40px;
       padding: 20px;
     }
@@ -71,20 +71,21 @@
       box-sizing: border-box;
     }
 
- .form-card button {
-  background: #25A8C6;
-  color: #fff;
-  border: none;
-  padding: 12px 20px;
-  margin: 20px auto 10px;
-  font-size: 1em;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  display: block;
-  width: 200px; /* Adjust as needed */
-  text-align: center;
-}
+    .form-card button {
+      background: #25A8C6;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      display: block;
+      width: 200px;
+      text-align: center;
+    }
 
     .form-card button:hover {
       background: #1c8baa;
@@ -156,7 +157,7 @@
         </select>
 
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" autocomplete="name" required>
+        <input type="text" id="name" name="name" autocomplete="given-name" required>
 
         <label for="company">Company:</label>
         <input type="text" id="company" name="company" autocomplete="organization" required>
@@ -168,7 +169,7 @@
         <input type="text" id="phone" name="phone" autocomplete="tel" inputmode="tel" required>
 
         <label for="location">Location:</label>
-        <input type="text" id="location" name="location" autocomplete="address-level1" required>
+        <input type="text" id="location" name="location" autocomplete="address-line1" required>
 
         <label for="url">Website or Social Handle:</label>
         <input type="text" id="url" name="url" autocomplete="url" inputmode="url" required>
