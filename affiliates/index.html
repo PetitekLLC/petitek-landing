@@ -136,7 +136,8 @@
     </div>
 
     <div class="form-card">
-      <form action="https://script.google.com/macros/s/AKfycbyS9UEN4P85quNxQRs7P9dgHCgQSKvdp2LqmvM0oD8zucFJ9-I-Zxg1bCMaFmWJkxD7/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <div id="form-alert" style="color: red; min-height: 1.5em; font-weight: bold;"></div>
+      <form action="https://script.google.com/macros/s/AKfycbyS9UEN4P85quNxQRs7P9dgHCgQSKvdp2LqmvM0oD8zucFJ9-I-Zxg1bCMaFmWJkxD7/exec" method="POST" target="hidden_iframe" onsubmit="return validateForm();">
         <label for="profileType">Profile Type:</label>
         <select id="profileType" name="profileType" required>
           <option value="">Select One</option>
@@ -176,6 +177,29 @@
 
       <script>
         var submitted = false;
+
+        function validateForm() {
+          const form = document.querySelector("form");
+          const alertBox = document.getElementById("form-alert");
+          let valid = true;
+
+          for (const field of form.querySelectorAll("input[required], select[required]")) {
+            if (!field.value.trim()) {
+              alertBox.textContent = `Please fill out the ${field.previousElementSibling.textContent.replace(':', '')}.`;
+              field.focus();
+              valid = false;
+              break;
+            }
+          }
+
+          if (valid) {
+            submitted = true;
+            return true;
+          } else {
+            return false;
+          }
+        }
+
         window.handleSubmission = function () {
           if (submitted) {
             alert('Thanks! Your info has been received. Look for our Confirmation Email.');
