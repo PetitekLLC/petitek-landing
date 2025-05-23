@@ -326,7 +326,7 @@ body, html {
   background-color: #a0e6e6; /* light teal */
 }
 
-.motion-wave-icon {
+.radar {
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -350,7 +350,7 @@ body, html {
   height: 20px;
   background: linear-gradient(to right, #25A8C6 6px, transparent 6px, transparent 10px, #25A8C6 10px);
 }
-*/.radar {
+.sign-wave {
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -359,7 +359,7 @@ body, html {
   display: inline-block;
 }
 
-.radar::before {
+.sign-wave::before {
   content: "";
   position: absolute;
   top: 0;
@@ -368,11 +368,11 @@ body, html {
   height: 100%;
   border: 2px solid rgba(37,168,198,0.5);
   border-radius: 50%;
-  animation: radar-pulse 2s infinite ease-out;
+  animation: sign-wave-pulse 2s infinite ease-out;
   z-index: 1;
 }
 
-@keyframes radar-pulse {
+@keyframes sign-wave-pulse {
   0%   { transform: scale(1); opacity: 1; }
   100% { transform: scale(1.8); opacity: 0; }
 }
@@ -381,7 +381,7 @@ body, html {
 .feature-icon-box {
   overflow: visible;
 }
-  */
+
   
 .escalate-icon {
   width: 20px;
@@ -1024,7 +1024,7 @@ body, html {
 
 </div>
     <div class="feature-header feature-heading-blue">SMART DETECTION</div>
-      <div class="feature-item"><div class="feature-icon-box"><div class="motion-wave-icon"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
+      <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="pause-icon"></div></div><div class="feature-text-box"><strong>Pause Mode</strong><br>Temporarily disables motion detection to reposition or test placement without triggering.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="escalate-icon"></div></div><div class="feature-text-box"><strong>Escalation Mode</strong><br>Repeats or intensifies alerts if the pet doesn’t respond to the initial cue.</div></div>
