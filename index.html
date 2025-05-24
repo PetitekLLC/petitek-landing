@@ -1287,57 +1287,69 @@ body, html {
   </div>
 </footer>
 
-
-  
 <!-- THEN Your Single <script> -->
 <script>
-function showThankYou() {
-  const input = document.getElementById('emailInput');
-  const message = document.getElementById('thankYouMessage');
-  const submitButton = document.getElementById('submitButton');
-  const buttonText = document.getElementById('buttonText');
-  const spinner = document.getElementById('spinner');
-
-  if (input.checkValidity()) {
-    buttonText.style.display = 'none';
-    spinner.style.display = 'block';
-    submitButton.disabled = true;
-
-    const formData = new FormData();
-    formData.append('email', input.value);
-
-    fetch("https://script.google.com/macros/s/AKfycbwr_wDsxU8MrEkOv2zKGyhHiXi5WR33_rc-0wAK-wbyWT_Yp_IsozHPhbh1OqieC38sbQ/exec", {
-      method: "POST",
-      body: formData
-    })
-    .then(() => {
-      spinner.style.display = 'none';
-      submitButton.disabled = false;
-      buttonText.style.display = 'block';
-      message.style.display = 'block';
-      input.value = '';
-
-      setTimeout(() => {
-        message.style.display = 'none';
-      }, 3000);
-    })
-    .catch(error => {
-      console.error("❌ Error submitting form:", error);
-      spinner.style.display = 'none';
-      submitButton.disabled = false;
-      buttonText.style.display = '▶';
-      alert("Something went wrong. Please try again.");
-    });
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ✅ Wrapped showThankYou inside DOMContentLoaded
+  function showThankYou() {
+    const input = document.getElementById('emailInput');
+    const message = document.getElementById('thankYouMessage');
+    const submitButton = document.getElementById('submitButton');
+    const buttonText = document.getElementById('buttonText');
+    const spinner = document.getElementById('spinner');
+
+    if (!buttonText || !spinner) {
+      console.error("❌ Required buttonText or spinner not found.");
+      return;
+    }
+
+    if (input.checkValidity()) {
+      buttonText.style.display = 'none';
+      spinner.style.display = 'block';
+      submitButton.disabled = true;
+
+      const formData = new FormData();
+      formData.append('email', input.value);
+
+      fetch("https://script.google.com/macros/s/AKfycbwr_wDsxU8MrEkOv2zKGyhHiXi5WR33_rc-0wAK-wbyWT_Yp_IsozHPhbh1OqieC38sbQ/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log("✅ Server responded:", result);
+        spinner.style.display = 'none';
+        submitButton.disabled = false;
+        buttonText.style.display = 'block';
+        message.style.display = 'block';
+        input.value = '';
+
+        setTimeout(() => {
+          message.style.display = 'none';
+        }, 3000);
+      })
+      .catch(error => {
+        console.error("❌ Error submitting form:", error);
+        spinner.style.display = 'none';
+        submitButton.disabled = false;
+        buttonText.style.display = '▶';
+        alert("Something went wrong. Please try again.");
+      });
+    }
+  }
+
+  // ✅ Expose the function to HTML inline event handlers
+  window.showThankYou = showThankYou;
+
+  // All your other DOMContentLoaded logic
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
       floatBtn.classList.toggle('show', window.scrollY > 300);
     });
   }
+
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1416,6 +1428,7 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 
+// LED + Audio Functions
 function flashLEDs(duration = 3000) {
   const yellow = document.getElementById('led-yellow');
   const blue = document.getElementById('led-blue');
@@ -1450,8 +1463,9 @@ function playEscalatedAlert() {
   audio.play();
   flashLEDs(audio.duration * 1000 || 3000);
 }
-
 </script>
+
+  
 
 </body>
 
