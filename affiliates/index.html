@@ -86,21 +86,21 @@
       box-sizing: border-box;
     }
 
-    .form-card button {
-      background: #25A8C6;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-      display: block;
-      width: 400px;
-      text-align: center;
-    }
+ .form-card button {
+  width: 100%; /* or use max-width if you want a fixed width */
+  max-width: 600px; /* matches form width if fixed */
+  margin: 20px auto 10px; /* 👈 centers the button */
+  display: block;
+  background: #25A8C6;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
 
     .form-card button:hover {
       background: #1c8baa;
