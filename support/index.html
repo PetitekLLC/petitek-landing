@@ -9,50 +9,29 @@
       height: 100%;
       margin: 0;
       padding: 0;
+      background-color: white;
     }
 
-body {
-  display: flex;
-  flex-direction: column;
-  background-color: white; /* ← White outside the container */
-  min-height: 100vh;
-  margin: 0;
-}
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
- <body>
-  <div class="page-container">
-    <div class="main-wrapper">
-      <!-- your existing hero, chat-wrapper, footer content here -->
-    </div>
-  </div>
-</body>
-   
-.page-container {
-  max-width: 960px;
-  margin: 0 auto;
-  background-color: #25A8C6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-
- .main-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  flex-grow: 1;
-}
-
-
-    footer {
-      margin-top: auto;
+    .page-container {
+      max-width: 960px;
+      margin: 0 auto;
       background-color: #25A8C6;
-      color: white;
-      padding: 8px 5px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      min-height: 100vh;
     }
 
     * {
@@ -103,14 +82,13 @@ body {
       line-height: 1.2;
     }
 
-  .chat-wrapper {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- padding: 12px 20px;
-
-}
+    .chat-wrapper {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+    }
 
     #chatContainer {
       width: 100%;
@@ -136,33 +114,29 @@ body {
     }
 
     #sendButton {
-  background-color: #4a4a4a;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+      background-color: #4a4a4a;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
 
-/* Desktop hover */
-#sendButton:hover {
-  background-color: #2f2f2f;
-}
+    #sendButton:hover {
+      background-color: #2f2f2f;
+    }
 
-/* Touch/Click active state */
-#sendButton:active {
-  background-color: #3a3a3a;
-}
+    #sendButton:active {
+      background-color: #3a3a3a;
+    }
 
-/* Disabled state */
-#sendButton:disabled {
-  background-color: #C0C0C0;
-  color: #777;
-  cursor: not-allowed;
-}
-
+    #sendButton:disabled {
+      background-color: #C0C0C0;
+      color: #777;
+      cursor: not-allowed;
+    }
 
     #chatOutput {
       margin-top: 15px;
@@ -176,19 +150,6 @@ body {
       color: #000;
       text-align: left;
       line-height: 1.6;
-    }
-
-    #chatOutput p {
-      margin-bottom: 10px;
-    }
-
-    #chatOutput ol {
-      padding-left: 20px;
-      margin-bottom: 10px;
-    }
-
-    #chatOutput li {
-      margin-bottom: 8px;
     }
 
     .footer-columns-wrapper {
@@ -206,6 +167,16 @@ body {
 
     .footer-columns > div {
       text-align: left;
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: #25A8C6;
+      color: white;
+      padding: 8px 5px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.2;
     }
 
     footer p {
@@ -226,78 +197,80 @@ body {
       border-top: 1px solid #fff;
     }
 
-    footer .copyright {
-      font-size: 12pt;
-      color: #fff;
-      margin-top: 6px;
+    footer h2 {
+      color: black;
+      margin-bottom: 2px;
+      line-height: 1.1;
     }
-    footer h4 {
-  font-family: Georgia, serif;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 8px;
-}
 
+    footer h4 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
-  <div class="main-wrapper">
-    <div class="hero">
-      <a href="https://petitek.com">
-        <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
-      </a>
-      <h1>Petitek Support</h1>
-      <p>
-        <span class="hero-lead">Need help with ChatrBox?</span>
-        <span class="hero-body">ChatrBot is an AI assistant and can answer any ChatrBox setup, support, or troubleshooting questions.</span>
-      </p>
-    </div>
-
-    <div class="chat-wrapper">
-      <div id="chatContainer">
-        <form id="chatForm">
-          <input type="text" id="chatInput" placeholder="How can we help?" />
-          <button id="sendButton" type="submit">Send</button>
-        </form>
-        <div id="chatOutput"></div>
+  <div class="page-container">
+    <div class="main-wrapper">
+      <div class="hero">
+        <a href="https://petitek.com">
+          <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+        </a>
+        <h1>Petitek Support</h1>
+        <p>
+          <span class="hero-lead">Need help with ChatrBox?</span>
+          <span class="hero-body">ChatrBot is an AI assistant and can answer any ChatrBox setup, support, or troubleshooting questions.</span>
+        </p>
       </div>
-    </div>
 
-<div style="text-align: center; margin: 10px 0; font-size: 16px;">
-  <a href="/learn/" style="color: #000; font-weight: bold; text-decoration: none;">
-    ▶️ Learn with How-To Videos
-  </a>
-</div>
-
-      <footer>
-  <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 5px;" />
-<h2 style="color: black; margin-bottom: 2px; line-height: 1.1;">Petitek</h2>
-      <div class="footer-columns-wrapper">
-        <div class="footer-columns">
-          <div>
-            <h4>Pet Owners</h4>
-            <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
-            <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
-          </div>
-          <div>
-            <h4>Work With Us</h4>
-            <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
-            <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
-          </div>
+      <div class="chat-wrapper">
+        <div id="chatContainer">
+          <form id="chatForm">
+            <input type="text" id="chatInput" placeholder="How can we help?" />
+            <button id="sendButton" type="submit">Send</button>
+          </form>
+          <div id="chatOutput"></div>
         </div>
       </div>
-      <hr />
-      <div>
-        <a href="https://petitek.com/terms" target="_blank">Terms of Service</a>
-        <a href="https://petitek.com/privacy" target="_blank">Privacy</a>
-        <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+
+      <div style="text-align: center; margin: 10px 0; font-size: 16px;">
+        <a href="/learn/" style="color: #000; font-weight: bold; text-decoration: none;">
+          ▶️ Learn with How-To Videos
+        </a>
       </div>
-      <br />
-      <p style="margin: 4px 0 0; font-size: 10pt; color: black;">
-        © Petitek LLC All rights reserved.
-      </p>
-    </footer>
+
+      <footer>
+        <hr />
+        <h2>Petitek</h2>
+        <div class="footer-columns-wrapper">
+          <div class="footer-columns">
+            <div>
+              <h4>Pet Owners</h4>
+              <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
+              <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
+            </div>
+            <div>
+              <h4>Work With Us</h4>
+              <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
+              <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <a href="https://petitek.com/terms" target="_blank">Terms of Service</a>
+          <a href="https://petitek.com/privacy" target="_blank">Privacy</a>
+          <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+        </div>
+        <br />
+        <p style="margin: 4px 0 0; font-size: 10pt; color: black;">
+          © Petitek LLC All rights reserved.
+        </p>
+      </footer>
+    </div>
   </div>
 
   <script>
@@ -364,7 +337,7 @@ body {
       } catch (err) {
         clearInterval(typingAnimation);
         console.error("Fetch error:", err);
-        output.textContent = "\u26a0\ufe0f Error contacting assistant.";
+        output.textContent = "⚠️ Error contacting assistant.";
       }
     }
 
@@ -375,3 +348,4 @@ body {
   </script>
 </body>
 </html>
+
