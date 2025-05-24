@@ -1244,12 +1244,16 @@ body, html {
     <div class="footer-title">Petitek</div>
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
-    <!-- Email Form -->
-    <form onsubmit="event.preventDefault(); showThankYou();" class="footer-form">
-      <input id="emailInput" type="email" placeholder="Enter email" required>
-      <button id="submitButton" type="submit">▶</button>
-      <div id="thankYouMessage">Thank you. You’ve been added to our list.</div>
-    </form>
+<!-- Email Form -->
+<form onsubmit="event.preventDefault(); showThankYou();" class="footer-form">
+  <input id="emailInput" type="email" placeholder="Enter email" required>
+  <button id="submitButton" type="submit">
+    <span id="buttonText">▶</span>
+    <span id="spinner" style="display:none;">⏳</span>
+  </button>
+  <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
+</form>
+
 
    <!-- Footer Columns -->
 <div class="footer-columns">
