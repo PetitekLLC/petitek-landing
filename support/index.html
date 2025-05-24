@@ -14,9 +14,28 @@
 body {
   display: flex;
   flex-direction: column;
+  background-color: white; /* ← White outside the container */
+  min-height: 100vh;
+  margin: 0;
+}
+
+ <body>
+  <div class="page-container">
+    <div class="main-wrapper">
+      <!-- your existing hero, chat-wrapper, footer content here -->
+    </div>
+  </div>
+</body>
+   
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
   background-color: #25A8C6;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
+
 
  .main-wrapper {
   display: flex;
