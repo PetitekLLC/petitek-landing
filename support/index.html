@@ -5,187 +5,205 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: white;
-      font-family: sans-serif;
-    }
+  <style>
+  html {
+    font-size: 16px; /* Base: 1rem = 16px */
+  }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      background-color: #25A8C6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: sans-serif;
+    font-size: 1rem;
+  }
 
-    .main-wrapper {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
+  .container {
+    max-width: 60rem;
+    margin: 0 auto;
+    background-color: #25A8C6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .hero {
-      text-align: center;
-      padding: 40px 20px;
-      color: white;
-    }
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 
-    .hero img {
-      max-width: 80px;
-      margin-bottom: 10px;
-    }
+  .hero {
+    text-align: center;
+    padding: 2.5rem 1.25rem;
+    color: white;
+  }
 
-    .hero h1 {
-  margin: 10px 0;
-  font-size: 28px; /* <- increase or decrease this */
-  font-weight: bold; /* optional: or try 600, 700, etc. */
-}
+  .hero img {
+    max-width: 5rem;
+    margin-bottom: 0.625rem;
+  }
 
- .hero p {
-  font-size: 16px;
-  margin-top: 12px;
-  color: white;
-  text-align: center;
-  line-height: 1.4;
-  max-width: 360px;   /* ← limits the line length */
-  margin-left: auto;  /* ← centers horizontally */
-  margin-right: auto;
-}
+  .hero h1 {
+    margin: 0.625rem 0;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: bold;
+  }
 
+  .hero p {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+    margin-top: 0.75rem;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 22.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .chat-wrapper {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 20px;
-    }
+  .chat-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.875rem 1.25rem;
+  }
 
-    #chatContainer {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      max-width: 600px;
-      width: 100%;
-    }
+  #chatContainer {
+    background-color: white;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    max-width: 37.5rem;
+    width: 100%;
+  }
 
-    #chatForm {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  #chatForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
 
-    #chatInput {
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-    }
+  #chatInput {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 0.375rem;
+  }
 
-    #sendButton {
-      background-color: #4a4a4a;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
+  #sendButton {
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
 
-    #sendButton:hover {
-      background-color: #2f2f2f;
-    }
+  #sendButton:hover {
+    background-color: #2f2f2f;
+  }
 
-    #sendButton:active {
-      background-color: #3a3a3a;
-    }
+  #sendButton:active {
+    background-color: #3a3a3a;
+  }
 
-    #sendButton:disabled {
-      background-color: #C0C0C0;
-      color: #777;
-      cursor: not-allowed;
-    }
+  #sendButton:disabled {
+    background-color: #C0C0C0;
+    color: #777;
+    cursor: not-allowed;
+  }
 
-    #chatOutput {
-      margin-top: 15px;
-      padding: 12px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      white-space: pre-wrap;
-      font-size: 15px;
-      display: none;
-      color: #000;
-    }
+  #chatOutput {
+    margin-top: 0.9375rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    font-size: 0.9375rem;
+    display: none;
+    color: #000;
+  }
 
-    .footer-columns-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 10px 0;    /* 👈 Adjust top/bottom spacing */
-}
+  .footer-columns-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0.625rem 0;
+  }
 
-    .footer-columns {
-  display: flex;
-  gap: 60px;         /* 👈 This sets column spacing */
-  justify-content: center;
-  max-width: 600px;  /* 👈 This can be expanded to spread them out */
-  margin: 0 auto;    /* Centered inside the wrapper */
-}
+  .footer-columns {
+    display: flex;
+    gap: 3.75rem;
+    justify-content: center;
+    max-width: 37.5rem;
+    margin: 0 auto;
+  }
 
-    .footer-columns > div {
-      text-align: left;
-    }
+  .footer-columns > div {
+    text-align: left;
+  }
 
-    footer {
-      margin-top: auto;
-      background-color: #25A8C6;
-      color: white;
-      padding: 20px 10px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.4;
-    }
+  footer {
+    margin-top: auto;
+    background-color: #25A8C6;
+    color: white;
+    padding: 1.25rem 0.625rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
 
-    footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 6px;
-    }
+  footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.375rem;
+  }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+  footer a:hover {
+    text-decoration: underline;
+  }
 
-    footer h2 {
-   font-family: Georgia, serif;
-      font-size: 28px;
-      font-weight: bold;
-      color: black;
-      margin-top: 10px;       
-      margin-bottom: 0px;
-}
-    
-    footer h4 {
-      font-family: Georgia, serif;
-      font-size: 16px;
-      font-weight: bold;
-      color: white;
-      margin-top: 0px;       
-      margin-bottom: 0px;
-    }
-    
-.footer-columns > div p {
-  margin: 4px 0;
-  line-height: 1.2;
-  font-size: 14px;
-}
-    
+  footer h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    font-weight: bold;
+    color: black;
+    margin-top: 0.625rem;
+    margin-bottom: 0;
+  }
+
+  footer h4 {
+    font-family: Georgia, serif;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+    font-weight: bold;
+    color: white;
+    margin: 0;
+  }
+
+  .footer-columns > div p {
+    margin: 0.25rem 0;
+    line-height: 1.2;
+    font-size: 0.875rem;
+  }
+
+  /* Learn More link */
+  .learn-link {
+    text-align: center;
+    margin: 0.625rem 0;
+    font-size: 0.875rem;
+  }
+
+  .learn-link a {
+    color: white;
+    font-weight: normal;
+    text-decoration: none;
+  }
+</style>
+ 
   </style>
 </head>
 <body>
