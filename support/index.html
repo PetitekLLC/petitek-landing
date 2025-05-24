@@ -51,7 +51,7 @@
   color: white;
   text-align: center;
   line-height: 1.4;
-  max-width: 400px;   /* ← limits the line length */
+  max-width: 360px;   /* ← limits the line length */
   margin-left: auto;  /* ← centers horizontally */
   margin-right: auto;
 }
@@ -125,17 +125,18 @@
     }
 
     .footer-columns-wrapper {
-      display: flex;
-      justify-content: center;
-    }
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;    /* 👈 Adjust top/bottom spacing */
+}
 
     .footer-columns {
-      display: flex;
-      gap: 40px;
-      max-width: 320px;
-      justify-content: center;
-      width: 100%;
-    }
+  display: flex;
+  gap: 60px;         /* 👈 This sets column spacing */
+  justify-content: center;
+  max-width: 600px;  /* 👈 This can be expanded to spread them out */
+  margin: 0 auto;    /* Centered inside the wrapper */
+}
 
     .footer-columns > div {
       text-align: left;
@@ -168,6 +169,13 @@
       color: #fff;
       margin-bottom: 8px;
     }
+    
+.footer-columns > div p {
+  margin: 6px 0;
+  line-height: 1.2;
+  font-size: 14px;
+}
+    
   </style>
 </head>
 <body>
