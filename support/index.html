@@ -40,14 +40,22 @@
     }
 
     .hero h1 {
-      margin: 10px 0;
-      font-size: 28px;
-    }
+  margin: 10px 0;
+  font-size: 28px; /* <- increase or decrease this */
+  font-weight: bold; /* optional: or try 600, 700, etc. */
+}
 
-    .hero p {
-      font-size: 16px;
-      margin-top: 8px;
-    }
+ .hero p {
+  font-size: 16px;
+  margin-top: 12px;
+  color: white;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 400px;   /* ← limits the line length */
+  margin-left: auto;  /* ← centers horizontally */
+  margin-right: auto;
+}
+
 
     .chat-wrapper {
       flex-grow: 1;
