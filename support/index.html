@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Petitek Support</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Petitek Support</title>
   <style>
     html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      background-color: white; /* Outside area */
+      background-color: white;
       font-family: sans-serif;
     }
 
@@ -19,6 +20,12 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    .main-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .hero {
@@ -42,7 +49,7 @@
       margin-top: 8px;
     }
 
-    .chat-area {
+    .chat-wrapper {
       flex-grow: 1;
       display: flex;
       justify-content: center;
@@ -109,53 +116,102 @@
       color: #000;
     }
 
-  footer {
-  text-align: center;
-  padding: 20px;
-  color: white;
-  background-color: #25A8C6;
-  font-size: 14px;
-  margin-top: auto; /* ✅ this is the fix */
-}
+    .footer-columns-wrapper {
+      display: flex;
+      justify-content: center;
+    }
 
+    .footer-columns {
+      display: flex;
+      gap: 40px;
+      max-width: 320px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .footer-columns > div {
+      text-align: left;
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: #25A8C6;
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.4;
+    }
 
     footer a {
       color: white;
-      margin: 0 6px;
       text-decoration: none;
+      margin: 0 6px;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
+
+    footer h4 {
+      font-family: Georgia, serif;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="hero">
-      <a href="https://petitek.com">
-        <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
-      </a>
-      <h1>Petitek Support</h1>
-      <p>Need help with ChatrBox? ChatrBot is an AI assistant and can answer any setup, support, or troubleshooting questions.</p>
-    </div>
-
-    <div class="chat-area">
-      <div id="chatContainer">
-        <form id="chatForm">
-          <input type="text" id="chatInput" placeholder="How can we help?" />
-          <button id="sendButton" type="submit">Send</button>
-        </form>
-        <div id="chatOutput"></div>
+    <div class="main-wrapper">
+      <div class="hero">
+        <a href="https://petitek.com">
+          <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+        </a>
+        <h1>Petitek Support</h1>
+        <p>Need help with ChatrBox? ChatrBot is an AI assistant and can answer any setup, support, or troubleshooting questions.</p>
       </div>
-    </div>
 
-    <footer>
-      © Petitek LLC All rights reserved.<br />
-      <a href="https://petitek.com/terms" target="_blank">Terms</a> |
-      <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
-      <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
-    </footer>
+      <div class="chat-wrapper">
+        <div id="chatContainer">
+          <form id="chatForm">
+            <input type="text" id="chatInput" placeholder="How can we help?" />
+            <button id="sendButton" type="submit">Send</button>
+          </form>
+          <div id="chatOutput"></div>
+        </div>
+      </div>
+
+      <footer>
+        <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 5px;" />
+        <h2 style="color: black; margin-bottom: 2px; line-height: 1.1;">Petitek</h2>
+        <div class="footer-columns-wrapper">
+          <div class="footer-columns">
+            <div>
+              <h4>Pet Owners</h4>
+              <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
+              <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
+            </div>
+            <div>
+              <h4>Work With Us</h4>
+              <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
+              <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <a href="https://petitek.com/terms" target="_blank">Terms of Service</a>
+          <a href="https://petitek.com/privacy" target="_blank">Privacy</a>
+          <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+        </div>
+        <br />
+        <p style="margin: 4px 0 0; font-size: 10pt; color: black;">
+          © Petitek LLC All rights reserved.
+        </p>
+      </footer>
+    </div>
   </div>
 
   <script>
@@ -233,3 +289,4 @@
   </script>
 </body>
 </html>
+
