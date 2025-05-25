@@ -34,16 +34,6 @@
     flex-grow: 1;
   }
 
- .hero img {
-  max-width: 8rem;
-  height: auto;
-  margin-top: 1rem;  /* 👈 Add this */
-  margin-bottom: 0.625rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
- 
 
   .hero h1 {
   margin: 0.625rem 0;
@@ -62,7 +52,13 @@
   font-size: clamp(1rem, 3vw, 1.125rem);
   line-height: 1.4;
 }
- 
+ .hero-logo {
+  max-width: 120px;  /* Try 80px–160px depending on desired size */
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem; /* Centered with space below */
+}
+
     
 .chat-wrapper {
   display: flex;
@@ -222,7 +218,8 @@
     <div class="main-wrapper">
       <div class="hero">
         <a href="https://petitek.com">
-          <img src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+        <img class="hero-logo" src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+ 
         </a>
         <h1>Petitek Support</h1>
         <p>Need help with ChatrBox? ChatrBot is an AI assistant and can answer any setup, support, or troubleshooting questions.</p>
