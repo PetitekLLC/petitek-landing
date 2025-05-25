@@ -57,16 +57,16 @@
       box-sizing: border-box;
     }
 
- .checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  margin-top: 1rem;
-}
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
 
-.checkbox-label input[type="checkbox"] {
-  margin-right: 0.5rem;
-  margin-top: 0.3rem;
-}
+    .checkbox-label input[type="checkbox"] {
+      margin-right: 0.5rem;
+      margin-top: 0.3rem;
+    }
 
     button {
       width: 100%;
@@ -96,6 +96,17 @@
       font-weight: bold;
       margin-top: 1rem;
     }
+
+    #spinner {
+      display: none;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    #spinner img {
+      width: 24px;
+      height: 24px;
+    }
   </style>
 </head>
 <body>
@@ -120,14 +131,19 @@
       <input type="text" id="lastName" name="lastName">
       <span class="error-message" id="lastNameError"></span>
 
-     <div class="checkbox-label">
-  <input type="checkbox" id="optIn" name="optIn">
-  <label for="optIn">
-    I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
-  </label>
-</div>
+      <div class="checkbox-label">
+        <input type="checkbox" id="optIn" name="optIn">
+        <label for="optIn">
+          I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
+        </label>
+      </div>
 
-      <button type="submit">Register</button>
+      <button type="submit" id="submitBtn">Register</button>
+
+      <div id="spinner">
+        <img src="/images/spinner.gif" alt="Loading..." />
+      </div>
+
       <p id="responseMsg"></p>
     </form>
   </div>
@@ -136,7 +152,7 @@
     document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Reset previous errors
+      // Reset errors
       document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
       let valid = true;
 
@@ -157,7 +173,16 @@
 
       if (!valid) return;
 
-      const formData = new FormData(document.getElementById("chatrboxForm"));
+      const spinner = document.getElementById("spinner");
+      const submitBtn = document.getElementById("submitBtn");
+      const form = e.target;
+
+      // Show spinner and disable button
+      spinner.style.display = "block";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      const formData = new FormData(form);
 
       fetch("https://script.google.com/macros/s/AKfycbzLegShPfplOuAPNN7d5OZqaOwGs4vU0DQZhxfvHuxGT0SlAn6i2PhyXYRXPN--OF7mCg/exec", {
         method: "POST",
@@ -165,15 +190,22 @@
       })
       .then(res => res.text())
       .then(data => {
+        spinner.style.display = "none";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Register";
         document.getElementById("responseMsg").textContent = "✅ Registration submitted!";
-        document.getElementById("chatrboxForm").reset();
+        form.reset();
       })
       .catch(err => {
+        spinner.style.display = "none";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Register";
         document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
         console.error("Error:", err);
       });
     });
 
+    // Auto-fill serial from URL
     const urlParams = new URLSearchParams(window.location.search);
     const serialFromQR = urlParams.get("serial");
     if (serialFromQR) {
@@ -182,5 +214,3 @@
   </script>
 </body>
 </html>
-
-
