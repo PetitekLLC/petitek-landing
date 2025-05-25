@@ -274,7 +274,7 @@ Blame
       const form = e.target;
       const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbxJEJAyiSaIlJqsU_V-HPP-XoPrxpnO8bjSu4El0-dVbC5NVzJdeu83rZUl7euh-yFY/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbyLftk1V_ysSVWo20n4trYQFFBTMISHkIRnm36gbktyox9cUes1IYH-fvPvLvQH9fzk/exec", {
         method: "POST",
         body: formData
       })
