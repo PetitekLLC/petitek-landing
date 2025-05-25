@@ -18,11 +18,12 @@
 .hero {
   width: 100%;
   height: auto;
-  max-height: 400px;  /* ✅ Adjust this value as needed */
+  max-height: 300px; /* optional limit */
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 0.625rem 0.625rem 0 0; /* match .container rounding */
   display: block;
 }
+
 
     
     body {
@@ -139,13 +140,11 @@
 
 <body>
 
-  <!-- ✅ Hero image at the very top -->
-  <div class="hero-container">
-    <img class="hero" src="/images/chatrbox-hero.webp" alt="Chatrbox Hero Image">
-  </div>
 
   <!-- ✅ Main content container -->
   <div class="container">
+    <div class="container">
+  <img class="hero" src="/images/chatrbox-hero.webp" alt="Chatrbox Hero Image" />
     <div class="title-box">
       <h1>Register Your Chatrbox</h1>
     </div>
