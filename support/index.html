@@ -233,16 +233,24 @@
       <button id="sendButton" type="submit">Send</button>
     </form>
 
-    <!-- Learn link -->
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 0.5rem; margin-bottom: 0.25rem;">
-      <a href="/learn/" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-        <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
-        Learn with How-To Videos
-      </a>
-    </div>
 
+<!-- Chat container -->
+<div class="chat-wrapper">
+  <div id="chatContainer">
+    <form id="chatForm">
+      <input type="text" id="chatInput" placeholder="How can we help?" />
+      <button id="sendButton" type="submit">Send</button>
+    </form>
     <div id="chatOutput"></div>
   </div>
+</div>
+
+<!-- Learn Link: positioned 20px below chat box -->
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+  <a href="/learn/" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+    <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
+    Learn with How-To Videos
+  </a>
 </div>
 
  
