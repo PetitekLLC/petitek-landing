@@ -140,31 +140,32 @@
         padding: 1rem;
       }
     }
+    
+.site-footer {
+  max-width: 60rem;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
 
-    /* ✅ Footer styles */
-    .footer-wrapper {
-      background-color: #25A8C6;
-      padding: 2rem 1.25rem;
-    }
+.site-footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
 
-    .site-footer {
-      max-width: 60rem;
-      margin: 0 auto;
-      color: white;
-      text-align: center;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
+.site-footer a:hover {
+  text-decoration: underline;
+}
 
-    .site-footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
+.site-footer .copyright {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: black;
+}
 
-    .site-footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 
@@ -209,17 +210,20 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer-wrapper">
-    <footer class="site-footer">
-      <p>© 2025 Petitek LLC. All rights reserved.</p>
-      <p>
-        <a href="https://petitek.com/terms" target="_blank">Terms</a> |
-        <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
-        <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
-      </p>
-    </footer>
-  </div>
+<!-- Footer -->
+<div class="footer-wrapper">
+  <footer class="site-footer">
+    <p>
+      <a href="https://petitek.com/terms" target="_blank">Terms</a> |
+      <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
+      <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+    </p>
+    <p class="copyright">
+      © 2025 Petitek LLC. All rights reserved.
+    </p>
+  </footer>
+</div>
+
 
   <!-- JS -->
   <script>
