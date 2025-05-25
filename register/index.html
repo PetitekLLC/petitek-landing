@@ -134,15 +134,19 @@
     }
   </style>
 </head>
+
 <body>
+
+  <!-- ✅ Hero image at the very top -->
+  <div class="hero-container">
+    <img class="hero" src="/images/chatrbox-hero.webp" alt="Chatrbox Hero Image">
+  </div>
+
+  <!-- ✅ Main content container -->
   <div class="container">
     <div class="title-box">
       <h1>Register Your Chatrbox</h1>
     </div>
-
-  <div class="hero-container">
-  <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image">
-</div>
 
     <div class="form-card">
       <form id="chatrboxForm">
@@ -173,10 +177,12 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <div style="text-align: center; font-size: 12px; color: black; padding-bottom: 20px;">
     &copy; 2025 Petitek LLC. All rights reserved.
   </div>
 
+  <!-- JS -->
   <script>
     document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
       e.preventDefault();
@@ -198,7 +204,6 @@
       });
     });
 
-    // Pre-fill serial from ?serial=CHTX0001 in URL
     const urlParams = new URLSearchParams(window.location.search);
     const serialFromQR = urlParams.get("serial");
     if (serialFromQR) {
@@ -206,6 +211,5 @@
     }
   </script>
 </body>
-</html>
 
 
