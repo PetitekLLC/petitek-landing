@@ -1,3 +1,4 @@
+
 <form id="chatrboxForm" style="max-width: 400px; margin: 0 auto;">
   <label for="serial">Serial Number:</label><br>
   <input type="text" id="serial" name="serial" required><br><br>
@@ -36,5 +37,12 @@ document.getElementById("chatrboxForm").addEventListener("submit", function (e) 
     console.error("Error:", err);
   });
 });
+  // Pre-fill serial number from URL if present
+const urlParams = new URLSearchParams(window.location.search);
+const serialFromQR = urlParams.get("serial");
+if (serialFromQR) {
+  document.getElementById("serial").value = serialFromQR;
+}
+
 </script>
 
