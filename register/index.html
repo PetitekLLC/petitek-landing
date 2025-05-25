@@ -27,20 +27,25 @@
     }
 
 .checkbox-wrapper {
-  display: flex;
-  align-items: left;
-  gap: 0.5rem;
   margin: 1rem 0;
-  line-height: 1.4;
 }
 
-.checkbox-wrapper input[type="checkbox"] {
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+  font-size: 1rem;
+  flex-wrap: wrap;
+}
+
+.checkbox-label input[type="checkbox"] {
   width: 1rem;
   height: 1rem;
   margin: 0;
-  margin-top: 0.2rem;
   flex-shrink: 0;
 }
+
   
     .hero {
       width: 100%;
@@ -167,13 +172,12 @@
 <label for="lastName">Last Name:</label>
 <input type="text" id="lastName" name="lastName" required />
 
+
 <div class="checkbox-wrapper">
   <label class="checkbox-label">
     <input type="checkbox" id="optIn" name="optIn" />
-    <span>
-      I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
-      <span style="color: gray; font-style: italic;">(optional)</span>
-    </span>
+    I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
+    <span style="color: gray; font-style: italic;">(optional)</span>
   </label>
 </div>
 
