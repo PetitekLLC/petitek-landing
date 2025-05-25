@@ -1,1 +1,53 @@
+<form id="chatrboxForm" style="max-width: 400px; margin: 0 auto;">
+  <label for="serial">Serial Number:</label><br>
+  <input type="text" id="serial" name="serial" required><br><br>
+
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" required><br><br>
+
+  <input type="checkbox" id="optIn" name="optIn" required>
+  I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
+</label>
+<br><br>
+
+  <label for="firstName">First Name:</label><br>
+  <input type="text" id="firstName" name="firstName" required><br><br>
+
+  <label for="lastName">Last Name:</label><br>
+  <input type="text" id="lastName" name="lastName" required><br><br>
+
+  <button type="submit">Register</button>
+</form>
+
+<p id="responseMsg" style="text-align: center; margin-top: 1em;"></p>
+
+<script>
+document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+
+  fetch("https://script.google.com/macros/s/AKfycbzLegShPfplOuAPNN7d5OZqaOwGs4vU0DQZhxfvHuxGT0SlAn6i2PhyXYRXPN--OF7mCg/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("responseMsg").textContent = "✅ Registration submitted!";
+    form.reset();
+  })
+  .catch(err => {
+    document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
+    console.error("Error:", err);
+  });
+});
+  // Pre-fill serial number from URL if present
+const urlParams = new URLSearchParams(window.location.search);
+const serialFromQR = urlParams.get("serial");
+if (serialFromQR) {
+  document.getElementById("serial").value = serialFromQR;
+}
+
+</script>
+
 
