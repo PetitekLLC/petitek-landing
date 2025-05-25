@@ -8,7 +8,21 @@
     html {
       font-size: 16px;
     }
+.hero-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+.hero {
+  width: 100%;
+  height: auto;
+  max-height: 400px;  /* ✅ Adjust this value as needed */
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  display: block;
+}
 
+    
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -126,8 +140,8 @@
       <h1>Register Your Chatrbox</h1>
     </div>
 
-    <div style="padding: 0;">
-  <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image" />
+  <div class="hero-container">
+  <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image">
 </div>
 
     <div class="form-card">
