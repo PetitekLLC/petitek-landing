@@ -8,23 +8,7 @@
     html {
       font-size: 16px;
     }
-    
-.hero-container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0;
-}
-  
-.container {
-  max-width: 60rem;
-  margin: 2.5rem auto;
-  padding: 1.25rem 1.25rem 2.5rem; /* Top, sides, bottom */
-  background: #fff;
-  border-radius: 0.625rem;
-  box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
-}
 
-    
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -36,16 +20,25 @@
     .container {
       max-width: 60rem;
       margin: 2.5rem auto;
-      padding: 2.5rem 1.25rem;
+      padding: 2rem 1.25rem 2.5rem;
       background: #fff;
       border-radius: 0.625rem;
       box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
     }
 
+    .hero {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: 10px 10px 0 0;
+    }
+
     .title-box {
       text-align: center;
-      padding: 0.625rem 1.25rem 0;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .title-box h1 {
@@ -55,7 +48,7 @@
     }
 
     .form-card {
-      padding: 2rem 1.25rem 1.25rem;
+      padding: 0 1.25rem;
     }
 
     .form-card form {
@@ -129,7 +122,7 @@
       .title-box h1 {
         font-size: clamp(1.5rem, 6vw, 2rem);
       }
-  
+
       .form-card {
         padding: 1rem;
       }
@@ -138,16 +131,16 @@
 </head>
 
 <body>
-
-
-  <!-- ✅ Main content container -->
   <div class="container">
-    <div class="container">
-  <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image" />
+    <!-- Hero Image inside the white box -->
+    <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image" />
+
+    <!-- Title -->
     <div class="title-box">
       <h1>Register Your Chatrbox</h1>
     </div>
 
+    <!-- Registration Form -->
     <div class="form-card">
       <form id="chatrboxForm">
         <label for="serial">Serial Number:</label>
@@ -204,6 +197,7 @@
       });
     });
 
+    // Pre-fill serial from URL query param
     const urlParams = new URLSearchParams(window.location.search);
     const serialFromQR = urlParams.get("serial");
     if (serialFromQR) {
@@ -211,5 +205,6 @@
     }
   </script>
 </body>
+</html>
 
 
