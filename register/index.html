@@ -1,52 +1,193 @@
-<form id="chatrboxForm" style="max-width: 400px; margin: 0 auto;">
-  <label for="serial">Serial Number:</label><br>
-  <input type="text" id="serial" name="serial" required><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Your Chatrbox</title>
+  <style>
+    html {
+      font-size: 16px;
+    }
 
-  <label for="phone">Phone Number:</label><br>
-  <input type="tel" id="phone" name="phone" required><br><br>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #25A8C6;
+      color: #000;
+      font-size: 1rem;
+    }
 
-  <input type="checkbox" id="optIn" name="optIn" required>
-  I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
-</label>
-<br><br>
+    .container {
+      max-width: 60rem;
+      margin: 2.5rem auto;
+      padding: 2.5rem 1.25rem;
+      background: #fff;
+      border-radius: 0.625rem;
+      box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
+    }
 
-  <label for="firstName">First Name:</label><br>
-  <input type="text" id="firstName" name="firstName" required><br><br>
+    .title-box {
+      text-align: center;
+      padding: 0.625rem 1.25rem 0;
+      margin-bottom: 1.25rem;
+    }
 
-  <label for="lastName">Last Name:</label><br>
-  <input type="text" id="lastName" name="lastName" required><br><br>
+    .title-box h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      margin: 0;
+      color: #25A8C6;
+    }
 
-  <button type="submit">Register</button>
-</form>
+    .form-card {
+      padding: 2rem 1.25rem 1.25rem;
+    }
 
-<p id="responseMsg" style="text-align: center; margin-top: 1em;"></p>
+    .form-card form {
+      max-width: 37.5rem;
+      width: 100%;
+      margin: 0 auto;
+      border: 2px solid #25A8C6;
+      border-radius: 0.625rem;
+      padding: 1.25rem;
+      box-sizing: border-box;
+    }
 
-<script>
-document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
+    .form-card label {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
 
-  fetch("https://script.google.com/macros/s/AKfycbzLegShPfplOuAPNN7d5OZqaOwGs4vU0DQZhxfvHuxGT0SlAn6i2PhyXYRXPN--OF7mCg/exec", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("responseMsg").textContent = "✅ Registration submitted!";
-    form.reset();
-  })
-  .catch(err => {
-    document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
-    console.error("Error:", err);
-  });
-});
-  // Pre-fill serial number from URL if present
-const urlParams = new URLSearchParams(window.location.search);
-const serialFromQR = urlParams.get("serial");
-if (serialFromQR) {
-  document.getElementById("serial").value = serialFromQR;
-}
+    .form-card input[type="text"],
+    .form-card input[type="tel"],
+    .form-card input[type="checkbox"] {
+      width: 100%;
+      padding: 0.625rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.3125rem;
+      box-sizing: border-box;
+    }
 
-</script>
+    .form-card input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .form-card button {
+      width: 100%;
+      margin-top: 1.5rem;
+      background: #25A8C6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 0.3125rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .form-card button:hover {
+      background: #1c8baa;
+    }
+
+    #responseMsg {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .return-link {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .return-link a {
+      color: #25A8C6;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .title-box h1 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+      }
+
+      .form-card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title-box">
+      <h1>Register Your Chatrbox</h1>
+    </div>
+
+    <div class="form-card">
+      <form id="chatrboxForm">
+        <label for="serial">Serial Number:</label>
+        <input type="text" id="serial" name="serial" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label>
+          <input type="checkbox" id="optIn" name="optIn" required />
+          I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
+        </label>
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
+
+        <button type="submit">Register</button>
+        <p id="responseMsg"></p>
+      </form>
+    </div>
+
+    <div class="return-link">
+      <a href="https://petitek.com">← Return to Petitek.com</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; font-size: 12px; color: black; padding-bottom: 20px;">
+    &copy; 2025 Petitek LLC. All rights reserved.
+  </div>
+
+  <script>
+    document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+
+      fetch("https://script.google.com/macros/s/AKfycbzLegShPfplOuAPNN7d5OZqaOwGs4vU0DQZhxfvHuxGT0SlAn6i2PhyXYRXPN--OF7mCg/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("responseMsg").textContent = "✅ Registration submitted!";
+        form.reset();
+      })
+      .catch(err => {
+        document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
+        console.error("Error:", err);
+      });
+    });
+
+    // Pre-fill serial from ?serial=CHTX0001 in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const serialFromQR = urlParams.get("serial");
+    if (serialFromQR) {
+      document.getElementById("serial").value = serialFromQR;
+    }
+  </script>
+</body>
+</html>
+
 
