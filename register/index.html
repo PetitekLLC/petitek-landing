@@ -26,27 +26,26 @@
       box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
     }
 
-.checkbox-wrapper {
-  margin: 1rem 0;
-}
+    .checkbox-wrapper {
+      margin: 1rem 0;
+    }
 
-.checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  line-height: 1.4;
-  font-size: 1rem;
-  max-width: 100%;
-}
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.4;
+      font-size: 1rem;
+      max-width: 100%;
+    }
 
-.checkbox-label input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  margin: 0.3rem 0 0 0;
-  flex-shrink: 0;
-}
+    .checkbox-label input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      margin: 0.3rem 0 0 0;
+      flex-shrink: 0;
+    }
 
-  
     .hero {
       width: 100%;
       height: auto;
@@ -68,72 +67,69 @@
       color: #25A8C6;
     }
 
-.form-card {
-  padding: 0 1.25rem;
-  display: flex;
-  justify-content: center; /* ✅ centers child form horizontally */
-}
+    .form-card {
+      padding: 0 1.25rem;
+      display: flex;
+      justify-content: center;
+    }
 
-.form-card form {
-  max-width: 37.5rem;
-  width: 100%;
-  border: 2px solid #25A8C6;
-  border-radius: 0.625rem;
-  padding: 1.25rem;
-  box-sizing: border-box;
-  background-color: #fff;
-}
+    .form-card form {
+      max-width: 37.5rem;
+      width: 100%;
+      border: 2px solid #25A8C6;
+      border-radius: 0.625rem;
+      padding: 1.25rem;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
 
-/* ✅ Label style (excluding checkbox label) */
-.form-card label:not(.checkbox-label) {
-  display: block;
-  margin: 1rem 0 0.25rem;
-  font-weight: normal;
-  font-size: 1rem;
-}
+    .form-card label:not(.checkbox-label) {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: normal;
+      font-size: 1rem;
+    }
 
-/* ✅ Input fields with teal border and white background */
-.form-card input[type="text"],
-.form-card input[type="tel"] {
-  width: 100%;
-  padding: 0.625rem;
-  font-size: 1rem;
-  border: 1px solid #25A8C6;     /* ✅ Teal border */
-  border-radius: 0.3125rem;
-  box-sizing: border-box;
-  background-color: #fff;
-  color: #000;
-}
+    .form-card input[type="text"],
+    .form-card input[type="tel"] {
+      width: 100%;
+      padding: 0.625rem;
+      font-size: 1rem;
+      border: 1px solid #25A8C6;
+      border-radius: 0.3125rem;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #000;
+    }
 
-/* ✅ Submit button styling */
-.form-card button {
-  width: 100%;
-  margin-top: 1.5rem;
-  background: #25A8C6;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  border-radius: 0.3125rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+    .form-card button {
+      width: 100%;
+      margin-top: 1.5rem;
+      background: #25A8C6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 0.3125rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
 
-.form-card button:hover {
-  background: #1c8baa;
-}
+    .form-card button:hover {
+      background: #1c8baa;
+    }
 
-  #responseMsg,
-.success-msg {
-  text-align: center;
-  margin-top: 1rem;
-  font-weight: bold;
-  font-size: 1rem;
-}
+    #responseMsg,
+    .success-msg {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+    }
 
-.success-msg {
-  color: black;
-} 
+    .success-msg {
+      color: black;
+    }
 
     @media (max-width: 600px) {
       .title-box h1 {
@@ -144,26 +140,31 @@
         padding: 1rem;
       }
     }
-.site-footer {
-  background-color: #25A8C6;
-  color: white;
-  text-align: center;
-  padding: 1.25rem 1rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
 
-.site-footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
+    /* ✅ Footer styles */
+    .footer-wrapper {
+      background-color: #25A8C6;
+      padding: 2rem 1.25rem;
+    }
 
-.site-footer a:hover {
-  text-decoration: underline;
-}
+    .site-footer {
+      max-width: 60rem;
+      margin: 0 auto;
+      color: white;
+      text-align: center;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
 
- 
+    .site-footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -186,50 +187,39 @@
         <label for="phone">Phone Number:</label>
         <input type="tel" id="phone" name="phone" required />
 
-   <label for="firstName">First Name:</label>
-<input type="text" id="firstName" name="firstName" required />
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
 
-<label for="lastName">Last Name:</label>
-<input type="text" id="lastName" name="lastName" required />
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
 
-<div class="checkbox-wrapper">
-  <label class="checkbox-label">
-    <input type="checkbox" id="optIn" name="optIn" />
-    <span>
-      I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
-      <span style="color: gray; font-style: italic;">(optional)</span>
-    </span>
-  </label>
-</div>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-label">
+            <input type="checkbox" id="optIn" name="optIn" />
+            <span>
+              I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
+              <span style="color: gray; font-style: italic;">(optional)</span>
+            </span>
+          </label>
+        </div>
 
-<button type="submit">Register</button>
-<p id="responseMsg" class="success-msg"></p>
-</form> <!-- ✅ Close form here -->
+        <button type="submit">Register</button>
+        <p id="responseMsg" class="success-msg"></p>
+      </form>
+    </div>
+  </div>
 
-      <!-- Footer -->
-.footer-wrapper {
-  background-color: #25A8C6;
-  padding: 2rem 1.25rem;
-}
-
-.site-footer {
-  max-width: 60rem;
-  margin: 0 auto;
-  color: white;
-  text-align: center;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.site-footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
+  <!-- Footer -->
+  <div class="footer-wrapper">
+    <footer class="site-footer">
+      <p>© 2025 Petitek LLC. All rights reserved.</p>
+      <p>
+        <a href="https://petitek.com/terms" target="_blank">Terms</a> |
+        <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
+        <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+      </p>
+    </footer>
+  </div>
 
   <!-- JS -->
   <script>
@@ -242,24 +232,23 @@
         method: "POST",
         body: formData
       })
-      .then(res => res.text())
-      .then(data => {
-        
-    const responseMsg = document.getElementById("responseMsg");
-responseMsg.textContent = "✅ Your ChatrBox is registered!";
-responseMsg.classList.add("success-msg");
+        .then(res => res.text())
+        .then(data => {
+          const responseMsg = document.getElementById("responseMsg");
+          responseMsg.textContent = "✅ Your ChatrBox is registered!";
+          responseMsg.classList.add("success-msg");
 
-setTimeout(() => {
-  responseMsg.textContent = "";
-  responseMsg.classList.remove("success-msg");
-}, 3000); // auto-hide after 3 seconds
-       
-        form.reset();
-      })
-      .catch(err => {
-        document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
-        console.error("Error:", err);
-      });
+          setTimeout(() => {
+            responseMsg.textContent = "";
+            responseMsg.classList.remove("success-msg");
+          }, 3000);
+
+          form.reset();
+        })
+        .catch(err => {
+          document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
+          console.error("Error:", err);
+        });
     });
 
     // Pre-fill serial from URL query param
