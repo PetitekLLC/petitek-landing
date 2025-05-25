@@ -157,24 +157,28 @@
         <label for="phone">Phone Number:</label>
         <input type="tel" id="phone" name="phone" required />
 
-    <div class="checkbox-wrapper">
-  <input type="checkbox" id="optIn" name="optIn" />
+   <label for="firstName">First Name:</label>
+<input type="text" id="firstName" name="firstName" required />
+
+<label for="lastName">Last Name:</label>
+<input type="text" id="lastName" name="lastName" required />
+
+<!-- ✅ Checkbox wrapper now appears right above the button -->
+<div class="checkbox-wrapper">
+  <input type="checkbox" id="optIn" name="optIn">
   <label for="optIn">
     I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
     <span style="color: gray; font-style: italic;">(optional)</span>
   </label>
 </div>
 
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required />
+<button type="submit">Register</button>
+</form>  <!-- ✅ Close form here -->
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required />
+<div class="return-link">
+  <a href="https://petitek.com">← Return to Petitek.com</a>
+</div>
 
-        <button type="submit">Register</button>
-        <p id="responseMsg"></p>
-      </form>
-    </div>
 
     <div class="return-link">
       <a href="https://petitek.com">← Return to Petitek.com</a>
