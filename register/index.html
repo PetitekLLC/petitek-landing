@@ -271,6 +271,25 @@
     if (serialFromQR) {
       document.getElementById("serial").value = serialFromQR;
     }
+    document.getElementById("phone").addEventListener("input", function (e) {
+  const input = e.target;
+  let value = input.value.replace(/\D/g, ""); // Remove all non-digits
+
+  if (value.length > 10) value = value.slice(0, 10); // Limit to 10 digits
+
+  const area = value.slice(0, 3);
+  const mid = value.slice(3, 6);
+  const end = value.slice(6, 10);
+
+  if (value.length > 6) {
+    input.value = `(${area}) ${mid}-${end}`;
+  } else if (value.length > 3) {
+    input.value = `(${area}) ${mid}`;
+  } else if (value.length > 0) {
+    input.value = `(${area}`;
+  }
+});
+
   </script>
 </body>
 </html>
