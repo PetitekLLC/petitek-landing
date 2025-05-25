@@ -1,3 +1,35 @@
+Skip to content
+Navigation Menu
+PetitekLLC
+petitek-landing
+
+Type / to search
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+petitek-landing/register
+/index.html
+Go to file
+t
+PetitekLLC
+PetitekLLC
+Update index.html
+febf547
+ · 
+8 minutes ago
+petitek-landing/register
+/index.html
+
+Code
+
+Blame
+295 lines (248 loc) · 6.79 KB
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,27 +58,26 @@
       box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
     }
 
-.checkbox-wrapper {
-  margin: 1rem 0;
-}
+    .checkbox-wrapper {
+      margin: 1rem 0;
+    }
 
-.checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  line-height: 1.4;
-  font-size: 1rem;
-  max-width: 100%;
-}
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.4;
+      font-size: 1rem;
+      max-width: 100%;
+    }
 
-.checkbox-label input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  margin: 0.3rem 0 0 0;
-  flex-shrink: 0;
-}
+    .checkbox-label input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      margin: 0.3rem 0 0 0;
+      flex-shrink: 0;
+    }
 
-  
     .hero {
       width: 100%;
       height: auto;
@@ -68,67 +99,75 @@
       color: #25A8C6;
     }
 
-.form-card {
-  padding: 0 1.25rem;
-  display: flex;
-  justify-content: center; /* ✅ centers child form horizontally */
-}
+    .form-card {
+      padding: 0 1.25rem;
+      display: flex;
+      justify-content: center;
+    }
 
-.form-card form {
-  max-width: 37.5rem;
-  width: 100%;
-  border: 2px solid #25A8C6;
-  border-radius: 0.625rem;
-  padding: 1.25rem;
-  box-sizing: border-box;
-  background-color: #fff;
-}
+    .form-card form {
+      max-width: 37.5rem;
+      width: 100%;
+      border: 2px solid #25A8C6;
+      border-radius: 0.625rem;
+      padding: 1.25rem;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
 
-/* ✅ Label style (excluding checkbox label) */
-.form-card label:not(.checkbox-label) {
-  display: block;
-  margin: 1rem 0 0.25rem;
-  font-weight: normal;
-  font-size: 1rem;
-}
+    .form-card label:not(.checkbox-label) {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: normal;
+      font-size: 1rem;
+    }
 
-/* ✅ Input fields with teal border and white background */
-.form-card input[type="text"],
-.form-card input[type="tel"] {
-  width: 100%;
-  padding: 0.625rem;
-  font-size: 1rem;
-  border: 1px solid #25A8C6;     /* ✅ Teal border */
-  border-radius: 0.3125rem;
-  box-sizing: border-box;
-  background-color: #fff;
-  color: #000;
-}
+    .form-card input[type="text"],
+    .form-card input[type="tel"] {
+      width: 100%;
+      padding: 0.625rem;
+      font-size: 1rem;
+      border: 1px solid #25A8C6;
+      border-radius: 0.3125rem;
+      box-sizing: border-box;
+      background-color: #fff;
+      color: #000;
+    }
 
-/* ✅ Submit button styling */
-.form-card button {
-  width: 100%;
-  margin-top: 1.5rem;
-  background: #25A8C6;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  border-radius: 0.3125rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+    .form-card button {
+      width: 100%;
+      margin-top: 1.5rem;
+      background:;#25A8C6
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      border-radius: 0.3125rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
 
-.form-card button:hover {
-  background: #1c8baa;
-}
+    .form-card button:hover {
+      background: #1c8baa;
+    }
 
-    #responseMsg {
+   .form-card button:active {
+  background-color: #0a3d4a;
+  transform: scale(0.98);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+} 
+
+    #responseMsg,
+    .success-msg {
       text-align: center;
       margin-top: 1rem;
       font-weight: bold;
+      font-size: 1rem;
     }
 
+    .success-msg {
+      color: black;
+    }
 
     @media (max-width: 600px) {
       .title-box h1 {
@@ -139,6 +178,32 @@
         padding: 1rem;
       }
     }
+    
+.site-footer {
+  max-width: 60rem;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.site-footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer .copyright {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: black;
+}
+
   </style>
 </head>
 
@@ -161,27 +226,46 @@
         <label for="phone">Phone Number:</label>
         <input type="tel" id="phone" name="phone" required />
 
-   <label for="firstName">First Name:</label>
-<input type="text" id="firstName" name="firstName" required />
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
 
-<label for="lastName">Last Name:</label>
-<input type="text" id="lastName" name="lastName" required />
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
 
-<div class="checkbox-wrapper">
-  <label class="checkbox-label">
-    <input type="checkbox" id="optIn" name="optIn" />
-    <span>
-      I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
-      <span style="color: gray; font-style: italic;">(optional)</span>
-    </span>
-  </label>
+        <div class="checkbox-wrapper">
+          <label class="checkbox-label">
+            <input type="checkbox" id="optIn" name="optIn" />
+            <span>
+              I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
+              <span style="color: gray; font-style: italic;">(optional)</span>
+            </span>
+          </label>
+        </div>
+
+        <button type="submit">Register</button>
+        <p id="responseMsg" class="success-msg"></p>
+      </form>
+    </div>
+  </div>
+
+<!-- Footer -->
+<div class="footer-wrapper">
+  <footer class="site-footer">
+    <p>
+      <a href="https://petitek.com">Home</a> |
+      <a href="https://petitek.com/support">Support</a> |
+      <a href="https://petitek.com/learn">Learn</a>
+    </p>
+
+    
+    <p class="copyright">
+      © 2025 Petitek LLC. All rights reserved.
+    </p>
+  </footer>
 </div>
 
-<button type="submit">Register</button>
-        
-<div class="return-link">
- 
-</form>  <!-- ✅ Close form here -->
+  
+
 
   <!-- JS -->
   <script>
@@ -190,24 +274,27 @@
       const form = e.target;
       const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbzLegShPfplOuAPNN7d5OZqaOwGs4vU0DQZhxfvHuxGT0SlAn6i2PhyXYRXPN--OF7mCg/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbxPh-exx4eDqrg4_O9_e62KrJL5D-z_eMiTsj8hI6AxZ6kbSg313z7rikXEf45LaQ6G/exec", {
         method: "POST",
         body: formData
       })
-      .then(res => res.text())
-      .then(data => {
-      const responseMsg = document.getElementById("responseMsg");
-      responseMsg.textContent = "✅ Registration submitted!";
-// ⏱️ Automatically hide the message after 2 seconds (2000ms)
-setTimeout(() => {
-  responseMsg.textContent = "";
-}, 2000);
-        form.reset();
-      })
-      .catch(err => {
-        document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
-        console.error("Error:", err);
-      });
+        .then(res => res.text())
+        .then(data => {
+          const responseMsg = document.getElementById("responseMsg");
+          responseMsg.textContent = "✅ Your ChatrBox is registered!";
+          responseMsg.classList.add("success-msg");
+
+          setTimeout(() => {
+            responseMsg.textContent = "";
+            responseMsg.classList.remove("success-msg");
+          }, 3000);
+
+          form.reset();
+        })
+        .catch(err => {
+          document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
+          console.error("Error:", err);
+        });
     });
 
     // Pre-fill serial from URL query param
@@ -216,9 +303,26 @@ setTimeout(() => {
     if (serialFromQR) {
       document.getElementById("serial").value = serialFromQR;
     }
+    document.getElementById("phone").addEventListener("input", function (e) {
+  const input = e.target;
+  let value = input.value.replace(/\D/g, ""); // Remove all non-digits
+
+  if (value.length > 10) value = value.slice(0, 10); // Limit to 10 digits
+
+  const area = value.slice(0, 3);
+  const mid = value.slice(3, 6);
+  const end = value.slice(6, 10);
+
+  if (value.length > 6) {
+    input.value = `(${area}) ${mid}-${end}`;
+  } else if (value.length > 3) {
+    input.value = `(${area}) ${mid}`;
+  } else if (value.length > 0) {
+    input.value = `(${area}`;
+  }
+});
+
   </script>
 </body>
 </html>
-
-
-
+petitek-landing/register/index.html at main · PetitekLLC/petitek-landing
