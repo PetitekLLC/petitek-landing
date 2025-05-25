@@ -123,12 +123,17 @@
   background: #1c8baa;
 }
 
-    #responseMsg {
-      text-align: center;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
+  #responseMsg,
+.success-msg {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
 
+.success-msg {
+  color: #2e7d32;
+} 
 
     @media (max-width: 600px) {
       .title-box h1 {
@@ -178,10 +183,12 @@
 </div>
 
 <button type="submit">Register</button>
-        
+<p id="responseMsg" class="success-msg"></p>
+</form> <!-- ✅ Close form here -->
+
 <div class="return-link">
- 
-</form>  <!-- ✅ Close form here -->
+  <a href="https://petitek.com">← Return to Petitek.com</a>
+</div>
 
   <!-- JS -->
   <script>
@@ -196,12 +203,16 @@
       })
       .then(res => res.text())
       .then(data => {
-      const responseMsg = document.getElementById("responseMsg");
-      responseMsg.textContent = "✅ Registration submitted!";
-// ⏱️ Automatically hide the message after 2 seconds (2000ms)
+        
+    const responseMsg = document.getElementById("responseMsg");
+responseMsg.textContent = "✅ Your ChatrBox is registered!";
+responseMsg.classList.add("success-msg");
+
 setTimeout(() => {
   responseMsg.textContent = "";
-}, 2000);
+  responseMsg.classList.remove("success-msg");
+}, 3000); // auto-hide after 3 seconds
+       
         form.reset();
       })
       .catch(err => {
