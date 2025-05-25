@@ -61,16 +61,16 @@
   color: white;         /* 👈 ensure it's white */
 }
 
-  .hero p {
-    font-size: clamp(1rem, 3vw, 1.125rem);
-    margin-top: 0.75rem;
-    color: white;
-    text-align: center;
-    line-height: 1.4;
-    max-width: 30rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+ .hero p {
+  padding: 0 10px;           /* 10px left and right */
+  max-width: 30rem;          /* Optional: to keep it from getting too wide */
+  margin: 0 auto;            /* Center the block */
+  text-align: center;
+  color: white;
+  font-size: clamp(1rem, 3vw, 1.125rem);
+  line-height: 1.4;
+}
+ 
     
 .chat-wrapper {
   display: flex;
