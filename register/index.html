@@ -68,45 +68,61 @@
       color: #25A8C6;
     }
 
-    .form-card {
-      padding: 0 1.25rem;
-    }
+.form-card {
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: center;       /* ✅ Center form inside the box */
+}
 
-    .form-card form {
-      max-width: 37.5rem;
-      width: 100%;
-      margin: 0 auto;
-      border: 2px solid #25A8C6;
-      border-radius: 0.625rem;
-      padding: 1.25rem;
-      box-sizing: border-box;
-    }
+.form-card form {
+  max-width: 37.5rem;
+  width: 100%;
+  border: 2px solid #25A8C6;
+  border-radius: 0.625rem;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  background-color: #fff;
+}
 
-    .form-card label:not(.checkbox-label) {  display: block;
-      margin: 1rem 0 0.25rem;
-      font-weight: normal;
-      font-size: 1rem;
-    }
+/* ✅ Label style (excluding checkbox label) */
+.form-card label:not(.checkbox-label) {
+  display: block;
+  margin: 1rem 0 0.25rem;
+  font-weight: normal;
+  font-size: 1rem;
+}
 
-    .form-card input[type="text"],
-    .form-card input[type="tel"],
-    
-    .form-card button {
-      width: 100%;
-      margin-top: 1.5rem;
-      background: #25A8C6;
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.25rem;
-      font-size: 1rem;
-      border-radius: 0.3125rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
+/* ✅ Input fields with teal border and white background */
+.form-card input[type="text"],
+.form-card input[type="tel"] {
+  width: 100%;
+  padding: 0.625rem;
+  font-size: 1rem;
+  border: 1px solid #25A8C6;     /* ✅ Teal border */
+  border-radius: 0.3125rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
+}
 
-    .form-card button:hover {
-      background: #1c8baa;
-    }
+/* ✅ Submit button styling */
+.form-card button {
+  width: 100%;
+  margin-top: 1.5rem;
+  background: #25A8C6;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-card button:hover {
+  background: #1c8baa;
+}
+
 
     #responseMsg {
       text-align: center;
