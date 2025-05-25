@@ -57,15 +57,16 @@
       box-sizing: border-box;
     }
 
-    .checkbox-label {
-      margin-top: 1rem;
-      display: flex;
-      align-items: center;
-    }
+ .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
 
-    .checkbox-label input[type="checkbox"] {
-      margin-right: 0.5rem;
-    }
+.checkbox-label input[type="checkbox"] {
+  margin-right: 0.5rem;
+  margin-top: 0.3rem;
+}
 
     button {
       width: 100%;
@@ -119,10 +120,12 @@
       <input type="text" id="lastName" name="lastName">
       <span class="error-message" id="lastNameError"></span>
 
-      <label class="checkbox-label">
-        <input type="checkbox" id="optIn" name="optIn">
-        I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
-      </label>
+     <div class="checkbox-label">
+  <input type="checkbox" id="optIn" name="optIn">
+  <label for="optIn">
+    I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
+  </label>
+</div>
 
       <button type="submit">Register</button>
       <p id="responseMsg"></p>
