@@ -188,7 +188,12 @@
       })
       .then(res => res.text())
       .then(data => {
-        document.getElementById("responseMsg").textContent = "✅ Registration submitted!";
+      const responseMsg = document.getElementById("responseMsg");
+      responseMsg.textContent = "✅ Registration submitted!";
+// ⏱️ Automatically hide the message after 2 seconds (2000ms)
+setTimeout(() => {
+  responseMsg.textContent = "";
+}, 2000);
         form.reset();
       })
       .catch(err => {
