@@ -47,6 +47,11 @@
       font-weight: normal;
     }
 
+.opt-in-label {
+  font-size: 0.85rem; /* Or try 0.8rem for smaller */
+  line-height: 1.4;
+}
+
     input[type="text"],
     input[type="tel"] {
       width: 100%;
@@ -131,10 +136,10 @@
       <input type="text" id="lastName" name="lastName">
       <span class="error-message" id="lastNameError"></span>
 
-  <div style="margin-top: 1rem;">
-  <input type="checkbox" id="optIn" name="optIn" style="vertical-align: top;" />
-  <label for="optIn" style="display: inline-block; max-width: 90%;">
-    I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. 
+  <div class="checkbox-label">
+  <input type="checkbox" id="optIn" name="optIn">
+  <label for="optIn" class="opt-in-label">
+    I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
     <span style="color: gray; font-style: italic;">(optional)</span>
   </label>
 </div>
