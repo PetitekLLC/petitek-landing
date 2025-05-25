@@ -1,119 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ChatrBox 90-Day Warranty</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Your Chatrbox</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #25A8C6;
+      color: #000;
+      margin: 0;
     }
-    h1, h2 {
-      color: #004aad;
+
+    .container {
+      max-width: 60rem;
+      margin: 2rem auto;
+      padding: 2rem 1.5rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     }
-    h1 {
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    a {
-      color: #004aad;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      margin-top: 0;
-    }
-    .footer-nav {
-      margin-top: 40px;
-      text-align: center;
-    }
-    .footer-nav a {
-      margin: 0 10px;
-      font-size: 14px;
-    }
-    .footer-copy {
-      text-align: center;
-      font-size: 10px;
-      color: #888;
-      margin-top: 20px;
-    }
-    .logo {
+
+    .hero {
       width: 100%;
-      text-align: left;
-      margin-bottom: 20px;
-    }
-    .logo img {
-      width: 50px;
       height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    h1 {
+      text-align: center;
+      color: #25A8C6;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: normal;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.375rem;
+      box-sizing: border-box;
+    }
+
+    .checkbox-label {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1.5rem;
+      background: #25A8C6;
+      color: #fff;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background: #1c8baa;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    #responseMsg {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image" />
+    <h1>Register Your Chatrbox</h1>
 
- <div class="logo">
-  <a href="https://petitek.com" style="font-size: 18px; font-weight: bold; color: #3399CC; text-decoration: none;">
-    <strong>Petitek Home</strong>
-  </a>
-</div>
+    <form id="chatrboxForm">
+      <label for="serial">Serial Number:</label>
+      <input type="text" id="serial" name="serial">
+      <span class="error-message" id="serialError"></span>
 
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone">
+      <span class="error-message" id="phoneError"></span>
 
-  <h1>Warranty Information</h1>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName">
+      <span class="error-message" id="firstNameError"></span>
 
-  <p>Thank you for choosing <strong>ChatrBox</strong>! We stand behind the quality of our products and offer a 90-day limited warranty from the date of purchase.</p>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName">
+      <span class="error-message" id="lastNameError"></span>
 
-  <h2>What's Covered</h2>
-  <p>This warranty covers any manufacturing defects or malfunctions under normal use during the warranty period. If a defect arises during the warranty period, we will repair or replace the product at no additional cost.</p>
+      <label class="checkbox-label">
+        <input type="checkbox" id="optIn" name="optIn">
+        I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers. Consent is not required for purchase. Message & data rates may apply. Reply STOP to opt out.
+      </label>
 
-  <h2>What's Not Covered</h2>
-  <ul>
-    <li>Damage caused by misuse, abuse, or accident</li>
-    <li>Normal wear and tear</li>
-    <li>Modifications or unauthorized repairs</li>
-    <li>Damage due to water, impact, or extreme conditions</li>
-  </ul>
-
-  <h2>How to Make a Warranty Claim</h2>
-  <p>To initiate a warranty claim, please contact us at <a href="mailto:support@petitek.com">support@petitek.com</a> with the following:</p>
-  <ul>
-    <li>Proof of purchase</li>
-    <li>Product serial number</li>
-    <li>Brief description of the issue</li>
-  </ul>
-
-  <p>Once verified, we will provide instructions for repair or replacement.</p>
-
-  <h2>Need Help?</h2>
-  <p>If you have any questions, don’t hesitate to contact our support team at <a href="mailto:support@petitek.com">support@petitek.com</a>.</p>
-
-Didn’t scan your ChatrBox QR code?<br>
-<a 
-  href="https://petitek.com/register"
->
-  Tap here to register manually
-</a>
-
-</p>
-
-<div class="footer-nav" style="text-align: center; margin-bottom: 10px;">
-  <a href="/tos" style="margin: 0 15px;">Terms of Service</a>
-  <a href="/eula" style="margin: 0 15px;">EULA</a>
-  <a href="/privacy" style="margin: 0 15px;">Privacy</a>
-</div>
-
-
-  <div class="footer-copy">
-    &copy; Petitek, LLC. All rights reserved.
+      <button type="submit">Register</button>
+      <p id="responseMsg"></p>
+    </form>
   </div>
 
+  <script>
+    document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Reset previous errors
+      document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
+      let valid = true;
+
+      function showError(fieldId, message) {
+        document.getElementById(fieldId + "Error").textContent = message;
+        valid = false;
+      }
+
+      const serial = document.getElementById("serial").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+
+      if (!serial) showError("serial", "Serial number is required.");
+      if (!phone) showError("phone", "Phone number is required.");
+      if (!firstName) showError("firstName", "First name is required.");
+      if (!lastName) showError("lastName", "Last name is required.");
+
+      if (!valid) return;
+
+      const formData = new FormData(document.getElementById("chatrboxForm"));
+
+      fetch("https://script.google.com/macros/s/AKfycbzLegShPfplOuAPNN7d5OZqaOwGs4vU0DQZhxfvHuxGT0SlAn6i2PhyXYRXPN--OF7mCg/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("responseMsg").textContent = "✅ Registration submitted!";
+        document.getElementById("chatrboxForm").reset();
+      })
+      .catch(err => {
+        document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
+        console.error("Error:", err);
+      });
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const serialFromQR = urlParams.get("serial");
+    if (serialFromQR) {
+      document.getElementById("serial").value = serialFromQR;
+    }
+  </script>
 </body>
 </html>
+
 
