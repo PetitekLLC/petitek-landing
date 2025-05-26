@@ -127,97 +127,87 @@
       <h1>Register Your ChatrBox</h1>
     </div>
     <div class="form-card">
-      <form id="chatrboxForm">
-        <label for="serial">Serial Number:</label>
-        <input type="text" id="serial" name="serial" required />
+  <form id="chatrboxForm">
+  <label for="serial">Serial Number:</label>
+  <input type="text" id="serial" name="serial" required />
 
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required />
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" name="phone" required />
 
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required />
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" name="firstName" required />
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required />
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" name="lastName" required />
 
-        <div class="checkbox-wrapper">
-          <label class="checkbox-label">
-            <input type="checkbox" id="optIn" name="optIn" value="agreed" />
-            <span>
-              I agree to receive automated text messages from Petitek.
-              <span style="color: gray; font-style: italic;">(optional)</span>
-            </span>
-          </label>
-        </div>
-
-        <button type="submit">Register</button>
-        <p id="responseMsg"></p>
-      </form>
-    </div>
+  <!-- Optional Opt-In -->
+  <div class="checkbox-wrapper">
+    <label class="checkbox-label">
+      <input type="checkbox" id="optIn" name="optIn" value="agreed" />
+      <span>
+        I agree to receive automated text messages from Petitek.
+        <span style="color: gray; font-style: italic;">(optional)</span>
+      </span>
+    </label>
   </div>
-  <div class="footer-wrapper">
-    <footer class="site-footer">
-      <p>
-        <a href="https://petitek.com">Home</a> |
-        <a href="https://petitek.com/support">Support</a> |
-        <a href="https://petitek.com/learn">Learn</a>
-      </p>
-      <p class="copyright">
-        © 2025 Petitek LLC. All rights reserved.
-      </p>
-    </footer>
-  </div>
-  <script>
-    document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbzOsYFFC2C8HVhX0w7nUAFXhIsWj08B_pMBsaWxTHAHgrbk35BMLrezd7sUeJyxctwB/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(res => res.text())
-      .then(data => {
-        const msg = document.getElementById("responseMsg");
-        msg.textContent = data;
-        msg.style.opacity = 1;
-        setTimeout(() => {
-          msg.style.opacity = 0;
-          msg.textContent = "";
-        }, 2000);
-        form.reset();
-      })
-      .catch(err => {
-        const msg = document.getElementById("responseMsg");
-        msg.textContent = "❌ Submission failed.";
-        console.error("Fetch error:", err);
-      });
+  <!-- 🔐 Hidden secret field -->
+  <input type="hidden" name="formSecret" value="chatrbox-partner-2121" />
+
+  <button type="submit">Register</button>
+  <p id="responseMsg"></p>
+</form>
+
+<script>
+  document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("https://script.google.com/macros/s/YOUR_EXEC_URL/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+      const msg = document.getElementById("responseMsg");
+      msg.textContent = data;
+      msg.style.opacity = 1;
+      setTimeout(() => {
+        msg.style.opacity = 0;
+        msg.textContent = "";
+      }, 2000);
+      form.reset();
+    })
+    .catch(err => {
+      const msg = document.getElementById("responseMsg");
+      msg.textContent = "❌ Submission failed.";
+      console.error("Fetch error:", err);
     });
+  });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const serialFromQR = urlParams.get("serial");
-    if (serialFromQR) {
-      document.getElementById("serial").value = serialFromQR;
+  const urlParams = new URLSearchParams(window.location.search);
+  const serialFromQR = urlParams.get("serial");
+  if (serialFromQR) {
+    document.getElementById("serial").value = serialFromQR;
+  }
+
+  document.getElementById("phone").addEventListener("input", function (e) {
+    const input = e.target;
+    let value = input.value.replace(/\D/g, "");
+    if (value.length > 10) value = value.slice(0, 10);
+    const area = value.slice(0, 3);
+    const mid = value.slice(3, 6);
+    const end = value.slice(6, 10);
+    if (value.length > 6) {
+      input.value = `(${area}) ${mid}-${end}`;
+    } else if (value.length > 3) {
+      input.value = `(${area}) ${mid}`;
+    } else if (value.length > 0) {
+      input.value = `(${area}`;
     }
-
-    document.getElementById("phone").addEventListener("input", function (e) {
-      const input = e.target;
-      let value = input.value.replace(/\D/g, "");
-      if (value.length > 10) value = value.slice(0, 10);
-      const area = value.slice(0, 3);
-      const mid = value.slice(3, 6);
-      const end = value.slice(6, 10);
-
-      if (value.length > 6) {
-        input.value = `(${area}) ${mid}-${end}`;
-      } else if (value.length > 3) {
-        input.value = `(${area}) ${mid}`;
-      } else if (value.length > 0) {
-        input.value = `(${area}`;
-      }
-    });
-  </script>
+  });
+</script> 
 </body>
 </html>
 
