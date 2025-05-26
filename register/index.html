@@ -253,10 +253,11 @@
     responseMsg.classList.add("warning-msg");
   }
 
-  setTimeout(() => {
-    responseMsg.textContent = "";
-    responseMsg.classList.remove("success-msg", "warning-msg");
-  }, 2000);
+ setTimeout(() => {
+  responseMsg.textContent = "";
+  responseMsg.classList.remove("success-msg");
+  responseMsg.classList.remove("warning-msg");
+}, 2000);
 
   form.reset();
 })
