@@ -238,33 +238,30 @@
       e.preventDefault();
       const form = e.target;
       const formData = new FormData(form);
-
-  fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
+fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
   method: "POST",
   body: formData
 })
   .then(res => {
-    if (!res.ok) {
-      throw new Error("Network response was not ok");
-    }
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return res.text();
   })
   .then(data => {
     const responseMsg = document.getElementById("responseMsg");
 
-    // You can check the actual content if needed:
-    if (data.includes("✅")) {
+    // 🧠 Double-check backend response content
+    if (data.includes("✅ Registration successful")) {
       responseMsg.textContent = "✅ Your ChatrBox is registered!";
       responseMsg.classList.add("success-msg");
     } else {
-      responseMsg.textContent = "⚠️ Unexpected response from server.";
+      responseMsg.textContent = "⚠️ Registration processed, but response was unexpected.";
       responseMsg.classList.add("warning-msg");
     }
 
     setTimeout(() => {
       responseMsg.textContent = "";
       responseMsg.classList.remove("success-msg", "warning-msg");
-    }, 2000);
+    }, 3000);
 
     form.reset();
   })
@@ -274,6 +271,7 @@
     responseMsg.classList.add("error-msg");
     console.error("Error:", err);
   });
+
 
     });
 
