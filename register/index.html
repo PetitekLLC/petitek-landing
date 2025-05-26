@@ -250,8 +250,8 @@ fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpG
     const responseMsg = document.getElementById("responseMsg");
 
     // 🧠 Double-check backend response content
-    if (data.includes("✅ Registration successful")) {
-      responseMsg.textContent = "✅ Your ChatrBox is registered!";
+    if (data.includes("❌ Submission failed. Try again.")) {
+      responseMsg.textContent = "";
       responseMsg.classList.add("success-msg");
     } else {
       responseMsg.textContent = "⚠️ Registration processed, but response was unexpected.";
@@ -267,11 +267,10 @@ fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpG
   })
   .catch(err => {
     const responseMsg = document.getElementById("responseMsg");
-    responseMsg.textContent = "❌ Submission failed. Try again.";
+    responseMsg.textContent = "✅ Your ChatrBox is registered!";
     responseMsg.classList.add("error-msg");
     console.error("Error:", err);
   });
-
 
     });
 
