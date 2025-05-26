@@ -239,27 +239,42 @@
       const form = e.target;
       const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
-        method: "POST",
-        body: formData
-      })
-        .then(res => res.text())
-        .then(data => {
-          const responseMsg = document.getElementById("responseMsg");
-          responseMsg.textContent = "✅ Your ChatrBox is registered!";
-          responseMsg.classList.add("success-msg");
+  fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
+  method: "POST",
+  body: formData
+})
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return res.text();
+  })
+  .then(data => {
+    const responseMsg = document.getElementById("responseMsg");
 
-          setTimeout(() => {
-            responseMsg.textContent = "";
-            responseMsg.classList.remove("success-msg");
-          }, 3000);
+    // You can check the actual content if needed:
+    if (data.includes("✅")) {
+      responseMsg.textContent = "✅ Your ChatrBox is registered!";
+      responseMsg.classList.add("success-msg");
+    } else {
+      responseMsg.textContent = "⚠️ Unexpected response from server.";
+      responseMsg.classList.add("warning-msg");
+    }
 
-          form.reset();
-        })
-        .catch(err => {
-          document.getElementById("responseMsg").textContent = "❌ Submission failed. Try again.";
-          console.error("Error:", err);
-        });
+    setTimeout(() => {
+      responseMsg.textContent = "";
+      responseMsg.classList.remove("success-msg", "warning-msg");
+    }, 2000);
+
+    form.reset();
+  })
+  .catch(err => {
+    const responseMsg = document.getElementById("responseMsg");
+    responseMsg.textContent = "❌ Submission failed. Try again.";
+    responseMsg.classList.add("error-msg");
+    console.error("Error:", err);
+  });
+
     });
 
     // Pre-fill serial from URL query param
