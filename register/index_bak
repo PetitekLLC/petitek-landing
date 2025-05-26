@@ -1,35 +1,3 @@
-Skip to content
-Navigation Menu
-PetitekLLC
-petitek-landing
-
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-petitek-landing/register
-/index.html
-Go to file
-t
-PetitekLLC
-PetitekLLC
-Update index.html
-febf547
- · 
-8 minutes ago
-petitek-landing/register
-/index.html
-
-Code
-
-Blame
-295 lines (248 loc) · 6.79 KB
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -234,7 +202,7 @@ Blame
 
         <div class="checkbox-wrapper">
           <label class="checkbox-label">
-            <input type="checkbox" id="optIn" name="optIn" />
+      <input type="checkbox" id="optIn" name="optIn" value="agreed" />
             <span>
               I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
               <span style="color: gray; font-style: italic;">(optional)</span>
@@ -264,9 +232,6 @@ Blame
   </footer>
 </div>
 
-  
-
-
   <!-- JS -->
   <script>
     document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
@@ -274,7 +239,7 @@ Blame
       const form = e.target;
       const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbyLftk1V_ysSVWo20n4trYQFFBTMISHkIRnm36gbktyox9cUes1IYH-fvPvLvQH9fzk/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
         method: "POST",
         body: formData
       })
@@ -325,4 +290,3 @@ Blame
   </script>
 </body>
 </html>
-petitek-landing/register/index.html at main · PetitekLLC/petitek-landing
