@@ -238,24 +238,30 @@
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
           return res.text();
         })
-        .then(data => {
-          const responseMsg = document.getElementById("responseMsg");
+      .then(data => {
+  const responseMsg = document.getElementById("responseMsg");
 
-          if (data.trim().startsWith("✅")) {
-            responseMsg.textContent = "✅ Your ChatrBox is registered!";
-            responseMsg.classList.add("success-msg");
-          } else {
-            responseMsg.textContent = "⚠️ Registration processed, but response was unexpected.";
-            responseMsg.classList.add("warning-msg");
-          }
+  // ✅ Simple success check without needing to switch to JSON
+  if (data.includes("Registration successful") || data.includes("Registered, but SMS")) {
+    responseMsg.textContent = "✅ Your ChatrBox is registered!";
+    responseMsg.classList.add("success-msg");
+  } else if (data.includes("Duplicate")) {
+    responseMsg.textContent = "⚠️ This ChatrBox is already registered.";
+    responseMsg.classList.add("warning-msg");
+  } else {
+    responseMsg.textContent = "⚠️ Something unexpected happened.";
+    responseMsg.classList.add("warning-msg");
+  }
 
-          setTimeout(() => {
-            responseMsg.textContent = "";
-            responseMsg.classList.remove("success-msg", "warning-msg");
-          }, 3000);
+  setTimeout(() => {
+    responseMsg.textContent = "";
+    responseMsg.classList.remove("success-msg", "warning-msg");
+  }, 2000);
 
-          form.reset();
-        })
+  form.reset();
+})
+
+        
         .catch(err => {
           const responseMsg = document.getElementById("responseMsg");
           responseMsg.textContent = "❌ Submission failed. Try again.";
