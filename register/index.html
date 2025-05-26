@@ -105,7 +105,7 @@
     .form-card button {
       width: 100%;
       margin-top: 1.5rem;
-      background:;#25A8C6
+      background: #25A8C6;
       color: #fff;
       border: none;
       padding: 0.75rem 1.25rem;
@@ -119,11 +119,11 @@
       background: #1c8baa;
     }
 
-   .form-card button:active {
-  background-color: #0a3d4a;
-  transform: scale(0.98);
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-} 
+    .form-card button:active {
+      background-color: #0a3d4a;
+      transform: scale(0.98);
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    }
 
     #responseMsg,
     .success-msg {
@@ -146,46 +146,41 @@
         padding: 1rem;
       }
     }
-    
-.site-footer {
-  max-width: 60rem;
-  margin: 0 auto;
-  color: white;
-  text-align: center;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
 
-.site-footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 0.5rem;
-}
+    .site-footer {
+      max-width: 60rem;
+      margin: 0 auto;
+      color: white;
+      text-align: center;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
 
-.site-footer a:hover {
-  text-decoration: underline;
-}
+    .site-footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
 
-.site-footer .copyright {
-  margin-top: 1rem;
-  font-size: 0.75rem;
-  color: black;
-}
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
 
+    .site-footer .copyright {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: black;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- Hero Image inside the white box -->
     <img class="hero" src="/images/hero.webp" alt="Chatrbox Hero Image" />
-
-    <!-- Title -->
     <div class="title-box">
       <h1>Register Your Chatrbox</h1>
     </div>
 
-    <!-- Registration Form -->
     <div class="form-card">
       <form id="chatrboxForm">
         <label for="serial">Serial Number:</label>
@@ -202,7 +197,7 @@
 
         <div class="checkbox-wrapper">
           <label class="checkbox-label">
-      <input type="checkbox" id="optIn" name="optIn" value="agreed" />
+            <input type="checkbox" id="optIn" name="optIn" value="agreed" />
             <span>
               I agree to receive automated text messages from Petitek, including product updates, tips, and exclusive offers.
               <span style="color: gray; font-style: italic;">(optional)</span>
@@ -216,77 +211,82 @@
     </div>
   </div>
 
-<!-- Footer -->
-<div class="footer-wrapper">
-  <footer class="site-footer">
-    <p>
-      <a href="https://petitek.com">Home</a> |
-      <a href="https://petitek.com/support">Support</a> |
-      <a href="https://petitek.com/learn">Learn</a>
-    </p>
+  <div class="footer-wrapper">
+    <footer class="site-footer">
+      <p>
+        <a href="https://petitek.com">Home</a> |
+        <a href="https://petitek.com/support">Support</a> |
+        <a href="https://petitek.com/learn">Learn</a>
+      </p>
+      <p class="copyright">
+        © 2025 Petitek LLC. All rights reserved.
+      </p>
+    </footer>
+  </div>
 
-    
-    <p class="copyright">
-      © 2025 Petitek LLC. All rights reserved.
-    </p>
-  </footer>
-</div>
-
-  <!-- JS -->
   <script>
     document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const form = e.target;
       const formData = new FormData(form);
+
       fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
         method: "POST",
         body: formData
       })
-        .then(res => res.text())
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          return res.text();
+        })
         .then(data => {
           const responseMsg = document.getElementById("responseMsg");
-          responseMsg.textContent = "❌ Submission failed. Try again.";
-          responseMsg.classList.add("error-msg");
 
-        })
-        .catch(err => {
-          document.getElementById("responseMsg").textContent = "✅ Your ChatrBox is registered!";
-          console.error("Error:", err);
-        });
+          if (data.trim().startsWith("✅")) {
+            responseMsg.textContent = "✅ Your ChatrBox is registered!";
+            responseMsg.classList.add("success-msg");
+          } else {
+            responseMsg.textContent = "⚠️ Registration processed, but response was unexpected.";
+            responseMsg.classList.add("warning-msg");
+          }
 
- setTimeout(() => {
+          setTimeout(() => {
             responseMsg.textContent = "";
-            responseMsg.classList.remove("success-msg");
+            responseMsg.classList.remove("success-msg", "warning-msg");
           }, 3000);
 
           form.reset();
+        })
+        .catch(err => {
+          const responseMsg = document.getElementById("responseMsg");
+          responseMsg.textContent = "❌ Submission failed. Try again.";
+          responseMsg.classList.add("error-msg");
+          console.error("Error:", err);
+        });
     });
 
-    // Pre-fill serial from URL query param
     const urlParams = new URLSearchParams(window.location.search);
     const serialFromQR = urlParams.get("serial");
     if (serialFromQR) {
       document.getElementById("serial").value = serialFromQR;
     }
+
     document.getElementById("phone").addEventListener("input", function (e) {
-  const input = e.target;
-  let value = input.value.replace(/\D/g, ""); // Remove all non-digits
+      const input = e.target;
+      let value = input.value.replace(/\D/g, "");
+      if (value.length > 10) value = value.slice(0, 10);
+      const area = value.slice(0, 3);
+      const mid = value.slice(3, 6);
+      const end = value.slice(6, 10);
 
-  if (value.length > 10) value = value.slice(0, 10); // Limit to 10 digits
-
-  const area = value.slice(0, 3);
-  const mid = value.slice(3, 6);
-  const end = value.slice(6, 10);
-
-  if (value.length > 6) {
-    input.value = `(${area}) ${mid}-${end}`;
-  } else if (value.length > 3) {
-    input.value = `(${area}) ${mid}`;
-  } else if (value.length > 0) {
-    input.value = `(${area}`;
-  }
-});
-
+      if (value.length > 6) {
+        input.value = `(${area}) ${mid}-${end}`;
+      } else if (value.length > 3) {
+        input.value = `(${area}) ${mid}`;
+      } else if (value.length > 0) {
+        input.value = `(${area}`;
+      }
+    });
   </script>
 </body>
 </html>
+
