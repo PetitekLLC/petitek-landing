@@ -279,14 +279,9 @@
   const end = value.slice(6, 10);
 
   if (value.length > 6) {
-    input.value = `(${area}) ${mid}-${end}`;
+    input.value = (${area}) ${mid}-${end};
   } else if (value.length > 3) {
-    input.value = `(${area}) ${mid}`;
+    input.value = (${area}) ${mid};
   } else if (value.length > 0) {
-    input.value = `(${area}`;
+    input.value = (${area};
   }
-});
-
-  </script>
-</body>
-</html>
