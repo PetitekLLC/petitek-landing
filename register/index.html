@@ -238,40 +238,28 @@
       e.preventDefault();
       const form = e.target;
       const formData = new FormData(form);
-fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
-  method: "POST",
-  body: formData
-})
-  .then(res => {
-    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-    return res.text();
-  })
-  .then(data => {
-    const responseMsg = document.getElementById("responseMsg");
+      fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpGbNS5Evh-aTcXBenIu4pB8hJdRP7CeiXHjLzg/exec", {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.text())
+        .then(data => {
+          const responseMsg = document.getElementById("responseMsg");
+          responseMsg.textContent = "❌ Submission failed. Try again.";
+          responseMsg.classList.add("error-msg");
 
-    // 🧠 Double-check backend response content
-    if (data.includes("")) {
-      responseMsg.textContent = "";
-      responseMsg.classList.add("success-msg");
-    } else {
-      responseMsg.textContent = "⚠️ Registration processed, but response was unexpected.";
-      responseMsg.classList.add("warning-msg");
-    }
+        })
+        .catch(err => {
+          document.getElementById("responseMsg").textContent = "✅ Your ChatrBox is registered!";
+          console.error("Error:", err);
+        });
 
-    setTimeout(() => {
-      responseMsg.textContent = "✅ Your ChatrBox is registered!";
-      responseMsg.classList.remove("success-msg", "warning-msg");
-    }, 3000);
+ setTimeout(() => {
+            responseMsg.textContent = "";
+            responseMsg.classList.remove("success-msg");
+          }, 3000);
 
-    form.reset();
-  })
-  .catch(err => {
-    const responseMsg = document.getElementById("responseMsg");
-    responseMsg.textContent = "❌ Submission failed. Try again.";
-    responseMsg.classList.add("error-msg");
-    console.error("Error:", err);
-  });
-
+          form.reset();
     });
 
     // Pre-fill serial from URL query param
@@ -299,3 +287,6 @@ fetch("https://script.google.com/macros/s/AKfycbz7-TlBqUWHv2Bekxhb1MugAA06rgZwpG
   }
 });
 
+  </script>
+</body>
+</html>
