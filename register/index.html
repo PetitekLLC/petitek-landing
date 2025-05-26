@@ -278,10 +278,10 @@
   const mid = value.slice(3, 6);
   const end = value.slice(6, 10);
 
-  if (value.length > 6) {
-    input.value = (${area}) ${mid}-${end};
-  } else if (value.length > 3) {
-    input.value = (${area}) ${mid};
-  } else if (value.length > 0) {
-    input.value = (${area};
-  }
+if (value.length > 6) {
+  input.value = `(${area}) ${mid}-${end}`;
+} else if (value.length > 3) {
+  input.value = `(${area}) ${mid}`;
+} else if (value.length > 0) {
+  input.value = `(${area}`;
+}
