@@ -138,7 +138,7 @@ body, html {
   z-index: 3000;
   width: 160px;
   display: none;
-}
+}=
 
 .dropdown-menu a {
   display: block;
@@ -1059,36 +1059,36 @@ body, html {
   <h2>How ChatrBox Escalates to Get Your Pet’s Attention</h2>
   <p class="escalation-subtext">If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response. Tap each step to experience how it works:</p>
 
-  <div class="escalation-steps">
-    <div class="step-card">
-      <div class="step-number">1</div>
-      <h3>Standard Prompt</h3>
-      <p>Soft voice command + gentle yellow light</p>
-      <button onclick="playStandardAlert()">🔊 Hear Step 1</button>
-    </div>
+<div class="step-card">
+  <div class="step-number">1</div>
+  <h3>Standard Prompt</h3>
+  <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
+  <button onclick="playAlert(1)">🔊 Hear Step 1</button>
+</div>
 
-    <div class="step-card">
-      <div class="step-number">2</div>
-      <h3>Escalated Prompt</h3>
-      <p>Firm voice command + flashing yellow/blue</p>
-      <button onclick="playEscalatedAlert()">🔊 Hear Step 2</button>
-    </div>
+<div class="step-card">
+  <div class="step-number">2</div>
+  <h3>Escalated Prompt</h3>
+  <p>Alert + Command + Flashing LEDs</p>
+  <button onclick="playAlert(2)">🔊 Hear Step 2</button>
+</div>
 
-    <div class="step-card">
-      <div class="step-number">3</div>
-      <h3>Maximum Attention</h3>
-      <p>Assertive command + rapid strobe LEDs</p>
-      <button onclick="playEscalatedAlert()">🔊 Hear Step 3</button>
-    </div>
-  </div>
+<div class="step-card">
+  <div class="step-number">3</div>
+  <h3>Maximum Attention</h3>
+  <p>Urgent Alerts + Commands + Strobing LEDs</p>
+  <button onclick="playAlert(3)">🔊 Hear Step 3</button>
+</div>
 
   <div class="led-display">
     <div id="led-yellow" class="led led-yellow"></div>
     <div id="led-blue" class="led led-blue"></div>
   </div>
+   
+<audio id="triggerAudio1" src="audio/step1.mp3"></audio>  <!-- Gentle Alert -->
+<audio id="triggerAudio2" src="audio/step2.mp3"></audio>  <!-- Escalated Alert -->
+<audio id="triggerAudio3" src="audio/step3.mp3"></audio>  <!-- Max Attention -->
 
-  <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
-  <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
 </section>
 
 
@@ -1555,25 +1555,31 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 
-function playStandardAlert() {
-  const audio = document.getElementById('triggerAudio1');
+function playAlert(step) {
+  const yellow = document.getElementById('led-yellow');
+  const blue = document.getElementById('led-blue');
+  
+  const audio = document.getElementById(`triggerAudio${step}`);
   if (audio) {
+    audio.volume = 1.0;
     audio.currentTime = 0;
-    audio.play().catch(err => {
-      console.error("Audio play error (Standard):", err);
-    });
+    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+    
+    // Flash LED logic (optional)
+    let count = 0;
+    const flash = setInterval(() => {
+      yellow.style.opacity = count % 2 === 0 ? 1 : 0.3;
+      blue.style.opacity = count % 2 === 1 ? 1 : 0.3;
+      count++;
+      if (count > 6) {
+        clearInterval(flash);
+        yellow.style.opacity = 0.3;
+        blue.style.opacity = 0.3;
+      }
+    }, 250);
   }
 }
 
-function playEscalatedAlert() {
-  const audio = document.getElementById('triggerAudio2');
-  if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(err => {
-      console.error("Audio play error (Escalated):", err);
-    });
-  }
-}
 
 </script>
 
