@@ -1472,8 +1472,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   videos.forEach(initVideo);
 });
+
+function playStandardAlert() {
+  const audio = document.getElementById('triggerAudio1');
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+      console.error("Audio play error (Standard):", err);
+    });
+  }
+}
+
+function playEscalatedAlert() {
+  const audio = document.getElementById('triggerAudio2');
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+      console.error("Audio play error (Escalated):", err);
+    });
+  }
+}
+
 </script>
 
 </body>
 
 </html>
+
