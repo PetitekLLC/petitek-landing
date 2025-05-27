@@ -728,7 +728,125 @@ body, html {
     text-align: center;
   }
 }
- 
+
+.escalation-section {
+  max-width: 960px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.escalation-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.escalation-subtext {
+  color: #444;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.escalation-steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.step-card {
+  flex: 1 1 260px;
+  background: #f5faff;
+  border: 1px solid #cceaf5;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  background-color: #25A8C6;
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:
+
+
+.step-card {
+  flex: 1 1 260px;
+  background: #f5faff;
+  border: 1px solid #cceaf5;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  background-color: #25A8C6;
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.step-card h3 {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.step-card button {
+  background-color: #25A8C6;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.step-card button:hover {
+  background-color: #1d8dad;
+}
+
+.led-display {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.led {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+.led-yellow {
+  background-color: yellow;
+}
+.led-blue {
+  background-color: blue;
+}
+  
+  
 </style>
 </head>
 <body>
@@ -937,78 +1055,42 @@ body, html {
   Proven alert tones and flashing blue-yellow lights <em>(colors dogs and cats can see)</em> instantly grab their attention — stopping them in their tracks before bad behavior even starts, and locking their focus onto your voice command when it matters most.
 </div>
 
- 
-<!-- 🔁 Trigger Sequence Responsive Section -->
-<div class="fade-in" style="padding: 0 10px;">
-  <div style="background-color: #f5f5f5; padding: 30px 20px; border-radius: 0; margin: 20px auto; max-width: 800px;">
+ <section class="escalation-section fade-in">
+  <h2>How ChatrBox Escalates to Get Your Pet’s Attention</h2>
+  <p class="escalation-subtext">If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response. Tap each step to experience how it works:</p>
 
-    <!-- Header -->
-    <div class="text-block title-block" style="margin-top: 0;">
-      Alerts Escalate When Necessary to Ensure Pet Obedience
+  <div class="escalation-steps">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Standard Prompt</h3>
+      <p>Soft voice command + gentle yellow light</p>
+      <button onclick="playStandardAlert()">🔊 Hear Step 1</button>
     </div>
 
-    <!-- Step 1 -->
-    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
-      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-        1
-      </div>
-      <div style="font-size: 15px; line-height: 1.5;">
-        Your Voice Command + Flashing LEDs
-      </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Escalated Prompt</h3>
+      <p>Firm voice command + flashing yellow/blue</p>
+      <button onclick="playEscalatedAlert()">🔊 Hear Step 2</button>
     </div>
 
-    <!-- Step 2 -->
-    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
-      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-        2
-      </div>
-      <div style="font-size: 15px; line-height: 1.5;">
-        Alert – Your Voice Command + Flashing LEDs
-      </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <h3>Maximum Attention</h3>
+      <p>Assertive command + rapid strobe LEDs</p>
+      <button onclick="playEscalatedAlert()">🔊 Hear Step 3</button>
     </div>
-
-    <!-- Step 3 -->
-    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 30px;">
-      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-        3
-      </div>
-      <div style="font-size: 15px; line-height: 1.5;">
-        Escalated Alert + Your Voice Command + Flashing LEDs
-      </div>
-    </div>
-
-    <!-- 🔊 Play Standard Alert Button -->
-    <div style="text-align: center; margin-bottom: 12px;">
-      <button onclick="playStandardAlert()"
-        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
-        🔊 Play Standard Alert
-      </button>
-      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
-        Sample playback volume may vary. Actual volume is controlled by the device.
-      </div>
-      <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
-    </div>
-
-    <!-- 🔊 Play Escalated Alert Button -->
-    <div style="text-align: center; margin-bottom: 30px;">
-      <button onclick="playEscalatedAlert()"
-        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
-        🔊 Play Escalated Alert
-      </button>
-      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
-        Sample playback volume may vary. Actual volume is controlled by the device.
-      </div>
-      <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
-    </div>
-
-    <!-- 💡 LED Flash Icons -->
-    <div id="led-flash" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-      <div id="led-yellow" style="width: 30px; height: 30px; border-radius: 50%; background-color: yellow; opacity: 0.3;"></div>
-      <div id="led-blue" style="width: 30px; height: 30px; border-radius: 50%; background-color: blue; opacity: 0.3;"></div>
-    </div>
-
   </div>
-</div>
+
+  <div class="led-display">
+    <div id="led-yellow" class="led led-yellow"></div>
+    <div id="led-blue" class="led led-blue"></div>
+  </div>
+
+  <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
+  <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
+</section>
+
 
   <div class="text-block title-block fade-in">
     Even The Most <em>Stubborn</em> Pets "Get It"
