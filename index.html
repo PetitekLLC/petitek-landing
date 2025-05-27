@@ -729,7 +729,7 @@ body, html {
   }
 }
 
-.escalation-section {
+.ation-section {
   max-width: 960px;
   margin: 3rem auto;
   padding: 2rem;
@@ -739,18 +739,18 @@ body, html {
   text-align: center;
 }
 
-.escalation-section h2 {
+.ation-section h2 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
 
-.escalation-subtext {
+.ation-subtext {
   color: #444;
   margin-bottom: 2rem;
   font-size: 1rem;
 }
 
-.escalation-steps {
+.ation-steps {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -1059,25 +1059,27 @@ body, html {
   <h2>How ChatrBox Escalates to Get Your Pet’s Attention</h2>
   <p class="escalation-subtext">If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response. Tap each step to experience how it works:</p>
 
-<div class="step-card">
-  <div class="step-number">1</div>
-  <h3>Standard Prompt</h3>
-  <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
-  <button onclick="playAlert(1)">🔊 Hear Step 1</button>
-</div>
+<div class="escalation-steps">
+  <div class="step-card" onclick="playAlert(1)">
+    <div class="step-number">1</div>
+    <h3>Standard Prompt</h3>
+    <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
+    <div class="tap-to-hear">🔊 Tap to Hear Step 1</div>
+  </div>
 
-<div class="step-card">
-  <div class="step-number">2</div>
-  <h3>Escalated Prompt</h3>
-  <p>Alert + Command + Flashing LEDs</p>
-  <button onclick="playAlert(2)">🔊 Hear Step 2</button>
-</div>
+  <div class="step-card" onclick="playAlert(2)">
+    <div class="step-number">2</div>
+    <h3>Escalated Prompt</h3>
+    <p>Alert + Command + Flashing LEDs</p>
+    <div class="tap-to-hear">🔊 Tap to Hear Step 2</div>
+  </div>
 
-<div class="step-card">
-  <div class="step-number">3</div>
-  <h3>Maximum Attention</h3>
-  <p>Urgent Alerts + Commands + Strobing LEDs</p>
-  <button onclick="playAlert(3)">🔊 Hear Step 3</button>
+  <div class="step-card" onclick="playAlert(3)">
+    <div class="step-number">3</div>
+    <h3>Maximum Attention</h3>
+    <p>Urgent Alerts + Commands + Strobing LEDs</p>
+    <div class="tap-to-hear">🔊 Tap to Hear Step 3</div>
+  </div>
 </div>
 
   <div class="led-display">
