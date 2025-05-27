@@ -83,6 +83,44 @@ body, html {
   transition: opacity 0.8s ease;
 }
 
+  .carousel-3d {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 380px;
+  height: 320px;
+  margin: 0 auto 60px auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 1s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel-inner img {
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+/* Position images around the Y-axis */
+.carousel-inner img:nth-child(1) { transform: rotateY(0deg) translateZ(500px); }
+.carousel-inner img:nth-child(2) { transform: rotateY(90deg) translateZ(500px); }
+.carousel-inner img:nth-child(3) { transform: rotateY(180deg) translateZ(500px); }
+.carousel-inner img:nth-child(4) { transform: rotateY(270deg) translateZ(500px); }
+
 .rotating-carousel img.active {
   opacity: 1;
   z-index: 1;
@@ -122,6 +160,7 @@ body, html {
   display: block;
 }
 
+  
 .dropdown-menu {
   position: fixed;
   top: 60px;
@@ -761,12 +800,15 @@ body, html {
   loading="lazy"
 />
   
+
 <div class="asset-wrapper">
-  <div class="rotating-carousel" id="rotatingCarousel">
-    <img src="images/front_square.webp" alt="Front View" />
-    <img src="images/right_square.webp" alt="Right View" />
-    <img src="images/back_square.webp" alt="Back View" />
-    <img src="images/left_square.webp" alt="Left View" />
+  <div class="carousel-3d" id="carousel3D">
+    <div class="carousel-inner">
+      <img src="images/front_square.webp" alt="Front View" />
+      <img src="images/right_square.webp" alt="Right View" />
+      <img src="images/back_square.webp" alt="Back View" />
+      <img src="images/left_square.webp" alt="Left View" />
+    </div>
   </div>
 </div>
 
@@ -1319,24 +1361,18 @@ body, html {
 <!-- THEN Your Single <script> -->
 <script>
 
-// 4-Image Centered Carousel Logic
+
+ // 3D Turntable Carousel
 document.addEventListener('DOMContentLoaded', () => {
-  const carousel = document.getElementById('rotatingCarousel');
-  const images = carousel.querySelectorAll('img');
+  const inner = document.querySelector('#carousel3D .carousel-inner');
+  let angle = 0;
   let index = 0;
 
-  function showImage(i) {
-    images.forEach((img, idx) => {
-      img.classList.toggle('active', idx === i);
-    });
-  }
-
-  showImage(index); // Show first image
-
   setInterval(() => {
-    index = (index + 1) % images.length;
-    showImage(index);
-  }, 3000); // Rotate every 3 seconds
+    angle = (index * -90) % 360;
+    inner.style.transform = `rotateY(${angle}deg)`;
+    index = (index + 1) % 4;
+  }, 3000);
 });
 
   
