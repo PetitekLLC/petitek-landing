@@ -64,6 +64,32 @@ body, html {
   background-color: rgba(37, 168, 198, 0.1);
 }
   
+.turntable-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 320px;
+  margin: 0 auto 60px auto;
+}
+
+.turntable-carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.turntable-carousel img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+  
 .floating-buy-button {
   position: fixed;
   bottom: 20px;
@@ -89,6 +115,8 @@ body, html {
   max-width: 380px;
   width: 100%;
   margin: 0 auto 60px auto;
+  position: relative;
+  left: 15px; /* ✅ shifts the wrapper 5px to the right */
 }
 
 .asset-wrapper img {
@@ -98,7 +126,7 @@ body, html {
   display: block;
 }
 
-
+  
 .dropdown-menu {
   position: fixed;
   top: 60px;
@@ -737,11 +765,18 @@ body, html {
     margin: 0 auto 10px auto;"
   loading="lazy"
 />
+  
 
 <div class="asset-wrapper">
-  <img src="images/Asset 42.webp" width="362" height="300" alt="Chatrbox device" />
+  <div class="turntable-carousel fade-in" id="turntableCarousel">
+    <img src="images/front_square.webp" class="turn-img active" alt="Front" />
+    <img src="images/right_square.webp" class="turn-img" alt="Right" />
+    <img src="images/back_square.webp" class="turn-img" alt="Back" />
+    <img src="images/left_square.webp" class="turn-img" alt="Left" />
+  </div>
 </div>
 
+  
 <div style="margin-top: 15px; text-align: center;">
   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
     <polyline points="6 9 12 15 18 9"/>
@@ -1290,8 +1325,19 @@ body, html {
 <!-- THEN Your Single <script> -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // ✅ Turntable Image Carousel
+  const images = document.querySelectorAll('#turntableCarousel .turn-img');
+  let index = 0;
+  function showNextImage() {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    index = (index + 1) % images.length;
+  }
+  showNextImage();
+  setInterval(showNextImage, 3000);
 
-  // ✅ Wrapped showThankYou inside DOMContentLoaded
+  // ✅ Email form submission
   function showThankYou() {
     const input = document.getElementById('emailInput');
     const message = document.getElementById('thankYouMessage');
@@ -1318,13 +1364,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(response => response.text())
       .then(result => {
-        console.log("✅ Server responded:", result);
         spinner.style.display = 'none';
         submitButton.disabled = false;
         buttonText.style.display = 'block';
         message.style.display = 'block';
         input.value = '';
-
         setTimeout(() => {
           message.style.display = 'none';
         }, 3000);
@@ -1338,11 +1382,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
-  // ✅ Expose the function to HTML inline event handlers
   window.showThankYou = showThankYou;
 
-  // All your other DOMContentLoaded logic
+  // ✅ Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
@@ -1350,6 +1392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ✅ Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1358,6 +1401,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
+  // ✅ Hide Navbar on Scroll Down
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1366,6 +1410,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
+  // ✅ Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
   hamburger?.addEventListener('click', () => {
@@ -1377,6 +1422,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ✅ Video Autoplay + Unmute Overlay
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1393,8 +1439,8 @@ document.addEventListener('DOMContentLoaded', () => {
     video.preload = 'auto';
     video.muted = true;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           videos.forEach(({ id: vid }) => {
             const v = document.getElementById(vid);
@@ -1424,48 +1470,9 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play();
     });
   }
-
   videos.forEach(initVideo);
 });
-
-// LED + Audio Functions
-function flashLEDs(duration = 3000) {
-  const yellow = document.getElementById('led-yellow');
-  const blue = document.getElementById('led-blue');
-  let flashing = true;
-  let on = false;
-
-  const interval = setInterval(() => {
-    on = !on;
-    yellow.style.opacity = on ? 1 : 0.3;
-    blue.style.opacity = on ? 0.3 : 1;
-  }, 300);
-
-  setTimeout(() => {
-    clearInterval(interval);
-    yellow.style.opacity = 0.3;
-    blue.style.opacity = 0.3;
-  }, duration);
-}
-
-function playStandardAlert() {
-  const audio = document.getElementById('triggerAudio1');
-  audio.pause();
-  audio.currentTime = 0;
-  audio.play();
-  flashLEDs(audio.duration * 1000 || 3000);
-}
-
-function playEscalatedAlert() {
-  const audio = document.getElementById('triggerAudio2');
-  audio.pause();
-  audio.currentTime = 0;
-  audio.play();
-  flashLEDs(audio.duration * 1000 || 3000);
-}
 </script>
-
-  
 
 </body>
 
