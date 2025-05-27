@@ -64,68 +64,32 @@ body, html {
   background-color: rgba(37, 168, 198, 0.1);
 }
   
-.rotating-carousel {
+.turntable-carousel {
   position: relative;
-  width: 100%;
-  height: 320px;
-  perspective: 1000px;
-}
-
-.rotating-carousel img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 320px;
-  object-fit: contain;
-  backface-visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-  .carousel-3d {
-  perspective: 1000px;
   width: 100%;
   max-width: 380px;
   height: 320px;
   margin: 0 auto 60px auto;
-  overflow: hidden;
-  position: relative;
 }
 
-.carousel-inner {
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transform: rotateY(0deg);
-  transition: transform 1s ease;
+.turntable-carousel img {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.carousel-inner img {
-  position: absolute;
   width: 100%;
   height: 320px;
   object-fit: contain;
-  top: 0;
-  left: 0;
-  transform-origin: center center;
-  backface-visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
 }
 
-/* Position images around the Y-axis */
-.carousel-inner img:nth-child(1) { transform: rotateY(0deg) translateZ(500px); }
-.carousel-inner img:nth-child(2) { transform: rotateY(90deg) translateZ(500px); }
-.carousel-inner img:nth-child(3) { transform: rotateY(180deg) translateZ(500px); }
-.carousel-inner img:nth-child(4) { transform: rotateY(270deg) translateZ(500px); }
-
-.rotating-carousel img.active {
+.turntable-carousel img.active {
   opacity: 1;
   z-index: 1;
 }
- 
+
+  
 .floating-buy-button {
   position: fixed;
   bottom: 20px;
@@ -802,13 +766,11 @@ body, html {
   
 
 <div class="asset-wrapper">
-  <div class="carousel-3d" id="carousel3D">
-    <div class="carousel-inner">
-      <img src="images/front_square.webp" alt="Front View" />
-      <img src="images/right_square.webp" alt="Right View" />
-      <img src="images/back_square.webp" alt="Back View" />
-      <img src="images/left_square.webp" alt="Left View" />
-    </div>
+  <div class="turntable-carousel fade-in" id="turntableCarousel">
+    <img src="images/front_square.webp" class="turn-img active" alt="Front" />
+    <img src="images/right_square.webp" class="turn-img" alt="Right" />
+    <img src="images/back_square.webp" class="turn-img" alt="Back" />
+    <img src="images/left_square.webp" class="turn-img" alt="Left" />
   </div>
 </div>
 
@@ -1362,21 +1324,78 @@ body, html {
 <script>
 
 
- // 3D Turntable Carousel
+// Turntable-style Image Carousel (center-axis illusion)
 document.addEventListener('DOMContentLoaded', () => {
-  const inner = document.querySelector('#carousel3D .carousel-inner');
-  let angle = 0;
+  // Turntable Image Carousel
+  const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
+  function showNextImage() {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    index = (index + 1) % images.length;
+  }
+  showNextImage();
+  setInterval(showNextImage, 3000);
 
-  setInterval(() => {
-    angle = (index * -90) % 360;
-    inner.style.transform = `rotateY(${angle}deg)`;
-    index = (index + 1) % 4;
-  }, 3000);
+  // Email form submission
+  function showThankYou() {
+    ...
+  }
+  window.showThankYou = showThankYou;
+
+  // Floating buy button
+  const floatBtn = document.querySelector('.floating-buy-button');
+  if (floatBtn) {
+    window.addEventListener('scroll', () => {
+      floatBtn.classList.toggle('show', window.scrollY > 300);
+    });
+  }
+
+  // Fade-in animation
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Navbar hide/show on scroll
+  const navbar = document.getElementById('navbar');
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
+    lastScrollTop = scrollTop;
+  });
+
+  // Dropdown menu
+  const menu = document.getElementById('dropdownMenu');
+  const hamburger = document.querySelector('.hamburger');
+  hamburger?.addEventListener('click', () => {
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  });
+  document.addEventListener('click', function(event) {
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+
+  // Video unmute overlays
+  const videos = [
+    { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
+    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
+    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
+    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
+  ];
+  let currentlyPlaying = null;
+  function initVideo({ id, overlayId }) {
+    ...
+  }
+  videos.forEach(initVideo);
 });
 
-  
-document.addEventListener('DOMContentLoaded', () => {
 
   // ✅ Wrapped showThankYou inside DOMContentLoaded
   function showThankYou() {
