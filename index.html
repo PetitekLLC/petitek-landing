@@ -1411,6 +1411,31 @@ body, html {
 <!-- THEN Your Single <script> -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+function playAlert(step) {
+  const yellow = document.getElementById('led-yellow');
+  const blue = document.getElementById('led-blue');
+  
+  const audio = document.getElementById(`triggerAudio${step}`);
+  if (audio) {
+    audio.volume = 1.0;
+    audio.currentTime = 0;
+    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+    
+    // Flash LED logic (optional)
+    let count = 0;
+    const flash = setInterval(() => {
+      yellow.style.opacity = count % 2 === 0 ? 1 : 0.3;
+      blue.style.opacity = count % 2 === 1 ? 1 : 0.3;
+      count++;
+      if (count > 6) {
+        clearInterval(flash);
+        yellow.style.opacity = 0.3;
+        blue.style.opacity = 0.3;
+      }
+    }, 250);
+  }
+}
+
   // ✅ Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
@@ -1558,31 +1583,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   videos.forEach(initVideo);
 });
-
-function playAlert(step) {
-  const yellow = document.getElementById('led-yellow');
-  const blue = document.getElementById('led-blue');
-  
-  const audio = document.getElementById(`triggerAudio${step}`);
-  if (audio) {
-    audio.volume = 1.0;
-    audio.currentTime = 0;
-    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
-    
-    // Flash LED logic (optional)
-    let count = 0;
-    const flash = setInterval(() => {
-      yellow.style.opacity = count % 2 === 0 ? 1 : 0.3;
-      blue.style.opacity = count % 2 === 1 ? 1 : 0.3;
-      count++;
-      if (count > 6) {
-        clearInterval(flash);
-        yellow.style.opacity = 0.3;
-        blue.style.opacity = 0.3;
-      }
-    }, 250);
-  }
-}
 
 
 </script>
