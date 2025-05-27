@@ -1322,11 +1322,8 @@ body, html {
 
 <!-- THEN Your Single <script> -->
 <script>
-
-
-// Turntable-style Image Carousel (center-axis illusion)
 document.addEventListener('DOMContentLoaded', () => {
-  // Turntable Image Carousel
+  // ✅ Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
   function showNextImage() {
@@ -1338,66 +1335,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showNextImage();
   setInterval(showNextImage, 3000);
 
-  // Email form submission
-  function showThankYou() {
-    ...
-  }
-  window.showThankYou = showThankYou;
-
-  // Floating buy button
-  const floatBtn = document.querySelector('.floating-buy-button');
-  if (floatBtn) {
-    window.addEventListener('scroll', () => {
-      floatBtn.classList.toggle('show', window.scrollY > 300);
-    });
-  }
-
-  // Fade-in animation
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
-    });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
-
-  // Navbar hide/show on scroll
-  const navbar = document.getElementById('navbar');
-  let lastScrollTop = 0;
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
-    lastScrollTop = scrollTop;
-  });
-
-  // Dropdown menu
-  const menu = document.getElementById('dropdownMenu');
-  const hamburger = document.querySelector('.hamburger');
-  hamburger?.addEventListener('click', () => {
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-  });
-  document.addEventListener('click', function(event) {
-    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-      menu.style.display = 'none';
-    }
-  });
-
-  // Video unmute overlays
-  const videos = [
-    { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
-    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
-    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
-    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
-  ];
-  let currentlyPlaying = null;
-  function initVideo({ id, overlayId }) {
-    ...
-  }
-  videos.forEach(initVideo);
-});
-
-
-  // ✅ Wrapped showThankYou inside DOMContentLoaded
+  // ✅ Email form submission
   function showThankYou() {
     const input = document.getElementById('emailInput');
     const message = document.getElementById('thankYouMessage');
@@ -1424,13 +1362,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(response => response.text())
       .then(result => {
-        console.log("✅ Server responded:", result);
         spinner.style.display = 'none';
         submitButton.disabled = false;
         buttonText.style.display = 'block';
         message.style.display = 'block';
         input.value = '';
-
         setTimeout(() => {
           message.style.display = 'none';
         }, 3000);
@@ -1444,11 +1380,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
-  // ✅ Expose the function to HTML inline event handlers
   window.showThankYou = showThankYou;
 
-  // All your other DOMContentLoaded logic
+  // ✅ Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
@@ -1456,6 +1390,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ✅ Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1464,6 +1399,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
+  // ✅ Hide Navbar on Scroll Down
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1472,6 +1408,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
+  // ✅ Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
   hamburger?.addEventListener('click', () => {
@@ -1483,6 +1420,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ✅ Video Autoplay + Unmute Overlay
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1499,8 +1437,8 @@ document.addEventListener('DOMContentLoaded', () => {
     video.preload = 'auto';
     video.muted = true;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           videos.forEach(({ id: vid }) => {
             const v = document.getElementById(vid);
@@ -1530,48 +1468,9 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play();
     });
   }
-
   videos.forEach(initVideo);
 });
-
-// LED + Audio Functions
-function flashLEDs(duration = 3000) {
-  const yellow = document.getElementById('led-yellow');
-  const blue = document.getElementById('led-blue');
-  let flashing = true;
-  let on = false;
-
-  const interval = setInterval(() => {
-    on = !on;
-    yellow.style.opacity = on ? 1 : 0.3;
-    blue.style.opacity = on ? 0.3 : 1;
-  }, 300);
-
-  setTimeout(() => {
-    clearInterval(interval);
-    yellow.style.opacity = 0.3;
-    blue.style.opacity = 0.3;
-  }, duration);
-}
-
-function playStandardAlert() {
-  const audio = document.getElementById('triggerAudio1');
-  audio.pause();
-  audio.currentTime = 0;
-  audio.play();
-  flashLEDs(audio.duration * 1000 || 3000);
-}
-
-function playEscalatedAlert() {
-  const audio = document.getElementById('triggerAudio2');
-  audio.pause();
-  audio.currentTime = 0;
-  audio.play();
-  flashLEDs(audio.duration * 1000 || 3000);
-}
 </script>
-
-  
 
 </body>
 
