@@ -737,9 +737,14 @@ body, html {
     margin: 0 auto 10px auto;"
   loading="lazy"
 />
-
+  
 <div class="asset-wrapper">
-  <img src="images/Asset 42.webp" width="362" height="300" alt="Chatrbox device" />
+  <div class="carousel fade-in" style="position: relative; overflow: hidden; border-radius: 8px;">
+    <img src="images/front_square.webp" class="carousel-image" style="display: block; width: 100%; height: 320px; object-fit: contain;" />
+    <img src="images/back_square.webp" class="carousel-image" style="display: none; width: 100%; height: 320px; object-fit: contain;" />
+    <img src="images/side_square.webp" class="carousel-image" style="display: none; width: 100%; height: 320px; object-fit: contain;" />
+    <img src="images/angled_square.webp" class="carousel-image" style="display: none; width: 100%; height: 320px; object-fit: contain;" />
+  </div>
 </div>
 
 <div style="margin-top: 15px; text-align: center;">
@@ -1289,6 +1294,19 @@ body, html {
 
 <!-- THEN Your Single <script> -->
 <script>
+
+// Image carousel for the homepage
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselImages = document.querySelectorAll('.carousel-image');
+  let currentIndex = 0;
+
+  setInterval(() => {
+    carouselImages[currentIndex].style.display = 'none';
+    currentIndex = (currentIndex + 1) % carouselImages.length;
+    carouselImages[currentIndex].style.display = 'block';
+  }, 3000); // Rotate every 3 seconds
+});
+  
 document.addEventListener('DOMContentLoaded', () => {
 
   // ✅ Wrapped showThankYou inside DOMContentLoaded
