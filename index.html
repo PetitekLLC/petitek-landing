@@ -138,7 +138,7 @@ body, html {
   z-index: 3000;
   width: 160px;
   display: none;
-}=
+}
 
 .dropdown-menu a {
   display: block;
@@ -693,7 +693,6 @@ body, html {
   }
 }
 
-
 /* Legal Links */
 .footer-legal {
   display: flex;
@@ -729,7 +728,7 @@ body, html {
   }
 }
 
-.ation-section {
+.escalation-section {
   max-width: 960px;
   margin: 3rem auto;
   padding: 2rem;
@@ -739,57 +738,40 @@ body, html {
   text-align: center;
 }
 
-.ation-section h2 {
+.escalation-section h2 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
 
-.ation-subtext {
+.escalation-subtext {
   color: #444;
   margin-bottom: 2rem;
   font-size: 1rem;
 }
 
-.ation-steps {
+.escalation-steps {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
 .step-card {
-  flex: 1 1 260px;
+  flex: 1 1 280px;
   background: #f5faff;
   border: 1px solid #cceaf5;
-  padding: 1.25rem;
-  border-radius: 10px;
+  padding: 1.5rem;
+  border-radius: 12px;
   text-align: center;
-  transition: box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
-  .step-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
 
-.step-number {
-  width: 36px;
-  height: 36px;
-  background-color: #25A8C6;
-  color: white;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight:
-
-
-.step-card {
-  flex: 1 1 260px;
-  background: #f5faff;
-  border: 1px solid #cceaf5;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
+.step-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .step-number {
@@ -802,11 +784,13 @@ body, html {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .step-card h3 {
   margin: 0.5rem 0 0.25rem;
+  font-size: 1.1rem;
 }
 
 .step-card p {
@@ -815,18 +799,17 @@ body, html {
   margin-bottom: 1rem;
 }
 
-.step-card button {
-  background-color: #25A8C6;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.tap-to-hear {
+  font-size: 0.9rem;
+  color: #25A8C6;
+  font-weight: 500;
 }
-.step-card button:hover {
-  background-color: #1d8dad;
+
+  @media (max-width: 600px) {
+  .step-card {
+    width: 100%;
+    max-width: 420px;
+  }
 }
 
 .led-display {
@@ -849,7 +832,15 @@ body, html {
 .led-blue {
   background-color: blue;
 }
-  
+@keyframes pulse-led {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.led.flash {
+  animation: pulse-led 0.4s ease-in-out 3;
+}
+
   
 </style>
 </head>
@@ -887,7 +878,6 @@ body, html {
     margin: 0 auto 10px auto;"
   loading="lazy"
 />
-  
 
 <div class="asset-wrapper">
   <div class="turntable-carousel fade-in" id="turntableCarousel">
@@ -1098,9 +1088,9 @@ body, html {
       <div id="led-blue" class="led led-blue"></div>
     </div>
 
-    <audio id="triggerAudio1" src="audio/audio1.mp3"></audio>
-    <audio id="triggerAudio2" src="audio/audio2.mp3"></audio>
-    <audio id="triggerAudio3" src="audio/audio3.mp3"></audio>
+    <audio id="triggeraudio1" src="audio/audio1.mp3"></audio>
+    <audio id="triggeraudio2" src="audio/audio2.mp3"></audio>
+    <audio id="triggeraudio3" src="audio/audio3.mp3"></audio>
   </section>
 </div>
 
@@ -1419,29 +1409,25 @@ body, html {
 
 <!-- THEN Your Single <script> -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
 function playAlert(step) {
   const yellow = document.getElementById('led-yellow');
   const blue = document.getElementById('led-blue');
-  
   const audio = document.getElementById(`triggerAudio${step}`);
+
   if (audio) {
     audio.volume = 1.0;
     audio.currentTime = 0;
     audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
-    
-    // Flash LED logic (optional)
-    let count = 0;
-    const flash = setInterval(() => {
-      yellow.style.opacity = count % 2 === 0 ? 1 : 0.3;
-      blue.style.opacity = count % 2 === 1 ? 1 : 0.3;
-      count++;
-      if (count > 6) {
-        clearInterval(flash);
-        yellow.style.opacity = 0.3;
-        blue.style.opacity = 0.3;
-      }
-    }, 250);
+
+    // ✅ Add flash animation class
+    yellow.classList.add('flash');
+    blue.classList.add('flash');
+
+    // ✅ Remove after 1.2 seconds (3 pulses at 400ms)
+    setTimeout(() => {
+      yellow.classList.remove('flash');
+      blue.classList.remove('flash');
+    }, 1200);
   }
 }
 
