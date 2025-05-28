@@ -1406,29 +1406,28 @@ body, html {
 
 <!-- THEN Your Single <script> -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+// ✅ Moved OUTSIDE DOMContentLoaded so HTML onclick can access it
+function playAlert(step) {
+  const yellow = document.getElementById('led-yellow');
+  const blue = document.getElementById('led-blue');
+  const audio = document.getElementById(`triggerAudio${step}`);
 
-  function playAlert(step) {
-    const yellow = document.getElementById('led-yellow');
-    const blue = document.getElementById('led-blue');
-    const audio = document.getElementById(`triggerAudio${step}`);
-
-    if (audio) {
-      audio.volume = 1.0;
-      audio.currentTime = 0;
-      audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
-
-      yellow.classList.add('flash');
-      blue.classList.add('flash');
-
-      setTimeout(() => {
-        yellow.classList.remove('flash');
-        blue.classList.remove('flash');
-      }, 1200);
-    } else {
-      console.warn(`Audio element not found for triggerAudio${step}`);
-    }
+  if (audio) {
+    audio.volume = 1.0;
+    audio.currentTime = 0;
+    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+    yellow.classList.add('flash');
+    blue.classList.add('flash');
+    setTimeout(() => {
+      yellow.classList.remove('flash');
+      blue.classList.remove('flash');
+    }, 1200);
+  } else {
+    console.warn(`Audio element not found for triggerAudio${step}`);
   }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
 
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
