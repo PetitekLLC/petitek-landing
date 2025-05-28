@@ -1408,32 +1408,31 @@ body, html {
 
 <!-- THEN Your Single <script> -->
 <script>
-function playAlert(step) {
-  const yellow = document.getElementById('led-yellow');
-  const blue = document.getElementById('led-blue');
-  const audio = document.getElementById(`triggerAudio${step}`);
+document.addEventListener('DOMContentLoaded', () => {
 
-  if (audio) {
-    audio.volume = 1.0;
-    audio.currentTime = 0;
-    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+  function playAlert(step) {
+    const yellow = document.getElementById('led-yellow');
+    const blue = document.getElementById('led-blue');
+    const audio = document.getElementById(`triggerAudio${step}`);
 
-    // Add LED flash animation
-    yellow.classList.add('flash');
-    blue.classList.add('flash');
+    if (audio) {
+      audio.volume = 1.0;
+      audio.currentTime = 0;
+      audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
 
-    // Remove the flash effect after the animation completes
-    setTimeout(() => {
-      yellow.classList.remove('flash');
-      blue.classList.remove('flash');
-    }, 1200); // 3 pulses x 400ms
-  } else {
-    console.warn(`Audio element not found for triggerAudio${step}`);
+      yellow.classList.add('flash');
+      blue.classList.add('flash');
+
+      setTimeout(() => {
+        yellow.classList.remove('flash');
+        blue.classList.remove('flash');
+      }, 1200);
+    } else {
+      console.warn(`Audio element not found for triggerAudio${step}`);
+    }
   }
-}
 
-
-  // ✅ Turntable Image Carousel
+  // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
   function showNextImage() {
@@ -1445,7 +1444,7 @@ function playAlert(step) {
   showNextImage();
   setInterval(showNextImage, 3000);
 
-  // ✅ Email form submission
+  // Email form submission
   function showThankYou() {
     const input = document.getElementById('emailInput');
     const message = document.getElementById('thankYouMessage');
@@ -1492,7 +1491,7 @@ function playAlert(step) {
   }
   window.showThankYou = showThankYou;
 
-  // ✅ Floating Buy Button
+  // Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
@@ -1500,16 +1499,16 @@ function playAlert(step) {
     });
   }
 
-  // ✅ Fade-In Animation
+  // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
+  const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       entry.target.classList.toggle('visible', entry.isIntersecting);
     });
   }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
+  fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // ✅ Hide Navbar on Scroll Down
+  // Hide Navbar on Scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1518,19 +1517,21 @@ function playAlert(step) {
     lastScrollTop = scrollTop;
   });
 
-  // ✅ Dropdown Menu
+  // Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
-  hamburger?.addEventListener('click', () => {
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-  });
-  document.addEventListener('click', function(event) {
-    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-      menu.style.display = 'none';
-    }
-  });
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    });
+    document.addEventListener('click', function(event) {
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  }
 
-  // ✅ Video Autoplay + Unmute Overlay
+  // Video Autoplay + Unmute
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1547,7 +1548,7 @@ function playAlert(step) {
     video.preload = 'auto';
     video.muted = true;
 
-    const observer = new IntersectionObserver(entries => {
+    const videoObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           videos.forEach(({ id: vid }) => {
@@ -1562,7 +1563,7 @@ function playAlert(step) {
       });
     }, { threshold: 0.5 });
 
-    observer.observe(video);
+    videoObserver.observe(video);
 
     video.addEventListener('ended', () => {
       video.currentTime = 0;
@@ -1570,7 +1571,7 @@ function playAlert(step) {
       video.muted = true;
     });
 
- overlay.addEventListener('click', () => {
+    overlay.addEventListener('click', () => {
       video.pause();
       video.currentTime = 0;
       video.muted = false;
@@ -1581,10 +1582,9 @@ function playAlert(step) {
 
   videos.forEach(initVideo);
 
-}); // Closes DOMContentLoaded
-
-
+}); // End of DOMContentLoaded
 </script>
+
 
 </body>
 
