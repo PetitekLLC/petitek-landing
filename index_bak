@@ -775,7 +775,7 @@ body, html {
 }
 
 .step-number {
-  width: 50x;
+  width: 50px;
   height: 50px;
   background-color: #25A8C6;
   color: white;
