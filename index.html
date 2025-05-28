@@ -805,13 +805,7 @@ body, html {
   font-weight: 500;
 }
 
-  @media (max-width: 600px) {
-  .step-card {
-    width: 100%;
-    max-width: 420px;
-  }
-}
-
+/* LED styling */
 .led-display {
   display: flex;
   justify-content: center;
@@ -826,12 +820,16 @@ body, html {
   opacity: 0.3;
   transition: opacity 0.2s;
 }
+
 .led-yellow {
   background-color: yellow;
 }
+
 .led-blue {
   background-color: blue;
 }
+
+/* Flash animation for LED feedback */
 @keyframes pulse-led {
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
@@ -841,6 +839,13 @@ body, html {
   animation: pulse-led 0.4s ease-in-out 3;
 }
 
+/* Responsive layout */
+@media (max-width: 600px) {
+  .step-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
   
 </style>
 </head>
@@ -1049,51 +1054,45 @@ body, html {
   Proven alert tones and flashing blue-yellow lights <em>(colors dogs and cats can see)</em> instantly grab their attention — stopping them in their tracks before bad behavior even starts, and locking their focus onto your voice command when it matters most.
 </div>
   
-<!--
-<div class="text-block title-block fade-in">
-  How ChatrBox Escalates to Get Your Pet’s Attention
-</div>
-<div class="text-block body-block fade-in">
-  If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response.
-  Tap each step to experience how it works:
-</div>
--->
+<section class="escalation-section fade-in">
+  <h2>How ChatrBox Escalates to Get Your Pet’s Attention</h2>
+  <p class="escalation-subtext">
+    If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response.
+    Tap each step to experience how it works:
+  </p>
 
-  
-    <div class="escalation-steps">
-      <div class="step-card" onclick="playAlert(1)">
-        <div class="step-number">1</div>
-        <h3>Standard Prompt</h3>
-        <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
-        <div class="tap-to-hear">🔊 Tap to Hear Step 1</div>
-      </div>
-
-      <div class="step-card" onclick="playAlert(2)">
-        <div class="step-number">2</div>
-        <h3>Escalated Prompt</h3>
-        <p>Alert + Command + Flashing LEDs</p>
-        <div class="tap-to-hear">🔊 Tap to Hear Step 2</div>
-      </div>
-
-      <div class="step-card" onclick="playAlert(3)">
-        <div class="step-number">3</div>
-        <h3>Maximum Attention</h3>
-        <p>Urgent Alerts + Commands + Strobing LEDs</p>
-        <div class="tap-to-hear">🔊 Tap to Hear Step 3</div>
-      </div>
+  <div class="escalation-steps">
+    <div class="step-card" onclick="playAlert(1)">
+      <div class="step-number">1</div>
+      <h3>Standard Prompt</h3>
+      <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Step 1</div>
     </div>
 
-    <div class="led-display">
-      <div id="led-yellow" class="led led-yellow"></div>
-      <div id="led-blue" class="led led-blue"></div>
+    <div class="step-card" onclick="playAlert(2)">
+      <div class="step-number">2</div>
+      <h3>Escalated Prompt</h3>
+      <p>Alert + Command + Flashing LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Step 2</div>
     </div>
 
-    <audio id="triggeraudio1" src="audio/audio1.mp3"></audio>
-    <audio id="triggeraudio2" src="audio/audio2.mp3"></audio>
-    <audio id="triggeraudio3" src="audio/audio3.mp3"></audio>
-  </section>
-</div>
+    <div class="step-card" onclick="playAlert(3)">
+      <div class="step-number">3</div>
+      <h3>Maximum Attention</h3>
+      <p>Urgent Alerts + Commands + Strobing LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Step 3</div>
+    </div>
+  </div>
 
+  <div class="led-display">
+    <div id="led-yellow" class="led led-yellow"></div>
+    <div id="led-blue" class="led led-blue"></div>
+  </div>
+
+  <audio id="triggerAudio1" src="audio/audio1.mp3"></audio>
+  <audio id="triggerAudio2" src="audio/audio2.mp3"></audio>
+  <audio id="triggerAudio3" src="audio/audio3.mp3"></audio>
+</section>
 
 
   <div class="text-block title-block fade-in">
@@ -1419,17 +1418,20 @@ function playAlert(step) {
     audio.currentTime = 0;
     audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
 
-    // ✅ Add flash animation class
+    // Add LED flash animation
     yellow.classList.add('flash');
     blue.classList.add('flash');
 
-    // ✅ Remove after 1.2 seconds (3 pulses at 400ms)
+    // Remove the flash effect after the animation completes
     setTimeout(() => {
       yellow.classList.remove('flash');
       blue.classList.remove('flash');
-    }, 1200);
+    }, 1200); // 3 pulses x 400ms
+  } else {
+    console.warn(`Audio element not found for triggerAudio${step}`);
   }
 }
+
 
   // ✅ Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
