@@ -759,7 +759,7 @@ body, html {
 
 .step-card {
   flex: 1 1 280px;
-  background: #cce4f7; 
+  background: #b3d8f2;
   border: 1px solid #cceaf5;
   padding: 1.5rem;
   border-radius: 12px;
@@ -775,8 +775,8 @@ body, html {
 }
 
 .step-number {
-  width: 50px !important;
-  height: 50px !important;
+  width: 50px;
+  height: 50px;
   background-color: #25A8C6;
   color: white;
   border-radius: 50%;
@@ -784,13 +784,13 @@ body, html {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 1.5rem !important;
+  font-size: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
 .step-card h3 {
   margin: 0.5rem 0 0.25rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
 }
 
 .step-card p {
@@ -800,7 +800,7 @@ body, html {
 }
 
 .tap-to-hear {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #25A8C6;
   font-weight: 500;
 }
@@ -814,8 +814,8 @@ body, html {
 }
 
 .led {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   opacity: 0.3;
   transition: opacity 0.2s;
@@ -846,7 +846,6 @@ body, html {
     max-width: 420px;
   }
 }
-
  .step-number.flash {
   animation: flashColor 0.4s infinite;
 }
@@ -1075,22 +1074,22 @@ body, html {
     <div class="step-card" onclick="playAlert(1)">
     <div class="step-number" id="light1">1</div>
       <h3>Standard Prompt</h3>
-      <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
-      <div class="tap-to-hear">🔊 Tap to Hear Step 1</div>
+      <p>Voice Command + Flashing LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Alert</div>
     </div>
 
     <div class="step-card" onclick="playAlert(2)">
  <div class="step-number" id="light2">2</div>
       <h3>Escalated Prompt</h3>
       <p>Alert + Command + Flashing LEDs</p>
-      <div class="tap-to-hear">🔊 Tap to Hear Step 2</div>
+      <div class="tap-to-hear">🔊 Tap to Hear Alert</div>
     </div>
 
     <div class="step-card" onclick="playAlert(3)">
   <div class="step-number" id="light3">3</div>
       <h3>Maximum Attention</h3>
-      <p>Urgent Alerts + Commands + Strobing LEDs</p>
-      <div class="tap-to-hear">🔊 Tap to Hear Step 3</div>
+      <p>Urgent Alerts + Commands + LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Alert</div>
     </div>
   </div>
 
@@ -1595,3 +1594,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
+
