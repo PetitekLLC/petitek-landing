@@ -790,7 +790,7 @@ body, html {
 
 .step-card h3 {
   margin: 0.5rem 0 0.25rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
 }
 
 .step-card p {
@@ -800,7 +800,7 @@ body, html {
 }
 
 .tap-to-hear {
-  font-size: 0.1rem;
+  font-size: 1rem;
   color: #25A8C6;
   font-weight: 700;
 }
@@ -1074,22 +1074,22 @@ body, html {
     <div class="step-card" onclick="playAlert(1)">
     <div class="step-number" id="light1">1</div>
       <h3>Standard Prompt</h3>
-      <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
-      <div class="tap-to-hear">🔊 Tap to Hear</div>
+      <p>Assertive voice command + Flashing LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Alert</div>
     </div>
 
     <div class="step-card" onclick="playAlert(2)">
  <div class="step-number" id="light2">2</div>
       <h3>Escalated Prompt</h3>
       <p>Alert + Command + Flashing LEDs</p>
-      <div class="tap-to-hear">🔊 Tap to Hear Step</div>
+      <div class="tap-to-hear">🔊 Tap to Hear Alert</div>
     </div>
 
     <div class="step-card" onclick="playAlert(3)">
   <div class="step-number" id="light3">3</div>
       <h3>Maximum Attention</h3>
-      <p>Urgent Alerts + Commands + Strobing LEDs</p>
-      <div class="tap-to-hear">🔊 Tap to Hear Step</div>
+      <p>Urgent Alerts + Commands + LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Alert</div>
     </div>
   </div>
 
