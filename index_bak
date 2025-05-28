@@ -1,4 +1,4 @@
-<!DOCTYPE html>F
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -693,7 +693,6 @@ body, html {
   }
 }
 
-
 /* Legal Links */
 .footer-legal {
   display: flex;
@@ -727,6 +726,135 @@ body, html {
     align-items: center;
     text-align: center;
   }
+}
+
+.escalation-section {
+  max-width: 960px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.escalation-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.escalation-subtext {
+  color: #444;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.escalation-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.step-card {
+  flex: 1 1 280px;
+  background: #f5faff;
+  border: 1px solid #cceaf5;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.step-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  background-color: #25A8C6;
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.step-card h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.tap-to-hear {
+  font-size: 0.9rem;
+  color: #25A8C6;
+  font-weight: 500;
+}
+
+/* LED styling */
+.led-display {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.led {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.led-yellow {
+  background-color: yellow;
+}
+
+.led-blue {
+  background-color: blue;
+}
+
+/* Flash animation for LED feedback */
+@keyframes pulse-led {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.led.flash {
+  animation: pulse-led 0.4s ease-in-out 3;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .step-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+ .step-number.flash {
+  animation: flashColor 0.4s infinite;
+}
+
+@keyframes flashColor {
+  0%   { background-color: yellow; box-shadow: 0 0 10px yellow; }
+  50%  { background-color: blue;   box-shadow: 0 0 10px blue; }
+  100% { background-color: yellow; box-shadow: 0 0 10px yellow; }
 }
  
 </style>
@@ -765,7 +893,6 @@ body, html {
     margin: 0 auto 10px auto;"
   loading="lazy"
 />
-  
 
 <div class="asset-wrapper">
   <div class="turntable-carousel fade-in" id="turntableCarousel">
@@ -864,8 +991,7 @@ body, html {
     src="images/2_StopBadHabits800.webp"
     srcset="
       images/2_StopBadHabits800.webp 800w,
-      images/2_StopBadHabits1600.webp 1600w
-    "
+      images/2_StopBadHabits1600.webp 1600w"
     sizes="(max-width: 768px) 100vw, 800px"
     alt="Stop Bad Habits"
     class="fade-in"
@@ -910,6 +1036,7 @@ body, html {
     alt="Pet-Free Zone"
     class="fade-in"
   />
+  
   <div class="text-block title-block fade-in">
     ChatrBox is a Smart Training Device That Never Sleeps
   </div>
@@ -936,88 +1063,50 @@ body, html {
 <div class="text-block body-block fade-in">
   Proven alert tones and flashing blue-yellow lights <em>(colors dogs and cats can see)</em> instantly grab their attention — stopping them in their tracks before bad behavior even starts, and locking their focus onto your voice command when it matters most.
 </div>
+  
+<section class="escalation-section fade-in">
+  <h2>How ChatrBox Escalates to Get Your Pet’s Attention</h2>
+  <p class="escalation-subtext">
+    If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response.
+    Tap each step to experience how it works:
+  </p>
 
+  <div class="escalation-steps">
+    <div class="step-card" onclick="playAlert(1)">
+    <div class="step-number" id="light1">1</div>
+      <h3>Standard Prompt</h3>
+      <p>Assertive voice command + Flashing Yellow/Blue LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Step 1</div>
+    </div>
+
+    <div class="step-card" onclick="playAlert(2)">
+ <div class="step-number" id="light2">2</div>
+      <h3>Escalated Prompt</h3>
+      <p>Alert + Command + Flashing LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Step 2</div>
+    </div>
+
+    <div class="step-card" onclick="playAlert(3)">
+  <div class="step-number" id="light3">3</div>
+      <h3>Maximum Attention</h3>
+      <p>Urgent Alerts + Commands + Strobing LEDs</p>
+      <div class="tap-to-hear">🔊 Tap to Hear Step 3</div>
+    </div>
+  </div>
+
+  <audio id="triggerAudio1" src="audio/audio1.mp3" preload="auto"></audio>
+  <audio id="triggerAudio2" src="audio/audio2.mp3" preload="auto"></audio>
+  <audio id="triggerAudio3" src="audio/audio3.mp3" preload="auto"></audio>
+</section>
+
+<!-- ✅ Moved OUTSIDE the section -->
+<div class="text-block title-block fade-in">
+  Even The Most <em>Stubborn</em> Pets "Get It"
+</div>
+<div class="text-block body-block fade-in">
+  Whether it's the couch, the counter, the trash can or anywhere off-limits, <strong>ChatrBox</strong> keeps reinforcing your message until the behavior changes — no yelling, no chasing, no frustration.
+</div>
  
-<!-- 🔁 Trigger Sequence Responsive Section -->
-<div class="fade-in" style="padding: 0 10px;">
-  <div style="background-color: #f5f5f5; padding: 30px 20px; border-radius: 0; margin: 20px auto; max-width: 800px;">
-
-    <!-- Header -->
-    <div class="text-block title-block" style="margin-top: 0;">
-      Alerts Escalate When Necessary to Ensure Pet Obedience
-    </div>
-
-    <!-- Step 1 -->
-    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
-      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-        1
-      </div>
-      <div style="font-size: 15px; line-height: 1.5;">
-        Your Voice Command + Flashing LEDs
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px;">
-      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-        2
-      </div>
-      <div style="font-size: 15px; line-height: 1.5;">
-        Alert – Your Voice Command + Flashing LEDs
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 30px;">
-      <div style="min-width: 34px; min-height: 34px; background-color: #1DA1F2; color: white; font-weight: bold; font-size: 16px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
-        3
-      </div>
-      <div style="font-size: 15px; line-height: 1.5;">
-        Escalated Alert + Your Voice Command + Flashing LEDs
-      </div>
-    </div>
-
-    <!-- 🔊 Play Standard Alert Button -->
-    <div style="text-align: center; margin-bottom: 12px;">
-      <button onclick="playStandardAlert()"
-        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #25A8C6; color: white; cursor: pointer;">
-        🔊 Play Standard Alert
-      </button>
-      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
-        Sample playback volume may vary. Actual volume is controlled by the device.
-      </div>
-      <audio id="triggerAudio1" src="audio/sample-command.mp3"></audio>
-    </div>
-
-    <!-- 🔊 Play Escalated Alert Button -->
-    <div style="text-align: center; margin-bottom: 30px;">
-      <button onclick="playEscalatedAlert()"
-        style="width: 100%; padding: 16px 0; font-size: 16px; border: none; border-radius: 6px; background-color: #006699; color: white; cursor: pointer;">
-        🔊 Play Escalated Alert
-      </button>
-      <div style="font-size: 10px; font-style: italic; margin-top: 6px; color: #333;">
-        Sample playback volume may vary. Actual volume is controlled by the device.
-      </div>
-      <audio id="triggerAudio2" src="audio/sample-command-escalated.mp3"></audio>
-    </div>
-
-    <!-- 💡 LED Flash Icons -->
-    <div id="led-flash" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
-      <div id="led-yellow" style="width: 30px; height: 30px; border-radius: 50%; background-color: yellow; opacity: 0.3;"></div>
-      <div id="led-blue" style="width: 30px; height: 30px; border-radius: 50%; background-color: blue; opacity: 0.3;"></div>
-    </div>
-
-  </div>
-</div>
-
-  <div class="text-block title-block fade-in">
-    Even The Most <em>Stubborn</em> Pets "Get It"
-  </div>
-  <div class="text-block body-block fade-in">
-    Whether it's the couch, the counter, the trash can or anywhere off-limits, <strong>ChatrBox</strong> keeps reinforcing your message until the behavior changes — no yelling, no chasing, no frustration.
-  </div>
-</div>
-
 <!-- Escalation Block -->
 <div class="content-block">
   <img
@@ -1324,8 +1413,32 @@ body, html {
 
 <!-- THEN Your Single <script> -->
 <script>
+function playAlert(step) {
+  const audio = document.getElementById(`triggerAudio${step}`);
+  const light = document.getElementById(`light${step}`);
+
+  if (audio && light) {
+    audio.volume = 1.0;
+    audio.currentTime = 0;
+
+    // Start flashing effect on the step indicator
+    light.classList.add('flash');
+
+    // Play audio
+    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+
+    // Remove flashing when audio ends
+    audio.onended = () => {
+      light.classList.remove('flash');
+    };
+  } else {
+    console.warn(`Missing audio or light element for step ${step}`);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  // ✅ Turntable Image Carousel
+
+  // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
   function showNextImage() {
@@ -1337,7 +1450,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showNextImage();
   setInterval(showNextImage, 3000);
 
-  // ✅ Email form submission
+  // Email form submission
   function showThankYou() {
     const input = document.getElementById('emailInput');
     const message = document.getElementById('thankYouMessage');
@@ -1384,7 +1497,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.showThankYou = showThankYou;
 
-  // ✅ Floating Buy Button
+  // Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
@@ -1392,16 +1505,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ✅ Fade-In Animation
+  // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
+  const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       entry.target.classList.toggle('visible', entry.isIntersecting);
     });
   }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
+  fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // ✅ Hide Navbar on Scroll Down
+  // Hide Navbar on Scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1410,19 +1523,21 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-  // ✅ Dropdown Menu
+  // Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
-  hamburger?.addEventListener('click', () => {
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-  });
-  document.addEventListener('click', function(event) {
-    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-      menu.style.display = 'none';
-    }
-  });
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    });
+    document.addEventListener('click', function(event) {
+      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  }
 
-  // ✅ Video Autoplay + Unmute Overlay
+  // Video Autoplay + Unmute
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1439,7 +1554,7 @@ document.addEventListener('DOMContentLoaded', () => {
     video.preload = 'auto';
     video.muted = true;
 
-    const observer = new IntersectionObserver(entries => {
+    const videoObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           videos.forEach(({ id: vid }) => {
@@ -1454,7 +1569,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.5 });
 
-    observer.observe(video);
+    videoObserver.observe(video);
 
     video.addEventListener('ended', () => {
       video.currentTime = 0;
@@ -1470,32 +1585,13 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play();
     });
   }
+
   videos.forEach(initVideo);
-});
 
-function playStandardAlert() {
-  const audio = document.getElementById('triggerAudio1');
-  if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(err => {
-      console.error("Audio play error (Standard):", err);
-    });
-  }
-}
-
-function playEscalatedAlert() {
-  const audio = document.getElementById('triggerAudio2');
-  if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(err => {
-      console.error("Audio play error (Escalated):", err);
-    });
-  }
-}
-
+}); // End of DOMContentLoaded
 </script>
+
 
 </body>
 
 </html>
-
