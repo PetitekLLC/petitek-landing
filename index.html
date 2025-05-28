@@ -1568,15 +1568,16 @@ function playAlert(step) {
       video.muted = true;
     });
 
-    overlay.addEventListener('click', () => {
-      video.pause();
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
-    });
-  }
-  videos.forEach(initVideo);
+ overlay.addEventListener('click', () => {
+  video.pause();
+  video.currentTime = 0;
+  video.muted = false;
+  overlay.style.display = 'none';
+  video.play();
+});
+}
+
+videos.forEach(initVideo);
 });
 
 
