@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Petitek Support</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    
+  html {
+    font-size: 18px; /* Base: 1rem = 16px */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: sans-serif;
+    font-size: 1rem;
+  }
+
+  .container {
+    max-width: 60rem;
+    margin: 0 auto;
+    background-color: #25A8C6;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+
+  .hero h1 {
+  margin: 0.625rem 0;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: bold;
+  text-align: center;   /* 👈 ensure it's centered */
+  color: white;         /* 👈 ensure it's white */
+}
+
+ .hero p {
+  padding: 0 10px;           /* 10px left and right */
+  max-width: 20rem;          /* Optional: to keep it from getting too wide */
+  margin: 0 auto;            /* Center the block */
+  margin-bottom: 1rem; 
+  text-align: center;
+  color: white;
+  font-size: clamp(1rem, 3vw, 1.125rem);
+  line-height: 1.4;
+}
+    
+ .hero-logo {
+  max-width: 80px;  /* Try 80px–160px depending on desired size */
+  height: auto;
+  display: block;
+  margin: 2rem auto 1rem; /* Centered with space below */
+}
+    
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1.25rem 0.5rem 1.25rem; /* top, right, bottom, left */
+}
+
+  #chatContainer {
+    background-color: white;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    max-width: 37.5rem;
+    width: 100%;
+  }
+
+  #chatForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  #chatInput {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 0.375rem;
+  }
+
+  #sendButton {
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  #sendButton:hover {
+    background-color: #2f2f2f;
+  }
+
+  #sendButton:active {
+    background-color: #3a3a3a;
+  }
+
+  #sendButton:disabled {
+    background-color: #C0C0C0;
+    color: #777;
+    cursor: not-allowed;
+  }
+
+  #chatOutput {
+    margin-top: 0.9375rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    font-size: 0.9375rem;
+    display: none;
+    color: #000;
+  }
+
+  .footer-columns-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0.625rem 0;
+  }
+
+  .footer-columns {
+    display: flex;
+    gap: 3.75rem;
+    justify-content: center;
+    max-width: 37.5rem;
+    margin: 0 auto;
+  }
+
+  .footer-columns > div {
+    text-align: left;
+  }
+
+  footer {
+    margin-top: auto;
+    background-color: #25A8C6;
+    color: white;
+    padding: 1rem 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.375rem;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  footer h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    font-weight: bold;
+    color: black;
+    margin-top: 0.625rem;
+    margin-bottom: 0;
+  }
+
+  footer h4 {
+    font-family: Georgia, serif;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+    font-weight: bold;
+    color: white;
+    margin: 0;
+  }
+
+  .footer-columns > div p {
+    margin: 0.25rem 0;
+    line-height: 1.2;
+    font-size: 0.875rem;
+  }
+
+  /* Learn More link */
+  .learn-link {
+  text-align: center;
+  margin: 0.625rem 0 0.25rem 0; /* top right bottom left */
+  font-size: 0.875rem;
+}
+
+  .learn-link a {
+    color: white;
+    font-weight: normal;
+    text-decoration: none;
+  } 
+.learn-icon {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.learn-icon img {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+}
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main-wrapper">
+      <div class="hero">
+        <a href="https://petitek.com">
+        <img class="hero-logo" src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
+ 
+        </a>
+        <h1>Petitek Support</h1>
+        <p>Need help with ChatrBox? ChatrBot is an AI assistant and can answer any setup, support, or troubleshooting questions.</p>
+      </div>
+      
+<!-- ONE chat-wrapper and container -->
+<div class="chat-wrapper">
+  <div id="chatContainer">
+    <form id="chatForm">
+      <input type="text" id="chatInput" placeholder="How can we help?" />
+      <button id="sendButton" type="submit">Send</button>
+    </form>
+
+    <div id="chatOutput"></div>
+  </div>
+</div>
+
+<!-- ✅ This lives *outside* the chat container but stays close -->
+<div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
+  <a href="/learn/" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+    <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
+    Learn with How-To Videos
+  </a>
+</div>
+
+
+  <footer>
+  <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 10px;" />
+  <h2>Petitek</h2>
+
+  <div class="footer-columns-wrapper">
+    <div class="footer-columns">
+      <div>
+        <h4>Pet Owners</h4>
+        <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
+        <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
+      </div>
+      <div>
+        <h4>Work With Us</h4>
+        <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
+        <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
+      </div>
+    </div>
+  </div>
+
+<!-- <hr style="width: 100%; border: none; border-top: 1px solid white; margin-top: 15px;" /> -->
+
+  <div style="margin-top: 10px;">
+    <a href="https://petitek.com/terms" target="_blank">Terms</a> |
+    <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
+    <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+  </div>
+  <p style="margin-top: 8px; font-size: 8pt; color: black;">© Petitek LLC All rights reserved.</p>
+</footer>
+
+    </div>
+  </div>
+
+  <script>
+    function generateUUID() {
+      return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+    }
+
+    let userId = localStorage.getItem("chatrboxUUID");
+    if (!userId) {
+      userId = generateUUID();
+      localStorage.setItem("chatrboxUUID", userId);
+    }
+
+    function linkifyText(text) {
+      text = text.replace(/\[([^\]]+)]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+      });
+
+      const alreadyLinked = [];
+      text = text.replace(/<a[^>]*>.*?<\/a>/gi, (match) => {
+        alreadyLinked.push(match);
+        return `__LINK_PLACEHOLDER__${alreadyLinked.length - 1}__`;
+      });
+
+      text = text.replace(/(\bhttps?:\/\/[^\s<>"']+)/gi, (url) => {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+      });
+
+      text = text.replace(/__LINK_PLACEHOLDER__(\d+)__/g, (match, index) => {
+        return alreadyLinked[parseInt(index)];
+      });
+
+      return text;
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const output = document.getElementById("chatOutput");
+      const message = input.value.trim();
+      if (!message) return;
+
+      output.style.display = "block";
+      let dots = 0;
+      output.textContent = "ChatrBot is typing";
+      const typingAnimation = setInterval(() => {
+        dots = (dots + 1) % 4;
+        output.textContent = "ChatrBot is typing" + ".".repeat(dots);
+      }, 500);
+
+      try {
+        const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: userId, message })
+        });
+
+        const data = await res.json();
+        clearInterval(typingAnimation);
+        output.innerHTML = linkifyText(data.reply || "No response received.");
+        input.value = "";
+
+      } catch (err) {
+        clearInterval(typingAnimation);
+        console.error("Fetch error:", err);
+        output.textContent = "⚠️ Error contacting assistant.";
+      }
+    }
+
+    document.getElementById("chatForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      sendMessage();
+    });
+  </script>
+</body>
+</html>
+
 
