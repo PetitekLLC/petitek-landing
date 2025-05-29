@@ -1424,19 +1424,24 @@ function playAlert(step) {
   if (audio && light) {
     audio.volume = 1.0;
     audio.currentTime = 0;
-// Start flashing effect on the step indicator
-light.classList.remove('flash');      // Reset animation if already applied
-void light.offsetWidth;               // Force reflow to restart animation
-light.classList.add('flash');         // Apply animation class
 
-// Play audio
-audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+    // Start flashing effect on the step indicator
+    light.classList.remove('flash');      // Reset animation if already applied
+    void light.offsetWidth;               // Force reflow to restart animation
+    light.classList.add('flash');         // Apply animation class
 
-// Remove flashing when audio ends
-audio.onended = () => {
-  light.classList.remove('flash');    // Clean up after animation completes
-};
+    // Play audio
+    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+
+    // Remove flashing when audio ends
+    audio.onended = () => {
+      light.classList.remove('flash');    // Clean up after animation completes
+    };
+  } else {
+    console.warn(`Missing audio or light element for step ${step}`);
   }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Turntable Image Carousel
@@ -1590,6 +1595,7 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 
 }); // End of DOMContentLoaded
+
 </script>
 
 
