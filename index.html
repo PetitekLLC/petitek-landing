@@ -836,7 +836,7 @@ body, html {
 }
 
 .led.flash {
-  animation: pulse-led 0.1s ease-in-out 6;
+  animation: pulse-led 0.1s ease-in-out 5;
 }
 
 /* Responsive layout */
@@ -1424,21 +1424,18 @@ function playAlert(step) {
   if (audio && light) {
     audio.volume = 1.0;
     audio.currentTime = 0;
+// Start flashing effect on the step indicator
+light.classList.remove('flash');      // Reset animation if already applied
+void light.offsetWidth;               // Force reflow to restart animation
+light.classList.add('flash');         // Apply animation class
 
-    // Start flashing effect on the step indicator
-    light.classList.add('flash');
+// Play audio
+audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
 
-    // Play audio
-    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
-
-    // Remove flashing when audio ends
-    audio.onended = () => {
-      light.classList.remove('flash');
-    };
-  } else {
-    console.warn(`Missing audio or light element for step ${step}`);
-  }
-}
+// Remove flashing when audio ends
+audio.onended = () => {
+  light.classList.remove('flash');    // Clean up after animation completes
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
