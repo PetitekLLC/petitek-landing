@@ -874,7 +874,7 @@ body, html {
   <div id="dropdownMenu" class="dropdown-menu">
     <a href="https://petitek.com/support">Support</a>
     <a href="https://petitek.com/learn">Learn</a>
-    <a href="#about">About</a>
+    <a href="about">About</a>
   </div>
 
 <div class="content" style="padding-top: 20px;">
@@ -956,10 +956,10 @@ body, html {
     class="fade-in"
   />
   <div class="text-block title-block fade-in">
-    Your Voice, Their Guide - Powered by Chatrbox
+  If You Can Say It, You Can Train It. 
   </div>
   <div class="text-block body-block fade-in">
-    Place <strong>ChatrBox</strong> anywhere you need training support. Using built-in motion detection, <strong>ChatrBox</strong> senses when your pet approaches a protected area or object and instantly triggers your recorded command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
+    Place <strong>ChatrBox</strong> anywhere you need training support. Training scenariors are virtually unlimited.  Using built-in pet detection, <strong>ChatrBox</strong> knows when your pet approaches an area or object and instantly triggers your message and command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
   </div>
 </div>
 
@@ -1096,8 +1096,13 @@ body, html {
   <audio id="triggerAudio1" src="audio/audio1.mp3" preload="auto"></audio>
   <audio id="triggerAudio2" src="audio/audio2.mp3" preload="auto"></audio>
   <audio id="triggerAudio3" src="audio/audio3.mp3" preload="auto"></audio>
+  
+   <h3>Alerts continue to play until your pet moves from the motion detetion area.<h3>
+  
 </section>
 
+
+  
 <!-- ✅ Moved OUTSIDE the section -->
 <div class="text-block title-block fade-in">
   Even The Most <em>Stubborn</em> Pets "Get It"
@@ -1594,4 +1599,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
-
