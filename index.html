@@ -850,27 +850,25 @@ body, html {
     max-width: 420px;
   }
 }
-@keyframes pulse-led {
+@keyframes flashEffect {
   0%, 100% {
-    opacity: 0.1;
+    background-color: yellow;
+    box-shadow: 0 0 8px yellow;
     transform: scale(1);
+    opacity: 0.8;
   }
   50% {
+    background-color: blue;
+    box-shadow: 0 0 12px blue;
+    transform: scale(1.4);
     opacity: 1;
-    transform: scale(1.6);
   }
 }
 
 .step-number.flash {
-  animation: pulse-led 0.1s ease-in-out 10;
+  animation: flashEffect 0.15s ease-in-out 5;
 }
 
-
-@keyframes flashColor {
-  0%   { background-color: yellow; box-shadow: 0 0 10px yellow; }
-  50%  { background-color: blue;   box-shadow: 0 0 10px blue; }
-  100% { background-color: yellow; box-shadow: 0 0 10px yellow; }
-}
  
 </style>
 </head>
