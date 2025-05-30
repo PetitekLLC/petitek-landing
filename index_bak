@@ -163,17 +163,17 @@ body, html {
   text-align: center;
   font-weight: bold;
   line-height: 1.3;
-  margin: 30px auto 8px; !important;
+  margin: 30px auto 8px;
   font-family: inherit;
   max-width: 800px;
-  padding: 0 20px; !important;
+  padding: 0 20px;
 }
 
 .body-block {
   font-size: clamp(1.25rem, 2.25vw, 1.5rem);
   text-align: left;
   line-height: 1.7;
-  padding: 0 20px 18px;
+  padding: 0 20px 24px;
   max-width: 800px;
   margin: 0 auto;
   font-family: inherit;
@@ -730,7 +730,7 @@ body, html {
 
 .escalation-section {
   max-width: 960px;
-  margin: 3rem auto;
+  margin: 0rem auto 1rem auto;
   padding: 2rem;
   background: #fff;
   border-radius: 12px;
@@ -739,15 +739,24 @@ body, html {
 }
 
 .escalation-section h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
 .escalation-subtext {
-  color: #444;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+  line-height: 1.7;
+  color: #000;
+  text-align: left;
+  margin: 2rem 0 1.5rem 0;
+  padding: 0;         /* ← remove side padding */
+  max-width: none;    /* ← allow full stretch inside .escalation-section */
+  font-family: inherit;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
+
 
 .escalation-steps {
   display: flex;
@@ -868,7 +877,7 @@ body, html {
 .step-number.flash {
   animation: flashEffect 0.15s ease-in-out infinite;
 }
- 
+
 </style>
 </head>
 <body>
@@ -914,13 +923,15 @@ body, html {
     <img src="images/left_square.webp" class="turn-img" alt="Left" />
   </div>
 </div>
- 
+
+  
 <div style="margin-top: 15px; text-align: center;">
   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
     <polyline points="6 9 12 15 18 9"/>
   </svg>
 </div>
- 
+
+  
 <div class="stacked-gallery" id="galleryStart">
   <hr style="width: 80%; max-width: 800px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
    
@@ -974,6 +985,7 @@ body, html {
   </div>
 </div>
 
+
 <!-- Video1 -->
 <div class="video-wrapper fade-in">
   <video id="chatrboxVideo1" autoplay muted playsinline controls preload="none">
@@ -983,6 +995,7 @@ body, html {
     🔊 Tap to Unmute
   </div>
 </div>
+
 
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
@@ -1063,6 +1076,7 @@ body, html {
   </div>
 </div>
 
+
 <!-- Attention Grabbing Tones -->
 <div class="text-block title-block fade-in">
   Attention Grabbing Tones And Flashing Lights To Get Their Focus
@@ -1070,16 +1084,14 @@ body, html {
 <div class="text-block body-block fade-in">
   Proven alert tones and flashing blue-yellow lights <em>(colors dogs and cats can see)</em> instantly grab their attention — stopping them in their tracks before bad behavior even starts, and locking their focus onto your voice command when it matters most.
 </div>
-
-<!-- Esacalation -->
-<div class="text-block title-block fade-in">
-How ChatrBox Escalates to Get Your Pet’s Attention
-</div>
-<div class="text-block body-block fade-in">
-If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response.
-Tap each step to experience how it works:  
-</div>
   
+<section class="escalation-section fade-in">
+  <h2>How ChatrBox Escalates to Get Your Pet’s Attention</h2>
+  <p class="escalation-subtext">
+    If your pet doesn’t respond to the first command, ChatrBox automatically intensifies its response.
+    Tap each step to experience how it works:
+  </p>
+
   <div class="escalation-steps">
     <div class="step-card" onclick="playAlert(1)">
     <div class="step-number" id="light1">1</div>
@@ -1111,6 +1123,8 @@ Tap each step to experience how it works:
   
 </section>
 
+
+  
 <!-- ✅ Moved OUTSIDE the section -->
 <div class="text-block title-block fade-in">
   Even The Most <em>Stubborn</em> Pets "Get It"
