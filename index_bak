@@ -802,7 +802,7 @@ body, html {
 .tap-to-hear {
   font-size: 1rem;
   color: #25A8C6;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 /* LED styling */
@@ -831,13 +831,17 @@ body, html {
 
 /* Flash animation for LED feedback */
 @keyframes pulse-led {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  background-color: yellow;
+  }
 }
 
-.led.flash {
-  animation: pulse-led 0.4s ease-in-out 3;
-}
 
 /* Responsive layout */
 @media (max-width: 600px) {
@@ -846,15 +850,26 @@ body, html {
     max-width: 420px;
   }
 }
- .step-number.flash {
-  animation: flashColor 0.4s infinite;
+@keyframes flashEffect {
+  0%, 100% {
+    background-color: yellow;
+    box-shadow: 0 0 8px yellow;
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    background-color: blue;
+    box-shadow: 0 0 12px blue;
+    transform: scale(1.4);
+    opacity: 1;
+  }
 }
 
-@keyframes flashColor {
-  0%   { background-color: yellow; box-shadow: 0 0 10px yellow; }
-  50%  { background-color: blue;   box-shadow: 0 0 10px blue; }
-  100% { background-color: yellow; box-shadow: 0 0 10px yellow; }
+.step-number.flash {
+  animation: flashEffect 0.15s ease-in-out infinite;
 }
+
+
  
 </style>
 </head>
@@ -1097,7 +1112,7 @@ body, html {
   <audio id="triggerAudio2" src="audio/audio2.mp3" preload="auto"></audio>
   <audio id="triggerAudio3" src="audio/audio3.mp3" preload="auto"></audio>
   
-   <h3>Alerts continue to play until your pet moves from the motion detetion area.<h3>
+   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.<h3>
   
 </section>
 
@@ -1426,14 +1441,16 @@ function playAlert(step) {
     audio.currentTime = 0;
 
     // Start flashing effect on the step indicator
-    light.classList.add('flash');
+    light.classList.remove('flash');      // Reset animation if already applied
+    void light.offsetWidth;               // Force reflow to restart animation
+    light.classList.add('flash');         // Apply animation class
 
     // Play audio
     audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
 
     // Remove flashing when audio ends
     audio.onended = () => {
-      light.classList.remove('flash');
+      light.classList.remove('flash');    // Clean up after animation completes
     };
   } else {
     console.warn(`Missing audio or light element for step ${step}`);
@@ -1593,6 +1610,7 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 
 }); // End of DOMContentLoaded
+
 </script>
 
 
