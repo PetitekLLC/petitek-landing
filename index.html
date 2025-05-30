@@ -746,13 +746,14 @@ body, html {
 .escalation-subtext {
   font-size: clamp(1.25rem, 2.25vw, 1.5rem);
   line-height: 1.7;
-  color: #000; /* or inherit */
-  text-align: left; /* or center, depending on desired alignment */
-margin: 2rem auto 1.5rem auto; /* ← adjust spacing above/below */
-  max-width: 800px;
-  padding: 0 20px;
+  color: #000;
+  text-align: left;
+  margin: 2rem 0 1.5rem 0;
+  padding: 0;         /* ← remove side padding */
+  max-width: none;    /* ← allow full stretch inside .escalation-section */
   font-family: inherit;
 }
+
 
 .escalation-steps {
   display: flex;
