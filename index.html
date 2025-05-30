@@ -853,9 +853,21 @@ body, html {
     max-width: 420px;
   }
 }
- .step-number.flash {
-  animation: flashColor 0.4s infinite;
+@keyframes pulse-led {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
 }
+
+.step-number.flash {
+  animation: pulse-led 0.1s ease-in-out 10;
+}
+
 
 @keyframes flashColor {
   0%   { background-color: yellow; box-shadow: 0 0 10px yellow; }
