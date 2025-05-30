@@ -744,9 +744,14 @@ body, html {
 }
 
 .escalation-subtext {
-  color: #444;
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+  line-height: 1.7;
+  color: #000; /* or inherit */
+  text-align: left; /* or center, depending on desired alignment */
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+  font-family: inherit;
 }
 
 .escalation-steps {
