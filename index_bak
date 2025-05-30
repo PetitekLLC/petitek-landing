@@ -869,7 +869,15 @@ body, html {
   animation: flashEffect 0.15s ease-in-out infinite;
 }
 
+.escalation-section {
+  margin-top: 0;
+  padding-top: 0;
+}
 
+.text-block.body-block {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
  
 </style>
 </head>
