@@ -236,13 +236,14 @@ body, html {
   scroll-snap-type: x mandatory;
 }
 
-.carousel-track img {
-  flex: 0 0 calc(33.333% - 10px);
-  max-width: calc(33.333% - 10px);
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  scroll-snap-align: start;
+.carousel-track {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease-in-out;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  min-height: 200px; /* ✅ Prevents layout collapse */
 }
 
 .carousel-btn {
@@ -1029,7 +1030,8 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
   </div>
 </div>
-  
+
+  <!-- Photo Carousel One Start -->
 <div class="photo-carousel">
   <button class="carousel-btn prev">&#10094;</button>
   <div class="carousel-track">
@@ -1071,9 +1073,9 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   </div>
   <button class="carousel-btn next">&#10095;</button>
 </div>
+  <!-- Photo Carousel One ends -->
 
-
-<!-- ChatrBox Train Block -->
+  <!-- ChatrBox Train Block -->
 <div class="content-block">
   <img
     src="images/2_ChatrboxTrain800.webp"
@@ -1649,6 +1651,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  // Scroll step = one image width + gap
+  const scrollStep = track.clientWidth / 3 + 10;
+
+  prevBtn.addEventListener("click", () => {
+    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    track.scrollBy({ left: scrollStep, behavior: "smooth" });
+  });
+});
   // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver(entries => {
@@ -1732,25 +1752,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videos.forEach(initVideo);
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  const prevBtn = document.querySelector(".carousel-btn.prev");
-  const nextBtn = document.querySelector(".carousel-btn.next");
-
-  if (!track || !prevBtn || !nextBtn) return;
-
-  // Scroll step = one image width + gap
-  const scrollStep = track.clientWidth / 3 + 10;
-
-  prevBtn.addEventListener("click", () => {
-    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-  });
-
-  nextBtn.addEventListener("click", () => {
-    track.scrollBy({ left: scrollStep, behavior: "smooth" });
-  });
-});
   
 }); // End of DOMContentLoaded
 
