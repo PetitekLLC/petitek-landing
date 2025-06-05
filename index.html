@@ -234,18 +234,35 @@ body, html {
   scroll-behavior: smooth;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  min-height: 250px; /* ✅ Prevent collapse on narrow screens */
 }
 
-.carousel-track {
-  display: flex;
-  gap: 10px;
-  transition: transform 0.3s ease-in-out;
-  scroll-behavior: smooth;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  min-height: 200px; /* ✅ Prevents layout collapse */
+.carousel-track img {
+  flex: 0 0 calc(33.333% - 10px); /* 3 at a time by default */
+  max-width: calc(33.333% - 10px);
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  scroll-snap-align: start;
 }
 
+/* Tablet: show 2 at a time */
+@media (max-width: 768px) {
+  .carousel-track img {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+
+/* Mobile: show 1 at a time */
+@media (max-width: 480px) {
+  .carousel-track img {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Begin Carousel 1*/  
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -262,20 +279,6 @@ body, html {
 
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
-
-@media (max-width: 768px) {
-  .carousel-track img {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-track img {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
 
   
 .feature-group {
