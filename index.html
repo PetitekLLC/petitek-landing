@@ -219,7 +219,64 @@ body, html {
   border-radius: 8px;
   box-sizing: border-box;
 }
+.photo-carousel {
+  position: relative;
+  max-width: 960px;
+  margin: 60px auto;
+  overflow: hidden;
+  padding: 10px 0;
+}
 
+.carousel-track {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease-in-out;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-track img {
+  flex: 0 0 calc(33.333% - 10px);
+  max-width: calc(33.333% - 10px);
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 6px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+@media (max-width: 768px) {
+  .carousel-track img {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-track img {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+  
 .feature-group {
   max-width: 800px;
   width: 100%;
@@ -973,6 +1030,49 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   </div>
 </div>
   
+<div class="photo-carousel">
+  <button class="carousel-btn prev">&#10094;</button>
+  <div class="carousel-track">
+    <img class="fade-in" loading="lazy"
+         src="images/no_collars.800.webp"
+         srcset="images/no_collars.800.webp 800w, images/no_collars.1600.webp 1600w"
+         sizes="(max-width: 768px) 100vw, 33vw"
+         alt="No Collars" />
+
+    <img class="fade-in" loading="lazy"
+         src="images/custom_commands.800.webp"
+         srcset="images/custom_commands.800.webp 800w, images/custom_commands.1600.webp 1600w"
+         sizes="(max-width: 768px) 100vw, 33vw"
+         alt="Custom Commands" />
+
+    <img class="fade-in" loading="lazy"
+         src="images/instant_correction.800.webp"
+         srcset="images/instant_correction.800.webp 800w, images/instant_correction.1600.webp 1600w"
+         sizes="(max-width: 768px) 100vw, 33vw"
+         alt="Instant Correction" />
+
+    <img class="fade-in" loading="lazy"
+         src="images/virtual_boundaries.800.webp"
+         srcset="images/virtual_boundaries.800.webp 800w, images/virtual_boundaries.1600.webp 1600w"
+         sizes="(max-width: 768px) 100vw, 33vw"
+         alt="Virtual Boundaries" />
+
+    <img class="fade-in" loading="lazy"
+         src="images/place_anywhere.800.webp"
+         srcset="images/place_anywhere.800.webp 800w, images/place_anywhere.1600.webp 1600w"
+         sizes="(max-width: 768px) 100vw, 33vw"
+         alt="Place Anywhere" />
+
+    <img class="fade-in" loading="lazy"
+         src="images/always_on_gentle.800.webp"
+         srcset="images/always_on_gentle.800.webp 800w, images/always_on_gentle.1600.webp 1600w"
+         sizes="(max-width: 768px) 100vw, 33vw"
+         alt="Always Gentle" />
+  </div>
+  <button class="carousel-btn next">&#10095;</button>
+</div>
+
+
 <!-- ChatrBox Train Block -->
 <div class="content-block">
   <img
@@ -1632,6 +1732,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videos.forEach(initVideo);
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  // Scroll step = one image width + gap
+  const scrollStep = track.clientWidth / 3 + 10;
+
+  prevBtn.addEventListener("click", () => {
+    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    track.scrollBy({ left: scrollStep, behavior: "smooth" });
+  });
+});
+  
 }); // End of DOMContentLoaded
 
 </script>
