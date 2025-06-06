@@ -1578,22 +1578,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = track.children;
 
     // Clone first and last slides
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides[slides.length - 1].cloneNode(true);
+  // ✅ SAFARI-SAFE manual clone function
+function cloneSlide(imgEl) {
+  const newImg = document.createElement('img');
+  newImg.src = imgEl.src;
+  newImg.srcset = imgEl.srcset;
+  newImg.sizes = imgEl.sizes;
+  newImg.alt = imgEl.alt;
+  newImg.className = imgEl.className;
+  return newImg;
+}
 
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, slides[0]);
+// ✅ Clone first and last slides using the safe method
+const firstClone = cloneSlide(slides[0]);
+const lastClone = cloneSlide(slides[slides.length - 1]);
 
-    // Scroll to first real slide
-    track.scrollLeft = scrollStep;
-    
 track.appendChild(firstClone);
 track.insertBefore(lastClone, slides[0]);
 
-// Scroll to first real slide
-track.scrollLeft = scrollStep;
+// ✅ Scroll to the first real slide after clones
+setTimeout(() => {
+  track.scrollLeft = scrollStep;
+}, 50); // Helps iOS catch up on layout
 
-// ✅ Fix scroll position after resize (avoids 400–768px glitch)
+// ✅ Fix scroll position after window resize
 window.addEventListener('resize', () => {
   if (
     track.scrollLeft === 0 ||
@@ -1603,24 +1611,6 @@ window.addEventListener('resize', () => {
   }
 });
 
-    nextBtn.addEventListener("click", () => {
-      track.scrollBy({ left: scrollStep, behavior: "smooth" });
-      setTimeout(() => {
-        if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
-          track.scrollLeft = scrollStep;
-        }
-      }, 350);
-    });
-
-    prevBtn.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-      setTimeout(() => {
-        if (track.scrollLeft <= 0) {
-          track.scrollLeft = track.scrollWidth - 2 * scrollStep;
-        }
-      }, 350);
-    });
-  }
 
   // === Turntable Carousel ===
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
