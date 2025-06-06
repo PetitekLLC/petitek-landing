@@ -1548,162 +1548,69 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 
 <!-- THEN Your Single <script> -->
 <script>
-function playAlert(step) {
-  const audio = document.getElementById(`triggerAudio${step}`);
-  const light = document.getElementById(`light${step}`);
-
-  if (audio && light) {
-    audio.volume = 1.0;
-    audio.currentTime = 0;
-
-    light.classList.remove('flash');
-    void light.offsetWidth;
-    light.classList.add('flash');
-
-    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
-    audio.onended = () => light.classList.remove('flash');
-  } else {
-    console.warn(`Missing audio or light element for step ${step}`);
-  }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  // === Seamless Infinite Carousel Scroll ===
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
   if (track && prevBtn && nextBtn) {
     const scrollStep = track.clientWidth;
-    const slides = track.children;
 
-    // Clone first and last slides
-  // ✅ SAFARI-SAFE manual clone function
-function cloneSlide(imgEl) {
-  const newImg = document.createElement('img');
-  newImg.src = imgEl.src;
-  newImg.srcset = imgEl.srcset;
-  newImg.sizes = imgEl.sizes;
-  newImg.alt = imgEl.alt;
-  newImg.className = imgEl.className;
-  return newImg;
-}
+    // Define a safe clone function (Safari-compatible)
+    function cloneSlide(imgEl) {
+      const newImg = document.createElement('img');
+      newImg.src = imgEl.src;
+      newImg.srcset = imgEl.srcset;
+      newImg.sizes = imgEl.sizes;
+      newImg.alt = imgEl.alt;
+      newImg.className = imgEl.className;
+      return newImg;
+    }
 
-// ✅ Scroll to the first real slide after clones
-setTimeout(() => {
-  track.scrollLeft = scrollStep;
-}, 50); // Helps iOS catch up on layout
+    const slides = Array.from(track.children);
+    const firstClone = cloneSlide(slides[0]);
+    const lastClone = cloneSlide(slides[slides.length - 1]);
 
-// ✅ Fix scroll position after window resize
-window.addEventListener('resize', () => {
-  if (
-    track.scrollLeft === 0 ||
-    track.scrollLeft >= track.scrollWidth - track.clientWidth
-  ) {
-    track.scrollLeft = scrollStep;
-  }
-});
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, slides[0]);
 
+    // Scroll to the first real slide
+    setTimeout(() => {
+      track.scrollLeft = scrollStep;
+    }, 50);
 
-  // === Turntable Carousel ===
-  const images = document.querySelectorAll('#turntableCarousel .turn-img');
-  let index = 0;
-  function showNextImage() {
-    images.forEach((img, i) => {
-      img.classList.toggle('active', i === index);
-    });
-    index = (index + 1) % images.length;
-  }
-  showNextImage();
-  setInterval(showNextImage, 3000);
-
-  // === Fade-In Animation ===
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
-    });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => fadeObserver.observe(el));
-
-  // === Navbar Hide on Scroll ===
-  const navbar = document.getElementById('navbar');
-  let lastScrollTop = 0;
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
-    lastScrollTop = scrollTop;
-  });
-
-  // === Dropdown Menu ===
-  const menu = document.getElementById('dropdownMenu');
-  const hamburger = document.querySelector('.hamburger');
-  if (hamburger && menu) {
-    hamburger.addEventListener('click', () => {
-      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-    });
-    document.addEventListener('click', (event) => {
-      if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-        menu.style.display = 'none';
+    // Fix scroll after window resize
+    window.addEventListener('resize', () => {
+      if (
+        track.scrollLeft === 0 ||
+        track.scrollLeft >= track.scrollWidth - track.clientWidth
+      ) {
+        track.scrollLeft = scrollStep;
       }
     });
-  }
 
-  // === Floating Buy Button ===
-  const floatBtn = document.querySelector('.floating-buy-button');
-  if (floatBtn) {
-    window.addEventListener('scroll', () => {
-      floatBtn.classList.toggle('show', window.scrollY > 300);
-    });
-  }
-
-  // === Video Handling (Autoplay & Unmute) ===
-  const videos = [
-    { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
-    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
-    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
-    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
-  ];
-  let currentlyPlaying = null;
-
-  videos.forEach(({ id, overlayId }) => {
-    const video = document.getElementById(id);
-    const overlay = document.getElementById(overlayId);
-    if (!video || !overlay) return;
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          videos.forEach(({ id: otherId }) => {
-            const other = document.getElementById(otherId);
-            if (other && other !== video && !other.paused) other.pause();
-          });
-          currentlyPlaying = video;
-          video.play();
-        } else {
-          if (video === currentlyPlaying) video.pause();
+    // Navigation buttons
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: scrollStep, behavior: "smooth" });
+      setTimeout(() => {
+        if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
+          track.scrollLeft = scrollStep;
         }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(video);
-
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      overlay.style.display = 'block';
-      video.muted = true;
+      }, 350);
     });
 
-    overlay.addEventListener('click', () => {
-      video.pause();
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+      setTimeout(() => {
+        if (track.scrollLeft <= 0) {
+          track.scrollLeft = track.scrollWidth - 2 * scrollStep;
+        }
+      }, 350);
     });
-  });
+  }
 });
 </script>
+
 
 </body>
 
