@@ -1577,71 +1577,68 @@ function playAlert(step) {
     audio.volume = 1.0;
     audio.currentTime = 0;
 
-    // Start flashing effect on the step indicator
+    // Flash effect
     light.classList.remove('flash');
     void light.offsetWidth;
     light.classList.add('flash');
 
-    // Play audio
     audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
-
-    // Remove flashing when audio ends
-    audio.onended = () => {
-      light.classList.remove('flash');
-    };
+    audio.onended = () => light.classList.remove('flash');
   } else {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // === Carousel Navigation ===
+  // === Carousel Navigation (Manual loop) ===
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
   if (track && prevBtn && nextBtn) {
     const scrollStep = track.clientWidth;
-    prevBtn.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-    });
+
     nextBtn.addEventListener("click", () => {
-      track.scrollBy({ left: scrollStep, behavior: "smooth" });
+      const maxScrollLeft = track.scrollWidth - track.clientWidth;
+      if (Math.ceil(track.scrollLeft) >= maxScrollLeft) {
+        track.scrollTo({ left: 0, behavior: "smooth" }); // Loop to start
+      } else {
+        track.scrollBy({ left: scrollStep, behavior: "smooth" });
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (track.scrollLeft <= 0) {
+        const maxScrollLeft = track.scrollWidth - track.clientWidth;
+        track.scrollTo({ left: maxScrollLeft, behavior: "smooth" }); // Loop to end
+      } else {
+        track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+      }
     });
   }
 
   // === Turntable Carousel ===
-const track = document.querySelector(".carousel-track");
-const prevBtn = document.querySelector(".carousel-btn.prev");
-const nextBtn = document.querySelector(".carousel-btn.next");
+  const images = document.querySelectorAll('#turntableCarousel .turn-img');
+  let index = 0;
+  function showNextImage() {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    index = (index + 1) % images.length;
+  }
+  showNextImage();
+  setInterval(showNextImage, 3000);
 
-if (track && prevBtn && nextBtn) {
-  const scrollStep = track.clientWidth;
+  // === Fade-In Animation ===
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => fadeObserver.observe(el));
 
-  nextBtn.addEventListener("click", () => {
-    const maxScrollLeft = track.scrollWidth - track.clientWidth;
-    if (Math.ceil(track.scrollLeft) >= maxScrollLeft) {
-      // Reached end → loop back to start
-      track.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      track.scrollBy({ left: scrollStep, behavior: "smooth" });
-    }
-  });
-
-  prevBtn.addEventListener("click", () => {
-    if (track.scrollLeft <= 0) {
-      // At start → jump to end
-      const maxScrollLeft = track.scrollWidth - track.clientWidth;
-      track.scrollTo({ left: maxScrollLeft, behavior: "smooth" });
-    } else {
-      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-    }
-  });
-}
-
-
-
-  // === Navbar Scroll ===
+  // === Navbar Hide on Scroll ===
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1655,7 +1652,7 @@ if (track && prevBtn && nextBtn) {
   const hamburger = document.querySelector('.hamburger');
   if (hamburger && menu) {
     hamburger.addEventListener('click', () => {
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
     });
     document.addEventListener('click', (event) => {
       if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
@@ -1672,7 +1669,7 @@ if (track && prevBtn && nextBtn) {
     });
   }
 
-  // === Video Autoplay + Unmute Handling ===
+  // === Video Handling (Autoplay & Unmute) ===
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
