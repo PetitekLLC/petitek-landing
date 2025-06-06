@@ -1553,63 +1553,68 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
-  if (track && prevBtn && nextBtn) {
-    const scrollStep = track.clientWidth;
+  if (!track || !prevBtn || !nextBtn) return;
 
-    // Define a safe clone function (Safari-compatible)
-    function cloneSlide(imgEl) {
-      const newImg = document.createElement('img');
-      newImg.src = imgEl.src;
-      newImg.srcset = imgEl.srcset;
-      newImg.sizes = imgEl.sizes;
-      newImg.alt = imgEl.alt;
-      newImg.className = imgEl.className;
-      return newImg;
-    }
+  const scrollStep = track.clientWidth;
 
-    const slides = Array.from(track.children);
-    const firstClone = cloneSlide(slides[0]);
-    const lastClone = cloneSlide(slides[slides.length - 1]);
+  // ✅ Safe clone function (for Safari)
+  function cloneSlide(imgEl) {
+    const newImg = document.createElement('img');
+    newImg.src = imgEl.src;
+    newImg.srcset = imgEl.srcset;
+    newImg.sizes = imgEl.sizes;
+    newImg.alt = imgEl.alt;
+    newImg.className = imgEl.className;
+    return newImg;
+  }
 
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, slides[0]);
+  // ✅ Cache *original* slides before cloning
+  const originalSlides = Array.from(track.children);
 
-    // Scroll to the first real slide
+  const firstClone = cloneSlide(originalSlides[0]);
+  const lastClone = cloneSlide(originalSlides[originalSlides.length - 1]);
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+
+  // ✅ Scroll to first real image
+  setTimeout(() => {
+    track.scrollLeft = scrollStep;
+  }, 50);
+
+  // ✅ Navigation with seamless looping
+  nextBtn.addEventListener("click", () => {
+    track.scrollBy({ left: scrollStep, behavior: "smooth" });
+
     setTimeout(() => {
-      track.scrollLeft = scrollStep;
-    }, 50);
-
-    // Fix scroll after window resize
-    window.addEventListener('resize', () => {
-      if (
-        track.scrollLeft === 0 ||
-        track.scrollLeft >= track.scrollWidth - track.clientWidth
-      ) {
+      if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
         track.scrollLeft = scrollStep;
       }
-    });
+    }, 350);
+  });
 
-    // Navigation buttons
-    nextBtn.addEventListener("click", () => {
-      track.scrollBy({ left: scrollStep, behavior: "smooth" });
-      setTimeout(() => {
-        if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
-          track.scrollLeft = scrollStep;
-        }
-      }, 350);
-    });
+  prevBtn.addEventListener("click", () => {
+    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
 
-    prevBtn.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-      setTimeout(() => {
-        if (track.scrollLeft <= 0) {
-          track.scrollLeft = track.scrollWidth - 2 * scrollStep;
-        }
-      }, 350);
-    });
-  }
+    setTimeout(() => {
+      if (track.scrollLeft <= 0) {
+        track.scrollLeft = track.scrollWidth - 2 * scrollStep;
+      }
+    }, 350);
+  });
+
+  // ✅ Fix layout when resizing window (especially for iOS bug)
+  window.addEventListener('resize', () => {
+    if (
+      track.scrollLeft === 0 ||
+      track.scrollLeft >= track.scrollWidth - track.clientWidth
+    ) {
+      track.scrollLeft = scrollStep;
+    }
+  });
 });
 </script>
+
 
 
 </body>
