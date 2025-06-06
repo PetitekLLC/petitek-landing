@@ -219,7 +219,7 @@ body, html {
   border-radius: 8px;
   box-sizing: border-box;
 }
-/* === Begin Carousel Styles === */
+  
 /* === Begin Carousel Styles === */
 .photo-carousel {
   position: relative;
@@ -228,10 +228,16 @@ body, html {
 }
 
 .carousel-track {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  overflow-x: auto;
+  gap: 10px;
+  -webkit-overflow-scrolling: touch;
+  min-height: 280px;
 }
+
 .carousel-track img {
   scroll-snap-align: center;
 }
