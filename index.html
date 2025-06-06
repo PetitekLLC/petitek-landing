@@ -1589,13 +1589,6 @@ function cloneSlide(imgEl) {
   return newImg;
 }
 
-// ✅ Clone first and last slides using the safe method
-const firstClone = cloneSlide(slides[0]);
-const lastClone = cloneSlide(slides[slides.length - 1]);
-
-track.appendChild(firstClone);
-track.insertBefore(lastClone, slides[0]);
-
 // ✅ Scroll to the first real slide after clones
 setTimeout(() => {
   track.scrollLeft = scrollStep;
