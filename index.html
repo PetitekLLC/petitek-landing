@@ -1055,7 +1055,6 @@ font-size: clamp(2rem, 4vw, 2.75rem);
            srcset="images/no_collars.800.webp 800w, images/no_collars.1600.webp 1600w"
            sizes="(max-width: 768px) 100vw, 33vw"
            alt="No Collars"
-           class="fade-in" />
 
       <img src="images/custom_commands.800.webp"
            srcset="images/custom_commands.800.webp 800w, images/custom_commands.1600.webp 1600w"
@@ -1067,25 +1066,22 @@ font-size: clamp(2rem, 4vw, 2.75rem);
            srcset="images/instant_correction.800.webp 800w, images/instant_correction.1600.webp 1600w"
            sizes="(max-width: 768px) 100vw, 33vw"
            alt="Instant Correction"
-           class="fade-in" />
 
       <img src="images/virtual_boundaries.800.webp"
            srcset="images/virtual_boundaries.800.webp 800w, images/virtual_boundaries.1600.webp 1600w"
            sizes="(max-width: 768px) 100vw, 33vw"
            alt="Virtual Boundaries"
-           class="fade-in" />
-
+     
       <img src="images/place_anywhere.800.webp"
            srcset="images/place_anywhere.800.webp 800w, images/place_anywhere.1600.webp 1600w"
            sizes="(max-width: 768px) 100vw, 33vw"
            alt="Place Anywhere"
-           class="fade-in" />
 
       <img src="images/always_on_gentle.800.webp"
            srcset="images/always_on_gentle.800.webp 800w, images/always_on_gentle.1600.webp 1600w"
            sizes="(max-width: 768px) 100vw, 33vw"
            alt="Always Gentle"
-           class="fade-in" />
+      
     </div>
     <button class="carousel-btn next">&#10095;</button>
   </div>
@@ -1615,25 +1611,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // === Turntable Carousel ===
-  const images = document.querySelectorAll('#turntableCarousel .turn-img');
-  let index = 0;
-  function showNextImage() {
-    images.forEach((img, i) => {
-      img.classList.toggle('active', i === index);
-    });
-    index = (index + 1) % images.length;
-  }
-  showNextImage();
-  setInterval(showNextImage, 3000);
+const track = document.querySelector(".carousel-track");
+const prevBtn = document.querySelector(".carousel-btn.prev");
+const nextBtn = document.querySelector(".carousel-btn.next");
 
-  // === Fade-In Animation ===
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
-    });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => fadeObserver.observe(el));
+if (track && prevBtn && nextBtn) {
+  const scrollStep = track.clientWidth;
+
+  nextBtn.addEventListener("click", () => {
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+    if (Math.ceil(track.scrollLeft) >= maxScrollLeft) {
+      // Reached end → loop back to start
+      track.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      track.scrollBy({ left: scrollStep, behavior: "smooth" });
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (track.scrollLeft <= 0) {
+      // At start → jump to end
+      const maxScrollLeft = track.scrollWidth - track.clientWidth;
+      track.scrollTo({ left: maxScrollLeft, behavior: "smooth" });
+    } else {
+      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+    }
+  });
+}
+
+
 
   // === Navbar Scroll ===
   const navbar = document.getElementById('navbar');
