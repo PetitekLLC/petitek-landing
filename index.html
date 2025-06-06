@@ -219,6 +219,7 @@ body, html {
   border-radius: 8px;
   box-sizing: border-box;
 }
+/* === Begin Carousel Styles === */
 .photo-carousel {
   position: relative;
   max-width: 960px;
@@ -234,11 +235,12 @@ body, html {
   scroll-behavior: smooth;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  min-height: 250px; /* ✅ Prevent collapse on narrow screens */
+  -webkit-overflow-scrolling: touch;
+  min-height: 280px; /* Prevents collapsing on small screens */
 }
 
 .carousel-track img {
-  flex: 0 0 calc(33.333% - 10px); /* 3 at a time by default */
+  flex: 0 0 calc(33.333% - 10px);
   max-width: calc(33.333% - 10px);
   height: auto;
   border-radius: 8px;
@@ -246,7 +248,7 @@ body, html {
   scroll-snap-align: start;
 }
 
-/* Tablet: show 2 at a time */
+/* Tablet: 2 images */
 @media (max-width: 768px) {
   .carousel-track img {
     flex: 0 0 calc(50% - 10px);
@@ -254,15 +256,19 @@ body, html {
   }
 }
 
-/* Mobile: show 1 at a time */
+/* Mobile: 1 full image */
 @media (max-width: 480px) {
+  .carousel-track {
+    min-height: 280px;
+  }
+
   .carousel-track img {
     flex: 0 0 100%;
+    min-width: 100%;
     max-width: 100%;
   }
 }
 
-/* Begin Carousel 1*/  
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -279,6 +285,8 @@ body, html {
 
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
+/* === End Carousel Styles === */
+
 
   
 .feature-group {
