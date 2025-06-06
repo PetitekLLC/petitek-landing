@@ -1664,25 +1664,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+  // ✅ Carousel Navigation
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
-  if (!track || !prevBtn || !nextBtn) return;
+  if (track && prevBtn && nextBtn) {
+    const scrollStep = track.clientWidth; // one full image width
 
-  // Scroll step = one image width + gap
-  const scrollStep = track.clientWidth / 3 + 10;
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+    });
 
-  prevBtn.addEventListener("click", () => {
-    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-  });
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: scrollStep, behavior: "smooth" });
+    });
+  }
 
-  nextBtn.addEventListener("click", () => {
-    track.scrollBy({ left: scrollStep, behavior: "smooth" });
-  });
-});
-  // Fade-In Animation
+  // ✅ Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1691,7 +1691,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // Hide Navbar on Scroll
+  // ✅ Hide Navbar on Scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1699,6 +1699,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
     lastScrollTop = scrollTop;
   });
+});
+
 
   // Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
