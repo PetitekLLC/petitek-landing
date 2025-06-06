@@ -220,7 +220,7 @@ body, html {
   box-sizing: border-box;
 }
   
-/* === Begin Carousel Styles === */
+/* === Begin Carousel Styles (1 image only) === */
 .photo-carousel {
   position: relative;
   overflow: hidden;
@@ -239,26 +239,11 @@ body, html {
 }
 
 .carousel-track img {
+  flex: 0 0 100%;
+  min-width: 100%;
+  max-width: 100%;
+  object-fit: contain;
   scroll-snap-align: center;
-}
-
-
-/* Tablet: 2 images */
-@media (max-width: 768px) {
-  .carousel-track img {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
-}
-
-/* Mobile: 1 image full width */
-@media (max-width: 480px) {
-  .carousel-track img {
-    flex: 0 0 100%;
-    min-width: 100%;
-    max-width: 100%;
-    object-fit: contain;
-  }
 }
 
 .carousel-btn {
@@ -283,6 +268,7 @@ body, html {
   right: 10px;
 }
 /* === End Carousel Styles === */
+
 
 
   
