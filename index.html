@@ -1574,59 +1574,49 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.querySelector(".carousel-btn.next");
 
   // === Swipe support for carousel ===
-let startX = 0;
-let isDragging = false;
+// === Seamless Infinite Carousel Scroll ===
+const track = document.querySelector(".carousel-track");
+const prevBtn = document.querySelector(".carousel-btn.prev");
+const nextBtn = document.querySelector(".carousel-btn.next");
 
-if (track) {
-  track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-  });
+if (track && prevBtn && nextBtn) {
+  const slides = track.children;
+  const scrollStep = track.clientWidth;
 
-  track.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    const currentX = e.touches[0].clientX;
-    const deltaX = startX - currentX;
+  // Clone first and last slides
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
 
-    if (Math.abs(deltaX) > 50) { // minimum swipe distance
-      if (deltaX > 0) {
-        // Swipe left → next
-        nextBtn.click();
-      } else {
-        // Swipe right → prev
-        prevBtn.click();
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  // Scroll to real first image (not the clone)
+  track.scrollLeft = scrollStep;
+
+  // Next button
+  nextBtn.addEventListener("click", () => {
+    track.scrollBy({ left: scrollStep, behavior: "smooth" });
+
+    // Watch for fake-to-real snap
+    setTimeout(() => {
+      if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
+        track.scrollLeft = scrollStep;
       }
-      isDragging = false; // prevent multiple triggers
-    }
+    }, 350); // allow animation to complete
   });
 
-  track.addEventListener('touchend', () => {
-    isDragging = false;
+  // Prev button
+  prevBtn.addEventListener("click", () => {
+    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+
+    setTimeout(() => {
+      if (track.scrollLeft <= 0) {
+        track.scrollLeft = track.scrollWidth - 2 * scrollStep;
+      }
+    }, 350);
   });
 }
 
-
-  if (track && prevBtn && nextBtn) {
-    const scrollStep = track.clientWidth;
-
-    nextBtn.addEventListener("click", () => {
-      const maxScrollLeft = track.scrollWidth - track.clientWidth;
-      if (Math.ceil(track.scrollLeft) >= maxScrollLeft) {
-        track.scrollTo({ left: 0, behavior: "smooth" }); // Loop to start
-      } else {
-        track.scrollBy({ left: scrollStep, behavior: "smooth" });
-      }
-    });
-
-    prevBtn.addEventListener("click", () => {
-      if (track.scrollLeft <= 0) {
-        const maxScrollLeft = track.scrollWidth - track.clientWidth;
-        track.scrollTo({ left: maxScrollLeft, behavior: "smooth" }); // Loop to end
-      } else {
-        track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-      }
-    });
-  }
 
   // === Turntable Carousel ===
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
