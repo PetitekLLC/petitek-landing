@@ -236,6 +236,7 @@ body, html {
   gap: 10px;
   -webkit-overflow-scrolling: touch;
   min-height: 280px;
+  white-space: nowrap; /* ✅ correct here */
 }
 
 .carousel-track img {
@@ -244,6 +245,9 @@ body, html {
   max-width: 100%;
   object-fit: contain;
   scroll-snap-align: center;
+  display: block;      /* ✅ good */
+  width: 100%;         /* ✅ good */
+  height: auto;        /* ✅ good */
 }
 
 .carousel-btn {
@@ -269,9 +273,6 @@ body, html {
 }
 /* === End Carousel Styles === */
 
-
-
-  
 .feature-group {
   max-width: 800px;
   width: 100%;
@@ -1585,6 +1586,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll to first real slide
     track.scrollLeft = scrollStep;
+    
+track.appendChild(firstClone);
+track.insertBefore(lastClone, slides[0]);
+
+// Scroll to first real slide
+track.scrollLeft = scrollStep;
+
+// ✅ Fix scroll position after resize (avoids 400–768px glitch)
+window.addEventListener('resize', () => {
+  if (
+    track.scrollLeft === 0 ||
+    track.scrollLeft >= track.scrollWidth - track.clientWidth
+  ) {
+    track.scrollLeft = scrollStep;
+  }
+});
 
     nextBtn.addEventListener("click", () => {
       track.scrollBy({ left: scrollStep, behavior: "smooth" });
