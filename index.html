@@ -228,25 +228,14 @@ body, html {
 }
 
 .carousel-track {
-  display: flex;
-  gap: 10px;
-  transition: transform 0.3s ease-in-out;
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  min-height: 280px;
+}
+.carousel-track img {
+  scroll-snap-align: center;
 }
 
-.carousel-track img {
-  flex: 0 0 calc(33.333% - 10px);
-  max-width: calc(33.333% - 10px);
-  height: auto;
-  object-fit: cover;
-  scroll-snap-align: start;
-  border-radius: 8px;
-  background-color: #f4f4f4;
-}
 
 /* Tablet: 2 images */
 @media (max-width: 768px) {
