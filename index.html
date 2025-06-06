@@ -1555,7 +1555,6 @@ function playAlert(step) {
     audio.volume = 1.0;
     audio.currentTime = 0;
 
-    // Flash effect
     light.classList.remove('flash');
     void light.offsetWidth;
     light.classList.add('flash');
@@ -1568,55 +1567,43 @@ function playAlert(step) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // === Carousel Navigation (Manual loop) ===
+  // === Seamless Infinite Carousel Scroll ===
   const track = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
-  // === Swipe support for carousel ===
-// === Seamless Infinite Carousel Scroll ===
-const track = document.querySelector(".carousel-track");
-const prevBtn = document.querySelector(".carousel-btn.prev");
-const nextBtn = document.querySelector(".carousel-btn.next");
+  if (track && prevBtn && nextBtn) {
+    const scrollStep = track.clientWidth;
+    const slides = track.children;
 
-if (track && prevBtn && nextBtn) {
-  const slides = track.children;
-  const scrollStep = track.clientWidth;
+    // Clone first and last slides
+    const firstClone = slides[0].cloneNode(true);
+    const lastClone = slides[slides.length - 1].cloneNode(true);
 
-  // Clone first and last slides
-  const firstClone = slides[0].cloneNode(true);
-  const lastClone = slides[slides.length - 1].cloneNode(true);
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, slides[0]);
 
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, slides[0]);
+    // Scroll to first real slide
+    track.scrollLeft = scrollStep;
 
-  // Scroll to real first image (not the clone)
-  track.scrollLeft = scrollStep;
+    nextBtn.addEventListener("click", () => {
+      track.scrollBy({ left: scrollStep, behavior: "smooth" });
+      setTimeout(() => {
+        if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
+          track.scrollLeft = scrollStep;
+        }
+      }, 350);
+    });
 
-  // Next button
-  nextBtn.addEventListener("click", () => {
-    track.scrollBy({ left: scrollStep, behavior: "smooth" });
-
-    // Watch for fake-to-real snap
-    setTimeout(() => {
-      if (Math.ceil(track.scrollLeft) >= track.scrollWidth - scrollStep) {
-        track.scrollLeft = scrollStep;
-      }
-    }, 350); // allow animation to complete
-  });
-
-  // Prev button
-  prevBtn.addEventListener("click", () => {
-    track.scrollBy({ left: -scrollStep, behavior: "smooth" });
-
-    setTimeout(() => {
-      if (track.scrollLeft <= 0) {
-        track.scrollLeft = track.scrollWidth - 2 * scrollStep;
-      }
-    }, 350);
-  });
-}
-
+    prevBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+      setTimeout(() => {
+        if (track.scrollLeft <= 0) {
+          track.scrollLeft = track.scrollWidth - 2 * scrollStep;
+        }
+      }, 350);
+    });
+  }
 
   // === Turntable Carousel ===
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
@@ -1717,8 +1704,6 @@ if (track && prevBtn && nextBtn) {
   });
 });
 </script>
-
-
 
 </body>
 
