@@ -1592,6 +1592,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector(".carousel-btn.prev");
   const nextBtn = document.querySelector(".carousel-btn.next");
 
+  // === Swipe support for carousel ===
+let startX = 0;
+let isDragging = false;
+
+if (track) {
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const currentX = e.touches[0].clientX;
+    const deltaX = startX - currentX;
+
+    if (Math.abs(deltaX) > 50) { // minimum swipe distance
+      if (deltaX > 0) {
+        // Swipe left → next
+        nextBtn.click();
+      } else {
+        // Swipe right → prev
+        prevBtn.click();
+      }
+      isDragging = false; // prevent multiple triggers
+    }
+  });
+
+  track.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+}
+
+
   if (track && prevBtn && nextBtn) {
     const scrollStep = track.clientWidth;
 
