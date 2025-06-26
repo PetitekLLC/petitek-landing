@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner with Petitek</title>
+  <style>
+  <style>
+  html {
+    font-size: 16px; /* Base font size = 1rem */
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #25A8C6;
+    color: #000;
+    font-size: 1rem;
+  }
+
+  .container {
+    max-width: 60rem;
+    margin: 2.5rem auto;
+    padding: 2.5rem 1.25rem;
+    background: #fff;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.1);
+  }
+
+  .hero {
+    width: 100%;
+    max-height: 37.5rem;
+    object-fit: cover;
+    border-radius: 0.625rem 0.625rem 0 0;
+  }
+
+  .title-box {
+    text-align: center;
+    padding: 0.625rem 1.25rem 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .title-box h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin: 0;
+    color: #25A8C6;
+  }
+
+  .copy-box {
+    font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+    line-height: 1.6;
+    text-align: left;
+    padding: 0 1.25rem 1.25rem;
+    max-width: 37.5rem;
+    margin: 0 auto;
+  }
+
+  .form-card {
+    padding: 2.5rem 1.25rem 1.25rem;
+  }
+
+  .form-card form {
+    max-width: 37.5rem;
+    width: 100%;
+    margin: 0 auto;
+    border: 0.125rem solid #25A8C6;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+  }
+
+  .form-card label {
+    display: block;
+    margin: 0.9375rem 0 0.3125rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .form-card input,
+  .form-card select,
+  .form-card textarea {
+    width: 100%;
+    padding: 0.625rem;
+    font-size: 1rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+    box-sizing: border-box;
+  }
+
+  .form-card button {
+    width: 100%;
+    max-width: 37.5rem;
+    margin: 1.25rem auto 0.625rem;
+    display: block;
+    background: #25A8C6;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .form-card button:hover {
+    background: #1c8baa;
+  }
+
+  .return-link {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .return-link a {
+    color: #25A8C6;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  @media (max-width: 37.5rem) {
+    .title-box h1 {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .copy-box {
+      font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .form-card {
+      padding: 1rem;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: black;
+    padding-bottom: 1.25rem;
+  }
+</style>
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div style="padding: 0;">
+      <img class="hero" src="/images/hero.webp" alt="Hero Image">
+    </div>
+
+    <div class="title-box">
+      <h1>We're Interested In Working With You!</h1>
+    </div>
+
+    <div class="copy-box">
+      Thank you for your interest in partnering with Petitek and we'd love to hear from you. Please complete the contact information and we'll get back to you as soon as we can. Thank you! Woof! Meow!
+    </div>
+
+    <div class="form-card">
+      <div id="form-alert" style="color: red; min-height: 1.5em; font-weight: bold;"></div>
+      <form action="https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNfKenHxnN0wRbam9BhVbXpfR2VosGhvH-QXpWQ/exec" method="POST" target="hidden_iframe" onsubmit="return validateForm();">
+        <label for="profileType">Profile Type:</label>
+        <select id="profileType" name="profileType" required>
+          <option value="">Select One</option>
+          <option>Influencer</option>
+          <option>Retailer</option>
+          <option>Affiliate</option>
+          <option>Distributor</option>
+          <option>Technology Partner</option>
+          <option>Other</option>
+        </select>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" autocomplete="given-name" required>
+
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" autocomplete="organization" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" autocomplete="tel" inputmode="tel" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" autocomplete="address-line1" required>
+
+        <label for="url">Website or Social Handle:</label>
+        <input type="text" id="url" name="url" autocomplete="url" inputmode="url" required>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+
+        <input type="hidden" name="secret" value="chatrbox-partner-2121" />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <script>
+        var submitted = false;
+
+        function validateForm() {
+          const form = document.querySelector("form");
+          const alertBox = document.getElementById("form-alert");
+          const button = form.querySelector("button[type='submit']");
+          let valid = true;
+
+          alertBox.textContent = ''; // Clear previous alert
+          button.disabled = false;
+          button.innerText = 'Submit';
+
+          for (const field of form.querySelectorAll("input[required], select[required]")) {
+            if (!field.value.trim()) {
+              alertBox.textContent = `Please fill out the ${field.previousElementSibling.textContent.replace(':', '')}.`;
+              field.focus();
+              valid = false;
+              break;
+            }
+          }
+
+          if (valid) {
+            submitted = true;
+            button.disabled = true;
+            button.innerText = 'Sending…';
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+        window.handleSubmission = function () {
+          if (submitted) {
+            alert('Thanks! Your info has been received. Look for our Confirmation Email.');
+            document.querySelector("form").reset();
+            submitted = false;
+            const button = document.querySelector("button[type='submit']");
+            button.innerText = 'Submit';
+            button.disabled = false;
+          }
+        };
+      </script>
+
+      <iframe name="hidden_iframe" style="display:none;" onload="handleSubmission()"></iframe>
+    </div>
+
+    <div class="return-link">
+      <a href="https://petitek.com">← Return to Petitek.com</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; font-size: 12px; color: black; padding-bottom: 20px;">
+    &copy; 2025 Petitek LLC. All rights reserved.
+  </div>
+</body>
+</html>
