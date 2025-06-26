@@ -8,5 +8,6 @@
 /tos           /tos/index.html           200
 /register      /register/index.html      200
 /referral      /referral/index.html      200
+/discount_site /app/discount_site/index.html     200
 
 /*             /app/index.html           200
