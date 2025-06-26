@@ -1,13 +1,39 @@
-/support       /support/index.html       200
-/learn         /learn/index.html         200
-/warranty      /warranty/index.html      200
-/about         /about/index.html         200
-/affiliates    /affiliates/index.html    200
-/influencers   /influencers/index.html   200
-/privacy       /privacy/index.html       200
-/tos           /tos/index.html           200
-/register      /register/index.html      200
-/referral      /referral/index.html      200
-/discount_site /discount_site/index.html 200
+# --------------------
+# Main site (served at petitek.com)
+# --------------------
+/about                 /about/index.html                          200
+/affiliates            /affiliates/index.html                     200
+/learn                 /learn/index.html                          200
+/support               /support/index.html                        200
+/videos                /videos/index.html                         200
+/warranty              /warranty/index.html                       200
+/privacy               /privacy/index.html                        200
+/tos                   /tos/index.html                            200
+/register              /register/index.html                       200
+/referral              /referral/index.html                       200
+/influencers           /influencers/index.html                    200
+/thank-you             /thank-you/index.html                      200
+/faq                   /faq/index.html                            200
 
-/*             /app/index.html           200
+# --------------------
+# Discount site (served at petitek.com/discount)
+# --------------------
+/discount              /discount_site/index.html                  200
+/discount/about        /discount_site/about/index.html           200
+/discount/affiliates   /discount_site/affiliates/index.html      200
+/discount/learn        /discount_site/learn/index.html           200
+/discount/support      /discount_site/support/index.html         200
+/discount/videos       /discount_site/videos/index.html          200
+/discount/warranty     /discount_site/warranty/index.html        200
+/discount/privacy      /discount_site/privacy/index.html         200
+/discount/tos          /discount_site/tos/index.html             200
+/discount/register     /discount_site/register/index.html        200
+/discount/referral     /discount_site/referral/index.html        200
+/discount/influencers  /discount_site/influencers/index.html     200
+/discount/thank-you    /discount_site/thank-you/index.html       200
+/discount/faq          /discount_site/faq/index.html             200
+
+# --------------------
+# Fallback: main homepage
+# --------------------
+/*                     /index.html                               200
