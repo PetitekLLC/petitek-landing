@@ -1413,14 +1413,58 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
 <!-- Email Form -->
-<form onsubmit="event.preventDefault(); showThankYou();" class="footer-form">
-  <input id="emailInput" type="email" placeholder="Enter email" required>
+<form id="emailForm" class="footer-form">
+  <input id="emailInput" name="email" type="email" placeholder="Enter email" required>
+
+  <!-- Honeypot field (hidden) -->
+  <input type="text" name="honeypot" style="display: none;" autocomplete="off">
+
   <button id="submitButton" type="submit">
     <span id="buttonText">▶</span>
     <span id="spinner" style="display:none;">⏳</span>
   </button>
+
   <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
+
+<script>
+  const form = document.getElementById("emailForm");
+  const emailInput = document.getElementById("emailInput");
+  const buttonText = document.getElementById("buttonText");
+  const spinner = document.getElementById("spinner");
+  const thankYou = document.getElementById("thankYouMessage");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    buttonText.style.display = "none";
+    spinner.style.display = "inline";
+
+    const data = new URLSearchParams(new FormData(form));
+
+    fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+      method: "POST",
+      body: data
+    })
+    .then(res => res.text())
+    .then(text => {
+      if (text.toLowerCase().includes("success")) {
+        thankYou.style.display = "block";
+        emailInput.style.display = "none";
+      } else {
+        alert("Submission failed: " + text);
+      }
+    })
+    .catch(err => {
+      alert("Something went wrong. Please try again.");
+    })
+    .finally(() => {
+      spinner.style.display = "none";
+      buttonText.style.display = "inline";
+    });
+  });
+</script>
+
 
 
    <!-- Footer Columns -->
