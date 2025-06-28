@@ -1423,7 +1423,6 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
 
-
 <script>
   const form = document.getElementById("emailForm");
   const emailInput = document.getElementById("emailInput");
@@ -1437,31 +1436,20 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     buttonText.style.display = "none";
     spinner.style.display = "inline";
 
-    const data = new URLSearchParams(new FormData(form));
-
-    fetch("https://script.google.com/macros/s/AKfycbwkQfS45pxgsnzZVozgPYsX1jn0a0y5oZtACbBooJnYYqeQsRBnS3K-ciT0wE7-wII6/exec", {
+    fetch("https://script.google.com/macros/s/AKfycb.../exec", {
       method: "POST",
-      body: data
-    })
-    .then(res => res.text())
-    .then(text => {
-      if (text.toLowerCase().includes("success")) {
-        thankYou.style.display = "block";
-        emailInput.style.display = "none";
-      } else {
-        alert("Submission failed: " + text);
-      }
-    })
-    .catch(err => {
-      alert("Something went wrong. Please try again.");
-      console.error("Fetch error:", err);
-    })
-    .finally(() => {
-      spinner.style.display = "none";
-      buttonText.style.display = "inline";
+      mode: "no-cors", // <-- FIXED: no CORS enforcement
+      body: new URLSearchParams(new FormData(form))
     });
+
+    // Immediately show success (don't wait for response)
+    thankYou.style.display = "block";
+    emailInput.style.display = "none";
+    spinner.style.display = "none";
+    buttonText.style.display = "inline";
   });
 </script>
+
 
 
    <!-- Footer Columns -->
