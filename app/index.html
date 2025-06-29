@@ -1562,28 +1562,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData();
       formData.append('email', input.value);
 
-      fetch("https://script.google.com/macros/s/AKfycbx6shaL1OobQ4WL6K7-sjlK4dnD_crwk-9fLp7cs6ZnibYiuQBaBQIfScBSl9tPf2Rn/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.text())
-      .then(result => {
-        spinner.style.display = 'none';
-        submitButton.disabled = false;
-        buttonText.style.display = 'block';
-        message.style.display = 'block';
-        input.value = '';
-        setTimeout(() => {
-          message.style.display = 'none';
-        }, 3000);
-      })
-      .catch(error => {
-        console.error("❌ Error submitting form:", error);
-        spinner.style.display = 'none';
-        submitButton.disabled = false;
-        buttonText.style.display = '▶';
-        alert("Something went wrong. Please try again.");
-      });
+fetch("https://script.google.com/macros/s/AKfycbx6shaL1OobQ4WL6K7-sjlK4dnD_crwk-9fLp7cs6ZnibYiuQBaBQlFScBSI9tPf2Rn/exec", {
+  method: "POST",
+  mode: "cors", // ✅ enables cross-origin readable responses
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: new URLSearchParams(formData)
+})
+.then(response => response.text())
+.then(result => {
+  if (result.toLowerCase().includes("success")) {
+    spinner.style.display = 'none';
+    submitButton.disabled = false;
+    buttonText.style.display = 'block';
+    message.style.display = 'block';
+    input.value = '';
+    setTimeout(() => {
+      message.style.display = 'none';
+    }, 4000);
+  } else {
+    alert("❌ Submission failed: " + result);
+  }
+})
+.catch(err => {
+  console.error("❌ Fetch error:", err);
+  alert("Something went wrong. Please try again.");
+});
+
     }
   }
   window.showThankYou = showThankYou;
