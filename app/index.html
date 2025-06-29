@@ -1423,6 +1423,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
 
+
 <script>
   const form = document.getElementById("emailForm");
   const emailInput = document.getElementById("emailInput");
@@ -1510,17 +1511,14 @@ function playAlert(step) {
     audio.volume = 1.0;
     audio.currentTime = 0;
 
-    // Start flashing effect on the step indicator
-    light.classList.remove('flash');      // Reset animation if already applied
-    void light.offsetWidth;               // Force reflow to restart animation
-    light.classList.add('flash');         // Apply animation class
+    light.classList.remove('flash');
+    void light.offsetWidth;
+    light.classList.add('flash');
 
-    // Play audio
     audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
 
-    // Remove flashing when audio ends
     audio.onended = () => {
-      light.classList.remove('flash');    // Clean up after animation completes
+      light.classList.remove('flash');
     };
   } else {
     console.warn(`Missing audio or light element for step ${step}`);
@@ -1528,6 +1526,59 @@ function playAlert(step) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Email form submission
+  const form = document.getElementById("emailForm");
+  const emailInput = document.getElementById("emailInput");
+  const buttonText = document.getElementById("buttonText");
+  const spinner = document.getElementById("spinner");
+  const thankYou = document.getElementById("thankYouMessage");
+  const submitButton = document.getElementById("submitButton");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!buttonText || !spinner || !thankYou || !emailInput) {
+      console.error("❌ Required elements not found.");
+      return;
+    }
+
+    if (!emailInput.checkValidity()) return;
+
+    buttonText.style.display = "none";
+    spinner.style.display = "inline";
+    submitButton.disabled = true;
+
+    const data = new URLSearchParams(new FormData(form));
+
+    fetch("https://script.google.com/macros/s/AKfycbx6shaL1OobQ4WL6K7-sjlK4dnD_crwk-9fLp7cs6ZnibYiuQBaBQlFScBSI9tPf2Rn/exec", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: data
+    })
+    .then(res => res.text())
+    .then(text => {
+      console.log("Server response:", text);
+      if (text.toLowerCase().includes("success")) {
+        thankYou.style.display = "block";
+        emailInput.style.display = "none";
+        form.reset();
+      } else {
+        alert("Submission failed: " + text);
+      }
+    })
+    .catch(err => {
+      console.error("❌ Fetch error:", err);
+      alert("Something went wrong. Please try again.");
+    })
+    .finally(() => {
+      spinner.style.display = "none";
+      buttonText.style.display = "inline";
+      submitButton.disabled = false;
+    });
+  });
 
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
@@ -1540,59 +1591,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   showNextImage();
   setInterval(showNextImage, 3000);
-
-  // Email form submission
-  function showThankYou() {
-    const input = document.getElementById('emailInput');
-    const message = document.getElementById('thankYouMessage');
-    const submitButton = document.getElementById('submitButton');
-    const buttonText = document.getElementById('buttonText');
-    const spinner = document.getElementById('spinner');
-
-    if (!buttonText || !spinner) {
-      console.error("❌ Required buttonText or spinner not found.");
-      return;
-    }
-
-    if (input.checkValidity()) {
-      buttonText.style.display = 'none';
-      spinner.style.display = 'block';
-      submitButton.disabled = true;
-
-      const formData = new FormData();
-      formData.append('email', input.value);
-
-fetch("https://script.google.com/macros/s/AKfycbx6shaL1OobQ4WL6K7-sjlK4dnD_crwk-9fLp7cs6ZnibYiuQBaBQlFScBSI9tPf2Rn/exec", {
-  method: "POST",
-  mode: "cors", // ✅ enables cross-origin readable responses
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: new URLSearchParams(formData)
-})
-.then(response => response.text())
-.then(result => {
-  if (result.toLowerCase().includes("success")) {
-    spinner.style.display = 'none';
-    submitButton.disabled = false;
-    buttonText.style.display = 'block';
-    message.style.display = 'block';
-    input.value = '';
-    setTimeout(() => {
-      message.style.display = 'none';
-    }, 4000);
-  } else {
-    alert("❌ Submission failed: " + result);
-  }
-})
-.catch(err => {
-  console.error("❌ Fetch error:", err);
-  alert("Something went wrong. Please try again.");
-});
-
-    }
-  }
-  window.showThankYou = showThankYou;
 
   // Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
@@ -1634,7 +1632,7 @@ fetch("https://script.google.com/macros/s/AKfycbx6shaL1OobQ4WL6K7-sjlK4dnD_crwk-
     });
   }
 
-  // Video Autoplay + Unmute
+  // Video Autoplay + Unmute Overlay
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1684,11 +1682,8 @@ fetch("https://script.google.com/macros/s/AKfycbx6shaL1OobQ4WL6K7-sjlK4dnD_crwk-
   }
 
   videos.forEach(initVideo);
-
-}); // End of DOMContentLoaded
-
+});
 </script>
-
 
 </body>
 
