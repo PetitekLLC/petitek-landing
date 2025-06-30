@@ -1498,7 +1498,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new URLSearchParams(new FormData(form));
 
-    fetch("https://script.google.com/macros/s/AKfycbwJA12zN06S1BMKUUDz-Y0sRiix3EJH_BsurBx74VWAZNiLGGg2HKKzjuk2TcwuIJ_E/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
       method: "POST",
       mode: "cors",
       headers: {
