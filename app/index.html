@@ -1423,53 +1423,6 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
 
-
-<script>
-  const form = document.getElementById("emailForm");
-  const emailInput = document.getElementById("emailInput");
-  const buttonText = document.getElementById("buttonText");
-  const spinner = document.getElementById("spinner");
-  const thankYou = document.getElementById("thankYouMessage");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    buttonText.style.display = "none";
-    spinner.style.display = "inline";
-
-    const data = new URLSearchParams(new FormData(form));
-fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
-  method: "POST",
-  mode: "cors",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: data
-})
-
-  
-    .then(res => res.text())
-    .then(text => {
-      console.log("Response:", text);
-      if (text.toLowerCase().includes("success")) {
-        thankYou.style.display = "block";
-        emailInput.style.display = "none";
-      } else {
-        alert("❌ Submission failed: " + text);
-      }
-    })
-    .catch(err => {
-      console.error("❌ Fetch error:", err);
-      alert("Something went wrong. Please try again.");
-    })
-    .finally(() => {
-      spinner.style.display = "none";
-      buttonText.style.display = "inline";
-    });
-  });
-</script>
-
-
    <!-- Footer Columns -->
 <div class="footer-columns">
   <div>
@@ -1551,7 +1504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const data = new URLSearchParams(new FormData(form));
 
-    fetch("https://script.google.com/macros/s/AKfycbwJA12zN06S1BMKUUDz-Y0sRiix3EJH_BsurBx74VWAZNiLGGg2HKKzjuk2TcwuIJ_E/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
       method: "POST",
       mode: "cors",
       headers: {
