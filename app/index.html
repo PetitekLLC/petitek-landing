@@ -1457,6 +1457,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 
 <!-- THEN Your Single <script> -->
 <script>
+// ALERT HANDLER
 function playAlert(step) {
   const audio = document.getElementById(`triggerAudio${step}`);
   const light = document.getElementById(`light${step}`);
@@ -1478,10 +1479,10 @@ function playAlert(step) {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
-<script>
 
-// YOUR FORM HANDLER
+// EVERYTHING ELSE
 document.addEventListener('DOMContentLoaded', () => {
+  // FORM HANDLER
   const form = document.getElementById("emailForm");
   const emailInput = document.getElementById("emailInput");
   const buttonText = document.getElementById("buttonText");
@@ -1530,14 +1531,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.disabled = false;
       });
   });
-});
 
-// UNRELATED SCRIPT BELOW
-console.log("Some more JavaScript here");
-</script>
-
-
-  // Turntable Image Carousel
+  // IMAGE CAROUSEL
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
   function showNextImage() {
@@ -1549,7 +1544,7 @@ console.log("Some more JavaScript here");
   showNextImage();
   setInterval(showNextImage, 3000);
 
-  // Floating Buy Button
+  // FLOATING BUTTON
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
@@ -1557,7 +1552,7 @@ console.log("Some more JavaScript here");
     });
   }
 
-  // Fade-In Animation
+  // FADE-IN OBSERVER
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1566,7 +1561,7 @@ console.log("Some more JavaScript here");
   }, { threshold: 0.1 });
   fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // Hide Navbar on Scroll
+  // HIDE NAVBAR ON SCROLL
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1575,7 +1570,7 @@ console.log("Some more JavaScript here");
     lastScrollTop = scrollTop;
   });
 
-  // Dropdown Menu
+  // DROPDOWN MENU
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
   if (hamburger && menu) {
@@ -1589,7 +1584,7 @@ console.log("Some more JavaScript here");
     });
   }
 
-  // Video Autoplay + Unmute Overlay
+  // VIDEO UNMUTE OVERLAY
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1640,7 +1635,4 @@ console.log("Some more JavaScript here");
 
   videos.forEach(initVideo);
 });
-
-</body>
-
-</html>
+</script>
