@@ -1502,36 +1502,33 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-    const data = new URLSearchParams(new FormData(form));
+const data = new URLSearchParams(new FormData(form));
 
-  fetch("https://script.google.com/macros/s/AKfycbwyQfN9Htde4c2TMXU0Kd4kfoHxAahPRqVmHcx-nfHaGGVsIO8x_Z3gMa7RU6YfsqnesA/exec", {
+fetch("https://script.google.com/macros/s/AKfycbwyQfN9Htde4c2TMXU0Kd4kfoHxAahPRqVmHcx-nfHaGGVsIO8x_Z3gMa7RU6YfsqnesA/exec", {
   method: "POST",
   mode: "cors",
   body: data
 })
-
-    .then(res => res.text())
-    .then(text => {
-      console.log("Server response:", text);
-      if (text.toLowerCase().includes("success")) {
-        thankYou.style.display = "block";
-        emailInput.style.display = "none";
-        form.reset();
-      } else {
-        alert("Submission failed: " + text);
-      }
-    })
-    .catch(err => {
-      console.error("❌ Fetch error:", err);
-      alert("Something went wrong. Please try again.");
-    })
-    .finally(() => {
-      spinner.style.display = "none";
-      buttonText.style.display = "inline";
-      submitButton.disabled = false;
-    });
+  .then(res => res.json())
+  .then(json => {
+    if (json.status === "success") {
+      thankYou.style.display = "block";
+      emailInput.style.display = "none";
+      form.reset();
+    } else {
+      alert("Submission failed: " + json.status);
+    }
+  })
+  .catch(err => {
+    console.error("❌ Fetch error:", err);
+    alert("Something went wrong.");
+  })
+  .finally(() => {
+    spinner.style.display = "none";
+    buttonText.style.display = "inline";
+    submitButton.disabled = false;
   });
-
+}); // ← This closes the form event listener
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
