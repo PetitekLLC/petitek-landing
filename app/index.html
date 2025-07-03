@@ -1478,9 +1478,10 @@ function playAlert(step) {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
+<script>
 
+// YOUR FORM HANDLER
 document.addEventListener('DOMContentLoaded', () => {
-  // Email form submission
   const form = document.getElementById("emailForm");
   const emailInput = document.getElementById("emailInput");
   const buttonText = document.getElementById("buttonText");
@@ -1502,33 +1503,40 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-const data = new URLSearchParams(new FormData(form));
+    const data = new URLSearchParams(new FormData(form));
 
-fetch("https://script.google.com/macros/s/AKfycbwyQfN9Htde4c2TMXU0Kd4kfoHxAahPRqVmHcx-nfHaGGVsIO8x_Z3gMa7RU6YfsqnesA/exec", {
-  method: "POST",
-  mode: "cors",
-  body: data
-})
-  .then(res => res.json())
-  .then(json => {
-    if (json.status === "success") {
-      thankYou.style.display = "block";
-      emailInput.style.display = "none";
-      form.reset();
-    } else {
-      alert("Submission failed: " + json.status);
-    }
-  })
-  .catch(err => {
-    console.error("❌ Fetch error:", err);
-    alert("Something went wrong.");
-  })
-  .finally(() => {
-    spinner.style.display = "none";
-    buttonText.style.display = "inline";
-    submitButton.disabled = false;
+    fetch("https://script.google.com/macros/s/AKfycbwyQfN9Htde4c2TMXU0Kd4kfoHxAahPRqVmHcx-nfHaGGVsIO8x_Z3gMa7RU6YfsqnesA/exec", {
+      method: "POST",
+      mode: "cors",
+      body: data
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.status === "success") {
+          thankYou.style.display = "block";
+          emailInput.style.display = "none";
+          form.reset();
+        } else {
+          alert("Submission failed: " + json.status);
+        }
+      })
+      .catch(err => {
+        console.error("❌ Fetch error:", err);
+        alert("Something went wrong.");
+      })
+      .finally(() => {
+        spinner.style.display = "none";
+        buttonText.style.display = "inline";
+        submitButton.disabled = false;
+      });
   });
-}); // ← This closes the form event listener
+});
+
+// UNRELATED SCRIPT BELOW
+console.log("Some more JavaScript here");
+</script>
+
+
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
@@ -1632,7 +1640,6 @@ fetch("https://script.google.com/macros/s/AKfycbwyQfN9Htde4c2TMXU0Kd4kfoHxAahPRq
 
   videos.forEach(initVideo);
 });
-</script>
 
 </body>
 
