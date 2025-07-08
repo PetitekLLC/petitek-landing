@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+/* test 1.4 */
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html Test 2.0-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html -->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1103,7 +1104,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <audio id="triggerAudio2" src="audio/audio2.mp3" preload="auto"></audio>
   <audio id="triggerAudio3" src="audio/audio3.mp3" preload="auto"></audio>
   
-   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.</h3>
+   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.<h3>
   
 </section>
   
@@ -1471,34 +1472,16 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-const params = new URLSearchParams({
-  email: emailInput.value,
-  honeypot: "",
-  secret: "chatrbox-partner-2121"
-});
+    const formData = new URLSearchParams(new FormData(form));
 
-fetch(`https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNfKenHxnN0wRbam9BhVbXpfR2VosGhvH-QXpWQ/exec?${params.toString()}`)
-  .then(res => res.text())
-  .then(text => {
-    console.log("🛰️ Response:", text);
-    if (text.toLowerCase().includes("success") || text.toLowerCase().includes("received")) {
-      thankYou.style.display = "block";
-      emailInput.style.display = "none";
-      form.reset();
-    } else {
-      alert("❌ Submission failed: " + text);
-    }
-  })
-  .catch(err => {
-    console.error("❌ Fetch error:", err);
-    alert("Something went wrong. Please try again.");
-  })
-  .finally(() => {
-    spinner.style.display = "none";
-    buttonText.style.display = "inline";
-    submitButton.disabled = false;
-  });
-
+    fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
+    })
     .then(res => res.text())
     .then(text => {
       console.log("🛰️ Response:", text);
@@ -1630,6 +1613,7 @@ fetch(`https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNf
 </body>
 
 </html>
+
 
 
 
