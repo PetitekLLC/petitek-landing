@@ -1456,6 +1456,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 </footer>
 
 <!-- THEN Your Single <script> -->
+<!-- THEN Your Single <script> -->
 <script>
 // ALERT HANDLER
 function playAlert(step) {
@@ -1510,17 +1511,26 @@ document.addEventListener('DOMContentLoaded', () => {
       method: "POST",
       body: data
     })
-  .then(res => res.text())
-.then(text => {
-  if (text.includes("✅")) {
-    thankYou.style.display = "block";
-    emailInput.style.display = "none";
-    form.reset();
-  } else {
-    alert("Submission failed: " + text);
-  }
-})
-
+      .then(res => res.text())
+      .then(text => {
+        if (text.includes("✅")) {
+          thankYou.style.display = "block";
+          emailInput.style.display = "none";
+          form.reset();
+        } else {
+          alert("Submission failed: " + text);
+        }
+      })
+      .catch(err => {
+        console.error("❌ Fetch error:", err);
+        alert("Something went wrong.");
+      })
+      .finally(() => {
+        spinner.style.display = "none";
+        buttonText.style.display = "inline";
+        submitButton.disabled = false;
+      });
+  });
 
   // IMAGE CAROUSEL
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
