@@ -1471,15 +1471,34 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-    const formData = new URLSearchParams(new FormData(form));
+const params = new URLSearchParams({
+  email: emailInput.value,
+  honeypot: "",
+  secret: "chatrbox-partner-2121"
+});
 
-    fetch("https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNfKenHxnN0wRbam9BhVbXpfR2VosGhvH-QXpWQ/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: formData
-    })
+fetch(`https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNfKenHxnN0wRbam9BhVbXpfR2VosGhvH-QXpWQ/exec?${params.toString()}`)
+  .then(res => res.text())
+  .then(text => {
+    console.log("🛰️ Response:", text);
+    if (text.toLowerCase().includes("success") || text.toLowerCase().includes("received")) {
+      thankYou.style.display = "block";
+      emailInput.style.display = "none";
+      form.reset();
+    } else {
+      alert("❌ Submission failed: " + text);
+    }
+  })
+  .catch(err => {
+    console.error("❌ Fetch error:", err);
+    alert("Something went wrong. Please try again.");
+  })
+  .finally(() => {
+    spinner.style.display = "none";
+    buttonText.style.display = "inline";
+    submitButton.disabled = false;
+  });
+
     .then(res => res.text())
     .then(text => {
       console.log("🛰️ Response:", text);
