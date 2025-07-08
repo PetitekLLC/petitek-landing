@@ -1368,14 +1368,17 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 
 <!-- Email Form -->
 <form id="emailForm" class="footer-form">
-  <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
+  <div class="input-wrapper">
+    <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
+    <button id="submitButton" type="submit">
+      <span id="buttonText">▶</span>
+      <span id="spinner" style="display:none;">⏳</span>
+    </button>
+  </div>
   <input type="text" name="honeypot" style="display:none;" autocomplete="off" />
-  <button id="submitButton" type="submit">
-    <span id="buttonText">▶</span>
-    <span id="spinner" style="display:none;">⏳</span>
-  </button>
   <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
+
 
    <!-- Footer Columns -->
    <!-- ✅ FOOTER TEST v2 -->
