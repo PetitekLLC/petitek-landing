@@ -637,13 +637,14 @@ body, html {
 
 .footer-columns ul {
   list-style: none;
+  padding: 0;
   margin: 0;
-  padding-left: 0;
 }
 
 .footer-columns ul li {
-  display: block !important; /* 👈 forces vertical stacking */
+  display: block !important; /* ✅ this forces stacking */
   margin: 4px 0;
+  text-align: left;
 }
 
 .footer-columns a {
