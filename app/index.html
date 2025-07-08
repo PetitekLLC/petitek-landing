@@ -1382,17 +1382,28 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
 <!-- Email Form 1.1 -->
-<form id="emailForm" class="footer-form">
+<!-- Email Form (iframe-based, no fetch) -->
+<form method="POST"
+      action="https://script.google.com/macros/s/AKfycbzI4X1lGzfZ_2TNe7bwKVkEVhTkr--h5vHyH6oKYM44-lNEf6rHPUihygdgS-NBXZI0WQ/exec"
+      target="hiddenFrame"
+      onsubmit="handleEmailSubmit()"
+      id="emailForm"
+      class="footer-form">
   <div class="input-wrapper">
-    <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
-    <button id="submitButton" type="submit">
-      <span id="buttonText">▶</span>
-      <span id="spinner" style="display:none;">⏳</span>
+    <input name="email" type="email" placeholder="Enter email" required />
+    <button type="submit">
+      ▶
     </button>
   </div>
   <input type="text" name="honeypot" style="display:none;" autocomplete="off" />
-  <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
+
+<iframe name="hiddenFrame" style="display:none;" onload="handleSuccess()"></iframe>
+
+<div id="thankYouMessage" style="display:none; text-align:center; margin-top: 10px;">
+  ✅ Thank you! You’ve been added to our list.
+</div>
+
 
 
    <!-- Footer Columns -->
