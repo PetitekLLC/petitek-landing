@@ -1510,26 +1510,17 @@ document.addEventListener('DOMContentLoaded', () => {
       method: "POST",
       body: data
     })
-      .then(res => res.json())
-      .then(json => {
-        if (json.status === "success") {
-          thankYou.style.display = "block";
-          emailInput.style.display = "none";
-          form.reset();
-        } else {
-          alert("Submission failed: " + json.status);
-        }
-      })
-      .catch(err => {
-        console.error("❌ Fetch error:", err);
-        alert("Something went wrong.");
-      })
-      .finally(() => {
-        spinner.style.display = "none";
-        buttonText.style.display = "inline";
-        submitButton.disabled = false;
-      });
-  });
+  .then(res => res.text())
+.then(text => {
+  if (text.includes("✅")) {
+    thankYou.style.display = "block";
+    emailInput.style.display = "none";
+    form.reset();
+  } else {
+    alert("Submission failed: " + text);
+  }
+})
+
 
   // IMAGE CAROUSEL
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
