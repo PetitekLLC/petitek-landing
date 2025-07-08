@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html Test2.1 -->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html Test2.2 -->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1405,7 +1405,6 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 </div>
 
 
-
    <!-- Footer Columns -->
    <!-- ✅ FOOTER TEST v2 -->
  
@@ -1616,6 +1615,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videos.forEach(initVideo);
 });
+</script>
+<script>
+  let formSubmitted = false;
+
+  function handleEmailSubmit() {
+    formSubmitted = true;
+    setTimeout(() => {
+      if (!formSubmitted) return;
+      document.getElementById("emailForm").style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    }, 1200);
+  }
+
+  function handleSuccess() {
+    if (formSubmitted) {
+      document.getElementById("emailForm").style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    }
+  }
 </script>
 
 
