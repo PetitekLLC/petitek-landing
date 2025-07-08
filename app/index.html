@@ -614,9 +614,18 @@ body, html {
   margin-right: auto;
 }
 
+.footer-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: 300px;
+  margin: 0 auto 40px;
+}
+
 .footer-form input {
-  width: 100%;
-  padding: 12px 50px 12px 15px;
+  flex: 1;
+  padding: 12px 15px;
   border: 1px solid white;
   border-radius: 4px;
   font-size: 16px;
@@ -624,15 +633,18 @@ body, html {
   color: black;
 }
 
-.footer-columns {
+.footer-form button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  text-align: left;
 }
 
 .footer-columns ul {
