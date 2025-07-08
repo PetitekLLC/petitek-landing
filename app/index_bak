@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-/* test */
+/* test 1.4 */
 <html lang="en">
 <!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html -->
 <head>
@@ -606,75 +606,61 @@ body, html {
 }
 
 /* Email Form */
+
 .footer-form {
-  margin-bottom: 40px;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 40px;
 }
 
-.footer-form input {
+.input-wrapper {
+  position: relative;
   width: 100%;
-  padding: 12px 50px 12px 15px;
+}
+
+.input-wrapper input[type="email"] {
+  width: 100%;
+  padding: 12px 45px 12px 15px; /* room on the right for button */
   border: 1px solid white;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 16px;
   background-color: white;
   color: black;
+  box-sizing: border-box;
 }
 
-.footer-form button {
+.input-wrapper button {
   position: absolute;
-  right: 5px;
-  top: 5px;
-  bottom: 5px;
-  background: white;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  font-size: 16px;
+  background-color: white;
   color: black;
+  font-size: 14px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-#thankYouMessage {
-  display: none;
-  margin-top: 10px;
-  background: #d8f5e4;
-  color: #333;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.footer-columns {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  text-align: left;
-}
-
-.footer-columns > div {
-  min-width: 120px;
-  flex: 0 0 auto;
+  padding: 0;
 }
 
 .footer-columns ul {
   list-style: none;
-  padding-left: 12px; /* ✅ this creates the indent */
+  padding: 0;
   margin: 0;
 }
 
-.footer-columns li {
-  margin: 6px 0;
+.footer-columns ul li {
+  display: block !important; /* ✅ this forces stacking */
+  margin: 4px 0;
+  text-align: left;
 }
 
 .footer-columns a {
@@ -686,39 +672,24 @@ body, html {
   text-decoration: underline;
 }
 
-/* Only stack columns on very small screens */
-@media (max-width: 360px) {
-  .footer-columns {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
-
-/* Legal Links */
-.footer-legal {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 12px;
-  margin-bottom: 6px;
-  flex-wrap: wrap;
-}
-
-.footer-legal a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-legal a:hover {
-  text-decoration: underline;
-}
-
 /* Copyright */
 .footer-copy {
   font-size: 10px;
   margin-top: 12px;
    color: black;
+}
+
+  .footer-columns {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-columns > div {
+  min-width: 120px;
+  text-align: left;
 }
 
 /* Optional Responsive */
@@ -1412,32 +1383,37 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     <div class="footer-title">Petitek</div>
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
-<!-- Email Form -->
+<!-- Email Form 1.1 -->
 <form id="emailForm" class="footer-form">
-  <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
+  <div class="input-wrapper">
+    <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
+    <button id="submitButton" type="submit">
+      <span id="buttonText">▶</span>
+      <span id="spinner" style="display:none;">⏳</span>
+    </button>
+  </div>
   <input type="text" name="honeypot" style="display:none;" autocomplete="off" />
-  <button id="submitButton" type="submit">
-    <span id="buttonText">▶</span>
-    <span id="spinner" style="display:none;">⏳</span>
-  </button>
   <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
 
+
    <!-- Footer Columns -->
+   <!-- ✅ FOOTER TEST v2 -->
+ 
 <div class="footer-columns">
   <div>
     <strong>Pet Owners</strong>
     <ul>
-     <a href="/warranty">Warranty</a>
-<a href="/learn">Learn</a>
-<a href="/support">Support</a> 
+      <li><a href="/warranty">Warranty</a></li>
+      <li><a href="/learn">Learn</a></li>
+      <li><a href="/support">Support</a></li>
     </ul>
   </div>
   <div>
     <strong>Work With Us</strong>
     <ul>
- <a href="/affiliates">Affiliates</a>
-<a href="/affiliates">Influencers</a>
+      <li><a href="/affiliates">Affiliates</a></li>
+      <li><a href="/affiliates">Influencers</a></li>
     </ul>
   </div>
 </div>
@@ -1637,4 +1613,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
+
+
 
