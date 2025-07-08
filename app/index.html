@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-/* test 1.5 */
+/* test 1.6 */
 <html lang="en">
 <!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html -->
 <head>
@@ -1476,11 +1476,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch("https://script.google.com/macros/s/AKfycbxe5ZRUdnNvhbYEJvkJHnJCvfKeaGdAl4Xtmc6e2BTMgPZLGWkSxGxsFWO_7I-4PiKJGg/exec", {
       method: "POST",
-      mode: "cors",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: formData
+    body: new URLSearchParams({
+    email: emailInput.value,
+    honeypot: ""
     })
     .then(res => res.text())
     .then(text => {
