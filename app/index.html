@@ -1456,7 +1456,6 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 </footer>
 
 <!-- THEN Your Single <script> -->
-<!-- THEN Your Single <script> -->
 <script>
 // ALERT HANDLER
 function playAlert(step) {
@@ -1481,7 +1480,6 @@ function playAlert(step) {
   }
 }
 
-// EVERYTHING ELSE
 document.addEventListener('DOMContentLoaded', () => {
   // FORM HANDLER
   const form = document.getElementById("emailForm");
@@ -1511,25 +1509,25 @@ document.addEventListener('DOMContentLoaded', () => {
       method: "POST",
       body: data
     })
-      .then(res => res.text())
-      .then(text => {
-        if (text.includes("✅")) {
-          thankYou.style.display = "block";
-          emailInput.style.display = "none";
-          form.reset();
-        } else {
-          alert("Submission failed: " + text);
-        }
-      })
-      .catch(err => {
-        console.error("❌ Fetch error:", err);
-        alert("Something went wrong.");
-      })
-      .finally(() => {
-        spinner.style.display = "none";
-        buttonText.style.display = "inline";
-        submitButton.disabled = false;
-      });
+    .then(res => res.text())
+    .then(text => {
+      if (text.includes("✅")) {
+        thankYou.style.display = "block";
+        emailInput.style.display = "none";
+        form.reset();
+      } else {
+        alert("Submission failed: " + text);
+      }
+    })
+    .catch(err => {
+      console.error("❌ Fetch error:", err);
+      alert("Something went wrong.");
+    })
+    .finally(() => {
+      spinner.style.display = "none";
+      buttonText.style.display = "inline";
+      submitButton.disabled = false;
+    });
   });
 
   // IMAGE CAROUSEL
@@ -1636,3 +1634,4 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 </script>
+
