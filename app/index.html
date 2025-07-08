@@ -4,7 +4,7 @@
 <!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html -->
 <head>
   <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
  <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
   <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
   <meta name="author" content="Petitek LLC" />
@@ -1428,20 +1428,19 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <div>
     <strong>Pet Owners</strong>
     <ul>
-      <li><a href="/warranty">Warranty</a></li>
-      <li><a href="/learn">Learn</a></li>
-      <li><a href="/support">Support</a></li>
+     <a href="/warranty">Warranty</a>
+<a href="/learn">Learn</a>
+<a href="/support">Support</a> 
     </ul>
   </div>
   <div>
     <strong>Work With Us</strong>
     <ul>
-      <li><a href="/affiliates">Affiliates</a></li>
-      <li><a href="/affiliates">Influencers</a></li>
+ <a href="/affiliates">Affiliates</a>
+<a href="/affiliates">Influencers</a>
     </ul>
   </div>
 </div>
-
 
     <!-- Legal Links -->
     <div class="footer-legal">
@@ -1456,9 +1455,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   </div>
 </footer>
 
-<!-- THEN Your Single <script> -->
 <script>
-// ALERT HANDLER
 function playAlert(step) {
   const audio = document.getElementById(`triggerAudio${step}`);
   const light = document.getElementById(`light${step}`);
@@ -1482,7 +1479,7 @@ function playAlert(step) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // FORM HANDLER
+  // Email form submission
   const form = document.getElementById("emailForm");
   const emailInput = document.getElementById("emailInput");
   const buttonText = document.getElementById("buttonText");
@@ -1493,36 +1490,36 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (!buttonText || !spinner || !thankYou || !emailInput) {
-      console.error("❌ Required elements not found.");
-      return;
-    }
-
     if (!emailInput.checkValidity()) return;
 
     buttonText.style.display = "none";
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-    const data = new URLSearchParams(new FormData(form));
+    const formData = new URLSearchParams(new FormData(form));
 
-    fetch("https://script.google.com/macros/u/1/s/AKfycbxFvOgfSG4Qc2Do-NC38zB3ZwxNPBKoc0SvF031gp9K5hssmM2A9OOpMDKN-vwf_IL6nw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
       method: "POST",
-      body: data
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
     })
     .then(res => res.text())
     .then(text => {
-      if (text.includes("✅")) {
+      console.log("🛰️ Response:", text);
+      if (text.toLowerCase().includes("success")) {
         thankYou.style.display = "block";
         emailInput.style.display = "none";
         form.reset();
       } else {
-        alert("Submission failed: " + text);
+        alert("❌ Submission failed: " + text);
       }
     })
     .catch(err => {
       console.error("❌ Fetch error:", err);
-      alert("Something went wrong.");
+      alert("Something went wrong. Please try again.");
     })
     .finally(() => {
       spinner.style.display = "none";
@@ -1531,7 +1528,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // IMAGE CAROUSEL
+  // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
   function showNextImage() {
@@ -1543,7 +1540,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showNextImage();
   setInterval(showNextImage, 3000);
 
-  // FLOATING BUTTON
+  // Floating Buy Button
   const floatBtn = document.querySelector('.floating-buy-button');
   if (floatBtn) {
     window.addEventListener('scroll', () => {
@@ -1551,7 +1548,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // FADE-IN OBSERVER
+  // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1560,7 +1557,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // HIDE NAVBAR ON SCROLL
+  // Hide Navbar on Scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
@@ -1569,7 +1566,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-  // DROPDOWN MENU
+  // Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
   if (hamburger && menu) {
@@ -1583,7 +1580,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // VIDEO UNMUTE OVERLAY
+  // Video Autoplay + Unmute Overlay
   const videos = [
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
@@ -1635,4 +1632,10 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 </script>
+
+
 </body>
+
+</html>
+
+
