@@ -624,37 +624,10 @@ body, html {
   color: black;
 }
 
-.footer-form button {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  bottom: 5px;
-  background: white;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  font-size: 16px;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#thankYouMessage {
-  display: none;
-  margin-top: 10px;
-  background: #d8f5e4;
-  color: #333;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
 .footer-columns {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 40px;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -662,22 +635,16 @@ body, html {
   text-align: left;
 }
 
-.footer-columns > div {
-  min-width: 150px;
-  flex: 0 0 auto;
-}
-
 .footer-columns ul {
   list-style: none;
-  padding-left: 12px; /* ✅ this creates the indent */
   margin: 0;
+  padding-left: 0;
 }
 
-.footer-columns li {
-  display: block; /* ✅ force stacking */
-  margin: 6px 0;
+.footer-columns ul li {
+  display: block !important; /* 👈 forces vertical stacking */
+  margin: 4px 0;
 }
-
 
 .footer-columns a {
   color: white;
@@ -685,25 +652,6 @@ body, html {
 }
 
 .footer-columns a:hover {
-  text-decoration: underline;
-}
-
-/* Legal Links */
-.footer-legal {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 12px;
-  margin-bottom: 6px;
-  flex-wrap: wrap;
-}
-
-.footer-legal a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-legal a:hover {
   text-decoration: underline;
 }
 
