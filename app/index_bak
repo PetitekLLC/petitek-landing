@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-/* test 1.4 */
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html -->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html Test2.1 -->
 <head>
   <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
   <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
   <meta name="author" content="Petitek LLC" />
@@ -90,7 +89,6 @@ body, html {
   opacity: 1;
   z-index: 1;
 }
-
   
 .floating-buy-button {
   position: fixed;
@@ -1474,7 +1472,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new URLSearchParams(new FormData(form));
 
-    fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxe5ZRUdnNvhbYEJvkJHnJCvfKeaGdAl4Xtmc6e2BTMgPZLGWkSxGxsFWO_7I-4PiKJGg/exec", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -1613,6 +1611,11 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 
 </html>
+
+
+
+
+
 
 
 
