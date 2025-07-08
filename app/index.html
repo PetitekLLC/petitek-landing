@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html  Test 1.9-->
-
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html Test 2.0-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1105,7 +1103,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <audio id="triggerAudio2" src="audio/audio2.mp3" preload="auto"></audio>
   <audio id="triggerAudio3" src="audio/audio3.mp3" preload="auto"></audio>
   
-   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.</h3>
+   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.<h3>
   
 </section>
   
@@ -1291,6 +1289,9 @@ font-size: clamp(2rem, 4vw, 2.75rem);
       Smart, stress-free tools for real-life pet training. Every feature below is built to reinforce good behavior — calmly and clearly.
     </p>
 
+    <div class="feature-group">
+
+</div>
     <div class="feature-header feature-heading-blue">SMART DETECTION</div>
       <div class="feature-item"><div class="feature-icon-box"><div class="radar"></div></div><div class="feature-text-box"><strong>PIR Motion Sensor</strong><br>Instantly detects movement to trigger alerts.</div></div>
       <div class="feature-item"><div class="feature-icon-box"><div class="focus-shield"></div></div><div class="feature-text-box"><strong>Directional Focus Shields</strong><br>Narrows detection area to avoid false triggers and allow precise targeting.</div></div>
@@ -1470,38 +1471,37 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-  const formData = new URLSearchParams({
-  email: emailInput.value,
-  honeypot: ""
-});
+    const formData = new URLSearchParams(new FormData(form));
 
-fetch("https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNfKenHxnN0wRbam9BhVbXpfR2VosGhvH-QXpWQ/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: formData
-})
-.then(res => res.text())
-.then(text => {
-  console.log("🛰️ Response:", text);
-  if (text.toLowerCase().includes("success")) {
-    thankYou.style.display = "block";
-    emailInput.style.display = "none";
-    form.reset();
-  } else {
-    alert("❌ Submission failed: " + text);
-  }
-})
-.catch(err => {
-  console.error("❌ Fetch error:", err);
-  alert("Something went wrong. Please try again.");
-})
-.finally(() => {
-  spinner.style.display = "none";
-  buttonText.style.display = "inline";
-  submitButton.disabled = false;
-});
+    fetch("https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNfKenHxnN0wRbam9BhVbXpfR2VosGhvH-QXpWQ/exec", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
+    })
+    .then(res => res.text())
+    .then(text => {
+      console.log("🛰️ Response:", text);
+      if (text.toLowerCase().includes("success")) {
+        thankYou.style.display = "block";
+        emailInput.style.display = "none";
+        form.reset();
+      } else {
+        alert("❌ Submission failed: " + text);
+      }
+    })
+    .catch(err => {
+      console.error("❌ Fetch error:", err);
+      alert("Something went wrong. Please try again.");
+    })
+    .finally(() => {
+      spinner.style.display = "none";
+      buttonText.style.display = "inline";
+      submitButton.disabled = false;
+    });
+  });
 
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
@@ -1612,5 +1612,8 @@ fetch("https://script.google.com/macros/s/AKfycbz4zcwyW2vftEyOO4CsfiViMCDQq0AkNf
 </body>
 
 </html>
+
+
+
 
 
