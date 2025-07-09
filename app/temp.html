@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 1.4-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 3.1-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1383,17 +1383,24 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
 <!-- Email Form 1.1 -->
-<form id="emailForm" class="footer-form">
+<form method="POST"
+      action="https://script.google.com/macros/s/AKfycbwcfgtLtkDRXA49Jv_q_59-ya_rQGxxGx3NN6Qkq2SMQ4dQVzy3O8f6jMFAJm3cHVMplA/exec"
+      target="hiddenFrame"
+      onsubmit="handleEmailSubmit()"
+      id="emailForm"
+      class="footer-form">
   <div class="input-wrapper">
-    <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
-    <button id="submitButton" type="submit">
-      <span id="buttonText">▶</span>
-      <span id="spinner" style="display:none;">⏳</span>
-    </button>
+    <input name="email" type="email" placeholder="Enter email" required />
+    <button type="submit">▶</button>
   </div>
   <input type="text" name="honeypot" style="display:none;" autocomplete="off" />
-  <div id="thankYouMessage" style="display:none;">Thank you. You’ve been added to our list.</div>
 </form>
+
+<iframe name="hiddenFrame" style="display:none;" onload="handleSuccess()"></iframe>
+
+<div id="thankYouMessage" style="display:none; text-align:center; margin-top: 10px;">
+  ✅ Thank you! You’ve been added to our list.
+</div>
 
 
    <!-- Footer Columns -->
@@ -1454,54 +1461,11 @@ function playAlert(step) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Email form submission
-  const form = document.getElementById("emailForm");
-  const emailInput = document.getElementById("emailInput");
-  const buttonText = document.getElementById("buttonText");
-  const spinner = document.getElementById("spinner");
-  const thankYou = document.getElementById("thankYouMessage");
-  const submitButton = document.getElementById("submitButton");
+  // Nothing needed here for iframe-based email submission
+});
+</script>
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
 
-    if (!emailInput.checkValidity()) return;
-
-    buttonText.style.display = "none";
-    spinner.style.display = "inline";
-    submitButton.disabled = true;
-
-    const formData = new URLSearchParams(new FormData(form));
-
-    fetch("https://script.google.com/macros/s/AKfycbzfqeIdgKpqnZWiuj48wgcBzalwTiXKbO6WMQQZj2D-GBPZ_lAIXGlC3hOnYogcX8zWqA/exec", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: formData
-    })
-    .then(res => res.text())
-    .then(text => {
-      console.log("🛰️ Response:", text);
-      if (text.toLowerCase().includes("success")) {
-        thankYou.style.display = "block";
-        emailInput.style.display = "none";
-        form.reset();
-      } else {
-        alert("❌ Submission failed: " + text);
-      }
-    })
-    .catch(err => {
-      console.error("❌ Fetch error:", err);
-      alert("Something went wrong. Please try again.");
-    })
-    .finally(() => {
-      spinner.style.display = "none";
-      buttonText.style.display = "inline";
-      submitButton.disabled = false;
-    });
-  });
 
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
@@ -1608,6 +1572,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script>
+  let formSubmitted = false;
+
+  function handleEmailSubmit() {
+    formSubmitted = true;
+    setTimeout(() => {
+      if (!formSubmitted) return;
+      document.getElementById("emailForm").style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    }, 1200);
+  }
+
+  function handleSuccess() {
+    if (formSubmitted) {
+      document.getElementById("emailForm").style.display = "none";
+      document.getElementById("thankYouMessage").style.display = "block";
+    }
+  }
+</script>
 
 </body>
 
