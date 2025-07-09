@@ -1466,7 +1466,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
@@ -1572,25 +1571,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<script>
-  let formSubmitted = false;
-
-  function handleEmailSubmit() {
-    formSubmitted = true;
-    setTimeout(() => {
-      if (!formSubmitted) return;
-      document.getElementById("emailForm").style.display = "none";
-      document.getElementById("thankYouMessage").style.display = "block";
-    }, 1200);
-  }
-
-  function handleSuccess() {
-    if (formSubmitted) {
-      document.getElementById("emailForm").style.display = "none";
-      document.getElementById("thankYouMessage").style.display = "block";
-    }
-  }
-</script>
 
 </body>
 
