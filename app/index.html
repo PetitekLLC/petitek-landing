@@ -1470,36 +1470,11 @@ document.addEventListener('DOMContentLoaded', () => {
     spinner.style.display = "inline";
     submitButton.disabled = true;
 
-  const formData = new URLSearchParams(new FormData(form));
-
+    const formData = new URLSearchParams(new FormData(form));
 fetch("https://script.google.com/macros/s/AKfycbxe5ZRUdnNvhbYEJvkJHnJCvfKeaGdAl4Xtmc6e2BTMgPZLGWkSxGxsFWO_7I-4PiKJGg/exec", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: formData
+  body: new FormData(form)
 })
-.then(res => res.text())
-.then(text => {
-  console.log("🛰️ Response:", text);
-  if (text.toLowerCase().includes("success")) {
-    thankYou.style.display = "block";
-    emailInput.style.display = "none";
-    form.reset();
-  } else {
-    alert("❌ Submission failed: " + text);
-  }
-})
-.catch(err => {
-  console.error("❌ Fetch error:", err);
-  alert("Something went wrong. Please try again.");
-})
-.finally(() => {
-  spinner.style.display = "none";
-  buttonText.style.display = "inline";
-  submitButton.disabled = false;
-});
- 
 
   // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
@@ -1588,17 +1563,3 @@ fetch("https://script.google.com/macros/s/AKfycbxe5ZRUdnNvhbYEJvkJHnJCvfKeaGdAl4
 
 
 </body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
