@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.2-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1467,7 +1467,7 @@ function playAlert(step) {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
-
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   // Email form submission
 <script>
@@ -1478,20 +1478,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttonText = document.getElementById("buttonText");
   const spinner = document.getElementById("spinner");
   const thankYou = document.getElementById("thankYou");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const email = emailInput.value.trim();
-    const honeypot = honeypotInput.value.trim();
-
-    const bodyData = new URLSearchParams();
-    bodyData.append("email", email);
-    bodyData.append("honeypot", honeypot);
-
-    spinner.style.display = "inline";
-    buttonText.style.display = "none";
-    submitButton.disabled = true;
 
 
   // Turntable Image Carousel
