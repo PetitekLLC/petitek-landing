@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.4.7-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.4.8-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1485,17 +1485,8 @@ function playAlert(step) {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
-  
-document.addEventListener('DOMContentLoaded', () => {
-  // Email form submission
-  
-  const form = document.getElementById("emailForm");
-  const emailInput = document.getElementById("email");
-  const honeypotInput = document.getElementById("honeypot");
-  const submitButton = document.getElementById("submitButton");
-  const buttonText = document.getElementById("buttonText");
-  const thankYou = document.getElementById("thankYou");
 
+document.addEventListener('DOMContentLoaded', () => {
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
@@ -1541,7 +1532,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
       menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
     });
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
         menu.style.display = 'none';
       }
@@ -1608,15 +1599,11 @@ function clearEmailInput() {
     const checkmark = document.getElementById('emailSuccess');
 
     if (emailField && checkmark) {
-      // Clear input
       emailField.value = '';
-
-      // Show animated checkmark message
       checkmark.classList.add('show');
       emailField.classList.add('fade-placeholder');
       emailField.placeholder = '';
 
-      // After 3s fade out checkmark and restore placeholder
       setTimeout(() => {
         checkmark.classList.remove('show');
         emailField.placeholder = 'Enter email';
@@ -1626,6 +1613,7 @@ function clearEmailInput() {
   }, 500);
 }
 </script>
+
 
 
 </body>
