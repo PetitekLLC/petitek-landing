@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.1-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.2-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1407,11 +1407,9 @@ font-size: clamp(2rem, 4vw, 2.75rem);
     autocomplete="off" 
   />
 
-  <div style="margin-top: 10px; font-size: 0.9em; color: green;">
-    Thank you. You’ve been added to our list.
-  </div>
-</form>
-
+ <div id="thankYouMessage" style="display: none; color: green;">
+  Thank you. You’ve been added to our list.
+</div>
 
    <!-- Footer Columns -->
    <!-- ✅ FOOTER TEST v2 -->
@@ -1599,6 +1597,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   videos.forEach(initVideo);
 });
+</script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("success") === "true") {
+    document.getElementById("thankYouMessage").style.display = "block";
+  }
 </script>
 
 
