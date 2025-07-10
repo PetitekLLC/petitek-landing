@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.4-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.5-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1387,14 +1387,11 @@ font-size: clamp(2rem, 4vw, 2.75rem);
       class="footer-form" 
       action="https://script.google.com/macros/s/AKfycbwcfgtLtkDRXA49Jv_q_59-ya_rQGxxGx3NN6Qkq2SMQ4dQVzy3O8f6jMFAJm3cHVMplA/exec" 
       method="POST"
+      target="hidden_iframe"
+  onsubmit="clearEmailInput()"
     >
       <div class="input-wrapper">
-        <input 
-          name="email" 
-          type="email" 
-          placeholder="Enter email" 
-          required 
-        />
+       <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
         <button type="submit">
           <span>▶</span>
         </button>
