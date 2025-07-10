@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.4.1-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.4.2-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -857,30 +857,23 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   animation: flashEffect 0.15s ease-in-out infinite;
 }
 
- .checkmark {
+.checkmark {
   position: absolute;
-  right: 45px;
   top: 50%;
+  left: 15px; /* match input text padding */
   transform: translateY(-50%);
-  font-size: 16px; /* match input */
+  font-size: 16px;
   font-family: inherit;
-  color: #000;     /* match input text */
+  color: black;
   opacity: 0;
   transition: opacity 0.4s ease;
+  pointer-events: none;
+  white-space: nowrap;
 }
 .checkmark.show {
   opacity: 1;
 }
 
-
-.checkmark.show {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-}
-
-</style>
-</head>
-<body>
 
     <!-- Floating Amazon Buy Button (OUTSIDE [PETITEK-MAIN#2} any <script>) -->
 <div class="floating-buy-button">
@@ -1411,15 +1404,14 @@ font-size: clamp(2rem, 4vw, 2.75rem);
       target="hidden_iframe"
   onsubmit="clearEmailInput()"
     >
-     <div class="input-wrapper">
+  <div class="input-wrapper">
   <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
   <button type="submit">
     <span>▶</span>
   </button>
-<span id="emailSuccess" class="checkmark">Tail wag! You're in</span>
-
+  <span id="emailSuccess" class="checkmark">Tail Wags! You’re In!</span>
 </div>
- 
+
 
       <input 
         type="text" 
@@ -1615,22 +1607,31 @@ function clearEmailInput() {
     const checkmark = document.getElementById('emailSuccess');
 
     if (emailField) {
+
+  <script>
+function clearEmailInput() {
+  setTimeout(() => {
+    const emailField = document.getElementById('emailInput');
+    const checkmark = document.getElementById('emailSuccess');
+
+    if (emailField) {
       emailField.value = '';
+      emailField.placeholder = '';
     }
 
     if (checkmark) {
-      checkmark.classList.add('show'); // fade in
+      checkmark.classList.add('show');
 
+      // Fade out message and restore placeholder
       setTimeout(() => {
-        checkmark.classList.remove('show'); // fade out
+        checkmark.classList.remove('show');
         emailField.placeholder = 'Enter email';
-      }, 2500); // message duration before reverting
+      }, 2500);
     }
-  }, 800); // wait for script request to finish
+  }, 800); // slight delay to allow Apps Script to process
 }
-
 </script>
-  
+
 </body>
 
 </html>
