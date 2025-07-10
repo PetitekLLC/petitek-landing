@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.5-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.6-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -857,6 +857,22 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   animation: flashEffect 0.15s ease-in-out infinite;
 }
 
+  .checkmark {
+  position: absolute;
+  right: 45px; /* adjust spacing to sit between input and button */
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  font-size: 20px;
+  color: #28a745;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.checkmark.show {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
 </style>
 </head>
 <body>
@@ -1390,12 +1406,14 @@ font-size: clamp(2rem, 4vw, 2.75rem);
       target="hidden_iframe"
   onsubmit="clearEmailInput()"
     >
-      <div class="input-wrapper">
-       <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
-        <button type="submit">
-          <span>▶</span>
-        </button>
-      </div>
+     <div class="input-wrapper">
+  <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
+  <button type="submit">
+    <span>▶</span>
+  </button>
+  <span id="emailSuccess" class="checkmark">&#10004;</span>
+</div>
+ 
 
       <input 
         type="text" 
@@ -1405,10 +1423,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
       />
     </form>
 
-    <!-- Thank You Message -->
-    <div id="thankYouMessage" style="display: none; color: green;">
-      Thank you. You’ve been added to our list.
-    </div>
+   
 
     <!-- Footer Columns -->
     <div class="footer-columns">
