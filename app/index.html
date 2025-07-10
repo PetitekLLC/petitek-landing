@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.1-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.2-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1377,71 +1377,69 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   
 <footer class="site-footer">
   <div class="footer-inner">
-
     <!-- Brand -->
     <div class="footer-title">Petitek</div>
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
-<!-- Email Form 1.1 -->
-<form 
-  class="footer-form" 
-  action="https://script.google.com/macros/s/AKfycbwcfgtLtkDRXA49Jv_q_59-ya_rQGxxGx3NN6Qkq2SMQ4dQVzy3O8f6jMFAJm3cHVMplA/exec" 
-  method="POST"
->
-  <div class="input-wrapper">
-    <input 
-      name="email" 
-      type="email" 
-      placeholder="Enter email" 
-      required 
-    />
-    <button type="submit">
-      <span>▶</span>
-    </button>
-  </div>
+    <!-- Email Form -->
+    <form 
+      class="footer-form" 
+      action="https://script.google.com/macros/s/AKfycbwcfgtLtkDRXA49Jv_q_59-ya_rQGxxGx3NN6Qkq2SMQ4dQVzy3O8f6jMFAJm3cHVMplA/exec" 
+      method="POST"
+    >
+      <div class="input-wrapper">
+        <input 
+          name="email" 
+          type="email" 
+          placeholder="Enter email" 
+          required 
+        />
+        <button type="submit">
+          <span>▶</span>
+        </button>
+      </div>
 
-  <input 
-    type="text" 
-    name="honeypot" 
-    style="display:none;" 
-    autocomplete="off" 
-  />
+      <input 
+        type="text" 
+        name="honeypot" 
+        style="display:none;" 
+        autocomplete="off" 
+      />
+    </form>
 
- <div id="thankYouMessage" style="display: none; color: green;">
-  Thank you. You’ve been added to our list.
-</div>
+    <!-- Thank You Message -->
+    <div id="thankYouMessage" style="display: none; color: green;">
+      Thank you. You’ve been added to our list.
+    </div>
 
-   <!-- Footer Columns -->
-   <!-- ✅ FOOTER TEST v2 -->
- 
-<div class="footer-columns">
-  <div>
-    <strong>Pet Owners</strong>
-    <ul>
-      <li><a href="/warranty">Warranty</a></li>
-      <li><a href="/learn">Learn</a></li>
-      <li><a href="/support">Support</a></li>
-    </ul>
-  </div>
-  <div>
-    <strong>Work With Us</strong>
-    <ul>
-      <li><a href="/affiliates">Affiliates</a></li>
-      <li><a href="/affiliates">Influencers</a></li>
-    </ul>
-  </div>
-</div>
+    <!-- Footer Columns -->
+    <div class="footer-columns">
+      <div>
+        <strong>Pet Owners</strong>
+        <ul>
+          <li><a href="/warranty">Warranty</a></li>
+          <li><a href="/learn">Learn</a></li>
+          <li><a href="/support">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Work With Us</strong>
+        <ul>
+          <li><a href="/affiliates">Affiliates</a></li>
+          <li><a href="/affiliates">Influencers</a></li>
+        </ul>
+      </div>
+    </div>
 
     <!-- Legal Links -->
-    <div class="footer-legal">
-     <a href="/tos">Terms of Service</a>
-<a href="/privacy">Privacy</a>
-<a href="/cookies">Cookies</a>
+    <div class="footer-legal" style="margin-bottom: 10px;">
+      <a href="/tos">Terms of Service</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/cookies">Cookies</a>
     </div>
 
     <!-- Copyright -->
     <div class="footer-copy">© Petitek LLC All rights reserved.</div>
-
   </div>
 </footer>
 
