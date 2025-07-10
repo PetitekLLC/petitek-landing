@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.5.1-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.5.2-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1403,30 +1403,27 @@ input.fade-placeholder::placeholder {
     <div class="footer-title">Petitek</div>
     <div class="footer-subtitle">We’d love to stay in touch!</div>
 
-   <form 
+<!-- Hidden iframe to suppress redirect -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<form
   id="emailForm"
-  class="footer-form" 
-  action="https://script.google.com/macros/s/AKfycbwcfgtLtkDRXA49Jv_q_59-ya_rQGxxGx3NN6Qkq2SMQ4dQVzy3O8f6jMFAJm3cHVMplA/exec" 
+  class="footer-form"
+  action="https://script.google.com/macros/s/AKfycbw-eyt5nBXdqjyKrYYWvy5inCuf36YxW5buADwhrq5ob8u8SC7PI_Vjs9LaOg-lAOcqSg/exec"
   method="POST"
   target="hidden_iframe"
   onsubmit="clearEmailInput()"
 >
-
   <div class="input-wrapper">
-  <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
-  <button type="submit">
-    <span>▶</span>
-  </button>
-  <span id="emailSuccess" class="checkmark">Tail Wags! You’re In!</span>
-</div>
+    <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
+    <button type="submit"><span>▶</span></button>
+    <span id="emailSuccess" class="checkmark">Tail Wags! You’re In!</span>
+  </div>
+  
+  <!-- Honeypot field (anti-bot) -->
+  <input type="text" name="honeypot" style="display:none;" autocomplete="off" />
+</form>
 
-      <input 
-        type="text" 
-        name="honeypot" 
-        style="display:none;" 
-        autocomplete="off" 
-      />
-    </form>
 
    
     <!-- Footer Columns -->
