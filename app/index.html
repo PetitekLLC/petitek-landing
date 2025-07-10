@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.9-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.4.0-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -857,16 +857,21 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   animation: flashEffect 0.15s ease-in-out infinite;
 }
 
-  .checkmark {
+ .checkmark {
   position: absolute;
-  right: 45px; /* adjust spacing to sit between input and button */
+  right: 45px;
   top: 50%;
-  transform: translateY(-50%) scale(0);
-  font-size: 20px;
-  color: #28a745;
+  transform: translateY(-50%);
+  font-size: 16px; /* match input */
+  font-family: inherit;
+  color: #000;     /* match input text */
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: opacity 0.4s ease;
 }
+.checkmark.show {
+  opacity: 1;
+}
+
 
 .checkmark.show {
   opacity: 1;
@@ -1411,7 +1416,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   <button type="submit">
     <span>▶</span>
   </button>
- <span id="emailSuccess" class="checkmark">Tail wag! You're in</span>
+<span id="emailSuccess" class="checkmark">Tail wag! You're in</span>
 
 </div>
  
@@ -1603,7 +1608,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 </script>
 
-<script>
 function clearEmailInput() {
   setTimeout(() => {
     const emailField = document.getElementById('emailInput');
@@ -1614,16 +1618,15 @@ function clearEmailInput() {
     }
 
     if (checkmark) {
-      checkmark.classList.add('show');
+      checkmark.classList.add('show'); // fade in
 
       setTimeout(() => {
-        checkmark.classList.remove('show');
+        checkmark.classList.remove('show'); // fade out
         emailField.placeholder = 'Enter email';
-      }, 3000);
+      }, 2500); // message duration before reverting
     }
-  }, 800);
+  }, 800); // wait for script request to finish
 }
-</script>
 
 
   
