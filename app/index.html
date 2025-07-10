@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.6-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.7-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1603,13 +1603,28 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
-  function clearEmailInput() {
-    setTimeout(() => {
-      const emailField = document.getElementById('emailInput');
-      if (emailField) emailField.value = '';
-    }, 800); // slight delay lets the request complete
-  }
+function clearEmailInput() {
+  setTimeout(() => {
+    const emailField = document.getElementById('emailInput');
+    const checkmark = document.getElementById('emailSuccess');
+
+    if (emailField) {
+      emailField.value = '';
+      emailField.placeholder = '✓ Email received';
+    }
+
+    if (checkmark) {
+      checkmark.classList.add('show');
+
+      setTimeout(() => {
+        checkmark.classList.remove('show');
+        emailField.placeholder = 'Enter email';
+      }, 3000);
+    }
+  }, 800);
+}
 </script>
+
 
   
 </body>
