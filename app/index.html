@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.3-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.3.4-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1591,14 +1591,15 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <script>
-  function showThankYouMessage() {
-    // Delay slightly to allow Apps Script to process
+  function clearEmailInput() {
     setTimeout(() => {
-      document.getElementById("thankYouMessage").style.display = "block";
-    }, 1000);
+      const emailField = document.getElementById('emailInput');
+      if (emailField) emailField.value = '';
+    }, 800); // slight delay lets the request complete
   }
 </script>
 
+  
 </body>
 
 </html>
