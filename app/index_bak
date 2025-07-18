@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.5.6-->
+<!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.6.0-->
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -944,10 +944,10 @@ input.fade-placeholder::placeholder {
 <!-- Unlock SuperPowers -->
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
-    ChatrBox Unlocks Your Pet Training Superpowers
+ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
   <div class="text-block body-block fade-in">
-    ChatrBox is the first pet training tool that helps you guide your pet to do the right thing every time, even when you're not around.
+   ChatrBox is the first pet training tool that helps you guide your pet to do the right thing every time, even when you're not around — by using your own voice. It plays personalized voice commands your pet already knows and trusts, reinforcing good behavior even when you're out of sight.
   </div>
 </div>
 
@@ -965,7 +965,7 @@ input.fade-placeholder::placeholder {
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-    It's Like You Being Right There, But Not
+   You’re Not There, But Your Voice Is — And That’s All They Need
   </div>
   <div class="text-block body-block fade-in">
     ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
@@ -1288,7 +1288,7 @@ input.fade-placeholder::placeholder {
 
 <!-- Order Now Block -->
 <div class="content-block fade-in">
-  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+  <a href="https://www.amazon.com/dp/B0D6QQPWJQ" target="_blank">
     <img
       src="images/12_OrderNow800.webp"
       srcset="
@@ -1363,7 +1363,7 @@ input.fade-placeholder::placeholder {
     <tbody>
       <tr><td style="padding: 8px; font-weight: bold; width: 50%;">Brand Name</td><td style="padding: 8px;">CHATRBOX</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Manufacturer</td><td style="padding: 8px;">PETITEK LLC USA</td></tr>
-       <tr><td style="padding: 8px; font-weight: bold;">Retail Price</td><td style="padding: 8px;">$69.95</td></tr>                                                                                                            
+       <tr><td style="padding: 8px; font-weight: bold;">Retail Price</td><td style="padding: 8px;">$89.95</td></tr>                                                                                                            
       <tr><td style="padding: 8px; font-weight: bold;">Item Model Number</td><td style="padding: 8px;">CHATR1</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">ASIN</td><td style="padding: 8px;">B0D6Q7SRSQ</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">FNSKU</td><td style="padding: 8px;">X004G9DCVV</td></tr>
@@ -1464,7 +1464,7 @@ input.fade-placeholder::placeholder {
   
     <!-- Floating Amazon Buy Button (OUTSIDE [PETITEK-MAIN#2} any <script>) -->
 <div class="floating-buy-button">
-  <a href="https://www.amazon.com/dp/B0D6Q7SRSQ" target="_blank">
+  <a href="https://www.amazon.com/dp/B0D6QQPWJQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>  
