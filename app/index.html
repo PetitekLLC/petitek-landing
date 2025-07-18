@@ -1462,15 +1462,14 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 </footer>
   
-    <!-- Floating Amazon Buy Button (OUTSIDE [PETITEK-MAIN#2} any <script>) -->
+<!-- FLOATING AMAZON BUY BUTTON TEMPORARILY DISABLED -->
 <!--
-  <div class="floating-buy-button">
+<div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6QQPWJQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
-</div>  '
-  -->
-  
+</div>
+-->
 
 <script>
 function playAlert(step) {
@@ -1507,14 +1506,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   showNextImage();
   setInterval(showNextImage, 3000);
-
-  // Floating Buy Button
-  const floatBtn = document.querySelector('.floating-buy-button');
-  if (floatBtn) {
-    window.addEventListener('scroll', () => {
-      floatBtn.classList.toggle('show', window.scrollY > 300);
-    });
-  }
+  
+/*
+ // FLOATING AMAZON BUY BUTTON LOGIC TEMPORARILY DISABLED
+const floatBtn = document.querySelector('.floating-buy-button');
+if (floatBtn) {
+  window.addEventListener('scroll', () => {
+    floatBtn.classList.toggle('show', window.scrollY > 300);
+  });
+}
+*/
 
   // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
