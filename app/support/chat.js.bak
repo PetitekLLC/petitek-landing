@@ -1,32 +1,76 @@
-async function sendMessage() {
-  const input = document.getElementById("userInput");
-  const chatLog = document.getElementById("chatLog");
-  const message = input.value.trim();
+const express = require("express");
+const router = express.Router();
+const fs = require("fs");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
+const simpleGit = require("simple-git");
+const axios = require("axios");
 
-  if (!message) return;
+const git = simpleGit("/app/support-pages"); // your local clone path
+const ANSWERS_DIR = path.join("/app/support-pages/answers");
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQMFKze4WBahbRzRJGUYmGe1pTCl-HWsUR2fNeBAysO3UDMXM-YsB0hqXb22qgTaQC/exec";
 
-  // Show user message
-  chatLog.innerHTML += `<div class="user"><strong>You:</strong> ${message}</div>`;
-  input.value = "";
-  try {
-  const response = await fetch("https://website-backend-ag99.onrender.com/chat", {
-
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message })
-    });
-
-    const data = await response.json();
-
-    if (data.reply) {
-      chatLog.innerHTML += `<div class="bot"><strong>ChatrBot:</strong> ${data.reply}</div>`;
-    } else {
-      chatLog.innerHTML += `<div class="bot error">Sorry, something went wrong.</div>`;
-    }
-  } catch (err) {
-    chatLog.innerHTML += `<div class="bot error">Connection error. Please try again.</div>`;
-  }
-
-  chatLog.scrollTop = chatLog.scrollHeight;
+// Replace this with your OpenAI API logic
+async function getAnswerFromOpenAI(prompt) {
+  // Replace with actual OpenAI call
+  return `ChatrBox uses 4 AAA batteries. Battery life typically lasts 30 days with normal use.`; // placeholder
 }
+
+function generateHtml(id, question, answer) {
+  const slug = question.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+  const filename = `${id}-${slug}.html`;
+  const filePath = path.join(ANSWERS_DIR, filename);
+  const timestamp = new Date().toISOString();
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatrBox Answer | ${question}</title>
+  <meta name="description" content="${answer}">
+  <style>body { font-family: Arial; max-width: 800px; margin: 2rem auto; }</style>
+</head>
+<body>
+  <div><strong>ID:</strong> ${id}</div>
+  <div><strong>Timestamp:</strong> ${timestamp}</div>
+  <div><strong>Q:</strong> ${question}</div>
+  <div><strong>A:</strong> ${answer}</div>
+</body>
+</html>`;
+
+  fs.writeFileSync(filePath, html);
+  return { filename, slug };
+}
+
+router.post("/chat", async (req, res) => {
+  const question = req.body.message?.trim();
+  if (!question) return res.status(400).json({ error: "Missing message" });
+
+  const id = uuidv4();
+  const answer = await getAnswerFromOpenAI(question);
+  const { filename, slug } = generateHtml(id, question, answer);
+
+  try {
+    await git.add(`answers/${filename}`);
+    await git.commit(`Add support page for: ${question}`);
+    await git.push("origin", "main");
+
+    // Optional: wait ~20 seconds for Cloudflare to deploy
+    await new Promise((resolve) => setTimeout(resolve, 20000));
+
+    // Call Google Apps Script to update Sheet
+    await axios.post(GOOGLE_APPS_SCRIPT_URL, new URLSearchParams({
+      id,
+      question,
+      updateLinkOnly: "true"
+    }));
+
+    res.json({ reply: answer, id });
+  } catch (err) {
+    console.error("ERROR:", err);
+    res.status(500).json({ error: "Failed to process support page." });
+  }
+});
+
+module.exports = router;
 
