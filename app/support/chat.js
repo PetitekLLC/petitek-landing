@@ -8,7 +8,7 @@ const axios = require("axios");
 
 const git = simpleGit("/app/support-pages"); // your local clone path
 const ANSWERS_DIR = path.join("/app/support-pages/answers");
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQMFKze4WBahbRzRJGUYmGe1pTCl-HWsUR2fNeBAysO3UDMXM-YsB0hqXb22qgTaQC/exec";
 
 // Replace this with your OpenAI API logic
 async function getAnswerFromOpenAI(prompt) {
