@@ -19,10 +19,25 @@
     }
 
     .about-hero {
-      text-align: center;
       background-color: #25A8C6;
       color: white;
-      padding: 3rem 1rem;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
     }
 
     .about-hero img {
@@ -45,35 +60,14 @@
       margin: 0;
     }
 
-    .back-home {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .back-button {
-      display: inline-block;
-      background-color: #25A8C6;
-      color: white;
-      padding: 0.5rem 1.25rem;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: clamp(0.9rem, 2.2vw, 1rem);
-      transition: background-color 0.3s ease;
-    }
-
-    .back-button:hover {
-      background-color: #1b7f99;
-    }
-
     .container {
       max-width: 960px;
-      margin: 2rem auto;
+      margin: 2rem auto 0 auto;
       padding: 0 1rem;
     }
 
     h2 {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       color: #25A8C6;
       font-size: clamp(1.25rem, 3vw, 1.75rem);
     }
@@ -104,19 +98,17 @@
 <body>
 
   <section class="about-hero">
+    <a href="/" class="back-link" aria-label="Return to homepage">← Back</a>
     <img src="/images/sophie_doe.webp" alt="Mark Bloomfield with Sophie" />
     <h1>Mark Bloomfield</h1>
     <p>Founder & CEO of Petitek · Technology Pioneer · Visionary Entrepreneur · Animal Lover</p>
   </section>
 
-  <div class="back-home">
-    <a href="/" class="back-button" aria-label="Return to homepage">← Back</a>
-  </div>
-
   <div class="container">
     <h2>About Mark</h2>
     <p>Mark Bloomfield is a serial entrepreneur and inventor whose technologies have impacted millions of users worldwide. He pioneered several firsts in tech innovation—from the earliest transportable cell phone and the first computer-based fax solution to one of the first real estate applications on Facebook. His work has consistently pushed the boundaries of what’s possible, resulting in more than 20 patents worldwide. With Petitek, Mark is bringing the same spirit of innovation to the pet industry.</p>
-<p>As a lifelong animal lover, Mark created ChatrBox from a simple idea to help with his own pets — and quickly saw the magic in it. He transformed that idea into his first tech product for Petitek, with more to come!</p>
+
+    <p>As a lifelong animal lover, Mark created ChatrBox from a simple idea to help with his own pets — and quickly saw the magic in it. He transformed that idea into his first tech product for Petitek, with more to come!</p>
 
     <h2>Leadership & Innovation</h2>
 
@@ -124,7 +116,7 @@
     Founder - Innovating the next generation of smart pet technology. Creator of ChatrBox™, a voice-enabled pet trainer with motion detection and behavioral reinforcement features.</p>
 
     <p><span class="org">HomeASAP (2016–2025)</span><br>
-    Founder - Leading provider of internet marketing and real etate search tools for real estate professionals.</p>
+    Founder - Leading provider of internet marketing and real estate search tools for real estate professionals.</p>
 
     <p><span class="org">N-Play (2007–2016)</span><br>
     Founder - Developed social marketing tools on Facebook for the real estate industry. Later rebranded as HomeASAP.</p>
@@ -145,10 +137,10 @@
     <p>Mark’s work has resulted in lasting IP value, global product adoption, and multiple successful exits. His technologies have been used by millions — not just in tech labs, but in everyday life.</p>
   </div>
 
-<p style="text-align: center; font-size: 1rem; margin-top: 60px; margin-bottom: 20px;">
-  If you would like to connect with Mark directly, he can be reached at 
-  <a href="mailto:mark@petitek.com">mark@petitek.com</a>.
-</p>
+  <p style="text-align: center; font-size: 1rem; margin-top: 60px; margin-bottom: 20px;">
+    If you would like to connect with Mark directly, he can be reached at 
+    <a href="mailto:mark@petitek.com">mark@petitek.com</a>.
+  </p>
   
   <footer class="footer">
     &copy; 2025 Petitek, LLC. All rights reserved.
@@ -156,4 +148,5 @@
 
 </body>
 </html>
+
 
