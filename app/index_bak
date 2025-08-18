@@ -11,6 +11,24 @@
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
+<!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1311909890549349'); 
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1311909890549349&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
 <style>
 /* General page setup */
 body, html {
@@ -902,6 +920,7 @@ input.fade-placeholder::placeholder {
   <a href="/support">Support</a>
   <a href="/learn">Learn</a>
   <a href="/about">About</a>
+  <a href="https://chatrbox.petitek.com" target="_blank" rel="noopener noreferrer"><strong>Purchase</strong></a>
 </div>
 
 
@@ -1462,14 +1481,14 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 </footer>
   
-    <!-- Floating Amazon Buy Button (OUTSIDE [PETITEK-MAIN#2} any <script>) -->
+<!-- FLOATING AMAZON BUY BUTTON TEMPORARILY DISABLED -->
+<!--
 <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6QQPWJQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
-</div>  
-  
-  
+</div>
+-->
 
 <script>
 function playAlert(step) {
@@ -1506,14 +1525,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   showNextImage();
   setInterval(showNextImage, 3000);
-
-  // Floating Buy Button
-  const floatBtn = document.querySelector('.floating-buy-button');
-  if (floatBtn) {
-    window.addEventListener('scroll', () => {
-      floatBtn.classList.toggle('show', window.scrollY > 300);
-    });
-  }
+  
+/*
+ // FLOATING AMAZON BUY BUTTON LOGIC TEMPORARILY DISABLED
+const floatBtn = document.querySelector('.floating-buy-button');
+if (floatBtn) {
+  window.addEventListener('scroll', () => {
+    floatBtn.classList.toggle('show', window.scrollY > 300);
+  });
+}
+*/
 
   // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
@@ -1622,11 +1643,38 @@ function clearEmailInput() {
 }
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // 1) Lead when the footer email form submits
+  var form = document.getElementById('emailForm');
+  if (form) {
+    form.addEventListener('submit', function () {
+      if (window.fbq) fbq('track', 'Lead');
+    });
+  }
+
+  // 2) Outbound click to Amazon product page
+  var amazonLink = document.querySelector('a[href*="amazon.com/dp/B0D6QQPWJQ"]');
+  if (amazonLink) {
+    amazonLink.addEventListener('click', function () {
+      if (window.fbq) fbq('trackCustom', 'OutboundAmazonClick', {
+        asin: 'B0D6QQPWJQ'
+      });
+    });
+  }
+});
+</script>
 
 
 </body>
 
 </html>
+
+
+
+
+
+
 
 
 
