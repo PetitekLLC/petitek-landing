@@ -1643,6 +1643,27 @@ function clearEmailInput() {
 }
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // 1) Lead when the footer email form submits
+  var form = document.getElementById('emailForm');
+  if (form) {
+    form.addEventListener('submit', function () {
+      if (window.fbq) fbq('track', 'Lead');
+    });
+  }
+
+  // 2) Outbound click to Amazon product page
+  var amazonLink = document.querySelector('a[href*="amazon.com/dp/B0D6QQPWJQ"]');
+  if (amazonLink) {
+    amazonLink.addEventListener('click', function () {
+      if (window.fbq) fbq('trackCustom', 'OutboundAmazonClick', {
+        asin: 'B0D6QQPWJQ'
+      });
+    });
+  }
+});
+</script>
 
 
 </body>
