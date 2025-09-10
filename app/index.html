@@ -973,19 +973,23 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 </div>
 
-<!-- Smart Features Block -->
+!-- Smart Features Block -->
 <div class="content-block">
-  <img
-    src="images/1_SmartFeatures800.webp"
-    srcset="
-      images/1_SmartFeatures800.webp 800w,
-      images/1_SmartFeatures1600.webp 1600w
-    "
-    sizes="(max-width: 768px) 100vw, 800px"
-    alt="Smart Features - ChatrBox"
-    class="fade-in"
-     loading="lazy"
-  />
+  <picture>
+    <!-- Use GIF first -->
+    <source srcset="images/1_SmartFeatures.gif" type="image/gif">
+    <!-- Fallback to WebP -->
+    <source srcset="images/1_SmartFeatures800.webp" type="image/webp">
+    <!-- Default img fallback -->
+    <img
+      src="images/1_SmartFeatures800.webp"
+      alt="Smart Features - ChatrBox"
+      class="fade-in"
+      loading="lazy"
+    />
+  </picture>
+</div>
+  
   <div class="text-block title-block fade-in">
    You’re Not There, But Your Voice Is — And That’s All They Need
   </div>
