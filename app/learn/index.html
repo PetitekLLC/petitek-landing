@@ -17,7 +17,7 @@
       font-family: Arial, sans-serif;
       background-color: #25A8C6;
       color: #fff;
-      font-size: 1rem; /* base for rem */
+      font-size: 1rem;
     }
 
     .hero {
@@ -66,28 +66,6 @@
       font-size: clamp(1.125rem, 2vw, 1.25rem);
     }
 
-    .chapters {
-      margin: 0 1rem;
-      font-size: 0.875rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.625rem;
-    }
-
-    .chapters button {
-      padding: 0.375rem 0.625rem;
-      font-size: 0.813rem;
-      border: none;
-      border-radius: 0.313rem;
-      background-color: #0077b6;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .chapters button:hover {
-      background-color: #005f8a;
-    }
-
     .footer {
       text-align: center;
       padding: 1.25rem 1.25rem;
@@ -104,6 +82,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="hero">
     <h1>ChatrBox How-To Videos</h1>
@@ -111,38 +90,28 @@
   </div>
 
   <div class="video-grid">
+
     <div class="video-card">
-      <iframe id="video1" title="Getting Started Video" src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+      <iframe id="video1" title="Getting Started Video"
+      src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+      allowfullscreen></iframe>
       <h3>Getting Started</h3>
-      <div class="chapters">
-        <strong>Chapters:</strong>
-        <button onclick="seekTo('video1', 30)">Setting Up</button>
-        <button onclick="seekTo('video1', 90)">Motion Detection</button>
-        <button onclick="seekTo('video1', 150)">Basic Training</button>
-      </div>
     </div>
 
     <div class="video-card">
-      <iframe id="video2" title="Operating ChatrBox Video" src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+      <iframe id="video2" title="Operating ChatrBox Video"
+      src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+      allowfullscreen></iframe>
       <h3>Operating ChatrBox</h3>
-      <div class="chapters">
-        <strong>Chapters:</strong>
-        <button onclick="seekTo('video2', 20)">Recording a Message</button>
-        <button onclick="seekTo('video2', 70)">Training Modes</button>
-        <button onclick="seekTo('video2', 120)">Volume Control</button>
-      </div>
     </div>
 
     <div class="video-card">
-      <iframe id="video3" title="Training with ChatrBox Video" src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+      <iframe id="video3" title="Training with ChatrBox Video"
+      src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+      allowfullscreen></iframe>
       <h3>Training with ChatrBox</h3>
-      <div class="chapters">
-        <strong>Chapters:</strong>
-        <button onclick="seekTo('video3', 10)">Motion Detection Tips</button>
-        <button onclick="seekTo('video3', 60)">Using Escalation Mode</button>
-        <button onclick="seekTo('video3', 110)">Best Practices</button>
-      </div>
     </div>
+
   </div>
 
   <div class="footer">
@@ -162,27 +131,15 @@
     </div>
 
     <p>
-      Didn’t find what you need? Visit our 
-      <a href="https://petitek.com/support">Support Page</a> 
+      Didn’t find what you need? Visit our
+      <a href="https://petitek.com/support">Support Page</a>
       to chat with our expert assistant, ChatrBot!
     </p>
+
     <p style="margin-top: 1.25rem; font-size: 0.75rem; color: black;">
       &copy; 2025 Petitek LLC. All rights reserved.
     </p>
   </div>
-
-  <script>
-    const players = {};
-    function seekTo(id, seconds) {
-      if (!players[id]) {
-        const iframe = document.getElementById(id);
-        players[id] = new Vimeo.Player(iframe);
-      }
-      players[id].setCurrentTime(seconds).then(() => {
-        players[id].play();
-      });
-    }
-  </script>
 </body>
 </html>
 
