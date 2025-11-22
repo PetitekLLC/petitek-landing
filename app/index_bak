@@ -2,6 +2,7 @@
 <html lang="en">
 <!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.6.0-->
 <head>
+<link rel="canonical" href="https://www.petitek.com/">
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
@@ -87,7 +88,8 @@ img {
 .hamburger:hover {
   background-color: rgba(37, 168, 198, 0.1);
 }
-  
+
+ /* Commented Out 
 .turntable-carousel {
   position: relative;
   width: 100%;
@@ -112,7 +114,7 @@ img {
   opacity: 1;
   z-index: 1;
 }
-
+*/
   
 .floating-buy-button {
   position: fixed;
@@ -940,6 +942,7 @@ input.fade-placeholder::placeholder {
   loading="lazy"
 />
 
+<!--
 <div class="asset-wrapper">
   <div class="turntable-carousel fade-in" id="turntableCarousel">
     <img src="images/front_square.webp" class="turn-img active" alt="Front" />
@@ -955,7 +958,7 @@ input.fade-placeholder::placeholder {
     <polyline points="6 9 12 15 18 9"/>
   </svg>
 </div>
-
+-->
   
 <div class="stacked-gallery" id="galleryStart">
   <hr style="width: 80%; max-width: 800px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
@@ -972,24 +975,28 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
 
 <!-- Smart Features Block -->
 <div class="content-block">
-  <img
-    src="images/1_SmartFeatures800.webp"
-    srcset="
-      images/1_SmartFeatures800.webp 800w,
-      images/1_SmartFeatures1600.webp 1600w
-    "
-    sizes="(max-width: 768px) 100vw, 800px"
-    alt="Smart Features - ChatrBox"
-    class="fade-in"
-     loading="lazy"
-  />
+  <picture>
+    <!-- Use GIF first -->
+    <source srcset="images/1_SmartFeatures.GIF" type="image/gif">
+    <!-- Fallback to WebP -->
+    <source srcset="images/1_SmartFeatures800.webp" type="image/webp">
+    <!-- Default img fallback -->
+    <img
+      src="images/1_SmartFeatures800.webp"
+      alt="Smart Features - ChatrBox"
+      class="fade-in"
+      loading="lazy"
+    />
+  </picture>
+</div>
+  
   <div class="text-block title-block fade-in">
    You’re Not There, But Your Voice Is — And That’s All They Need
   </div>
   <div class="text-block body-block fade-in">
-    ChatrBox becomes your eyes and ears when you can't be there — stepping in with your voice command and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
+    Press a button and record your message. Then ChatrBox becomes your eyes and ears when you can't be there — stepping in with your message and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
   </div>
-</div>
+
   
 <!-- ChatrBox Train Block -->
 <div class="content-block">
@@ -1005,10 +1012,10 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-  If You Can Say It, You Can Train It. 
+  If You Can Say It, You Can Train It. It's Really That Simple.
   </div>
   <div class="text-block body-block fade-in">
-    Place <strong>ChatrBox</strong> anywhere you need training support. Training scenariors are virtually unlimited.  Using built-in pet detection, <strong>ChatrBox</strong> knows when your pet approaches an area or object and instantly triggers your message and command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
+    Place <strong>ChatrBox</strong> anywhere you need training support. Training scenariors are virtually unlimited.  Using built-in pet detection, <strong>ChatrBox</strong> knows when your pet approaches an area or object and instantly triggers YOUR MESSAGE and command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
   </div>
 </div>
 
@@ -1669,13 +1676,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 
 </html>
-
-
-
-
-
-
-
 
 
 
