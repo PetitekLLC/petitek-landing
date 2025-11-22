@@ -56,12 +56,12 @@
       cursor: pointer;
     }
 
-    iframe {
+    .video-card iframe {
       width: 100%;
       height: 200px;
       display: block;
       border: none;
-      pointer-events: none; /* tap triggers lightbox instead of playback */
+      pointer-events: none; /* tap triggers lightbox instead of inline playback */
     }
 
     .video-card h3 {
@@ -83,13 +83,13 @@
       padding: 1rem;
     }
 
-    .lightbox iframe {
+    #lightbox-video {
       width: 100%;
       max-width: 1000px;
       height: 56vw;
       max-height: 80vh;
-      pointer-events: auto;
       border-radius: 0.5rem;
+      border: none;
     }
 
     .lightbox-close {
@@ -130,18 +130,31 @@
 
   <div class="video-grid">
 
-    <div class="video-card" data-video="https://player.vimeo.com/video/1085023310">
-      <iframe src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"></iframe>
+    <!-- Note: using data-video-id instead of full URL -->
+    <div class="video-card" data-video-id="1085023310">
+      <iframe
+        src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"
+        title="Getting Started Video"
+        allow="autoplay; fullscreen; picture-in-picture">
+      </iframe>
       <h3>Getting Started</h3>
     </div>
 
-    <div class="video-card" data-video="https://player.vimeo.com/video/1139468645">
-      <iframe src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0"></iframe>
+    <div class="video-card" data-video-id="1139468645">
+      <iframe
+        src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0"
+        title="Operating ChatrBox Video"
+        allow="autoplay; fullscreen; picture-in-picture">
+      </iframe>
       <h3>Operating ChatrBox</h3>
     </div>
 
-    <div class="video-card" data-video="https://player.vimeo.com/video/1064040397">
-      <iframe src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0"></iframe>
+    <div class="video-card" data-video-id="1064040397">
+      <iframe
+        src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0"
+        title="Training with ChatrBox Video"
+        allow="autoplay; fullscreen; picture-in-picture">
+      </iframe>
       <h3>Training with ChatrBox</h3>
     </div>
 
@@ -150,7 +163,10 @@
   <!-- LIGHTBOX OVERLAY -->
   <div id="lightbox" class="lightbox">
     <span class="lightbox-close">&times;</span>
-    <iframe id="lightbox-video" src="" allowfullscreen></iframe>
+    <iframe
+      id="lightbox-video"
+      allow="autoplay; fullscreen; picture-in-picture">
+    </iframe>
   </div>
 
   <div class="footer">
@@ -181,29 +197,49 @@
   </div>
 
   <script>
-    // Lightbox behavior
     const cards = document.querySelectorAll('.video-card');
     const lightbox = document.getElementById('lightbox');
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = document.querySelector('.lightbox-close');
 
+    let player = null;
+
     cards.forEach(card => {
       card.addEventListener('click', () => {
-        const videoURL = card.getAttribute('data-video') + "?autoplay=1";
-        lightboxVideo.src = videoURL;
-        lightbox.style.display = "flex";
+        const videoId = card.getAttribute('data-video-id');
+
+        lightbox.style.display = 'flex';
+
+        if (!player) {
+          // Create Vimeo player on first open
+          player = new Vimeo.Player(lightboxVideo, { id: videoId });
+        } else {
+          // Load the new video into the existing player
+          player.loadVideo(videoId);
+        }
+
+        // Ensure volume is up, then play
+        player.setVolume(1).then(() => {
+          return player.play();
+        }).catch(err => {
+          console.log('Autoplay with sound may be blocked:', err);
+        });
       });
     });
 
     function closeLightbox() {
-      lightbox.style.display = "none";
-      lightboxVideo.src = ""; // stop video
+      lightbox.style.display = 'none';
+      if (player) {
+        player.pause().catch(() => {});
+      }
     }
 
     closeBtn.addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
     });
   </script>
 
