@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petitek Learning</title>
+  <!-- player.js is no longer required, but leaving it in doesn't hurt -->
   <script src="https://player.vimeo.com/api/player.js"></script>
 
   <style>
@@ -130,7 +131,7 @@
 
   <div class="video-grid">
 
-    <!-- Note: using data-video-id instead of full URL -->
+    <!-- Use data-video-id and a small inline preview -->
     <div class="video-card" data-video-id="1085023310">
       <iframe
         src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"
@@ -202,36 +203,21 @@
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = document.querySelector('.lightbox-close');
 
-    let player = null;
-
     cards.forEach(card => {
       card.addEventListener('click', () => {
         const videoId = card.getAttribute('data-video-id');
+        const videoUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
 
+        // Set the src for the lightbox iframe and show the overlay
+        lightboxVideo.src = videoUrl;
         lightbox.style.display = 'flex';
-
-        if (!player) {
-          // Create Vimeo player on first open
-          player = new Vimeo.Player(lightboxVideo, { id: videoId });
-        } else {
-          // Load the new video into the existing player
-          player.loadVideo(videoId);
-        }
-
-        // Ensure volume is up, then play
-        player.setVolume(1).then(() => {
-          return player.play();
-        }).catch(err => {
-          console.log('Autoplay with sound may be blocked:', err);
-        });
       });
     });
 
     function closeLightbox() {
       lightbox.style.display = 'none';
-      if (player) {
-        player.pause().catch(() => {});
-      }
+      // Clear src so video stops
+      lightboxVideo.src = '';
     }
 
     closeBtn.addEventListener('click', closeLightbox);
@@ -245,4 +231,5 @@
 
 </body>
 </html>
+
 
