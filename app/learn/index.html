@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petitek Learning</title>
   <script src="https://player.vimeo.com/api/player.js"></script>
+
   <style>
     * {
       margin: 0;
@@ -52,6 +53,7 @@
       color: #000;
       box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
       padding-bottom: 1.25rem;
+      cursor: pointer;
     }
 
     iframe {
@@ -59,6 +61,7 @@
       height: 200px;
       display: block;
       border: none;
+      pointer-events: none; /* tap triggers lightbox instead of playback */
     }
 
     .video-card h3 {
@@ -66,6 +69,41 @@
       font-size: clamp(1.125rem, 2vw, 1.25rem);
     }
 
+    /* ---------------------------- */
+    /*        LIGHTBOX STYLE        */
+    /* ---------------------------- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+
+    .lightbox iframe {
+      width: 100%;
+      max-width: 1000px;
+      height: 56vw;
+      max-height: 80vh;
+      pointer-events: auto;
+      border-radius: 0.5rem;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    /* Footer */
     .footer {
       text-align: center;
       padding: 1.25rem 1.25rem;
@@ -84,6 +122,7 @@
 </head>
 
 <body>
+
   <div class="hero">
     <h1>ChatrBox How-To Videos</h1>
     <p>Quick tutorials to help you get started and make the most of your ChatrBox.</p>
@@ -91,27 +130,27 @@
 
   <div class="video-grid">
 
-    <div class="video-card">
-      <iframe id="video1" title="Getting Started Video"
-      src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-      allowfullscreen></iframe>
+    <div class="video-card" data-video="https://player.vimeo.com/video/1085023310">
+      <iframe src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"></iframe>
       <h3>Getting Started</h3>
     </div>
 
-    <div class="video-card">
-      <iframe id="video2" title="Operating ChatrBox Video"
-      src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-      allowfullscreen></iframe>
+    <div class="video-card" data-video="https://player.vimeo.com/video/1139468645">
+      <iframe src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0"></iframe>
       <h3>Operating ChatrBox</h3>
     </div>
 
-    <div class="video-card">
-      <iframe id="video3" title="Training with ChatrBox Video"
-      src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-      allowfullscreen></iframe>
+    <div class="video-card" data-video="https://player.vimeo.com/video/1064040397">
+      <iframe src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0"></iframe>
       <h3>Training with ChatrBox</h3>
     </div>
 
+  </div>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <iframe id="lightbox-video" src="" allowfullscreen></iframe>
   </div>
 
   <div class="footer">
@@ -140,6 +179,34 @@
       &copy; 2025 Petitek LLC. All rights reserved.
     </p>
   </div>
+
+  <script>
+    // Lightbox behavior
+    const cards = document.querySelectorAll('.video-card');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const videoURL = card.getAttribute('data-video') + "?autoplay=1";
+        lightboxVideo.src = videoURL;
+        lightbox.style.display = "flex";
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = "none";
+      lightboxVideo.src = ""; // stop video
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  </script>
+
 </body>
 </html>
 
