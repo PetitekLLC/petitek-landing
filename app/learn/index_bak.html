@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="canonical" href="https://www.petitek.com/learn/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petitek Learning</title>
+  <!-- player.js is no longer required, but leaving it in doesn't hurt -->
   <script src="https://player.vimeo.com/api/player.js"></script>
+
   <style>
     * {
       margin: 0;
@@ -16,90 +19,96 @@
       font-family: Arial, sans-serif;
       background-color: #25A8C6;
       color: #fff;
+      font-size: 1rem;
     }
 
     .hero {
       text-align: center;
-      padding: 40px 20px 4px;
-      margin-bottom: 20px; /* 👈 add this */
+      padding: 2.5rem 1.25rem 0.25rem;
+      margin-bottom: 1.25rem;
     }
 
     .hero h1 {
-      font-size: 36px;
+      font-size: clamp(3.0rem, 7vw, 3.75rem);
       color: #fff;
     }
 
     .hero p {
-      margin-top: 10px;
-      font-size: 18px;
+      margin-top: 0.625rem;
+      font-size: clamp(1rem, 2.5vw, 1.125rem);
       color: #e0f2f9;
     }
 
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-      padding: 0 20px 40px;
-      max-width: 1200px;
+      gap: 1.25rem;
+      padding: 0 1.25rem 2.5rem;
+      max-width: 75rem;
       margin: 0 auto;
     }
 
     .video-card {
       background: #fff;
-      border-radius: 0 0 12px 12px;
+      border-radius: 0 0 0.75rem 0.75rem;
       color: #000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      margin-top: 0;
-      padding-top: 0;
-      padding-bottom: 20px;
-    }
-
-    .video-grid .video-card:first-child {
-      margin-top: 0;
-    }
-
-    iframe {
-      width: 100%;
-      height: 200px;
-      display: block;
-      margin: 0;
-      padding: 0;
-      border: none;
-      line-height: 0;
-      vertical-align: top;
-    }
-
-    .video-card h3 {
-      margin: 16px;
-      font-size: 20px;
-    }
-
-    .chapters {
-      margin: 0 16px;
-      font-size: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chapters button {
-      padding: 6px 10px;
-      font-size: 13px;
-      border: none;
-      border-radius: 5px;
-      background-color: #0077b6;
-      color: #fff;
+      box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+      padding-bottom: 1.25rem;
       cursor: pointer;
     }
 
-    .chapters button:hover {
-      background-color: #005f8a;
+    .video-card iframe {
+      width: 100%;
+      height: 200px;
+      display: block;
+      border: none;
+      pointer-events: none; /* tap triggers lightbox instead of inline playback */
     }
 
+    .video-card h3 {
+      margin: 1rem;
+      font-size: clamp(1.125rem, 2vw, 1.25rem);
+    }
+
+    /* ---------------------------- */
+    /*        LIGHTBOX STYLE        */
+    /* ---------------------------- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+
+    #lightbox-video {
+      width: 100%;
+      max-width: 1000px;
+      height: 56vw;
+      max-height: 80vh;
+      border-radius: 0.5rem;
+      border: none;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    /* Footer */
     .footer {
       text-align: center;
-      padding: 20px 20px;
-      font-size: 16px;
+      padding: 1.25rem 1.25rem;
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
       color: #ffffff;
       border-top: 1px solid #ffffff;
       line-height: 1.5;
@@ -112,86 +121,113 @@
     }
   </style>
 </head>
+
 <body>
+
   <div class="hero">
     <h1>ChatrBox How-To Videos</h1>
     <p>Quick tutorials to help you get started and make the most of your ChatrBox.</p>
   </div>
 
   <div class="video-grid">
-    <div class="video-card">
-      <iframe id="video1" src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+
+    <!-- Use data-video-id and a small inline preview -->
+    <div class="video-card" data-video-id="1085023310">
+      <iframe
+        src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"
+        title="Getting Started Video"
+        allow="autoplay; fullscreen; picture-in-picture">
+      </iframe>
       <h3>Getting Started</h3>
-      <div class="chapters">
-        <strong>Chapters:</strong>
-        <button onclick="seekTo('video1', 30)">Setting Up</button>
-        <button onclick="seekTo('video1', 90)">Motion Detection</button>
-        <button onclick="seekTo('video1', 150)">Basic Training</button>
-      </div>
     </div>
 
-    <div class="video-card">
-      <iframe id="video2" src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+    <div class="video-card" data-video-id="1139468645">
+      <iframe
+        src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0"
+        title="Operating ChatrBox Video"
+        allow="autoplay; fullscreen; picture-in-picture">
+      </iframe>
       <h3>Operating ChatrBox</h3>
-      <div class="chapters">
-        <strong>Chapters:</strong>
-        <button onclick="seekTo('video2', 20)">Recording a Message</button>
-        <button onclick="seekTo('video2', 70)">Training Modes</button>
-        <button onclick="seekTo('video2', 120)">Volume Control</button>
-      </div>
     </div>
 
-    <div class="video-card">
-      <iframe id="video3" src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+    <div class="video-card" data-video-id="1064040397">
+      <iframe
+        src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0"
+        title="Training with ChatrBox Video"
+        allow="autoplay; fullscreen; picture-in-picture">
+      </iframe>
       <h3>Training with ChatrBox</h3>
-      <div class="chapters">
-        <strong>Chapters:</strong>
-        <button onclick="seekTo('video3', 10)">Motion Detection Tips</button>
-        <button onclick="seekTo('video3', 60)">Using Escalation Mode</button>
-        <button onclick="seekTo('video3', 110)">Best Practices</button>
-      </div>
     </div>
+
+  </div>
+
+  <!-- LIGHTBOX OVERLAY -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <iframe
+      id="lightbox-video"
+      allow="autoplay; fullscreen; picture-in-picture">
+    </iframe>
   </div>
 
   <div class="footer">
-    
-<div style="margin: 20px 0 20px 0; display: flex; justify-content: center; align-items: center;">
-  <a href="/" style="
-    color: white;
-    border: 2px solid white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 24px;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    background-color: transparent;">
-    ← Back to Home
-  </a>
-</div>
-
+    <div style="margin: 0.625rem 0 1.25rem 0; display: flex; justify-content: center; align-items: center;">
+      <a href="/" style="
+        color: white;
+        border: 2px solid white;
+        text-decoration: none;
+        padding: 0.625rem 1.25rem;
+        border-radius: 1.5rem;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        background-color: transparent;">
+        ← Home
+      </a>
+    </div>
 
     <p>
-      Didn’t find what you need? Visit our 
-      <a href="https://petitek.com/support">Support Page</a> 
+      Didn’t find what you need? Visit our
+      <a href="https://petitek.com/support">Support Page</a>
       to chat with our expert assistant, ChatrBot!
     </p>
-    <p style="margin-top: 20px; font-size: 12px; color: black;">
+
+    <p style="margin-top: 1.25rem; font-size: 0.75rem; color: black;">
       &copy; 2025 Petitek LLC. All rights reserved.
     </p>
   </div>
 
   <script>
-    const players = {};
-    function seekTo(id, seconds) {
-      if (!players[id]) {
-        const iframe = document.getElementById(id);
-        players[id] = new Vimeo.Player(iframe);
-      }
-      players[id].setCurrentTime(seconds).then(() => {
-        players[id].play();
+    const cards = document.querySelectorAll('.video-card');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const videoId = card.getAttribute('data-video-id');
+        const videoUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+
+        // Set the src for the lightbox iframe and show the overlay
+        lightboxVideo.src = videoUrl;
+        lightbox.style.display = 'flex';
       });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      // Clear src so video stops
+      lightboxVideo.src = '';
     }
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
   </script>
+
 </body>
 </html>
