@@ -22,6 +22,78 @@
       font-size: 1rem;
     }
 
+    /* NAVBAR (matching FAQ style) */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 56px;
+      background: #25A8C6;
+      color: #fff;
+      box-shadow: 0 1px 8px #0001;
+      padding: 0 16px;
+    }
+    .navbar-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.03em;
+    }
+    .navbar-menu {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 999px;
+    }
+    .navbar-menu:hover {
+      background: rgba(255,255,255,0.12);
+    }
+    .navbar-menu span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      margin: 3px 0;
+      border-radius: 999px;
+    }
+
+    /* DROPDOWN MENU */
+    .menu-dropdown {
+      position: fixed;
+      top: 56px;
+      right: 12px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      padding: 8px 0;
+      min-width: 160px;
+      display: none;
+      z-index: 30;
+    }
+
+    .menu-dropdown.open {
+      display: block;
+    }
+
+    .menu-item {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      color: #222;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .menu-item:hover {
+      background: #f0f4f8;
+      color: #000;
+    }
+
     .hero {
       text-align: center;
       padding: 2.5rem 1.25rem 0.25rem;
@@ -124,6 +196,23 @@
 
 <body>
 
+  <!-- NAVBAR + HAMBURGER -->
+  <header class="navbar">
+    <div class="navbar-title">ChatrBox How-To Videos</div>
+    <div class="navbar-menu" aria-hidden="false" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Dropdown menu -->
+  <nav class="menu-dropdown" id="nav-menu">
+    <a class="menu-item" href="https://petitek.com">Home</a>
+    <a class="menu-item" href="https://petitek.com/support/">Support</a>
+    <a class="menu-item" href="https://faq.petitek.com/">FAQ</a>
+  </nav>
+
   <div class="hero">
     <h1>ChatrBox How-To Videos</h1>
     <p>Quick tutorials to help you get started and make the most of your ChatrBox.</p>
@@ -168,7 +257,7 @@
       <h3>Pre-Training over WIFI</h3>
     </div>
 
-  <div class="video-card" data-video-id="1140578763">
+    <div class="video-card" data-video-id="1140578763">
       <iframe
         src="https://player.vimeo.com/video/1140578763?badge=0&amp;autopause=0"
         title="Using Focus Shields"
@@ -176,11 +265,7 @@
       </iframe>
       <h3>Training with Focus Shields</h3>
     </div>
-    
-  </div>
 
-
-    
   </div>
 
   <!-- LIGHTBOX OVERLAY -->
@@ -220,6 +305,7 @@
   </div>
 
   <script>
+    // Lightbox behavior for videos
     const cards = document.querySelectorAll('.video-card');
     const lightbox = document.getElementById('lightbox');
     const lightboxVideo = document.getElementById('lightbox-video');
@@ -249,9 +335,29 @@
         closeLightbox();
       }
     });
+
+    // Hamburger menu logic (same behavior as FAQ page)
+    const menuButton = document.querySelector(".navbar-menu");
+    const menuDropdown = document.getElementById("nav-menu");
+
+    menuButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menuDropdown.classList.toggle("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menuDropdown.contains(e.target) && !menuButton.contains(e.target)) {
+        menuDropdown.classList.remove("open");
+      }
+    });
+
+    menuDropdown.querySelectorAll(".menu-item").forEach(link => {
+      link.addEventListener("click", () => {
+        menuDropdown.classList.remove("open");
+      });
+    });
   </script>
 
 </body>
 </html>
-
 
