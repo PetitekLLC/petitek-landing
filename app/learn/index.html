@@ -16,40 +16,51 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #25A8C6;
-      color: #fff;
-      font-size: 1rem;
-    }
+  font-family: Arial, sans-serif;
+  background-color: #25A8C6;
+  color: #fff;              /* ✅ white text over teal background */
+  font-size: 1rem;
+}
 
-    /* NAVBAR (matching FAQ style) */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      height: 56px;
-      background: #fff;
-      color: #fff;
-      box-shadow: 0 1px 8px #0001;
-      padding: 0 16px;
-    }
-    .navbar-title {
-      font-weight: 700;
-      font-size: 1.25rem;
-      letter-spacing: 0.03em;
-    }
-    .navbar-menu {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 999px;
-    }
+/* NAVBAR (matching FAQ style) */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 56px;
+  background: #fff;         /* ✅ white bar */
+  color: #25A8C6;           /* ✅ teal title text */
+  box-shadow: 0 1px 8px #0001;
+  padding: 0 16px;
+}
+.navbar-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+}
+.navbar-menu {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 999px;
+}
+.navbar-menu:hover {
+  background: rgba(0,0,0,0.04);  /* ✅ subtle grey hover on white */
+}
+.navbar-menu span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #25A8C6;     /* ✅ teal hamburger lines */
+  margin: 3px 0;
+  border-radius: 999px;
+}
     .navbar-menu:hover {
       background: rgba(255,255,255,0.12);
     }
