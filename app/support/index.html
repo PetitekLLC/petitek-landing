@@ -5,9 +5,10 @@
   <title>Petitek Support</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
   html {
-    font-size: 18px; /* Base: 1rem = 16px */
+    font-size: 18px;
   }
 
   html, body {
@@ -16,7 +17,6 @@
     padding: 0;
     background-color: white;
     font-family: sans-serif;
-    font-size: 1rem;
   }
 
   .container {  
@@ -26,98 +26,86 @@
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    padding-top: 0;    /* nav will handle top padding */
+    padding: 0;
   }
 
   .main-wrapper {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 0 22px 0 22px; /* side padding */
+    padding: 0 22px;
   }
 
-  /* ---------------- NAVBAR ---------------- */
+  /* -------- NAV: PETITEK left + teal hamburger right -------- */
 
-  .navbar {
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 22px;
-    background-color: #25A8C6;
-    color: #fff;
+    padding: 12px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
   }
 
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .nav-logo-text {
+  .nav-logo {
     font-weight: 700;
+    font-size: 1.15rem;
     letter-spacing: 0.05em;
-    font-size: 0.95rem;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 18px;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: #fff;
+    color: #25A8C6; /* teal */
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
   }
 
-  .nav-links a:hover {
-    text-decoration: underline;
-  }
-
-  .hamburger {
-    display: none;
+  .nav-hamburger {
+    display: flex;
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
   }
 
-  .hamburger span {
-    width: 20px;
+  .nav-hamburger span {
+    width: 22px;
     height: 2px;
-    background-color: #fff;
+    background-color: #25A8C6;
     border-radius: 2px;
   }
 
-  @media (max-width: 700px) {
-    .nav-links {
-      position: absolute;
-      top: 52px;
-      right: 22px;
-      background-color: #1f92ac;
-      border-radius: 8px;
-      padding: 8px 12px;
-      flex-direction: column;
-      align-items: flex-start;
-      display: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      z-index: 50;
-    }
-
-    .nav-links.show {
-      display: flex;
-    }
-
-    .hamburger {
-      display: flex;
-    }
+  .nav-menu {
+    position: absolute;
+    top: 56px;
+    right: 18px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    padding: 10px 0;
+    display: none;
+    flex-direction: column;
+    min-width: 160px;
+    z-index: 50;
   }
 
-  /* ------------- HERO & CONTENT ------------- */
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #222;
+    font-size: 0.95rem;
+  }
+
+  .nav-menu a:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
+
+  /* ------------- HERO ------------- */
 
   .hero h1 {
-    margin: 0.625rem 0;
+    margin: 1.25rem 0 0.625rem;
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: bold;
     text-align: center;
@@ -140,12 +128,14 @@
     display: block;
     margin: 1.5rem auto 1rem;
   }
-    
+
+  /* ------------- CHAT CONTAINER ------------- */
+
   .chat-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5rem 1.25rem 0.5rem 1.25rem; /* top, right, bottom, left */
+    padding: .5rem 1.25rem;
   }
 
   #chatContainer {
@@ -207,6 +197,8 @@
     color: #000;
   }
 
+  /* ---------- FOOTER ---------- */
+
   .footer-columns-wrapper {
     display: flex;
     justify-content: center;
@@ -267,52 +259,27 @@
     line-height: 1.2;
     font-size: 0.875rem;
   }
-
-  .learn-link {
-    text-align: center;
-    margin: 0.625rem 0 0.25rem 0;
-    font-size: 0.875rem;
-  }
-
-  .learn-link a {
-    color: white;
-    font-weight: normal;
-    text-decoration: none;
-  }
-
-  .learn-icon {
-    text-align: center;
-    margin: 1rem 0;
-  }
-
-  .learn-icon img {
-    width: 48px;
-    height: 48px;
-    display: inline-block;
-  }
-
   </style>
 </head>
+
 <body>
 
   <div class="container">
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-left">
-        <a href="https://petitek.com" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;">
-          <span class="nav-logo-text">PETITEK</span>
-        </a>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <a href="https://petitek.com" class="nav-logo">PETITEK</a>
+
+      <div class="nav-hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <div class="nav-links" id="navLinks">
+
+      <div class="nav-menu" id="navMenu">
         <a href="https://petitek.com">Home</a>
         <a href="https://petitek.com/learn">Learn</a>
-        <a href="https://faq.petitek.com" target="_blank" rel="noopener noreferrer">FAQs</a>
-      </div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <a href="https://faq.petitek.com" target="_blank">FAQs</a>
       </div>
     </nav>
 
@@ -325,19 +292,18 @@
         <p>Need help with ChatrBox? ChatrBot is an AI assistant and can answer any setup, support, or troubleshooting questions.</p>
       </div>
 
-      <!-- ONE chat-wrapper and container -->
+      <!-- Chat Widget -->
       <div class="chat-wrapper">
         <div id="chatContainer">
           <form id="chatForm">
             <input type="text" id="chatInput" placeholder="How can we help?" />
             <button id="sendButton" type="submit">Send</button>
           </form>
-
           <div id="chatOutput"></div>
         </div>
       </div>
 
-      <!-- Links below chat -->
+      <!-- Helpful Links -->
       <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
         <a href="/learn/" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
           <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
@@ -346,21 +312,20 @@
       </div>
 
       <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-        <a href="https://faq.petitek.com/" target="_blank" rel="noopener noreferrer"
-          style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+        <a href="https://faq.petitek.com/" target="_blank" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
           <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
           View Our FAQs
         </a>
       </div>
 
       <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-        <a href="/images/quickstart_guide2.pdf" target="_blank" rel="noopener noreferrer"
-          style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+        <a href="/images/quickstart_guide2.pdf" target="_blank" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
           <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
           View Quick Start Guide
         </a>
       </div>
 
+      <!-- Footer -->
       <footer>
         <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 10px;" />
         <h2>Petitek</h2>
@@ -387,19 +352,26 @@
         </div>
         <p style="margin-top: 8px; font-size: 8pt; color: black;">© Petitek LLC All rights reserved.</p>
       </footer>
-
     </div>
   </div>
 
   <script>
-    // Nav hamburger toggle
+    // Hamburger toggle
     const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
+    const navMenu = document.getElementById("navMenu");
 
     hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
+      navMenu.classList.toggle("show");
     });
 
+    // Close on link click
+    navMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("show");
+      });
+    });
+
+    // Chat system
     function generateUUID() {
       return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
         (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -418,12 +390,12 @@
       });
 
       const alreadyLinked = [];
-      text = text.replace(/<a[^>]*>.*?<\/a>/gi, (match) => {
+      text = text.replace(/<a[^>]*>.*?<\/a>/gi, match => {
         alreadyLinked.push(match);
         return `__LINK_PLACEHOLDER__${alreadyLinked.length - 1}__`;
       });
 
-      text = text.replace(/(\bhttps?:\/\/[^\s<>"']+)/gi, (url) => {
+      text = text.replace(/(\bhttps?:\/\/[^\s<>"']+)/gi, url => {
         return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
       });
 
@@ -459,7 +431,6 @@
         clearInterval(typingAnimation);
         output.innerHTML = linkifyText(data.reply || "No response received.");
         input.value = "";
-
       } catch (err) {
         clearInterval(typingAnimation);
         console.error("Fetch error:", err);
@@ -467,11 +438,12 @@
       }
     }
 
-    document.getElementById("chatForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+    document.getElementById("chatForm").addEventListener("submit", function(evt) {
+      evt.preventDefault();
       sendMessage();
     });
   </script>
+
 </body>
 </html>
 
