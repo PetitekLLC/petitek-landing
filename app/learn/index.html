@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petitek Learning</title>
-  <!-- player.js is no longer required, but leaving it in doesn't hurt -->
   <script src="https://player.vimeo.com/api/player.js"></script>
 
   <style>
@@ -16,69 +15,72 @@
     }
 
     body {
-  font-family: Arial, sans-serif;
-  background-color: #25A8C6;
-  color: #fff;              /* ✅ white text over teal background */
-  font-size: 1rem;
-}
-
-/* NAVBAR (matching FAQ style) */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  height: 56px;
-  background: #fff;         /* ✅ white bar */
-  color: #25A8C6;           /* ✅ teal title text */
-  box-shadow: 0 1px 8px #0001;
-  padding: 0 16px;
-}
-.navbar-title {
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: 0.03em;
-}
-.navbar-menu {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 999px;
-}
-.navbar-menu:hover {
-  background: rgba(0,0,0,0.04);  /* ✅ subtle grey hover on white */
-}
-.navbar-menu span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #25A8C6;     /* ✅ teal hamburger lines */
-  margin: 3px 0;
-  border-radius: 999px;
-}
-    .navbar-menu:hover {
-      background: rgba(255,255,255,0.12);
+      font-family: Arial, sans-serif;
+      background-color: #25A8C6;
+      color: #fff;
+      font-size: 1rem;
     }
+
+    /* NAVBAR */
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      height: 56px;
+      background: #fff;           /* white bar */
+      color: #25A8C6;
+      box-shadow: 0 1px 8px #0001;
+      padding: 0 16px;
+    }
+
+    .navbar-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .navbar-logo-link {
+      color: #25A8C6;             /* teal PETITEK */
+      text-decoration: none;
+    }
+
+    .navbar-logo-link:hover {
+      color: #25A8C6;
+      text-decoration: none;
+    }
+
+    .navbar-menu {
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 999px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .navbar-menu:hover {
+      background: rgba(0,0,0,0.04);
+    }
+
     .navbar-menu span {
       display: block;
       width: 22px;
       height: 2px;
-      background: #25A8C6;
-      margin: 3px 0;
+      background: #25A8C6;       /* teal hamburger lines */
       border-radius: 999px;
     }
 
     /* DROPDOWN MENU */
+
     .menu-dropdown {
       position: fixed;
       top: 56px;
       right: 12px;
-      background: #ffffff;
+      background: #ffffff;        /* white dropdown */
       border-radius: 10px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
       padding: 8px 0;
@@ -95,7 +97,7 @@
       display: block;
       padding: 10px 16px;
       font-size: 0.9rem;
-      color: #222;
+      color: #222;                /* black text */
       text-decoration: none;
       white-space: nowrap;
     }
@@ -104,6 +106,8 @@
       background: #f0f4f8;
       color: #000;
     }
+
+    /* HERO */
 
     .hero {
       text-align: center;
@@ -121,6 +125,8 @@
       font-size: clamp(1rem, 2.5vw, 1.125rem);
       color: #e0f2f9;
     }
+
+    /* VIDEO GRID */
 
     .video-grid {
       display: grid;
@@ -145,7 +151,7 @@
       height: 200px;
       display: block;
       border: none;
-      pointer-events: none; /* tap triggers lightbox instead of inline playback */
+      pointer-events: none; /* click opens lightbox */
     }
 
     .video-card h3 {
@@ -153,9 +159,8 @@
       font-size: clamp(1.125rem, 2vw, 1.25rem);
     }
 
-    /* ---------------------------- */
-    /*        LIGHTBOX STYLE        */
-    /* ---------------------------- */
+    /* LIGHTBOX */
+
     .lightbox {
       display: none;
       position: fixed;
@@ -187,7 +192,8 @@
       z-index: 10000;
     }
 
-    /* Footer */
+    /* FOOTER */
+
     .footer {
       text-align: center;
       padding: 1.25rem 1.25rem;
@@ -207,35 +213,34 @@
 
 <body>
 
-<!-- NAVBAR + HAMBURGER -->
-<header class="navbar">
-  <div class="navbar-title">
-    <a href="https://petitek.com" class="navbar-brand">PETITEK</a>
-  </div>
+  <!-- NAVBAR + HAMBURGER -->
+  <header class="navbar">
+    <div class="navbar-title">
+      <a href="https://petitek.com" class="navbar-logo-link">PETITEK</a>
+    </div>
 
-  <div class="navbar-menu" aria-hidden="false" aria-label="Open navigation menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</header>
+    <div class="navbar-menu" aria-hidden="false" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
 
-<!-- Dropdown menu -->
-<nav class="menu-dropdown" id="nav-menu">
-  <a class="menu-item" href="https://petitek.com">Home</a>
-  <a class="menu-item" href="https://petitek.com/learn">Learn</a>
-  <a class="menu-item" href="https://faq.petitek.com/">FAQ</a>
-</nav>
+  <!-- Dropdown menu -->
+  <nav class="menu-dropdown" id="nav-menu">
+    <a class="menu-item" href="https://petitek.com">Home</a>
+    <a class="menu-item" href="https://petitek.com/learn">Learn</a>
+    <a class="menu-item" href="https://faq.petitek.com/">FAQ</a>
+  </nav>
 
-
+  <!-- HERO -->
   <div class="hero">
     <h1>PETITEK</h1>
     <p>Quick tutorials to help you get started and make the most of your ChatrBox.</p>
   </div>
 
+  <!-- VIDEO GRID -->
   <div class="video-grid">
-
-    <!-- Use data-video-id and a small inline preview -->
     <div class="video-card" data-video-id="1085023310">
       <iframe
         src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"
@@ -280,7 +285,6 @@
       </iframe>
       <h3>Training with Focus Shields</h3>
     </div>
-
   </div>
 
   <!-- LIGHTBOX OVERLAY -->
@@ -292,6 +296,7 @@
     </iframe>
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
     <div style="margin: 0.625rem 0 1.25rem 0; display: flex; justify-content: center; align-items: center;">
       <a href="/" style="
@@ -330,8 +335,6 @@
       card.addEventListener('click', () => {
         const videoId = card.getAttribute('data-video-id');
         const videoUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
-
-        // Set the src for the lightbox iframe and show the overlay
         lightboxVideo.src = videoUrl;
         lightbox.style.display = 'flex';
       });
@@ -339,7 +342,6 @@
 
     function closeLightbox() {
       lightbox.style.display = 'none';
-      // Clear src so video stops
       lightboxVideo.src = '';
     }
 
@@ -351,7 +353,7 @@
       }
     });
 
-    // Hamburger menu logic (same behavior as FAQ page)
+    // Hamburger menu logic
     const menuButton = document.querySelector(".navbar-menu");
     const menuDropdown = document.getElementById("nav-menu");
 
@@ -375,4 +377,6 @@
 
 </body>
 </html>
+
+
 
