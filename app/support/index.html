@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    
   html {
     font-size: 18px; /* Base: 1rem = 16px */
   }
@@ -27,48 +26,127 @@
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    padding-top: 22px;    /* <-- NEW, for vertical space at the top */
-    padding-left: 22px;   /* <-- NEW, for space at the left */
-}
+    padding-top: 0;    /* nav will handle top padding */
+  }
+
   .main-wrapper {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 0 22px 0 22px; /* side padding */
   }
 
+  /* ---------------- NAVBAR ---------------- */
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 22px;
+    background-color: #25A8C6;
+    color: #fff;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo-text {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .nav-links {
+      position: absolute;
+      top: 52px;
+      right: 22px;
+      background-color: #1f92ac;
+      border-radius: 8px;
+      padding: 8px 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      display: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 50;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+
+  /* ------------- HERO & CONTENT ------------- */
 
   .hero h1 {
-  margin: 0.625rem 0;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: bold;
-  text-align: center;   /* 👈 ensure it's centered */
-  color: white;         /* 👈 ensure it's white */
-}
+    margin: 0.625rem 0;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
 
- .hero p {
-  padding: 0 10px;           /* 10px left and right */
-  max-width: 20rem;          /* Optional: to keep it from getting too wide */
-  margin: 0 auto;            /* Center the block */
-  margin-bottom: 1rem; 
-  text-align: center;
-  color: white;
-  font-size: clamp(1rem, 3vw, 1.125rem);
-  line-height: 1.4;
-}
+  .hero p {
+    padding: 0 10px;
+    max-width: 20rem;
+    margin: 0 auto 1rem;
+    text-align: center;
+    color: white;
+    font-size: clamp(1rem, 3vw, 1.125rem);
+    line-height: 1.4;
+  }
     
- .hero-logo {
-  max-width: 80px;  /* Try 80px–160px depending on desired size */
-  height: auto;
-  display: block;
-  margin: 2rem auto 1rem; /* Centered with space below */
-}
+  .hero-logo {
+    max-width: 80px;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto 1rem;
+  }
     
-.chat-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: .5rem 1.25rem 0.5rem 1.25rem; /* top, right, bottom, left */
-}
+  .chat-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 1.25rem 0.5rem 1.25rem; /* top, right, bottom, left */
+  }
 
   #chatContainer {
     background-color: white;
@@ -190,145 +268,138 @@
     font-size: 0.875rem;
   }
 
-  /* Learn More link */
   .learn-link {
-  text-align: center;
-  margin: 0.625rem 0 0.25rem 0; /* top right bottom left */
-  font-size: 0.875rem;
-}
+    text-align: center;
+    margin: 0.625rem 0 0.25rem 0;
+    font-size: 0.875rem;
+  }
 
   .learn-link a {
     color: white;
     font-weight: normal;
     text-decoration: none;
-  } 
-.learn-icon {
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.learn-icon img {
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-}
-.back-link {
-  display: inline-block;
-  top: 22px;   /* Adjust as needed */
-  left: 22px;
-  color: #fff;
-  font-size: 1.13rem;
-  font-weight: 600;
-  background: none;
-  border: none;
-  outline: none;
-  text-decoration: none;
-  padding: 5px 10px 5px 0;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 30;
-  transition: background 0.14s;
-}
-.back-link:hover, .back-link:focus {
-  background: rgba(0,0,0,0.08);
-  text-decoration: underline;
-}
-@media (max-width: 700px) {
-  .back-link {
-    top: 10px;
-    left: 10px;
-    font-size: 1rem;
   }
-}
-    
+
+  .learn-icon {
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  .learn-icon img {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+  }
+
   </style>
 </head>
 <body>
 
   <div class="container">
 
-<a href="https://petitek.com" class="back-link">Home</a>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="https://petitek.com" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;">
+          <span class="nav-logo-text">PETITEK</span>
+        </a>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="https://petitek.com">Home</a>
+        <a href="https://petitek.com/learn">Learn</a>
+        <a href="https://faq.petitek.com" target="_blank" rel="noopener noreferrer">FAQs</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
 
-   <div class="main-wrapper">
+    <div class="main-wrapper">
       <div class="hero">
         <a href="https://petitek.com">
-        <img class="hero-logo" src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
- 
+          <img class="hero-logo" src="https://github.com/PetitekLLC/petitek-landing/raw/main/images/petitek_logo.webp" alt="Petitek Logo" />
         </a>
         <h1>Petitek Support</h1>
         <p>Need help with ChatrBox? ChatrBot is an AI assistant and can answer any setup, support, or troubleshooting questions.</p>
       </div>
 
-<!-- ONE chat-wrapper and container -->
-<div class="chat-wrapper">
-  <div id="chatContainer">
-    <form id="chatForm">
-      <input type="text" id="chatInput" placeholder="How can we help?" />
-      <button id="sendButton" type="submit">Send</button>
-    </form>
+      <!-- ONE chat-wrapper and container -->
+      <div class="chat-wrapper">
+        <div id="chatContainer">
+          <form id="chatForm">
+            <input type="text" id="chatInput" placeholder="How can we help?" />
+            <button id="sendButton" type="submit">Send</button>
+          </form>
 
-    <div id="chatOutput"></div>
-  </div>
-</div>
-
-<!-- ✅ This lives *outside* the chat container but stays close -->
-<div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-  <a href="/learn/" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-    <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
-    Learn with How-To Videos
-  </a>
-</div>
-
-<div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-  <a href="https://faq.petitek.com/" target="_blank" rel="noopener noreferrer"
-    style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-    <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
-    View Our FAQs
-  </a>
-</div>
-
-<div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-  <a href="/images/quickstart_guide2.pdf" target="_blank" rel="noopener noreferrer"
-     style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
-    <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
-    View Quick Start Guide
-  </a>
-</div>
-
-      
-  <footer>
-  <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 10px;" />
-  <h2>Petitek</h2>
-
-  <div class="footer-columns-wrapper">
-    <div class="footer-columns">
-      <div>
-        <h4>Pet Owners</h4>
-        <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
-        <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
+          <div id="chatOutput"></div>
+        </div>
       </div>
-      <div>
-        <h4>Work With Us</h4>
-        <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
-        <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
+
+      <!-- Links below chat -->
+      <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
+        <a href="/learn/" style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+          <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
+          Learn with How-To Videos
+        </a>
       </div>
-    </div>
-  </div>
 
-<!-- <hr style="width: 100%; border: none; border-top: 1px solid white; margin-top: 15px;" /> -->
+      <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
+        <a href="https://faq.petitek.com/" target="_blank" rel="noopener noreferrer"
+          style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+          <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
+          View Our FAQs
+        </a>
+      </div>
 
-  <div style="margin-top: 10px;">
-    <a href="https://petitek.com/terms" target="_blank">Terms</a> |
-    <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
-    <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
-  </div>
-  <p style="margin-top: 8px; font-size: 8pt; color: black;">© Petitek LLC All rights reserved.</p>
-</footer>
+      <div style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
+        <a href="/images/quickstart_guide2.pdf" target="_blank" rel="noopener noreferrer"
+          style="color: black; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+          <img src="/images/LearnPlayButton.png" alt="Play Icon" style="width: 24px; height: 24px;" />
+          View Quick Start Guide
+        </a>
+      </div>
+
+      <footer>
+        <hr style="width: 100%; border: none; border-top: 1px solid white; margin-bottom: 10px;" />
+        <h2>Petitek</h2>
+
+        <div class="footer-columns-wrapper">
+          <div class="footer-columns">
+            <div>
+              <h4>Pet Owners</h4>
+              <p>- <a href="https://petitek.com/warranty" target="_blank">Warranty</a></p>
+              <p>- <a href="https://petitek.com/learn" target="_blank">Learn</a></p>
+            </div>
+            <div>
+              <h4>Work With Us</h4>
+              <p>- <a href="https://petitek.com/affiliates" target="_blank">Affiliates</a></p>
+              <p>- <a href="https://petitek.com/affiliates" target="_blank">Influencers</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <a href="https://petitek.com/terms" target="_blank">Terms</a> |
+          <a href="https://petitek.com/privacy" target="_blank">Privacy</a> |
+          <a href="https://petitek.com/cookies" target="_blank">Cookies</a>
+        </div>
+        <p style="margin-top: 8px; font-size: 8pt; color: black;">© Petitek LLC All rights reserved.</p>
+      </footer>
 
     </div>
   </div>
 
   <script>
+    // Nav hamburger toggle
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
     function generateUUID() {
       return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
         (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
