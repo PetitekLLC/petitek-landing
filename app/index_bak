@@ -332,6 +332,64 @@ img {
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   z-index: 10;
 }
+
+/* 🔍 Lightbox expand button on each video */
+.video-expand {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 11;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 🔍 Lightbox overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  padding: 10px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 90vh;
+}
+
+.lightbox video {
+  width: 100%;
+  max-height: 90vh;
+  border-radius: 8px;
+  display: block;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Heading chip colors etc */
 .feature-heading {
   color: white;
   padding: 10px 16px;
@@ -913,6 +971,7 @@ input.fade-placeholder::placeholder {
 </style>
 </head> <!-- ✅ This was missing and is now added -->
 
+<body>
 <header id="navbar">
   <div class="nav-title">Petitek</div>
   <div class="hamburger">&#9776;</div>
@@ -1028,6 +1087,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <div id="unmuteOverlay1" class="unmute-overlay">
     🔊 Tap to Unmute
   </div>
+  <button class="video-expand" data-video-id="chatrboxVideo1" aria-label="Expand video">⤢</button>
 </div>
 
 
@@ -1111,6 +1171,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <div id="unmuteOverlay2" class="unmute-overlay">
     🔊 Tap to Unmute
   </div>
+  <button class="video-expand" data-video-id="chatrboxVideo2" aria-label="Expand video">⤢</button>
 </div>
 
 
@@ -1240,6 +1301,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <div id="unmuteOverlay3" class="unmute-overlay">
     🔊 Tap to Unmute
   </div>
+  <button class="video-expand" data-video-id="chatrboxVideo3" aria-label="Expand video">⤢</button>
 </div>
 
 <!-- Competitive Products -->
@@ -1279,6 +1341,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <div id="unmuteOverlay4" class="unmute-overlay">
     🔊 Tap to Unmute
   </div>
+  <button class="video-expand" data-video-id="chatrboxVideo4" aria-label="Expand video">⤢</button>
 </div>
 
 <!-- All Breeds & Ages text -->
@@ -1391,7 +1454,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
       <tr><td style="padding: 8px; font-weight: bold;">Manufacturer</td><td style="padding: 8px;">PETITEK LLC USA</td></tr>
        <tr><td style="padding: 8px; font-weight: bold;">Retail Price</td><td style="padding: 8px;">$89.95</td></tr>                                                                                                            
       <tr><td style="padding: 8px; font-weight: bold;">Item Model Number</td><td style="padding: 8px;">CHATR1</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">ASIN</td><td style="padding: 8px;">B0D6Q7SRSQ</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">ASIN</td><td style="padding: 8px;">B0D6QQPWJQ</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">FNSKU</td><td style="padding: 8px;">X004G9DCVV</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Item Weight</td><td style="padding: 8px;">4.3 ounces (without batteries installed)</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Batteries</td><td style="padding: 8px;">4 AAA batteries included</td></tr>
@@ -1401,9 +1464,9 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
       <tr><td style="padding: 8px; font-weight: bold;">Item Dimensions LxWxH</td><td style="padding: 8px;">2.56 x 2.05 x 2.56 inches</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Package Dimensions L x W x H</td><td style="padding: 8px;">4.13 x 4.13 x 2.36 inches</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Packaged Item Weight</td><td style="padding: 8px;">10.1 ounces (ship weight)</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">Detection range</td><td style="padding: 8px;">0'-15'</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">Max Detection Field of View</td><td style="padding: 8px;">60° Adjustable with focus shields</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">Loudness (triggered)</td><td style="padding: 8px;">40db to 90db</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Detection range</td><td style="padding: 8px;">0'-20'</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Max Detection Field of View</td><td style="padding: 8px;">90° Adjustable with focus shields</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">Loudness (triggered)</td><td style="padding: 8px;">40db to 70db</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Volume Settings</td><td style="padding: 8px;">5 Levels</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Message record length</td><td style="padding: 8px;">10 seconds</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Warranty Description</td><td style="padding: 8px;">90 Day limited</td></tr>
@@ -1411,7 +1474,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
       <tr><td style="padding: 8px; font-weight: bold;">Size</td><td style="padding: 8px;">2.5 IN. X 2.5 IN. X 2 IN.</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Age Range Description</td><td style="padding: 8px;">Adult Dogs, Cats to Puppies & Kittens. All breeds.</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Included Components</td><td style="padding: 8px;">4 AAA Batteries, Stand, USB C Cable, 4 Focus Shields</td></tr>
-      <tr><td style="padding: 8px; font-weight: bold;">FCC Certifications</td><td style="padding: 8px;">Part 15</td></tr>
+      <tr><td style="padding: 8px; font-weight: bold;">FCC Certifications</td><td style="padding: 8px;">FCC Part 15</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">WiFi Supported</td><td style="padding: 8px;">2.4 GHz 802.11b, 80211g, 802.11n</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Bluetooth Supported</td><td style="padding: 8px;">Classic BR/EDR, BLE</td></tr>
       <tr><td style="padding: 8px; font-weight: bold;">Specific Uses for Product</td><td style="padding: 8px;">Dog/Cat Behavior Training - Indoor use</td></tr>
@@ -1426,6 +1489,17 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <div style="font-size: 12px; margin-top: 5px; color: #333;">Top</div>
 </div>
  </div> 
+</div>
+
+<!-- 🔍 Global Video Lightbox -->
+<div id="videoLightbox" class="lightbox" aria-hidden="true">
+  <div class="lightbox-content">
+    <button class="lightbox-close" aria-label="Close video">&times;</button>
+    <video id="lightboxVideo" controls playsinline>
+      <source id="lightboxSource" src="" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 </div>
   
 <footer class="site-footer">
@@ -1465,6 +1539,8 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
           <li><a href="/warranty">Warranty</a></li>
           <li><a href="/learn">Learn</a></li>
           <li><a href="/support">Support</a></li>
+          <li><a href="https://faq.petitek.com">FAQ</a></li>
+          
         </ul>
       </div>
       <div>
@@ -1519,29 +1595,22 @@ function playAlert(step) {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   // Turntable Image Carousel
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
+
   function showNextImage() {
     images.forEach((img, i) => {
       img.classList.toggle('active', i === index);
     });
     index = (index + 1) % images.length;
   }
-  showNextImage();
-  setInterval(showNextImage, 3000);
-  
-/*
- // FLOATING AMAZON BUY BUTTON LOGIC TEMPORARILY DISABLED
-const floatBtn = document.querySelector('.floating-buy-button');
-if (floatBtn) {
-  window.addEventListener('scroll', () => {
-    floatBtn.classList.toggle('show', window.scrollY > 300);
-  });
-}
-*/
+
+  if (images.length > 0) {
+    showNextImage();
+    setInterval(showNextImage, 3000);
+  }
 
   // Fade-In Animation
   const fadeEls = document.querySelectorAll('.fade-in');
@@ -1550,24 +1619,28 @@ if (floatBtn) {
       entry.target.classList.toggle('visible', entry.isIntersecting);
     });
   }, { threshold: 0.1 });
+
   fadeEls.forEach(el => fadeObserver.observe(el));
 
   // Hide Navbar on Scroll
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
+
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    navbar.style.top = scrollTop > lastScrollTop ? "-70px" : "0";
+    navbar.style.top = (scrollTop > lastScrollTop) ? "-70px" : "0";
     lastScrollTop = scrollTop;
   });
 
   // Dropdown Menu
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
+
   if (hamburger && menu) {
     hamburger.addEventListener('click', () => {
       menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
     });
+
     document.addEventListener('click', function (event) {
       if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
         menu.style.display = 'none';
@@ -1582,16 +1655,19 @@ if (floatBtn) {
     { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
     { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
   ];
+
   let currentlyPlaying = null;
 
   function initVideo({ id, overlayId }) {
     const video = document.getElementById(id);
     const overlay = document.getElementById(overlayId);
+
     if (!video || !overlay) return;
 
     video.preload = 'auto';
     video.muted = true;
 
+    // Pause other videos when one comes into view
     const videoObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1599,6 +1675,7 @@ if (floatBtn) {
             const v = document.getElementById(vid);
             if (v && v !== video && !v.paused) v.pause();
           });
+
           currentlyPlaying = video;
           video.play();
         } else {
@@ -1609,12 +1686,14 @@ if (floatBtn) {
 
     videoObserver.observe(video);
 
+    // Reset after ending
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       overlay.style.display = 'block';
       video.muted = true;
     });
 
+    // Tap overlay to unmute and restart
     overlay.addEventListener('click', () => {
       video.pause();
       video.currentTime = 0;
@@ -1652,7 +1731,7 @@ function clearEmailInput() {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // 1) Lead when the footer email form submits
+  // Track Lead when footer form submits
   var form = document.getElementById('emailForm');
   if (form) {
     form.addEventListener('submit', function () {
@@ -1660,7 +1739,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 2) Outbound click to Amazon product page
+  // Track outbound Amazon clicks
   var amazonLink = document.querySelector('a[href*="amazon.com/dp/B0D6QQPWJQ"]');
   if (amazonLink) {
     amazonLink.addEventListener('click', function () {
@@ -1672,15 +1751,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
