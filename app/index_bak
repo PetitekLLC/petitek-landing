@@ -740,8 +740,9 @@ img {
 }
 
 .footer-columns ul li {
-  display: block !important; /* ✅ this forces stacking */
+  display: block !important;
   margin: 4px 0;
+  padding-left: 12px;    /* <-- REAL indentation */
   text-align: left;
 }
 
