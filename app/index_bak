@@ -308,11 +308,19 @@ img {
   padding: 0 5px;
   box-sizing: border-box;
   position: relative;
+  aspect-ratio: 16 / 9;
 }
 
 .video-wrapper video {
   width: 100%;
   height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
   display: block;
   border-radius: 6px;
 }
@@ -740,9 +748,8 @@ img {
 }
 
 .footer-columns ul li {
-  display: block !important;
+  display: block !important; /* ✅ this forces stacking */
   margin: 4px 0;
-  padding-left: 12px;    /* <-- REAL indentation */
   text-align: left;
 }
 
@@ -1033,22 +1040,28 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 </div>
 
-<!-- Smart Features Block -->
 <div class="content-block">
-  <picture>
-    <!-- Use GIF first -->
-    <source srcset="images/1_SmartFeatures.GIF" type="image/gif">
-    <!-- Fallback to WebP -->
-    <source srcset="images/1_SmartFeatures800.webp" type="image/webp">
-    <!-- Default img fallback -->
-    <img
-      src="images/1_SmartFeatures800.webp"
-      alt="Smart Features - ChatrBox"
-      class="fade-in"
-      loading="lazy"
-    />
-  </picture>
+
+  <div class="text-block title-block fade-in">
+    Your Voice
+  </div>
+
+  <div class="text-block body-block fade-in">
+    ChatBox is the first pet training tool that helps you guide your pet to do the
+    right thing every time...
+  </div>
+
+  <div class="video-wrapper fade-in">
+    <iframe
+      src="https://player.vimeo.com/video/1148747137?h=27af691f2f"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+
 </div>
+
   
   <div class="text-block title-block fade-in">
    You’re Not There, But Your Voice Is — And That’s All They Need
