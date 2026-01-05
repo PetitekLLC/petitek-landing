@@ -1718,21 +1718,6 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 </script>
-
-// Floating Amazon Buy Button logic
-const floatingBuyButton = document.querySelector('.floating-buy-button');
-
-if (floatingBuyButton) {
-  window.addEventListener('scroll', () => {
-    const scrollTrigger = 600; // px from top before showing
-
-    if (window.scrollY > scrollTrigger) {
-      floatingBuyButton.classList.add('show');
-    } else {
-      floatingBuyButton.classList.remove('show');
-    }
-  });
-}
   
 <script>
 function clearEmailInput() {
@@ -1755,16 +1740,8 @@ function clearEmailInput() {
   }, 500);
 }
 </script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // Track Lead when footer form submits
-  var form = document.getElementById('emailForm');
-  if (form) {
-    form.addEventListener('submit', function () {
-      if (window.fbq) fbq('track', 'Lead');
-    });
-  }
 
   // Track outbound Amazon clicks
   var amazonLink = document.querySelector('a[href*="amazon.com/dp/B0D6QQPWJQ"]');
@@ -1775,8 +1752,27 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  // Floating Amazon Buy Button logic
+  const floatingBuyButton = document.querySelector('.floating-buy-button');
+
+  if (floatingBuyButton) {
+    window.addEventListener('scroll', () => {
+      const scrollTrigger = 600;
+
+      if (window.scrollY > scrollTrigger) {
+        floatingBuyButton.classList.add('show');
+      } else {
+        floatingBuyButton.classList.remove('show');
+      }
+    });
+  }
+
 });
 </script>
 
+<script>
+
+  
 </body>
 </html>
