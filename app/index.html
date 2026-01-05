@@ -1719,6 +1719,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+// Floating Amazon Buy Button logic
+const floatingBuyButton = document.querySelector('.floating-buy-button');
+
+if (floatingBuyButton) {
+  window.addEventListener('scroll', () => {
+    const scrollTrigger = 600; // px from top before showing
+
+    if (window.scrollY > scrollTrigger) {
+      floatingBuyButton.classList.add('show');
+    } else {
+      floatingBuyButton.classList.remove('show');
+    }
+  });
+}
+  
 <script>
 function clearEmailInput() {
   setTimeout(() => {
