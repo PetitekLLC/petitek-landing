@@ -413,13 +413,15 @@ footer h4 {
       const message = input.value.trim();
       if (!message) return;
 
-      output.style.display = "block";
-      let dots = 0;
-      output.textContent = "ChatrBot is typing";
-      const typingAnimation = setInterval(() => {
-        dots = (dots + 1) % 4;
-        output.textContent = "ChatrBot is typing" + ".".repeat(dots);
-      }, 500);
+    output.style.display = "block";
+output.style.color = "red"; // ← add this
+let dots = 0;
+output.textContent = "ChatrBot is typing";
+const typingAnimation = setInterval(() => {
+  dots = (dots + 1) % 4;
+  output.textContent = "ChatrBot is typing" + ".".repeat(dots);
+}, 500);
+
 
       try {
         const res = await fetch("https://website-backend-ag99.onrender.com/chat", {
