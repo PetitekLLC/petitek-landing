@@ -20,7 +20,35 @@
     gtag('js', new Date());
     gtag('config', 'G-BVKZKZ7GJE');
   </script>
-  
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ✅ Track ALL Amazon outbound clicks
+  document.body.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href*="amazon.com"]');
+    if (!link) return;
+
+    // ---- Google Analytics (GA4) ----
+    if (typeof gtag === 'function') {
+      gtag('event', 'amazon_click', {
+        event_category: 'Outbound',
+        event_label: link.href,
+        transport_type: 'beacon'
+      });
+    }
+
+    // ---- Meta / Facebook Pixel (optional, keep if you want) ----
+    if (window.fbq) {
+      fbq('trackCustom', 'OutboundAmazonClick', {
+        url: link.href
+      });
+    }
+  });
+
+});
+</script>
+
 <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
