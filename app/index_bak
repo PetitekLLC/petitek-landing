@@ -12,6 +12,43 @@
   <title>Petitek | Chatrbox Smart Pet Trainer</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
+ <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVKZKZ7GJE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BVKZKZ7GJE');
+  </script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ✅ Track ALL Amazon outbound clicks
+  document.body.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href*="amazon.com"]');
+    if (!link) return;
+
+    // ---- Google Analytics (GA4) ----
+    if (typeof gtag === 'function') {
+      gtag('event', 'amazon_click', {
+        event_category: 'Outbound',
+        event_label: link.href,
+        transport_type: 'beacon'
+      });
+    }
+
+    // ---- Meta / Facebook Pixel (optional, keep if you want) ----
+    if (window.fbq) {
+      fbq('trackCustom', 'OutboundAmazonClick', {
+        url: link.href
+      });
+    }
+  });
+
+});
+</script>
+
 <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -989,7 +1026,7 @@ input.fade-placeholder::placeholder {
   <a href="/support">Support</a>
   <a href="/learn">Learn</a>
   <a href="/about">About</a>
-  <a href="https://chatrbox.petitek.com/preorder/" target="_blank" rel="noopener noreferrer"><strong>Purchase</strong></a>
+  <a href="https://www.amazon.com/dp/B0D6QQPWJQ" target="_blank" rel="noopener noreferrer"><strong>Purchase</strong></a>
 </div>
 
 
@@ -1231,7 +1268,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <audio id="triggerAudio2" src="audio/audio2.mp3" preload="auto"></audio>
   <audio id="triggerAudio3" src="audio/audio3.mp3" preload="auto"></audio>
   
-   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.<h3>
+   <h3>Alerts will continue to be triggered (cycled) until the pet obeys the command.</h3>
   
 </section>
   
@@ -1579,13 +1616,11 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
 </footer>
   
 <!-- FLOATING AMAZON BUY BUTTON TEMPORARILY DISABLED -->
-<!--
 <div class="floating-buy-button">
   <a href="https://www.amazon.com/dp/B0D6QQPWJQ" target="_blank">
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
--->
 
 <script>
 function playAlert(step) {
@@ -1720,7 +1755,7 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 });
 </script>
-
+  
 <script>
 function clearEmailInput() {
   setTimeout(() => {
@@ -1742,16 +1777,8 @@ function clearEmailInput() {
   }, 500);
 }
 </script>
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // Track Lead when footer form submits
-  var form = document.getElementById('emailForm');
-  if (form) {
-    form.addEventListener('submit', function () {
-      if (window.fbq) fbq('track', 'Lead');
-    });
-  }
 
   // Track outbound Amazon clicks
   var amazonLink = document.querySelector('a[href*="amazon.com/dp/B0D6QQPWJQ"]');
@@ -1762,8 +1789,27 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  // Floating Amazon Buy Button logic
+  const floatingBuyButton = document.querySelector('.floating-buy-button');
+
+  if (floatingBuyButton) {
+    window.addEventListener('scroll', () => {
+      const scrollTrigger = 600;
+
+      if (window.scrollY > scrollTrigger) {
+        floatingBuyButton.classList.add('show');
+      } else {
+        floatingBuyButton.classList.remove('show');
+      }
+    });
+  }
+
 });
 </script>
 
+<script>
+
+  
 </body>
 </html>
