@@ -1805,15 +1805,6 @@ function clearEmailInput() {
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Track outbound Amazon clicks
-  var amazonLink = document.querySelector('a[href*="amazon.com/dp/B0D6QQPWJQ"]');
-  if (amazonLink) {
-    amazonLink.addEventListener('click', function () {
-      if (window.fbq) fbq('trackCustom', 'OutboundAmazonClick', {
-        asin: 'B0D6QQPWJQ'
-      });
-    });
-  }
 
   // Floating Amazon Buy Button logic
   const floatingBuyButton = document.querySelector('.floating-buy-button');
