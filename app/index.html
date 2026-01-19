@@ -710,6 +710,36 @@ img {
   border-radius: 50%;
 }
 
+.footer-social-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 6px;
+}
+
+.footer-social-icons a {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social-icons a:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.footer-social-icons svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+  
 /* FLEXIBILITY & USABILITY ICONS */
 .box-icon {
   width: 20px;
@@ -1605,15 +1635,34 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <input type="text" name="honeypot" style="display:none;" autocomplete="off" />
 </form>
 
-<div class="footer-social" style="margin: 20px 0;">
-  <a href="https://www.facebook.com/PetitekUSA/" target="_blank" rel="noopener noreferrer" aria-label="Petitek on Facebook">
-    Facebook
-  </a>
-  &nbsp;•&nbsp;
-  <a href="https://www.tiktok.com/@petitekllc" target="_blank" rel="noopener noreferrer" aria-label="Petitek on TikTok">
-    TikTok
-  </a>
+<div>
+  <strong>Follow Us</strong>
+
+  <div class="footer-social-icons">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/PetitekUSA/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Petitek on Facebook">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.49v-9.294H9.691v-3.622h3.125V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.505 0-1.797.716-1.797 1.764v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"/>
+      </svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@petitekllc"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Petitek on TikTok">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12.004 0h3.292c.38 3.09 2.154 4.888 4.704 5.014v3.335c-1.775.115-3.364-.46-4.669-1.384v7.015c0 4.236-3.12 7.97-8.056 7.97-4.636 0-7.975-3.28-7.975-7.705 0-4.382 3.414-7.62 7.907-7.62.403 0 .804.03 1.202.09v3.49c-.396-.13-.807-.197-1.225-.197-2.375 0-4.314 1.86-4.314 4.235 0 2.396 1.939 4.278 4.314 4.278 2.716 0 4.21-1.92 4.21-4.57V0z"/>
+      </svg>
+    </a>
+  </div>
 </div>
+
 
    
     <!-- Footer Columns -->
