@@ -135,14 +135,14 @@ img {
 .nav-title {
   font-weight: bold;
   font-size: 22px;
-  color: #25A8C6; /* Petitek brand teal */
+  color: #5EBCBC; /* Petitek brand teal */
   font-family: Georgia, serif;
 }
 
 .hamburger {
   font-size: 26px;
   font-weight: bold;
-  color: #25A8C6;
+  color: #5EBCBC;
   cursor: pointer;
   user-select: none;
 }
@@ -231,7 +231,7 @@ img {
 .dropdown-menu a {
   display: block;
   padding: 12px 20px;
-  color: #25A8C6;
+  color: #5EBCBC;
   text-decoration: none;
   font-weight: normal;
   border-bottom: 1px solid #eee;
@@ -392,7 +392,7 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(37, 168, 198, 0.9);
+  background-color: rgba(94, 188, 188, 0.9);
   color: white;
   padding: 12px 18px;
   border-radius: 8px;
@@ -475,7 +475,7 @@ img {
   height: 0;
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 18px solid #25A8C6;
+  border-left: 18px solid #5EBCBC;
 }
 .feature-heading-blue {
   background-color: #add8e6; /* light blue */
@@ -501,7 +501,7 @@ img {
 .pause-icon {
   width: 16px;
   height: 20px;
-  background: linear-gradient(to right, #25A8C6 6px, transparent 6px, transparent 10px, #25A8C6 10px);
+  background: linear-gradient(to right, #5EBCBC 6px, transparent 6px, transparent 10px, #5EBCBC 10px);
 }
 
    
@@ -514,7 +514,7 @@ img {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   position: relative;
   display: inline-block;
 }
@@ -542,20 +542,20 @@ img {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #25A8C6 30%, transparent 31%, #25A8C6 60%, transparent 61%);
+  background: radial-gradient(circle at center, #5EBCBC 30%, transparent 31%, #5EBCBC 60%, transparent 61%);
 }
 
 .clock-icon {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid #25A8C6;
+  border: 2px solid #5EBCBC;
   position: relative;
 }
 .clock-icon::before, .clock-icon::after {
   content: "";
   position: absolute;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
 }
 .clock-icon::before {
   width: 2px;
@@ -575,7 +575,7 @@ img {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: 2px solid #25A8C6;
+  border: 2px solid #5EBCBC;
   position: relative;
 }
 .gear-icon::before {
@@ -584,7 +584,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 3px dotted #25A8C6;
+  border: 3px dotted #5EBCBC;
   animation: spin 3s linear infinite;
 }
 @keyframes spin {
@@ -596,7 +596,7 @@ img {
 .mic-icon {
   width: 14px;
   height: 28px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 6px;
   position: relative;
 }
@@ -605,7 +605,7 @@ img {
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 50%;
   bottom: -10px;
   left: 4px;
@@ -616,7 +616,7 @@ img {
   height: 0;
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 18px solid #25A8C6;
+  border-left: 18px solid #5EBCBC;
   position: relative;
 }
 .speaker-icon::after {
@@ -626,14 +626,14 @@ img {
   top: 2px;
   width: 8px;
   height: 8px;
-  border: 2px solid #25A8C6;
+  border: 2px solid #5EBCBC;
   border-radius: 50%;
 }
 
 .led-icon {
   width: 18px;
   height: 18px;
-  background: radial-gradient(circle, yellow 50%, #25A8C6 80%);
+  background: radial-gradient(circle, yellow 50%, #5EBCBC 80%);
   border-radius: 50%;
   box-shadow: 0 0 8px 2px rgba(37, 168, 198, 0.6);
 }
@@ -648,7 +648,7 @@ img {
   content: '';
   display: block;
   width: 4px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
 }
 .volume-bars::before { height: 6px; }
 .volume-bars div     { height: 12px; }
@@ -666,7 +666,7 @@ img {
   position: absolute;
   width: 12px;
   height: 12px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 50%;
   top: 1px;
   left: 2px;
@@ -676,7 +676,7 @@ img {
 .wifi-icon {
   width: 20px;
   height: 20px;
-  background: conic-gradient(from 90deg at 50% 50%, #25A8C6 90deg, transparent 0);
+  background: conic-gradient(from 90deg at 50% 50%, #5EBCBC 90deg, transparent 0);
   border-radius: 50%;
 }
 
@@ -684,21 +684,21 @@ img {
 .battery-icon {
   width: 18px;
   height: 30px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 3px;
 }
 
 .usb-icon {
   width: 28px;
   height: 14px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 2px;
 }
 
 .moon-icon {
   width: 18px;
   height: 18px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 50%;
   box-shadow: inset -4px 0 0 white;
 }
@@ -706,7 +706,7 @@ img {
 .memory-icon {
   width: 24px;
   height: 24px;
-  border: 2px dashed #25A8C6;
+  border: 2px dashed #5EBCBC;
   border-radius: 50%;
 }
 
@@ -751,14 +751,14 @@ img {
 .box-icon {
   width: 20px;
   height: 24px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   border-radius: 6px;
 }
 
 .infinity-icon {
   width: 24px;
   height: 14px;
-  border: 2px solid #25A8C6;
+  border: 2px solid #5EBCBC;
   border-radius: 50%;
 }
 
@@ -769,7 +769,7 @@ img {
   clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);
 }
 .site-footer {
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   color: white;
   padding: 40px 20px 30px;
   text-align: center;
@@ -955,7 +955,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 .step-number {
   width: 50px;
   height: 50px;
-  background-color: #25A8C6;
+  background-color: #5EBCBC;
   color: white;
   border-radius: 50%;
   display: inline-flex;
@@ -979,7 +979,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 
 .tap-to-hear {
   font-size: 1rem;
-  color: #25A8C6;
+  color: #5EBCBC;
   font-weight: 700;
 }
 
@@ -1175,16 +1175,16 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 
   
-<!-- ChatrBox Train Block -->
+<!-- Train With Your Voice -->
 <div class="content-block">
   <img
-    src="images/2_ChatrboxTrain800.webp"
+    src="images/2_800.webp"
     srcset="
-      images/2_ChatrboxTrain800.webp 800w,
-      images/2_ChatrboxTrain1600.webp 1600w
+      images/2_800.webp 800w,
+      images/2_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="ChatrBox Train"
+    alt="Train With Your Voice"
     class="fade-in"
      loading="lazy"
   />
@@ -1211,20 +1211,20 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
 
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
-    ChatrBox Breaks Old Bad Habits and Prevents New Ones From Starting
+   Clear Guidance, Right When It Matters
   </div>
   <div class="text-block body-block fade-in">
-    Old habits don’t stand a chance. <strong>ChatrBox</strong> steps in with your familiar voice, sound alerts, and flashing lights at just the right moment to let your pet know — not now. It interrupts bad behavior and reinforces the right choices before hard-to-correct habits even have a chance to take hold.
+    Behavior training works when pets can connect actions with outcomes. ChatrBox responds immediately to delivering clear, corrective guidance that helps pets understand and adjust naturally.
   </div>
 </div>
 
-<!-- Stop Bad Habits Block -->
+<!-- How it Works -->
 <div class="content-block">
   <img
-    src="images/3_StopBadHabits800.webp"
+    src="images/3_800.webp"
     srcset="
-      images/3_StopBadHabits800.webp 800w,
-      images/3_StopBadHabits1600.webp 1600w"
+      images/3_800.webp 800w,
+      images/3_1600.webp 1600w"
     sizes="(max-width: 768px) 100vw, 800px"
     alt="Stop Bad Habits"
     class="fade-in"
@@ -1235,40 +1235,40 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
     Real-World Training for Real-World Homes
   </div>
   <div class="text-block body-block fade-in">
-    Some bad habits are harder to train away than others — but <strong>ChatrBox</strong> makes it possible by being in the right place at the right time, constantly monitoring and correcting until the habit is broken.
+    ChatrBox is designed to guard specific areas of your home — from rooms and entryways to furniture and off-limits zones — helping maintain boundaries wherever they’re needed.
   </div>
 </div>
 
-<!-- Uh Oh Moment Block -->
+<!-- Real-Time Training -->
 <div class="content-block">
   <img
-    src="images/5_UhOhMoment800.webp"
+    src="images/4_800.webp"
     srcset="
-      images/5_UhOhMoment800.webp 800w,
-      images/5_UhOhMoment1600.webp 1600w"
+      images/4_800.webp 800w,
+      images/4_1600.webp 1600w"
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="Uh Oh Moment"
+    alt="Real Time Training"
     class="fade-in"
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-    Works Like an Invisible Virtual Fence — But For Inside Your Home
+    Because Timing Is Everything.
   </div>
   <div class="text-block body-block fade-in">
-    Anywhere your pet needs boundaries, <strong>ChatrBox</strong> is ready. Designed to train in real-world spaces — big, small, or anywhere in between — <strong>ChatrBox</strong> adapts to your home and your house rules. Whether it’s keeping paws out of a room, off the couch, off the counters, away from doorways, or even away from your new pair of shoes, <strong>ChatrBox</strong> steps in exactly where you need it most.
+  Pets don’t learn from delayed correction. ChatrBox responds instantly, delivering guidance at the precise moment behavior occurs — when it makes sense to them waht to do.
   </div>
 </div>
 
-<!-- Pet Free Zone Block -->
+<!-- Your Voice At the Right Moment -->
 <div class="content-block">
   <img
-    src="images/4_PetFreeZone800.webp"
+    src="images/5_800.webp"
     srcset="
-      images/4_PetFreeZone800.webp 800w,
-      images/4_PetFreeZone1600.webp 1600w
+      images/5_800.webp 800w,
+      images/5_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="Pet-Free Zone"
+    alt="Your Voice at the right moment"
     class="fade-in"
      loading="lazy"
   />
@@ -1341,65 +1341,66 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   
 <!-- ✅ Moved OUTSIDE the section -->
 <div class="text-block title-block fade-in">
-  Even The Most <em>Stubborn</em> Pets "Get It"
+Three Training Modes. One Smart System.
 </div>
 <div class="text-block body-block fade-in">
-  Whether it's the couch, the counter, the trash can or anywhere off-limits, <strong>ChatrBox</strong> keeps reinforcing your message until the behavior changes — no yelling, no chasing, no frustration.
+  Start with gentle guidance, reinforce with tones or light when needed, or use voice-only for everyday maintenance. ChatrBox lets you adjust how it responds as your pet learns.
 </div>
  
-<!-- Escalation Block -->
+<!-- Three Training Modes -->
 <div class="content-block">
   <img
-    src="images/6_Escalation800.webp"
+    src="images/6_800.webp"
     srcset="
-      images/6_Escalation800.webp 800w,
-      images/6_Escalation1600.webp 1600w
+      images/6_800.webp 800w,
+      images/6_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="Bucky Escalation - ChatrBox"
+    alt="Three Training Modes"
     class="fade-in"
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-    They Learn Through Repetition
+  Humane Training Without Fear, Stress or Anxiety.
   </div>
   <div class="text-block body-block fade-in">
-    Repetition turns reminders into good habits. <strong>ChatrBox</strong> helps your pet <em>remember</em> the right choice — even when you're not around.
+    ChatrBox corrects behavior using familiar voice guidance — not shock, confinement, or intimidation. Your pet learns calmly, confidently, and without stress.
+    <em>remember</em> the right choice — even when you're not around.
   </div>
 </div>
 
-<!-- OffTheChair Block -->
+<!-- No Shock No Crates -->
 <div class="content-block">
   <img
-    src="images/7_OffTheChair800.webp"
+    src="images/7_800.webp"
     srcset="
-      images/7_OffTheChair800.webp 800w,
-      images/7_OffTheChair1600.webp 1600w
+      images/7_800.webp 800w,
+      images/7_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="Off The Chair"
+    alt="No Schock No Crates"
     class="fade-in"
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-    ChatrBox is a <em>No Fear</em> Behavior Training Solution
+   Misbehaving Can Happen When You're Not Around Or At Home. Not Anymore.
   </div>
   <div class="text-block body-block fade-in">
-    Train with kindness, not fear. <em>ChatrBox</em> uses your voice — the one your pet trusts most — combined with cues to guide better behavior. No harsh methods. No anxiety. Just smart, effective training that strengthens the bond between you and your pet.
+    When you can't be there to provide guidance when needed, Chatbox can be. And with your own voice delivering the message on point - it's almost like you being there, but not.
   </div>
 </div>
 
 
-<!-- NoFear Copy Image Block -->
+<!-- Works When Not at Home -->
 <div class="content-block">
   <img
-    src="images/8_NoFear800.webp"
+    src="images/8_800.webp"
     srcset="
-      images/8_NoFear800.webp 800w,
-      images/8_NoFear1600.webp 1600w
+      images/8_800.webp 800w,
+      images/8_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="No Fear - Your Voice"
+    alt="Works When Not At Home"
     class="fade-in"
      loading="lazy"
   />
@@ -1422,24 +1423,24 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <button class="video-expand" data-video-id="chatrboxVideo3" aria-label="Expand video">⤢</button>
 </div>
 
-<!-- Competitive Products -->
+<!-- Set it Once It Just Works -->
 <div class="text-block title-block fade-in">
-  Not All Training Tools Are Created Equal
+  Simple To Use Right Out of The Box.
 </div>
 <div class="text-block body-block fade-in">
-  See why <strong>ChatrBox</strong> stands apart as the humane, effective choice for better behavior that lasts.
+  You'll be up and running in minutes, without dowloading apps or connecting to the interent to work. Just press a buttton to record your message, pick a trining mode and aim Chatrbox to start working immediately.
 </div>
 
-<!-- Comparative Matrix Block -->
+<!-- Set It Once It Just Works -->
 <div class="content-block">
   <img
-    src="images/10_CompetitiveMatrix800.webp"
+    src="images/9_800.webp"
     srcset="
-      images/10_CompetitiveMatrix800.webp 800w,
-      images/10_CompetitiveMatrix1600.webp 1600w
+      images/9_800.webp 800w,
+      images/9_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="Competitive Matrix"
+    alt="Set It Once It Just Works"
     class="fade-in"
      loading="lazy"
   />
@@ -1447,7 +1448,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
     No Collars. No Tags. Just Smarter Training
   </div>
   <div class="text-block body-block fade-in">
-    Because trust, not electronics, should be the trusted bond between you and your pet.
+    Wearables can distract, irritate, or stress pets. ChatrBox removes that friction entirely, delivering humane guidance through sound and timing — not physical control.
   </div>
 </div>
 
@@ -1462,51 +1463,51 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   <button class="video-expand" data-video-id="chatrboxVideo4" aria-label="Expand video">⤢</button>
 </div>
 
-<!-- All Breeds & Ages text -->
+<!-- Works For Cats Too -->
 <div class="text-block title-block fade-in">
-  All Breeds & Ages
+  Works just as well for Cats for Dogs
 </div>
 <div class="text-block body-block fade-in">
-  From the smallest kitten to the biggest dog, <strong>ChatrBox</strong> helps every furry friend learn with love, not limits.
+  Trying to stop furniture from being destroyed or counter surfing, plant destruction or marking - put in ChatrBox to stop the behavior cold without freaking out or harming your kitty. 
 </div>
 
-<!-- AllBreeds Image Block -->
+<!-- Works For Cats Too -->
 <div class="content-block">
   <img
-    src="images/11_AllBreeds800.webp"
+    src="images/10_800.webp"
     srcset="
-      images/11_AllBreeds800.webp 800w,
-      images/11_AllBreeds1600.webp 1600w
+      images/10_800.webp 800w,
+      images/10_1600.webp 1600w
     "
     sizes="(max-width: 768px) 100vw, 800px"
-    alt="All Breeds"
+    alt="Works For Cats Too"
     class="fade-in"
      loading="lazy"
   />
 </div>
 
-<!-- Make Training Fun Text -->
+<!-- In the Box -->
 <div class="text-block title-block fade-in">
-  Make Training Fun
+  Everthing you Need to Start Behavior Training is Included.  
 </div>
 <div class="text-block body-block fade-in">
-  Order your <strong>ChatrBox</strong> today and experience the smarter, better way to train.
+ChatrBox comes fully equipped for immediate setup. Every essential component is included, so you can start training right out of the box — no extras required.
 </div>
 
-<!-- Order Now Block -->
+<!-- In the Box -->
 <div class="content-block fade-in">
  <a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
    target="_blank"
    rel="noopener noreferrer">
 
     <img
-      src="images/12_OrderNow800.webp"
+      src="images/11_800.webp"
       srcset="
-        images/12_OrderNow800.webp 800w,
-        images/12_OrderNow1600.webp 1600w
+        images/11_800.webp 800w,
+        images/11_1600.webp 1600w
       "
       sizes="(max-width: 768px) 100vw, 800px"
-      alt="Order Now"
+      alt="In The Box"
       class="fade-in"
        loading="lazy"
     />
