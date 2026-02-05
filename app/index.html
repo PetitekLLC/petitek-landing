@@ -1834,7 +1834,68 @@ document.addEventListener('DOMContentLoaded', () => {
   { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4', type: 'mp4' }
 ];
 
+function initVideo({ id, overlayId, type }) {
+  const el = document.getElementById(id);
+  const overlay = document.getElementById(overlayId);
+  if (!el || !overlay) return;
 
+  // 🔹 VIMEO VIDEO
+  if (type === 'vimeo') {
+    const player = new Vimeo.Player(el);
+    player.setVolume(0);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          player.play().catch(() => {});
+        } else {
+          player.pause().catch(() => {});
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(el);
+
+    overlay.addEventListener('click', () => {
+      player.setVolume(1);
+      overlay.style.display = 'none';
+      player.play();
+    });
+
+    return;
+  }
+
+  // 🔹 MP4 VIDEO
+  el.muted = true;
+  el.preload = 'auto';
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        el.play().catch(() => {});
+      } else {
+        el.pause();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(el);
+
+  el.addEventListener('ended', () => {
+    el.currentTime = 0;
+    el.muted = true;
+    overlay.style.display = 'block';
+  });
+
+  overlay.addEventListener('click', () => {
+    el.currentTime = 0;
+    el.muted = false;
+    overlay.style.display = 'none';
+    el.play();
+  });
+}
+
+  
   let currentlyPlaying = null;
 
   function initVideo({ id, overlayId }) {
