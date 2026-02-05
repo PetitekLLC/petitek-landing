@@ -123,12 +123,13 @@ img {
 
 /* Constrained content stays readable */
 .page-content {
-  max-width: 800px;
+  max-width: 1024px;
   margin: 0 auto;
   background-color: #FFFFFF;
   padding: 20px 0;
-  overflow: hidden; /* prevents margin collapse */
+  overflow: auto;   /* ← THIS fixes all remaining blocks */
 }
+
 
 
 /* Default (mobile + tablet): white background */
