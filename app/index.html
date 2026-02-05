@@ -1826,7 +1826,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -1842,7 +1841,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById(overlayId);
     if (!el || !overlay) return;
 
-    /* ===== VIMEO (Video 1 only) ===== */
+    // ===== VIMEO (Video 1 only) =====
     if (type === 'vimeo') {
       const player = new Vimeo.Player(el);
       player.setVolume(0);
@@ -1865,10 +1864,10 @@ document.addEventListener('DOMContentLoaded', () => {
         player.play();
       });
 
-      return; // ⬅️ STOP HERE FOR VIMEO
+      return; // ⬅️ stops MP4 logic from touching Vimeo
     }
 
-    /* ===== MP4 VIDEOS (2–4 unchanged) ===== */
+    // ===== MP4 VIDEOS (2–4 unchanged) =====
     el.muted = true;
     el.preload = 'auto';
 
@@ -1898,59 +1897,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== INITIALIZE ALL VIDEOS ===== */
   videos.forEach(initVideo);
 
 });
 </script>
 
-
-  
-<script>
-function clearEmailInput() {
-  setTimeout(() => {
-    const emailField = document.getElementById('emailInput');
-    const checkmark = document.getElementById('emailSuccess');
-
-    if (emailField && checkmark) {
-      emailField.value = '';
-      checkmark.classList.add('show');
-      emailField.classList.add('fade-placeholder');
-      emailField.placeholder = '';
-
-      setTimeout(() => {
-        checkmark.classList.remove('show');
-        emailField.placeholder = 'Enter email';
-        emailField.classList.remove('fade-placeholder');
-      }, 3000);
-    }
-  }, 500);
-}
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-
-  // Floating Amazon Buy Button logic
-  const floatingBuyButton = document.querySelector('.floating-buy-button');
-
-  if (floatingBuyButton) {
-    window.addEventListener('scroll', () => {
-      const scrollTrigger = 600;
-
-      if (window.scrollY > scrollTrigger) {
-        floatingBuyButton.classList.add('show');
-      } else {
-        floatingBuyButton.classList.remove('show');
-      }
-    });
-  }
-
-});
-</script>
-
-<script>
-
-  
-</body>
-</html>
