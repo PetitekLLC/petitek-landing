@@ -1196,17 +1196,44 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 </div>
 
+<!-- ===============================
+     Video1 (LOCAL MP4) — DISABLED
+     Reason: Testing Vimeo embed
+     ===============================
 
-<!-- Video1 -->
 <div class="video-wrapper fade-in">
   <video id="chatrboxVideo1" autoplay muted playsinline controls preload="none">
     <source src="videos/video1.mp4" type="video/mp4">
   </video>
+
   <div id="unmuteOverlay1" class="unmute-overlay">
     🔊 Tap to Unmute
   </div>
-  <button class="video-expand" data-video-id="chatrboxVideo1" aria-label="Expand video">⤢</button>
+
+  <button class="video-expand"
+          data-video-id="chatrboxVideo1"
+          aria-label="Expand video">
+    ⤢
+  </button>
 </div>
+
+-->
+
+<!-- Video1 (Vimeo – ACTIVE) -->
+<div class="video-wrapper fade-in">
+  <iframe
+    id="chatrboxVideo1"
+    src="https://player.vimeo.com/video/1161979399?autoplay=1&muted=1&playsinline=1&background=1"
+    allow="autoplay; fullscreen; picture-in-picture"
+    loading="lazy"
+    frameborder="0">
+  </iframe>
+
+  <div id="unmuteOverlay1" class="unmute-overlay">
+    🔊 Tap to Unmute
+  </div>
+</div>
+
 
 
 <div style="padding: 0 10px;">
@@ -1722,6 +1749,10 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
   </a>
 </div>
 
+<!-- Vimeo Player API (required for Vimeo control) -->
+<script src="https://player.vimeo.com/api/player.js"></script>
+  
+
 <script>
 function playAlert(step) {
   const audio = document.getElementById(`triggerAudio${step}`);
@@ -1799,7 +1830,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Video Autoplay + Unmute Overlay
   const videos = [
-    { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
+   // { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' }, // MP4 version disabled
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
     { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
     { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
