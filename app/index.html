@@ -1895,53 +1895,6 @@ function initVideo({ id, overlayId, type }) {
   });
 }
 
-  
-  let currentlyPlaying = null;
-
-  function initVideo({ id, overlayId }) {
-    const video = document.getElementById(id);
-    const overlay = document.getElementById(overlayId);
-
-    if (!video || !overlay) return;
-
-    video.preload = 'auto';
-    video.muted = true;
-
-    // Pause other videos when one comes into view
-    const videoObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          videos.forEach(({ id: vid }) => {
-            const v = document.getElementById(vid);
-            if (v && v !== video && !v.paused) v.pause();
-          });
-
-          currentlyPlaying = video;
-          video.play();
-        } else {
-          if (video === currentlyPlaying) video.pause();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    videoObserver.observe(video);
-
-    // Reset after ending
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      overlay.style.display = 'block';
-      video.muted = true;
-    });
-
-    // Tap overlay to unmute and restart
-    overlay.addEventListener('click', () => {
-      video.pause();
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play();
-    });
-  }
 
   videos.forEach(initVideo);
 });
