@@ -1842,9 +1842,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById(overlayId);
     if (!el || !overlay) return;
 
-    /* =====================
-       VIMEO VIDEO (Video 1)
-       ===================== */
+    /* ===== VIMEO (Video 1 only) ===== */
     if (type === 'vimeo') {
       const player = new Vimeo.Player(el);
       player.setVolume(0);
@@ -1867,12 +1865,10 @@ document.addEventListener('DOMContentLoaded', () => {
         player.play();
       });
 
-      return; // ⬅️ VERY IMPORTANT
+      return; // ⬅️ STOP HERE FOR VIMEO
     }
 
-    /* =====================
-       MP4 VIDEOS (2–4)
-       ===================== */
+    /* ===== MP4 VIDEOS (2–4 unchanged) ===== */
     el.muted = true;
     el.preload = 'auto';
 
@@ -1902,13 +1898,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =====================
-     INITIALIZE ALL VIDEOS
-     ===================== */
+  /* ===== INITIALIZE ALL VIDEOS ===== */
   videos.forEach(initVideo);
 
 });
 </script>
+
 
   
 <script>
