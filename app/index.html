@@ -1827,13 +1827,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Video Autoplay + Unmute Overlay
-  const videos = [
-   // { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' }, // MP4 version disabled
-    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
-    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
-    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
-  ];
+ const videos = [
+  { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1', type: 'vimeo' },
+  { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2', type: 'mp4' },
+  { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3', type: 'mp4' },
+  { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4', type: 'mp4' }
+];
+
 
   let currentlyPlaying = null;
 
