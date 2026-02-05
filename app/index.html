@@ -1887,15 +1887,6 @@ function initVideo({ id, overlayId, type }) {
     overlay.style.display = 'block';
   });
 
-  overlay.addEventListener('click', () => {
-    el.currentTime = 0;
-    el.muted = false;
-    overlay.style.display = 'none';
-    el.play();
-  });
-}
-
-
   videos.forEach(initVideo);
 });
 </script>
