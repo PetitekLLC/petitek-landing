@@ -117,6 +117,37 @@ img {
   touch-action: manipulation; /* optional: ensures smooth gesture support */
 }
 
+/* ================================
+   SITE-WIDE BACKGROUND CONTROL
+   ================================ */
+
+/* Constrained content stays readable */
+.page-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  padding: 20px 0;
+  overflow: auto;   /* ← THIS fixes all remaining blocks */
+}
+
+
+
+/* Default (mobile + tablet): white background */
+.page-bg {
+  background-color: #ffffff;
+}
+
+/* Desktop only: full-width Petitek teal */
+@media (min-width: 1024px) {
+  .page-bg {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background-color: #5EBCBC;
+  }
+}
+
+  
 #navbar {
   position: fixed;
   top: 0;
@@ -253,7 +284,7 @@ img {
   line-height: 1.3;
   margin: 30px auto 8px;
   font-family: inherit;
-  max-width: 800px;
+  max-width: 1024px;
   padding: 0 20px;
 }
 
@@ -262,13 +293,13 @@ img {
   text-align: left;
   line-height: 1.7;
   padding: 0 20px 24px;
-  max-width: 800px;
+  max-width: 1024px;
   margin: 0 auto;
   font-family: inherit;
 }
  
 .content-block {
-  max-width: 800px;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 10px;
 }
@@ -300,7 +331,7 @@ img {
   box-sizing: border-box;
 }
 .feature-wrapper {
-  max-width: 800px;
+  max-width: 1024px;
   margin: 0 auto;
   background-color: #f7f7f7;
   padding: 40px 20px;
@@ -309,7 +340,7 @@ img {
 }
 
 .feature-group {
-  max-width: 800px;
+  max-width: 1024px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
@@ -364,7 +395,7 @@ img {
 
 
 .video-wrapper {
-  max-width: 800px;
+  max-width: 1024px;
   width: 100%;
   margin: 30px auto;
   padding: 0 5px;
@@ -777,7 +808,7 @@ img {
 }
 
 .footer-inner {
-  max-width: 800px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
@@ -906,7 +937,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: bold;
   text-align: left;
   margin: 0 auto 0.5rem auto;
-  max-width: 800px;
+  max-width: 1024px;
   padding: 0 20px;
   font-family: inherit;
 }
@@ -937,7 +968,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 
 .step-card {
   flex: 1 1 280px;
-  background: #b3d8f2;
+  background: #5EBCBC;
   border: 1px solid #cceaf5;
   padding: 1.5rem;
   border-radius: 12px;
@@ -955,7 +986,7 @@ font-size: clamp(2rem, 4vw, 2.75rem);
 .step-number {
   width: 50px;
   height: 50px;
-  background-color: #5EBCBC;
+  background-color: #000000;
   color: white;
   border-radius: 50%;
   display: inline-flex;
@@ -1079,7 +1110,10 @@ input.fade-placeholder::placeholder {
 </head> <!-- ✅ This was missing and is now added -->
 
 <body>
+  <div class="page-bg">
+    <div class="page-content">
 <header id="navbar">
+
   <div class="nav-title">Petitek</div>
   <div class="hamburger">&#9776;</div>
 </header>
@@ -1129,11 +1163,22 @@ input.fade-placeholder::placeholder {
     <polyline points="6 9 12 15 18 9"/>
   </svg>
 </div>
--->
+-->  
+
+</div>
+
+<!-- Video0 -->
+<div class="video-wrapper fade-in">
+  <video id="chatrboxVideo0" autoplay muted playsinline controls preload="none">
+    <source src="videos/video0.mp4" type="video/mp4">
+  </video>
+  <div id="unmuteOverlay0" class="unmute-overlay">
+    🔊 Tap to Unmute
+  </div>
+  <button class="video-expand" data-video-id="chatrboxVideo0" aria-label="Expand video">⤢</button>
+</div>
   
-<div class="stacked-gallery" id="galleryStart">
-  <hr style="width: 80%; max-width: 800px; border: none; border-top: 1px solid #ccc; margin: 10px auto 10px;" />
-   
+  
 <!-- Unlock SuperPowers -->
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
@@ -1144,16 +1189,6 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 </div>
 
-<div class="content-block">
-
-  <div class="text-block title-block fade-in">
-    Your Voice
-  </div>
-
-  <div class="text-block body-block fade-in">
-    ChatBox is the first pet training tool that helps you guide your pet to do the
-    right thing every time...
-  </div>
 
   <div class="video-wrapper fade-in">
     <iframe
@@ -1183,7 +1218,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
       images/2_800.webp 800w,
       images/2_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Train With Your Voice"
     class="fade-in"
      loading="lazy"
@@ -1225,7 +1260,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
     srcset="
       images/3_800.webp 800w,
       images/3_1600.webp 1600w"
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Stop Bad Habits"
     class="fade-in"
     loading="lazy"
@@ -1246,13 +1281,13 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
     srcset="
       images/4_800.webp 800w,
       images/4_1600.webp 1600w"
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Real Time Training"
     class="fade-in"
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-    Because Timing Is Everything.
+    Because Timing Is Everything
   </div>
   <div class="text-block body-block fade-in">
   Pets don’t learn from delayed correction. ChatrBox responds instantly, delivering guidance at the precise moment behavior occurs — when it makes sense to them waht to do.
@@ -1267,7 +1302,7 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
       images/5_800.webp 800w,
       images/5_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Your Voice at the right moment"
     class="fade-in"
      loading="lazy"
@@ -1355,13 +1390,13 @@ Three Training Modes. One Smart System.
       images/6_800.webp 800w,
       images/6_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Three Training Modes"
     class="fade-in"
      loading="lazy"
   />
   <div class="text-block title-block fade-in">
-  Humane Training Without Fear, Stress or Anxiety.
+  Humane Training Without Fear, Stress, or Anxiety
   </div>
   <div class="text-block body-block fade-in">
     ChatrBox corrects behavior using familiar voice guidance — not shock, confinement, or intimidation. Your pet learns calmly, confidently, and without stress.
@@ -1377,7 +1412,7 @@ Three Training Modes. One Smart System.
       images/7_800.webp 800w,
       images/7_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="No Schock No Crates"
     class="fade-in"
      loading="lazy"
@@ -1399,7 +1434,7 @@ Three Training Modes. One Smart System.
       images/8_800.webp 800w,
       images/8_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Works When Not At Home"
     class="fade-in"
      loading="lazy"
@@ -1425,7 +1460,7 @@ Three Training Modes. One Smart System.
 
 <!-- Set it Once It Just Works -->
 <div class="text-block title-block fade-in">
-  Simple To Use Right Out of The Box.
+  Simple To Use Right Out of the Box
 </div>
 <div class="text-block body-block fade-in">
   You'll be up and running in minutes, without dowloading apps or connecting to the interent to work. Just press a buttton to record your message, pick a trining mode and aim Chatrbox to start working immediately.
@@ -1439,7 +1474,7 @@ Three Training Modes. One Smart System.
       images/9_800.webp 800w,
       images/9_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Set It Once It Just Works"
     class="fade-in"
      loading="lazy"
@@ -1465,10 +1500,10 @@ Three Training Modes. One Smart System.
 
 <!-- Works For Cats Too -->
 <div class="text-block title-block fade-in">
-  Works just as well for Cats for Dogs
+Designed for Both Cats and Dogs
 </div>
 <div class="text-block body-block fade-in">
-  Trying to stop furniture from being destroyed or counter surfing, plant destruction or marking - put in ChatrBox to stop the behavior cold without freaking out or harming your kitty. 
+  Clawing furniture, jumping on counters, chewing plants, or marking? ChatrBox stops unwanted cat behavior immediately using calm, humane guidance — no sprays, no shock, no stress.
 </div>
 
 <!-- Works For Cats Too -->
@@ -1479,7 +1514,7 @@ Three Training Modes. One Smart System.
       images/10_800.webp 800w,
       images/10_1600.webp 1600w
     "
-    sizes="(max-width: 768px) 100vw, 800px"
+    sizes="(max-width: 768px) 100vw, 1024px"
     alt="Works For Cats Too"
     class="fade-in"
      loading="lazy"
@@ -1488,7 +1523,7 @@ Three Training Modes. One Smart System.
 
 <!-- In the Box -->
 <div class="text-block title-block fade-in">
-  Everthing you Need to Start Behavior Training is Included.  
+  Everthing you Need to Start Behavior Training is Included  
 </div>
 <div class="text-block body-block fade-in">
 ChatrBox comes fully equipped for immediate setup. Every essential component is included, so you can start training right out of the box — no extras required.
@@ -1506,7 +1541,7 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
         images/11_800.webp 800w,
         images/11_1600.webp 1600w
       "
-      sizes="(max-width: 768px) 100vw, 800px"
+      sizes="(max-width: 768px) 100vw, 1024px"
       alt="In The Box"
       class="fade-in"
        loading="lazy"
@@ -1568,7 +1603,7 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
   </div> <!-- End .feature-wrapper -->
 </section>
   
-<section class="product-info fade-in" style="max-width: 800px; margin: 60px auto; padding: 20px;">
+<section class="product-info fade-in" style="max-width: 1024px; margin: 60px auto; padding: 20px;">
   <div style="font-weight: bold; font-size: 26px; margin-bottom: 20px;">Product Information</div>
   <table style="width: 100%; border-collapse: collapse; font-size: 16px;">
     <tbody>
@@ -1799,6 +1834,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Video Autoplay + Unmute Overlay
   const videos = [
+    { id: 'chatrboxVideo0', overlayId: 'unmuteOverlay0' },
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
     { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
