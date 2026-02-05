@@ -34,6 +34,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
+ 
+
+  </style>
+</head> <!-- ✅ This was missing and is now added -->
+
+<!-- FLOATING AMAZON BUY BUTTON TEMPORARILY DISABLED -->
+<div class="floating-buy-button">
+<a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
+   target="_blank"
+   rel="noopener noreferrer">
+
+    <img src="amazon_float_button.png" alt="Buy Now">
+  </a>
+</div>
 
   <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1109,7 +1123,9 @@ input.fade-placeholder::placeholder {
 </style>
 </head> <!-- ✅ This was missing and is now added -->
 
+
 <body>
+
   <div class="page-bg">
     <div class="page-content">
 <header id="navbar">
@@ -1129,7 +1145,6 @@ input.fade-placeholder::placeholder {
 </a>
 
 </div>
-
 
 <div class="content" style="padding-top: 20px;">
 <img
@@ -1157,7 +1172,6 @@ input.fade-placeholder::placeholder {
   </div>
 </div>
 
-  
 <div style="margin-top: 15px; text-align: center;">
   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: bounce 2s infinite;">
     <polyline points="6 9 12 15 18 9"/>
@@ -1178,7 +1192,6 @@ input.fade-placeholder::placeholder {
   <button class="video-expand" data-video-id="chatrboxVideo0" aria-label="Expand video">⤢</button>
 </div>
   
-  
 <!-- Unlock SuperPowers -->
 <div style="padding: 0 10px;">
   <div class="text-block title-block fade-in">
@@ -1188,7 +1201,6 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
    ChatrBox is the first pet training tool that helps you guide your pet to do the right thing every time, even when you're not around — by using your own voice. It plays personalized voice commands your pet already knows and trusts, reinforcing good behavior even when you're out of sight.
   </div>
 </div>
-
 
   <div class="video-wrapper fade-in">
     <iframe
@@ -1200,7 +1212,6 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
   </div>
 
 </div>
-
   
   <div class="text-block title-block fade-in">
    You’re Not There, But Your Voice Is — And That’s All They Need
@@ -1230,7 +1241,6 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
     Place <strong>ChatrBox</strong> anywhere you need training support. Training scenariors are virtually unlimited.  Using built-in pet detection, <strong>ChatrBox</strong> knows when your pet approaches an area or object and instantly triggers YOUR MESSAGE and command — delivering guidance at exactly the right place and time to make a real difference. No collars or tags are needed — just smart, stress-free training.
   </div>
 </div>
-
 
 <!-- Video1 -->
 <div class="video-wrapper fade-in">
@@ -1757,6 +1767,9 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
   </a>
 </div>
 
+<!-- =========================
+     CORE SITE SCRIPTS
+========================= -->
 <script>
 function playAlert(step) {
   const audio = document.getElementById(`triggerAudio${step}`);
@@ -1770,7 +1783,9 @@ function playAlert(step) {
     void light.offsetWidth;
     light.classList.add('flash');
 
-    audio.play().catch(err => console.error(`Audio play error (Step ${step}):`, err));
+    audio.play().catch(err =>
+      console.error(`Audio play error (Step ${step}):`, err)
+    );
 
     audio.onended = () => {
       light.classList.remove('flash');
@@ -1779,8 +1794,12 @@ function playAlert(step) {
     console.warn(`Missing audio or light element for step ${step}`);
   }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Turntable Image Carousel
+
+  /* -------------------------
+     Turntable Image Carousel
+  ------------------------- */
   const images = document.querySelectorAll('#turntableCarousel .turn-img');
   let index = 0;
 
@@ -1796,7 +1815,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(showNextImage, 3000);
   }
 
-  // Fade-In Animation
+  /* -------------------------
+     Fade-In Animation
+  ------------------------- */
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1806,7 +1827,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fadeEls.forEach(el => fadeObserver.observe(el));
 
-  // Hide Navbar on Scroll
+  /* -------------------------
+     Hide Navbar on Scroll
+  ------------------------- */
   const navbar = document.getElementById('navbar');
   let lastScrollTop = 0;
 
@@ -1816,7 +1839,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollTop = scrollTop;
   });
 
-  // Dropdown Menu
+  /* -------------------------
+     Dropdown Menu
+  ------------------------- */
   const menu = document.getElementById('dropdownMenu');
   const hamburger = document.querySelector('.hamburger');
 
@@ -1832,7 +1857,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Video Autoplay + Unmute Overlay
+  /* -------------------------
+     Video Autoplay + Unmute
+  ------------------------- */
   const videos = [
     { id: 'chatrboxVideo0', overlayId: 'unmuteOverlay0' },
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
@@ -1846,13 +1873,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function initVideo({ id, overlayId }) {
     const video = document.getElementById(id);
     const overlay = document.getElementById(overlayId);
-
     if (!video || !overlay) return;
 
     video.preload = 'auto';
     video.muted = true;
 
-    // Pause other videos when one comes into view
     const videoObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1860,7 +1885,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const v = document.getElementById(vid);
             if (v && v !== video && !v.paused) v.pause();
           });
-
           currentlyPlaying = video;
           video.play();
         } else {
@@ -1871,14 +1895,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     videoObserver.observe(video);
 
-    // Reset after ending
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       overlay.style.display = 'block';
       video.muted = true;
     });
 
-    // Tap overlay to unmute and restart
     overlay.addEventListener('click', () => {
       video.pause();
       video.currentTime = 0;
@@ -1889,41 +1911,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   videos.forEach(initVideo);
-});
-</script>
-  
-<script>
-function clearEmailInput() {
-  setTimeout(() => {
-    const emailField = document.getElementById('emailInput');
-    const checkmark = document.getElementById('emailSuccess');
 
-    if (emailField && checkmark) {
-      emailField.value = '';
-      checkmark.classList.add('show');
-      emailField.classList.add('fade-placeholder');
-      emailField.placeholder = '';
-
-      setTimeout(() => {
-        checkmark.classList.remove('show');
-        emailField.placeholder = 'Enter email';
-        emailField.classList.remove('fade-placeholder');
-      }, 3000);
-    }
-  }, 500);
-}
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // your JS
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-
-  // Floating Amazon Buy Button logic
+  /* -------------------------
+     Floating Amazon Buy Button
+  ------------------------- */
   const floatingBuyButton = document.querySelector('.floating-buy-button');
 
   if (floatingBuyButton) {
@@ -1941,6 +1932,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-  
+<!-- =========================
+     FLOATING AMAZON BUTTON
+     (OUTSIDE LAYOUT WRAPPERS)
+========================= -->
+<div class="floating-buy-button">
+  <a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
+     target="_blank"
+     rel="noopener noreferrer">
+    <img src="amazon_float_button.png" alt="Buy Now">
+  </a>
+</div>
+
 </body>
 </html>
