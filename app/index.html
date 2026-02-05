@@ -117,6 +117,33 @@ img {
   touch-action: manipulation; /* optional: ensures smooth gesture support */
 }
 
+/* ================================
+   SITE-WIDE BACKGROUND CONTROL
+   ================================ */
+
+/* Constrained content stays readable */
+.page-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+/* Default (mobile + tablet): white background */
+.page-bg {
+  background-color: #ffffff;
+}
+
+/* Desktop only: full-width Petitek teal */
+@media (min-width: 1024px) {
+  .page-bg {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background-color: rgb(94, 188, 188);
+  }
+}
+
+  
 #navbar {
   position: fixed;
   top: 0;
