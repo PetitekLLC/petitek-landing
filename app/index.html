@@ -1827,69 +1827,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
- const videos = [
-  { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1', type: 'vimeo' },
-  { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2', type: 'mp4' },
-  { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3', type: 'mp4' },
-  { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4', type: 'mp4' }
-];
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-function initVideo({ id, overlayId, type }) {
-  const el = document.getElementById(id);
-  const overlay = document.getElementById(overlayId);
-  if (!el || !overlay) return;
+  const videos = [
+    { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1', type: 'vimeo' },
+    { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2', type: 'mp4' },
+    { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3', type: 'mp4' },
+    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4', type: 'mp4' }
+  ];
 
-  // 🔹 VIMEO VIDEO
-  if (type === 'vimeo') {
-    const player = new Vimeo.Player(el);
-    player.setVolume(0);
+  function initVideo({ id, overlayId, type }) {
+    const el = document.getElementById(id);
+    const overlay = document.getElementById(overlayId);
+    if (!el || !overlay) return;
+
+    /* =====================
+       VIMEO VIDEO (Video 1)
+       ===================== */
+    if (type === 'vimeo') {
+      const player = new Vimeo.Player(el);
+      player.setVolume(0);
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            player.play().catch(() => {});
+          } else {
+            player.pause().catch(() => {});
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(el);
+
+      overlay.addEventListener('click', () => {
+        player.setVolume(1);
+        overlay.style.display = 'none';
+        player.play();
+      });
+
+      return; // ⬅️ VERY IMPORTANT
+    }
+
+    /* =====================
+       MP4 VIDEOS (2–4)
+       ===================== */
+    el.muted = true;
+    el.preload = 'auto';
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          player.play().catch(() => {});
+          el.play().catch(() => {});
         } else {
-          player.pause().catch(() => {});
+          el.pause();
         }
       });
     }, { threshold: 0.5 });
 
     observer.observe(el);
 
-    overlay.addEventListener('click', () => {
-      player.setVolume(1);
-      overlay.style.display = 'none';
-      player.play();
+    el.addEventListener('ended', () => {
+      el.currentTime = 0;
+      el.muted = true;
+      overlay.style.display = 'block';
     });
 
-    return;
+    overlay.addEventListener('click', () => {
+      el.currentTime = 0;
+      el.muted = false;
+      overlay.style.display = 'none';
+      el.play();
+    });
   }
 
-  // 🔹 MP4 VIDEO
-  el.muted = true;
-  el.preload = 'auto';
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        el.play().catch(() => {});
-      } else {
-        el.pause();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(el);
-
-  el.addEventListener('ended', () => {
-    el.currentTime = 0;
-    el.muted = true;
-    overlay.style.display = 'block';
-  });
-
+  /* =====================
+     INITIALIZE ALL VIDEOS
+     ===================== */
   videos.forEach(initVideo);
+
 });
 </script>
+
   
 <script>
 function clearEmailInput() {
