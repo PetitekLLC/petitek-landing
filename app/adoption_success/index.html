@@ -57,6 +57,23 @@
       position: relative;
       z-index: 1;
     }
+
+    /* Responsive video handling */
+.video-wrap {
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem 0;
+  aspect-ratio: 16 / 9;
+  background: #000; /* prevents flash / letterbox gaps */
+}
+
+.video-wrap video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
   </style>
 </head>
 
@@ -110,10 +127,12 @@
      SUPPORT / ADJUSTMENT VIDEO
 ========================== -->
 <section id="support-video">
-  <div class="container">
-    <video controls>
-      <source src="/app/videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
-    </video>
+  <div class="video-wrap">
+  <video controls>
+    <source src="/app/videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
+  </video>
+</div>
+
     <p class="caption">Every home is new. Calm support helps pets adjust.</p>
   </div>
 </section>
