@@ -6,21 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive. Learn how the Adoption Success Program works." />
 
-  <!-- Site-wide CSS (site served from /app) -->
+  <!-- Global site CSS -->
   <link rel="stylesheet" href="/app/style.css" />
 
-  <!-- Page-safe layout + responsive fixes -->
+  <!-- Page-specific stabilization + responsiveness -->
   <style>
-    body { line-height: 1.6; }
+    body {
+      line-height: 1.6;
+    }
 
     section {
-      overflow: visible; /* critical */
+      overflow: visible;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
     }
 
     .container {
       overflow: visible;
     }
 
+    /* Typography */
     #hero h1 {
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       line-height: 1.2;
@@ -44,36 +48,28 @@
       color: #555;
     }
 
-    img,
-    video {
-      display: block;
+    /* Responsive images */
+    img {
       width: 100%;
       height: auto;
-      max-width: 100%;
+      display: block;
+      margin: 2rem 0;
     }
 
-    #why-chatrbox img {
-      margin: 2.5rem 0;
-      position: relative;
-      z-index: 1;
+    /* Unified responsive video UX */
+    .video-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      margin: 2rem 0;
     }
 
-    /* Responsive video handling */
-.video-wrap {
-  width: 100%;
-  max-width: 100%;
-  margin: 2rem 0;
-  aspect-ratio: 16 / 9;
-  background: #000; /* prevents flash / letterbox gaps */
-}
-
-.video-wrap video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-}
-
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
   </style>
 </head>
 
@@ -84,9 +80,12 @@
 ========================== -->
 <section id="hero">
   <div class="container">
-    <video autoplay muted loop playsinline>
-      <source src="/app/videos/adoption_success/hero-settled.mp4" type="video/mp4" />
-    </video>
+
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="/app/videos/adoption_success/hero-settled.mp4" type="video/mp4" />
+      </video>
+    </div>
 
     <h1>Helping adopted pets settle in — calmly and successfully</h1>
     <p>
@@ -95,6 +94,7 @@
     </p>
 
     <a href="#program" class="soft-link">Learn how the program works ↓</a>
+
   </div>
 </section>
 
@@ -103,6 +103,7 @@
 ========================== -->
 <section id="why">
   <div class="container">
+
     <h2>Why the first weeks matter</h2>
     <p>
       New environments bring new routines, boundaries, and expectations.
@@ -120,6 +121,7 @@
       alt="Dog calmly adjusting to a new home environment"
       loading="lazy"
     />
+
   </div>
 </section>
 
@@ -127,13 +129,16 @@
      SUPPORT / ADJUSTMENT VIDEO
 ========================== -->
 <section id="support-video">
-  <div class="video-wrap">
-  <video controls>
-    <source src="/app/videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
-  </video>
-</div>
+  <div class="container">
+
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="/app/videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
+      </video>
+    </div>
 
     <p class="caption">Every home is new. Calm support helps pets adjust.</p>
+
   </div>
 </section>
 
@@ -142,6 +147,7 @@
 ========================== -->
 <section id="stability">
   <div class="container">
+
     <h2>Support makes the difference</h2>
     <p>
       With time, consistency, and the right support, pets begin to feel safe
@@ -158,6 +164,7 @@
       alt="Dog resting calmly at home with owner nearby"
       loading="lazy"
     />
+
   </div>
 </section>
 
@@ -166,6 +173,7 @@
 ========================== -->
 <section id="why-chatrbox">
   <div class="container">
+
     <p class="intro">
       One optional tool designed to support calm, consistent guidance at home.
     </p>
@@ -181,9 +189,12 @@
       loading="lazy"
     />
 
-    <video controls>
-      <source src="/app/videos/adoption_success/why-chatrbox.mp4" type="video/mp4" />
-    </video>
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="/app/videos/adoption_success/why-chatrbox.mp4" type="video/mp4" />
+      </video>
+    </div>
+
   </div>
 </section>
 
@@ -192,6 +203,7 @@
 ========================== -->
 <section id="program">
   <div class="container">
+
     <h2>How the Adoption Success Program works</h2>
     <ol>
       <li>Adopt or welcome a pet home</li>
@@ -199,6 +211,7 @@
       <li>Access an adopter-only offer (optional)</li>
       <li>Use what fits your home and routine</li>
     </ol>
+
   </div>
 </section>
 
@@ -207,8 +220,10 @@
 ========================== -->
 <section id="form">
   <div class="container">
+
     <h2>Get adoption support options</h2>
     <p>Form coming next.</p>
+
   </div>
 </section>
 
@@ -226,4 +241,3 @@
 
 </body>
 </html>
-
