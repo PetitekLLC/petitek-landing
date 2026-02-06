@@ -1,4 +1,12 @@
 # --------------------
+# Static asset passthrough (DO NOT REWRITE)
+# --------------------
+/images/*              /images/:splat              200
+/videos/*              /videos/:splat              200
+/app/images/*          /app/images/:splat          200
+/app/videos/*          /app/videos/:splat          200
+
+# --------------------
 # Main site (served at petitek.com)
 # --------------------
 /about                 /about/index.html                          200
@@ -34,5 +42,6 @@
 /discount/faq          /discount_site/faq/index.html             200
 
 # --------------------
-# Fallback: main homepage
+# Fallback: main homepage (SPA catch-all)
 # --------------------
+/*                     /index.html                 200
