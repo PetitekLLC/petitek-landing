@@ -25,6 +25,7 @@
       padding-right: 10px;
     }
 
+    /* Typography */
     #hero h1 {
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       line-height: 1.2;
@@ -36,7 +37,7 @@
       margin-bottom: 0.5rem;
     }
 
-    p, li {
+    p {
       font-size: clamp(1rem, 1.6vw, 1.15rem);
       max-width: 65ch;
     }
@@ -56,21 +57,33 @@
       display: block;
     }
 
-    /* FLOATING EDITORIAL IMAGES */
-    .figure {
+    /* STAGGERED IMAGE + TEXT */
+    .stagger {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+    }
+
+    .stagger.reverse {
+      grid-template-columns: 1fr auto;
+    }
+
+    .stagger.reverse .media {
+      order: 2;
+    }
+
+    .stagger.reverse .content {
+      order: 1;
+    }
+
+    .media {
       width: 220px;
       aspect-ratio: 1 / 1;
-      float: left;
-      margin: 0 1.25rem 0.75rem 0;
       overflow: hidden;
     }
 
-    .figure.right {
-      float: right;
-      margin: 0 0 0.75rem 1.25rem;
-    }
-
-    .figure img {
+    .media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -78,30 +91,19 @@
       border-radius: 4px;
     }
 
+    /* Mobile stacking */
     @media (max-width: 768px) {
-      .figure,
-      .figure.right {
-        float: none;
+      .stagger,
+      .stagger.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .media {
+        margin: 0 auto;
         width: 100%;
         max-width: 240px;
-        margin: 1rem auto 1.25rem;
       }
     }
-
-    .video-wrap {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      margin: 2rem 0;
-    }
-
-    .video-wrap video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
   </style>
 </head>
 
@@ -117,14 +119,16 @@
 
   <div class="container">
     <h1>Helping adopted pets settle in — calmly and successfully</h1>
-    <p>The first weeks in a new home matter. Gentle, consistent guidance helps pets adjust and families thrive.</p>
+    <p>
+      The first weeks in a new home matter. Gentle, consistent guidance helps pets
+      adjust and families thrive.
+    </p>
   </div>
 </section>
 
 <!-- WHY FIRST WEEKS -->
 <section id="why">
   <div class="container stagger">
-
     <div class="media">
       <img
         src="../images/adoption_success/adjustment-doorway-1600.webp"
@@ -144,15 +148,12 @@
         Adjustment is normal — and early support can make the transition easier.
       </p>
     </div>
-
   </div>
 </section>
 
-
 <!-- STABILITY -->
-<<section id="stability">
+<section id="stability">
   <div class="container stagger reverse">
-
     <div class="media">
       <img
         src="../images/adoption_success/support-stability-sleeping-1600.webp"
@@ -172,14 +173,12 @@
         and at ease in their new homes.
       </p>
     </div>
-
   </div>
 </section>
 
 <!-- WHY CHATRBOX -->
 <section id="why-chatrbox">
   <div class="container stagger">
-
     <div class="media">
       <img
         src="../images/adoption_success/chatrbox-in-home-1600.webp"
@@ -199,10 +198,8 @@
         during the adjustment period.
       </p>
     </div>
-
   </div>
 </section>
-
 
 </body>
 </html>
