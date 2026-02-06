@@ -4,28 +4,41 @@
   <meta charset="UTF-8" />
   <title>Adoption Success Program | Petitek</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive. Learn how the Adoption Success Program works." />
+  <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive." />
 
-  <!-- Reuse your site-wide CSS (served from /app) -->
+  <!-- Global site CSS -->
   <link rel="stylesheet" href="../style.css" />
 
-  <!-- Page-safe responsive typography -->
   <style>
-    body { line-height: 1.6; }
+    /* Safety reset */
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    section {
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    /* Typography */
     #hero h1 {
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       line-height: 1.2;
-      margin-bottom: 0.75em;
+      margin-bottom: 1rem;
     }
 
     h2 {
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       line-height: 1.3;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.5rem;
     }
 
-    p, li {
+    p,
+    li {
       font-size: clamp(1rem, 1.6vw, 1.15rem);
       max-width: 65ch;
     }
@@ -36,27 +49,43 @@
       color: #555;
     }
 
+    /* Responsive images */
     img {
-      width: ,50%;
+      width: 100%;
       height: auto;
+      display: block;
+      margin: 2rem 0;
+    }
+
+    /* HERO VIDEO (full-width, responsive, no controls) */
+    .hero-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
-    /* HERO VIDEO */
-.hero-video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #000;
-}
+    /* Non-hero responsive videos */
+    .video-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      margin: 2rem 0;
+    }
 
-.hero-video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
   </style>
 </head>
 
@@ -66,22 +95,30 @@
      HERO SECTION
 ========================== -->
 <section id="hero">
-  <div class="hero-video">   ← full-width media container
-    <video>...</video>
+
+  <div class="hero-video">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="../videos/adoption_success/hero-settled.mp4" type="video/mp4" />
+    </video>
   </div>
 
-  <div class="container">    ← text container
-    <h1>...</h1>
-    <p>...</p>
+  <div class="container">
+    <h1>Helping adopted pets settle in — calmly and successfully</h1>
+    <p>
+      The first weeks in a new home matter. Gentle, consistent guidance during
+      this transition helps pets adjust and families thrive.
+    </p>
+    <a href="#program" class="soft-link">Learn how the program works ↓</a>
   </div>
+
 </section>
-
 
 <!-- =========================
      WHY THE FIRST WEEKS MATTER
 ========================== -->
 <section id="why">
   <div class="container">
+
     <h2>Why the first weeks matter</h2>
     <p>
       New environments bring new routines, boundaries, and expectations.
@@ -99,6 +136,7 @@
       alt="Dog calmly adjusting to a new home environment"
       loading="lazy"
     />
+
   </div>
 </section>
 
@@ -107,10 +145,15 @@
 ========================== -->
 <section id="support-video">
   <div class="container">
-    <video controls>
-      <source src="../videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
-    </video>
+
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="../videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
+      </video>
+    </div>
+
     <p class="caption">Every home is new. Calm support helps pets adjust.</p>
+
   </div>
 </section>
 
@@ -119,6 +162,7 @@
 ========================== -->
 <section id="stability">
   <div class="container">
+
     <h2>Support makes the difference</h2>
     <p>
       With time, consistency, and the right support, pets begin to feel safe
@@ -135,6 +179,7 @@
       alt="Dog resting calmly at home with owner nearby"
       loading="lazy"
     />
+
   </div>
 </section>
 
@@ -143,13 +188,28 @@
 ========================== -->
 <section id="why-chatrbox">
   <div class="container">
+
     <p class="intro">
       One optional tool designed to support calm, consistent guidance at home.
     </p>
 
-    <video controls>
-      <source src="../videos/adoption_success/why-chatrbox.mp4" type="video/mp4" />
-    </video>
+    <img
+      src="../images/adoption_success/chatrbox-in-home-1600.webp"
+      srcset="
+        ../images/adoption_success/chatrbox-in-home-800.webp 800w,
+        ../images/adoption_success/chatrbox-in-home-1600.webp 1600w
+      "
+      sizes="(max-width: 768px) 100vw, 800px"
+      alt="ChatrBox device placed naturally in a home environment"
+      loading="lazy"
+    />
+
+    <div class="video-wrap">
+      <video autoplay muted loop playsinline preload="auto">
+        <source src="../videos/adoption_success/why-chatrbox.mp4" type="video/mp4" />
+      </video>
+    </div>
+
   </div>
 </section>
 
@@ -158,6 +218,7 @@
 ========================== -->
 <section id="program">
   <div class="container">
+
     <h2>How the Adoption Success Program works</h2>
     <ol>
       <li>Adopt or welcome a pet home</li>
@@ -165,6 +226,7 @@
       <li>Access an adopter-only offer (optional)</li>
       <li>Use what fits your home and routine</li>
     </ol>
+
   </div>
 </section>
 
@@ -173,8 +235,10 @@
 ========================== -->
 <section id="form">
   <div class="container">
+
     <h2>Get adoption support options</h2>
     <p>Form coming next.</p>
+
   </div>
 </section>
 
