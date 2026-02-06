@@ -41,6 +41,22 @@
       height: auto;
       display: block;
     }
+
+    /* HERO VIDEO */
+.hero-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
   </style>
 </head>
 
@@ -50,20 +66,16 @@
      HERO SECTION
 ========================== -->
 <section id="hero">
-  <div class="container">
-    <video autoplay muted loop playsinline>
-      <source src="../videos/adoption_success/hero-settled.mp4" type="video/mp4" />
-    </video>
+  <div class="hero-video">   ← full-width media container
+    <video>...</video>
+  </div>
 
-    <h1>Helping adopted pets settle in — calmly and successfully</h1>
-    <p>
-      The first weeks in a new home matter. Gentle, consistent guidance during
-      this transition helps pets adjust and families thrive.
-    </p>
-
-    <a href="#program" class="soft-link">Learn how the program works ↓</a>
+  <div class="container">    ← text container
+    <h1>...</h1>
+    <p>...</p>
   </div>
 </section>
+
 
 <!-- =========================
      WHY THE FIRST WEEKS MATTER
