@@ -6,146 +6,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive." />
 
-  <!-- Global site CSS -->
   <link rel="stylesheet" href="../style.css" />
 
   <style>
-/* Safety reset */
-* {
-  box-sizing: border-box;
-}
+    * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  line-height: 1.6;
-}
+    body {
+      margin: 0;
+      line-height: 1.6;
+    }
 
-section {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-}
+    section {
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
 
-/* Typography */
-#hero h1 {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
+    .container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
 
-h2 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
-}
+    #hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
 
-p,
-li {
-  font-size: clamp(1rem, 1.6vw, 1.15rem);
-  max-width: 65ch;
-}
+    h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 0.5rem;
+    }
 
-.caption,
-.small-text {
-  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
-  color: #555;
-}
+    p, li {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      max-width: 65ch;
+    }
 
-/* Container padding (10px rule) */
-.container {
-  padding-left: 10px;
-  padding-right: 10px;
-}
+    /* HERO VIDEO */
+    .hero-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+    }
 
-/* Images: responsive, spacing handled by wrapper */
-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-/* Image sizing control */
-.figure {
-  width: 220px;           /* smaller, editorial */
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  margin: 0 1.25rem 0.75rem 0;
-  float: left;
-}
+    /* FLOATING EDITORIAL IMAGES */
+    .figure {
+      width: 220px;
+      aspect-ratio: 1 / 1;
+      float: left;
+      margin: 0 1.25rem 0.75rem 0;
+      overflow: hidden;
+    }
 
-.figure.right {
-  float: right;
-  margin: 0 0 0.75rem 1.25rem;
-}
+    .figure.right {
+      float: right;
+      margin: 0 0 0.75rem 1.25rem;
+    }
 
-.figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
-}
+    .figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+    }
 
-@media (max-width: 768px) {
-  .figure,
-  .figure.right {
-    float: none;
-    width: 100%;
-    max-width: 240px;   /* reduced */
-    margin: 1rem auto 1.25rem;
-  }
-}
+    @media (max-width: 768px) {
+      .figure,
+      .figure.right {
+        float: none;
+        width: 100%;
+        max-width: 240px;
+        margin: 1rem auto 1.25rem;
+      }
+    }
 
+    .video-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      margin: 2rem 0;
+    }
 
-.media.product {
-  max-width: 300px;      /* product image */
-}
-
-.media img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* HERO VIDEO (full-width, responsive, no controls) */
-.hero-video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  overflow: hidden;
-}
-
-.hero-video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Non-hero responsive videos */
-.video-wrap {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  margin: 2rem 0;
-}
-
-.video-wrap video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
   </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HERO SECTION
-========================== -->
+<!-- HERO -->
 <section id="hero">
-
   <div class="hero-video">
     <video autoplay muted loop playsinline preload="auto">
       <source src="../videos/adoption_success/hero-settled.mp4" type="video/mp4" />
@@ -154,156 +116,77 @@ img {
 
   <div class="container">
     <h1>Helping adopted pets settle in — calmly and successfully</h1>
-    <p>
-      The first weeks in a new home matter. Gentle, consistent guidance during
-      this transition helps pets adjust and families thrive.
-    </p>
-    <a href="#program" class="soft-link">Learn how the program works ↓</a>
+    <p>The first weeks in a new home matter. Gentle, consistent guidance helps pets adjust and families thrive.</p>
   </div>
-
 </section>
 
-<!-- =========================
-     WHY THE FIRST WEEKS MATTER
-========================== -->
+<!-- WHY FIRST WEEKS -->
 <section id="why">
   <div class="container">
-
     <h2>Why the first weeks matter</h2>
-    <p>
-      New environments bring new routines, boundaries, and expectations.
-      Adjustment is normal — and early support can make the transition easier
-      for both pets and the people who care for them.
-    </p>
 
-    <img
-      src="../images/adoption_success/adjustment-doorway-1600.webp"
-      srcset="
-        ../images/adoption_success/adjustment-doorway-800.webp 800w,
-        ../images/adoption_success/adjustment-doorway-1600.webp 1600w
-      "
-      sizes="(max-width: 768px) 100vw, 800px"
-      alt="Dog calmly adjusting to a new home environment"
-      loading="lazy"
-    />
+    <div class="figure">
+      <img src="../images/adoption_success/adjustment-doorway-1600.webp"
+           srcset="../images/adoption_success/adjustment-doorway-800.webp 800w,
+                   ../images/adoption_success/adjustment-doorway-1600.webp 1600w"
+           alt="Dog adjusting to a new home" />
+    </div>
+
+    <p>New environments bring new routines, boundaries, and expectations. Adjustment is normal — and early support can make the transition easier.</p>
+
+    <div style="clear: both;"></div>
   </div>
 </section>
 
-<!-- =========================
-     SUPPORT / ADJUSTMENT VIDEO
-========================== -->
+<!-- SUPPORT VIDEO -->
 <section id="support-video">
   <div class="container">
-
     <div class="video-wrap">
-      <video autoplay muted loop playsinline preload="auto">
+      <video autoplay muted loop playsinline>
         <source src="../videos/adoption_success/adjustment-sequence.mp4" type="video/mp4" />
       </video>
     </div>
-
-    <p class="caption">Every home is new. Calm support helps pets adjust.</p>
-
   </div>
 </section>
 
-<!-- =========================
-     SUPPORT & STABILITY
-========================== -->
+<!-- STABILITY -->
 <section id="stability">
   <div class="container">
-
     <h2>Support makes the difference</h2>
-    <p>
-      With time, consistency, and the right support, pets begin to feel safe
-      and at ease in their new homes.
-    </p>
 
-   <div class="media">
-  <img
-    src="../images/adoption_success/support-stability-sleeping-1600.webp"
-    srcset="
-      ../images/adoption_success/support-stability-sleeping-800.webp 800w,
-      ../images/adoption_success/support-stability-sleeping-1600.webp 1600w
-    "
-    sizes="(max-width: 768px) 100vw, 800px"
-    alt="Dog resting calmly at home with owner nearby"
-    loading="lazy"
-  />
-</div>
+    <div class="figure right">
+      <img src="../images/adoption_success/support-stability-sleeping-1600.webp"
+           srcset="../images/adoption_success/support-stability-sleeping-800.webp 800w,
+                   ../images/adoption_success/support-stability-sleeping-1600.webp 1600w"
+           alt="Dog resting calmly at home" />
+    </div>
 
+    <p>With time, consistency, and the right support, pets begin to feel safe and at ease in their new homes.</p>
+
+    <div style="clear: both;"></div>
+  </div>
 </section>
 
-<!-- =========================
-     WHY CHATRBOX
-========================== -->
+<!-- WHY CHATRBOX -->
 <section id="why-chatrbox">
   <div class="container">
 
-    <p class="intro">
-      One optional tool designed to support calm, consistent guidance at home.
-    </p>
+    <div class="figure">
+      <img src="../images/adoption_success/chatrbox-in-home-1600.webp"
+           srcset="../images/adoption_success/chatrbox-in-home-800.webp 800w,
+                   ../images/adoption_success/chatrbox-in-home-1600.webp 1600w"
+           alt="ChatrBox device in home" />
+    </div>
 
-   <div class="media product">
-  <img
-    src="../images/adoption_success/chatrbox-in-home-1600.webp"
-    srcset="
-      ../images/adoption_success/chatrbox-in-home-800.webp 800w,
-      ../images/adoption_success/chatrbox-in-home-1600.webp 1600w
-    "
-    sizes="(max-width: 768px) 100vw, 650px"
-    alt="ChatrBox device placed naturally in a home environment"
-    loading="lazy"
-  />
-</div>
-
+    <p>One optional tool designed to support calm, consistent guidance at home.</p>
 
     <div class="video-wrap">
-      <video autoplay muted loop playsinline preload="auto">
+      <video autoplay muted loop playsinline>
         <source src="../videos/adoption_success/why-chatrbox.mp4" type="video/mp4" />
       </video>
     </div>
 
-  </div>
-</section>
-
-<!-- =========================
-     PROGRAM OVERVIEW
-========================== -->
-<section id="program">
-  <div class="container">
-
-    <h2>How the Adoption Success Program works</h2>
-    <ol>
-      <li>Adopt or welcome a pet home</li>
-      <li>Learn about support options</li>
-      <li>Access an adopter-only offer (optional)</li>
-      <li>Use what fits your home and routine</li>
-    </ol>
-
-  </div>
-</section>
-
-<!-- =========================
-     FORM PLACEHOLDER
-========================== -->
-<section id="form">
-  <div class="container">
-
-    <h2>Get adoption support options</h2>
-    <p>Form coming next.</p>
-
-  </div>
-</section>
-
-<!-- =========================
-     TRUST FOOTER
-========================== -->
-<section id="trust">
-  <div class="container small-text">
-    <p>
-      No data is shared with shelters or rescue organizations.
-      Participation is optional. This program is currently in beta.
-    </p>
+    <div style="clear: both;"></div>
   </div>
 </section>
 
