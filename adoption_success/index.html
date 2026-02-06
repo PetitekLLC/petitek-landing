@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive." />
 
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="/style.css" />
 
   <style>
     * { box-sizing: border-box; }
@@ -58,17 +58,13 @@
     }
 
     /* STAGGERED IMAGE + TEXT */
-   .stagger {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: start; /* key fix */
-}
-
-.stagger {
-  margin-bottom: clamp(2.5rem, 6vw, 4rem);
-}
-
+    .stagger {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
 
     .stagger.reverse {
       grid-template-columns: 1fr auto;
@@ -96,7 +92,6 @@
       border-radius: 4px;
     }
 
-    /* Mobile stacking */
     @media (max-width: 768px) {
       .stagger,
       .stagger.reverse {
@@ -117,13 +112,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-video">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    >
+    <video autoplay muted loop playsinline preload="auto">
       <source src="/videos/adoption_success/hero-settled.mp4" type="video/mp4" />
     </video>
   </div>
@@ -133,17 +122,15 @@
 <section id="why">
   <div class="container stagger">
     <div class="media">
- <img
-  src="/app/images/adoption_success/adjustment-doorway-1600.webp"
-  srcset="
-    /app/images/adoption_success/adjustment-doorway-800.webp 800w,
-    /app/images/adoption_success/adjustment-doorway-1600.webp 1600w
-  "
-  sizes="(max-width: 768px) 100vw, 800px"
-  alt="Dog calmly adjusting to a new home environment"
-  loading="lazy"
-/>
-
+      <img
+        src="/images/adoption_success/adjustment-doorway-1600.webp"
+        srcset="
+          /images/adoption_success/adjustment-doorway-800.webp 800w,
+          /images/adoption_success/adjustment-doorway-1600.webp 1600w
+        "
+        alt="Dog calmly adjusting to a new home environment"
+        loading="lazy"
+      />
     </div>
 
     <div class="content">
@@ -161,10 +148,10 @@
   <div class="container stagger reverse">
     <div class="media">
       <img
-        src="../images/adoption_success/support-stability-sleeping-1600.webp"
+        src="/images/adoption_success/support-stability-sleeping-1600.webp"
         srcset="
-          ../images/adoption_success/support-stability-sleeping-800.webp 800w,
-          ../images/adoption_success/support-stability-sleeping-1600.webp 1600w
+          /images/adoption_success/support-stability-sleeping-800.webp 800w,
+          /images/adoption_success/support-stability-sleeping-1600.webp 1600w
         "
         alt="Dog resting calmly at home with owner nearby"
         loading="lazy"
@@ -186,10 +173,10 @@
   <div class="container stagger">
     <div class="media">
       <img
-        src="../images/adoption_success/chatrbox-in-home-1600.webp"
+        src="/images/adoption_success/chatrbox-in-home-1600.webp"
         srcset="
-          ../images/adoption_success/chatrbox-in-home-800.webp 800w,
-          ../images/adoption_success/chatrbox-in-home-1600.webp 1600w
+          /images/adoption_success/chatrbox-in-home-800.webp 800w,
+          /images/adoption_success/chatrbox-in-home-1600.webp 1600w
         "
         alt="ChatrBox device placed naturally in a home environment"
         loading="lazy"
