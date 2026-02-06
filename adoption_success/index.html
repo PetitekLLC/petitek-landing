@@ -63,10 +63,16 @@ img {
 }
 
 /* Image sizing control */
-.media {
-  max-width: 300px;      /* lifestyle images */
-  margin: 2rem auto;     /* center + vertical spacing */
+@media (max-width: 768px) {
+  .figure,
+  .figure.right {
+    float: none;
+    width: 100%;
+    max-width: 320px;
+    margin: 1.5rem auto;
+  }
 }
+
 
 .media.product {
   max-width: 300px;      /* product image */
