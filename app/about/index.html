@@ -10,6 +10,24 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <style>
+
+.about-hero {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff; /* outside area */
+}
+
+.about-hero-inner {
+  background-color: #5EBCBC;
+  color: white;
+  padding: 3rem 1rem 2rem;
+  width: 100%;
+  max-width: 2048px;
+  position: relative;
+  text-align: center;
+}
+
+
     :root {
       font-size: 16px;
     }
@@ -108,18 +126,17 @@
 
 <body>
 
-  <section class="about-hero">
+ <section class="about-hero">
+  <div class="about-hero-inner">
     <a href="/" class="back-link" aria-label="Return to homepage">← Back</a>
 
-    <img
-      src="/images/sophie_doe.webp"
-      alt="Mark Bloomfield portrait"
-    />
+    <img src="/images/sophie_doe.webp" alt="Mark Bloomfield portrait" />
 
     <h1>Mark Bloomfield</h1>
     <p>Founder & CEO of Petitek · Technology Pioneer · Visionary Entrepreneur · Animal Lover</p>
-  </section>
-
+  </div>
+</section>
+ 
   <div class="container">
     <h2>About Mark, Petitek – ChatrBox</h2>
 
