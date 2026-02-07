@@ -1,10 +1,4 @@
-# --------------------
-# Static asset passthrough (DO NOT REWRITE)
-# --------------------
-/images/*              /images/:splat              200
-/videos/*              /videos/:splat              200
-/app/images/*          /app/images/:splat          200
-/app/videos/*          /app/videos/:splat          200
+
 
 # --------------------
 # Main site (served at petitek.com)
@@ -22,7 +16,7 @@
 /influencers           /influencers/index.html                    200
 /thank-you             /thank-you/index.html                      200
 /faq                   /faq/index.html                            200
-
+/adoption_success      /adoption_sucess                           200
 # --------------------
 # Discount site (served at petitek.com/discount)
 # --------------------
