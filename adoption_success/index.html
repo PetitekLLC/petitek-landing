@@ -25,13 +25,6 @@
       padding-right: 10px;
     }
 
-    /* Typography */
-    #hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
     h2 {
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       margin-bottom: 0.5rem;
@@ -74,10 +67,6 @@
       order: 2;
     }
 
-    .stagger.reverse .content {
-      order: 1;
-    }
-
     .media {
       width: 200px;
       aspect-ratio: 1 / 1;
@@ -93,14 +82,12 @@
     }
 
     @media (max-width: 768px) {
-      .stagger,
-      .stagger.reverse {
+      .stagger {
         grid-template-columns: 1fr;
       }
 
       .media {
         margin: 0 auto;
-        width: 100%;
         max-width: 240px;
       }
     }
@@ -113,7 +100,7 @@
 <section id="hero">
   <div class="hero-video">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="/app/videos/hero-settled.mp4" type="video/mp4" />
+      <source src="/assets/videos/hero-settled.mp4" type="video/mp4" />
     </video>
   </div>
 </section>
@@ -123,10 +110,10 @@
   <div class="container stagger">
     <div class="media">
       <img
-        src="/app/images/adjustment-doorway-1600.webp"
+        src="/assets/images/adjustment-doorway-1600.webp"
         srcset="
-          /app/images/adjustment-doorway-800.webp 800w,
-          /app/images/adjustment-doorway-1600.webp 1600w
+          /assets/images/adjustment-doorway-800.webp 800w,
+          /assets/images/adjustment-doorway-1600.webp 1600w
         "
         alt="Dog calmly adjusting to a new home environment"
         loading="lazy"
@@ -148,10 +135,10 @@
   <div class="container stagger reverse">
     <div class="media">
       <img
-        src="/app/images/support-stability-sleeping-1600.webp"
+        src="/assets/images/support-stability-sleeping-1600.webp"
         srcset="
-          /app/images/support-stability-sleeping-800.webp 800w,
-          /app/images/support-stability-sleeping-1600.webp 1600w
+          /assets/images/support-stability-sleeping-800.webp 800w,
+          /assets/images/support-stability-sleeping-1600.webp 1600w
         "
         alt="Dog resting calmly at home with owner nearby"
         loading="lazy"
@@ -173,10 +160,10 @@
   <div class="container stagger">
     <div class="media">
       <img
-        src="/app/images/chatrbox-in-home-1600.webp"
+        src="/assets/images/chatrbox-in-home-1600.webp"
         srcset="
-          /app/images/chatrbox-in-home-800.webp 800w,
-          /app/images/chatrbox-in-home-1600.webp 1600w
+          /assets/images/chatrbox-in-home-800.webp 800w,
+          /assets/images/chatrbox-in-home-1600.webp 1600w
         "
         alt="ChatrBox device placed naturally in a home environment"
         loading="lazy"
