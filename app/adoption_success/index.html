@@ -42,8 +42,6 @@ p {
   margin: 0 auto 1.25rem;
 }
 
-
-
 @media (max-width: 420px) {
   h2 {
     line-height: 1.15;
@@ -85,6 +83,7 @@ p {
 .unmute-btn {
   position: absolute;
   inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,11 +96,23 @@ p {
   cursor: pointer;
 
   transition: opacity 0.3s ease;
+
+  /* 🔑 key fixes */
+  pointer-events: none;
 }
+
 
 .unmute-btn:hover {
   background: rgba(0, 0, 0, 0.45);
 }
+.unmute-btn-inner {
+  pointer-events: auto;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
 
 @media (max-width: 600px) {
   .unmute-btn {
@@ -213,13 +224,18 @@ p {
     </video>
 
     <!-- Unmute Overlay -->
-    <button
-      class="unmute-btn"
-      aria-label="Unmute video"
-      onclick="unmuteAndRestart('homeVideo', this)"
-    >
-      🔊 Tap for sound
-    </button>
+  <button
+  class="unmute-btn"
+  aria-label="Unmute video"
+>
+  <span
+    class="unmute-btn-inner"
+    onclick="unmuteAndRestart('homeVideo', this.parentElement)"
+  >
+    🔊 Tap to unmute
+  </span>
+</button>
+
 
   </div>
 </section>
@@ -236,20 +252,7 @@ p {
 </section>
 
 <script>
-  function unmuteAndRestart(videoId, button) {
-    const video = document.getElementById(videoId);
-
-    if (!video) return;
-
-    video.pause();
-    video.currentTime = 0;
-    video.muted = false;
-
-    video.play().catch(() => {});
-    button.style.display = 'none';
-  }
-
-  <script>
+ <script>
   function unmuteAndRestart(videoId, button) {
     const video = document.getElementById(videoId);
     if (!video) return;
@@ -284,8 +287,3 @@ p {
     observer.observe(video);
   });
 </script>
-
-</script>
-
-</body>
-</html>
