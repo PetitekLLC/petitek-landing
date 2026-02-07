@@ -78,6 +78,31 @@ p {
   display: block;
 }
 
+.video-with-overlay {
+  position: relative;
+}
+
+.unmute-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+
+  transition: opacity 0.3s ease;
+}
+
+.unmute-btn:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
   </style>
 </head>
 
@@ -166,14 +191,6 @@ p {
   </div>
 </section>
 
-<!-- VIDEO 3 -->
-<section id="home-video">
-  <div class="video-wrap">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="/videos/home-environment.mp4" type="video/mp4" />
-    </video>
-  </div>
-</section>
 
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
@@ -186,7 +203,19 @@ p {
   </div>
 </section>
 
+<script>
+  function unmuteAndRestart(videoId, button) {
+    const video = document.getElementById(videoId);
 
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+    video.muted = false;
+
+    video.play().catch(() => {});
+    button.style.display = 'none';
+  }
 </script>
 
 </body>
