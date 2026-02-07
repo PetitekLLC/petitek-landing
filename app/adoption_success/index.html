@@ -27,10 +27,25 @@
       margin: 0 auto;
     }
 
-    h2 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      margin-bottom: 0.5rem;
-    }
+   h2 {
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  max-width: 22ch;
+}
+
+p {
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+@media (max-width: 420px) {
+  h2 {
+    line-height: 1.15;
+  }
+}
+
 
     p {
       font-size: clamp(1rem, 1.6vw, 1.15rem);
