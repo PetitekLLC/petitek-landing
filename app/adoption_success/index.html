@@ -21,32 +21,33 @@
       margin-bottom: clamp(3rem, 6vw, 5rem);
     }
 
-   .container {
-  padding: 0 clamp(10px, 3vw, 20px);
-  max-width: 1366px;
-  margin: 0 auto;
-}
+    .container {
+      padding: 0 clamp(10px, 3vw, 20px);
+      max-width: 1366px;
+      margin: 0 auto;
+    }
 
- h2 {
-  font-size: clamp(1.55rem, 3.5vw, 2.3rem);
-  line-height: 1.2;
-  margin: 0 auto 0.5rem;
-  max-width: clamp(22ch, 70vw, 40ch);
-  text-align: center;
-}
+    h2 {
+      font-size: clamp(1.55rem, 3.5vw, 2.3rem);
+      line-height: 1.2;
+      margin: 0 auto 0.5rem;
+      max-width: clamp(22ch, 70vw, 40ch);
+      text-align: center;
+    }
 
-p {
-  font-size: clamp(0.95rem, 1rem + 0.9vw, 1.4rem);
-  line-height: clamp(1.45, 1.4 + 0.4vw, 1.7);
-  max-width: clamp(34ch, 85%, 65ch);
-  margin: 0 auto 1.25rem;
-}
+    p {
+      font-size: clamp(0.95rem, 1rem + 0.9vw, 1.4rem);
+      line-height: clamp(1.45, 1.4 + 0.4vw, 1.7);
+      max-width: clamp(34ch, 85%, 65ch);
+      margin: 0 auto 1.25rem;
+    }
 
-@media (max-width: 420px) {
-  h2 {
-    line-height: 1.15;
-  }
-}
+    @media (max-width: 420px) {
+      h2 {
+        line-height: 1.15;
+      }
+    }
+
     /* VIDEO */
     .video-wrap {
       width: 100%;
@@ -62,64 +63,20 @@ p {
       display: block;
     }
 
-.image-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.75rem, 2vw, 2rem);
-  margin-top: 2rem;
-}
+    /* IMAGE ROW */
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(0.75rem, 2vw, 2rem);
+      margin-top: 2rem;
+    }
 
-.image-row img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  display: block;
-}
-
-.video-with-overlay {
-  position: relative;
-}
-
-.unmute-btn {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0, 0, 0, 0.35);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-
-  transition: opacity 0.3s ease;
-
-  /* 🔑 key fixes */
-  pointer-events: none;
-}
-
-
-.unmute-btn:hover {
-  background: rgba(0, 0, 0, 0.45);
-}
-.unmute-btn-inner {
-  pointer-events: auto;
-  padding: 12px 20px;
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-
-@media (max-width: 600px) {
-  .unmute-btn {
-    font-size: 0.9rem;
-  }
-}
-
+    .image-row img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
   </style>
 </head>
 
@@ -176,6 +133,7 @@ p {
     </div>
   </div>
 </section>
+
 <!-- SUPPORT COPY -->
 <section id="support">
   <div class="container">
@@ -194,23 +152,11 @@ p {
       <source src="/videos/adjustment-sequence.mp4" type="video/mp4" />
     </video>
   </div>
-
 </section>
 
-<!-- FINAL COPY -->
-<section id="why-chatrbox">
-  <div class="container">
-    <h2>One optional support tool</h2>
-    <p>
-      ChatrBox reinforces calm, consistent guidance during the adjustment
-      period — helping pets learn without stress or fear.
-    </p>
-  </div>
-</section>
-
+<!-- VIDEO 3 -->
 <section id="home-video">
-  <div class="video-wrap video-with-overlay">
-
+  <div class="video-wrap">
     <video
       id="homeVideo"
       autoplay
@@ -221,22 +167,7 @@ p {
     >
       <source src="/videos/home-environment.mp4" type="video/mp4" />
     </video>
-
-    <!-- Overlay -->
-    <div class="unmute-overlay">
-      <button
-        type="button"
-        class="unmute-btn"
-        aria-label="Unmute video"
-        onclick="unmuteAndRestart()"
-      >
-        🔊 Tap to unmute
-      </button>
-    </div>
-
   </div>
-</section>
-
 </section>
 
 <!-- FINAL COPY -->
@@ -250,45 +181,5 @@ p {
   </div>
 </section>
 
-<script>
-  // Tap-to-unmute + restart (iOS-safe)
-  function unmuteAndRestart() {
-    const video = document.getElementById("homeVideo");
-    if (!video) return;
-
-    // IMPORTANT: iOS requires this exact order
-    video.muted = false;
-    video.currentTime = 0;
-    video.play().catch(() => {});
-
-    // Hide the overlay
-    const overlay = video
-      .closest(".video-with-overlay")
-      .querySelector(".unmute-overlay");
-
-    if (overlay) overlay.style.display = "none";
-  }
-
-  // Pause / resume video when scrolling
-  document.addEventListener("DOMContentLoaded", () => {
-    const video = document.getElementById("homeVideo");
-    if (!video || !("IntersectionObserver" in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
-      },
-      {
-        threshold: 0.25
-      }
-    );
-
-    observer.observe(video);
-  });
-</script>
+</body>
+</html>
