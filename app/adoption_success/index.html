@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive." />
 
+  <!-- Global site CSS -->
   <link rel="stylesheet" href="/style.css" />
 
   <style>
@@ -35,15 +36,16 @@
       max-width: 65ch;
     }
 
-    /* HERO VIDEO */
-    .hero-video {
+    /* VIDEO WRAPPER */
+    .video-wrap {
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
       overflow: hidden;
+      margin-bottom: 2rem;
     }
 
-    .hero-video video {
+    .video-wrap video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -56,7 +58,6 @@
       grid-template-columns: auto 1fr;
       gap: clamp(1.5rem, 4vw, 3rem);
       align-items: start;
-      margin-bottom: clamp(2.5rem, 6vw, 4rem);
     }
 
     .stagger.reverse {
@@ -82,7 +83,8 @@
     }
 
     @media (max-width: 768px) {
-      .stagger {
+      .stagger,
+      .stagger.reverse {
         grid-template-columns: 1fr;
       }
 
@@ -96,24 +98,24 @@
 
 <body>
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 <section id="hero">
-  <div class="hero-video">
+  <div class="video-wrap">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="/app/videos/hero-settled.mp4" type="video/mp4" />
+      <source src="/videos/hero-settled.mp4" type="video/mp4" />
     </video>
   </div>
 </section>
 
-<!-- WHY FIRST WEEKS -->
+<!-- FIRST WEEKS -->
 <section id="why">
   <div class="container stagger">
     <div class="media">
       <img
-        src="/app/images/adjustment-doorway-1600.webp"
+        src="/images/adjustment-doorway-1600.webp"
         srcset="
-          /app/images/adjustment-doorway-800.webp 800w,
-          /app/images/adjustment-doorway-1600.webp 1600w
+          /images/adjustment-doorway-800.webp 800w,
+          /images/adjustment-doorway-1600.webp 1600w
         "
         alt="Dog calmly adjusting to a new home environment"
         loading="lazy"
@@ -124,9 +126,18 @@
       <h2>Why the first weeks matter</h2>
       <p>
         New environments bring new routines, boundaries, and expectations.
-        Adjustment is normal — and early support can make the transition easier.
+        Adjustment is normal — and early support helps pets settle calmly.
       </p>
     </div>
+  </div>
+</section>
+
+<!-- VIDEO 2 -->
+<section id="training-video">
+  <div class="video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="/videos/adjustment-sequence.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
@@ -135,10 +146,10 @@
   <div class="container stagger reverse">
     <div class="media">
       <img
-        src="/app/images/support-stability-sleeping-1600.webp"
+        src="/images/support-stability-sleeping-1600.webp"
         srcset="
-          /app/images/support-stability-sleeping-800.webp 800w,
-          /app/images/support-stability-sleeping-1600.webp 1600w
+          /images/support-stability-sleeping-800.webp 800w,
+          /images/support-stability-sleeping-1600.webp 1600w
         "
         alt="Dog resting calmly at home with owner nearby"
         loading="lazy"
@@ -148,10 +159,19 @@
     <div class="content">
       <h2>Support makes the difference</h2>
       <p>
-        With time, consistency, and the right support, pets begin to feel safe
+        With time, consistency, and the right guidance, pets begin to feel safe
         and at ease in their new homes.
       </p>
     </div>
+  </div>
+</section>
+
+<!-- VIDEO 3 -->
+<section id="home-video">
+  <div class="video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="/videos/home-environment.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
 
@@ -160,10 +180,10 @@
   <div class="container stagger">
     <div class="media">
       <img
-        src="/app/images/chatrbox-in-home-1600.webp"
+        src="/images/chatrbox-in-home-1600.webp"
         srcset="
-          /app/images/chatrbox-in-home-800.webp 800w,
-          /app/images/chatrbox-in-home-1600.webp 1600w
+          /images/chatrbox-in-home-800.webp 800w,
+          /images/chatrbox-in-home-1600.webp 1600w
         "
         alt="ChatrBox device placed naturally in a home environment"
         loading="lazy"
@@ -173,8 +193,8 @@
     <div class="content">
       <h2>One optional support tool</h2>
       <p>
-        ChatrBox is designed to reinforce calm, consistent guidance at home
-        during the adjustment period.
+        ChatrBox reinforces calm, consistent guidance during the adjustment
+        period — helping pets learn without stress or fear.
       </p>
     </div>
   </div>
@@ -182,4 +202,3 @@
 
 </body>
 </html>
-
