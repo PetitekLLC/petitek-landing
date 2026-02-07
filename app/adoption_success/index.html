@@ -52,19 +52,20 @@
       display: block;
     }
 
-   .image-row {
+.image-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 3vw, 2rem);
+  gap: clamp(0.75rem, 2vw, 2rem);
   margin-top: 2rem;
 }
 
-/* Mobile: stacked only */
-@media (max-width: 700px) {
-  .image-row {
-    grid-template-columns: 1fr;
-  }
+.image-row img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
 }
+
 
   </style>
 </head>
