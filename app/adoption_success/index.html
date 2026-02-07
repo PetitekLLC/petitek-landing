@@ -23,6 +23,8 @@
 
     .container {
       padding: 0 10px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     h2 {
@@ -53,7 +55,7 @@
     /* IMAGE ROW */
     .image-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: clamp(1rem, 3vw, 2rem);
       margin-top: 2rem;
     }
@@ -61,8 +63,20 @@
     .image-row img {
       width: 100%;
       height: auto;
-      border-radius: 6px;
       display: block;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .image-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .image-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -78,7 +92,7 @@
   </div>
 </section>
 
-<!-- INTRO COPY -->
+<!-- INTRO + IMAGE ROW -->
 <section id="why">
   <div class="container">
     <h2>Why the first weeks matter</h2>
@@ -87,7 +101,6 @@
       Adjustment is normal — and early support helps pets settle calmly.
     </p>
 
-    <!-- IMAGE ROW -->
     <div class="image-row">
       <img
         src="/images/adjustment-doorway-1600.webp"
