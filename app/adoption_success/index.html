@@ -28,41 +28,25 @@
     }
 
 h2 {
-  font-size: clamp(1.6rem, 1.2rem + 2.5vw, 3rem);
-  line-height: 1.15;
-  max-width: clamp(26ch, 70vw, 44ch);
+  font-size: clamp(1.9rem, 4vw, 2.3rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  max-width: clamp(22ch, 70vw, 40ch);
   text-align: center;
-  margin: 0 auto 0.75rem;
-  padding-left: clamp(12px, 2vw, 20px);
-  padding-right: clamp(12px, 2vw, 20px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(10px, 2vw, 16px);
+  padding-right: clamp(10px, 2vw, 16px);
 }
 
-
 p {
-  font-size: clamp(1rem, 1.1rem + 0.8vw, 1.4rem);
-  line-height: clamp(1.5, 1.4 + 0.3vw, 1.75);
-  max-width: 90%;
+  font-size: clamp(1.1rem, 1.1rem + 0.8vw, 1.4rem);
+  line-height: clamp(1.55, 1.4 + 0.3vw, 1.75);
+  max-width: clamp(36ch, 60vw, 65ch);
   margin: 0 auto 1.25rem;
   padding-left: clamp(12px, 2vw, 20px);
   padding-right: clamp(12px, 2vw, 20px);
 }
-
-/* iPad landscape & similar tablet widths */
-@media (min-width: 1024px) and (max-width: 1366px) {
-
-  h2 {
-    font-size: clamp(2rem, 3vw, 2.6rem);
-    line-height: 1.2;
-  }
-
-  p {
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
-    line-height: 1.6;
-  }
-
-}
-
-@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape)
 
 
 @media (max-width: 420px) {
@@ -70,8 +54,6 @@ p {
     line-height: 1.15;
   }
 }
-
-
     /* VIDEO */
     .video-wrap {
       width: 100%;
