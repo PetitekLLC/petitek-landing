@@ -208,10 +208,9 @@ p {
   </div>
 </section>
 
-<!-- VIDEO 3 -->
 <section id="home-video">
   <div class="video-wrap video-with-overlay">
-    
+
     <video
       id="homeVideo"
       autoplay
@@ -223,16 +222,21 @@ p {
       <source src="/videos/home-environment.mp4" type="video/mp4" />
     </video>
 
-    <!-- Unmute Overlay -->
- <div class="unmute-overlay">
-  <button
-    class="unmute-btn"
-    aria-label="Unmute video"
-    onclick="unmuteAndRestart('homeVideo', this)"
-  >
-    🔊 Tap to unmute
-  </button>
-</div>
+    <!-- Overlay -->
+    <div class="unmute-overlay">
+      <button
+        type="button"
+        class="unmute-btn"
+        aria-label="Unmute video"
+        onclick="unmuteAndRestart()"
+      >
+        🔊 Tap to unmute
+      </button>
+    </div>
+
+  </div>
+</section>
+
 
 </section>
 
