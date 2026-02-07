@@ -103,6 +103,12 @@ p {
   background: rgba(0, 0, 0, 0.45);
 }
 
+@media (max-width: 600px) {
+  .unmute-btn {
+    font-size: 0.9rem;
+  }
+}
+
   </style>
 </head>
 
@@ -191,6 +197,32 @@ p {
   </div>
 </section>
 
+<!-- VIDEO 3 -->
+<section id="home-video">
+  <div class="video-wrap video-with-overlay">
+    
+    <video
+      id="homeVideo"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    >
+      <source src="/videos/home-environment.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Unmute Overlay -->
+    <button
+      class="unmute-btn"
+      aria-label="Unmute video"
+      onclick="unmuteAndRestart('homeVideo', this)"
+    >
+      🔊 Tap for sound
+    </button>
+
+  </div>
+</section>
 
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
