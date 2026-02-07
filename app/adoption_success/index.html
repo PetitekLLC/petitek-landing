@@ -224,20 +224,16 @@ p {
     </video>
 
     <!-- Unmute Overlay -->
+ <div class="unmute-overlay">
   <button
-  class="unmute-btn"
-  aria-label="Unmute video"
->
-  <span
-    class="unmute-btn-inner"
-    onclick="unmuteAndRestart('homeVideo', this.parentElement)"
+    class="unmute-btn"
+    aria-label="Unmute video"
+    onclick="unmuteAndRestart('homeVideo', this)"
   >
     🔊 Tap to unmute
-  </span>
-</button>
+  </button>
+</div>
 
-
-  </div>
 </section>
 
 <!-- FINAL COPY -->
@@ -251,8 +247,7 @@ p {
   </div>
 </section>
 
-<script>
- <script>
+  <script>
   function unmuteAndRestart(videoId, button) {
     const video = document.getElementById(videoId);
     if (!video) return;
@@ -264,7 +259,6 @@ p {
     button.style.display = 'none';
   }
 
-  // Pause / resume video based on visibility
   document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("homeVideo");
     if (!video || !("IntersectionObserver" in window)) return;
@@ -279,9 +273,7 @@ p {
           }
         });
       },
-      {
-        threshold: 0.25
-      }
+      { threshold: 0.25 }
     );
 
     observer.observe(video);
