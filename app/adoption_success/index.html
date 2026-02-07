@@ -248,6 +248,43 @@ p {
     video.play().catch(() => {});
     button.style.display = 'none';
   }
+
+  <script>
+  function unmuteAndRestart(videoId, button) {
+    const video = document.getElementById(videoId);
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+    video.muted = false;
+    video.play().catch(() => {});
+    button.style.display = 'none';
+  }
+
+  // Pause / resume video based on visibility
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("homeVideo");
+    if (!video || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.25
+      }
+    );
+
+    observer.observe(video);
+  });
+</script>
+
 </script>
 
 </body>
