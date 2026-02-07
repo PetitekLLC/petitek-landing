@@ -252,17 +252,26 @@ p {
 </section>
 
   <script>
-  function unmuteAndRestart(videoId, button) {
-    const video = document.getElementById(videoId);
+<script>
+  // Tap-to-unmute + restart (iOS-safe)
+  function unmuteAndRestart() {
+    const video = document.getElementById("homeVideo");
     if (!video) return;
 
-    video.pause();
-    video.currentTime = 0;
+    // IMPORTANT: iOS requires this exact order
     video.muted = false;
+    video.currentTime = 0;
     video.play().catch(() => {});
-    button.style.display = 'none';
+
+    // Hide the overlay
+    const overlay = video
+      .closest(".video-with-overlay")
+      .querySelector(".unmute-overlay");
+
+    if (overlay) overlay.style.display = "none";
   }
 
+  // Pause / resume video when scrolling
   document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("homeVideo");
     if (!video || !("IntersectionObserver" in window)) return;
@@ -277,7 +286,9 @@ p {
           }
         });
       },
-      { threshold: 0.25 }
+      {
+        threshold: 0.25
+      }
     );
 
     observer.observe(video);
