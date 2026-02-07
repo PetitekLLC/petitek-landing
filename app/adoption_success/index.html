@@ -47,6 +47,22 @@ p {
   padding-right: clamp(12px, 2vw, 20px);
 }
 
+/* iPad landscape & similar tablet widths */
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+  h2 {
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.6;
+  }
+
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape)
 
 
 @media (max-width: 420px) {
