@@ -22,8 +22,7 @@
     }
 
     .container {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 0 10px;
     }
 
     h2 {
@@ -36,13 +35,12 @@
       max-width: 65ch;
     }
 
-    /* VIDEO WRAPPER */
+    /* VIDEO */
     .video-wrap {
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
       overflow: hidden;
-      margin-bottom: 2rem;
     }
 
     .video-wrap video {
@@ -52,46 +50,19 @@
       display: block;
     }
 
-    /* STAGGERED IMAGE + TEXT */
-    .stagger {
+    /* IMAGE ROW */
+    .image-row {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: clamp(1.5rem, 4vw, 3rem);
-      align-items: start;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: clamp(1rem, 3vw, 2rem);
+      margin-top: 2rem;
     }
 
-    .stagger.reverse {
-      grid-template-columns: 1fr auto;
-    }
-
-    .stagger.reverse .media {
-      order: 2;
-    }
-
-    .media {
-      width: 200px;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-    }
-
-    .media img {
+    .image-row img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      border-radius: 6px;
       display: block;
-      border-radius: 4px;
-    }
-
-    @media (max-width: 768px) {
-      .stagger,
-      .stagger.reverse {
-        grid-template-columns: 1fr;
-      }
-
-      .media {
-        margin: 0 auto;
-        max-width: 240px;
-      }
     }
   </style>
 </head>
@@ -107,10 +78,17 @@
   </div>
 </section>
 
-<!-- FIRST WEEKS -->
+<!-- INTRO COPY -->
 <section id="why">
-  <div class="container stagger">
-    <div class="media">
+  <div class="container">
+    <h2>Why the first weeks matter</h2>
+    <p>
+      New environments bring new routines, boundaries, and expectations.
+      Adjustment is normal — and early support helps pets settle calmly.
+    </p>
+
+    <!-- IMAGE ROW -->
+    <div class="image-row">
       <img
         src="/images/adjustment-doorway-1600.webp"
         srcset="
@@ -120,14 +98,26 @@
         alt="Dog calmly adjusting to a new home environment"
         loading="lazy"
       />
-    </div>
 
-    <div class="content">
-      <h2>Why the first weeks matter</h2>
-      <p>
-        New environments bring new routines, boundaries, and expectations.
-        Adjustment is normal — and early support helps pets settle calmly.
-      </p>
+      <img
+        src="/images/support-stability-sleeping-1600.webp"
+        srcset="
+          /images/support-stability-sleeping-800.webp 800w,
+          /images/support-stability-sleeping-1600.webp 1600w
+        "
+        alt="Dog resting calmly at home with owner nearby"
+        loading="lazy"
+      />
+
+      <img
+        src="/images/chatrbox-in-home-1600.webp"
+        srcset="
+          /images/chatrbox-in-home-800.webp 800w,
+          /images/chatrbox-in-home-1600.webp 1600w
+        "
+        alt="ChatrBox device placed naturally in a home environment"
+        loading="lazy"
+      />
     </div>
   </div>
 </section>
@@ -141,28 +131,14 @@
   </div>
 </section>
 
-<!-- STABILITY -->
-<section id="stability">
-  <div class="container stagger reverse">
-    <div class="media">
-      <img
-        src="/images/support-stability-sleeping-1600.webp"
-        srcset="
-          /images/support-stability-sleeping-800.webp 800w,
-          /images/support-stability-sleeping-1600.webp 1600w
-        "
-        alt="Dog resting calmly at home with owner nearby"
-        loading="lazy"
-      />
-    </div>
-
-    <div class="content">
-      <h2>Support makes the difference</h2>
-      <p>
-        With time, consistency, and the right guidance, pets begin to feel safe
-        and at ease in their new homes.
-      </p>
-    </div>
+<!-- SUPPORT COPY -->
+<section id="support">
+  <div class="container">
+    <h2>Support makes the difference</h2>
+    <p>
+      With time, consistency, and the right guidance, pets begin to feel safe
+      and at ease in their new homes.
+    </p>
   </div>
 </section>
 
@@ -175,30 +151,7 @@
   </div>
 </section>
 
-<!-- WHY CHATRBOX -->
+<!-- FINAL COPY -->
 <section id="why-chatrbox">
-  <div class="container stagger">
-    <div class="media">
-      <img
-        src="/images/chatrbox-in-home-1600.webp"
-        srcset="
-          /images/chatrbox-in-home-800.webp 800w,
-          /images/chatrbox-in-home-1600.webp 1600w
-        "
-        alt="ChatrBox device placed naturally in a home environment"
-        loading="lazy"
-      />
-    </div>
-
-    <div class="content">
-      <h2>One optional support tool</h2>
-      <p>
-        ChatrBox reinforces calm, consistent guidance during the adjustment
-        period — helping pets learn without stress or fear.
-      </p>
-    </div>
-  </div>
-</section>
-
-</body>
-</html>
+  <div class="container">
+    <h2
