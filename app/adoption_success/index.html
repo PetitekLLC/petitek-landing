@@ -268,6 +268,42 @@
 }
 
 
+/* === Amazon Button === */
+
+.amazon-button {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.amazon-button img {
+  display: block;
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+
+  border-radius: 999px; /* pill shape */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* Hover (desktop only) */
+@media (hover: hover) {
+  .amazon-button img:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+  }
+}
+
+/* Pressed / tap feedback */
+.amazon-button img:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
   </style>
 </head>
 
@@ -406,8 +442,13 @@
 
     </template>
 
-   <div class="amazon-cta">
-  <a href="https://www.amazon.com/dp/B0D6QQPWJQ target="_blank" rel="noopener">
+ <div class="amazon-cta">
+  <a
+    href="https://www.amazon.com/dp/B0D6QQPWJQ"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="View this product on Amazon"
+  >
     <img
       src="/images/available-at-amazon.png"
       alt="Available at Amazon"
