@@ -268,40 +268,34 @@
 }
 
 
-/* === Amazon Button === */
+/* === Amazon CTA (image-is-the-button) === */
 
-.amazon-button {
-  display: inline-block;
-  text-decoration: none;
-  margin: 0 auto;
+.amazon-cta {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers image + text */
+  justify-content: center;
+  text-align: center;
 }
 
-.amazon-button img {
+.amazon-image {
   display: block;
-  max-width: 240px;
+  max-width: 280px;      /* control size here */
   width: 100%;
   height: auto;
 
-  border-radius: 999px; /* pill shape */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+  /* DO NOT add border, background, or radius */
+  /* The image already contains those */
+  
+  cursor: pointer;
 }
 
-/* Hover (desktop only) */
-@media (hover: hover) {
-  .amazon-button img:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.22);
-  }
-}
-
-/* Pressed / tap feedback */
-.amazon-button img:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+.amazon-subtext {
+  margin-top: 0.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #555;
 }
 
   </style>
@@ -441,25 +435,24 @@
   </template>
 </div>
 
-<!-- AMAZON CTA (SEPARATE, BELOW) -->
 <div class="amazon-cta" x-show="state === 'success'">
   <a
     href="https://www.amazon.com/dp/B0D6QQPWJQ"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="View this product on Amazon"
     class="amazon-button"
+    aria-label="View this product on Amazon"
   >
     <img
-      src="/images/available-at-amazon.webp"
-      alt="Available at Amazon"
+      src="/images/image-only.webp"
+      alt="Check it out on Amazon"
+      class="amazon-logo"
     />
   </a>
 
-  <div class="amazon-subtext">
-    Check it out now on Amazon
-  </div>
 </div>
+
+
 
 
 </section>
