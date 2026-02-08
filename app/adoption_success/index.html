@@ -106,23 +106,45 @@
   padding: 0 10px;           /* side padding on small screens */
 }
 
+/* === Contact Capture Buttons === */
+
+.choice-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 0 10px;
+  margin-bottom: 1rem;
+}
+
+/* Button base */
 .choice-buttons button {
   /* sizing */
   width: 100%;
-  max-width: 105px;          /* cap on tablet/desktop */
-  padding: clamp(4px, 0.8vw, 8px) clamp(10px, 2vw, 16px);
+  max-width: 300px;
+  height: clamp(26px, 5vw, 30px);
+
+  /* shape: rounded trapezoid / triangle */
+  clip-path: polygon(
+    6% 0%,
+    94% 0%,
+    100% 50%,
+    94% 100%,
+    6% 100%,
+    0% 50%
+  );
+  border-radius: 6px;
 
   /* typography */
   font-size: clamp(0.75rem, 2.5vw, 0.9rem);
   font-weight: 600;
-  line-height: 1.2;
+  letter-spacing: 0.2px;
+  line-height: 1;
   white-space: nowrap;
 
   /* brand */
   background-color: rgb(94, 188, 188);
   color: #ffffff;
   border: none;
-  border-radius: 999px;      /* pill shape */
 
   /* interaction */
   cursor: pointer;
@@ -133,35 +155,35 @@
 
   /* shadow */
   box-shadow:
-    0 4px 10px rgba(0, 0, 0, 0.18),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    0 4px 10px rgba(0, 0, 0, 0.22),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
 }
 
 /* Hover (desktop only) */
 @media (hover: hover) {
   .choice-buttons button:hover {
     background-color: rgb(84, 178, 178);
-    box-shadow:
-      0 6px 14px rgba(0, 0, 0, 0.22),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-1px);
+    box-shadow:
+      0 6px 14px rgba(0, 0, 0, 0.28),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.22);
   }
 }
 
-/* Active / pressed state */
+/* Pressed state */
 .choice-buttons button:active {
   transform: translateY(1px);
   box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.25),
-    inset 0 2px 4px rgba(0, 0, 0, 0.25);
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-/* Selected (Alpine active class) */
+/* Selected state (Alpine .active class) */
 .choice-buttons button.active {
   background-color: rgb(74, 168, 168);
   box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.25),
-    inset 0 2px 4px rgba(0, 0, 0, 0.25);
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 
