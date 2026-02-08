@@ -174,8 +174,42 @@
   </div>
 </section>
 
+<!-- Contact Capture (Email or Text) -->
+<section class="contact-capture" x-data="contactCapture()">
+  <h3>Want training tips & updates?</h3>
+  <p class="subtext">Choose how you’d like to hear from us.</p>
+
+  <div class="choice-buttons">
+    <button @click="select('email')" :class="{active: method==='email'}">
+      📧 Email me
+    </button>
+    <button @click="select('sms')" :class="{active: method==='sms'}">
+      📱 Text me
+    </button>
+  </div>
+
+  <form x-show="method==='email'" @submit.prevent="submitEmail">
+    <input type="email" placeholder="Email address" x-model="email" required />
+    <button type="submit">Get updates</button>
+  </form>
+
+  <form x-show="method==='sms'" @submit.prevent="submitSMS">
+    <input type="tel" placeholder="Mobile number" x-model="phone" required />
+    <p class="disclaimer">
+      One-time text to send the product link. Msg & data rates may apply.
+      Reply STOP to opt out.
+    </p>
+    <button type="submit">Text me the link</button>
+  </form>
+
+  <div class="success" x-show="success">
+    ✅ Thanks! Check your <span x-text="method==='sms' ? 'phone' : 'email'"></span>.
+  </div>
+</section>
+
+
 <!-- =========================
-     VIDEO LOGIC (REUSED FROM MAIN SITE + CLICK PAUSE)
+     VIDEO LOGIC (REUSED FROM MAIN SITE)
 ========================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -193,67 +227,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!video || !overlay) return;
 
     video.muted = true;
-    let userPaused = false;
 
-    /* -------------------------
-       Scroll-based play / pause
-    ------------------------- */
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-
-          // Pause any other playing video
           videos.forEach(({ id: vid }) => {
             const v = document.getElementById(vid);
             if (v && v !== video && !v.paused) v.pause();
           });
-
           currentlyPlaying = video;
-
-          // Only auto-play if user did NOT manually pause
-          if (!userPaused && video.readyState >= 2) {
+          if (video.readyState >= 2) {
             video.play().catch(() => {});
           }
-
         } else {
-          if (video === currentlyPlaying) {
-            video.pause();
-          }
+          if (video === currentlyPlaying) video.pause();
         }
       });
     }, { threshold: 0.5 });
 
     observer.observe(video);
 
-    /* -------------------------
-       Tap overlay = unmute + restart
-    ------------------------- */
     overlay.addEventListener('click', () => {
-      userPaused = false;
       video.currentTime = 0;
       video.muted = false;
       overlay.style.display = 'none';
       video.play().catch(() => {});
     });
 
-    /* -------------------------
-       Tap video = pause / resume
-    ------------------------- */
-    video.addEventListener('click', () => {
-      if (video.paused) {
-        userPaused = false;
-        video.play().catch(() => {});
-      } else {
-        userPaused = true;
-        video.pause();
-      }
-    });
-
-    /* -------------------------
-       Reset when video ends
-    ------------------------- */
     video.addEventListener('ended', () => {
-      userPaused = false;
       video.currentTime = 0;
       video.muted = true;
       overlay.style.display = 'flex';
@@ -263,4 +264,38 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 
 });
+
 </script>
+
+<!-- Alpine.js -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Contact Capture Logic -->
+<script>
+function contactCapture() {
+  return {
+    method: null,
+    email: '',
+    phone: '',
+    success: false,
+
+    select(type) {
+      this.method = type;
+      this.success = false;
+    },
+
+    async submitEmail() {
+      this.success = true;
+      // TODO: hook to backend
+    },
+
+    async submitSMS() {
+      this.success = true;
+      // TODO: hook to Twilio endpoint
+    }
+  };
+}
+</script>
+
+</body>
+</html>
