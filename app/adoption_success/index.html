@@ -269,27 +269,27 @@
 
 
 /* === Amazon CTA (image-is-the-button) === */
+/* === Amazon CTA (FINAL, STABLE) === */
 
 .amazon-cta {
-  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* centers image + text */
-  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
   text-align: center;
 }
 
-..amazon-image {
-  display: block;
-  max-width: 180px;   /* controls size */
-  height: auto;
-  cursor: pointer;
+/* Anchor should hug content */
+.amazon-cta a {
+  display: inline-block;
 }
 
-
-  /* DO NOT add border, background, or radius */
-  /* The image already contains those */
-  
+/* Image is the visual button */
+.amazon-image {
+  display: block;
+  max-width: 260px;   /* 👈 THIS is the key control */
+  width: auto;        /* 👈 prevents runaway scaling */
+  height: auto;
   cursor: pointer;
 }
 
@@ -299,6 +299,7 @@
   font-size: 0.85rem;
   color: #555;
 }
+
 
 /* === Petitek Footer === */
 
