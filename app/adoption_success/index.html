@@ -176,51 +176,72 @@
 
 <!-- Contact Capture (Email or Text) -->
 <section class="contact-capture" x-data="contactCapture()">
-  <h3>Want training tips & updates?</h3>
-  <p class="subtext">Choose how you’d like to hear from us.</p>
+  <h3>Want helpful training guidance?</h3>
+  <p class="subtext">
+    We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+  </p>
 
-  <div class="choice-buttons">
+  <div class="choice-buttons" x-show="!success">
     <button @click="select('email')" :class="{active: method==='email'}">
-      📧 Email me
+      📧 Email me the link
     </button>
     <button @click="select('sms')" :class="{active: method==='sms'}">
-      📱 Text me
+      📱 Text me the link
     </button>
   </div>
 
-  <form x-show="method==='email'" @submit.prevent="submitEmail">
-   <input
-  type="email"
-  name="email"
-  placeholder="Work email"
-  autocomplete="email"
-  inputmode="email"
-  x-model="email"
-  required
-/>
-
-    <button type="submit">Get updates</button>
+  <!-- Email form -->
+  <form x-show="method==='email' && !success" @submit.prevent="submitEmail">
+    <input
+      type="email"
+      name="email"
+      placeholder="Work email"
+      autocomplete="email"
+      inputmode="email"
+      x-model="email"
+      required
+    />
+    <button type="submit">Send link</button>
   </form>
 
-  <form x-show="method==='sms'" @submit.prevent="submitSMS">
+  <!-- SMS form -->
+  <form x-show="method==='sms' && !success" @submit.prevent="submitSMS">
     <input
-  type="tel"
-  placeholder="Mobile number"
-  x-model="phone"
-  required
-/>
-
+      type="tel"
+      name="phone"
+      placeholder="Mobile number"
+      autocomplete="tel"
+      inputmode="tel"
+      x-model="phone"
+      required
+    />
     <p class="disclaimer">
-      One-time text to send the product link. Msg & data rates may apply.
+      One-time text to send the link. Msg & data rates may apply.
       Reply STOP to opt out.
     </p>
-    <button type="submit">Text me the link</button>
+    <button type="submit">Send link</button>
   </form>
 
+  <!-- Success message -->
   <div class="success" x-show="success">
-    ✅ Thanks! Check your <span x-text="method==='sms' ? 'phone' : 'email'"></span>.
+    <template x-if="method === 'email'">
+      <p>
+        ✅ We’ve sent the link to<br>
+        <strong x-text="maskedEmail"></strong><br>
+        Please check your inbox.
+      </p>
+    </template>
+
+    <template x-if="method === 'sms'">
+      <p>
+        ✅ We’ve texted the link to<br>
+        <strong x-text="maskedPhone"></strong><br>
+        Please check your phone.
+      </p>
+    </template>
   </div>
 </section>
+
 
 
 <!-- =========================
@@ -285,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Alpine.js -->
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<!-- Contact Capture Logic -->
 <script>
 function contactCapture() {
   return {
@@ -294,23 +314,39 @@ function contactCapture() {
     phone: '',
     success: false,
 
+    get maskedEmail() {
+      if (!this.email.includes('@')) return '';
+      const [name, domain] = this.email.trim().split('@');
+      return `${name[0]}•••@${domain}`;
+    },
+
+    get maskedPhone() {
+      const digits = this.phone.replace(/\D/g, '');
+      return digits.length >= 4
+        ? `•••-•••-${digits.slice(-4)}`
+        : '';
+    },
+
     select(type) {
       this.method = type;
       this.success = false;
     },
 
-    async submitEmail() {
+    submitEmail() {
+      this.email = this.email.trim();
       this.success = true;
-      // TODO: hook to backend
+      // backend hookup tomorrow
     },
 
-    async submitSMS() {
+    submitSMS() {
+      this.phone = this.phone.trim();
       this.success = true;
-      // TODO: hook to Twilio endpoint
+      // Twilio hookup tomorrow
     }
   };
 }
 </script>
+
 
 </body>
 </html>
