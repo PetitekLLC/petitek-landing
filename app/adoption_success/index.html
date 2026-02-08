@@ -96,41 +96,45 @@
   pointer-events: auto;
   touch-action: manipulation;
 }
-/* === Contact Capture Buttons layout === */
-.choice-buttons {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 0 20px;
-  margin-bottom: 1.25rem;
-}
+/* === Contact Capture Buttons === */
 
-/* === Button base === */
+
+/* Button base */
 .choice-buttons button {
   width: 100%;
   max-width: 300px;
-  height: clamp(44px, 8vw, 54px);
+  height: clamp(44px, 8vw, 54px); /* MUCH taller */
+
   padding: 0 18px;
-  border-radius: 12px;
+
+  /* shape */
+  border-radius: 12px; /* rounded rectangle */
+
+  /* typography */
   font-size: clamp(0.9rem, 2.8vw, 1.05rem);
   font-weight: 600;
   letter-spacing: 0.2px;
   line-height: 1;
+
+  /* brand */
   background-color: rgb(94, 188, 188);
   color: #ffffff;
   border: none;
+
+  /* interaction */
   cursor: pointer;
-  box-shadow:
-    0 6px 14px rgba(0, 0, 0, 0.22),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease,
     background-color 0.12s ease;
+
+  /* shadow */
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.22),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
 }
 
-/* Hover */
+/* Hover (desktop only) */
 @media (hover: hover) {
   .choice-buttons button:hover {
     background-color: rgb(84, 178, 178);
@@ -141,7 +145,7 @@
   }
 }
 
-/* Pressed */
+/* Pressed / tap feedback */
 .choice-buttons button:active {
   transform: translateY(2px);
   box-shadow:
@@ -149,9 +153,82 @@
     inset 0 3px 6px rgba(0, 0, 0, 0.35);
 }
 
-/* Active (Alpine) */
+/* Selected state (Alpine .active) */
 .choice-buttons button.active {
   background-color: rgb(74, 168, 168);
+}
+
+.choice-buttons {
+  display: flex;
+  flex-wrap: nowrap;     /* NEVER stack */
+  justify-content: center;
+  gap: 20px;             /* space BETWEEN buttons */
+  padding: 0 20px;       /* space LEFT + RIGHT */
+  margin-bottom: 1.25rem;
+}
+/* === Input row === */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.input-row input {
+  min-width: 150px;
+  width: 100%;
+  max-width: 280px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* === Action buttons (Send / Cancel) === */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Send link */
+.action-buttons .secondary {
+  background-color: rgb(94, 188, 188);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+.action-buttons .secondary:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Cancel */
+.action-buttons .ghost {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #555;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.action-buttons .ghost:hover {
+  background: #f2f2f2;
 }
 
   </style>
@@ -231,39 +308,37 @@
   </div>
 </section>
 
-<!-- Contact Capture (Email or Text) -->
 <section class="contact-capture" x-data="contactCapture()">
   <h3>Want helpful training guidance?</h3>
   <p class="subtext">
     We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
   </p>
 
-  <div class="choice-buttons" x-show="!success">
-    <button @click="select('email')" :class="{active: method==='email'}">
-      Email me the link
-    </button>
-    <button @click="select('sms')" :class="{active: method==='sms'}">
-      Text me the link
-    </button>
+  <!-- CHOICE BUTTONS -->
+  <div class="choice-buttons" x-show="state === 'choice'">
+    <button @click="select('email')">Email me the link</button>
+    <button @click="select('sms')">Text me the link</button>
   </div>
 
-  <!-- Email form -->
-  <form x-show="method==='email' && !success" @submit.prevent="submitEmail">
+  <!-- INPUT ROW -->
+  <div class="input-row" x-show="state === 'input'">
+    <div class="action-buttons">
+      <button class="secondary" @click="send">Send link</button>
+      <button class="ghost" @click="cancel">Cancel</button>
+    </div>
+
     <input
+      x-show="method === 'email'"
       type="email"
       name="email"
       placeholder="Work email"
       autocomplete="email"
-      inputmode="email"
       x-model="email"
       required
     />
-    <button type="submit">Send link</button>
-  </form>
 
-  <!-- SMS form -->
-  <form x-show="method==='sms' && !success" @submit.prevent="submitSMS">
     <input
+      x-show="method === 'sms'"
       type="tel"
       name="phone"
       placeholder="Mobile number"
@@ -272,15 +347,10 @@
       x-model="phone"
       required
     />
-    <p class="disclaimer">
-      One-time text to send the link. Msg & data rates may apply.
-      Reply STOP to opt out.
-    </p>
-    <button type="submit">Send link</button>
-  </form>
+  </div>
 
-  <!-- Success message -->
-  <div class="success" x-show="success">
+  <!-- SUCCESS -->
+  <div class="success" x-show="state === 'success'">
     <template x-if="method === 'email'">
       <p>
         ✅ We’ve sent the link to<br>
@@ -366,10 +436,27 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 function contactCapture() {
   return {
+    state: 'choice', // choice | input | success
     method: null,
     email: '',
     phone: '',
-    success: false,
+
+    select(type) {
+      this.method = type;
+      this.state = 'input';
+    },
+
+    cancel() {
+      this.state = 'choice';
+      this.method = null;
+      this.email = '';
+      this.phone = '';
+    },
+
+    send() {
+      // FE-only for now
+      this.state = 'success';
+    },
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
@@ -382,27 +469,11 @@ function contactCapture() {
       return digits.length >= 4
         ? `•••-•••-${digits.slice(-4)}`
         : '';
-    },
-
-    select(type) {
-      this.method = type;
-      this.success = false;
-    },
-
-    submitEmail() {
-      this.email = this.email.trim();
-      this.success = true;
-      // backend hookup tomorrow
-    },
-
-    submitSMS() {
-      this.phone = this.phone.trim();
-      this.success = true;
-      // Twilio hookup tomorrow
     }
   };
 }
 </script>
+
 
 
 </body>
