@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive." />
 
-  <!-- Global site CSS -->
   <link rel="stylesheet" href="/style.css" />
 
   <style>
@@ -43,9 +42,7 @@
     }
 
     @media (max-width: 420px) {
-      h2 {
-        line-height: 1.15;
-      }
+      h2 { line-height: 1.15; }
     }
 
     /* VIDEO */
@@ -54,6 +51,7 @@
       aspect-ratio: 16 / 9;
       background: #000;
       overflow: hidden;
+      position: relative;
     }
 
     .video-wrap video {
@@ -76,6 +74,22 @@
       height: auto;
       border-radius: 6px;
       display: block;
+    }
+
+    /* UNMUTE OVERLAY (same as main site) */
+    .unmute-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(94, 188, 188, 0.9);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 10;
+      text-align: center;
     }
   </style>
 </head>
@@ -101,35 +115,9 @@
     </p>
 
     <div class="image-row">
-      <img
-        src="/images/adjustment-doorway-1600.webp"
-        srcset="
-          /images/adjustment-doorway-800.webp 800w,
-          /images/adjustment-doorway-1600.webp 1600w
-        "
-        alt="Dog calmly adjusting to a new home environment"
-        loading="lazy"
-      />
-
-      <img
-        src="/images/support-stability-sleeping-1600.webp"
-        srcset="
-          /images/support-stability-sleeping-800.webp 800w,
-          /images/support-stability-sleeping-1600.webp 1600w
-        "
-        alt="Dog resting calmly at home with owner nearby"
-        loading="lazy"
-      />
-
-      <img
-        src="/images/chatrbox-in-home-1600.webp"
-        srcset="
-          /images/chatrbox-in-home-800.webp 800w,
-          /images/chatrbox-in-home-1600.webp 1600w
-        "
-        alt="ChatrBox device placed naturally in a home environment"
-        loading="lazy"
-      />
+      <img src="/images/adjustment-doorway-1600.webp" alt="Pet adjusting" loading="lazy" />
+      <img src="/images/support-stability-sleeping-1600.webp" alt="Pet resting" loading="lazy" />
+      <img src="/images/chatrbox-in-home-1600.webp" alt="ChatrBox in home" loading="lazy" />
     </div>
   </div>
 </section>
@@ -145,28 +133,27 @@
   </div>
 </section>
 
-<!-- VIDEO 2 -->
+<!-- VIDEO 1 -->
 <section id="training-video">
   <div class="video-wrap">
-    <video autoplay muted loop playsinline preload="auto">
+    <video id="adoptVideo1" autoplay muted loop playsinline preload="auto">
       <source src="/videos/adjustment-sequence.mp4" type="video/mp4" />
     </video>
+    <div id="unmuteOverlayAdopt1" class="unmute-overlay">
+      🔊 Tap to Unmute
+    </div>
   </div>
 </section>
 
-<!-- VIDEO 3 -->
+<!-- VIDEO 2 -->
 <section id="home-video">
   <div class="video-wrap">
-    <video
-      id="homeVideo"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    >
+    <video id="adoptVideo2" autoplay muted loop playsinline preload="auto">
       <source src="/videos/home-environment.mp4" type="video/mp4" />
     </video>
+    <div id="unmuteOverlayAdopt2" class="unmute-overlay">
+      🔊 Tap to Unmute
+    </div>
   </div>
 </section>
 
@@ -180,6 +167,65 @@
     </p>
   </div>
 </section>
+
+<!-- =========================
+     VIDEO LOGIC (REUSED FROM MAIN SITE)
+========================= -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const videos = [
+    { id: 'adoptVideo1', overlayId: 'unmuteOverlayAdopt1' },
+    { id: 'adoptVideo2', overlayId: 'unmuteOverlayAdopt2' }
+  ];
+
+  let currentlyPlaying = null;
+
+  function initVideo({ id, overlayId }) {
+    const video = document.getElementById(id);
+    const overlay = document.getElementById(overlayId);
+    if (!video || !overlay) return;
+
+    video.muted = true;
+
+    // Play / pause on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          videos.forEach(({ id: vid }) => {
+            const v = document.getElementById(vid);
+            if (v && v !== video && !v.paused) v.pause();
+          });
+          currentlyPlaying = video;
+          video.play().catch(() => {});
+        } else {
+          if (video === currentlyPlaying) video.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(video);
+
+    // Tap to unmute
+    overlay.addEventListener('click', () => {
+      video.currentTime = 0;
+      video.muted = false;
+      overlay.style.display = 'none';
+      video.play().catch(() => {});
+    });
+
+    // Reset when video ends
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      video.muted = true;
+      overlay.style.display = 'flex';
+    });
+  }
+
+  videos.forEach(initVideo);
+
+});
+</script>
 
 </body>
 </html>
