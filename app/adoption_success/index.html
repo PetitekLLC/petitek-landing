@@ -384,45 +384,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentlyPlaying = null;
 
-  function initVideo({ id, overlayId }) {
-    const video = document.getElementById(id);
-    const overlay = document.getElementById(overlayId);
-    if (!video || !overlay) return;
+function initVideo({ id, overlayId }) {
+  const video = document.getElementById(id);
+  const overlay = document.getElementById(overlayId);
+  if (!video || !overlay) return;
 
-    video.muted = true;
+  video.muted = true;
+  let userPaused = false;
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          videos.forEach(({ id: vid }) => {
-            const v = document.getElementById(vid);
-            if (v && v !== video && !v.paused) v.pause();
-          });
-          currentlyPlaying = video;
-          if (video.readyState >= 2) {
-            video.play().catch(() => {});
-          }
-        } else {
-          if (video === currentlyPlaying) video.pause();
+  /* -------------------------
+     Scroll-based play / pause
+  ------------------------- */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+        // Pause any other playing video
+        videos.forEach(({ id: vid }) => {
+          const v = document.getElementById(vid);
+          if (v && v !== video && !v.paused) v.pause();
+        });
+
+        currentlyPlaying = video;
+
+        // Only autoplay if user didn't manually pause
+        if (!userPaused && video.readyState >= 2) {
+          video.play().catch(() => {});
         }
-      });
-    }, { threshold: 0.5 });
 
-    observer.observe(video);
+      } else {
+        if (video === currentlyPlaying) {
+          video.pause();
+        }
+      }
+    });
+  }, { threshold: 0.5 });
 
-    overlay.addEventListener('click', () => {
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
+  observer.observe(video);
+
+  /* -------------------------
+     Overlay click = unmute + restart
+  ------------------------- */
+  overlay.addEventListener('click', () => {
+    userPaused = false;
+    video.currentTime = 0;
+    video.muted = false;
+    overlay.style.display = 'none';
+    video.play().catch(() => {});
+  });
+
+  /* -------------------------
+     VIDEO CLICK = pause / resume
+  ------------------------- */
+  video.addEventListener('click', () => {
+    if (video.paused) {
+      userPaused = false;
       video.play().catch(() => {});
-    });
+    } else {
+      userPaused = true;
+      video.pause();
+    }
+  });
 
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      video.muted = true;
-      overlay.style.display = 'flex';
-    });
-  }
+  /* -------------------------
+     Reset when video ends
+  ------------------------- */
+  video.addEventListener('ended', () => {
+    userPaused = false;
+    video.currentTime = 0;
+    video.muted = true;
+    overlay.style.display = 'flex';
+  });
+}
 
   videos.forEach(initVideo);
 
