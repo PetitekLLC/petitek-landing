@@ -41,6 +41,14 @@
       margin: 0 auto 1.25rem;
     }
 
+    h3 {
+  font-size: clamp(1.55rem, 3.5vw, 2.3rem);
+  line-height: 1.2;
+  margin: 0 auto 0.5rem;
+  max-width: clamp(22ch, 70vw, 40ch);
+  text-align: center;
+}
+
     @media (max-width: 420px) {
       h2 { line-height: 1.15; }
     }
@@ -95,6 +103,269 @@
     .unmute-overlay {
   pointer-events: auto;
   touch-action: manipulation;
+}
+/* === Contact Capture Buttons === */
+
+
+/* Button base */
+.choice-buttons button {
+  width: 100%;
+  max-width: 300px;
+  height: clamp(44px, 8vw, 54px); /* MUCH taller */
+
+  padding: 0 18px;
+
+  /* shape */
+  border-radius: 12px; /* rounded rectangle */
+
+  /* typography */
+  font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 1;
+
+  /* brand */
+  background-color: rgb(94, 188, 188);
+  color: #ffffff;
+  border: none;
+
+  /* interaction */
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+
+  /* shadow */
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.22),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+}
+
+/* Hover (desktop only) */
+@media (hover: hover) {
+  .choice-buttons button:hover {
+    background-color: rgb(84, 178, 178);
+    transform: translateY(-1px);
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.28),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.22);
+  }
+}
+
+/* Pressed / tap feedback */
+.choice-buttons button:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.35),
+    inset 0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Selected state (Alpine .active) */
+.choice-buttons button.active {
+  background-color: rgb(74, 168, 168);
+}
+
+.choice-buttons {
+  display: flex;
+  flex-wrap: nowrap;     /* NEVER stack */
+  justify-content: center;
+  gap: 20px;             /* space BETWEEN buttons */
+  padding: 0 20px;       /* space LEFT + RIGHT */
+  margin-bottom: 1.25rem;
+}
+/* === Input row === */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.input-row input {
+  min-width: 150px;
+  width: 100%;
+  max-width: 280px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+/* === Action buttons (Send / Cancel) === */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* Send link */
+.action-buttons .secondary {
+  background-color: rgb(94, 188, 188);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+.action-buttons .secondary:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Cancel */
+.action-buttons .ghost {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #555;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.action-buttons .ghost:hover {
+  background: #f2f2f2;
+}
+
+/* === Confirmation / Success Message === */
+
+.contact-capture .success {
+  max-width: 520px;
+  margin: 2rem auto 0;          /* center on page */
+  padding: 1rem 1.25rem;
+
+  border: 1px solid #d6d6d6;    /* thin light gray border */
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #222;
+
+  text-align: center;
+}
+
+.contact-capture .success p {
+  margin: 0.25rem 0;
+}
+
+.contact-capture .success strong {
+  font-weight: 700;             /* emphasize phone number */
+}
+
+
+/* === Amazon CTA (image-is-the-button) === */
+
+.amazon-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+/* Anchor should hug content */
+.amazon-cta a {
+  display: inline-block;
+}
+
+/* Contact capture must own vertical space */
+.contact-capture {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem; /* small breathing room above footer */
+}
+
+
+/* Success stays natural height */
+.contact-capture .success {
+  margin-top: 2rem;
+}
+
+/* THIS is the centering zone */
+.amazon-flex-zone {
+  flex: 0 0 auto;          /* stop it from filling the whole page */
+  display: flex;
+  justify-content: center;
+  margin: 1.25rem 0 2rem;  /* controlled spacing above & below */
+}
+
+/* Image is the visual button */
+.amazon-image {
+  max-width: 260px;
+  width: auto;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.amazon-subtext {
+  margin-top: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+
+/* === Petitek Footer === */
+
+.petitek-footer {
+  background-color: rgb(94, 188, 188);
+  color: #ffffff;
+  margin-top: 4rem;
+}
+
+.footer-inner {
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 1.25rem clamp(16px, 4vw, 32px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Links */
+.petitek-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 1rem;
+  opacity: 0.9;
+}
+
+.petitek-footer a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* Mobile layout */
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-right a {
+    margin: 0 0.75rem;
+  }
 }
 
   </style>
@@ -174,8 +445,67 @@
   </div>
 </section>
 
+
+<section class="contact-capture" x-data="contactCapture()">
+
+  <h3>Want helpful training guidance?</h3>
+  <p class="subtext">
+    We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+  </p>
+
+  <!-- CHOICE BUTTONS -->
+  <div class="choice-buttons" x-show="state === 'choice'">
+    <button @click="select('email')">Email the link</button>
+    <button @click="select('sms')">Text the link</button>
+  </div>
+
+  <!-- INPUT ROW -->
+  <div class="input-row" x-show="state === 'input'">
+    <div class="action-buttons">
+      <button class="secondary" @click="send">Send link</button>
+      <button class="ghost" @click="cancel">Cancel</button>
+    </div>
+
+    <input
+      x-show="method === 'email'"
+      type="email"
+      placeholder="Email address"
+      x-model="email"
+    />
+
+    <input
+      x-show="method === 'sms'"
+      type="tel"
+      placeholder="Mobile number"
+      x-model="phone"
+    />
+  </div>
+
+
+  <!-- FLEX ZONE FOR AMAZON CTA -->
+  <div class="amazon-flex-zone" x-show="state === 'success'">
+    <a
+      href="https://www.amazon.com/dp/B0D6QQPWJQ"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View this product on Amazon"
+    >
+      <img
+        src="/images/available-at-amazon.webp"
+        alt="Check it out on Amazon"
+        class="amazon-image"
+      />
+    </a>
+  </div>
+
+</section>
+
+
+
+
+
 <!-- =========================
-     VIDEO LOGIC (REUSED FROM MAIN SITE + CLICK PAUSE)
+     VIDEO LOGIC (REUSED FROM MAIN SITE)
 ========================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -187,81 +517,152 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentlyPlaying = null;
 
-  function initVideo({ id, overlayId }) {
-    const video = document.getElementById(id);
-    const overlay = document.getElementById(overlayId);
-    if (!video || !overlay) return;
+function initVideo({ id, overlayId }) {
+  const video = document.getElementById(id);
+  const overlay = document.getElementById(overlayId);
+  if (!video || !overlay) return;
 
-    video.muted = true;
-    let userPaused = false;
+  video.muted = true;
+  let userPaused = false;
 
-    /* -------------------------
-       Scroll-based play / pause
-    ------------------------- */
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+  /* -------------------------
+     Scroll-based play / pause
+  ------------------------- */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
 
-          // Pause any other playing video
-          videos.forEach(({ id: vid }) => {
-            const v = document.getElementById(vid);
-            if (v && v !== video && !v.paused) v.pause();
-          });
+        // Pause any other playing video
+        videos.forEach(({ id: vid }) => {
+          const v = document.getElementById(vid);
+          if (v && v !== video && !v.paused) v.pause();
+        });
 
-          currentlyPlaying = video;
+        currentlyPlaying = video;
 
-          // Only auto-play if user did NOT manually pause
-          if (!userPaused && video.readyState >= 2) {
-            video.play().catch(() => {});
-          }
-
-        } else {
-          if (video === currentlyPlaying) {
-            video.pause();
-          }
+        // Only autoplay if user didn't manually pause
+        if (!userPaused && video.readyState >= 2) {
+          video.play().catch(() => {});
         }
-      });
-    }, { threshold: 0.5 });
 
-    observer.observe(video);
-
-    /* -------------------------
-       Tap overlay = unmute + restart
-    ------------------------- */
-    overlay.addEventListener('click', () => {
-      userPaused = false;
-      video.currentTime = 0;
-      video.muted = false;
-      overlay.style.display = 'none';
-      video.play().catch(() => {});
-    });
-
-    /* -------------------------
-       Tap video = pause / resume
-    ------------------------- */
-    video.addEventListener('click', () => {
-      if (video.paused) {
-        userPaused = false;
-        video.play().catch(() => {});
       } else {
-        userPaused = true;
-        video.pause();
+        if (video === currentlyPlaying) {
+          video.pause();
+        }
       }
     });
+  }, { threshold: 0.5 });
 
-    /* -------------------------
-       Reset when video ends
-    ------------------------- */
-    video.addEventListener('ended', () => {
+  observer.observe(video);
+
+  /* -------------------------
+     Overlay click = unmute + restart
+  ------------------------- */
+  overlay.addEventListener('click', () => {
+    userPaused = false;
+    video.currentTime = 0;
+    video.muted = false;
+    overlay.style.display = 'none';
+    video.play().catch(() => {});
+  });
+
+  /* -------------------------
+     VIDEO CLICK = pause / resume
+  ------------------------- */
+  video.addEventListener('click', () => {
+    if (video.paused) {
       userPaused = false;
-      video.currentTime = 0;
-      video.muted = true;
-      overlay.style.display = 'flex';
-    });
-  }
+      video.play().catch(() => {});
+    } else {
+      userPaused = true;
+      video.pause();
+    }
+  });
+
+  /* -------------------------
+     Reset when video ends
+  ------------------------- */
+  video.addEventListener('ended', () => {
+    userPaused = false;
+    video.currentTime = 0;
+    video.muted = true;
+    overlay.style.display = 'flex';
+  });
+}
 
   videos.forEach(initVideo);
 
 });
+
 </script>
+
+<!-- Alpine.js -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<script>
+function contactCapture() {
+  return {
+    state: 'choice', // choice | input | success
+    method: null,
+    email: '',
+    phone: '',
+
+    select(type) {
+      this.method = type;
+      this.state = 'input';
+    },
+
+    cancel() {
+      this.state = 'choice';
+      this.method = null;
+      this.email = '';
+      this.phone = '';
+    },
+
+    send() {
+      // FE-only for now
+      this.state = 'success';
+    },
+
+    get maskedEmail() {
+      if (!this.email.includes('@')) return '';
+      const [name, domain] = this.email.trim().split('@');
+      return `${name[0]}•••@${domain}`;
+    },
+
+    get maskedPhone() {
+      const digits = this.phone.replace(/\D/g, '');
+      return digits.length >= 4
+        ? `•••-•••-${digits.slice(-4)}`
+        : '';
+    }
+  };
+}
+</script>
+
+<footer class="petitek-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      © <span id="year"></span> Petitek, LLC. All rights reserved.
+    </div>
+
+    <div class="footer-right">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/support">Support</a>
+    </div>
+  </div>
+</footer>
+
+<!-- scripts LAST -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+</script>
+
+</body>
+</html>
+
 
