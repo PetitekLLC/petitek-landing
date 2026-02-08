@@ -91,6 +91,12 @@
       z-index: 10;
       text-align: center;
     }
+
+    .unmute-overlay {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
   </style>
 </head>
 
@@ -188,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     video.muted = true;
 
-    // Play / pause on scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -197,7 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (v && v !== video && !v.paused) v.pause();
           });
           currentlyPlaying = video;
-          video.play().catch(() => {});
+          if (video.readyState >= 2) {
+            video.play().catch(() => {});
+          }
         } else {
           if (video === currentlyPlaying) video.pause();
         }
@@ -206,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(video);
 
-    // Tap to unmute
     overlay.addEventListener('click', () => {
       video.currentTime = 0;
       video.muted = false;
@@ -214,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
       video.play().catch(() => {});
     });
 
-    // Reset when video ends
     video.addEventListener('ended', () => {
       video.currentTime = 0;
       video.muted = true;
@@ -225,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   videos.forEach(initVideo);
 
 });
+
 </script>
 
 </body>
