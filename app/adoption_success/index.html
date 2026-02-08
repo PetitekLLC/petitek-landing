@@ -269,7 +269,6 @@
 
 
 /* === Amazon CTA (image-is-the-button) === */
-/* === Amazon CTA (FINAL, STABLE) === */
 
 .amazon-cta {
   display: flex;
@@ -284,12 +283,31 @@
   display: inline-block;
 }
 
+/* Contact capture must own vertical space */
+.contact-capture {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 120px); /* subtract footer height */
+}
+
+/* Success stays natural height */
+.contact-capture .success {
+  margin-top: 2rem;
+}
+
+/* THIS is the centering zone */
+.amazon-flex-zone {
+  flex: 1;                         /* take remaining space */
+  display: flex;
+  align-items: center;             /* vertical centering */
+  justify-content: center;         /* horizontal centering */
+}
 /* Image is the visual button */
 .amazon-image {
-  display: block;
-  max-width: 260px;   /* 👈 THIS is the key control */
-  width: auto;        /* 👈 prevents runaway scaling */
+  max-width: 260px;
+  width: auto;
   height: auto;
+  display: block;
   cursor: pointer;
 }
 
@@ -485,26 +503,79 @@
   </template>
 </div>
 
-<div class="amazon-cta" x-show="state === 'success'">
-  <a
-    href="https://www.amazon.com/dp/B0D6QQPWJQ"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="amazon-button"
-    aria-label="View this product on Amazon"
-  >
-    <img
-      src="/images/available-at-amazon.webp"
-      alt="Check it out on Amazon"
-      class="amazon-image"
-    />
-  </a>
+<section class="contact-capture" x-data="contactCapture()">
 
-  <div class="amazon-subtext">
+  <h3>Want helpful training guidance?</h3>
+  <p class="subtext">
+    We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+  </p>
+
+  <!-- CHOICE BUTTONS -->
+  <div class="choice-buttons" x-show="state === 'choice'">
+    <button @click="select('email')">Email the link</button>
+    <button @click="select('sms')">Text the link</button>
   </div>
-</div>
+
+  <!-- INPUT ROW -->
+  <div class="input-row" x-show="state === 'input'">
+    <div class="action-buttons">
+      <button class="secondary" @click="send">Send link</button>
+      <button class="ghost" @click="cancel">Cancel</button>
+    </div>
+
+    <input
+      x-show="method === 'email'"
+      type="email"
+      placeholder="Email address"
+      x-model="email"
+    />
+
+    <input
+      x-show="method === 'sms'"
+      type="tel"
+      placeholder="Mobile number"
+      x-model="phone"
+    />
+  </div>
+
+  <!-- SUCCESS MESSAGE -->
+  <div class="success" x-show="state === 'success'">
+    <template x-if="method === 'email'">
+      <p>
+        We’ve sent the link to<br>
+        <strong x-text="maskedEmail"></strong><br>
+        Please check your inbox.
+      </p>
+    </template>
+
+    <template x-if="method === 'sms'">
+      <p>
+        We’ve texted the link to<br>
+        <strong x-text="maskedPhone"></strong><br>
+        Please check your phone.
+      </p>
+    </template>
+  </div>
+
+  <!-- FLEX ZONE FOR AMAZON CTA -->
+  <div class="amazon-flex-zone" x-show="state === 'success'">
+    <a
+      href="https://www.amazon.com/dp/B0D6QQPWJQ"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View this product on Amazon"
+    >
+      <img
+        src="/images/image-only.webp"
+        alt="Check it out on Amazon"
+        class="amazon-image"
+      />
+    </a>
+  </div>
 
 </section>
+
+
 
 
 
