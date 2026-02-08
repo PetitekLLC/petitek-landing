@@ -422,44 +422,44 @@
     />
   </div>
 
-  <!-- SUCCESS -->
-  <div class="success" x-show="state === 'success'">
-    <template x-if="method === 'email'">
+ <!-- SUCCESS -->
+<div class="success" x-show="state === 'success'">
+  <template x-if="method === 'email'">
     <p>
-  We’ve texted the link to<br>
-  <strong x-text="maskedPhone"></strong><br>
-  Please check your phone.
-</p>
+      We’ve sent the link to<br>
+      <strong x-text="maskedEmail"></strong><br>
+      Please check your inbox.
+    </p>
+  </template>
 
-    </template>
-
-    <template x-if="method === 'sms'">
+  <template x-if="method === 'sms'">
     <p>
-  ✅ We’ve texted the link to<br>
-  <strong x-text="maskedPhone"></strong><br>
-  Please check your phone.
-</p>
+      We’ve texted the link to<br>
+      <strong x-text="maskedPhone"></strong><br>
+      Please check your phone.
+    </p>
+  </template>
+</div>
 
-    </template>
-
- <div class="amazon-cta">
-  <a
-    href="https://www.amazon.com/dp/B0D6QQPWJQ"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="View ChatBox on Amazon"
-  >
+<!-- AMAZON CTA (SEPARATE, BELOW) -->
+<div class="amazon-cta" x-show="state === 'success'">
+<a
+  href="https://www.amazon.com/dp/B0D6QQPWJQ"
+  class="amazon-button"
+  target="_blank"
+  rel="noopener noreferrer"
+>
     <img
       src="/images/available-at-amazon.webp"
       alt="Available at Amazon"
+      loading="lazy"
     />
   </a>
   <div class="amazon-subtext">
     Check it out now on Amazon
   </div>
 </div>
- 
-  </div>
+
 </section>
 
 
