@@ -96,45 +96,41 @@
   pointer-events: auto;
   touch-action: manipulation;
 }
-/* === Contact Capture Buttons === */
+/* === Contact Capture Buttons layout === */
+.choice-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 20px;
+  margin-bottom: 1.25rem;
+}
 
-
-/* Button base */
+/* === Button base === */
 .choice-buttons button {
   width: 100%;
   max-width: 300px;
-  height: clamp(44px, 8vw, 54px); /* MUCH taller */
-
+  height: clamp(44px, 8vw, 54px);
   padding: 0 18px;
-
-  /* shape */
-  border-radius: 12px; /* rounded rectangle */
-
-  /* typography */
+  border-radius: 12px;
   font-size: clamp(0.9rem, 2.8vw, 1.05rem);
   font-weight: 600;
   letter-spacing: 0.2px;
   line-height: 1;
-
-  /* brand */
   background-color: rgb(94, 188, 188);
   color: #ffffff;
   border: none;
-
-  /* interaction */
   cursor: pointer;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.22),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease,
     background-color 0.12s ease;
-
-  /* shadow */
-  box-shadow:
-    0 6px 14px rgba(0, 0, 0, 0.22),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
 }
 
-/* Hover (desktop only) */
+/* Hover */
 @media (hover: hover) {
   .choice-buttons button:hover {
     background-color: rgb(84, 178, 178);
@@ -145,7 +141,7 @@
   }
 }
 
-/* Pressed / tap feedback */
+/* Pressed */
 .choice-buttons button:active {
   transform: translateY(2px);
   box-shadow:
@@ -153,11 +149,10 @@
     inset 0 3px 6px rgba(0, 0, 0, 0.35);
 }
 
-/* Selected state (Alpine .active) */
+/* Active (Alpine) */
 .choice-buttons button.active {
   background-color: rgb(74, 168, 168);
 }
-
 
   </style>
 </head>
@@ -245,10 +240,10 @@
 
   <div class="choice-buttons" x-show="!success">
     <button @click="select('email')" :class="{active: method==='email'}">
-      📧 Email me the link
+      Email me the link
     </button>
     <button @click="select('sms')" :class="{active: method==='sms'}">
-      📱 Text me the link
+      Text me the link
     </button>
   </div>
 
