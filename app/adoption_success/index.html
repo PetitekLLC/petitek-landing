@@ -295,6 +295,26 @@
   margin-top: 2rem;
 }
 
+<!-- SUCCESS MESSAGE -->
+<div class="success" x-show="state === 'success'">
+  <template x-if="method === 'email'">
+    <p>
+      We’ve sent the link to<br>
+      <strong x-text="maskedEmail"></strong><br>
+      Please check your inbox.
+    </p>
+  </template>
+
+  <template x-if="method === 'sms'">
+    <p>
+      We’ve texted the link to<br>
+      <strong x-text="maskedPhone"></strong><br>
+      Please check your phone.
+    </p>
+  </template>
+</div>
+
+
 /* THIS is the centering zone */
 .amazon-flex-zone {
   flex: 1;                         /* take remaining space */
