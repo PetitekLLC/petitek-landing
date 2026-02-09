@@ -485,18 +485,23 @@
     </div>
 
     <input
-      x-show="method === 'email'"
-      type="email"
-      placeholder="Email address"
-      x-model="email"
-    />
+  x-show="method === 'email'"
+  type="email"
+  name="email"
+  autocomplete="email"
+  placeholder="Email address"
+  x-model="email"
+/>
 
-    <input
-      x-show="method === 'sms'"
-      type="tel"
-      placeholder="Mobile number"
-      x-model="phone"
-    />
+  <input
+  x-show="method === 'sms'"
+  type="tel"
+  name="tel"
+  autocomplete="tel"
+  placeholder="Mobile number"
+  x-model="phone"
+/>
+
   </div>
 <!-- SUCCESS CONFIRMATION -->
 <div class="success" x-show="state === 'success'">
