@@ -283,11 +283,11 @@
   display: inline-block;
 }
 
-/* Contact capture must own vertical space */
+
 .contact-capture {
   display: flex;
   flex-direction: column;
-  padding-bottom: 0rem; /* small breathing room above footer */
+  min-height: calc(100vh - 120px); /* subtract footer height approx */
 }
 
 
