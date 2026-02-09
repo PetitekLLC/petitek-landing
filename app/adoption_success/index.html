@@ -296,13 +296,16 @@
   margin-top: 2rem;
 }
 
-/* THIS is the centering zone */
 .amazon-flex-zone {
-  flex: 1 1 auto;          /* stop it from filling the whole page */
+  flex: 1 1 auto;
   display: flex;
+  align-items: center;
   justify-content: center;
-    margin: 0;                   /* remove margin so true centering works */
+
+  padding-top: 1.5rem;   /* 👈 restores breathing room */
+  padding-bottom: 2rem;  /* 👈 keeps footer separation */
 }
+
 
 /* Image is the visual button */
 .amazon-image {
