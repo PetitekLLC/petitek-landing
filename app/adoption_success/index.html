@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+
+
     * { box-sizing: border-box; }
 
     body {
@@ -54,10 +56,14 @@
     }
 
     /* VIDEO */
-    .video-wrap {
+.video-wrap {
   width: 100%;
-  max-width: 1366px;
-  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+}
+
 
   aspect-ratio: 16 / 9;
   background: #000;
@@ -388,6 +394,8 @@
   text-align: right;
 }
 
+
+
   </style>
 </head>
 
@@ -395,14 +403,13 @@
 
 <!-- HERO VIDEO -->
 <section id="hero">
-  <div class="container">
-    <div class="video-wrap">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="/videos/hero-settled.mp4" type="video/mp4" />
-      </video>
-    </div>
+  <div class="video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="/videos/hero-settled.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
+
 
 <!-- INTRO + IMAGE ROW -->
 <section id="why">
