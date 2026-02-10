@@ -418,15 +418,6 @@
   text-align: right;
 }
 
-.video-wrap iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-50%, -50%);
-}
-
 
   </style>
 </head>
@@ -471,20 +462,11 @@
   </div>
 </section>
 
-<!-- Video 1: cinematic -->
-<div class="video-wrap fullscreen">
-  <iframe class="vimeo-video" …></iframe>
-</div>
-
-<!-- Video 2: split / portrait -->
-<div class="video-wrap contained">
-  <iframe class="vimeo-video" …></iframe>
-</div>
 
 
 <!-- VIDEO 1 -->
 <section id="training-video-1">
-  <div class="video-wrap">
+  <div class="video-wrap fullscreen">
     <iframe
       class="vimeo-video"
       src="https://player.vimeo.com/video/1148747137?background=1&muted=1"
@@ -493,6 +475,7 @@
     </iframe>
   </div>
 </section>
+
 
 
 <!-- FINAL COPY -->
@@ -508,7 +491,7 @@
 
 <!-- VIDEO 2 -->
 <section id="training-video-2">
-  <div class="video-wrap">
+  <div class="video-wrap contained">
     <iframe
       class="vimeo-video"
       src="https://player.vimeo.com/video/1163479116?background=1&muted=1"
@@ -517,7 +500,6 @@
     </iframe>
   </div>
 </section>
-
 
 
 <section
