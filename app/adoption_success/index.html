@@ -597,17 +597,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const player = new Vimeo.Player(iframe);
 
-    player.ready().then(() => {
+    // Always start muted so autoplay / load is allowed
+    player.setMuted(true);
 
+    // ONE click: play + unmute
+    player.on('play', () => {
+      player.setMuted(false).catch(() => {});
+    });
+
+    // Pause when scrolled away
+    player.ready().then(() => {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) {
             player.pause().catch(() => {});
           }
         });
-      }, {
-        threshold: 0.25
-      });
+      }, { threshold: 0.25 });
 
       observer.observe(wrap);
     });
@@ -616,6 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+
 
 
 <script>
