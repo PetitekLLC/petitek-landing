@@ -494,8 +494,6 @@ html, body {
 </section>
 
 
-
-
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
   <div class="container">
@@ -506,7 +504,6 @@ html, body {
     </p>
   </div>
 </section>
-
 
 <!-- VIDEO 2 -->
 <section id="training-video-2">
@@ -522,6 +519,8 @@ html, body {
     </div>
   </div>
 </section>
+
+
 
 
 <section
@@ -587,6 +586,20 @@ html, body {
 </div>
 
 <div class="success" x-show="state === 'success'" x-ref="success">
+
+<div
+  x-show="state === 'success'"
+  x-ref="successBlock"
+  class="success-block"
+>
+  <div class="success">
+    <!-- existing confirmation markup -->
+  </div>
+
+  <div class="amazon-flex-zone">
+    <!-- amazon image -->
+  </div>
+</div>
 
 
 <!-- FLEX ZONE FOR AMAZON CTA -->
@@ -671,18 +684,26 @@ function contactCapture() {
       this.phone = '';
     },
 
-    send() {
-      this.state = 'success';
+   send() {
+  this.state = 'success';
 
-      this.$nextTick(() => {
-        requestAnimationFrame(() => {
-          window.scrollBy({
-            top: -80,
-            behavior: 'smooth'
-          });
-        });
+  this.$nextTick(() => {
+    requestAnimationFrame(() => {
+      const el = this.$refs.successBlock;
+      if (!el) return;
+
+      const y =
+        el.getBoundingClientRect().top +
+        window.pageYOffset -
+        40; // 👈 your desired offset
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
       });
-    },
+    });
+  });
+}
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
