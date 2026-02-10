@@ -588,6 +588,28 @@ section:has(.video-wrap.fullscreen) {
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const players = [];
+
+  document.querySelectorAll('.vimeo-video').forEach(iframe => {
+    const player = new Vimeo.Player(iframe);
+    players.push(player);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // do nothing — user controls playback
+        } else {
+          player.pause().catch(() => {});
+        }
+      });
+    }, { threshold: 0.35 });
+
+    observer.observe(iframe);
+  });
+});
+</script>
 
 <script>
 function contactCapture() {
