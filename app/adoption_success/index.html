@@ -84,8 +84,6 @@ html, body {
 }
 
 
-
-
 /* =========================
    VIMEO VIDEOS (interactive)
 ========================= */
@@ -421,6 +419,16 @@ html, body {
 }
 
 
+@media (max-width: 640px) {
+  .choice-buttons {
+    flex-wrap: wrap;      /* allow stacking on mobile */
+  }
+
+  .choice-buttons button {
+    max-width: 100%;     /* full-width buttons on small screens */
+  }
+}
+
   </style>
 </head>
 
@@ -665,26 +673,26 @@ function contactCapture() {
       this.phone = '';
     },
 
-   send() {
-  this.state = 'success';
+    send() {
+      this.state = 'success';
 
-  this.$nextTick(() => {
-    requestAnimationFrame(() => {
-      const el = this.$refs.successBlock;
-      if (!el) return;
+      this.$nextTick(() => {
+        requestAnimationFrame(() => {
+          const el = this.$refs.successBlock;
+          if (!el) return;
 
-      const y =
-        el.getBoundingClientRect().top +
-        window.pageYOffset -
-        40; // 👈 your desired offset
+          const y =
+            el.getBoundingClientRect().top +
+            window.pageYOffset -
+            40;
 
-      window.scrollTo({
-        top: y,
-        behavior: 'smooth'
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+        });
       });
-    });
-  });
-}
+    },   <!-- ✅ THIS COMMA WAS MISSING -->
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
