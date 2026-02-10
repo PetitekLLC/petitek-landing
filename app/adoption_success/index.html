@@ -63,12 +63,14 @@
 .hero-video {
   max-width: 1440px;
   margin: 0 auto;
+   overflow: hidden;
 }
 
 .hero-video video {
   width: 100%;
-  height: auto;
-  display: block;
+  height: auto;                 /* intrinsic sizing */
+  max-height: min(65vh, 520px); /* upper bound only */
+  object-fit: cover;
 }
 
 
