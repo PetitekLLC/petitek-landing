@@ -102,8 +102,6 @@ html, body {
   display: block;
 }
 
-
-
     /* IMAGE ROW */
     .image-row {
       display: grid;
@@ -171,10 +169,14 @@ html, body {
     inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-
 .unmute-button {
   min-height: 44px; /* accessibility tap target */
 }
+
+.video-wrap iframe {
+  pointer-events: auto;
+}
+
 
 /* === Contact Capture Buttons === */
 
@@ -663,9 +665,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       player.setMuted(true);
 
+let isPlaying = false;
+
+player.on('play', () => {
+  isPlaying = true;
+});
+
+player.on('pause', () => {
+  isPlaying = false;
+});
+
+iframe.addEventListener('click', () => {
+  if (isPlaying) {
+    player.pause().catch(() => {});
+  } else {
+    player.play().catch(() => {});
+  }
+});
+
       overlay.addEventListener('click', () => {
         overlay.style.display = 'none';
         player.setMuted(false).catch(() => {});
+
         player.play().catch(() => {});
       });
 
@@ -730,7 +751,7 @@ function contactCapture() {
           });
         });
       });
-    },   <!-- ✅ THIS COMMA WAS MISSING -->
+    },  
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
