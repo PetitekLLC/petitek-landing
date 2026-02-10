@@ -89,6 +89,23 @@
   aspect-ratio: auto; /* disable 16:9 box */
 }
 
+#hero .video-wrap {
+  position: relative;   /* REQUIRED */
+  overflow: hidden;     /* REQUIRED */
+  max-width: 1440px;
+  height: 80vh;
+  aspect-ratio: auto;
+}
+
+#hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
     /* IMAGE ROW */
     .image-row {
       display: grid;
