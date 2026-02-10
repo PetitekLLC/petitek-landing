@@ -562,8 +562,7 @@ html, body {
 />
   </div>
 
-
-<!-- SUCCESS + AMAZON (ONLY THIS PART) -->
+<!-- SUCCESS + AMAZON -->
 <div
   x-show="state === 'success'"
   x-ref="successBlock"
@@ -588,8 +587,27 @@ html, body {
     </template>
   </div>
 
+  <!-- AMAZON CTA -->
+  <div class="amazon-cta">
+    <a
+      href="https://www.amazon.com/dp/YOUR-ASIN"
+      target="_blank"
+      rel="noopener"
+    >
+      <img
+        src="/images/amazon-buy-button.webp"
+        alt="Buy ChatrBox on Amazon"
+        class="amazon-image"
+      />
+    </a>
 
-</section>
+    <div class="amazon-subtext">
+      Available now on Amazon
+    </div>
+  </div>
+
+</div>
+
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 
