@@ -59,8 +59,7 @@
 .video-wrap {
   position: relative;
   width: 100%;
-  height: 100vh;
-  background: #000;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -72,6 +71,38 @@
   height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
+}
+
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-wrap.fullscreen {
+  height: 100vh;
+}
+
+.video-wrap.fullscreen iframe {
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
+.video-wrap.contained {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 90vh;
+}
+
+.video-wrap.contained iframe {
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+section:has(.video-wrap.fullscreen) {
+  margin-bottom: 0;
 }
 
 
@@ -321,7 +352,6 @@
   transform: translateX(10px);
 }
 
-}
 
 .amazon-subtext {
   margin-top: 0.8rem;
@@ -391,7 +421,6 @@
 }
 
 
-
   </style>
 </head>
 
@@ -399,12 +428,13 @@
 
 <!-- HERO VIDEO -->
 <section id="hero">
-  <div class="video-wrap">
+  <div class="video-wrap fullscreen">
     <video autoplay muted loop playsinline preload="auto">
       <source src="/videos/hero-settled.mp4" type="video/mp4" />
     </video>
   </div>
 </section>
+
 
 
 <!-- INTRO + IMAGE ROW -->
@@ -435,17 +465,19 @@
   </div>
 </section>
 
+
 <!-- VIDEO 1 -->
-<section id="home-video">
-  <div class="video-wrap">
-    <video id="adoptVideo2" autoplay muted loop playsinline preload="auto">
-      <source src="/videos/home-environment.mp4" type="video/mp4" />
-    </video>
-    <div id="unmuteOverlayAdopt2" class="unmute-overlay">
-      🔊 Tap to Unmute
-    </div>
+<section id="training-video-1">
+  <div class="video-wrap fullscreen">
+    <iframe
+      class="vimeo-video"
+      src="https://player.vimeo.com/video/1148747137?muted=1"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 </section>
+
 
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
@@ -459,16 +491,18 @@
 </section>
 
 <!-- VIDEO 2 -->
-<section id="training-video">
-  <div class="video-wrap">
-    <video id="adoptVideo1" autoplay muted loop playsinline preload="auto">
-      <source src="/videos/adjustment-sequence.mp4" type="video/mp4" />
-    </video>
-    <div id="unmuteOverlayAdopt1" class="unmute-overlay">
-      🔊 Tap to Unmute
-    </div>
+<!-- VIDEO 2 -->
+<section id="training-video-2">
+  <div class="video-wrap contained">
+    <iframe
+      class="vimeo-video"
+      src="https://player.vimeo.com/video/1163479116?muted=1"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 </section>
+
 
 
 <section
@@ -552,101 +586,44 @@
 
 </section>
 
+<script src="https://player.vimeo.com/api/player.js"></script>
 
-<!-- =========================
-     VIDEO LOGIC (REUSED FROM MAIN SITE)
-========================= -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  const videos = [
-    { id: 'adoptVideo1', overlayId: 'unmuteOverlayAdopt1' },
-    { id: 'adoptVideo2', overlayId: 'unmuteOverlayAdopt2' }
-  ];
+  document.querySelectorAll('.video-wrap').forEach(wrap => {
+    const iframe = wrap.querySelector('.vimeo-video');
+    if (!iframe) return;
 
-  let currentlyPlaying = null;
+    const player = new Vimeo.Player(iframe);
 
-function initVideo({ id, overlayId }) {
-  const video = document.getElementById(id);
-  const overlay = document.getElementById(overlayId);
-  if (!video || !overlay) return;
+    // Always start muted so autoplay / load is allowed
+    player.setMuted(true);
 
-  video.muted = true;
-  let userPaused = false;
-
-  /* -------------------------
-     Scroll-based play / pause
-  ------------------------- */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-
-        // Pause any other playing video
-        videos.forEach(({ id: vid }) => {
-          const v = document.getElementById(vid);
-          if (v && v !== video && !v.paused) v.pause();
-        });
-
-        currentlyPlaying = video;
-
-        // Only autoplay if user didn't manually pause
-        if (!userPaused && video.readyState >= 2) {
-          video.play().catch(() => {});
-        }
-
-      } else {
-        if (video === currentlyPlaying) {
-          video.pause();
-        }
-      }
+    // ONE click: play + unmute
+    player.on('play', () => {
+      player.setMuted(false).catch(() => {});
     });
-  }, { threshold: 0.5 });
 
-  observer.observe(video);
+    // Pause when scrolled away
+    player.ready().then(() => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            player.pause().catch(() => {});
+          }
+        });
+      }, { threshold: 0.25 });
 
-  /* -------------------------
-     Overlay click = unmute + restart
-  ------------------------- */
-  overlay.addEventListener('click', () => {
-    userPaused = false;
-    video.currentTime = 0;
-    video.muted = false;
-    overlay.style.display = 'none';
-    video.play().catch(() => {});
+      observer.observe(wrap);
+    });
+
   });
-
-  /* -------------------------
-     VIDEO CLICK = pause / resume
-  ------------------------- */
-  video.addEventListener('click', () => {
-    if (video.paused) {
-      userPaused = false;
-      video.play().catch(() => {});
-    } else {
-      userPaused = true;
-      video.pause();
-    }
-  });
-
-  /* -------------------------
-     Reset when video ends
-  ------------------------- */
-  video.addEventListener('ended', () => {
-    userPaused = false;
-    video.currentTime = 0;
-    video.muted = true;
-    overlay.style.display = 'flex';
-  });
-}
-
-  videos.forEach(initVideo);
 
 });
-
 </script>
 
-<!-- Alpine.js -->
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 
 <script>
 function contactCapture() {
