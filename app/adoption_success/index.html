@@ -465,6 +465,10 @@ html, body {
   }
 }
 
+.video-wrap iframe {
+  pointer-events: none;   /* let wrapper receive clicks */
+}
+
   </style>
 </head>
 
@@ -667,29 +671,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let isPlaying = false;
 
-      player.on('play', () => {
-        isPlaying = true;
-      });
+      player.on('play', () => isPlaying = true);
+      player.on('pause', () => isPlaying = false);
 
-      player.on('pause', () => {
-        isPlaying = false;
-      });
-
-      // Overlay click → unmute + play
+      // Overlay click
       overlay.addEventListener('click', (e) => {
-        e.stopPropagation();              // prevent bubbling to wrap
+        e.stopPropagation();
         overlay.style.display = 'none';
         player.setMuted(false).catch(() => {});
         player.play().catch(() => {});
       });
 
-      // Click anywhere on video area → toggle play/pause
-      wrap.addEventListener('click', (e) => {
-        // Ignore if overlay still visible
+      // Click anywhere in wrapper toggles play/pause
+      wrap.addEventListener('click', () => {
         if (overlay.style.display !== 'none') return;
-
-        // Ignore if clicking the teal button itself
-        if (e.target.closest('.unmute-button')) return;
 
         if (isPlaying) {
           player.pause().catch(() => {});
@@ -698,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Pause when scrolled out of view
+      // Pause when scrolled away
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) {
@@ -719,8 +714,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
-
-
 
 
 <script>
