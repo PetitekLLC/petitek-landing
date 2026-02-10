@@ -138,6 +138,43 @@ html, body {
   pointer-events: auto;
   touch-action: manipulation;
 }
+
+.unmute-button {
+  background-color: rgb(94, 188, 188);   /* brand teal */
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.25),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.unmute-button:hover {
+  background-color: rgb(84, 178, 178);
+}
+
+.unmute-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.35),
+    inset 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+
+.unmute-button {
+  min-height: 44px; /* accessibility tap target */
+}
+
 /* === Contact Capture Buttons === */
 
 
@@ -508,10 +545,12 @@ html, body {
 </iframe>
 
 
-    <div class="unmute-overlay">
-      🔊 Tap to Unmute
-    </div>
-  </div>
+   <div class="unmute-overlay">
+  <button class="unmute-button">
+    🔊 Tap to Unmute
+  </button>
+</div>
+
 </section>
 
 
