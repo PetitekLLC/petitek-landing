@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+html, body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
 
 
     * { box-sizing: border-box; }
@@ -356,8 +360,9 @@
   height: auto;
   display: block;
   cursor: pointer;
-  transform: translateX(10px);
+  margin-left: 10px;   /* 👈 visual offset without overflow */
 }
+
 
 
 .amazon-subtext {
