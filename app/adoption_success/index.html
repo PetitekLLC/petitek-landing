@@ -187,6 +187,16 @@ html, body {
     inset 0 3px 6px rgba(0, 0, 0, 0.35);
 }
 
+.video-wrap iframe {
+  position: relative;
+  z-index: 1;
+}
+
+.unmute-overlay {
+  z-index: 5;
+}
+
+
 /* Selected state (Alpine .active) */
 .choice-buttons button.active {
   background-color: rgb(74, 168, 168);
@@ -463,9 +473,9 @@ html, body {
 <!-- VIDEO 1 -->
 <section id="training-video-1">
   <div class="video-wrap">
-  <iframe
-  class="vimeo-video lazy-video"
-  data-src="https://player.vimeo.com/video/1148747137?muted=1&controls=0&title=0&byline=0&portrait=0"
+<iframe
+  class="vimeo-video"
+  src="https://player.vimeo.com/video/1148747137?muted=1&controls=0&title=0&byline=0&portrait=0"
   allow="autoplay; fullscreen; picture-in-picture">
 </iframe>
 
@@ -491,10 +501,9 @@ html, body {
 <!-- VIDEO 2 -->
 <section id="training-video-2">
   <div class="video-wrap">
-    <iframe
-    <iframe
-  class="vimeo-video lazy-video"
-  data-src="https://player.vimeo.com/video/1163479116?muted=1&controls=0&title=0&byline=0&portrait=0"
+  <iframe
+  class="vimeo-video"
+  src="https://player.vimeo.com/video/1163479116?muted=1&controls=0&title=0&byline=0&portrait=0"
   allow="autoplay; fullscreen; picture-in-picture">
 </iframe>
 
@@ -504,8 +513,6 @@ html, body {
     </div>
   </div>
 </section>
-
-
 
 
 <section
@@ -641,23 +648,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const lazyVideos = document.querySelectorAll("iframe.lazy-video");
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const iframe = entry.target;
-        iframe.src = iframe.dataset.src;
-        obs.unobserve(iframe);
-      }
-    });
-  }, { rootMargin: "200px" });
-
-  lazyVideos.forEach(video => observer.observe(video));
-});
-</script>
 
 
 <script>
