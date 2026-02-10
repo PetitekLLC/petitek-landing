@@ -81,6 +81,11 @@
   height: auto;   /* natural ratio */
   display: block;
 }
+
+.hero-video .unmute-overlay {
+  display: none !important;
+}
+
 /* =========================
    STANDARD VIDEOS (Vimeo)
 ========================= */
@@ -590,7 +595,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  document.querySelectorAll('.video-wrap').forEach(wrap => {
+  document.querySelectorAll('.video-wrap:not(.hero-video)').forEach(wrap => {
     const iframe = wrap.querySelector('.vimeo-video');
     const overlay = wrap.querySelector('.unmute-overlay');
     if (!iframe || !overlay) return;
