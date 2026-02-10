@@ -90,20 +90,24 @@
   padding: 0;
 }
 
-/* HERO WRAP */
-/* HERO WRAPPER */
+/* HERO VIDEO — NO LETTERBOXING */
+#hero {
+  background: #fff;
+}
+
 #hero .video-wrap {
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1440px;   /* desktop ceiling */
   margin: 0 auto;
+  height: auto;        /* 🔑 LET CONTENT DECIDE HEIGHT */
+  overflow: hidden;
 }
 
-/* HERO VIDEO */
 #hero video {
-  position: static;   /* 👈 CRITICAL */
+  position: relative; /* NOT absolute anymore */
   width: 100%;
-  height: auto;
+  height: auto;       /* 🔑 this removes black bars */
   display: block;
 }
 
