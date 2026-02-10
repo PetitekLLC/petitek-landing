@@ -590,26 +590,33 @@ section:has(.video-wrap.fullscreen) {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const players = [];
 
-  document.querySelectorAll('.vimeo-video').forEach(iframe => {
+  document.querySelectorAll('.video-wrap').forEach(wrap => {
+    const iframe = wrap.querySelector('.vimeo-video');
+    if (!iframe) return;
+
     const player = new Vimeo.Player(iframe);
-    players.push(player);
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // do nothing — user controls playback
-        } else {
-          player.pause().catch(() => {});
-        }
+    player.ready().then(() => {
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            player.pause().catch(() => {});
+          }
+        });
+      }, {
+        threshold: 0.25
       });
-    }, { threshold: 0.35 });
 
-    observer.observe(iframe);
+      observer.observe(wrap);
+    });
+
   });
+
 });
 </script>
+
 
 <script>
 function contactCapture() {
