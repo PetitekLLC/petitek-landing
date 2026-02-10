@@ -585,38 +585,31 @@ html, body {
   </template>
 </div>
 
-<div class="success" x-show="state === 'success'" x-ref="success">
-
+<!-- SUCCESS + AMAZON (ONLY THIS PART) -->
 <div
   x-show="state === 'success'"
   x-ref="successBlock"
-  class="success-block"
 >
+
+  <!-- SUCCESS CONFIRMATION -->
   <div class="success">
-    <!-- existing confirmation markup -->
+    <template x-if="method === 'email'">
+      <p>
+        We’ve sent the link to<br>
+        <strong x-text="maskedEmail"></strong><br>
+        Please check your inbox.
+      </p>
+    </template>
+
+    <template x-if="method === 'sms'">
+      <p>
+        We’ve texted the link to<br>
+        <strong x-text="maskedPhone"></strong><br>
+        Please check your phone.
+      </p>
+    </template>
   </div>
 
-  <div class="amazon-flex-zone">
-    <!-- amazon image -->
-  </div>
-</div>
-
-
-<!-- FLEX ZONE FOR AMAZON CTA -->
-  <div class="amazon-flex-zone" x-show="state === 'success'">
-    <a
-      href="https://www.amazon.com/dp/B0D6QQPWJQ"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="View this product on Amazon"
-    >
-      <img
-        src="/images/available-at-amazon.webp"
-        alt="Check it out on Amazon"
-        class="amazon-image"
-      />
-    </a>
-  </div>
 
 </section>
 
