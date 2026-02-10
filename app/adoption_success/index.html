@@ -59,24 +59,23 @@ html, body {
       h2 { line-height: 1.15; }
     }
 
-
-/* =========================
+    /* =========================
    HERO VIDEO (cinematic, silent)
 ========================= */
 
 .hero-video {
   max-width: 1440px;
   margin: 0 auto;
-   overflow: hidden;
+  overflow: hidden; /* prevents any stray edges */
 }
 
+/* Let the video define its own height (no letterboxing) */
 .hero-video video {
   width: 100%;
-  height: auto;                 /* intrinsic sizing */
-  max-height: min(65vh, 520px); /* upper bound only */
-  object-fit: cover;
+  height: auto;
+  display: block;
+  pointer-events: none; /* cinematic only */
 }
-
 
 /* Never allow overlays on hero */
 .hero-video .unmute-overlay {
@@ -84,18 +83,7 @@ html, body {
   pointer-events: none !important;
 }
 
-/* HARD ISOLATION — hero must not behave like video-wrap */
-.hero-video {
-  position: static !important;
-}
 
-.hero-video video {
-  position: static !important;
-}
-
-.hero-video * {
-  pointer-events: none;
-}
 
 
 /* =========================
