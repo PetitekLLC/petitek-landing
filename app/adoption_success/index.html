@@ -664,9 +664,16 @@ function contactCapture() {
     },
 
     send() {
-      // FE-only for now
-      this.state = 'success';
-    },
+  this.state = 'success';
+
+  // Let DOM update, then gently scroll up
+  this.$nextTick(() => {
+    window.scrollBy({
+      top: -40,
+      behavior: 'smooth'
+    });
+  });
+},
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
