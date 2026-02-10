@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+
+
     * { box-sizing: border-box; }
 
     body {
@@ -54,24 +56,24 @@
     }
 
     /* VIDEO */
-    .video-wrap {
+.video-wrap {
+  position: relative;
   width: 100%;
-  max-width: 1366px;
-  margin: 0 auto;
-
-  aspect-ratio: 16 / 9;
+  height: 100vh;
   background: #000;
   overflow: hidden;
-  position: relative;
 }
 
+.video-wrap video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
 
-    .video-wrap video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
 
     /* IMAGE ROW */
     .image-row {
@@ -388,6 +390,8 @@
   text-align: right;
 }
 
+
+
   </style>
 </head>
 
@@ -395,14 +399,13 @@
 
 <!-- HERO VIDEO -->
 <section id="hero">
-  <div class="container">
-    <div class="video-wrap">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="/videos/hero-settled.mp4" type="video/mp4" />
-      </video>
-    </div>
+  <div class="video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="/videos/hero-settled.mp4" type="video/mp4" />
+    </video>
   </div>
 </section>
+
 
 <!-- INTRO + IMAGE ROW -->
 <section id="why">
@@ -714,5 +717,3 @@ function contactCapture() {
 
 </body>
 </html>
-
-
