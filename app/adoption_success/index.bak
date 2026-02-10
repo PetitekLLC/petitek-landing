@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+html, body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
 
 
     * { box-sizing: border-box; }
@@ -55,40 +59,28 @@
       h2 { line-height: 1.15; }
     }
 
-
-/* =========================
+    /* =========================
    HERO VIDEO (cinematic, silent)
 ========================= */
 
 .hero-video {
   max-width: 1440px;
   margin: 0 auto;
+  overflow: hidden; /* prevents any stray edges */
 }
 
+/* Let the video define its own height (no letterboxing) */
 .hero-video video {
   width: 100%;
   height: auto;
   display: block;
+  pointer-events: none; /* cinematic only */
 }
-
 
 /* Never allow overlays on hero */
 .hero-video .unmute-overlay {
   display: none !important;
   pointer-events: none !important;
-}
-
-/* HARD ISOLATION — hero must not behave like video-wrap */
-.hero-video {
-  position: static !important;
-}
-
-.hero-video video {
-  position: static !important;
-}
-
-.hero-video * {
-  pointer-events: none;
 }
 
 
@@ -151,37 +143,25 @@
 
 /* Button base */
 .choice-buttons button {
-  width: 100%;
-  max-width: 300px;
-  height: clamp(44px, 8vw, 54px); /* MUCH taller */
-
+  width: auto;
+  min-width: 180px;
+  max-width: 200px;
+  height: clamp(44px, 8vw, 54px);
   padding: 0 18px;
-
-  /* shape */
-  border-radius: 12px; /* rounded rectangle */
-
-  /* typography */
+  border-radius: 12px;
   font-size: clamp(0.9rem, 2.8vw, 1.05rem);
   font-weight: 600;
   letter-spacing: 0.2px;
   line-height: 1;
-
-  /* brand */
   background-color: rgb(94, 188, 188);
   color: #ffffff;
   border: none;
-
-  /* interaction */
   cursor: pointer;
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    background-color 0.12s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+  .choice-buttons {
+  gap: 14px;
+}
 
-  /* shadow */
-  box-shadow:
-    0 6px 14px rgba(0, 0, 0, 0.22),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.18);
 }
 
 /* Hover (desktop only) */
@@ -354,7 +334,7 @@
   height: auto;
   display: block;
   cursor: pointer;
-  transform: translateX(10px);
+  margin-left: 10px;   /* 👈 visual offset without overflow */
 }
 
 
@@ -368,9 +348,9 @@
 /* === Petitek Footer === */
 
 .petitek-footer {
-  background-color: rgb(94, 188, 188);
+  background-color: black;
   color: #ffffff;
-  margin-top: 1.25rem;
+  margin-top: 4rem;
 }
 
 .footer-inner {
@@ -385,7 +365,6 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: clamp(0.85rem, 0.9vw, 1rem);
 }
-
 
 
 /* Links */
@@ -425,6 +404,21 @@
   text-align: right;
 }
 
+
+@media (max-width: 640px) {
+  .choice-buttons {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .choice-buttons button {
+    width: auto;
+    min-width: 150px;
+    max-width: 180px;
+    padding: 0 14px;
+    font-size: 0.9rem;
+  }
+}
 
   </style>
 </head>
@@ -487,8 +481,6 @@
 </section>
 
 
-
-
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
   <div class="container">
@@ -499,7 +491,6 @@
     </p>
   </div>
 </section>
-
 
 <!-- VIDEO 2 -->
 <section id="training-video-2">
@@ -515,6 +506,8 @@
     </div>
   </div>
 </section>
+
+
 
 
 <section
@@ -558,44 +551,54 @@
   placeholder="Mobile number"
   x-model="phone"
 />
-
   </div>
-<!-- SUCCESS CONFIRMATION -->
-<div class="success" x-show="state === 'success'">
-  <template x-if="method === 'email'">
-    <p>
-      We’ve sent the link to<br>
-      <strong x-text="maskedEmail"></strong><br>
-      Please check your inbox.
-    </p>
-  </template>
 
-  <template x-if="method === 'sms'">
-    <p>
-      We’ve texted the link to<br>
-      <strong x-text="maskedPhone"></strong><br>
-      Please check your phone.
-    </p>
-  </template>
-</div>
+<!-- SUCCESS + AMAZON -->
+<div
+  x-show="state === 'success'"
+  x-ref="successBlock"
+>
 
-<!-- FLEX ZONE FOR AMAZON CTA -->
-  <div class="amazon-flex-zone" x-show="state === 'success'">
+  <!-- SUCCESS CONFIRMATION -->
+  <div class="success">
+    <template x-if="method === 'email'">
+      <p>
+        We’ve sent the link to<br>
+        <strong x-text="maskedEmail"></strong><br>
+        Please check your inbox.
+      </p>
+    </template>
+
+    <template x-if="method === 'sms'">
+      <p>
+        We’ve texted the link to<br>
+        <strong x-text="maskedPhone"></strong><br>
+        Please check your phone.
+      </p>
+    </template>
+  </div>
+
+  <!-- AMAZON CTA -->
+  <div class="amazon-cta">
     <a
-      href="https://www.amazon.com/dp/B0D6QQPWJQ"
+      href="https://www.amazon.com/dp/YOUR-ASIN"
       target="_blank"
-      rel="noopener noreferrer"
-      aria-label="View this product on Amazon"
+      rel="noopener"
     >
       <img
         src="/images/available-at-amazon.webp"
-        alt="Check it out on Amazon"
+        alt="Buy ChatrBox on Amazon"
         class="amazon-image"
       />
     </a>
+
+    <div class="amazon-subtext">
+      Available now on Amazon
+    </div>
   </div>
 
-</section>
+</div>
+
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 
@@ -640,13 +643,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-
-
-
 <script>
 function contactCapture() {
   return {
-    state: 'choice', // choice | input | success
+    state: 'choice',
     method: null,
     email: '',
     phone: '',
@@ -664,9 +664,25 @@ function contactCapture() {
     },
 
     send() {
-      // FE-only for now
       this.state = 'success';
-    },
+
+      this.$nextTick(() => {
+        requestAnimationFrame(() => {
+          const el = this.$refs.successBlock;
+          if (!el) return;
+
+          const y =
+            el.getBoundingClientRect().top +
+            window.pageYOffset -
+            40;
+
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+        });
+      });
+    },   <!-- ✅ THIS COMMA WAS MISSING -->
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
@@ -683,6 +699,7 @@ function contactCapture() {
   };
 }
 </script>
+
 
 <footer class="petitek-footer">
   <div class="footer-inner">
@@ -712,3 +729,4 @@ function contactCapture() {
 
 </body>
 </html>
+
