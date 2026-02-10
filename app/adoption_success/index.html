@@ -668,11 +668,12 @@ function contactCapture() {
     send() {
   this.state = 'success';
 
-  // Let DOM update, then gently scroll up
   this.$nextTick(() => {
-    window.scrollBy({
-      top: -80,
-      behavior: 'smooth'
+    requestAnimationFrame(() => {
+      window.scrollBy({
+        top: -80,
+        behavior: 'smooth'
+      });
     });
   });
 },
