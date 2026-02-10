@@ -84,12 +84,17 @@
 }
 
 
+#hero {
+  background: #fff;
+  padding: clamp(1rem, 4vw, 3rem) 0;
+}
+
 #hero .video-wrap {
-  position: relative;   /* REQUIRED */
-  overflow: hidden;     /* REQUIRED */
+  position: relative;
+  overflow: hidden;
   max-width: 1440px;
   height: 80vh;
-  aspect-ratio: auto;
+  margin: 0 auto;
 }
 
 #hero video {
@@ -99,11 +104,6 @@
   height: 100%;
   object-fit: cover;
 }
-
-#hero {
-  background: #fff; /* or white, or subtle gradient */
-}
-
 
     /* IMAGE ROW */
     .image-row {
