@@ -67,21 +67,21 @@
   background: #fff;
 }
 
-#hero .video-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 1440px;   /* desktop ceiling */
+/* =========================
+   HERO VIDEO (special case)
+========================= */
+
+.hero-video {
+  max-width: 1440px;
   margin: 0 auto;
-  height: auto;        /* 🔑 LET CONTENT DECIDE HEIGHT */
-  overflow: hidden;
 }
 
-#hero video {
-  position: relative; /* NOT absolute anymore */
+.hero-video video {
   width: 100%;
-  height: auto;       /* 🔑 this removes black bars */
+  height: auto;   /* natural ratio */
   display: block;
 }
+
 
     /* IMAGE ROW */
     .image-row {
@@ -398,14 +398,14 @@
 }
 
 
-  </style>
+  </style
 </head>
 
 <body>
 
 <!-- HERO VIDEO -->
 <section id="hero">
-  <div class="video-wrap">
+  <div class="video-wrap hero-video">
     <video autoplay muted loop playsinline preload="auto">
       <source src="/videos/hero-settled.mp4" type="video/mp4" />
     </video>
