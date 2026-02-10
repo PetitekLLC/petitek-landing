@@ -434,6 +434,11 @@ html, body {
   </div>
 </section>
 
+<iframe
+  class="vimeo-video lazy-video"
+  data-src="https://player.vimeo.com/video/1148747137?muted=1"
+  allow="autoplay; fullscreen; picture-in-picture"
+></iframe>
 
 
 <!-- INTRO + IMAGE ROW -->
@@ -642,6 +647,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const lazyVideos = document.querySelectorAll("iframe.lazy-video");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const iframe = entry.target;
+        iframe.src = iframe.dataset.src;
+        obs.unobserve(iframe);
+      }
+    });
+  }, { rootMargin: "200px" });
+
+  lazyVideos.forEach(video => observer.observe(video));
+});
+</script>
+
 
 <script>
 function contactCapture() {
