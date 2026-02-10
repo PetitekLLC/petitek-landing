@@ -84,26 +84,31 @@
 }
 
 
+/* HERO CONTAINER */
 #hero {
   background: #fff;
-  padding: clamp(1rem, 4vw, 3rem) 0;
+  padding: 0;
 }
 
+/* HERO WRAP */
 #hero .video-wrap {
   position: relative;
-  overflow: hidden;
-  max-width: 1440px;
-  height: 80vh;
+  width: 100%;
+  max-width: 1440px;     /* desktop ceiling */
+  height: 80vh;          /* cinematic height */
   margin: 0 auto;
+  overflow: hidden;
 }
 
+/* HERO VIDEO */
 #hero video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;     /* 🔥 THIS removes black bars */
 }
+
 
     /* IMAGE ROW */
     .image-row {
