@@ -471,6 +471,12 @@ html, body {
   pointer-events: none;   /* let wrapper receive clicks */
 }
 
+<div
+  x-show="error"
+  x-text="error"
+  style="color:#b00020; font-size:0.85rem; margin-top:6px;"
+></div>
+
   </style>
 </head>
 
@@ -587,23 +593,26 @@ html, body {
       <button class="ghost" @click="cancel">Cancel</button>
     </div>
 
-    <input
+ <input
   x-show="method === 'email'"
   type="email"
   name="email"
+  required
   autocomplete="email"
   placeholder="Email address"
   x-model="email"
 />
 
-  <input
+<input
   x-show="method === 'sms'"
   type="tel"
   name="tel"
-  autocomplete="tel"
+  required
+  inputmode="numeric"
   placeholder="Mobile number"
   x-model="phone"
 />
+
   </div>
 
 <!-- SUCCESS + AMAZON -->
@@ -740,6 +749,8 @@ function contactCapture() {
     method: null,
     email: '',
     phone: '',
+    error: '',
+
 
     select(type) {
       this.method = type;
@@ -753,26 +764,47 @@ function contactCapture() {
       this.phone = '';
     },
 
-    send() {
-      this.state = 'success';
+send() {
 
-      this.$nextTick(() => {
-        requestAnimationFrame(() => {
-          const el = this.$refs.successBlock;
-          if (!el) return;
+  this.error = '';
 
-          const y =
-            el.getBoundingClientRect().top +
-            window.pageYOffset -
-            40;
+  if (this.method === 'email') {
+    if (!this.email || !this.email.includes('@')) {
+      this.error = "Please enter a valid email address.";
+      return;
+    }
+  }
 
-          window.scrollTo({
-            top: y,
-            behavior: 'smooth'
-          });
-        });
+  if (this.method === 'sms') {
+    const digits = this.phone.replace(/\D/g, '');
+
+    if (digits.length !== 10) {
+      this.error = "Please enter a valid 10-digit US mobile number.";
+      return;
+    }
+
+    this.phone = digits; // store clean number
+  }
+
+  this.state = 'success';
+
+  this.$nextTick(() => {
+    requestAnimationFrame(() => {
+      const el = this.$refs.successBlock;
+      if (!el) return;
+
+      const y =
+        el.getBoundingClientRect().top +
+        window.pageYOffset - 40;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
       });
-    },  
+    });
+  });
+},
+
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
