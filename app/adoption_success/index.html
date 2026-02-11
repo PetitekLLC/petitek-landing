@@ -251,15 +251,16 @@ html, body {
   padding: 0 20px;       /* space LEFT + RIGHT */
   margin-bottom: 1.25rem;
 }
-/* === Input row === */
-.input-row {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
-  padding: 0 20px;
-  margin-bottom: 1.25rem;
+
+.input-row input {
+  width: 220px;   /* narrower input */
 }
+
+.action-buttons .secondary,
+.action-buttons .ghost {
+  padding: 0 10px;   /* slightly smaller buttons */
+}
+
 
 .action-buttons {
   display: flex;
@@ -274,16 +275,15 @@ html, body {
 
 
 
-.input-row input {
-  min-width: 150px;
-  width: 100%;
-  max-width: 280px;
-  height: 44px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  padding: 0 20px;
+  margin-bottom: 1.25rem;
 }
+
 
 /* === Action buttons (Send / Cancel) === */
 .action-buttons {
