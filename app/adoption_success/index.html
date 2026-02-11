@@ -257,7 +257,9 @@ html, body {
 }
 
 .input-row input {
-  width: 240px;              /* controlled width */
+  flex: 1 1 auto;      /* allow controlled shrink */
+  min-width: 180px;    /* protects usability */
+  max-width: 240px;    /* normal desktop size */
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
@@ -266,6 +268,7 @@ html, body {
   background: #f5f5f5;
   outline: none;
 }
+
 
 .input-row input:focus {
   border-color: rgb(94, 188, 188);
@@ -287,9 +290,9 @@ html, body {
 .input-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   justify-content: center;
-  flex-wrap: wrap;   /* 🔥 allow wrapping */
+  flex-wrap: nowrap;   /* 🔥 allow wrapping */
 }
 
 .input-row > div[x-show="error"] {
@@ -297,15 +300,14 @@ html, body {
   text-align: center;
 }
 
-
 /* === Action buttons (Send / Cancel) === */
-.action-buttons {
-  display: flex;
-  flex-direction: row;   /* 🔥 force horizontal */
-  gap: 8px;
-  justify-content: center;
+.action-buttons button {
+  flex: 0 0 auto;   /* shrinkable, not growable */
+  min-width: auto;  /* small floor */
+  padding: 0 8px;   /* tighter horizontal padding */
+  font-size: 0.85rem;    /* slightly smaller */
+  white-space: nowrap;
 }
-
 
 /* Send link */
 .action-buttons .secondary {
@@ -314,7 +316,7 @@ html, body {
   border: none;
   border-radius: 10px;
   height: 44px;
-  padding: 0 14px;
+  padding: 0 10px;
   font-weight: 600;
   cursor: pointer;
   box-shadow:
@@ -487,25 +489,26 @@ html, body {
 }
 
 
-@media (max-width: 640px) {
-  .choice-buttons {
-    flex-wrap: wrap;
-    gap: 14px;
-  }
-
-  .choice-buttons button {
-    width: auto;
-    min-width: 150px;
-    max-width: 180px;
-    padding: 0 14px;
-    font-size: 0.9rem;
-  }
-}
 
 .video-wrap iframe {
   pointer-events: none;   /* let wrapper receive clicks */
 }
 
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;            /* slightly tighter */
+  margin: 0 auto 1.25rem;
+  max-width: 520px;
+  flex-wrap: nowrap;    /* 🔥 never wrap */
+}
+
+.choice-buttons button {
+  flex: 1 1 0;          /* allow shrinking */
+  max-width: 200px;
+  min-width: 130px;     /* small enough to fit */
+  padding: 0 12px;      /* slightly tighter */
+}
 
   </style>
 </head>
@@ -525,10 +528,9 @@ html, body {
 <!-- INTRO + IMAGE ROW -->
 <section id="why">
   <div class="container">
-    <h2>Why the first weeks matter</h2>
+    <h2>Great Training Helps Build a Great Adoption</h2>
     <p>
-      New environments bring new routines, boundaries, and expectations.
-      Adjustment is normal — and early support helps pets settle calmly.
+      Bringing a pet home is a meaningful commitment. As your companion adjusts to new surroundings and routines, steady, non-fearful guidance helps transforms uncertainty into confidence — and early challenges into lasting trust.
     </p>
 
     <div class="image-row">
@@ -542,10 +544,9 @@ html, body {
 <!-- SUPPORT COPY -->
 <section id="support">
   <div class="container">
-    <h2>Support makes the difference</h2>
+    <h2>A Different Approach to Behavior Support</h2>
     <p>
-      With time, consistency, and the right guidance, pets begin to feel safe
-      and at ease in their new homes.
+   ChatrBox, by Petitek, provides immediate, consistent guidance using your recorded voice the moment behaviors begin — even when you can’t be there to provide that guidance yourself. It helps pets connect actions with outcomes without fear or force. 
     </p>
   </div>
 </section>
@@ -572,10 +573,9 @@ html, body {
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
   <div class="container">
-    <h2>One optional support tool</h2>
+    <h2>A Support Offer for Adopters</h2>
     <p>
-      ChatrBox reinforces calm, consistent guidance during the adjustment
-      period — helping pets learn without stress or fear.
+      Through our partnerships, ChatrBox trainer is being offered at a reduced rate to help support your adoption success.
     </p>
   </div>
 </section>
@@ -606,9 +606,9 @@ html, body {
 >
   <div class="container">
 
-    <h3>Want helpful training guidance?</h3>
+    <h3>Receive the Reduced-Rate Offer</h3>
     <p class="subtext">
-      We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+     Click below and we’ll send the ChatrBox link and offer details
     </p>
 
     <!-- CHOICE BUTTONS -->
@@ -892,3 +892,4 @@ if (this.method === 'email') {
 
 </body>
 </html>
+
