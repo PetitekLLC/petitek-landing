@@ -284,15 +284,19 @@ html, body {
   white-space: nowrap;
 }
 
-
 .input-row {
   display: flex;
   align-items: center;
   gap: 12px;
   justify-content: center;
-  padding: 0 20px;
-  margin-bottom: 1.25rem;
+  flex-wrap: wrap;   /* 🔥 allow wrapping */
 }
+
+.input-row > div[x-show="error"] {
+  flex-basis: 100%;   /* 🔥 force full width row */
+  text-align: center;
+}
+
 
 /* === Action buttons (Send / Cancel) === */
 .action-buttons {
