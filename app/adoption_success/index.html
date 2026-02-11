@@ -36,14 +36,12 @@ html, body {
       font-size: clamp(1.55rem, 3.5vw, 2.3rem);
       line-height: 1.2;
       margin: 0 auto 0.5rem;
-      max-width: clamp(34ch, 85%, 65ch);
       text-align: center;
     }
 
     p {
       font-size: clamp(0.95rem, 1rem + 0.9vw, 1.4rem);
       line-height: clamp(1.45, 1.4 + 0.4vw, 1.7);
-      max-width: clamp(34ch, 85%, 65ch);
       margin: 0 auto 1.25rem;
     }
 
@@ -51,9 +49,18 @@ html, body {
   font-size: clamp(1.55rem, 3.5vw, 2.3rem);
   line-height: 1.2;
   margin: 0 auto 0.5rem;
-  max-width: clamp(28ch, 75vw, 52ch);
   text-align: center;
 }
+/* Unified text width for all centered sections */
+.container > h2,
+.container > p,
+.container > h3 {
+  max-width: clamp(34ch, 85%, 65ch);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 
     @media (max-width: 420px) {
       h2 { line-height: 1.15; }
