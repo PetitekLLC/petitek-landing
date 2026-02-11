@@ -1,233 +1,894 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="canonical" href="https://www.petitek.com/learn/">
   <meta charset="UTF-8" />
+  <title>Adoption Success Program | Petitek</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Petitek Learning</title>
-  <!-- player.js is no longer required, but leaving it in doesn't hurt -->
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <meta name="description" content="Support during the first weeks after adoption helps pets adjust and families thrive." />
+
+  <link rel="stylesheet" href="/style.css" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+html, body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+
+    * { box-sizing: border-box; }
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #25A8C6;
-      color: #fff;
-      font-size: 1rem;
+      margin: 0;
+      line-height: 1.6;
     }
 
-    .hero {
-      text-align: center;
-      padding: 2.5rem 1.25rem 0.25rem;
-      margin-bottom: 1.25rem;
+    section {
+      margin-bottom: clamp(3rem, 6vw, 5rem);
     }
 
-    .hero h1 {
-      font-size: clamp(3.0rem, 7vw, 3.75rem);
-      color: #fff;
-    }
-
-    .hero p {
-      margin-top: 0.625rem;
-      font-size: clamp(1rem, 2.5vw, 1.125rem);
-      color: #e0f2f9;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.25rem;
-      padding: 0 1.25rem 2.5rem;
-      max-width: 75rem;
+    .container {
+      padding: 0 clamp(10px, 3vw, 20px);
+      max-width: 1366px;
       margin: 0 auto;
     }
 
-    .video-card {
-      background: #fff;
-      border-radius: 0 0 0.75rem 0.75rem;
-      color: #000;
-      box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
-      padding-bottom: 1.25rem;
-      cursor: pointer;
-    }
-
-    .video-card iframe {
-      width: 100%;
-      height: 200px;
-      display: block;
-      border: none;
-      pointer-events: none; /* tap triggers lightbox instead of inline playback */
-    }
-
-    .video-card h3 {
-      margin: 1rem;
-      font-size: clamp(1.125rem, 2vw, 1.25rem);
-    }
-
-    /* ---------------------------- */
-    /*        LIGHTBOX STYLE        */
-    /* ---------------------------- */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 1rem;
-    }
-
-    #lightbox-video {
-      width: 100%;
-      max-width: 1000px;
-      height: 56vw;
-      max-height: 80vh;
-      border-radius: 0.5rem;
-      border: none;
-    }
-
-    .lightbox-close {
-      position: fixed;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      z-index: 10000;
-    }
-
-    /* Footer */
-    .footer {
+    h2 {
+      font-size: clamp(1.55rem, 3.5vw, 2.3rem);
+      line-height: 1.2;
+      margin: 0 auto 0.5rem;
+      max-width: clamp(22ch, 70vw, 40ch);
       text-align: center;
-      padding: 1.25rem 1.25rem;
-      font-size: clamp(0.9rem, 1.5vw, 1rem);
-      color: #ffffff;
-      border-top: 1px solid #ffffff;
-      line-height: 1.5;
     }
 
-    .footer a {
-      color: #000;
-      font-weight: bold;
-      text-decoration: underline;
+    p {
+      font-size: clamp(0.95rem, 1rem + 0.9vw, 1.4rem);
+      line-height: clamp(1.45, 1.4 + 0.4vw, 1.7);
+      max-width: clamp(34ch, 85%, 65ch);
+      margin: 0 auto 1.25rem;
     }
+
+    h3 {
+  font-size: clamp(1.55rem, 3.5vw, 2.3rem);
+  line-height: 1.2;
+  margin: 0 auto 0.5rem;
+  max-width: clamp(22ch, 70vw, 40ch);
+  text-align: center;
+}
+
+    @media (max-width: 420px) {
+      h2 { line-height: 1.15; }
+    }
+
+    /* =========================
+   HERO VIDEO (cinematic, silent)
+========================= */
+
+.hero-video {
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden; /* prevents any stray edges */
+}
+
+/* Let the video define its own height (no letterboxing) */
+.hero-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none; /* cinematic only */
+}
+
+/* Never allow overlays on hero */
+.hero-video video + .unmute-overlay {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+
+
+/* =========================
+   VIMEO VIDEOS (interactive)
+========================= */
+
+.video-wrap {
+  position: relative;
+  max-width: 1366px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+    /* IMAGE ROW */
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(0.75rem, 2vw, 2rem);
+      margin-top: 2rem;
+    }
+
+    .image-row img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
+
+    /* UNMUTE OVERLAY (same as main site) */
+    .unmute-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.35);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .unmute-overlay {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.unmute-button {
+  background-color: rgb(94, 188, 188);   /* brand teal */
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.25),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.unmute-button:hover {
+  background-color: rgb(84, 178, 178);
+}
+
+.unmute-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.35),
+    inset 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.unmute-button {
+  min-height: 44px; /* accessibility tap target */
+}
+
+.video-wrap iframe {
+  pointer-events: auto;
+}
+
+
+/* === Contact Capture Buttons === */
+
+
+/* Button base */
+.choice-buttons button {
+  width: auto;
+  min-width: 180px;
+  max-width: 200px;
+  height: clamp(44px, 8vw, 54px);
+  padding: 0 18px;
+  border-radius: 12px;
+  font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  background-color: rgb(94, 188, 188);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto 1.25rem;
+  max-width: 520px;   /* match visual content width */
+}
+
+
+
+/* Hover (desktop only) */
+@media (hover: hover) {
+  .choice-buttons button:hover {
+    background-color: rgb(84, 178, 178);
+    transform: translateY(-1px);
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.28),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.22);
+  }
+}
+
+
+/* Pressed / tap feedback */
+.choice-buttons button:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.35),
+    inset 0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.video-wrap iframe {
+  position: relative;
+  z-index: 1;
+}
+
+.unmute-overlay {
+  z-index: 5;
+}
+
+
+/* Selected state (Alpine .active) */
+.choice-buttons button.active {
+  background-color: rgb(74, 168, 168);
+}
+
+.choice-buttons {
+  flex-wrap: nowrap;     /* NEVER stack */
+  justify-content: center;
+  gap: 20px;             /* space BETWEEN buttons */
+  padding: 0 20px;       /* space LEFT + RIGHT */
+  margin-bottom: 1.25rem;
+}
+
+.input-row input {
+  width: 240px;              /* controlled width */
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: #f5f5f5;
+  outline: none;
+}
+
+.input-row input:focus {
+  border-color: rgb(94, 188, 188);
+  box-shadow: 0 0 0 2px rgba(94,188,188,0.2);
+}
+
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-buttons button {
+  white-space: nowrap;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;   /* 🔥 allow wrapping */
+}
+
+.input-row > div[x-show="error"] {
+  flex-basis: 100%;   /* 🔥 force full width row */
+  text-align: center;
+}
+
+
+/* === Action buttons (Send / Cancel) === */
+.action-buttons {
+  display: flex;
+  flex-direction: row;   /* 🔥 force horizontal */
+  gap: 8px;
+  justify-content: center;
+}
+
+
+/* Send link */
+.action-buttons .secondary {
+  background-color: rgb(94, 188, 188);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+.action-buttons .secondary:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Cancel */
+.action-buttons .ghost {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #555;
+  border-radius: 10px;
+  height: 44px;
+  padding: 0 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.action-buttons .ghost:hover {
+  background: #f2f2f2;
+}
+
+.action-buttons button {
+  white-space: nowrap;   /* 🔥 prevent text from breaking */
+}
+
+
+/* === Confirmation / Success Message === */
+
+.contact-capture .success {
+  max-width: 520px;
+  margin: 2rem auto 0;          /* center on page */
+  padding: 1rem 1.25rem;
+
+  border: 1px solid #d6d6d6;    /* thin light gray border */
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #222;
+
+  text-align: center;
+}
+
+.contact-capture .success p {
+  margin: 0.25rem 0;
+}
+
+.contact-capture .success strong {
+  font-weight: 700;             /* emphasize phone number */
+}
+
+
+/* === Amazon CTA (image-is-the-button) === */
+
+.amazon-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+/* Anchor should hug content */
+.amazon-cta a {
+  display: inline-block;
+}
+
+
+.contact-capture {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Success stays natural height */
+.contact-capture .success {
+  margin-top: 2rem;
+}
+
+
+/* Image is the visual button */
+.amazon-image {
+  max-width: 260px;
+  width: auto;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  margin-left: 10px;   /* 👈 visual offset without overflow */
+}
+
+
+.amazon-subtext {
+  margin-top: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+
+
+/* === Petitek Footer === */
+
+.petitek-footer {
+  background-color: black;
+  color: #ffffff;
+  margin-top: 8rem;
+}
+
+.footer-inner {
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 1rem clamp(16px, 4vw, 32px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.85rem, 0.9vw, 1rem);
+}
+
+
+/* Links */
+.petitek-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 1rem;
+  opacity: 0.9;
+}
+
+.petitek-footer a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* Mobile layout */
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-right a {
+    margin: 0 0.25rem;
+  }
+}
+.footer-left {
+  text-align: left;
+}
+
+.footer-center {
+  text-align: center;
+  font-weight: 600;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+
+@media (max-width: 640px) {
+  .choice-buttons {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .choice-buttons button {
+    width: auto;
+    min-width: 150px;
+    max-width: 180px;
+    padding: 0 14px;
+    font-size: 0.9rem;
+  }
+}
+
+.video-wrap iframe {
+  pointer-events: none;   /* let wrapper receive clicks */
+}
+
+
   </style>
 </head>
 
 <body>
 
-  <div class="hero">
-    <h1>ChatrBox How-To Videos</h1>
-    <p>Quick tutorials to help you get started and make the most of your ChatrBox.</p>
+<!-- HERO VIDEO -->
+<section id="hero">
+  <div class="video-wrap hero-video">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="/videos/hero-settled.mp4" type="video/mp4" />
+    </video>
   </div>
+</section>
 
-  <div class="video-grid">
 
-    <!-- Use data-video-id and a small inline preview -->
-    <div class="video-card" data-video-id="1085023310">
-      <iframe
-        src="https://player.vimeo.com/video/1085023310?badge=0&amp;autopause=0"
-        title="Getting Started Video"
-        allow="autoplay; fullscreen; picture-in-picture">
-      </iframe>
-      <h3>Getting Started</h3>
-    </div>
-
-    <div class="video-card" data-video-id="1139468645">
-      <iframe
-        src="https://player.vimeo.com/video/1139468645?badge=0&amp;autopause=0"
-        title="Operating ChatrBox Video"
-        allow="autoplay; fullscreen; picture-in-picture">
-      </iframe>
-      <h3>Operating ChatrBox</h3>
-    </div>
-
-    <div class="video-card" data-video-id="1064040397">
-      <iframe
-        src="https://player.vimeo.com/video/1064040397?badge=0&amp;autopause=0"
-        title="Training with ChatrBox Video"
-        allow="autoplay; fullscreen; picture-in-picture">
-      </iframe>
-      <h3>Training with ChatrBox</h3>
-    </div>
-
-  </div>
-
-  <!-- LIGHTBOX OVERLAY -->
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <iframe
-      id="lightbox-video"
-      allow="autoplay; fullscreen; picture-in-picture">
-    </iframe>
-  </div>
-
-  <div class="footer">
-    <div style="margin: 0.625rem 0 1.25rem 0; display: flex; justify-content: center; align-items: center;">
-      <a href="/" style="
-        color: white;
-        border: 2px solid white;
-        text-decoration: none;
-        padding: 0.625rem 1.25rem;
-        border-radius: 1.5rem;
-        font-weight: bold;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
-        background-color: transparent;">
-        ← Home
-      </a>
-    </div>
-
+<!-- INTRO + IMAGE ROW -->
+<section id="why">
+  <div class="container">
+    <h2>Why the first weeks matter</h2>
     <p>
-      Didn’t find what you need? Visit our
-      <a href="https://petitek.com/support">Support Page</a>
-      to chat with our expert assistant, ChatrBot!
+      New environments bring new routines, boundaries, and expectations.
+      Adjustment is normal — and early support helps pets settle calmly.
     </p>
 
-    <p style="margin-top: 1.25rem; font-size: 0.75rem; color: black;">
-      &copy; 2025 Petitek LLC. All rights reserved.
+    <div class="image-row">
+      <img src="/images/adjustment-doorway-1600.webp" alt="Pet adjusting" loading="lazy" />
+      <img src="/images/support-stability-sleeping-1600.webp" alt="Pet resting" loading="lazy" />
+      <img src="/images/chatrbox-in-home-1600.webp" alt="ChatrBox in home" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT COPY -->
+<section id="support">
+  <div class="container">
+    <h2>Support makes the difference</h2>
+    <p>
+      With time, consistency, and the right guidance, pets begin to feel safe
+      and at ease in their new homes.
     </p>
   </div>
+</section>
 
-  <script>
-    const cards = document.querySelectorAll('.video-card');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxVideo = document.getElementById('lightbox-video');
-    const closeBtn = document.querySelector('.lightbox-close');
 
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const videoId = card.getAttribute('data-video-id');
-        const videoUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+<!-- VIDEO 1 -->
+<section id="training-video-1">
+  <div class="video-wrap">
+<iframe
+  class="vimeo-video"
+  src="https://player.vimeo.com/video/1148747137?muted=1&controls=0&title=0&byline=0&portrait=0"
+  allow="autoplay; fullscreen; picture-in-picture">
+</iframe>
 
-        // Set the src for the lightbox iframe and show the overlay
-        lightboxVideo.src = videoUrl;
-        lightbox.style.display = 'flex';
+
+   <div class="unmute-overlay">
+  <button class="unmute-button">🔊 Tap to Unmute</button>
+</div>
+
+  </div>
+</section>
+
+
+<!-- FINAL COPY -->
+<section id="why-chatrbox">
+  <div class="container">
+    <h2>One optional support tool</h2>
+    <p>
+      ChatrBox reinforces calm, consistent guidance during the adjustment
+      period — helping pets learn without stress or fear.
+    </p>
+  </div>
+</section>
+
+<!-- VIDEO 2 -->
+<section id="training-video-2">
+  <div class="video-wrap">
+  <iframe
+  class="vimeo-video"
+  src="https://player.vimeo.com/video/1163479116?muted=1&controls=0&title=0&byline=0&portrait=0"
+  allow="autoplay; fullscreen; picture-in-picture">
+</iframe>
+
+
+   <div class="unmute-overlay">
+  <button class="unmute-button">
+    🔊 Tap to Unmute
+  </button>
+</div>
+
+</section>
+
+
+<<section
+  class="contact-capture"
+  x-data="contactCapture()"
+  :class="{ 'success-state': state === 'success' }"
+>
+  <div class="container">
+
+    <h3>Want helpful training guidance?</h3>
+    <p class="subtext">
+      We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+    </p>
+
+    <!-- CHOICE BUTTONS -->
+    <div class="choice-buttons" x-show="state === 'choice'">
+      <button @click="select('email')">Email the link</button>
+      <button @click="select('sms')">Text the link</button>
+    </div>
+
+    <!-- INPUT ROW -->
+    <div class="input-row" x-show="state === 'input'">
+      <div class="action-buttons">
+        <button class="secondary" @click="send">Send link</button>
+        <button class="ghost" @click="cancel">Cancel</button>
+      </div>
+
+      <input
+        x-show="method === 'email'"
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="Email address"
+        x-model="email"
+      />
+
+      <input
+        x-show="method === 'sms'"
+        type="tel"
+        name="tel"
+        required
+        inputmode="numeric"
+        placeholder="Mobile number"
+        x-model="phone"
+      />
+
+      <div
+        x-show="error"
+        x-text="error"
+        style="color:#970923; font-size:0.85rem; margin-top:6px;"
+      ></div>
+    </div>
+
+    <!-- SUCCESS + AMAZON -->
+    <div
+      x-show="state === 'success'"
+      x-ref="successBlock"
+    >
+      <div class="success">
+        <template x-if="method === 'email'">
+          <p>
+            We’ve sent the link to<br>
+            <strong x-text="maskedEmail"></strong><br>
+            Please check your inbox.
+          </p>
+        </template>
+
+        <template x-if="method === 'sms'">
+          <p>
+            We’ve texted the link to<br>
+            <strong x-text="maskedPhone"></strong><br>
+            Please check your phone.
+          </p>
+        </template>
+
+        <div style="margin-top:14px; font-size:0.85rem; opacity:0.75; text-align:center;">
+          Didn’t receive the link?
+          <span
+            @click="state = 'input'"
+            style="cursor:pointer; text-decoration:underline;"
+          >
+            Try again
+          </span>
+        </div>
+      </div>
+
+      <div class="amazon-cta">
+        <a
+          href="https://www.amazon.com/dp/YOUR-ASIN"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            src="/images/available-at-amazon.webp"
+            alt="Buy ChatrBox on Amazon"
+            class="amazon-image"
+          />
+        </a>
+
+        <div class="amazon-subtext">
+          Available now on Amazon
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<script>
+
+let currentMethod = null;
+let currentValue = null;
+let resendCount = 0;
+const MAX_RESENDS = 3;
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  document
+    .querySelectorAll('.video-wrap:not(.hero-video)')
+    .forEach(wrap => {
+
+      const iframe = wrap.querySelector('iframe.vimeo-video');
+      const overlay = wrap.querySelector('.unmute-overlay');
+      if (!iframe || !overlay) return;
+
+      const player = new Vimeo.Player(iframe);
+
+      player.setMuted(true);
+
+      let isPlaying = false;
+
+      player.on('play', () => isPlaying = true);
+      player.on('pause', () => isPlaying = false);
+
+      // Overlay click
+      overlay.addEventListener('click', (e) => {
+        e.stopPropagation();
+        overlay.style.display = 'none';
+        player.setMuted(false).catch(() => {});
+        player.play().catch(() => {});
       });
+
+      // Click anywhere in wrapper toggles play/pause
+      wrap.addEventListener('click', () => {
+        if (overlay.style.display !== 'none') return;
+
+        if (isPlaying) {
+          player.pause().catch(() => {});
+        } else {
+          player.play().catch(() => {});
+        }
+      });
+
+      // Pause when scrolled away
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            player.pause().catch(() => {});
+          }
+        });
+      }, { threshold: 0.35 });
+
+      observer.observe(wrap);
+
+      // Reset when video ends
+      player.on('ended', () => {
+        player.setMuted(true).catch(() => {});
+        overlay.style.display = 'flex';
+      });
+
     });
 
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-      // Clear src so video stops
-      lightboxVideo.src = '';
+});
+</script>
+
+
+<script>
+function contactCapture() {
+  return {
+    state: 'choice',
+    method: null,
+    email: '',
+    phone: '',
+    error: '',
+
+
+    select(type) {
+      this.method = type;
+      this.state = 'input';
+    },
+
+  cancel() {
+  this.state = 'choice';
+  this.method = null;
+  this.email = '';
+  this.phone = '';
+  this.error = '';   // 🔥 clear error
+},
+
+
+send() {
+
+  this.error = '';
+
+if (this.method === 'email') {
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(this.email)) {
+    this.error = "Please enter a valid email address.";
+    return;
+  }
+}
+
+
+  if (this.method === 'sms') {
+    const digits = this.phone.replace(/\D/g, '');
+
+    if (digits.length !== 10) {
+      this.error = "Please enter a valid 10-digit US mobile number.";
+      return;
     }
 
-    closeBtn.addEventListener('click', closeLightbox);
+    this.phone = digits; // store clean number
+  }
 
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
+  this.state = 'success';
+
+  this.$nextTick(() => {
+    requestAnimationFrame(() => {
+      const el = this.$refs.successBlock;
+      if (!el) return;
+
+      const y =
+        el.getBoundingClientRect().top +
+        window.pageYOffset - 40;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
     });
-  </script>
+  });
+},
+
+
+    get maskedEmail() {
+      if (!this.email.includes('@')) return '';
+      const [name, domain] = this.email.trim().split('@');
+      return `${name[0]}•••@${domain}`;
+    },
+
+    get maskedPhone() {
+      const digits = this.phone.replace(/\D/g, '');
+      return digits.length >= 4
+        ? `•••-•••-${digits.slice(-4)}`
+        : '';
+    }
+  };
+}
+</script>
+
+
+<footer class="petitek-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      © <span id="year"></span> Petitek, LLC. All rights reserved.
+    </div>
+
+    <div class="footer-center">
+      <a href="/petitek">Petitek</a>
+    </div>
+
+    <div class="footer-right">
+      <a href="/privacy">Privacy</a>
+      <a href="/learn">Learn</a>
+      <a href="/support">Support</a>
+    </div>
+  </div>
+</footer>
+
+<!-- scripts LAST -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+</script>
 
 </body>
 </html>

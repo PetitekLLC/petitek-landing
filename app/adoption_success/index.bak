@@ -204,8 +204,13 @@ html, body {
 }
 
 .choice-buttons {
-  gap: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto 1.25rem;
+  max-width: 520px;   /* match visual content width */
 }
+
 
 
 /* Hover (desktop only) */
@@ -218,6 +223,7 @@ html, body {
       inset 0 -2px 0 rgba(0, 0, 0, 0.22);
   }
 }
+
 
 /* Pressed / tap feedback */
 .choice-buttons button:active {
@@ -243,39 +249,63 @@ html, body {
 }
 
 .choice-buttons {
-  display: flex;
   flex-wrap: nowrap;     /* NEVER stack */
   justify-content: center;
   gap: 20px;             /* space BETWEEN buttons */
   padding: 0 20px;       /* space LEFT + RIGHT */
   margin-bottom: 1.25rem;
 }
-/* === Input row === */
+
+.input-row input {
+  width: 240px;              /* controlled width */
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: #f5f5f5;
+  outline: none;
+}
+
+.input-row input:focus {
+  border-color: rgb(94, 188, 188);
+  box-shadow: 0 0 0 2px rgba(94,188,188,0.2);
+}
+
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-buttons button {
+  white-space: nowrap;
+}
+
 .input-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 20px;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  flex-wrap: wrap;   /* 🔥 allow wrapping */
 }
 
-.input-row input {
-  min-width: 150px;
-  width: 100%;
-  max-width: 280px;
-  height: 44px;
-  padding: 0 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 0.95rem;
+.input-row > div[x-show="error"] {
+  flex-basis: 100%;   /* 🔥 force full width row */
+  text-align: center;
 }
+
 
 /* === Action buttons (Send / Cancel) === */
 .action-buttons {
   display: flex;
+  flex-direction: row;   /* 🔥 force horizontal */
   gap: 8px;
+  justify-content: center;
 }
+
 
 /* Send link */
 .action-buttons .secondary {
@@ -314,6 +344,11 @@ html, body {
 .action-buttons .ghost:hover {
   background: #f2f2f2;
 }
+
+.action-buttons button {
+  white-space: nowrap;   /* 🔥 prevent text from breaking */
+}
+
 
 /* === Confirmation / Success Message === */
 
@@ -471,6 +506,7 @@ html, body {
   pointer-events: none;   /* let wrapper receive clicks */
 }
 
+
   </style>
 </head>
 
@@ -563,104 +599,112 @@ html, body {
 </section>
 
 
-<section
+<<section
   class="contact-capture"
   x-data="contactCapture()"
   :class="{ 'success-state': state === 'success' }"
 >
+  <div class="container">
 
-  <h3>Want helpful training guidance?</h3>
-  <p class="subtext">
-    We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
-  </p>
+    <h3>Want helpful training guidance?</h3>
+    <p class="subtext">
+      We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+    </p>
 
-  <!-- CHOICE BUTTONS -->
-  <div class="choice-buttons" x-show="state === 'choice'">
-    <button @click="select('email')">Email the link</button>
-    <button @click="select('sms')">Text the link</button>
-  </div>
-
-  <!-- INPUT ROW -->
-  <div class="input-row" x-show="state === 'input'">
-    <div class="action-buttons">
-      <button class="secondary" @click="send">Send link</button>
-      <button class="ghost" @click="cancel">Cancel</button>
+    <!-- CHOICE BUTTONS -->
+    <div class="choice-buttons" x-show="state === 'choice'">
+      <button @click="select('email')">Email the link</button>
+      <button @click="select('sms')">Text the link</button>
     </div>
 
-    <input
-  x-show="method === 'email'"
-  type="email"
-  name="email"
-  autocomplete="email"
-  placeholder="Email address"
-  x-model="email"
-/>
+    <!-- INPUT ROW -->
+    <div class="input-row" x-show="state === 'input'">
+      <div class="action-buttons">
+        <button class="secondary" @click="send">Send link</button>
+        <button class="ghost" @click="cancel">Cancel</button>
+      </div>
 
-  <input
-  x-show="method === 'sms'"
-  type="tel"
-  name="tel"
-  autocomplete="tel"
-  placeholder="Mobile number"
-  x-model="phone"
-/>
-  </div>
-
-<!-- SUCCESS + AMAZON -->
-<div
-  x-show="state === 'success'"
-  x-ref="successBlock"
->
-
-  <!-- SUCCESS CONFIRMATION -->
-  <div class="success">
-    <template x-if="method === 'email'">
-      <p>
-        We’ve sent the link to<br>
-        <strong x-text="maskedEmail"></strong><br>
-        Please check your inbox.
-      </p>
-    </template>
-
-    <template x-if="method === 'sms'">
-      <p>
-        We’ve texted the link to<br>
-        <strong x-text="maskedPhone"></strong><br>
-        Please check your phone.
-      </p>
-    </template>
-    <div style="margin-top:14px; font-size:0.85rem; opacity:0.75; text-align:center;">
-  Didn’t receive the link?
-  <span
-    @click="state = 'input'"
-    style="cursor:pointer; text-decoration:underline;"
-  >
-    Try again
-  </span>
-</div>
-  </div>
-
-
-  <!-- AMAZON CTA -->
-  <div class="amazon-cta">
-    <a
-      href="https://www.amazon.com/dp/YOUR-ASIN"
-      target="_blank"
-      rel="noopener"
-    >
-      <img
-        src="/images/available-at-amazon.webp"
-        alt="Buy ChatrBox on Amazon"
-        class="amazon-image"
+      <input
+        x-show="method === 'email'"
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="Email address"
+        x-model="email"
       />
-    </a>
 
-    <div class="amazon-subtext">
-      Available now on Amazon
+      <input
+        x-show="method === 'sms'"
+        type="tel"
+        name="tel"
+        required
+        inputmode="numeric"
+        placeholder="Mobile number"
+        x-model="phone"
+      />
+
+      <div
+        x-show="error"
+        x-text="error"
+        style="color:#970923; font-size:0.85rem; margin-top:6px;"
+      ></div>
     </div>
-  </div>
 
-</div>
+    <!-- SUCCESS + AMAZON -->
+    <div
+      x-show="state === 'success'"
+      x-ref="successBlock"
+    >
+      <div class="success">
+        <template x-if="method === 'email'">
+          <p>
+            We’ve sent the link to<br>
+            <strong x-text="maskedEmail"></strong><br>
+            Please check your inbox.
+          </p>
+        </template>
+
+        <template x-if="method === 'sms'">
+          <p>
+            We’ve texted the link to<br>
+            <strong x-text="maskedPhone"></strong><br>
+            Please check your phone.
+          </p>
+        </template>
+
+        <div style="margin-top:14px; font-size:0.85rem; opacity:0.75; text-align:center;">
+          Didn’t receive the link?
+          <span
+            @click="state = 'input'"
+            style="cursor:pointer; text-decoration:underline;"
+          >
+            Try again
+          </span>
+        </div>
+      </div>
+
+      <div class="amazon-cta">
+        <a
+          href="https://www.amazon.com/dp/YOUR-ASIN"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            src="/images/available-at-amazon.webp"
+            alt="Buy ChatrBox on Amazon"
+            class="amazon-image"
+          />
+        </a>
+
+        <div class="amazon-subtext">
+          Available now on Amazon
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <script src="https://player.vimeo.com/api/player.js"></script>
@@ -740,39 +784,68 @@ function contactCapture() {
     method: null,
     email: '',
     phone: '',
+    error: '',
+
 
     select(type) {
       this.method = type;
       this.state = 'input';
     },
 
-    cancel() {
-      this.state = 'choice';
-      this.method = null;
-      this.email = '';
-      this.phone = '';
-    },
+  cancel() {
+  this.state = 'choice';
+  this.method = null;
+  this.email = '';
+  this.phone = '';
+  this.error = '';   // 🔥 clear error
+},
 
-    send() {
-      this.state = 'success';
 
-      this.$nextTick(() => {
-        requestAnimationFrame(() => {
-          const el = this.$refs.successBlock;
-          if (!el) return;
+send() {
 
-          const y =
-            el.getBoundingClientRect().top +
-            window.pageYOffset -
-            40;
+  this.error = '';
 
-          window.scrollTo({
-            top: y,
-            behavior: 'smooth'
-          });
-        });
+if (this.method === 'email') {
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(this.email)) {
+    this.error = "Please enter a valid email address.";
+    return;
+  }
+}
+
+
+  if (this.method === 'sms') {
+    const digits = this.phone.replace(/\D/g, '');
+
+    if (digits.length !== 10) {
+      this.error = "Please enter a valid 10-digit US mobile number.";
+      return;
+    }
+
+    this.phone = digits; // store clean number
+  }
+
+  this.state = 'success';
+
+  this.$nextTick(() => {
+    requestAnimationFrame(() => {
+      const el = this.$refs.successBlock;
+      if (!el) return;
+
+      const y =
+        el.getBoundingClientRect().top +
+        window.pageYOffset - 40;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
       });
-    },  
+    });
+  });
+},
+
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
