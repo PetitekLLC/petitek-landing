@@ -269,6 +269,13 @@ html, body {
   outline: none;
 }
 
+.input-error {
+  text-align: center;
+  margin-top: 6px;
+  color: #970923;
+  font-size: 0.85rem;
+}
+
 
 .input-row input:focus {
   border-color: rgb(94, 188, 188);
@@ -618,38 +625,40 @@ html, body {
     </div>
 
     <!-- INPUT ROW -->
-    <div class="input-row" x-show="state === 'input'">
-      <div class="action-buttons">
-        <button class="secondary" @click="send">Send link</button>
-        <button class="ghost" @click="cancel">Cancel</button>
-      </div>
+   <div class="input-row" x-show="state === 'input'">
+  <div class="action-buttons">
+    <button class="secondary" @click="send">Send link</button>
+    <button class="ghost" @click="cancel">Cancel</button>
+  </div>
 
-      <input
-        x-show="method === 'email'"
-        type="email"
-        name="email"
-        required
-        autocomplete="email"
-        placeholder="Email address"
-        x-model="email"
-      />
+  <input
+    x-show="method === 'email'"
+    type="email"
+    name="email"
+    required
+    autocomplete="email"
+    placeholder="Email address"
+    x-model="email"
+  />
 
-      <input
-        x-show="method === 'sms'"
-        type="tel"
-        name="tel"
-        required
-        inputmode="numeric"
-        placeholder="Mobile number"
-        x-model="phone"
-      />
+  <input
+    x-show="method === 'sms'"
+    type="tel"
+    name="tel"
+    required
+    inputmode="numeric"
+    placeholder="Mobile number"
+    x-model="phone"
+  />
+</div>
 
-      <div
-        x-show="error"
-        x-text="error"
-        style="color:#970923; font-size:0.85rem; margin-top:6px;"
-      ></div>
-    </div>
+<!-- 🔥 ERROR MOVED OUTSIDE FLEX ROW -->
+<div
+  x-show="error && state === 'input'"
+  x-text="error"
+  class="input-error"
+></div>
+
 
     <!-- SUCCESS + AMAZON -->
     <div
