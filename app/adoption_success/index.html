@@ -42,23 +42,35 @@ html, body {
       font-size: clamp(0.95rem, 1rem + 0.9vw, 1.4rem);
       line-height: clamp(1.45, 1.4 + 0.4vw, 1.7);
       margin: 0 auto 1.25rem;
+
     }
 
     h3 {
   font-size: clamp(1.55rem, 3.5vw, 2.3rem);
   line-height: 1.2;
   margin: 0 auto 0.5rem;
-  
+
 }
-/* Unified text width for all centered sections */
+/* Width constraint for all text */
 .container > h2,
-.container > p,
-.container > h3 {
+.container > h3,
+.container > p {
   max-width: clamp(34ch, 85%, 65ch);
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Center only headings */
+.container > h2,
+.container > h3 {
   text-align: center;
 }
+
+/* Left-align body copy */
+.container > p {
+  text-align: left;
+}
+
 
 
     @media (max-width: 420px) {
