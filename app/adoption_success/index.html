@@ -219,6 +219,29 @@ html, body {
   }
 }
 
+@media (max-width: 640px) {
+  .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-row input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .input-row .action-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .input-row [x-show="error"] {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+
 /* Pressed / tap feedback */
 .choice-buttons button:active {
   transform: translateY(2px);
@@ -611,7 +634,7 @@ html, body {
 
   x-show="error"
   x-text="error"
-  style="color:#b00020; font-size:0.85rem; margin-top:6px;"
+  style="color:#970923; font-size:0.85rem; margin-top:6px;"
 ></div>
 
 </div>
