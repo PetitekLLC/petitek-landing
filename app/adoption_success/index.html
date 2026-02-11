@@ -390,6 +390,14 @@ html, body {
   color: #555;
 }
 
+<div id="resendSupport" style="display:none; margin-top:14px; font-size:0.9rem; opacity:0.8;">
+  Didn’t receive the link?
+  <span id="resendBtn" style="cursor:pointer; text-decoration:underline;">
+    Resend
+  </span>
+  <div id="resendMessage" style="margin-top:6px; font-size:0.85rem;"></div>
+</div>
+
 /* === Petitek Footer === */
 
 .petitek-footer {
@@ -655,6 +663,12 @@ html, body {
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 <script>
+
+let currentMethod = null;
+let currentValue = null;
+let resendCount = 0;
+const MAX_RESENDS = 3;
+
 document.addEventListener('DOMContentLoaded', () => {
 
   document

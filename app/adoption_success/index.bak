@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,8 +103,6 @@ html, body {
   display: block;
 }
 
-
-
     /* IMAGE ROW */
     .image-row {
       display: grid;
@@ -171,10 +170,14 @@ html, body {
     inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
-
 .unmute-button {
   min-height: 44px; /* accessibility tap target */
 }
+
+.video-wrap iframe {
+  pointer-events: auto;
+}
+
 
 /* === Contact Capture Buttons === */
 
@@ -463,6 +466,10 @@ html, body {
   }
 }
 
+.video-wrap iframe {
+  pointer-events: none;   /* let wrapper receive clicks */
+}
+
   </style>
 </head>
 
@@ -663,12 +670,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       player.setMuted(true);
 
-      overlay.addEventListener('click', () => {
+      let isPlaying = false;
+
+      player.on('play', () => isPlaying = true);
+      player.on('pause', () => isPlaying = false);
+
+      // Overlay click
+      overlay.addEventListener('click', (e) => {
+        e.stopPropagation();
         overlay.style.display = 'none';
         player.setMuted(false).catch(() => {});
         player.play().catch(() => {});
       });
 
+      // Click anywhere in wrapper toggles play/pause
+      wrap.addEventListener('click', () => {
+        if (overlay.style.display !== 'none') return;
+
+        if (isPlaying) {
+          player.pause().catch(() => {});
+        } else {
+          player.play().catch(() => {});
+        }
+      });
+
+      // Pause when scrolled away
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) {
@@ -679,16 +705,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       observer.observe(wrap);
 
+      // Reset when video ends
       player.on('ended', () => {
         player.setMuted(true).catch(() => {});
         overlay.style.display = 'flex';
       });
 
-  });
+    });
 
 });
 </script>
-
 
 
 <script>
@@ -730,7 +756,7 @@ function contactCapture() {
           });
         });
       });
-    },   <!-- ✅ THIS COMMA WAS MISSING -->
+    },  
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
@@ -777,4 +803,3 @@ function contactCapture() {
 
 </body>
 </html>
-
