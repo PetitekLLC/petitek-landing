@@ -792,12 +792,14 @@ function contactCapture() {
       this.state = 'input';
     },
 
-    cancel() {
-      this.state = 'choice';
-      this.method = null;
-      this.email = '';
-      this.phone = '';
-    },
+  cancel() {
+  this.state = 'choice';
+  this.method = null;
+  this.email = '';
+  this.phone = '';
+  this.error = '';   // 🔥 clear error
+},
+
 
 send() {
 
