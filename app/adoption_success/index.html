@@ -471,11 +471,6 @@ html, body {
   pointer-events: none;   /* let wrapper receive clicks */
 }
 
-<div
-  x-show="error"
-  x-text="error"
-  style="color:#b00020; font-size:0.85rem; margin-top:6px;"
-></div>
 
   </style>
 </head>
@@ -612,8 +607,14 @@ html, body {
   placeholder="Mobile number"
   x-model="phone"
 />
+<div
 
-  </div>
+  x-show="error"
+  x-text="error"
+  style="color:#b00020; font-size:0.85rem; margin-top:6px;"
+></div>
+
+</div>
 
 <!-- SUCCESS + AMAZON -->
 <div
