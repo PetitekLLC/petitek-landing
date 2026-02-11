@@ -257,7 +257,7 @@ html, body {
 }
 
 .input-row input {
-  width: 200px;              /* controlled width */
+  width: 240px;              /* controlled width */
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
@@ -287,7 +287,7 @@ html, body {
 .input-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   justify-content: center;
   flex-wrap: nowrap;   /* 🔥 allow wrapping */
 }
@@ -297,13 +297,11 @@ html, body {
   text-align: center;
 }
 
-
 /* === Action buttons (Send / Cancel) === */
-.action-buttons {
-  display: flex;
-  flex-direction: row;   /* 🔥 force horizontal */
-  gap: 8px;
-  justify-content: center;
+.action-buttons button {
+  flex: 1 1 auto;      /* allow shrinking */
+  min-width: 80px;     /* safe minimum */
+  white-space: nowrap;
 }
 
 
@@ -314,7 +312,7 @@ html, body {
   border: none;
   border-radius: 10px;
   height: 44px;
-  padding: 0 14px;
+  padding: 0 10px;
   font-weight: 600;
   cursor: pointer;
   box-shadow:
