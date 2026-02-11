@@ -805,12 +805,16 @@ send() {
 
   this.error = '';
 
-  if (this.method === 'email') {
-    if (!this.email || !this.email.includes('@')) {
-      this.error = "Please enter a valid email address.";
-      return;
-    }
+if (this.method === 'email') {
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(this.email)) {
+    this.error = "Please enter a valid email address.";
+    return;
   }
+}
+
 
   if (this.method === 'sms') {
     const digits = this.phone.replace(/\D/g, '');
