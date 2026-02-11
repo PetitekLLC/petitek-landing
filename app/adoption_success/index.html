@@ -252,12 +252,19 @@ html, body {
 }
 
 .input-row input {
-  width: 220px;   /* narrower input */
+  width: 240px;              /* controlled width */
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: #f5f5f5;
+  outline: none;
 }
 
-.action-buttons .secondary,
-.action-buttons .ghost {
-  padding: 0 10px;   /* slightly smaller buttons */
+.input-row input:focus {
+  border-color: rgb(94, 188, 188);
+  box-shadow: 0 0 0 2px rgba(94,188,188,0.2);
 }
 
 
@@ -273,7 +280,6 @@ html, body {
 }
 
 
-
 .input-row {
   display: flex;
   align-items: center;
@@ -282,7 +288,6 @@ html, body {
   padding: 0 20px;
   margin-bottom: 1.25rem;
 }
-
 
 /* === Action buttons (Send / Cancel) === */
 .action-buttons {
@@ -585,113 +590,112 @@ html, body {
 </section>
 
 
-<section
+<<section
   class="contact-capture"
   x-data="contactCapture()"
   :class="{ 'success-state': state === 'success' }"
 >
+  <div class="container">
 
-  <h3>Want helpful training guidance?</h3>
-  <p class="subtext">
-    We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
-  </p>
+    <h3>Want helpful training guidance?</h3>
+    <p class="subtext">
+      We’ll send you the ChatrBox link and practical tips for supporting calm adjustment.
+    </p>
 
-  <!-- CHOICE BUTTONS -->
-  <div class="choice-buttons" x-show="state === 'choice'">
-    <button @click="select('email')">Email the link</button>
-    <button @click="select('sms')">Text the link</button>
-  </div>
-
-  <!-- INPUT ROW -->
-  <div class="input-row" x-show="state === 'input'">
-    <div class="action-buttons">
-      <button class="secondary" @click="send">Send link</button>
-      <button class="ghost" @click="cancel">Cancel</button>
+    <!-- CHOICE BUTTONS -->
+    <div class="choice-buttons" x-show="state === 'choice'">
+      <button @click="select('email')">Email the link</button>
+      <button @click="select('sms')">Text the link</button>
     </div>
 
- <input
-  x-show="method === 'email'"
-  type="email"
-  name="email"
-  required
-  autocomplete="email"
-  placeholder="Email address"
-  x-model="email"
-/>
+    <!-- INPUT ROW -->
+    <div class="input-row" x-show="state === 'input'">
+      <div class="action-buttons">
+        <button class="secondary" @click="send">Send link</button>
+        <button class="ghost" @click="cancel">Cancel</button>
+      </div>
 
-<input
-  x-show="method === 'sms'"
-  type="tel"
-  name="tel"
-  required
-  inputmode="numeric"
-  placeholder="Mobile number"
-  x-model="phone"
-/>
-<div
-
-  x-show="error"
-  x-text="error"
-  style="color:#970923; font-size:0.85rem; margin-top:6px;"
-></div>
-
-</div>
-
-<!-- SUCCESS + AMAZON -->
-<div
-  x-show="state === 'success'"
-  x-ref="successBlock"
->
-
-  <!-- SUCCESS CONFIRMATION -->
-  <div class="success">
-    <template x-if="method === 'email'">
-      <p>
-        We’ve sent the link to<br>
-        <strong x-text="maskedEmail"></strong><br>
-        Please check your inbox.
-      </p>
-    </template>
-
-    <template x-if="method === 'sms'">
-      <p>
-        We’ve texted the link to<br>
-        <strong x-text="maskedPhone"></strong><br>
-        Please check your phone.
-      </p>
-    </template>
-    <div style="margin-top:14px; font-size:0.85rem; opacity:0.75; text-align:center;">
-  Didn’t receive the link?
-  <span
-    @click="state = 'input'"
-    style="cursor:pointer; text-decoration:underline;"
-  >
-    Try again
-  </span>
-</div>
-  </div>
-
-
-  <!-- AMAZON CTA -->
-  <div class="amazon-cta">
-    <a
-      href="https://www.amazon.com/dp/YOUR-ASIN"
-      target="_blank"
-      rel="noopener"
-    >
-      <img
-        src="/images/available-at-amazon.webp"
-        alt="Buy ChatrBox on Amazon"
-        class="amazon-image"
+      <input
+        x-show="method === 'email'"
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="Email address"
+        x-model="email"
       />
-    </a>
 
-    <div class="amazon-subtext">
-      Available now on Amazon
+      <input
+        x-show="method === 'sms'"
+        type="tel"
+        name="tel"
+        required
+        inputmode="numeric"
+        placeholder="Mobile number"
+        x-model="phone"
+      />
+
+      <div
+        x-show="error"
+        x-text="error"
+        style="color:#970923; font-size:0.85rem; margin-top:6px;"
+      ></div>
     </div>
-  </div>
 
-</div>
+    <!-- SUCCESS + AMAZON -->
+    <div
+      x-show="state === 'success'"
+      x-ref="successBlock"
+    >
+      <div class="success">
+        <template x-if="method === 'email'">
+          <p>
+            We’ve sent the link to<br>
+            <strong x-text="maskedEmail"></strong><br>
+            Please check your inbox.
+          </p>
+        </template>
+
+        <template x-if="method === 'sms'">
+          <p>
+            We’ve texted the link to<br>
+            <strong x-text="maskedPhone"></strong><br>
+            Please check your phone.
+          </p>
+        </template>
+
+        <div style="margin-top:14px; font-size:0.85rem; opacity:0.75; text-align:center;">
+          Didn’t receive the link?
+          <span
+            @click="state = 'input'"
+            style="cursor:pointer; text-decoration:underline;"
+          >
+            Try again
+          </span>
+        </div>
+      </div>
+
+      <div class="amazon-cta">
+        <a
+          href="https://www.amazon.com/dp/YOUR-ASIN"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            src="/images/available-at-amazon.webp"
+            alt="Buy ChatrBox on Amazon"
+            class="amazon-image"
+          />
+        </a>
+
+        <div class="amazon-subtext">
+          Available now on Amazon
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <script src="https://player.vimeo.com/api/player.js"></script>
