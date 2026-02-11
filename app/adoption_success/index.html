@@ -257,7 +257,9 @@ html, body {
 }
 
 .input-row input {
-  width: 240px;              /* controlled width */
+  flex: 1 1 auto;      /* allow controlled shrink */
+  min-width: 180px;    /* protects usability */
+  max-width: 240px;    /* normal desktop size */
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
@@ -266,6 +268,7 @@ html, body {
   background: #f5f5f5;
   outline: none;
 }
+
 
 .input-row input:focus {
   border-color: rgb(94, 188, 188);
@@ -305,8 +308,6 @@ html, body {
   font-size: 0.85rem;    /* slightly smaller */
   white-space: nowrap;
 }
-
-
 
 /* Send link */
 .action-buttons .secondary {
