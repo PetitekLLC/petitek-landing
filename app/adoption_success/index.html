@@ -276,12 +276,14 @@ html, body {
 /* === Input row === */
 .input-row {
   display: flex;
+  flex-direction: column;   /* Always vertical */
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   padding: 0 20px;
-  justify-content: center;
   margin-bottom: 1.25rem;
 }
+
+
 
 .input-row input {
   min-width: 150px;
@@ -298,7 +300,9 @@ html, body {
 .action-buttons {
   display: flex;
   gap: 8px;
+  justify-content: center;
 }
+
 
 /* Send link */
 .action-buttons .secondary {
