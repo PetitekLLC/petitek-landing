@@ -1789,8 +1789,6 @@ function playAlert(step) {
     audio.onended = () => {
       light.classList.remove('flash');
     };
-  } else {
-    console.warn(`Missing audio or light element for step ${step}`);
   }
 }
 
@@ -1855,12 +1853,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-<!-- =========================
-     CORE SITE SCRIPTS
-========================= -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
 
   /* -------------------------
      Video Autoplay + Unmute
@@ -1952,18 +1944,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
-
-<!-- =========================
-     FLOATING AMAZON BUTTON
-========================= -->
-<div class="floating-buy-button">
-  <a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
-     target="_blank"
-     rel="noopener noreferrer">
-    <img src="amazon_float_button.png" alt="Buy Now">
-  </a>
-</div>
-
-</body>
-</html>
-
