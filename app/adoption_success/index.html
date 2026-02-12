@@ -806,7 +806,6 @@ function contactCapture() {
     phone: '',
     error: '',
 
-
     select(type) {
       this.method = type;
       this.state = 'input';
@@ -874,7 +873,10 @@ get isValid() {
 
   return false;
 }
+  };   // ← closes returned object
 
+}      // ← closes contactCapture function
+</script>
 
 <footer class="petitek-footer">
   <div class="footer-inner">
