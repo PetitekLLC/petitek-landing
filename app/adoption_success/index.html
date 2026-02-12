@@ -274,20 +274,56 @@ html, body {
   border-color: rgb(94, 188, 188);
   box-shadow: 0 0 0 2px rgba(94,188,188,0.2);
 }
+/* === Buttons Row === */
 
-/* Buttons row */
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 6px;
 }
 
+/* Base button styling */
 .action-buttons button {
   height: 44px;
-  padding: 0 14px;
-  border-radius: 10px;
+  padding: 0 16px;
+  border-radius: 12px;
   font-size: 0.9rem;
+  font-weight: 600;
   white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* Send button (default = disabled state) */
+.action-buttons .secondary {
+  background-color: #d5d5d5;
+  color: #777;
+  border: none;
+  cursor: not-allowed;
+}
+
+/* Send button when valid */
+.action-buttons .secondary.enabled {
+  background-color: rgb(94, 188, 188);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.18),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Hover only when enabled */
+.action-buttons .secondary.enabled:hover {
+  background-color: rgb(84, 178, 178);
+  transform: translateY(-1px);
+}
+
+/* Optional: subtle press feedback */
+.action-buttons .secondary.enabled:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.25),
+    inset 0 2px 4px rgba(0,0,0,0.25);
 }
 
 
@@ -334,17 +370,11 @@ html, body {
   display: inline-block;
 }
 
-
 .contact-capture {
   display: flex;
   flex-direction: column;
-  padding: clamp(3rem, 6vw, 5rem) 0;
-  background: #f7f7f7;
-}
-
-.contact-capture {
   padding: clamp(2.5rem, 5vw, 4rem) 0;
-  background: #f8f8f8;
+  background:#f8f8f8;
 }
 
 
@@ -581,14 +611,17 @@ html, body {
     x-model="phone"
   />
 
-  <!-- Action Buttons -->
-  <div class="action-buttons">
-    <button class="secondary" @click="send">Send link</button>
-    <button class="ghost" @click="cancel">Cancel</button>
-  </div>
-
+<div class="action-buttons">
+  <button
+    class="secondary"
+    :class="{ 'enabled': isValid }"
+    :disabled="!isValid"
+    @click="send"
+  >
+    Send link
+  </button>
 </div>
- 
+
 
 <!-- 🔥 ERROR MOVED OUTSIDE FLEX ROW -->
 <div
@@ -800,12 +833,28 @@ if (this.method === 'email') {
       return `${name[0]}•••@${domain}`;
     },
 
-    get maskedPhone() {
-      const digits = this.phone.replace(/\D/g, '');
-      return digits.length >= 4
-        ? `•••-•••-${digits.slice(-4)}`
-        : '';
-    }
+   get maskedPhone() {
+  const digits = this.phone.replace(/\D/g, '');
+  return digits.length >= 4
+    ? `•••-•••-${digits.slice(-4)}`
+    : '';
+},
+
+
+    get isValid() {
+  if (this.method === 'email') {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(this.email);
+  }
+
+  if (this.method === 'sms') {
+    const digits = this.phone.replace(/\D/g, '');
+    return digits.length === 10;
+  }
+
+  return false;
+}
+
   };
 }
 </script>
