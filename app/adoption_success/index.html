@@ -326,6 +326,17 @@ html, body {
     inset 0 2px 4px rgba(0,0,0,0.25);
 }
 
+/* Cancel button (outlined) */
+.action-buttons .ghost {
+  background: transparent;
+  border: 1.5px solid #bdbdbd;
+  color: #666;
+  cursor: pointer;
+}
+
+.action-buttons .ghost:hover {
+  background: #eeeeee;
+}
 
 /* === Confirmation / Success Message === */
 .contact-capture .success {
@@ -620,7 +631,15 @@ html, body {
   >
     Send link
   </button>
+
+  <button
+    class="ghost"
+    @click="cancel"
+  >
+    Cancel
+  </button>
 </div>
+
 
 </div> <!-- CLOSE input-block -->
 
