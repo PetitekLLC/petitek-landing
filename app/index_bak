@@ -137,7 +137,7 @@ img {
 
 /* Constrained content stays readable */
 .page-content {
-  max-width: 2048px;
+  max-width: 1200px;
   margin: 0 auto;
   background-color: #FFFFFF;
   padding: 20px 0;
@@ -152,7 +152,7 @@ img {
 }
 
 /* Desktop only: full-width Petitek teal */
-@media (min-width: 2048px) {
+@media (min-width: 1200px) {
   .page-bg {
     width: 100vw;
     margin-left: calc(50% - 50vw);
@@ -1684,7 +1684,6 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
   action="https://script.google.com/macros/s/AKfycbxzKcJmtyDPIR_9QhGpQdnBV8gXa0iI25cCqm2PVbpFXYN1hMsjT86gVk1vDLQuZJnuZw/exec"
   method="POST"
   target="hidden_iframe"
-  onsubmit="clearEmailInput()"
 >
   <div class="input-wrapper">
     <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
@@ -1790,8 +1789,6 @@ function playAlert(step) {
     audio.onended = () => {
       light.classList.remove('flash');
     };
-  } else {
-    console.warn(`Missing audio or light element for step ${step}`);
   }
 }
 
@@ -1920,7 +1917,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (floatingBuyButton) {
     window.addEventListener('scroll', () => {
       const scrollTrigger = 600;
-
       if (window.scrollY > scrollTrigger) {
         floatingBuyButton.classList.add('show');
       } else {
@@ -1929,20 +1925,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+/* -------------------------
+   Footer Email Form
+------------------------- */
+const emailForm = document.getElementById("emailForm");
+
+if (emailForm) {
+  emailForm.addEventListener("submit", function () {
+    const input = document.getElementById("emailInput");
+    const success = document.getElementById("emailSuccess");
+
+    setTimeout(() => {
+      input.value = "";
+      success.classList.add("show");
+
+      // 🔥 Auto-hide after 3 seconds
+      setTimeout(() => {
+        success.classList.remove("show");
+      }, 3000);
+
+    }, 300);
+  });
+}
+
+
 });
 </script>
-
-<!-- =========================
-     FLOATING AMAZON BUTTON
-     (OUTSIDE LAYOUT WRAPPERS)
-========================= -->
-<div class="floating-buy-button">
-  <a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
-     target="_blank"
-     rel="noopener noreferrer">
-    <img src="amazon_float_button.png" alt="Buy Now">
-  </a>
-</div>
-
-</body>
-</html>
