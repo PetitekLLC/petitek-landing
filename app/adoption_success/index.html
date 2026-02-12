@@ -607,13 +607,15 @@ html, body {
     </p>
 
     <!-- CHOICE BUTTONS -->
-    <div class="choice-buttons" x-show="state === 'choice'">
+   <div class="choice-buttons" x-show="state === 'choice'" x-cloak>
+
       <button @click="select('email')">Email the link</button>
       <button @click="select('sms')">Text the link</button>
     </div>
 
    <!-- INPUT ROW -->
-<div x-show="state === 'input'" class="input-block">
+<div x-show="state === 'input'" class="input-block" x-cloak>
+
 
   <!-- Input Field -->
   <input
@@ -665,10 +667,12 @@ html, body {
 
 
     <!-- SUCCESS + AMAZON -->
-    <div
-      x-show="state === 'success'"
-      x-ref="successBlock"
-    >
+   <div
+  x-show="state === 'success'"
+  x-ref="successBlock"
+  x-cloak
+>
+
       <div class="success">
         <template x-if="method === 'email'">
           <p>
