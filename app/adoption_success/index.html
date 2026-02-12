@@ -824,36 +824,29 @@ async send() {
 
   this.error = '';
 
-  try {
+  const formData = new URLSearchParams();
+  formData.append('email', this.email);
+  formData.append('phone', this.phone);
 
-    const response = await fetch('https://script.google.com/macros/s/AKfycbyvV5hiFSYSL1CmfOgv9uF1_mfKCaumqgLfq9De_5LUhDmyKt9zNaSvxOdDSIpBVTxw/exec', {
+  try {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbzgFxQMyJpJ6-aqre2gywIxf_JUJu8yKPDrJt-8e9L22c51SKdNDjNUcJuv3QCjeIqD/exec', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: this.method === 'email' ? this.email : null,
-        phone: this.method === 'sms' ? this.phone : null
-      })
+      body: formData
     });
 
-    const result = await response.json();
+    const text = await response.text();
 
-    console.log(result);
-
-    if (result.success) {
+    if (text === "Success") {
       this.state = 'success';
     } else {
-      this.error = "Backend returned error.";
+      this.error = text;
     }
 
   } catch (err) {
-    console.error(err);
-    this.error = "Network error.";
+    this.error = "Network error. Please try again.";
   }
 
 }
-
 
     get maskedEmail() {
       if (!this.email.includes('@')) return '';
