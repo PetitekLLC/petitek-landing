@@ -204,6 +204,20 @@ html, body {
   flex-wrap: nowrap;
 }
 
+@media (max-width: 520px) {
+  .choice-buttons {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .choice-buttons button {
+    width: 100%;
+    max-width: 340px;
+    height: 60px;
+    font-size: 1.1rem;
+  }
+}
+
 @media (hover: hover) {
   .choice-buttons button:hover {
     background-color: rgb(84, 178, 178);
@@ -212,6 +226,7 @@ html, body {
       0 10px 22px rgba(0, 0, 0, 0.25),
       inset 0 -3px 0 rgba(0, 0, 0, 0.25);
   }
+  
 }
 
 
@@ -262,7 +277,7 @@ html, body {
   max-width: 320px;
   height: 44px;
   padding: 0 14px;
-  border-radius: 12px;
+  border-radius: 18px;
   border: 1px solid #ccc;
   font-size: 0.95rem;
   background: #f5f5f5;
@@ -293,25 +308,6 @@ html, body {
   transition: all 0.2s ease;
 }
 
-@media (max-width: 520px) {
-  .choice-buttons {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .choice-buttons button {
-    width: 100%;
-    max-width: 340px;
-    height: 60px;
-    font-size: 1.1rem;
-  }
-}
-  .action-buttons button {
-    width: 100%;
-    max-width: 320px;
-    height: 52px;
-    font-size: 1.05rem;
-  }
 
 /* Send button (default = disabled state) */
 .action-buttons .secondary {
