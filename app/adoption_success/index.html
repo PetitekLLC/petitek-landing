@@ -204,17 +204,16 @@ html, body {
   flex-wrap: nowrap;
 }
 
-
-/* Hover (desktop only) */
 @media (hover: hover) {
   .choice-buttons button:hover {
     background-color: rgb(84, 178, 178);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow:
-      0 8px 18px rgba(0, 0, 0, 0.28),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.22);
+      0 10px 22px rgba(0, 0, 0, 0.25),
+      inset 0 -3px 0 rgba(0, 0, 0, 0.25);
   }
 }
+
 
 
 /* Pressed / tap feedback */
@@ -295,19 +294,25 @@ html, body {
 }
 
 @media (max-width: 520px) {
-  .action-buttons {
+  .choice-buttons {
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    gap: 18px;
   }
 
+  .choice-buttons button {
+    width: 100%;
+    max-width: 340px;
+    height: 60px;
+    font-size: 1.1rem;
+  }
+}
   .action-buttons button {
     width: 100%;
     max-width: 320px;
     height: 52px;
     font-size: 1.05rem;
   }
-}
+
 /* Send button (default = disabled state) */
 .action-buttons .secondary {
   background-color: #d5d5d5;
@@ -497,11 +502,18 @@ html, body {
 
 .choice-buttons button {
   background-color: rgb(94, 188, 188);
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 12px;
-  height: 44px;
+  padding: 0 28px;
+  height: 56px;
+  font-size: 1.05rem;
   font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.18),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
 }
 
 
