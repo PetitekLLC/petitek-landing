@@ -1684,7 +1684,6 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
   action="https://script.google.com/macros/s/AKfycbxzKcJmtyDPIR_9QhGpQdnBV8gXa0iI25cCqm2PVbpFXYN1hMsjT86gVk1vDLQuZJnuZw/exec"
   method="POST"
   target="hidden_iframe"
-  onsubmit="clearEmailInput()"
 >
   <div class="input-wrapper">
     <input id="emailInput" name="email" type="email" placeholder="Enter email" required />
@@ -1932,6 +1931,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+document.getElementById("emailForm").addEventListener("submit", function(e) {
+  const input = document.getElementById("emailInput");
+
+  // Let the form submit normally to the hidden iframe
+  setTimeout(() => {
+    input.value = "";
+    document.getElementById("emailSuccess").classList.add("show");
+  }, 300);
+});
+
+
+
 <!-- =========================
      FLOATING AMAZON BUTTON
      (OUTSIDE LAYOUT WRAPPERS)
@@ -1943,6 +1955,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
+
 
 </body>
 </html>
