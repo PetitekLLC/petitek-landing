@@ -36,24 +36,42 @@ html, body {
       font-size: clamp(1.55rem, 3.5vw, 2.3rem);
       line-height: 1.2;
       margin: 0 auto 0.5rem;
-      max-width: clamp(22ch, 70vw, 40ch);
-      text-align: center;
     }
 
     p {
       font-size: clamp(0.95rem, 1rem + 0.9vw, 1.4rem);
       line-height: clamp(1.45, 1.4 + 0.4vw, 1.7);
-      max-width: clamp(34ch, 85%, 65ch);
       margin: 0 auto 1.25rem;
+
     }
 
     h3 {
   font-size: clamp(1.55rem, 3.5vw, 2.3rem);
   line-height: 1.2;
   margin: 0 auto 0.5rem;
-  max-width: clamp(22ch, 70vw, 40ch);
+
+}
+/* Width constraint for all text */
+.container > h2,
+.container > h3,
+.container > p {
+  max-width: clamp(34ch, 85%, 65ch);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Center only headings */
+.container > h2,
+.container > h3 {
   text-align: center;
 }
+
+/* Left-align body copy */
+.container > p {
+  text-align: left;
+}
+
+
 
     @media (max-width: 420px) {
       h2 { line-height: 1.15; }
@@ -173,44 +191,18 @@ html, body {
   min-height: 44px; /* accessibility tap target */
 }
 
-.video-wrap iframe {
-  pointer-events: auto;
-}
-
 
 /* === Contact Capture Buttons === */
 
 
-/* Button base */
-.choice-buttons button {
-  width: auto;
-  min-width: 1500px;
-  max-width: 200px;
-  height: clamp(44px, 8vw, 54px);
-  padding: 0 18px;
-  border-radius: 12px;
-  font-size: clamp(0.9rem, 2.8vw, 1.05rem);
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  line-height: 1;
-  background-color: rgb(94, 188, 188);
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    background-color 0.12s ease;
-}
-
 .choice-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
   margin: 0 auto 1.25rem;
-  max-width: 520px;   /* match visual content width */
+  max-width: 520px;
+  flex-wrap: nowrap;
 }
-
 
 
 /* Hover (desktop only) */
@@ -242,24 +234,33 @@ html, body {
   z-index: 5;
 }
 
+.input-error {
+  text-align: center;
+  margin-top: 6px;
+  color: #970923;
+  font-size: 0.85rem;
+}
+
 
 /* Selected state (Alpine .active) */
 .choice-buttons button.active {
   background-color: rgb(74, 168, 168);
 }
 
-.choice-buttons {
-  flex-wrap: nowrap;     /* NEVER stack */
-  justify-content: center;
-  gap: 20px;             /* space BETWEEN buttons */
-  padding: 0 10px;       /* space LEFT + RIGHT */
-  margin-bottom: 1.25rem;
+/* === Input Block (stacked layout) === */
+
+.input-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
-.input-row input {
-  flex: 1 1 auto;      /* allow controlled shrink */
-  min-width: 170px;    /* protects usability */
-  max-width: 240px;    /* normal desktop size */
+.input-block input {
+  width: 100%;
+  max-width: 320px;
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
@@ -269,98 +270,75 @@ html, body {
   outline: none;
 }
 
-.input-error {
-  text-align: center;
-  margin-top: 6px;
-  color: #970923;
-  font-size: 0.85rem;
-}
-
-
-.input-row input:focus {
+.input-block input:focus {
   border-color: rgb(94, 188, 188);
   box-shadow: 0 0 0 2px rgba(94,188,188,0.2);
 }
-
+/* === Buttons Row === */
 
 .action-buttons {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 6px;
 }
 
+/* Base button styling */
 .action-buttons button {
-  white-space: nowrap;
-}
-
-.input-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  justify-content: center;
-  flex-wrap: nowrap;   /* 🔥 allow wrapping */
-}
-
-.input-row > div[x-show="error"] {
-  flex-basis: 100%;   /* 🔥 force full width row */
-  text-align: center;
-}
-
-/* === Action buttons (Send / Cancel) === */
-.action-buttons button {
-  flex: 0 0 auto;   /* shrinkable, not growable */
-  min-width: auto;  /* small floor */
-  padding: 0 8px;   /* tighter horizontal padding */
-  font-size: 0.85rem;    /* slightly smaller */
-  white-space: wrap;
-}
-
-/* Send link */
-.action-buttons .secondary {
-  background-color: rgb(94, 188, 188);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
   height: 44px;
-  padding: 0 8px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
   font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* Send button (default = disabled state) */
+.action-buttons .secondary {
+  background-color: #d5d5d5;
+  color: #777;
+  border: none;
+  cursor: not-allowed;
+}
+
+/* Send button when valid */
+.action-buttons .secondary.enabled {
+  background-color: rgb(94, 188, 188);
+  color: #ffffff;
   cursor: pointer;
   box-shadow:
-    0 4px 10px rgba(0,0,0,0.2),
-    inset 0 -2px 0 rgba(0,0,0,0.2);
+    0 4px 10px rgba(0, 0, 0, 0.18),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
 }
 
-.action-buttons .secondary:active {
+/* Hover only when enabled */
+.action-buttons .secondary.enabled:hover {
+  background-color: rgb(84, 178, 178);
+  transform: translateY(-1px);
+}
+
+/* Optional: subtle press feedback */
+.action-buttons .secondary.enabled:active {
   transform: translateY(1px);
   box-shadow:
-    0 2px 6px rgba(0,0,0,0.3),
-    inset 0 2px 4px rgba(0,0,0,0.3);
+    0 2px 6px rgba(0,0,0,0.25),
+    inset 0 2px 4px rgba(0,0,0,0.25);
 }
 
-/* Cancel */
+/* Cancel button (outlined) */
 .action-buttons .ghost {
   background: transparent;
-  border: 1px solid #ccc;
-  color: #555;
-  border-radius: 10px;
-  height: 44px;
-  padding: 0 10px;
-  font-weight: 500;
+  border: 1.5px solid #bdbdbd;
+  color: #666;
   cursor: pointer;
 }
 
 .action-buttons .ghost:hover {
-  background: #f2f2f2;
+  background: #eeeeee;
 }
-
-.action-buttons button {
-  white-space: wrap;   /* 🔥 prevent text from breaking */
-}
-
 
 /* === Confirmation / Success Message === */
-
 .contact-capture .success {
   max-width: 520px;
   margin: 2rem auto 0;          /* center on page */
@@ -403,10 +381,11 @@ html, body {
   display: inline-block;
 }
 
-
 .contact-capture {
   display: flex;
   flex-direction: column;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  background:#f8f8f8;
 }
 
 
@@ -501,21 +480,16 @@ html, body {
   pointer-events: none;   /* let wrapper receive clicks */
 }
 
-.choice-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 14px;            /* slightly tighter */
-  margin: 0 auto 1.25rem;
-  max-width: 520px;
-  flex-wrap: nowrap;    /* 🔥 never wrap */
-}
 
 .choice-buttons button {
-  flex: 1 1 0;          /* allow shrinking */
-  max-width: 200px;
-  min-width: 130px;     /* small enough to fit */
-  padding: 0 12px;      /* slightly tighter */
+  background-color: rgb(94, 188, 188);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  height: 44px;
+  font-weight: 600;
 }
+
 
   </style>
 </head>
@@ -537,7 +511,7 @@ html, body {
   <div class="container">
     <h2>Great Training Helps Build a Great Adoption</h2>
     <p>
-      Bringing a pet home is a meaningful commitment. As your companion adjusts to new surroundings and routines, steady, non-fearful guidance helps transforms uncertainty into confidence — and early challenges into lasting trust.
+      Bringing a pet home is a meaningful commitment. As your companion adjusts to new surroundings and routines, steady, non-fearful guidance helps transform uncertainty into confidence — and early challenges into lasting trust.
     </p>
 
     <div class="image-row">
@@ -551,9 +525,9 @@ html, body {
 <!-- SUPPORT COPY -->
 <section id="support">
   <div class="container">
-    <h2>A Different Approach to Behavior Support</h2>
+    <h2>Humane Behavior Training Without Fear or Force</h2>
     <p>
-   ChatrBox, by Petitek, provides immediate, consistent guidance using your recorded voice the moment behaviors begin — even when you can’t be there to provide that guidance yourself. It helps pets connect actions with outcomes without fear or force. 
+   ChatrBox, by Petitek, provides immediate, consistent guidance using your recorded voice the moment behaviors begin — even when you can’t be there to provide that guidance yourself. It helps pets connect actions with outcomes -without fear or force. 
     </p>
   </div>
 </section>
@@ -580,7 +554,7 @@ html, body {
 <!-- FINAL COPY -->
 <section id="why-chatrbox">
   <div class="container">
-    <h2>A Support Offer for Adopters</h2>
+    <h2>A Support Offer for Adopters and Foster Families</h2>
     <p>
       Through our partnerships, ChatrBox trainer is being offered at a reduced rate to help support your adoption success.
     </p>
@@ -606,7 +580,7 @@ html, body {
 </section>
 
 
-<<section
+<section
   class="contact-capture"
   x-data="contactCapture()"
   :class="{ 'success-state': state === 'success' }"
@@ -615,7 +589,7 @@ html, body {
 
     <h3>Receive the Reduced-Rate Offer</h3>
     <p class="subtext">
-     Click below and we’ll send the ChatrBox link and offer details
+     Click below and we’ll send the ChatrBox link and offer details.
     </p>
 
     <!-- CHOICE BUTTONS -->
@@ -624,13 +598,10 @@ html, body {
       <button @click="select('sms')">Text the link</button>
     </div>
 
-    <!-- INPUT ROW -->
-   <div class="input-row" x-show="state === 'input'">
-  <div class="action-buttons">
-    <button class="secondary" @click="send">Send link</button>
-    <button class="ghost" @click="cancel">Cancel</button>
-  </div>
+   <!-- INPUT ROW -->
+<div x-show="state === 'input'" class="input-block">
 
+  <!-- Input Field -->
   <input
     x-show="method === 'email'"
     type="email"
@@ -650,9 +621,28 @@ html, body {
     placeholder="Mobile number"
     x-model="phone"
   />
+
+<div class="action-buttons">
+  <button
+    class="secondary"
+    :class="{ 'enabled': isValid }"
+    :disabled="!isValid"
+    @click="send"
+  >
+    Send link
+  </button>
+
+  <button
+    class="ghost"
+    @click="cancel"
+  >
+    Cancel
+  </button>
 </div>
 
-<!-- 🔥 ERROR MOVED OUTSIDE FLEX ROW -->
+
+</div> <!-- CLOSE input-block -->
+
 <div
   x-show="error && state === 'input'"
   x-text="error"
@@ -862,12 +852,28 @@ if (this.method === 'email') {
       return `${name[0]}•••@${domain}`;
     },
 
-    get maskedPhone() {
-      const digits = this.phone.replace(/\D/g, '');
-      return digits.length >= 4
-        ? `•••-•••-${digits.slice(-4)}`
-        : '';
-    }
+   get maskedPhone() {
+  const digits = this.phone.replace(/\D/g, '');
+  return digits.length >= 4
+    ? `•••-•••-${digits.slice(-4)}`
+    : '';
+},
+
+
+    get isValid() {
+  if (this.method === 'email') {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(this.email);
+  }
+
+  if (this.method === 'sms') {
+    const digits = this.phone.replace(/\D/g, '');
+    return digits.length === 10;
+  }
+
+  return false;
+}
+
   };
 }
 </script>
@@ -901,5 +907,6 @@ if (this.method === 'email') {
 
 </body>
 </html>
+
 
 

@@ -84,21 +84,16 @@ html, body {
 .hero-video {
   max-width: 1440px;
   margin: 0 auto;
-  overflow: hidden; /* prevents any stray edges */
+  overflow: hidden;
+  aspect-ratio: 16 / 9;   /* reserve space BEFORE video loads */
 }
 
-/* Let the video define its own height (no letterboxing) */
 .hero-video video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  pointer-events: none; /* cinematic only */
-}
-
-/* Never allow overlays on hero */
-.hero-video video + .unmute-overlay {
-  display: none !important;
-  pointer-events: none !important;
+  pointer-events: none;
 }
 
 
