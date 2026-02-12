@@ -1984,25 +1984,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* -------------------------
-     Footer Email Form
-  ------------------------- */
-  const emailForm = document.getElementById("emailForm");
-
-  if (emailForm) {
-    emailForm.addEventListener("submit", function () {
-      const input = document.getElementById("emailInput");
-      const success = document.getElementById("emailSuccess");
-
-      setTimeout(() => {
-        input.value = "";
-        success.classList.add("show");
-      }, 300);
-    });
-  }
-
-});
-
 </script>
 
 <!-- =========================
@@ -2016,6 +1997,26 @@ document.addEventListener('DOMContentLoaded', () => {
   </a>
 </div>
 
+<!-- =========================
+     FOOTER EMAIL SCRIPT (ISOLATED CLEAN)
+========================= -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const emailForm = document.getElementById("emailForm");
+
+  if (emailForm) {
+    emailForm.addEventListener("submit", function () {
+      const input = document.getElementById("emailInput");
+      const success = document.getElementById("emailSuccess");
+
+      setTimeout(function() {
+        input.value = "";
+        success.classList.add("show");
+      }, 300);
+    });
+  }
+});
+</script>
+
 </body>
 </html>
-
