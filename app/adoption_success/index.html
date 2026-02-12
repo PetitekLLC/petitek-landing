@@ -338,6 +338,13 @@ html, body {
 .contact-capture {
   display: flex;
   flex-direction: column;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: #f7f7f7;
+}
+
+.contact-capture {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  background: #f8f8f8;
 }
 
 
@@ -434,11 +441,14 @@ html, body {
 
 
 .choice-buttons button {
-  flex: 0 1 180px;          /* allow shrinking */
-  max-width: 200px;
-  min-width: 130px;     /* small enough to fit */
-  padding: 0 12px;      /* slightly tighter */
+  background-color: rgb(94, 188, 188);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  height: 44px;
+  font-weight: 600;
 }
+
 
   </style>
 </head>
