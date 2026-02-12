@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="/style.css" />
 
   <style>
+
+    [x-cloak] {
+  display: none !important;
+}
+
 html, body {
   overflow-x: hidden;
   overscroll-behavior-x: none;
@@ -911,8 +916,6 @@ if (this.method === 'email') {
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<script>
-</script>
 
 </body>
 </html>
