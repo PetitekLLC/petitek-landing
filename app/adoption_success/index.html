@@ -500,7 +500,7 @@ html, body {
   <div class="container">
     <h2>Great Training Helps Build a Great Adoption</h2>
     <p>
-      Bringing a pet home is a meaningful commitment. As your companion adjusts to new surroundings and routines, steady, non-fearful guidance helps transforms uncertainty into confidence — and early challenges into lasting trust.
+      Bringing a pet home is a meaningful commitment. As your companion adjusts to new surroundings and routines, steady, non-fearful guidance helps transform uncertainty into confidence — and early challenges into lasting trust.
     </p>
 
     <div class="image-row">
@@ -621,10 +621,15 @@ html, body {
     Send link
   </button>
 </div>
- x-show="error && state === 'input'"
+
+</div> <!-- CLOSE input-block -->
+
+<div
+  x-show="error && state === 'input'"
   x-text="error"
   class="input-error"
 ></div>
+
 
     <!-- SUCCESS + AMAZON -->
     <div
