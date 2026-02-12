@@ -846,23 +846,22 @@ async send() {
     this.error = "Network error. Please try again.";
   }
 
-}
+},   // ← THIS COMMA WAS MISSING
 
-    get maskedEmail() {
-      if (!this.email.includes('@')) return '';
-      const [name, domain] = this.email.trim().split('@');
-      return `${name[0]}•••@${domain}`;
-    },
+get maskedEmail() {
+  if (!this.email.includes('@')) return '';
+  const [name, domain] = this.email.trim().split('@');
+  return `${name[0]}•••@${domain}`;
+},
 
-   get maskedPhone() {
+get maskedPhone() {
   const digits = this.phone.replace(/\D/g, '');
   return digits.length >= 4
     ? `•••-•••-${digits.slice(-4)}`
     : '';
 },
 
-
-    get isValid() {
+get isValid() {
   if (this.method === 'email') {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(this.email);
@@ -875,10 +874,6 @@ async send() {
 
   return false;
 }
-
-  };
-}
-</script>
 
 
 <footer class="petitek-footer">
