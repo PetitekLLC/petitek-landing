@@ -1943,6 +1943,77 @@ document.addEventListener('DOMContentLoaded', () => {
   </a>
 </div>
 
+  /* -------------------------
+     Footer Email Form
+  ------------------------- */
+  const emailForm = document.getElementById("emailForm");
+
+  if (emailForm) {
+    emailForm.addEventListener("submit", function () {
+      const input = document.getElementById("emailInput");
+      const success = document.getElementById("emailSuccess");
+
+      setTimeout(() => {
+        input.value = "";
+        success.classList.add("show");
+      }, 300);
+    });
+  }
+
+<!-- =========================
+     CORE SITE SCRIPTS
+========================= -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* -------------------------
+     Floating Amazon Buy Button
+  ------------------------- */
+  const floatingBuyButton = document.querySelector('.floating-buy-button');
+
+  if (floatingBuyButton) {
+    window.addEventListener('scroll', () => {
+      const scrollTrigger = 600;
+
+      if (window.scrollY > scrollTrigger) {
+        floatingBuyButton.classList.add('show');
+      } else {
+        floatingBuyButton.classList.remove('show');
+      }
+    });
+  }
+
+  /* -------------------------
+     Footer Email Form
+  ------------------------- */
+  const emailForm = document.getElementById("emailForm");
+
+  if (emailForm) {
+    emailForm.addEventListener("submit", function () {
+      const input = document.getElementById("emailInput");
+      const success = document.getElementById("emailSuccess");
+
+      setTimeout(() => {
+        input.value = "";
+        success.classList.add("show");
+      }, 300);
+    });
+  }
+
+});
+</script>
+
+<!-- =========================
+     FLOATING AMAZON BUTTON
+========================= -->
+<div class="floating-buy-button">
+  <a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
+     target="_blank"
+     rel="noopener noreferrer">
+    <img src="amazon_float_button.png" alt="Buy Now">
+  </a>
+</div>
 
 </body>
 </html>
+
