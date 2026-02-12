@@ -1925,22 +1925,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* -------------------------
-     Footer Email Form
-  ------------------------- */
-  const emailForm = document.getElementById("emailForm");
+/* -------------------------
+   Footer Email Form
+------------------------- */
+const emailForm = document.getElementById("emailForm");
 
-  if (emailForm) {
-    emailForm.addEventListener("submit", function () {
-      const input = document.getElementById("emailInput");
-      const success = document.getElementById("emailSuccess");
+if (emailForm) {
+  emailForm.addEventListener("submit", function () {
+    const input = document.getElementById("emailInput");
+    const success = document.getElementById("emailSuccess");
 
+    setTimeout(() => {
+      input.value = "";
+      success.classList.add("show");
+
+      // 🔥 Auto-hide after 3 seconds
       setTimeout(() => {
-        input.value = "";
-        success.classList.add("show");
-      }, 300);
-    });
-  }
+        success.classList.remove("show");
+      }, 3000);
+
+    }, 300);
+  });
+}
+
 
 });
 </script>
