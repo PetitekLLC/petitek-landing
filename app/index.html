@@ -1931,19 +1931,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-
-document.getElementById("emailForm").addEventListener("submit", function(e) {
-  const input = document.getElementById("emailInput");
-
-  // Let the form submit normally to the hidden iframe
-  setTimeout(() => {
-    input.value = "";
-    document.getElementById("emailSuccess").classList.add("show");
-  }, 300);
-});
-
-
-
 <!-- =========================
      FLOATING AMAZON BUTTON
      (OUTSIDE LAYOUT WRAPPERS)
