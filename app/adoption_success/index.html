@@ -274,20 +274,36 @@ html, body {
 .action-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 6px;
+  gap: 14px;
+  margin-top: 8px;
 }
 
-/* Base button styling */
+/* Base button styling (desktop default) */
 .action-buttons button {
-  height: 44px;
-  padding: 0 16px;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 14px;
+  font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
+
+@media (max-width: 520px) {
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .action-buttons button {
+    width: 100%;
+    max-width: 320px;
+    height: 52px;
+    font-size: 1.05rem;
+  }
+}
+
 
 /* Send button (default = disabled state) */
 .action-buttons .secondary {
