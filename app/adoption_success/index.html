@@ -835,13 +835,15 @@ if (this.method === 'sms') {
 
 
       try {
-        const response = await fetch(
-          'https://script.google.com/macros/s/AKfycbz0bo34BklRTzfevouDK1iAXIh7Z3xyS-7_UaWzLGuVVXPhPtw3zy3m_RW2eYYILLxo/exec',
-          {
-            method: 'POST',
-            body: formData
-          }
-        );
+      const response = await fetch(
+  'https://script.google.com/macros/s/AKfycbz0bo34BklRTzfevouDK1iAXIh7Z3xyS-7_UaWzLGuVVXPhPtw3zy3m_RW2eYYILLxo/exec',
+  {
+    method: 'POST',
+    body: formData,
+    mode: 'no-cors'
+  }
+);
+
 
         const text = await response.text();
 
