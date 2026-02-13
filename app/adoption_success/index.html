@@ -833,15 +833,15 @@ if (this.method === 'sms') {
   formData.append('optIn', 'agreed');
 }
 
-
-      try {
-        const response = await fetch(
-          'https://script.google.com/macros/s/https://script.google.com/macros/s AKfycbwri8QqnNW4JpsmeLk9kTlTxJjVZF6E6woxFMa2KgHlUKTAI0bTVOnPS3FjQ9ZvS1bp/exec',
-          {
-            method: 'POST',
-            body: formData
-          }
-        );
+     try {
+  const response = await fetch(
+    'https://script.google.com/macros/s/AKfycbwri8QqnNW4JpsmeLk9kTlTxJjVZF6E6woxFMa2KgHlUKTAI0bTVOnPS3FjQ9ZvS1bp/exec',
+    {
+      method: 'POST',
+      body: formData
+    }
+  );
+ 
 
         const text = await response.text();
 
