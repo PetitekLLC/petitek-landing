@@ -822,16 +822,17 @@ function contactCapture() {
 
       this.error = '';
 
-      const formData = new URLSearchParams();
+    const formData = new FormData();
 
-      if (this.method === 'email') {
-        formData.append('email', this.email);
-      }
+if (this.method === 'email') {
+  formData.append('email', this.email);
+}
 
-      if (this.method === 'sms') {
-        formData.append('phone', this.phone);
-        formData.append('optIn', 'agreed');
-      }
+if (this.method === 'sms') {
+  formData.append('phone', this.phone);
+  formData.append('optIn', 'agreed');
+}
+
 
       try {
         const response = await fetch(
