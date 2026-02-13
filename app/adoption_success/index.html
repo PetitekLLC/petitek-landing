@@ -796,7 +796,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-
 <script>
 function contactCapture() {
   return {
@@ -824,14 +823,24 @@ async send() {
   this.error = '';
 
   const formData = new URLSearchParams();
-  formData.append('email', this.email);
-  formData.append('phone', this.phone);
+
+  // Always send email field (even if blank)
+  formData.append('email', this.email || '');
+  formData.append('phone', this.phone || '');
+
+  // ✅ Auto-opt-in only if SMS selected
+  if (this.method === 'sms') {
+    formData.append('optIn', 'agreed');
+  }
 
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbzgFxQMyJpJ6-aqre2gywIxf_JUJu8yKPDrJt-8e9L22c51SKdNDjNUcJuv3QCjeIqD/exec', {
-      method: 'POST',
-      body: formData
-    });
+    const response = await fetch(
+      'https://script.google.com/macros/s/AKfycbz0bo34BklRTzfevouDK1iAXIh7Z3xyS-7_UaWzLGuVVXPhPtw3zy3m_RW2eYYILLxo/exec',
+      {
+        method: 'POST',
+        body: formData
+      }
+    );
 
     const text = await response.text();
 
@@ -844,6 +853,9 @@ async send() {
   } catch (err) {
     this.error = "Network error. Please try again.";
   }
+
+},
+
 
 },   // ← THIS COMMA WAS MISSING
 
