@@ -822,26 +822,36 @@ function contactCapture() {
 
       this.error = '';
 
-    const formData = new FormData();
+  
+try {
 
-if (this.method === 'email') {
-  formData.append('email', this.email);
-}
-
-if (this.method === 'sms') {
-  formData.append('phone', this.phone);
-  formData.append('optIn', 'agreed');
-}
-
-     try {
   const response = await fetch(
-    'https://script.google.com/macros/s/AKfycbwri8QqnNW4JpsmeLk9kTlTxJjVZF6E6woxFMa2KgHlUKTAI0bTVOnPS3FjQ9ZvS1bp/exec',
+    "https://petitek-promo-api.onrender.com/adoption-promo",
     {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: this.method === "email" ? this.email : null,
+        phone: this.method === "sms" ? this.phone : null,
+        optIn: this.method === "sms" ? "agreed" : null
+      })
     }
   );
- 
+
+  const data = await response.json();
+
+  if (data.success) {
+    this.state = "success";
+  } else {
+    this.error = data.error || "Something went wrong.";
+  }
+
+} catch (err) {
+  this.error = "Network error. Please try again.";
+}
+
 
         const text = await response.text();
 
