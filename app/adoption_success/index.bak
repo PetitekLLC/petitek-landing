@@ -639,6 +639,15 @@ html, body {
     x-model="phone"
   />
 
+<p
+  x-show="method === 'sms'"
+  style="font-size: 0..5rem; line-height: 1.4; color: #666; margin-top: 6px; max-width: 320px; text-align: left;"
+>
+  By providing your number and clicking “Send link,” you agree to receive automated text messages from Petitek regarding this offer. Message frequency varies. Msg & data rates may apply. Reply STOP to unsubscribe, HELP for help. See our
+  <a href="/privacy" style="color:#5EBCBC; text-decoration: underline;">Privacy Policy</a>.
+</p>
+
+
 <div class="action-buttons">
   <button
     class="secondary"
