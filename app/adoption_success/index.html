@@ -796,6 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
 <script>
 function contactCapture() {
   return {
@@ -810,87 +811,72 @@ function contactCapture() {
       this.state = 'input';
     },
 
-    cancel() {
-      this.state = 'choice';
-      this.method = null;
-      this.email = '';
-      this.phone = '';
-      this.error = '';
-    },
+  cancel() {
+  this.state = 'choice';
+  this.method = null;
+  this.email = '';
+  this.phone = '';
+  this.error = '';   // 🔥 clear error
+},
 
 async send() {
 
   this.error = '';
 
+  const formData = new URLSearchParams();
+  formData.append('email', this.email);
+  formData.append('phone', this.phone);
+
   try {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbzgFxQMyJpJ6-aqre2gywIxf_JUJu8yKPDrJt-8e9L22c51SKdNDjNUcJuv3QCjeIqD/exec', {
+      method: 'POST',
+      body: formData
+    });
 
-    const payload = {};
+    const text = await response.text();
 
-    if (this.method === "email") {
-      payload.email = this.email.trim();
-    }
-
-    if (this.method === "sms") {
-      payload.phone = this.phone.replace(/\D/g, '');
-      payload.optIn = true;
-    }
-
-    const response = await fetch(
-      "https://petitek-promo-api.onrender.com/adoption-promo",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }
-    );
-
-
-    const data = await response.json();
-
-    if (data.success) {
-      this.state = "success";
+    if (text === "Success") {
+      this.state = 'success';
     } else {
-      this.error = data.error || "Something went wrong.";
+      this.error = text;
     }
+
   } catch (err) {
-    console.error(err);
     this.error = "Network error. Please try again.";
   }
+
+},   // ← THIS COMMA WAS MISSING
+
+get maskedEmail() {
+  if (!this.email.includes('@')) return '';
+  const [name, domain] = this.email.trim().split('@');
+  return `${name[0]}•••@${domain}`;
 },
 
+get maskedPhone() {
+  const digits = this.phone.replace(/\D/g, '');
+  return digits.length >= 4
+    ? `•••-•••-${digits.slice(-4)}`
+    : '';
+},
 
-    get maskedEmail() {
-      if (!this.email.includes('@')) return '';
-      const [name, domain] = this.email.trim().split('@');
-      return `${name[0]}•••@${domain}`;
-    },
+get isValid() {
+  if (this.method === 'email') {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(this.email);
+  }
 
-    get maskedPhone() {
-      const digits = this.phone.replace(/\D/g, '');
-      return digits.length >= 4
-        ? `•••-•••-${digits.slice(-4)}`
-        : '';
-    },
+  if (this.method === 'sms') {
+    const digits = this.phone.replace(/\D/g, '');
+    return digits.length === 10;
+  }
 
-    get isValid() {
-      if (this.method === 'email') {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailPattern.test(this.email);
-      }
-
-      if (this.method === 'sms') {
-        const digits = this.phone.replace(/\D/g, '');
-        return digits.length === 10;
-      }
-
-      return false;
-    }
-  };
+  return false;
 }
-</script>
+  };   // ← closes returned object
 
+}      // ← closes contactCapture function
+</script>
 
 <footer class="petitek-footer">
   <div class="footer-inner">
@@ -918,4 +904,8 @@ async send() {
 
 </body>
 </html>
+
+
+
+
 
