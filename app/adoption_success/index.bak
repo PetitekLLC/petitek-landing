@@ -638,19 +638,20 @@ html, body {
   x-model="phone"
 />
 
-<template x-if="method === 'sms'">
-  <p style="
+<p
+  x-show="method === 'sms'"
+  style="
     font-size: 0.75rem !important;
     line-height: 1.3 !important;
     margin: 6px 0 0 0 !important;
     color: #666 !important;
     max-width: 320px;
     text-align: left;
-  ">
-    By providing your number and clicking “Send link,” you consent to receive automated text messages from Petitek regarding this offer. Msg & data rates may apply. Reply STOP to opt out, HELP for help. See our
-    <a href="/privacy" style="color:#5EBCBC; text-decoration:underline;">Privacy Policy</a>.
-  </p>
-</template>
+  "
+>
+  By providing your number and clicking “Send link,” you consent to receive automated text messages from Petitek regarding this offer. Msg & data rates may apply. Reply STOP to opt out, HELP for help. See our
+  <a href="/privacy" style="color:#5EBCBC; text-decoration:underline;">Privacy Policy</a>.
+</p>
 
 
 <div class="action-buttons">
