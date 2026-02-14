@@ -846,20 +846,6 @@ async send() {
       }
     );
 
-    const data = await response.json();
-
-    if (data.success) {
-      this.state = "success";
-    } else {
-      this.error = data.error || "Something went wrong.";
-    }
-
-  } catch (err) {
-    console.error(err);
-    this.error = "Network error. Please try again.";
-  }
-}
-
 
     const data = await response.json();
 
