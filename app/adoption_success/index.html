@@ -854,12 +854,11 @@ async send() {
     } else {
       this.error = data.error || "Something went wrong.";
     }
-
   } catch (err) {
     console.error(err);
     this.error = "Network error. Please try again.";
   }
-}
+},
 
 
     get maskedEmail() {
