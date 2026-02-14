@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="canonical" href="https://www.petitek.com/register/">
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register Your ChatrBox</title>
@@ -11,7 +9,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #5EBCBC;
+      background-color: #25A8C6;
       color: #000;
       font-size: 1rem;
       display: flex;
@@ -37,7 +35,7 @@
 .title-box h1 {
   font-size: clamp(2rem, 4vw, 2.75rem);
   margin: 0 auto;
-  color: #5EBCBC;
+  color: #25A8C6;
   font-weight: bold;
 }
 
@@ -65,7 +63,7 @@
       border-radius: 10px 10px 0 0;
     }
     .title-box { text-align: center; margin-bottom: 1.5rem; }
-    .title-box h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0; color: #5EBCBC; }
+    .title-box h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0; color: #25A8C6; }
     .form-card {
       padding: 0 1.25rem;
       display: flex;
@@ -74,7 +72,7 @@
     .form-card form {
       max-width: 37.5rem;
       width: 100%;
-      border: 2px solid #5EBCBC;
+      border: 2px solid #25A8C6;
       border-radius: 0.625rem;
       padding: 1.25rem;
       background-color: #fff;
@@ -90,7 +88,7 @@
       width: 100%;
       padding: 0.625rem;
       font-size: 1rem;
-      border: 1px solid #5EBCBC;
+      border: 1px solid #25A8C6;
       border-radius: 0.3125rem;
       background-color: #fff;
       color: #000;
@@ -98,7 +96,7 @@
     .form-card button {
       width: 100%;
       margin-top: 1.5rem;
-      background: #5EBCBC;
+      background: #25A8C6;
       color: #fff;
       border: none;
       padding: 0.75rem 1.25rem;
@@ -195,67 +193,60 @@ footer p {
 
   </div>
 
-<script>
-  document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+  <script>
+    document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
 
-    fetch("https://script.google.com/macros/s/AKfycbzrf0El-LQu53ZqUY4rYII0DNwzTgj2Mabmfg_8Fc3E/dev", {
-      method: "POST",
-      body: formData
-    })
-    .then(res => res.text())
-    .then(data => {
-      const msg = document.getElementById("responseMsg");
-      const clean = data.trim();
-
-      if (clean === "Success") {
-        msg.textContent = "✅ Registration successful.";
-      } else {
-        msg.textContent = clean;
-      }
-
-      msg.style.opacity = 1;
-
-      setTimeout(() => {
-        msg.style.opacity = 0;
-        msg.textContent = "";
-      }, 2500);
-
-      form.reset();
-    })
-    .catch(err => {
-      const msg = document.getElementById("responseMsg");
-      msg.textContent = "❌ Submission failed.";
-      msg.style.opacity = 1;
-      console.error("Fetch error:", err);
+      fetch("https://script.google.com/macros/s/AKfycbzOsYFFC2C8HVhX0w7nUAFXhIsWj08B_pMBsaWxTHAHgrbk35BMLrezd7sUeJyxctwB/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+        const msg = document.getElementById("responseMsg");
+        msg.textContent = data;
+        msg.style.opacity = 1;
+        setTimeout(() => {
+          msg.style.opacity = 0;
+          msg.textContent = "";
+        }, 2000);
+        form.reset();
+      })
+      .catch(err => {
+        const msg = document.getElementById("responseMsg");
+        msg.textContent = "❌ Submission failed.";
+        console.error("Fetch error:", err);
+      });
     });
-  });
 
-  document.getElementById("phone").addEventListener("input", function (e) {
-    const input = e.target;
-    let value = input.value.replace(/\D/g, "");
-    if (value.length > 10) value = value.slice(0, 10);
-    const area = value.slice(0, 3);
-    const mid = value.slice(3, 6);
-    const end = value.slice(6, 10);
-    if (value.length > 6) {
-      input.value = `(${area}) ${mid}-${end}`;
-    } else if (value.length > 3) {
-      input.value = `(${area}) ${mid}`;
-    } else if (value.length > 0) {
-      input.value = `(${area}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const serialFromQR = urlParams.get("serial");
+    if (serialFromQR) {
+      document.getElementById("serial").value = serialFromQR;
     }
-  });
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const serialFromQR = urlParams.get("serial");
-  if (serialFromQR) {
-    document.getElementById("serial").value = serialFromQR;
-  }
-</script>
+    document.getElementById("phone").addEventListener("input", function (e) {
+      const input = e.target;
+      let value = input.value.replace(/\D/g, "");
+      if (value.length > 10) value = value.slice(0, 10);
+      const area = value.slice(0, 3);
+      const mid = value.slice(3, 6);
+      const end = value.slice(6, 10);
+      if (value.length > 6) {
+        input.value = `(${area}) ${mid}-${end}`;
+      } else if (value.length > 3) {
+        input.value = `(${area}) ${mid}`;
+      } else if (value.length > 0) {
+        input.value = `(${area}`;
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+
 
 
