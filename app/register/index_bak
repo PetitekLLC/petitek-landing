@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #25A8C6;
+      background-color: #5EBCBC;
       color: #000;
       font-size: 1rem;
       display: flex;
@@ -35,7 +35,7 @@
 .title-box h1 {
   font-size: clamp(2rem, 4vw, 2.75rem);
   margin: 0 auto;
-  color: #25A8C6;
+  color: #5EBCBC;
   font-weight: bold;
 }
 
@@ -63,7 +63,7 @@
       border-radius: 10px 10px 0 0;
     }
     .title-box { text-align: center; margin-bottom: 1.5rem; }
-    .title-box h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0; color: #25A8C6; }
+    .title-box h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin: 0; color: #5EBCBC; }
     .form-card {
       padding: 0 1.25rem;
       display: flex;
@@ -72,7 +72,7 @@
     .form-card form {
       max-width: 37.5rem;
       width: 100%;
-      border: 2px solid #25A8C6;
+      border: 2px solid #5EBCBC;
       border-radius: 0.625rem;
       padding: 1.25rem;
       background-color: #fff;
@@ -88,7 +88,7 @@
       width: 100%;
       padding: 0.625rem;
       font-size: 1rem;
-      border: 1px solid #25A8C6;
+      border: 1px solid #5EBCBC;
       border-radius: 0.3125rem;
       background-color: #fff;
       color: #000;
@@ -96,7 +96,7 @@
     .form-card button {
       width: 100%;
       margin-top: 1.5rem;
-      background: #25A8C6;
+      background: #5EBCBC;
       color: #fff;
       border: none;
       padding: 0.75rem 1.25rem;
@@ -104,7 +104,7 @@
       border-radius: 0.3125rem;
       cursor: pointer;
     }
-    .form-card button:hover { background: #1c8baa; }
+    .form-card button:hover { background:#5EBCBC ; }
     .form-card button:active {
       background-color: #0a3d4a;
       transform: scale(0.98);
