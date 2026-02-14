@@ -195,7 +195,7 @@ footer p {
 
   </div>
 
-  <script>
+<script>
   document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
     e.preventDefault();
     const form = e.target;
@@ -208,11 +208,10 @@ footer p {
     .then(res => res.text())
     .then(data => {
       const msg = document.getElementById("responseMsg");
-
       const clean = data.trim();
 
       if (clean === "Success") {
-        msg.textContent = "✅ Link sent successfully.";
+        msg.textContent = "✅ Registration successful.";
       } else {
         msg.textContent = clean;
       }
@@ -234,30 +233,28 @@ footer p {
     });
   });
 
+  document.getElementById("phone").addEventListener("input", function (e) {
+    const input = e.target;
+    let value = input.value.replace(/\D/g, "");
+    if (value.length > 10) value = value.slice(0, 10);
+    const area = value.slice(0, 3);
+    const mid = value.slice(3, 6);
+    const end = value.slice(6, 10);
+    if (value.length > 6) {
+      input.value = `(${area}) ${mid}-${end}`;
+    } else if (value.length > 3) {
+      input.value = `(${area}) ${mid}`;
+    } else if (value.length > 0) {
+      input.value = `(${area}`;
+    }
+  });
+
   const urlParams = new URLSearchParams(window.location.search);
   const serialFromQR = urlParams.get("serial");
   if (serialFromQR) {
     document.getElementById("serial").value = serialFromQR;
   }
 </script>
-
-
-    document.getElementById("phone").addEventListener("input", function (e) {
-      const input = e.target;
-      let value = input.value.replace(/\D/g, "");
-      if (value.length > 10) value = value.slice(0, 10);
-      const area = value.slice(0, 3);
-      const mid = value.slice(3, 6);
-      const end = value.slice(6, 10);
-      if (value.length > 6) {
-        input.value = `(${area}) ${mid}-${end}`;
-      } else if (value.length > 3) {
-        input.value = `(${area}) ${mid}`;
-      } else if (value.length > 0) {
-        input.value = `(${area}`;
-      }
-    });
-  </script>
 </body>
 </html>
 
