@@ -618,16 +618,7 @@ html, body {
 <div x-show="state === 'input'" class="input-block" x-cloak>
 
 
-<input
-  x-show="method === 'email'"
-  type="email"
-  name="email"
-  required
-  autocomplete="email"
-  placeholder="Email address"
-  x-model="email"
-/>
-
+  <!-- Input Field -->
 <input
   x-show="method === 'sms'"
   type="tel"
@@ -638,10 +629,20 @@ html, body {
   x-model="phone"
 />
 
-<p style="background:red; color:white;">
-TEST DISCLOSURE
+<p
+  x-show="method === 'sms'"
+  style="
+    font-size: 0.75rem;
+    line-height: 1.3;
+    margin: 6px 0 0 0;
+    color: #666;
+    max-width: 320px;
+    text-align: left;
+  "
+>
+  By providing your number and clicking “Send link,” you consent to receive automated text messages from Petitek regarding this offer. Msg & data rates may apply. Reply STOP to opt out, HELP for help. See our
+  <a href="/privacy" style="color:#5EBCBC; text-decoration:underline;">Privacy Policy</a>.
 </p>
-
 
 <div class="action-buttons">
   <button
@@ -661,7 +662,8 @@ TEST DISCLOSURE
   </button>
 </div>
 
-</div>
+
+</div> <!-- CLOSE input-block -->
 
 <div
   x-show="error && state === 'input'"
@@ -831,7 +833,7 @@ async send() {
   formData.append('phone', this.phone);
 
   try {
-   const response = await fetch('https://script.google.com/macros/s/AKfycbxsNR1gL84vB4KjBwzZSmrIC3KP8SCQPdmKPK-vtufxt1EtOA-H5lOOlppDJ5yoq1tytQ/exec', {
+   const response = await fetch('https://script.google.com/macros/s/AKfycbzxrw_kLWcbD0SqNmr_qhntc0bB31yYDHc4NtLQixpIddqEMADBA13bJVJOgxDU29R4TQ/exec', {
 
       method: 'POST',
       body: formData
@@ -908,10 +910,6 @@ get isValid() {
 
 </body>
 </html>
-
-
-
-
 
 
 

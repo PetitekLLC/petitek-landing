@@ -617,6 +617,15 @@ html, body {
    <!-- INPUT ROW -->
 <div x-show="state === 'input'" class="input-block" x-cloak>
 
+<input
+  x-show="method === 'email'"
+  type="email"
+  name="email"
+  required
+  autocomplete="email"
+  placeholder="Email address"
+  x-model="email"
+/>
 
   <!-- Input Field -->
 <input
