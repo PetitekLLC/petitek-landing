@@ -618,38 +618,32 @@ html, body {
 <div x-show="state === 'input'" class="input-block" x-cloak>
 
 
-  <!-- Input Field -->
-  <input
-    x-show="method === 'email'"
-    type="email"
-    name="email"
-    required
-    autocomplete="email"
-    placeholder="Email address"
-    x-model="email"
-  />
+<input
+  x-show="method === 'email'"
+  type="email"
+  name="email"
+  required
+  autocomplete="email"
+  placeholder="Email address"
+  x-model="email"
+/>
 
-
-<p
+<input
   x-show="method === 'sms'"
-  style="
-    font-size:0.75rem;
-    line-height:1.4;
-    color:red;
-    background: yellow;
-    padding:4px;
-  "
->
+  type="tel"
+  name="tel"
+  required
+  inputmode="numeric"
+  placeholder="Mobile number"
+  x-model="phone"
+/>
 
 <template x-if="method === 'sms'">
-  <p style="font-size:0.75rem; line-height:1.4; color:#666; margin-top:6px; max-width:320px; text-align:left;">
+  <p style="font-size:0.75rem; line-height:1.4; color:#666; margin-top:6px; max-width:320px;">
     By providing your number and clicking “Send link,” you consent to receive automated text messages from Petitek regarding this offer. Msg & data rates may apply. Reply STOP to opt out, HELP for help. See our
     <a href="/privacy" style="color:#5EBCBC; text-decoration:underline;">Privacy Policy</a>.
   </p>
 </template>
-
-
-
 
 <div class="action-buttons">
   <button
@@ -669,8 +663,6 @@ html, body {
   </button>
 </div>
 
-
-</div> <!-- CLOSE input-block -->
 
 <div
   x-show="error && state === 'input'"
