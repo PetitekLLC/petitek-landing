@@ -818,11 +818,22 @@ function contactCapture() {
       this.error = '';
     },
 
-   async send() {
+async send() {
 
   this.error = '';
 
   try {
+
+    const payload = {};
+
+    if (this.method === "email") {
+      payload.email = this.email.trim();
+    }
+
+    if (this.method === "sms") {
+      payload.phone = this.phone.replace(/\D/g, '');
+      payload.optIn = true;
+    }
 
     const response = await fetch(
       "https://petitek-promo-api.onrender.com/adoption-promo",
@@ -831,13 +842,24 @@ function contactCapture() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          email: this.method === "email" ? this.email : null,
-          phone: this.method === "sms" ? this.phone : null,
-          optIn: this.method === "sms" ? "agreed" : null
-        })
+        body: JSON.stringify(payload)
       }
     );
+
+    const data = await response.json();
+
+    if (data.success) {
+      this.state = "success";
+    } else {
+      this.error = data.error || "Something went wrong.";
+    }
+
+  } catch (err) {
+    console.error(err);
+    this.error = "Network error. Please try again.";
+  }
+}
+
 
     const data = await response.json();
 
