@@ -661,6 +661,7 @@ TEST DISCLOSURE
   </button>
 </div>
 
+</div>
 
 <div
   x-show="error && state === 'input'"
