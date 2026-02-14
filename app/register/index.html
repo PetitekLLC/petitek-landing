@@ -196,38 +196,51 @@ footer p {
   </div>
 
   <script>
-    document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
+  document.getElementById("chatrboxForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
 
-      fetch("https://script.google.com/macros/s/AKfycbzOsYFFC2C8HVhX0w7nUAFXhIsWj08B_pMBsaWxTHAHgrbk35BMLrezd7sUeJyxctwB/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(res => res.text())
-      .then(data => {
-        const msg = document.getElementById("responseMsg");
-        msg.textContent = data;
-        msg.style.opacity = 1;
-        setTimeout(() => {
-          msg.style.opacity = 0;
-          msg.textContent = "";
-        }, 2000);
-        form.reset();
-      })
-      .catch(err => {
-        const msg = document.getElementById("responseMsg");
-        msg.textContent = "❌ Submission failed.";
-        console.error("Fetch error:", err);
-      });
+    fetch("https://script.google.com/macros/s/AKfycbxsNR1gL84vB4KjBwzZSmrIC3KP8SCQPdmKPK-vtufxt1EtOA-H5lOOlppDJ5yoq1tytQ/exec", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+      const msg = document.getElementById("responseMsg");
+
+      const clean = data.trim();
+
+      if (clean === "Success") {
+        msg.textContent = "✅ Link sent successfully.";
+      } else {
+        msg.textContent = clean;
+      }
+
+      msg.style.opacity = 1;
+
+      setTimeout(() => {
+        msg.style.opacity = 0;
+        msg.textContent = "";
+      }, 2500);
+
+      form.reset();
+    })
+    .catch(err => {
+      const msg = document.getElementById("responseMsg");
+      msg.textContent = "❌ Submission failed.";
+      msg.style.opacity = 1;
+      console.error("Fetch error:", err);
     });
+  });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const serialFromQR = urlParams.get("serial");
-    if (serialFromQR) {
-      document.getElementById("serial").value = serialFromQR;
-    }
+  const urlParams = new URLSearchParams(window.location.search);
+  const serialFromQR = urlParams.get("serial");
+  if (serialFromQR) {
+    document.getElementById("serial").value = serialFromQR;
+  }
+</script>
+
 
     document.getElementById("phone").addEventListener("input", function (e) {
       const input = e.target;
