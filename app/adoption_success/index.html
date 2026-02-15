@@ -48,34 +48,43 @@ html, body {
   margin: 0 auto;
 }
 
-/* Actual banner */
-.adoption-banner {
-  background: rgb(94,188,188);
-  padding: 18px 0;
+/* ==============================
+   ADOPTION ASSIST BANNER
+============================== */
+
+.adoption-banner-wrap {
+  max-width: 1366px;
+  margin: 0 auto;
 }
 
-/* Inner layout */
+.adoption-banner {
+  background: rgb(94,188,188);
+  min-height: clamp(80px, 7vw, 120px);
+  display: flex;
+  align-items: center;
+}
+
 .adoption-banner-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  padding: 0 15px;
-  flex-wrap: wrap;
-  text-align: center;
+  gap: clamp(16px, 2vw, 32px);
+  width: 100%;
+  padding: 0 24px;
 }
 
 .adoption-badge {
-  width: clamp(60px, 5vw, 90px);
-  height: auto;
+  height: clamp(45px, 5vw, 75px);
+  width: auto;
 }
-
 
 .adoption-banner-title {
-  font-size: clamp(1.15rem, 1.5vw, 2.2rem);
-  font-weight: 500;
+  color: #ffffff;
+  font-size: clamp(1.2rem, 1.5vw, 2.2rem);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.1;
 }
-
 
 
 /* Remove spacing between banner and hero */
