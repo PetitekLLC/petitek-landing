@@ -37,6 +37,40 @@ html, body {
       margin: 0 auto;
     }
 
+/* ==============================
+   ADOPTION ASSIST BANNER
+============================== */
+
+.adoption-banner {
+  background: rgb(94,188,188);
+  width: 100%;
+  padding: clamp(12px, 2vw, 20px) 0;
+}
+
+.adoption-banner-inner {
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 0 clamp(12px, 3vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.adoption-banner-title {
+  color: white;
+  font-size: clamp(1.1rem, 1.2vw + 0.8rem, 1.6rem);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.adoption-badge {
+  width: clamp(40px, 5vw, 60px);
+  height: auto;
+}
+
+
     h2 {
       font-size: clamp(1.55rem, 3.5vw, 2.3rem);
       line-height: 1.2;
@@ -509,6 +543,24 @@ html, body {
 </head>
 
 <body>
+
+<!-- Adoption Assist Banner -->
+<section class="adoption-banner">
+  <div class="adoption-banner-inner">
+    
+    <img 
+      src="/images/adoption-badge-white.png" 
+      alt="Pet Adoption Assist Badge"
+      class="adoption-badge"
+    />
+
+    <h1 class="adoption-banner-title">
+      Petitek – Pet Adoption Assist Program
+    </h1>
+
+  </div>
+</section>
+
 
 <!-- HERO VIDEO -->
 <section id="hero">
