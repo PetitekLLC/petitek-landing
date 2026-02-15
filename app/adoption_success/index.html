@@ -48,9 +48,6 @@ html, body {
   margin: 0 auto;
 }
 
-/* ==============================
-   ADOPTION ASSIST BANNER
-============================== */
 
 .adoption-banner-wrap {
   max-width: 1366px;
@@ -93,9 +90,24 @@ html, body {
   margin-bottom: 0;
 }
 
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .mobile-break {
+    display: inline;
+  }
+}
+
 #hero {
   margin-top: 0;
 }
+
+<h1 class="adoption-banner-title">
+  Petitek Pet Adoption Assist <br class="mobile-break">
+  Program
+</h1>
 
 
     h2 {
