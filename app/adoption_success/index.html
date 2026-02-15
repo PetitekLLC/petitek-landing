@@ -41,33 +41,40 @@ html, body {
    ADOPTION ASSIST BANNER
 ============================== */
 
-.adoption-banner {
-  background: rgb(94,188,188);
-  width: 100%;
-  padding: clamp(12px, 2vw, 20px) 0;
-}
-
-.adoption-banner-inner {
+/* OUTER CONTAINER — limits width */
+.adoption-banner-wrap {
   max-width: 1366px;
   margin: 0 auto;
-  padding: 0 clamp(12px, 3vw, 24px);
+}
+
+/* Actual banner */
+.adoption-banner {
+  background: rgb(94,188,188);
+  padding: 18px 0;
+}
+
+/* Inner layout */
+.adoption-banner-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 2vw, 24px);
-}
-
-.adoption-banner-title {
-  color: white;
-  font-size: clamp(1.1rem, 1.2vw + 0.8rem, 1.6rem);
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: 0.3px;
+  gap: 18px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .adoption-badge {
-  width: clamp(40px, 5vw, 60px);
+  width: 48px;
   height: auto;
+}
+
+.adoption-banner-title {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
 }
 
 
@@ -545,21 +552,25 @@ html, body {
 <body>
 
 <!-- Adoption Assist Banner -->
-<section class="adoption-banner">
-  <div class="adoption-banner-inner">
-    
-    <img 
-      src="/images/adoption-badge-white.png" 
-      alt="Pet Adoption Assist Badge"
-      class="adoption-badge"
-    />
+<div class="adoption-banner-wrap">
+  <section class="adoption-banner">
+    <div class="adoption-banner-inner">
 
-    <h1 class="adoption-banner-title">
-      Petitek – Pet Adoption Assist Program
-    </h1>
+      <img 
+        src="/images/adoption-badge-white.png"
+        alt="Pet Adoption Assist Badge"
+        class="adoption-badge"
+      />
 
-  </div>
-</section>
+      <h1 class="adoption-banner-title">
+        Petitek – Pet Adoption Assist Program
+      </h1>
+
+    </div>
+  </section>
+</div>
+
+
 
 
 <!-- HERO VIDEO -->
