@@ -1122,22 +1122,25 @@ input.fade-placeholder::placeholder {
 
 .ambassador-banner {
   position: fixed;
-
-  left: 20px;        /* 👈 left side */
-  bottom: 20px;      /* 👈 same vertical behavior as Amazon */
+  left: 20px;
+  bottom: 20px;
 
   background: #5EBCBC;
-  color: #ffffff;
+  color: #fff;
 
   padding: 14px 18px;
   border-radius: 8px;
 
-  font-size: 14px;
   font-weight: 600;
-
   text-decoration: none;
 
   z-index: 1000;
+
+  display: none; /* 👈 CRITICAL */
+}
+
+.ambassador-banner.show {
+  display: block;
 }
 
 </style>
@@ -1936,19 +1939,30 @@ document.addEventListener('DOMContentLoaded', () => {
   /* -------------------------
      Floating Amazon Buy Button
   ------------------------- */
-  const floatingBuyButton = document.querySelector('.floating-buy-button');
+const floatingBuyButton = document.querySelector('.floating-buy-button');
+const ambassadorBanner = document.querySelector('.ambassador-banner');
 
-  if (floatingBuyButton) {
-    window.addEventListener('scroll', () => {
-      const scrollTrigger = 600;
-      if (window.scrollY > scrollTrigger) {
+if (floatingBuyButton || ambassadorBanner) {
+  window.addEventListener('scroll', () => {
+    const scrollTrigger = 600;
+
+    if (window.scrollY > scrollTrigger) {
+      if (floatingBuyButton) {
         floatingBuyButton.classList.add('show');
-      } else {
+      }
+      if (ambassadorBanner) {
+        ambassadorBanner.classList.add('show');
+      }
+    } else {
+      if (floatingBuyButton) {
         floatingBuyButton.classList.remove('show');
       }
-    });
-  }
-
+      if (ambassadorBanner) {
+        ambassadorBanner.classList.remove('show');
+      }
+    }
+  });
+}
 /* -------------------------
    Footer Email Form
 ------------------------- */
