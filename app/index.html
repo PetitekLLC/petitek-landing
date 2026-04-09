@@ -1137,12 +1137,20 @@ input.fade-placeholder::placeholder {
   display: block;
   background: #5EBCBC;
   color: white;
+
   padding: 14px 18px;
   border-radius: 8px;
   text-decoration: none;
+
+  border: 2px solid #ffffff;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 👈 depth */
 }
 
-
+.ambassador-banner a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
 
 </style>
 </head> <!-- ✅ This was missing and is now added -->
@@ -1151,7 +1159,7 @@ input.fade-placeholder::placeholder {
 <body>
 
 <div class="ambassador-banner">
-  <a href="/paws">Become an Ambassador</a>
+  <a href="https://portal.petitek.com/paws">
 </div>
 
 
