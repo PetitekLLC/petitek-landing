@@ -1120,6 +1120,51 @@ input.fade-placeholder::placeholder {
   opacity: 0;
 }
 
+/* =========================
+AMBASSADOR FLOAT BANNER
+========================= */
+
+.ambassador-banner {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left top;
+
+  background: #5EBCBC;
+  color: #ffffff;
+
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  border-radius: 0 0 10px 10px;
+  text-decoration: none;
+
+  z-index: 9999;
+}
+
+/* Hover */
+.ambassador-banner:hover {
+  background: #4aa5a5;
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .ambassador-banner {
+    display: none;
+  }
+}
+
+.ambassador-banner {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.ambassador-banner:hover {
+  transform: translateY(-50%) rotate(-90deg) scale(1.05);
+}
+
 </style>
 </head> <!-- ✅ This was missing and is now added -->
 
@@ -1765,6 +1810,10 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
     <img src="amazon_float_button.png" alt="Buy Now">
   </a>
 </div>
+
+<a href="/paws" class="ambassador-banner">
+  Become an Ambassador
+</a>
 
 <!-- =========================
      CORE SITE SCRIPTS
