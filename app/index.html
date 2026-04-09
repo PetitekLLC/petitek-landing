@@ -1125,6 +1125,18 @@ input.fade-placeholder::placeholder {
   left: 20px;
   bottom: 20px;
 
+  display: none; /* controlled by JS */
+
+  z-index: 99999;
+}
+
+.ambassador-banner.show {
+  display: block;
+}
+
+.ambassador-banner a {
+  display: block;
+
   background: #5EBCBC;
   color: #fff;
 
@@ -1133,14 +1145,6 @@ input.fade-placeholder::placeholder {
 
   font-weight: 600;
   text-decoration: none;
-
-  z-index: 1000;
-
-  display: none; /* 👈 CRITICAL */
-}
-
-.ambassador-banner.show {
-  display: block;
 }
 
 </style>
@@ -1789,9 +1793,9 @@ ChatrBox comes fully equipped for immediate setup. Every essential component is 
   </a>
 </div>
 
-<a href="/paws" class="ambassador-banner">
-  Become an Ambassador
-</a>
+<div class="ambassador-banner">
+  <a href="/paws">Become an Ambassador</a>
+</div>
 
 <!-- =========================
      CORE SITE SCRIPTS
