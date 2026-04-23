@@ -2,62 +2,101 @@
 <html lang="en">
 <!-- DEBUG: CONFIRMING THIS IS THE REAL /app/index.html test 4.6.0-->
 <head>
+
 <link rel="canonical" href="https://www.petitek.com/">
-  <meta charset="UTF-8" />
+
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
-  <meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
-  <meta name="author" content="Petitek LLC" />
 
-  <title>Petitek | Chatrbox Smart Pet Trainer</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="Chatrbox by Petitek is a smart pet trainer that reinforces good behavior using voice commands, motion detection, and virtual boundaries — all stress-free and collar-free." />
+<meta name="keywords" content="Pet training, smart pet device, dog training, cat behavior, motion detection, voice commands, wireless pet training" />
+<meta name="author" content="Petitek LLC" />
 
- <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVKZKZ7GJE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BVKZKZ7GJE');
-  </script>
+<title>Petitek | Chatrbox Smart Pet Trainer</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-<!-- TikTok Pixel Code Start -->
+<!-- =========================
+     GOOGLE ANALYTICS
+========================= -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BVKZKZ7GJE"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-BVKZKZ7GJE');
+</script>
+
+<!-- =========================
+     TIKTOK PIXEL
+========================= -->
 <script>
 !function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
+  w.TiktokAnalyticsObject=t;
+  var ttq=w[t]=w[t]||[];
+  ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+  ttq.setAndDefer=function(t,e){
+    t[e]=function(){
+      t.push([e].concat(Array.prototype.slice.call(arguments,0)))
+    }
+  };
+  for(var i=0;i<ttq.methods.length;i++){
+    ttq.setAndDefer(ttq,ttq.methods[i])
+  }
   ttq.load('D2HQA3RC77U5N1MBQ5A0');
   ttq.page();
 }(window, document, 'ttq');
 </script>
-<!-- TikTok Pixel Code End -->
- 
 
-  </style>
-</head> <!-- ✅ This was missing and is now added -->
+<!-- =========================
+     META PIXEL
+========================= -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];
+t=b.createElement(e);t.async=!0;
+t.src=v;
+s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s);
+}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 
-<!-- FLOATING AMAZON BUY BUTTON TEMPORARILY DISABLED -->
+fbq('init', '1311909890549349');
+fbq('track', 'PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1311909890549349&ev=PageView&noscript=1"/>
+</noscript>
+
+</head>
+
+<body>
+
+<!-- FLOATING AMAZON BUY BUTTON -->
 <div class="floating-buy-button">
 <a href="https://www.amazon.com/dp/B0D6QQPWJQ?maas=maas_adg_D08FD2327336F6B9F067D51E4D2E659B_afap_abs&ref_=aa_maas&tag=maas"
    target="_blank"
    rel="noopener noreferrer">
-
     <img src="amazon_float_button.png" alt="Buy Now">
-  </a>
+</a>
 </div>
 
-  <script>
+<!-- =========================
+     CLICK TRACKING SCRIPT
+========================= -->
+<script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ✅ Track ALL Amazon outbound clicks
   document.body.addEventListener('click', function (e) {
     const link = e.target.closest('a[href*="amazon.com"]');
     if (!link) return;
 
-    // ---- Google Analytics (GA4) ----
+    // Google Analytics
     if (typeof gtag === 'function') {
       gtag('event', 'amazon_click', {
         event_category: 'Outbound',
@@ -66,14 +105,14 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // ---- Meta / Facebook Pixel ----
+    // Meta Pixel
     if (window.fbq) {
       fbq('trackCustom', 'OutboundAmazonClick', {
         url: link.href
       });
     }
 
-    // ---- TikTok Pixel (✅ CORRECT PLACE) ----
+    // TikTok Pixel
     if (window.ttq) {
       ttq.track('ClickButton', {
         content_name: 'Amazon Purchase Click',
@@ -85,26 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
-
-
-
-<!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1311909890549349'); 
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1311909890549349&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
 
 <style>
 /* General page setup */
@@ -1153,7 +1172,6 @@ input.fade-placeholder::placeholder {
 }
 
 </style>
-</head> <!-- ✅ This was missing and is now added -->
 
 
 <body>
@@ -1995,22 +2013,37 @@ const emailForm = document.getElementById("emailForm");
 
 if (emailForm) {
   emailForm.addEventListener("submit", function () {
+
     const input = document.getElementById("emailInput");
     const success = document.getElementById("emailSuccess");
 
+    // ✅ FIRE PIXELS IMMEDIATELY ON SUBMIT
+
+    // Meta (Facebook)
+    if (window.fbq) {
+      fbq('track', 'Lead');
+    }
+
+    // TikTok
+    if (window.ttq) {
+      ttq.track('SubmitForm');
+    }
+
+    // Existing UX behavior
     setTimeout(() => {
       input.value = "";
       success.classList.add("show");
 
-      // 🔥 Auto-hide after 3 seconds
+      // Auto-hide after 3 seconds
       setTimeout(() => {
         success.classList.remove("show");
       }, 3000);
 
     }, 300);
+
   });
 }
 
-
 });
 </script>
+</html>
