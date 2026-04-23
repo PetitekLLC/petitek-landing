@@ -2020,13 +2020,14 @@ if (emailForm) {
     // ✅ FIRE PIXELS IMMEDIATELY ON SUBMIT
 
     // Meta (Facebook)
+    // Meta
     if (window.fbq) {
-      fbq('track', 'Lead');
+      fbq('track', 'CompleteRegistration');
     }
 
     // TikTok
     if (window.ttq) {
-      ttq.track('SubmitForm');
+      ttq.track('CompleteRegistration');
     }
 
     // Existing UX behavior
@@ -2046,4 +2047,5 @@ if (emailForm) {
 
 });
 </script>
+</body>
 </html>
