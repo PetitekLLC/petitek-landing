@@ -2015,8 +2015,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'chatrboxVideo1', overlayId: 'unmuteOverlay1' },
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
     { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
-    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
+    { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' },
 
+    // autoplay-only section video
     { id: 'stopVideo', overlayId: null }
   ];
 
@@ -2024,7 +2025,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initVideo({ id, overlayId }) {
     const video = document.getElementById(id);
-    const overlay = document.getElementById(overlayId);
+      const overlay = overlayId
+    ? document.getElementById(overlayId)
+    : null;
     if (!video) return;
 
     video.preload = 'auto';
@@ -2049,7 +2052,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     video.addEventListener('ended', () => {
       video.currentTime = 0;
-      overlay.style.display = 'block';
+
+      if (overlay) {
+        overlay.style.display = 'block';
+      }
+
       video.muted = true;
     });
 
