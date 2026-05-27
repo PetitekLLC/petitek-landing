@@ -1331,16 +1331,9 @@ ChatrBox Unlocks Your Pet Training Superpowers — Using the Power of Your Voice
     Press a button and record your message. Then ChatrBox becomes your eyes and ears when you can't be there — stepping in with your message and smart alerts to guide your pet away from trouble <b><em>before</em></b> it starts.
   </div>
 
-  <!-- Train With Your Voice Video -->
-  <div class="content-block">
-    <video
-      id="stopVideo"
-      class="fade-in"
-      muted
-      playsinline
-      preload="metadata"
-      style="width:100%;height:auto;display:block;"
-    >
+  <!-- Train With Your Voice -->
+  <div class="video-wrapper fade-in">
+    <video id="stopVideo" autoplay muted playsinline preload="none">
       <source src="videos/stop.mp4" type="video/mp4">
     </video>
   </div>
@@ -2023,6 +2016,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'chatrboxVideo2', overlayId: 'unmuteOverlay2' },
     { id: 'chatrboxVideo3', overlayId: 'unmuteOverlay3' },
     { id: 'chatrboxVideo4', overlayId: 'unmuteOverlay4' }
+
+    { id: 'stopVideo', overlayId: null }
   ];
 
   let currentlyPlaying = null;
@@ -2030,7 +2025,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function initVideo({ id, overlayId }) {
     const video = document.getElementById(id);
     const overlay = document.getElementById(overlayId);
-    if (!video || !overlay) return;
+    if (!video) return;
 
     video.preload = 'auto';
     video.muted = true;
@@ -2058,6 +2053,8 @@ document.addEventListener('DOMContentLoaded', () => {
       video.muted = true;
     });
 
+    if (overlay) {
+
     overlay.addEventListener('click', () => {
       video.pause();
       video.currentTime = 0;
@@ -2065,6 +2062,8 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.style.display = 'none';
       video.play();
     });
+
+  }
   }
 
   videos.forEach(initVideo);
