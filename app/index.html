@@ -180,7 +180,6 @@ img {
   }
 }
 
-  
 #navbar {
   position: fixed;
   top: 0;
@@ -1336,38 +1335,6 @@ body.has-dashboard-return-banner .dropdown-menu{
 </a>
 
 </div>
-
-{% if retail_partner %}
-<section class="retail-intro-banner">
-  <div class="retail-intro-content">
-
-    <div class="retail-intro-text">
-      <div class="retail-kicker">INTRODUCED TO YOU BY</div>
-
-      <div class="retail-name">
-        {{ retail_partner.business_name }}
-      </div>
-
-      <div class="retail-location">
-        📍 {{ retail_partner.city }}, {{ retail_partner.state }}
-      </div>
-
-      <div class="retail-support">
-        ♡ Thank you for supporting this participating Petitek retail partner.
-      </div>
-    </div>
-
-    <div class="retail-divider"></div>
-
-    <img
-      class="retail-store-image"
-      src="{{ retail_partner.image }}"
-      alt="{{ retail_partner.business_name }}"
-    >
-
-  </div>
-</section>
-{% endif %}
 
 <div class="content" style="padding-top: 20px;">
 <img
