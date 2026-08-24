@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "principles": {
+    "fit_is_behavior_specific": true,
+    "ai_may_interpret_but_not_override_hard_rules": true,
+    "no_guarantees": true,
+    "prefer_fewer_questions": true
+  },
+  "hard_exclusions": [
+    {
+      "key": "moving_vehicle_risk",
+      "examples": ["chasing cars", "running into traffic"],
+      "result": "not_recommended",
+      "reason": "Immediate outdoor safety risk requiring direct training and physical management."
+    },
+    {
+      "key": "aggression_immediate_safety",
+      "examples": ["biting people", "attacking people"],
+      "result": "not_recommended",
+      "reason": "Immediate safety-sensitive behavior should not rely on an automatic indoor voice device."
+    }
+  ],
+  "fit_factors": {
+    "knows_rule": { "yes": 3, "mostly": 2, "learning": 0, "no": -3 },
+    "verbal_cue": { "yes": 3, "usually": 3, "sometimes": 1, "no": -3 },
+    "when_occurs": { "unobserved": 3, "both": 1, "observed": 0, "unknown": 0 },
+    "location": { "yes": 2, "few": 2, "no": -2, "unknown": 0 },
+    "multi_pet_targeting": { "yes": 1, "probably": 0, "no": -2, "unknown": 0 }
+  },
+  "behavior_families": [
+    { "key": "counter_access", "label": "Counter/table access", "location_check": false },
+    { "key": "furniture_access", "label": "Furniture access", "location_check": false },
+    { "key": "restricted_area", "label": "Off-limits room or area", "location_check": false },
+    { "key": "trash_food_items", "label": "Trash, food, plants or restricted items", "location_check": false },
+    { "key": "scratching", "label": "Scratching a specific target", "location_check": true },
+    { "key": "marking", "label": "Indoor marking/urination", "location_check": true },
+    { "key": "other_location_action", "label": "Other location-based behavior", "location_check": true },
+    { "key": "unpredictable_behavior", "label": "Behavior occurring broadly/unpredictably", "location_check": true }
+  ],
+  "recommendation_rules": [
+    {
+      "key": "training_first",
+      "when": { "knows_rule": "no", "verbal_cue": "no" },
+      "result": "Training Recommended First"
+    },
+    {
+      "key": "wifi_pretraining",
+      "when": { "knows_rule": "learning", "verbal_cue_not": "no" },
+      "result": "Potential Fit — Pre-Training Recommended",
+      "recommended_mode": "wifi_manual"
+    },
+    {
+      "key": "strong_fit",
+      "minimum_score": 7,
+      "result": "Strong Fit",
+      "recommended_mode": "automatic"
+    },
+    {
+      "key": "potential_fit",
+      "default": true,
+      "result": "Potential Fit"
+    }
+  ],
+  "multi_pet": {
+    "principle": "Multiple pets do not automatically reduce fit.",
+    "evaluate": [
+      "Can the device be positioned so only the problem activity enters the detection zone?",
+      "Does the target pet recognize its name or a specific verbal cue?"
+    ],
+    "note": "A pet name in the recording can improve message specificity but does not guarantee other pets will not react."
+  }
+}

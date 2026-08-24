@@ -1,0 +1,259 @@
+/* ChatrBox Fit Assessment Widget — isolated styles */
+:root {
+  --cbfit-teal: #5ebcbc;
+  --cbfit-teal-dark: #277f83;
+  --cbfit-teal-soft: #eaf7f7;
+  --cbfit-ink: #1f2d33;
+  --cbfit-muted: #627078;
+  --cbfit-line: #dfe8ea;
+  --cbfit-bg: #ffffff;
+  --cbfit-warm: #fff7ef;
+  --cbfit-good: #2f7d61;
+  --cbfit-warn: #9b6b23;
+}
+
+.cbfit-launcher {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 1950;
+  border: 0;
+  background: linear-gradient(90deg, #e8f7f7, #f8fcfc);
+  color: var(--cbfit-ink);
+  min-height: 42px;
+  padding: 8px 14px;
+  font: 700 14px/1.2 Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(31,45,51,.08);
+  cursor: pointer;
+}
+
+.cbfit-launcher span { color: var(--cbfit-teal-dark); }
+
+.cbfit-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: none;
+  background: rgba(14, 30, 34, .48);
+  padding: 12px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.cbfit-overlay.is-open { display: flex; }
+
+.cbfit-panel {
+  width: min(720px, 100%);
+  max-height: calc(100vh - 24px);
+  background: var(--cbfit-bg);
+  border-radius: 26px 26px 18px 18px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.22);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cbfit-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--cbfit-line);
+  background: #fff;
+}
+
+.cbfit-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--cbfit-teal-soft);
+  color: var(--cbfit-teal-dark);
+  font-size: 20px;
+}
+
+.cbfit-head-copy { flex: 1; min-width: 0; }
+.cbfit-title { margin: 0; color: var(--cbfit-ink); font: 700 18px/1.2 Arial, sans-serif; }
+.cbfit-subtitle { margin: 3px 0 0; color: var(--cbfit-muted); font: 400 12px/1.35 Arial, sans-serif; }
+
+.cbfit-close {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--cbfit-line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--cbfit-ink);
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cbfit-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  background: linear-gradient(180deg, #f9fcfc 0, #fff 140px);
+}
+
+.cbfit-progress {
+  height: 5px;
+  background: #edf1f2;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.cbfit-progress > div {
+  height: 100%;
+  width: 10%;
+  border-radius: inherit;
+  background: var(--cbfit-teal);
+  transition: width .28s ease;
+}
+
+.cbfit-thread { display: grid; gap: 12px; }
+.cbfit-msg { display: flex; }
+.cbfit-msg.assistant { justify-content: flex-start; }
+.cbfit-msg.user { justify-content: flex-end; }
+
+.cbfit-bubble {
+  max-width: 88%;
+  border-radius: 18px;
+  padding: 12px 14px;
+  font: 400 15px/1.45 Arial, sans-serif;
+  white-space: pre-wrap;
+}
+
+.cbfit-msg.assistant .cbfit-bubble {
+  background: #fff;
+  border: 1px solid var(--cbfit-line);
+  color: var(--cbfit-ink);
+  border-bottom-left-radius: 6px;
+}
+
+.cbfit-msg.user .cbfit-bubble {
+  background: var(--cbfit-teal-dark);
+  color: #fff;
+  border-bottom-right-radius: 6px;
+}
+
+.cbfit-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 4px;
+}
+
+.cbfit-chip {
+  border: 1px solid #b9d8d9;
+  background: #fff;
+  color: var(--cbfit-ink);
+  border-radius: 999px;
+  padding: 10px 13px;
+  font: 700 14px/1.2 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.cbfit-chip:hover, .cbfit-chip:focus {
+  border-color: var(--cbfit-teal-dark);
+  background: var(--cbfit-teal-soft);
+}
+
+.cbfit-result {
+  border: 1px solid var(--cbfit-line);
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.cbfit-result-top { padding: 18px; background: var(--cbfit-teal-soft); }
+.cbfit-result-label { font: 700 12px/1 Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--cbfit-teal-dark); }
+.cbfit-result h3 { margin: 7px 0 6px; font: 700 24px/1.15 Arial, sans-serif; color: var(--cbfit-ink); }
+.cbfit-result p { margin: 0; font: 400 14px/1.5 Arial, sans-serif; color: var(--cbfit-ink); }
+.cbfit-result-body { padding: 18px; }
+.cbfit-result-body h4 { margin: 0 0 10px; color: var(--cbfit-ink); font: 700 16px/1.25 Arial, sans-serif; }
+.cbfit-result-body ol { margin: 0; padding-left: 21px; color: var(--cbfit-ink); }
+.cbfit-result-body li { margin: 0 0 8px; font: 400 14px/1.45 Arial, sans-serif; }
+.cbfit-note { margin-top: 14px; padding: 12px; border-radius: 14px; background: var(--cbfit-warm); color: #5f4b36; font: 400 13px/1.45 Arial, sans-serif; }
+
+.cbfit-cta-row { display: grid; gap: 9px; margin-top: 15px; }
+.cbfit-primary, .cbfit-secondary {
+  min-height: 46px;
+  border-radius: 13px;
+  padding: 11px 14px;
+  font: 700 15px/1.2 Arial, sans-serif;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.cbfit-primary { border: 0; color: #fff; background: var(--cbfit-teal-dark); }
+.cbfit-secondary { border: 1px solid var(--cbfit-line); color: var(--cbfit-ink); background: #fff; }
+
+.cbfit-composer {
+  border-top: 1px solid var(--cbfit-line);
+  padding: 12px;
+  background: #fff;
+}
+
+.cbfit-input-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  border: 1px solid #cfdcdf;
+  border-radius: 16px;
+  padding: 8px;
+  background: #fff;
+}
+
+.cbfit-textarea {
+  flex: 1;
+  min-height: 42px;
+  max-height: 110px;
+  resize: vertical;
+  border: 0;
+  outline: none;
+  padding: 9px 8px;
+  color: var(--cbfit-ink);
+  font: 400 15px/1.35 Arial, sans-serif;
+}
+
+.cbfit-send {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--cbfit-teal-dark);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cbfit-help { margin: 7px 4px 0; color: var(--cbfit-muted); font: 400 11px/1.35 Arial, sans-serif; }
+.cbfit-hidden { display: none !important; }
+
+@media (min-width: 760px) {
+  .cbfit-launcher {
+    left: auto;
+    right: 22px;
+    top: 74px;
+    width: auto;
+    border-radius: 999px;
+    padding: 10px 16px;
+  }
+  .cbfit-overlay { align-items: center; padding: 24px; }
+  .cbfit-panel { border-radius: 24px; max-height: 760px; }
+  .cbfit-body { padding: 24px; }
+  .cbfit-composer { padding: 14px 18px 18px; }
+}
+
+@media (max-width: 759px) {
+  body.cbfit-banner-active { padding-top: 42px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cbfit-progress > div { transition: none; }
+}
