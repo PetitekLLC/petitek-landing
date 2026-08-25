@@ -5,42 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatrBox Fit Assessment — Development Preview</title>
   <link rel="stylesheet" href="fit-widget.css">
+  <link rel="stylesheet" href="intro-page.css">
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, sans-serif; color: #1f2d33; background: #f5f9f9; }
-    .preview-nav { height: 60px; background: white; display: flex; align-items: center; padding: 0 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
-    .preview-brand { font: 700 22px Georgia, serif; color: #5ebcbc; }
-    .hero { min-height: 520px; display: grid; place-items: center; padding: 110px 24px 60px; }
-    .hero-inner { width: min(760px, 100%); text-align: center; }
-    .hero h1 { font-size: clamp(34px, 7vw, 62px); line-height: 1.03; margin: 0 0 18px; }
-    .hero p { font-size: 18px; line-height: 1.55; color: #607078; max-width: 650px; margin: 0 auto 26px; }
-    .mock-product { width: 180px; height: 180px; border-radius: 34px; margin: 30px auto; background: white; border: 1px solid #dfe8ea; display: grid; place-items: center; font-size: 64px; box-shadow: 0 15px 40px rgba(39,127,131,.12); }
-    .hint { display: inline-block; border-radius: 999px; background: #eaf7f7; color: #277f83; padding: 10px 15px; font-weight: 700; }
-    .page-copy { max-width: 760px; margin: 0 auto; padding: 40px 24px 100px; }
-    .page-copy h2 { font-size: 28px; }
-    .page-copy p { line-height: 1.6; color: #53656d; }
-    @media (max-width: 759px) { .hero { padding-top: 120px; } }
+    *{box-sizing:border-box}
+    .preview-nav{height:60px;background:#fff;display:flex;align-items:center;padding:0 20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .preview-brand{font:700 22px Georgia,serif;color:#5ebcbc}
   </style>
 </head>
 <body>
+  <!-- Existing navigation preview intentionally preserved. -->
   <nav class="preview-nav"><div class="preview-brand">Petitek</div></nav>
-  <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="mock-product" aria-hidden="true">🐾</div>
-        <h1>Reinforce good behavior — even when you’re not there.</h1>
-        <p>This page exists only to preview the ChatrBox Fit Conversation widget in a realistic mobile/desktop setting.</p>
-        <span class="hint">Use the “Will ChatrBox work…” launcher above</span>
-      </div>
-    </section>
-    <section class="page-copy">
-      <h2>Development scenarios to try</h2>
-      <p>“My dog Delilah gets on the couch when we leave. She knows she shouldn’t and usually gets off when I say ‘Off.’ We have two other dogs but they stay on the floor.”</p>
-      <p>“My cat Butter keeps getting into a plant in the living room when nobody is watching. He seems to know it’s off limits but only listens to me sometimes.”</p>
-      <p>“My dog is still learning not to enter the dining room, but she usually stops when I say no.”</p>
-      <p>“My dog chases cars and I want him to stop.”</p>
-    </section>
+
+  <main class="fit-intro-shell">
+    <div class="fit-intro">
+      <section class="fit-hero" aria-labelledby="fit-intro-title">
+        <div class="fit-hero-copy">
+          <div class="fit-kicker">Before You Buy</div>
+          <h1 id="fit-intro-title">Match ChatrBox<br>to Your Pet<span>.</span></h1>
+          <p>This quick, guided assessment helps us understand your pet’s behavior so we can see if ChatrBox is likely to be a good fit — before you buy.</p>
+        </div>
+        <div class="fit-hero-art" aria-hidden="true">
+          <div class="fit-blob"></div>
+          <span class="fit-paw p1">🐾</span>
+          <span class="fit-paw p2">🐾</span>
+          <span class="fit-paw p3">🐾</span>
+          <span class="fit-paw p4">🐾</span>
+          <span class="fit-paw p5">🐾</span>
+          <span class="fit-paw p6">🐾</span>
+          <div class="fit-heart"></div>
+          <div class="fit-leaves"></div>
+        </div>
+      </section>
+
+      <section class="fit-section" aria-labelledby="fit-pet-heading">
+        <h2 id="fit-pet-heading">Which pet are we helping?</h2>
+        <div class="fit-pet-grid" role="group" aria-label="Choose dog or cat">
+          <button class="fit-pet-card is-selected" type="button" data-pet="dog" aria-label="Dog" aria-pressed="true">
+            <span class="fit-check" aria-hidden="true">✓</span>
+            <img src="dog-avatar.svg" alt="Dog">
+          </button>
+          <button class="fit-pet-card" type="button" data-pet="cat" aria-label="Cat" aria-pressed="false">
+            <span class="fit-check" aria-hidden="true">✓</span>
+            <img src="cat-avatar.svg" alt="Cat">
+          </button>
+        </div>
+
+        <div class="fit-name-block">
+          <label class="fit-label" for="fit-pet-name">Pet’s name</label>
+          <div class="fit-name-wrap">
+            <span class="fit-name-icon" aria-hidden="true">🐾</span>
+            <input class="fit-name-input" id="fit-pet-name" name="pet_name" type="text" maxlength="40" autocomplete="off" placeholder="Enter your pet’s name...">
+          </div>
+          <div class="fit-helper"><span class="fit-helper-badge" aria-hidden="true">✓</span><span>We’ll use their name throughout the assessment.</span></div>
+        </div>
+
+        <button class="fit-continue" id="fit-continue" type="button" disabled>Continue&nbsp; →</button>
+
+        <div class="fit-privacy">
+          <div class="fit-shield" aria-hidden="true">🐾</div>
+          <div><strong>Your pet. Your info.</strong><span>Everything you share is used only to personalize this assessment.</span></div>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <script src="intro-page.js" defer></script>
   <script src="fit-widget-v2.js" data-product-url="/" defer></script>
 </body>
 </html>
