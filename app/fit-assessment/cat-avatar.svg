@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Friendly tabby cat avatar</title>
+  <desc id="desc">Illustrated gray tabby cat head with teal collar.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2fbfb"/><stop offset="1" stop-color="#e4f4f4"/></linearGradient>
+    <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8a38f"/><stop offset="1" stop-color="#6e6258"/></linearGradient>
+  </defs>
+  <circle cx="120" cy="120" r="112" fill="url(#bg)"/>
+  <path d="M63 84 77 39l39 37z" fill="#7b6c61" stroke="#534941" stroke-width="5"/><path d="m177 84-14-45-39 37z" fill="#7b6c61" stroke="#534941" stroke-width="5"/>
+  <path d="M73 72 80 50l20 20zM167 72l-7-22-20 20z" fill="#f0a8a0"/>
+  <ellipse cx="120" cy="122" rx="70" ry="73" fill="url(#fur)"/>
+  <path d="M120 52c-9 13-11 27-11 39l11-9 11 9c0-12-2-26-11-39zM92 60c-7 13-8 24-6 35l10-8 9 5c-2-12-6-23-13-32zM148 60c7 13 8 24 6 35l-10-8-9 5c2-12 6-23 13-32z" fill="#4f453e"/>
+  <path d="M75 111c17-9 31-10 42-3M165 111c-17-9-31-10-42-3" fill="none" stroke="#4f453e" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="92" cy="119" rx="13" ry="15" fill="#a9c85a" stroke="#29312a" stroke-width="4"/><ellipse cx="148" cy="119" rx="13" ry="15" fill="#a9c85a" stroke="#29312a" stroke-width="4"/>
+  <ellipse cx="93" cy="120" rx="4" ry="9" fill="#111"/><ellipse cx="147" cy="120" rx="4" ry="9" fill="#111"/>
+  <path d="M120 135c8 0 13 6 10 11-2 4-6 6-10 6s-8-2-10-6c-3-5 2-11 10-11z" fill="#ef9d99" stroke="#7a504c" stroke-width="3"/>
+  <path d="M120 151c-4 8-11 12-22 12M120 151c4 8 11 12 22 12" fill="none" stroke="#473d37" stroke-width="4" stroke-linecap="round"/>
+  <path d="M87 145 54 137M87 153 49 153M153 145l33-8M153 153l38 0" stroke="#62564e" stroke-width="3" stroke-linecap="round"/>
+  <path d="M69 184c31 18 71 18 102 0v24c-31 17-71 17-102 0z" fill="#5ebcbc"/>
+  <circle cx="120" cy="206" r="13" fill="#fff" stroke="#2f8f8f" stroke-width="4"/>
+  <path d="M120 199c-6-7-13-1-9 5 2 3 6 6 9 9 3-3 7-6 9-9 4-6-3-12-9-5z" fill="#f49a9a"/>
+</svg>
