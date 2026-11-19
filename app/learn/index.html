@@ -331,14 +331,32 @@
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = document.querySelector('.lightbox-close');
 
+    // QR-friendly links: /learn?video=shields, wifi-pretraining, or operating&t=169
+    const videoIds = {
+      shields: '1140578763',
+      'wifi-pretraining': '1140178581',
+      operating: '1140245567'
+    };
+
+    function openVideo(videoId, startSeconds = 0) {
+      const seconds = Number.isFinite(startSeconds) ? Math.max(0, Math.floor(startSeconds)) : 0;
+      const videoUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1${seconds ? '&t=' + seconds + 's' : ''}`;
+      lightboxVideo.src = videoUrl;
+      lightbox.style.display = 'flex';
+    }
+
     cards.forEach(card => {
       card.addEventListener('click', () => {
-        const videoId = card.getAttribute('data-video-id');
-        const videoUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
-        lightboxVideo.src = videoUrl;
-        lightbox.style.display = 'flex';
+        openVideo(card.getAttribute('data-video-id'));
       });
     });
+
+    const params = new URLSearchParams(window.location.search);
+    const requestedVideo = params.get('video');
+    if (requestedVideo && Object.prototype.hasOwnProperty.call(videoIds, requestedVideo)) {
+      const requestedSeconds = Number(params.get('t') || 0);
+      openVideo(videoIds[requestedVideo], requestedSeconds);
+    }
 
     function closeLightbox() {
       lightbox.style.display = 'none';
