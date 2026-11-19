@@ -351,11 +351,36 @@
       });
     });
 
+    // Dedicated, visible video view for printed user-guide QR links.
+    // Do not rely on a lightbox overlay or autoplay to identify the video.
     const params = new URLSearchParams(window.location.search);
     const requestedVideo = params.get('video');
     if (requestedVideo && Object.prototype.hasOwnProperty.call(videoIds, requestedVideo)) {
-      const requestedSeconds = Number(params.get('t') || 0);
-      openVideo(videoIds[requestedVideo], requestedSeconds);
+      const rawSeconds = Number(params.get('t') || 0);
+      const seconds = Number.isFinite(rawSeconds) ? Math.max(0, Math.floor(rawSeconds)) : 0;
+      const labels = {
+        shields: 'Training with Focus Shields',
+        'wifi-pretraining': 'Pre-Training over Wi-Fi',
+        operating: 'Operating ChatrBox — Training Modes'
+      };
+      const selectedId = videoIds[requestedVideo];
+      const selectedUrl = `https://player.vimeo.com/video/${selectedId}?autoplay=0${seconds ? '&t=' + seconds + 's' : ''}`;
+      const videoGrid = document.querySelector('.video-grid');
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.querySelector('h1').textContent = labels[requestedVideo];
+        hero.querySelector('p').textContent = 'Press play to watch this ChatrBox tutorial.';
+      }
+      if (videoGrid) {
+        videoGrid.innerHTML = '';
+        videoGrid.style.display = 'block';
+        videoGrid.style.maxWidth = '900px';
+        videoGrid.innerHTML = '<div style="background:#fff;padding:12px;border-radius:12px">' +
+          '<iframe title="ChatrBox tutorial" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen ' +
+          'style="display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:8px" src="' +
+          selectedUrl + '"></iframe></div>' +
+          '<p style="text-align:center;margin:20px 0"><a href="/learn" style="color:#fff">See all tutorial videos</a></p>';
+      }
     }
 
     function closeLightbox() {
